@@ -1,0 +1,493 @@
+<div class="container-fluid">
+    <div class="row" style="background-color: rgb(148, 148, 148);">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-3 text-center">
+                    <img class="img-fluid" [src]="'assets/img/characters/'+character.character.icon+'.png'"
+                        style="width: 250px;border-radius: 0 0 50% 50%;" />
+                    <h2 style="cursor: pointer;" *ngIf="!nameEdit" (click)="nameEdit = true">
+                        <u>{{character.character.name}}</u>
+                    </h2>
+                    <input [(ngModel)]="character.character.name" *ngIf="nameEdit" (blur)="nameEdit = false" />
+                </div>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <img class="img-fluid" [src]="'assets/img/icons/'+character.character.type+'.webp'"
+                                style="width: 100px;" />
+                        </div>
+                        <div class="col-sm-11">
+                            <div [innerHtml]="'char.' + character.character.type | transloco"></div>
+                        </div>
+                        <div class="col-sm-1">
+                            <img class="img-fluid" [src]="'assets/img/icons/'+character.character.weapon+'.webp'"
+                                style="width: 100px;" />
+                        </div>
+                        <div class="col-sm-11">
+                            <div [innerHtml]="'char.' + character.character.weapon | transloco"></div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div [innerHtml]="'char.' + character.character.icon | transloco"></div>
+                        </div>
+                        <div class="col-sm-12 mt-1"><b>{{'char.attributes' | transloco}}</b></div>
+                        <ng-container *ngIf="character.atk">
+                            <div class="col-sm-3">
+                                <span style="float: right">ATK:</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input class="form-control" type="number" placeholder="100" min="0"
+                                    [(ngModel)]="character.dmg" (blur)="calculate()" />
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </ng-container>
+                        <div class="col-sm-3 mt-2">
+                            <span style="float: right">Crit. Chance %:</span>
+                        </div>
+                        <div class="col-sm-3 mt-2">
+                            <input class="form-control" type="number" placeholder="5%" min="0" max="100"
+                                [(ngModel)]="character.cChance" />
+                        </div>
+                        <div class="col-sm-3 mt-2">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#critModal"
+                                (click)="critCalc()" [class]="'btn btn-primary btn-'+ currentSelection">
+                                {{'char.enhancer' | transloco}}
+                            </button>
+                        </div>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-3 mt-2">
+                            <span style="float: right">Crit. DMG %:</span>
+                        </div>
+                        <div class="col-sm-3 mt-2">
+                            <input class="form-control" type="number" placeholder="150%" min="0" max="100"
+                                [(ngModel)]="character.cDmg" (blur)="calculate()" />
+                        </div>
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-3 mt-2">
+                            <span style="float: right">{{'char.elemental' | transloco}} DMG %:</span>
+                        </div>
+                        <div class="col-sm-3 mt-2">
+                            <input class="form-control" type="number" placeholder="150%" min="0" max="100"
+                                [(ngModel)]="character.elementalBonus" (blur)="calculate()" />
+                        </div>
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-3 mt-2">
+                            <span style="float: right">{{'char.basic' | transloco}} Bonus %:</span>
+                        </div>
+                        <div class="col-sm-3 mt-2">
+                            <input class="form-control" type="number" placeholder="150%" min="0" max="100"
+                                [(ngModel)]="character.basicBonus" (blur)="calculate()" />
+                        </div>
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-3 mt-2">
+                            <span style="float: right">{{'char.heavy' | transloco}} Bonus %:</span>
+                        </div>
+                        <div class="col-sm-3 mt-2">
+                            <input class="form-control" type="number" placeholder="150%" min="0" max="100"
+                                [(ngModel)]="character.heavyBonus" (blur)="calculate()" />
+                        </div>
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-3 mt-2">
+                            <span style="float: right">{{'char.skill' | transloco}} Bonus %:</span>
+                        </div>
+                        <div class="col-sm-3 mt-2">
+                            <input class="form-control" type="number" placeholder="150%" min="0" max="100"
+                                [(ngModel)]="character.skillBonus" (blur)="calculate()" />
+                        </div>
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-3 mt-2">
+                            <span style="float: right">Lib. Bonus %:</span>
+                        </div>
+                        <div class="col-sm-3 mt-2">
+                            <input class="form-control" type="number" placeholder="150%" min="0" max="100"
+                                [(ngModel)]="character.liberationBonus" (blur)="calculate()" />
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 mb-5">
+                <div class="offset-1 col-sm-2 skill" (click)="upgrade(0)">
+                    <div class="row skill-content text-center">
+                        <div class="col-sm-12">
+                            <img class="img-fluid" [src]="'assets/img/icons/'+character.character.weapon+'.webp'"
+                                style="width: 50px;" />
+                        </div>
+                        <div class="col-sm-12">{{'char.basic' | transloco}}</div>
+                        <div class="col-sm-12"><u>{{character.character.basicCurrent}}</u></div>
+                    </div>
+                </div>
+                <div class="offset-1 col-sm-2 skill" (click)="upgrade(1)">
+                    <div class="row skill-content text-center">
+                        <div class="col-sm-12">
+                            <img class="img-fluid" [src]="'assets/img/icons/'+character.character.icon+'-skill.webp'"
+                                style="width: 50px;" />
+                        </div>
+                        <div class="col-sm-12">{{'char.skill' | transloco}}</div>
+                        <div class="col-sm-12"><u>{{character.character.skillCurrent}}</u></div>
+                    </div>
+                </div>
+                <div class="offset-1 col-sm-2 skill" (click)="upgrade(2)">
+                    <div class="row skill-content text-center">
+                        <div class="col-sm-12">
+                            <img class="img-fluid" [src]="'assets/img/icons/'+character.character.icon+'-forte.webp'"
+                                style="width: 50px;" />
+                        </div>
+                        <div class="col-sm-12">{{'char.forte' | transloco}}</div>
+                        <div class="col-sm-12"><u>{{character.character.forteCurrent}}</u></div>
+                    </div>
+                </div>
+                <div class="offset-1 col-sm-2 skill" (click)="upgrade(3)">
+                    <div class="row skill-content text-center">
+                        <div class="col-sm-12">
+                            <img class="img-fluid"
+                                [src]="'assets/img/icons/'+character.character.icon+'-liberation.webp'"
+                                style="width: 50px;" />
+                        </div>
+                        <div class="col-sm-12">{{'char.liberation' | transloco}}</div>
+                        <div class="col-sm-12"><u>{{character.character.liberationCurrent}}</u></div>
+                    </div>
+                </div>
+                <div class="offset-1 col-sm-2 skill" (click)="upgrade(4)">
+                    <div class="row skill-content text-center">
+                        <div class="col-sm-12">
+                            <img class="img-fluid" [src]="'assets/img/icons/'+character.character.icon+'-intro.webp'"
+                                style="width: 50px;" />
+                        </div>
+                        <div class="col-sm-12">{{'char.intro' | transloco}}</div>
+                        <div class="col-sm-12"><u>{{character.character.introCurrent}}</u></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6" style="border-left: solid 1px black;">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <u>{{'char.prediction' | transloco}}</u>
+                    <small>
+                        <div [innerHtml]="'char.info' | transloco"></div>
+                    </small>
+                </div>
+                <div class="col-sm-12 mb-3">
+                    <small>
+                        <span>{{'char.description' | transloco}}:</span>
+                        <div [innerHtml]="'char.help1' | transloco"></div>
+                    </small>
+                </div>
+
+                <div id="accordion">
+                    <!-- Basic DMG -->
+                    <div class="card text-bg-dark">
+                        <div class="card-header" id="tableOne">
+                            <h5 class="mb-0">
+                                <span class="btn btn-dark" data-bs-toggle="collapse" href="#basic" aria-expanded="true"
+                                    aria-controls="basic">
+                                    <h4>{{'char.basic' | transloco}} DMG</h4>
+                                </span>
+                            </h5>
+                        </div>
+
+                        <div id="basic" class="collapse show" aria-labelledby="tableOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <table class="table table-dark table-striped-columns text-center">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">{{'char.type' | transloco}}</th>
+                                            <th scope="col">{{'char.qtdHits' | transloco}}</th>
+                                            <th scope="col">{{'char.raw' | transloco}}</th>
+                                            <th scope="col">{{'char.dmg' | transloco}}</th>
+                                            <th scope="col">{{'char.dmgR' | transloco}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let b of character.character.basicNames; let i=index">
+                                            <th scope="row">
+                                                {{b}}
+                                            </th>
+                                            <td>{{character.character.basicMultiplier[i]}}</td>
+                                            <td>
+                                                {{character.basicDmg[i]}} (<b>{{(character.basicDmg[i] *
+                                                    (character.cDmg/100)) |
+                                                    number : '1.0-0'}}</b>)
+                                            </td>
+                                            <td>{{character.basicCommonDmg[i]}}</td>
+                                            <td>{{character.basicResDmg[i]}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End basic DMG-->
+                    <hr />
+                    <!-- Skills -->
+                    <div class="card text-bg-dark">
+                        <div class="card-header" id="tableTwo">
+                            <h5 class="mb-0">
+                                <span class="btn btn-dark" data-bs-toggle="collapse" href="#skills" aria-expanded="true"
+                                    aria-controls="skills">
+                                    <h4>{{'char.skill' | transloco}} DMG</h4>
+                                </span>
+                            </h5>
+                        </div>
+
+                        <div id="skills" class="collapse" aria-labelledby="tableTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <table class="table table-dark table-striped-columns text-center">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">{{'char.type' | transloco}}</th>
+                                            <th scope="col">{{'char.qtdHits' | transloco}}</th>
+                                            <th scope="col">{{'char.raw' | transloco}}</th>
+                                            <th scope="col">{{'char.dmg' | transloco}}</th>
+                                            <th scope="col">{{'char.dmgR' | transloco}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let b of character.character.skillNames; let i=index">
+                                            <th scope="row">
+                                                {{b}}
+                                            </th>
+                                            <td>{{character.character.skillMultiplier[i]}}</td>
+                                            <td>
+                                                {{character.skillDmg[i]}} (<b>{{(character.skillDmg[i] *
+                                                    (character.cDmg/100)) |
+                                                    number : '1.0-0'}}</b>)
+                                            </td>
+                                            <td>{{character.skillCommonDmg[i]}}</td>
+                                            <td>{{character.skillResDmg[i]}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5"><b>{{'char.liberation' | transloco}}</b></td>
+                                        </tr>
+                                        <tr *ngFor="let b of character.character.liberationNames; let i=index">
+                                            <th scope="row">
+                                                {{b}}
+                                            </th>
+                                            <td>{{character.character.liberationMultiplier[i]}}</td>
+                                            <td>
+                                                {{character.skillDmg[i + character.character.skillNames.length]}}
+                                                (<b>{{(character.skillDmg[i + character.character.skillNames.length] *
+                                                    (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                            </td>
+                                            <td>{{character.skillCommonDmg[i + character.character.skillNames.length]}}
+                                            </td>
+                                            <td>{{character.skillResDmg[i + character.character.skillNames.length]}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Skill DMG-->
+                    <hr />
+                    <!-- Intro, Outro, Forte -->
+                    <div class="card text-bg-dark">
+                        <div class="card-header" id="tableThree">
+                            <h5 class="mb-0">
+                                <span class="btn btn-dark" data-bs-toggle="collapse" href="#intro" aria-expanded="true"
+                                    aria-controls="intro">
+                                    <h4>{{'char.intro' | transloco}}, {{'char.outro' | transloco}}, {{'char.forte' |
+                                        transloco}} DMG</h4>
+                                </span>
+                            </h5>
+                        </div>
+
+                        <div id="intro" class="collapse" aria-labelledby="tableThree" data-parent="#accordion">
+                            <div class="card-body">
+                                <table class="table table-dark table-striped-columns text-center">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">{{'char.type' | transloco}}</th>
+                                            <th scope="col">{{'char.qtdHits' | transloco}}</th>
+                                            <th scope="col">{{'char.raw' | transloco}}</th>
+                                            <th scope="col">{{'char.dmg' | transloco}}</th>
+                                            <th scope="col">{{'char.dmgR' | transloco}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let b of character.character.introName; let i=index">
+                                            <th scope="row">
+                                                {{b}}
+                                            </th>
+                                            <td>{{character.character.introMultiplier[i]}}</td>
+                                            <td>
+                                                {{character.introDmg[i]}} (<b>{{(character.introDmg[i] *
+                                                    (character.cDmg/100)) |
+                                                    number : '1.0-0'}}</b>)
+                                            </td>
+                                            <td>{{character.introCommonDmg[i]}}</td>
+                                            <td>{{character.introResDmg[i]}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5">{{'char.outro' | transloco}}</td>
+                                        </tr>
+                                        <tr *ngFor="let b of character.character.outroName; let i=index">
+                                            <th scope="row">
+                                                {{b}}
+                                            </th>
+                                            <td>{{character.character.outroMultiplier[i]}}</td>
+                                            <td>
+                                                {{character.introDmg[i + character.character.intro.length]}}
+                                                (<b>{{(character.introDmg[i + character.character.intro.length] *
+                                                    (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                            </td>
+                                            <td>
+                                                {{character.introCommonDmg[i + character.character.intro.length]}}
+                                            </td>
+                                            <td>
+                                                {{character.introResDmg[i + character.character.intro.length]}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5">{{'char.forte' | transloco}}</td>
+                                        </tr>
+                                        <tr *ngFor="let b of character.character.forteName; let i=index">
+                                            <th scope="row">
+                                                {{b}}
+                                            </th>
+                                            <td>{{character.character.forteMultiplier[i]}}</td>
+                                            <td>
+                                                {{character.introDmg[i + character.character.intro.length +
+                                                character.character.outro.length]}}
+                                                (<b>{{(character.introDmg[i + character.character.intro.length +
+                                                    character.character.outro.length] *
+                                                    (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                            </td>
+                                            <td>
+                                                {{character.introCommonDmg[i + character.character.intro.length +
+                                                character.character.outro.length]}}
+                                            </td>
+                                            <td>
+                                                {{character.introResDmg[i + character.character.intro.length +
+                                                character.character.outro.length]}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    </div>
+</div>
+
+<div class="modal fade modal-lg" id="critModal" tabindex="-1" aria-labelledby="critModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div [class]="'modal-header btn-'+ currentSelection">
+                <h1 class="modal-title fs-5" id="critModalLabel">{{'char.enhancer' | transloco}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <h4></h4>
+                    <div class="col-sm-12 col-md-4">
+                        <small>
+                            <div
+                                [innerHtml]="'char.fixedCritInfo' | transloco: { chance: character.cChance, qtd: qtdCrit, normal: 20-qtdCrit}">
+                            </div>
+                        </small>
+                    </div>
+                    <div class="col-sm-12 col-md-8">
+                    </div>
+                    <div class="col-sm-12 col-md-4 offset-md-8">
+                        {{'char.simulated' | transloco}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <span class="badge text-bg-success" *ngIf="fixedTotal > fixedSimTotal">{{'char.bestScenario' |
+                            transloco}}</span>
+                        <span class="badge text-bg-danger" *ngIf="fixedTotal < fixedSimTotal">{{'char.worstScenario' |
+                            transloco}}</span>
+                        <table class="table table-striped"
+                            [ngClass]="{'table-danger': fixedTotal < fixedSimTotal, 'table-success': fixedTotal > fixedSimTotal}">
+                            <thead>
+                                <tr class="text-center">
+                                    <th scope="col">Atk nº</th>
+                                    <th scope="col">DMG</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let a of critSimFixed; let i=index" class="text-center">
+                                    <th scope="row">{{i+1}}</th>
+                                    <td>{{+a[0] | number:'1.0-0'}}</td>
+                                    <td><b>{{a[1] ? 'CRIT' : ''}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Total</b></td>
+                                    <td colspan="2">{{fixedTotal | number:'1.0-0'}} DMG</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-sm-12 col-md-4 text-center">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{'char.compareWith' | transloco}}
+                            </div>
+                            <div class="col-sm-12 mt-3">
+                                Crit. Chance %
+                            </div>
+                            <div class="col-sm-12">
+                                <input class="form-control" type="number" placeholder="5%" min="0" max="100"
+                                    [(ngModel)]="newCritChance" />
+                            </div>
+                            <div class="col-sm-12">
+                                Crit. DMG %
+                            </div>
+                            <div class="col-sm-12">
+                                <input class="form-control" type="number" placeholder="5%" min="0" max="100"
+                                    [(ngModel)]="newCritDmg" />
+                            </div>
+                            <div class="col-sm-12 mt-3">
+                                <button type="button" (click)="critCalc(true)"
+                                    [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.calculate'
+                                    | transloco}}</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-4">
+                        <span class="badge text-bg-success" *ngIf="fixedTotal < fixedSimTotal">{{'char.bestScenario' |
+                            transloco}}</span>
+                        <span class="badge text-bg-danger" *ngIf="fixedTotal > fixedSimTotal">{{'char.worstScenario' |
+                            transloco}}</span>
+                        <table class="table table-striped"
+                            [ngClass]="{'table-danger': fixedTotal > fixedSimTotal, 'table-success': fixedTotal < fixedSimTotal}">
+                            <thead>
+                                <tr class="text-center">
+                                    <th scope="col">Atk nº</th>
+                                    <th scope="col">DMG</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let a of critSimFixedSim; let i=index" class="text-center">
+                                    <th scope="row">{{i+1}}</th>
+                                    <td>{{+a[0] | number:'1.0-0'}}</td>
+                                    <td><b>{{a[1] ? 'CRIT' : ''}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Total</b></td>
+                                    <td colspan="2">{{fixedSimTotal | number:'1.0-0'}} DMG</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal"
+                    [class]="'btn btn-secondary btn-'+ currentSelection">{{'close'
+                    | transloco}}</button>
+            </div>
+        </div>
+    </div>
+</div>

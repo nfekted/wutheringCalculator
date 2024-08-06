@@ -1,0 +1,41 @@
+<nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <img src="/assets/img/logo.png" alt="logo" height="34">
+        <img src="/assets/img/title.png" alt="logo" height="34">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation"
+            style="color: white !important" aria-controls="navigation" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">{{'home' | transloco}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/faq']">FAQ</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <div class="dropdown mr-2" [title]="'lang' | transloco">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img [src]="'assets/img/' + (lang == 'en' ? 'enflag.png' : 'ptflag.png')" height="24" />
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li style="max-width: fit-content;" (click)="changeLang('en')"><a class="dropdown-item"
+                                href="#"><img src="assets/img/enflag.png" height="24" /></a>
+                        </li>
+                        <li style="max-width: fit-content;" (click)="changeLang('pt')"><a class=" dropdown-item"
+                                href="#"><img src="assets/img/ptflag.png" height="24" /></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <button class="btn btn-secondary" [title]="'config' | transloco" [routerLink]="['/settings']">
+                    <span class="material-symbols-outlined align-middle">
+                        settings
+                    </span>
+                </button> -->
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,24 @@
+<div class="container" style="margin-top: 100px;color: white;">
+    <div class="form">
+        <div class="col-sm-12 text-center" style="font-size: 6rem;">
+            FAQ
+        </div>
+        <hr />
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-12 mt-3" *ngFor="let item of questions; let i=index">
+                    <button class="btn btn-secondary" style="width: 100%;" type="button" data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#q' + (i+1)" aria-expanded="false" [attr.aria-controls]="'q' + (i+1)">
+                        {{'faq.q' + (i+1) | transloco}}
+                    </button>
+                    <div class="collapse" [attr.id]="'q' + (i+1)">
+                        <div class="card card-body">
+                            <div [innerHtml]="'faq.a' + (i+1) | transloco"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>

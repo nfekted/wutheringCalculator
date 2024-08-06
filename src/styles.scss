@@ -1,0 +1,89 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body {
+    background-color: #181823;
+    background-image: url('https://wutheringwaves.kurogames.com/static4.0/assets/end-bg-0e4e686f.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    // font-family: "Anta", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+hr {
+    height: 5px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    border: 0px;
+}
+
+small {
+    color: rgba(0, 0, 0, 0.61);
+}
+
+.vr {
+    height: 100%;
+    float: left;
+    width: 5px;
+    margin-right: 10px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+.fusion {
+    color: #c72a4c
+}
+
+.glacio {
+    color: #38b0d2
+}
+
+.aero {
+    color: #2fc79f
+}
+
+.electro {
+    color: #a732b0
+}
+
+.spectro {
+    color: #bca81d
+}
+
+.havoc {
+    color: #9a1754
+}
+
+.btn-encore {
+    background-color: #c65c78;
+    border-color: #a13f5a;
+}
+
+.btn-encore:hover {
+    background-color: #c53159;
+    border-color: #a7103a;
+}
+
+.btn-jinhsi {
+    background-color: #ebe8dc;
+    border-color: #cea41b;
+    color: black;
+}
+
+.btn-jinhsi:hover {
+    background-color: #a8a69f;
+    border-color: #7a5f04;
+    color: black;
+}
+
+.teste {
+    border: solid 2px red;
+}
+
+.teste2 {
+    border: solid 2px blue;
+}
+
+.teste3 {
+    border: solid 2px orange;
+}

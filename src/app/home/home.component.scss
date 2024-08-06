@@ -1,0 +1,17 @@
+.charMenu {
+    color: white;
+    border-color: white;
+}
+
+.character {
+    cursor: pointer;
+    transition: transform .5s;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.character:hover {
+    transform: scale(1.2);
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+}

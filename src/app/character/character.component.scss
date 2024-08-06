@@ -1,0 +1,13 @@
+.skill {
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: rotate(45deg);
+    width: 90px;
+    height: 90px;
+    cursor: pointer;
+    border: 2px double rgba(0, 0, 0, 0.75);
+}
+
+.skill-content{
+    transform: rotate(-45deg);
+    color: white;
+}    

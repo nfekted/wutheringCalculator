@@ -1,0 +1,61 @@
+<audio #ref src="assets/sound/paper.wav"></audio>
+<div class="container-fluid">
+    <div class="row" style="margin-top: 5rem;">
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="nav nav-tabs" id="charTabs" role="tablist">
+                <li class="nav-item" role="presentation" (click)="currentSelection = ''">
+                    <button type="button" class="nav-link charMenu" data-bs-toggle="modal"
+                        data-bs-target="#charModal">+</button>
+                </li>
+                <ng-container *ngFor="let c of characters; let i=index">
+                    <li class="nav-item" role="presentation" (click)="ref.play()">
+                        <button class="nav-link charMenu" [id]="i + '-tab'" data-bs-toggle="tab"
+                            [attr.data-bs-target]="'#'+i" type="button" role="tab" [attr.aria-controls]="i"
+                            aria-selected="true">{{c.character.name}}</button>
+                    </li>
+                </ng-container>
+            </ul>
+            <div class="tab-content" id="charContents">
+                <ng-container *ngFor="let c of characters; let i=index">
+                    <div class="tab-pane fade show active" [id]="i" role="tabpanel" [attr.aria-labelledby]="i+'-tab'">
+                        <app-character [character]="c"></app-character>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-lg" id="charModal" tabindex="-1" aria-labelledby="charModalLabel" aria-hidden="true"
+    style="color: black">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div [class]="'modal-header btn-'+ currentSelection">
+                <h5 class="modal-title" id="charModalLabel">{{'home.char-modal-title' | transloco}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <ng-container *ngFor="let c of characterList">
+                        <div class="col-sm-3" (click)="currentSelection = c.icon"
+                            [ngClass]="{'character': currentSelection != c.icon}">
+                            <img class="img-fluid" [src]="'assets/img/characters/'+c.icon+'.png'" />
+                            <p class="text-center">
+                                <img class=img-fluid [src]="'assets/img/icons/'+c.type+'.webp'" style="width: 20%;" />
+                                <img class=img-fluid [src]="'assets/img/icons/'+c.weapon+'.webp'" style="width: 20%;" />
+                                {{c.name}}
+                            </p>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" [class]="'btn btn-primary btn-'+ currentSelection" data-bs-dismiss="modal"
+                    aria-label="Close" (click)="createNew()">
+                    {{'new' | transloco}}</button>
+            </div>
+        </div>
+    </div>
+</div>
