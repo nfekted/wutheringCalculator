@@ -1,0 +1,15 @@
+{
+    "title": "Configurações",
+    "save": "OPÇÕES DE DADOS SALVOS",
+    "delete": "Apagar meus registros",
+    "deleteTitle": "Você tem certeza?",
+    "deleteBody": "Você não poderá reverter isso! Todas suas configurações, jogos e conquistas serão perdidas... para sempre...",
+    "deleteReturn": "Seu progresso foi banido desse mundo... graças aos deuses pelomenos ele foi \"isekaizado\" por um download segurança.",
+    "deleteConfirm": "Sim, apague!",
+    "backup": "Fazer um backup",
+    "import": "Importar um backup",
+    "importTitle": "Importando dados",
+    "importBody": "Antes de continuar, você quer fazer um backup dos dados atuais? Arquivos mal formatados e/ou não compativeis irão fazer seus dados serem perdidos.",
+    "importBackup": "Fazer um backup antes de continuar",
+    "importContinue": "Pular backup e importar"
+}
