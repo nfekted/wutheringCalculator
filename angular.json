@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "wutering-calculator": {
+    "wutheringCalculator": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/wutering-calculator",
+            "outputPath": "dist/wutheringCalculator",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "wutering-calculator:build:production"
+              "buildTarget": "wutheringCalculator:build:production"
             },
             "development": {
-              "buildTarget": "wutering-calculator:build:development"
+              "buildTarget": "wutheringCalculator:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "wutering-calculator:build"
+            "buildTarget": "wutheringCalculator:build"
           }
         },
         "test": {
