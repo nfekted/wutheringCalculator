@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "prod": "ng build --configuration=production",
     "test": "ng test",
-    "buildPages": "ng build --output-path docs --base-href /wutheringCalculator"
+    "buildPages": "ng build --output-path docs --base-href ./"
   },
   "private": true,
   "dependencies": {
