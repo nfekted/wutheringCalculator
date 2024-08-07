@@ -9,6 +9,7 @@
                         <u>{{character.character.name}}</u>
                     </h2>
                     <input [(ngModel)]="character.character.name" *ngIf="nameEdit" (blur)="nameEdit = false" />
+                    <a [href]="character.character.wiki" target="_blank">WIKI</a>
                 </div>
                 <div class="col-sm-9">
                     <div class="row">
@@ -27,7 +28,7 @@
                             <div [innerHtml]="'char.' + character.character.weapon | transloco"></div>
                         </div>
                         <div class="col-sm-12">
-                            <div [innerHtml]="'char.' + character.character.icon | transloco"></div>
+                            <div [innerHtml]="'char.characters.' + character.character.icon | transloco"></div>
                         </div>
                         <div class="col-sm-12 mt-1"><b>{{'char.attributes' | transloco}}</b></div>
                         <ng-container *ngIf="character.atk">

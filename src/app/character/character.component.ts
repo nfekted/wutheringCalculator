@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from '../shared/models/character.model';
 
 @Component({
@@ -9,6 +9,7 @@ import { Character } from '../shared/models/character.model';
 export class CharacterComponent {
 
   @Input() character: Character;
+
   nameEdit: boolean = false;
   currentSelection: string = '';
 
@@ -110,7 +111,6 @@ export class CharacterComponent {
       this.character.introResDmg[i] = this.getRange(ex, true);
     }
     //End Forte DMG
-
   }
 
   getHit(dmg: number, multiplierRange: Array<number>, upgradeLevel: number): number {

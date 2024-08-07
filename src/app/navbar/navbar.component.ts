@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Util } from '../shared/utils/util.model';
 
 @Component({
   selector: 'app-navbar',
@@ -12,5 +13,9 @@ export class NavbarComponent {
 
   changeLang(lang: string) {
     this.callback.emit(lang);
+  }
+
+  save() {
+    Util.save(Util.characters, 'wuteringcalculator-chars');
   }
 }

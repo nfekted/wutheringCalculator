@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Character } from '../shared/models/character.model';
 import { Encore } from '../shared/models/encore.model';
-import { Jinhsi } from '../shared/models/jinhsi.model';
 import { Sanhua } from '../shared/models/sanhua.model';
+import { Util } from '../shared/utils/util.model';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +17,10 @@ export class HomeComponent {
 
   constructor() {
     this.characterList = [new Encore(), new Sanhua()];
+  } F
+
+  ngOnInit(): void {
+    this.load();
   }
 
   createNew() {
@@ -35,10 +39,19 @@ export class HomeComponent {
       default: break;
     }
     this.characters.push(char);
+    Util.characters = this.characters;
   }
 
   charCreation(char: any) {
     return new Character(this.characters.length, char);
   }
 
+  load() {
+    this.characters = Util.load('wuteringcalculator-chars');
+    if (!this.characters) {
+      this.characters = new Array<Character>();
+    } else {
+      Util.characters = this.characters;
+    }
+  }
 }

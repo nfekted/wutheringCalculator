@@ -1,8 +1,9 @@
 import { Encore } from "./encore.model";
+import { Sanhua } from "./sanhua.model";
 
 export class Character {
     index: number;
-    character: Encore;
+    character: Encore | Sanhua;
     atk: boolean = false;
     hp: boolean = false;
     def: boolean = false;

@@ -17,6 +17,12 @@
                 </li>
             </ul>
             <div class="d-flex">
+                <button class="btn btn-secondary btn-sm" [title]="'save' | transloco" (click)="save()">
+                    <span class="material-symbols-outlined align-middle">
+                        save
+                    </span>
+                    &nbsp;{{'save' | transloco}}
+                </button>
                 <div class="dropdown mr-2" [title]="'lang' | transloco">
                     <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img [src]="'assets/img/' + (lang == 'en' ? 'enflag.png' : 'ptflag.png')" height="24" />

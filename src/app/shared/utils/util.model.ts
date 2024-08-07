@@ -1,12 +1,15 @@
-export abstract class Util {
-    static coockieName: string = 'WuteringCalculator-save';
+import { Character } from "../models/character.model";
 
-    static load() {
-        return JSON.parse(window.localStorage.getItem(this.coockieName));
+export abstract class Util {
+    static coockieName: string = 'wuteringcalculator-lang';
+    static characters: Array<Character> = new Array<Character>();
+
+    static load(name?: string) {
+        return JSON.parse(window.localStorage.getItem(name ? name : this.coockieName));
     }
 
-    static save(object) {
-        window.localStorage.setItem(this.coockieName, JSON.stringify(object));
+    static save(object: any, name?: string) {
+        window.localStorage.setItem((name ? name : this.coockieName), JSON.stringify(object));
     }
 
     static clear() {
