@@ -11,7 +11,7 @@ export class CharacterComponent {
   @Input() character: Character;
   nameEdit: boolean = false;
   currentSelection: string = '';
-  
+
   critSimFixed: Array<Array<number | boolean>> = [];
   critSimFixedSim: Array<Array<number | boolean>> = [];
   fixedTotal: number = 0;
@@ -118,11 +118,12 @@ export class CharacterComponent {
   }
 
   getExpected(dmg: number, multiplierRange: Array<number>, upgradeLevel: number, elementalBonus: number, damageBonus: number): number {
-    return this.getHit(dmg, multiplierRange, upgradeLevel) * ((elementalBonus + damageBonus) / 100) * 1 * 1//Outro bonus and critical multiplier
+    const bonus = 100 + elementalBonus + damageBonus;
+    return this.getHit(dmg, multiplierRange, upgradeLevel) * (bonus / 100) * 1 * 1//Outro bonus and critical multiplier
   }
 
   getRange(ex: number, resistance: boolean): string {
-    const res: number = resistance ? 0.67 : 1;
+    const res: number = resistance ? 0.33 : 0.49;
 
     return `${(ex * 0.93 * res).toFixed(0)} ~ ${(ex * 1.065 * res).toFixed(0)} `
       + `(${((ex * (this.character.cDmg / 100)) * 0.93 * res).toFixed(0)} ~ ${((ex * (this.character.cDmg / 100)) * 1.065 * res).toFixed(0)})`;

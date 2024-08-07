@@ -11,7 +11,7 @@
     "broadblade": "<b>Broadblade</b> is one of the 5 type of Weapons in game, common in \"phisical\" characters.",
     "gauntlet": "<b>Gauntlet</b> is one of the 5 type of Weapons in game, common in \"phisical\" characters.",
     "pistols": "<b>Pistols</b> is one of the 5 type of Weapons in game, common in \"long-raged\" characters.",
-    "encore": "Encora damage is <b>pure ATK</b>, with elemental bonus, other status (HP,DEF) has no influence in her damage",
+    "encore": "Encore damage is <b>pure ATK</b>, with elemental bonus, other status (HP,DEF) has no influence in her damage",
     "prediction": "PREDICTED NUMBERS",
     "info": "Due to the defense calculation not being exact, may vary by an <b>average of 6.5% of the actual in-game value.</b>",
     "elemental": "Elemental",

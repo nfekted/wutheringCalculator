@@ -52,9 +52,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" [class]="'btn btn-primary btn-'+ currentSelection" data-bs-dismiss="modal"
+                <button type="button" [class]="'btn btn-primary btn-'+ currentSelection" data-bs-dismiss="modal" *ngIf="currentSelection != ''"
                     aria-label="Close" (click)="createNew()">
-                    {{'new' | transloco}}</button>
+                    {{'new' | transloco}}  {{currentSelection}}</button>
             </div>
         </div>
     </div>
