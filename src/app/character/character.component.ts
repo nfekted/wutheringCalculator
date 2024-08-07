@@ -17,10 +17,13 @@ export class CharacterComponent {
   critSimFixedSim: Array<Array<number | boolean>> = [];
   fixedTotal: number = 0;
   fixedSimTotal: number = 0;
+  qtdCrit: number = 1;
 
+  newAtk: number = 0;
   newCritChance: number = 5;
   newCritDmg: number = 150;
-  qtdCrit: number = 1;
+  newQtdCrit: number = 0;
+
 
   constructor() {
   }
@@ -132,20 +135,23 @@ export class CharacterComponent {
   critCalc(simulation?: boolean) {
     let currentChance = this.character.cChance;
     let critMult = this.character.cDmg;
-    this.qtdCrit = +(this.character.cChance / 5).toFixed(0);
+    let atk = this.character.dmg;
 
     if (simulation) {
       currentChance = this.newCritChance;
       critMult = this.newCritDmg;
+      atk = this.newAtk == 0 ? this.character.dmg : this.newAtk;
       this.fixedSimTotal = 0;
+      this.newQtdCrit = +(this.newCritChance / 5).toFixed(0);
     } else {
       this.fixedTotal = 0;
+      this.qtdCrit = +(this.character.cChance / 5).toFixed(0);
     }
 
     let currentAttack = 0;
     const list: Array<Array<number | boolean>> = [];
     for (let i = 0; i < 20; i++) {
-      const ex = this.getExpected(this.character.dmg, this.character.character.basic[currentAttack], this.character.character.basicCurrent - 1, this.character.elementalBonus, this.character.basicBonus);
+      const ex = this.getExpected(atk, this.character.character.basic[currentAttack], this.character.character.basicCurrent - 1, this.character.elementalBonus, this.character.basicBonus);
       if (currentChance >= 5) {
         list[i] = [+(ex * (critMult / 100)).toFixed(0), true];
         currentChance -= 5;

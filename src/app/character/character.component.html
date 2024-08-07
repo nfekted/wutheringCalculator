@@ -393,7 +393,12 @@
                             </div>
                         </small>
                     </div>
-                    <div class="col-sm-12 col-md-8">
+                    <div class="col-sm-12 col-md-4 offset-md-4">
+                        <small>
+                            <div
+                                [innerHtml]="'char.fixedCritInfo' | transloco: { chance: newCritChance, qtd: newQtdCrit, normal: 20-newQtdCrit}">
+                            </div>
+                        </small>
                     </div>
                     <div class="col-sm-12 col-md-4 offset-md-8">
                         {{'char.simulated' | transloco}}
@@ -402,9 +407,9 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-4">
                         <span class="badge text-bg-success" *ngIf="fixedTotal > fixedSimTotal">{{'char.bestScenario' |
-                            transloco}}</span>
+                            transloco}} +{{fixedTotal - fixedSimTotal}} DMG</span>
                         <span class="badge text-bg-danger" *ngIf="fixedTotal < fixedSimTotal">{{'char.worstScenario' |
-                            transloco}}</span>
+                            transloco}} -{{fixedSimTotal - fixedTotal}} DMG</span>
                         <table class="table table-striped"
                             [ngClass]="{'table-danger': fixedTotal < fixedSimTotal, 'table-success': fixedTotal > fixedSimTotal}">
                             <thead>
@@ -434,6 +439,13 @@
                                 {{'char.compareWith' | transloco}}
                             </div>
                             <div class="col-sm-12 mt-3">
+                                ATK
+                            </div>
+                            <div class="col-sm-12">
+                                <input class="form-control" type="number" placeholder="5%" min="0"
+                                    [(ngModel)]="newAtk" />
+                            </div>
+                            <div class="col-sm-12 mt-3">
                                 Crit. Chance %
                             </div>
                             <div class="col-sm-12">
@@ -457,9 +469,9 @@
 
                     <div class="col-sm-12 col-md-4">
                         <span class="badge text-bg-success" *ngIf="fixedTotal < fixedSimTotal">{{'char.bestScenario' |
-                            transloco}}</span>
+                            transloco}} +{{fixedSimTotal - fixedTotal}} DMG</span>
                         <span class="badge text-bg-danger" *ngIf="fixedTotal > fixedSimTotal">{{'char.worstScenario' |
-                            transloco}}</span>
+                            transloco}} -{{fixedTotal - fixedSimTotal}} DMG</span>
                         <table class="table table-striped"
                             [ngClass]="{'table-danger': fixedTotal > fixedSimTotal, 'table-success': fixedTotal < fixedSimTotal}">
                             <thead>
