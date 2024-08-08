@@ -22,41 +22,36 @@ export class Sanhua {
 
     skillCurrent: number = 1;
     skill: Array<Array<number>> = [
-        [38.53, 41.69, 44.85, 49.28, 52.44, 56.07, 61.13, 66.18, 71.24, 76.61],
-        [170.60, 184.58, 198.57, 218.16, 232.15, 248.24, 270.62, 293, 315.38, 339.16]
+        [181, 195.85, 210.69, 231.47, 246.31, 263.38, 287.13, 310.87, 334.62, 359.85]
     ]
-    skillMultiplier: number[] = [8, 1];
-    skillNames: string[] = ['Eternal Frost', 'Glacial Gaze'];
+    skillMultiplier: number[] = [1];
+    skillNames: string[] = ['Eternal Frost'];
 
     liberationCurrent: number = 1;
     liberation: Array<Array<number>> = [
-        [45.36, 49.08, 52.8, 58.01, 61.73, 66.01, 71.96, 77.91, 83.86, 90.18],
-        [28.37, 30.7, 33.02, 36.28, 38.61, 41.28, 45, 48.72, 52.45, 56.4],
-        [33.19, 35.92, 38.64, 42.45, 45.17, 48.3, 52.65, 57.01, 61.36, 65.99],
-        [97.59, 105.59, 113.59, 124.79, 132.79, 142, 154.8, 167.6, 180.4, 194.01],
-        [109.44, 118.42, 127.39, 139.96, 148.93, 159.25, 173.61, 187.97, 202.32, 217.58],
-        [31.85, 34.46, 37.07, 40.72, 43.34, 46.34, 50.52, 54.7, 58.88, 63.32],
-        [33.19, 35.92, 38.64, 42.45, 45.17, 48.3, 52.65, 57.01, 61.36, 65.99]
+        [407.16, 440.55, 473.94, 520.68, 554.07, 592.46, 645.88, 699.30, 752.72, 809.48]
     ];
-    liberationMultiplier: number[] = [2, 3, 4, 3, 1, 4, 4];
-    liberationNames: string[] = ['Cosmos: Frolicking Part 1', 'Cosmos: Frolicking Part 2', 'Cosmos: Frolicking Part 3', 'Cosmos: Frolicking Part 4', 'Cosmos: Heavy Attack', 'Cosmos Rampage', 'Cosmos: Dodge Counter'];
+    liberationMultiplier: number[] = [1];
+    liberationNames: string[] = ['Glacial Gaze'];
 
     introCurrent: number = 1;
-    intro: Array<Array<number>> = [[100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81]];
+    intro: Array<Array<number>> = [[70, 75.74, 81.48, 89.52, 95.26, 101.86, 111.05, 120.23, 129.41, 139.17]];
     introMultiplier: number[] = [1];
-    introName: string[] = ['Angry Cosmos'];
+    introName: string[] = ['Freezing Thorns'];
 
-    outro: Array<Array<number>> = [[176.76]];
-    outroMultiplier: number[] = [4];
-    outroName: string[] = ['Woolies Cheer Dance'];
+    outro: Array<Array<number>> = [[0]];
+    outroMultiplier: number[] = [0];
+    outroName: string[] = ['Silversnow'];
 
     forteCurrent: number = 1;
     forte: Array<Array<number>> = [
-        [168, 181.77, 195.55, 214.83, 228.61, 244.45, 266.49, 288.53, 310.58, 334],
-        [23.35, 25.26, 27.18, 29.86, 31.77, 33.97, 37.04, 40.10, 43.17, 46.42]
+        [93.70, 101.39, 109.07, 119.83, 127.51, 136.35, 148.64, 160.93, 173.23, 186.29],
+        [70, 75.74, 81.84, 89.52, 95.26, 101.86, 111.05, 120.23, 129.41, 139.17],
+        [40, 43.28, 46.56, 51.16, 54.44, 58.21, 63.46, 68.70, 73.95, 79.53],
+        [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65]
     ];
-    forteMultiplier: number[] = [1, 6];
-    forteName: string[] = ['Cloudy: Frenzy', 'Cosmos: Rupture'];
-    forteBonus: Array<Array<number>> = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [249.08, 269.51, 289.93, 318.53, 338.95, 362.44, 395.12, 427.80, 460.48, 495.21]];
+    forteMultiplier: number[] = [2, 1, 1, 1];
+    forteName: string[] = ['Burst Damage', 'Glacier Burst Damage', 'Ice Prism', 'Ice Thorn'];
+    forteBonus: Array<Array<number>> = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
 
 }
