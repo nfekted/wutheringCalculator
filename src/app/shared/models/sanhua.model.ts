@@ -52,6 +52,5 @@ export class Sanhua {
     ];
     forteMultiplier: number[] = [2, 1, 1, 1];
     forteName: string[] = ['Burst Damage', 'Glacier Burst Damage', 'Ice Prism', 'Ice Thorn'];
-    forteBonus: Array<Array<number>> = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
 
 }

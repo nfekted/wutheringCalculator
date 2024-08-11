@@ -49,8 +49,9 @@
                                 [(ngModel)]="character.cChance" />
                         </div>
                         <div class="col-sm-3 mt-2">
-                            <button type="button" data-bs-toggle="modal" [attr.data-bs-target]="'#critModal'+character.index"
-                                (click)="critCalc()" [class]="'btn btn-primary btn-'+ currentSelection">
+                            <button type="button" data-bs-toggle="modal"
+                                [attr.data-bs-target]="'#critModal'+character.index" (click)="critCalc()"
+                                [class]="'btn btn-primary btn-'+ currentSelection">
                                 {{'char.enhancer' | transloco}}
                             </button>
                         </div>
@@ -193,7 +194,6 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">{{'char.type' | transloco}}</th>
-                                            <th scope="col">{{'char.qtdHits' | transloco}}</th>
                                             <th scope="col">{{'char.raw' | transloco}}</th>
                                             <th scope="col">{{'char.dmg' | transloco}}</th>
                                             <th scope="col">{{'char.dmgR' | transloco}}</th>
@@ -204,11 +204,16 @@
                                             <th scope="row">
                                                 {{b}}
                                             </th>
-                                            <td>{{character.character.basicMultiplier[i]}}</td>
                                             <td>
+                                                <ng-container *ngIf="character.character.basicMultiplier[i] > 1">
+                                                    <small
+                                                        style="color: white;">{{character.character.basicMultiplier[i]}}x
+                                                    </small>
+                                                </ng-container>
                                                 {{character.basicDmg[i]}} (<b>{{(character.basicDmg[i] *
                                                     (character.cDmg/100)) |
                                                     number : '1.0-0'}}</b>)
+
                                             </td>
                                             <td>{{character.basicCommonDmg[i]}}</td>
                                             <td>{{character.basicResDmg[i]}}</td>
@@ -237,7 +242,6 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">{{'char.type' | transloco}}</th>
-                                            <th scope="col">{{'char.qtdHits' | transloco}}</th>
                                             <th scope="col">{{'char.raw' | transloco}}</th>
                                             <th scope="col">{{'char.dmg' | transloco}}</th>
                                             <th scope="col">{{'char.dmgR' | transloco}}</th>
@@ -248,8 +252,12 @@
                                             <th scope="row">
                                                 {{b}}
                                             </th>
-                                            <td>{{character.character.skillMultiplier[i]}}</td>
                                             <td>
+                                                <ng-container *ngIf="character.character.skillMultiplier[i] > 1">
+                                                    <small
+                                                        style="color: white;">{{character.character.skillMultiplier[i]}}x
+                                                    </small>
+                                                </ng-container>
                                                 {{character.skillDmg[i]}} (<b>{{(character.skillDmg[i] *
                                                     (character.cDmg/100)) |
                                                     number : '1.0-0'}}</b>)
@@ -264,8 +272,12 @@
                                             <th scope="row">
                                                 {{b}}
                                             </th>
-                                            <td>{{character.character.liberationMultiplier[i]}}</td>
                                             <td>
+                                                <ng-container *ngIf="character.character.liberationMultiplier[i] > 1">
+                                                    <small
+                                                        style="color: white;">{{character.character.liberationMultiplier[i]}}x
+                                                    </small>
+                                                </ng-container>
                                                 {{character.skillDmg[i + character.character.skillNames.length]}}
                                                 (<b>{{(character.skillDmg[i + character.character.skillNames.length] *
                                                     (character.cDmg/100)) | number : '1.0-0'}}</b>)
@@ -300,7 +312,6 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">{{'char.type' | transloco}}</th>
-                                            <th scope="col">{{'char.qtdHits' | transloco}}</th>
                                             <th scope="col">{{'char.raw' | transloco}}</th>
                                             <th scope="col">{{'char.dmg' | transloco}}</th>
                                             <th scope="col">{{'char.dmgR' | transloco}}</th>
@@ -311,8 +322,12 @@
                                             <th scope="row">
                                                 {{b}}
                                             </th>
-                                            <td>{{character.character.introMultiplier[i]}}</td>
                                             <td>
+                                                <ng-container *ngIf="character.character.introMultiplier[i] > 1">
+                                                    <small
+                                                        style="color: white;">{{character.character.introMultiplier[i]}}x
+                                                    </small>
+                                                </ng-container>
                                                 {{character.introDmg[i]}} (<b>{{(character.introDmg[i] *
                                                     (character.cDmg/100)) |
                                                     number : '1.0-0'}}</b>)
@@ -327,8 +342,12 @@
                                             <th scope="row">
                                                 {{b}}
                                             </th>
-                                            <td>{{character.character.outroMultiplier[i]}}</td>
                                             <td>
+                                                <ng-container *ngIf="character.character.outroMultiplier[i] > 1">
+                                                    <small
+                                                        style="color: white;">{{character.character.outroMultiplier[i]}}x
+                                                    </small>
+                                                </ng-container>
                                                 {{character.introDmg[i + character.character.intro.length]}}
                                                 (<b>{{(character.introDmg[i + character.character.intro.length] *
                                                     (character.cDmg/100)) | number : '1.0-0'}}</b>)
@@ -347,13 +366,26 @@
                                             <th scope="row">
                                                 {{b}}
                                             </th>
-                                            <td>{{character.character.forteMultiplier[i]}}</td>
                                             <td>
+                                                <ng-container *ngIf="character.character.forteMultiplier[i] > 1">
+                                                    <small
+                                                        style="color: white;">{{character.character.forteMultiplier[i]}}x
+                                                    </small>
+                                                </ng-container>
                                                 {{character.introDmg[i + character.character.intro.length +
                                                 character.character.outro.length]}}
                                                 (<b>{{(character.introDmg[i + character.character.intro.length +
                                                     character.character.outro.length] *
                                                     (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                <ng-container
+                                                    *ngIf="character.introSecondDmg[i + character.character.intro.length + character.character.outro.length] > 0">
+                                                    +{{character.introSecondDmg[i + character.character.intro.length +
+                                                    character.character.outro.length]}}
+                                                    (<b>{{(character.introSecondDmg[i + character.character.intro.length +
+                                                        character.character.outro.length] *
+                                                        (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                </ng-container>
+
                                             </td>
                                             <td>
                                                 {{character.introCommonDmg[i + character.character.intro.length +

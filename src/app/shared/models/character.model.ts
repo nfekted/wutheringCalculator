@@ -26,6 +26,7 @@ export class Character {
     skillResDmg: string[] = [];
 
     introDmg: number[] = [];
+    introSecondDmg: number[] = [];
     introCommonDmg: string[] = [];
     introResDmg: string[] = [];
 

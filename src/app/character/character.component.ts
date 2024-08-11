@@ -55,6 +55,8 @@ export class CharacterComponent {
 
   calculate() {
     const c = this.character.character;
+    let secondDmg: Array<Array<number>> = null;
+
     //Basic attack
     const basic = c.basicCurrent - 1;
     for (let i = 0; i < this.character.character.basic.length; i++) {
@@ -86,6 +88,11 @@ export class CharacterComponent {
 
     //Intro DMG
     const intro = c.introCurrent - 1;
+    this.character.introDmg = [];
+    this.character.introSecondDmg = [];
+    this.character.introCommonDmg = [];
+    this.character.introResDmg = [];
+
     for (let i = 0; i < this.character.character.intro.length; i++) {
       const ex = this.getExpected(this.character.dmg, c.intro[i], intro, this.character.elementalBonus, 1);
       this.character.introDmg[i] = +ex.toFixed(0);
@@ -107,8 +114,13 @@ export class CharacterComponent {
     //Forte DMG
     limit = (this.character.character.forte.length + limit);
     const forte = c.forteCurrent - 1;
+    secondDmg = c['forteSecondDmg'];
     for (let i = this.character.introDmg.length; i < limit; i++) {
       const ex = this.getExpected(this.character.dmg, c.forte[(i - this.character.character.intro.length) - this.character.character.outro.length], forte, this.character.elementalBonus, 1);
+      if (secondDmg != undefined) {
+        const ex2 = this.getExpected(this.character.dmg, secondDmg[(i - this.character.character.intro.length) - this.character.character.outro.length], forte, this.character.elementalBonus, 1);
+        this.character.introSecondDmg[i] = +ex2.toFixed(0);
+      }
       this.character.introDmg[i] = +ex.toFixed(0);
       this.character.introCommonDmg[i] = this.getRange(ex, false);
       this.character.introResDmg[i] = this.getRange(ex, true);
