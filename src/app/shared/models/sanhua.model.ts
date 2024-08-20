@@ -5,6 +5,7 @@ export class Sanhua {
     type: string = 'glacio';
     weapon: string = 'sword';
     //Skills
+    basicNames: string[] = ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Part 5', 'Air/Jump Attack', 'Dodge Attack', 'Heavy Attack'];
     basicCurrent: number = 1;
     basic: Array<Array<number>> = [
         [24.5, 26.51, 28.52, 31.34, 33.34, 35.65, 38.87, 42.08, 45.3, 48.71],
@@ -17,32 +18,36 @@ export class Sanhua {
         [11.2, 12.12, 13.04, 14.33, 15.25, 16.3, 17.77, 19.24, 20.71, 22.27]
     ];
     basicMultiplier: number[] = [1, 1, 4, 2, 1, 1, 1, 5];
-    basicNames: string[] = ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Part 5', 'Air/Jump Attack', 'Dodge Attack', 'Heavy Attack'];
     basicEnds: number = 4;
 
+    skillNames: string[] = ['Eternal Frost'];
     skillCurrent: number = 1;
     skill: Array<Array<number>> = [
         [181, 195.85, 210.69, 231.47, 246.31, 263.38, 287.13, 310.87, 334.62, 359.85]
     ]
     skillMultiplier: number[] = [1];
-    skillNames: string[] = ['Eternal Frost'];
 
+
+    liberationNames: string[] = ['Glacial Gaze'];
     liberationCurrent: number = 1;
     liberation: Array<Array<number>> = [
         [407.16, 440.55, 473.94, 520.68, 554.07, 592.46, 645.88, 699.30, 752.72, 809.48]
     ];
     liberationMultiplier: number[] = [1];
-    liberationNames: string[] = ['Glacial Gaze'];
 
+
+    introName: string[] = ['Freezing Thorns'];
     introCurrent: number = 1;
     intro: Array<Array<number>> = [[70, 75.74, 81.48, 89.52, 95.26, 101.86, 111.05, 120.23, 129.41, 139.17]];
     introMultiplier: number[] = [1];
-    introName: string[] = ['Freezing Thorns'];
 
+
+    outroName: string[] = ['Silversnow'];
     outro: Array<Array<number>> = [[0]];
     outroMultiplier: number[] = [0];
-    outroName: string[] = ['Silversnow'];
 
+
+    forteName: string[] = ['Burst Damage', 'Glacier Burst Damage', 'Ice Prism', 'Ice Thorn'];
     forteCurrent: number = 1;
     forte: Array<Array<number>> = [
         [93.70, 101.39, 109.07, 119.83, 127.51, 136.35, 148.64, 160.93, 173.23, 186.29],
@@ -51,6 +56,5 @@ export class Sanhua {
         [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65]
     ];
     forteMultiplier: number[] = [2, 1, 1, 1];
-    forteName: string[] = ['Burst Damage', 'Glacier Burst Damage', 'Ice Prism', 'Ice Thorn'];
 
 }

@@ -3,6 +3,7 @@ import { Character } from '../shared/models/character.model';
 import { Encore } from '../shared/models/encore.model';
 import { Sanhua } from '../shared/models/sanhua.model';
 import { Util } from '../shared/utils/util.model';
+import { Jinhsi } from '../shared/models/jinhsi.model';
 
 @Component({
   selector: 'app-home',
@@ -16,8 +17,8 @@ export class HomeComponent {
   currentSelection: string = '';
 
   constructor() {
-    this.characterList = [new Encore(), new Sanhua()];
-  } F
+    this.characterList = [new Encore(), new Sanhua(), new Jinhsi()];
+  }
 
   ngOnInit(): void {
     this.load();
@@ -34,6 +35,11 @@ export class HomeComponent {
       case 'sanhua':
         const san: Sanhua = new Sanhua();
         char = this.charCreation(san);
+        char.atk = true;
+        break;
+      case 'jinhsi':
+        const jin: Jinhsi = new Jinhsi();
+        char = this.charCreation(jin);
         char.atk = true;
         break;
       default: break;

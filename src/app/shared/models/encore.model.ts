@@ -5,6 +5,7 @@ export class Encore {
     type: string = 'fusion';
     weapon: string = 'rectifier';
     //Skills
+    basicNames: string[] = ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Wooly Strike', 'Air/Jump Attack', 'Dodge Attack', 'Heavy Attack'];
     basicCurrent: number = 1;
     basic: Array<Array<number>> = [
         [28, 30.29, 32.59, 35.80, 38.10, 40.74, 44.41, 48.09, 51.76, 55.66],
@@ -17,17 +18,17 @@ export class Encore {
         [94.10, 101.81, 109.53, 120.33, 128.05, 136.92, 149.27, 161.61, 173.96, 187.08],
     ];
     basicMultiplier: number[] = [1, 1, 2, 4, 1, 1, 1, 2];
-    basicNames: string[] = ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Wooly Strike', 'Air/Jump Attack', 'Dodge Attack', 'Heavy Attack'];
     basicEnds: number = 4;
 
+    skillNames: string[] = ['Flaming Woolies', 'Energetic Welcome'];
     skillCurrent: number = 1;
     skill: Array<Array<number>> = [
         [38.53, 41.69, 44.85, 49.28, 52.44, 56.07, 61.13, 66.18, 71.24, 76.61],
         [170.60, 184.58, 198.57, 218.16, 232.15, 248.24, 270.62, 293, 315.38, 339.16]
     ]
     skillMultiplier: number[] = [8, 1];
-    skillNames: string[] = ['Flaming Woolies', 'Energetic Welcome'];
 
+    liberationNames: string[] = ['Cosmos: Frolicking Part 1', 'Cosmos: Frolicking Part 2', 'Cosmos: Frolicking Part 3', 'Cosmos: Frolicking Part 4', 'Cosmos: Heavy Attack', 'Cosmos Rampage', 'Cosmos: Dodge Counter'];
     liberationCurrent: number = 1;
     liberation: Array<Array<number>> = [
         [45.36, 49.08, 52.8, 58.01, 61.73, 66.01, 71.96, 77.91, 83.86, 90.18],
@@ -39,24 +40,29 @@ export class Encore {
         [33.19, 35.92, 38.64, 42.45, 45.17, 48.3, 52.65, 57.01, 61.36, 65.99]
     ];
     liberationMultiplier: number[] = [2, 3, 4, 3, 1, 4, 4];
-    liberationNames: string[] = ['Cosmos: Frolicking Part 1', 'Cosmos: Frolicking Part 2', 'Cosmos: Frolicking Part 3', 'Cosmos: Frolicking Part 4', 'Cosmos: Heavy Attack', 'Cosmos Rampage', 'Cosmos: Dodge Counter'];
 
+    introName: string[] = ['Angry Cosmos'];
     introCurrent: number = 1;
     intro: Array<Array<number>> = [[100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81]];
     introMultiplier: number[] = [1];
-    introName: string[] = ['Angry Cosmos'];
 
+    outroName: string[] = ['Woolies Cheer Dance'];
     outro: Array<Array<number>> = [[176.76]];
     outroMultiplier: number[] = [4];
-    outroName: string[] = ['Woolies Cheer Dance'];
 
+
+    forteName: string[] = ['Cloudy: Frenzy', 'Cosmos: Rupture'];
     forteCurrent: number = 1;
     forte: Array<Array<number>> = [
         [168, 181.77, 195.55, 214.83, 228.61, 244.45, 266.49, 288.53, 310.58, 334],
         [23.35, 25.26, 27.18, 29.86, 31.77, 33.97, 37.04, 40.10, 43.17, 46.42]
     ];
-    forteSecondDmg: Array<Array<number>> = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [249.08, 269.51, 289.93, 318.53, 338.95, 362.44, 395.12, 427.80, 460.48, 495.21]];
-
     forteMultiplier: number[] = [1, 6];
-    forteName: string[] = ['Cloudy: Frenzy', 'Cosmos: Rupture'];
+
+    forteSecondDmg: Array<Array<number>> = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [249.08, 269.51, 289.93, 318.53, 338.95, 362.44, 395.12, 427.80, 460.48, 495.21]];
+    forteSecondMultiplier: number[] = [0, 1];
+
+
+
+
 }

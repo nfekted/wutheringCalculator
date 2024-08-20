@@ -13,7 +13,8 @@
     "pistols": "<b>Pistols</b> é um dos 5 tipos de arma presentes no jogo, comum em personagens de \"ataque a distância\".",
     "characters": {
         "encore": "O dano da <b>Encore</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Fusion</b>, outros status como HP, DEF... não influênciam em seu dano.",
-        "sanhua": "O dano da <b>Sanhua</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Glacio</b>, outros status como HP, DEF... não influênciam em seu dano."
+        "sanhua": "O dano da <b>Sanhua</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Glacio</b>, outros status como HP, DEF... não influênciam em seu dano.",
+        "jinhsi": "O dano da <b>Jinhsi</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Spectro</b>, outros status como HP, DEF... não influênciam em seu dano."
     },
     "prediction": "NÚMEROS PREVISTOS",
     "info": "Devido ao calculo de defesa não ser exato, pode variar uma <b>média de 6.5% do valor real in-game.</b>",
@@ -26,7 +27,6 @@
     "intro": "Intro",
     "outro": "Outro",
     "type": "Tipo",
-    "qtdHits": "Nº of Hits",
     "raw": "Dano Puro (Crit. Puro)",
     "dmg": "Intervalo de Dano inimigo comum (Crit. Comum)",
     "dmgR": "Intervalo de Dano inimigo RES (Crit. RES)",
