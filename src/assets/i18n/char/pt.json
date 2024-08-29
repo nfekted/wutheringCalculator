@@ -11,6 +11,10 @@
     "broadblade": "<b>Broadblade</b> é um dos 5 tipos de arma presentes no jogo, comum em personagens \"físicos\".",
     "gauntlet": "<b>Gauntlet</b> é um dos 5 tipos de arma presentes no jogo, comum em personagens \"físicos\".",
     "pistols": "<b>Pistols</b> é um dos 5 tipos de arma presentes no jogo, comum em personagens de \"ataque a distância\".",
+    "modes": {
+        "full": "Modo: Mostrar danos detalhados",
+        "sum": "Modo: Somar todos danos"
+    },
     "characters": {
         "encore": "O dano da <b>Encore</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Fusion</b>, outros status como HP, DEF... não influênciam em seu dano.",
         "sanhua": "O dano da <b>Sanhua</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Glacio</b>, outros status como HP, DEF... não influênciam em seu dano.",

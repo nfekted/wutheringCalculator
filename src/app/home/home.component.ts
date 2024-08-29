@@ -49,14 +49,19 @@ export class HomeComponent {
   }
 
   charCreation(char: any) {
+    console.log('Criando: ')
+    console.log(new Character(0, char));
     return new Character(this.characters.length, char);
   }
 
   load() {
-    this.characters = Util.load('wuteringcalculator-chars');
-    if (!this.characters) {
+    const load = Util.load('wuteringcalculator-chars');
+    if (!load) {
       this.characters = new Array<Character>();
     } else {
+      for (const c of load) {
+        this.characters.push(Object.assign(new Character(0, null), c));
+      }
       Util.characters = this.characters;
     }
   }
