@@ -38,7 +38,8 @@
             <div class="modal-body">
                 <div class="row">
                     <ng-container *ngFor="let c of characterList">
-                        <div class="col-sm-3" (click)="currentSelection = c.icon"
+                        <div class="col-sm-3"
+                            (click)="currentSelection = c.icon; audio('characters/' + currentSelection)"
                             [ngClass]="{'character': currentSelection != c.icon}">
                             <img class="img-fluid" [src]="'assets/img/characters/'+c.icon+'.png'" />
                             <p class="text-center">
