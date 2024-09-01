@@ -49,8 +49,6 @@ export class HomeComponent {
   }
 
   charCreation(char: any) {
-    console.log('Criando: ')
-    console.log(new Character(0, char));
     return new Character(this.characters.length, char);
   }
 
@@ -67,6 +65,9 @@ export class HomeComponent {
   }
 
   audio(type: string) {
-    new Audio(`assets/sound/${type}.wav`).play();
+    const settings = Util.load();
+    if (settings?.audio) {
+      new Audio(`assets/sound/${type}.wav`).play();
+    }
   }
 }

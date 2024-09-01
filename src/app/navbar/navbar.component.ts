@@ -10,9 +10,14 @@ export class NavbarComponent {
 
   @Input() lang: string = '';
   @Output() callback: EventEmitter<string> = new EventEmitter<string>();
+  @Output() settings: EventEmitter<string> = new EventEmitter<string>();
 
   changeLang(lang: string) {
     this.callback.emit(lang);
+  }
+
+  changeAudio() {
+    this.settings.emit('');
   }
 
   save() {

@@ -19,13 +19,17 @@ export class AppComponent {
   embedTwitch: any;
 
   constructor(private translocoService: TranslocoService) {
-    this.settings = Util.load();
-    if (!this.settings) {
+    const settings = Util.load();
+    if (!settings) {
       this.lang = translocoService.getActiveLang();
       this.settings = new Settings();
       this.settings.language = this.lang;
+      this.settings.audio = true;
+      this.settings.autosave = true;
+      this.settings.coockie = false;
       Util.save(this.settings);
     } else {
+      this.settings = Object.assign(new Settings(), settings);
       this.changeLang(this.settings.language, true);
     }
   }
@@ -38,6 +42,15 @@ export class AppComponent {
     //   muted: true,
     //   layout: 'video'
     // });
+  }
+
+  changeOptions(option: string) {
+    switch (option) {
+      case 'coockie': this.settings.coockie = !this.settings.coockie; break;
+      case 'autosave': this.settings.audio = !this.settings.autosave; break;
+      case 'audio': this.settings.audio = !this.settings.audio; break;
+    }
+    Util.save(this.settings);
   }
 
   changeLang(lang: string, skipSave?: boolean) {
