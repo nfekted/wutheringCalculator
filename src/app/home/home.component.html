@@ -1,4 +1,3 @@
-<audio #ref src="assets/sound/paper.wav"></audio>
 <div class="container-fluid">
     <div class="row" style="margin-top: 5rem;">
     </div>
@@ -10,7 +9,7 @@
                         data-bs-target="#charModal">+</button>
                 </li>
                 <ng-container *ngFor="let c of characters; let i=index">
-                    <li class="nav-item" role="presentation" (click)="ref.play()">
+                    <li class="nav-item" role="presentation" (click)="audio('paper')">
                         <button class="nav-link charMenu" [id]="i + '-tab'" data-bs-toggle="tab"
                             [attr.data-bs-target]="'#'+i" type="button" role="tab" [attr.aria-controls]="i"
                             aria-selected="true">{{c.character.name}}</button>

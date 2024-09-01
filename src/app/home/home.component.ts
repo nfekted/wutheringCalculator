@@ -65,4 +65,8 @@ export class HomeComponent {
       Util.characters = this.characters;
     }
   }
+
+  audio(type: string) {
+    new Audio(`assets/sound/${type}.wav`).play();
+  }
 }
