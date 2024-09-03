@@ -1,5 +1,4 @@
 import { Character } from "../models/character.model";
-import { Settings } from "../models/settings.model";
 
 export abstract class Util {
     static coockieName: string = 'wuteringcalculator-lang';

@@ -46,6 +46,11 @@ export class HomeComponent {
     }
     this.characters.push(char);
     Util.characters = this.characters;
+    this.currentSelection = ''
+
+    if (Util.load()['autosave']) {
+      Util.save(Util.characters, 'wuteringcalculator-chars');
+    };
   }
 
   charCreation(char: any) {

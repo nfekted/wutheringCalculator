@@ -22,7 +22,7 @@
             </ul>
             <div class="d-flex">
                 <button class="btn btn-secondary btn-sm" [title]="'save' | transloco" (click)="save()"
-                    *ngIf="configs.autosave">
+                    *ngIf="!configs.autosave">
                     <span class="material-symbols-outlined align-middle">
                         save
                     </span>

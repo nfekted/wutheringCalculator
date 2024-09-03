@@ -14,14 +14,10 @@ export class NavbarComponent {
   @Input() lang: string = '';
   @Output() callback: EventEmitter<string> = new EventEmitter<string>();
   @Output() settings: EventEmitter<string> = new EventEmitter<string>();
-  configs: Settings = new Settings();
+  @Input() configs: Settings = new Settings();
 
   constructor(private transloco: TranslocoService) {
 
-  }
-
-  ngOnInit(): void {
-    this.configs = Object.assign(new Settings(), Util.load())
   }
 
   changeLang(lang: string) {

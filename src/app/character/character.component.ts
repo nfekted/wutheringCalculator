@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Character } from '../shared/models/character.model';
+import { Util } from '../shared/utils/util.model';
 
 @Component({
   selector: 'app-character',
@@ -57,6 +58,9 @@ export class CharacterComponent {
 
   calculate() {
     this.character.calculate();
+    if (Util.load()['autosave']) {
+      Util.save(Util.characters, 'wuteringcalculator-chars');
+    };
   }
 
   getHit(dmg: number, multiplierRange: Array<number>, upgradeLevel: number): number {
