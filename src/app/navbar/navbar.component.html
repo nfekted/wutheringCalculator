@@ -13,11 +13,16 @@
                     <a class="nav-link active" aria-current="page" href="#">{{'home' | transloco}}</a>
                 </li>
                 <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="modal"
+                        data-bs-target="#settingsModal">{{'settings.settings'| transloco}}</button>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/faq']">FAQ</a>
                 </li>
             </ul>
             <div class="d-flex">
-                <button class="btn btn-secondary btn-sm" [title]="'save' | transloco" (click)="save()">
+                <button class="btn btn-secondary btn-sm" [title]="'save' | transloco" (click)="save()"
+                    *ngIf="configs.autosave">
                     <span class="material-symbols-outlined align-middle">
                         save
                     </span>
@@ -36,12 +41,50 @@
                         </li>
                     </ul>
                 </div>
-                <button class="btn btn-secondary" [title]="'config' | transloco" [routerLink]="['/settings']">
-                    <span class="material-symbols-outlined align-middle">
-                        settings
-                    </span>
-                </button>
             </div>
         </div>
     </div>
 </nav>
+
+<!-- Settings -->
+<div class="modal fade modal-lg" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel"
+    data-bs-backdrop="static" aria-hidden="true" style="color: black">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="settingsModalLabel">{{'settings.settings' | transloco}}</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="audioSwitch"
+                                [(ngModel)]="configs.audio">
+                            <label class="form-check-label" for="audioSwitch">{{'settings.audio' | transloco}}</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="autosaveSwitch"
+                                [(ngModel)]="configs.autosave">
+                            <label class="form-check-label" for="autosaveSwitch">{{'settings.autosave' |
+                                transloco}}</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary" (click)="delete()">{{'settings.deleteSettings' |
+                            transloco}}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="saveConfigs()">
+                    <span class="material-symbols-outlined align-middle">
+                        save
+                    </span>
+                    &nbsp;{{'save' | transloco}} {{'settings.settings' | transloco}}</button>
+            </div>
+        </div>
+    </div>
+</div>

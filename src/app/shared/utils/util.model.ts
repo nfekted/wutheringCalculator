@@ -1,8 +1,10 @@
 import { Character } from "../models/character.model";
+import { Settings } from "../models/settings.model";
 
 export abstract class Util {
     static coockieName: string = 'wuteringcalculator-lang';
     static characters: Array<Character> = new Array<Character>();
+    static settings: Settings = new Settings();
 
     static load(name?: string) {
         return JSON.parse(window.localStorage.getItem(name ? name : this.coockieName));

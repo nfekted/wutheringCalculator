@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Util } from '../shared/utils/util.model';
+import { Settings } from '../shared/models/settings.model';
+import Swal from 'sweetalert2';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-navbar',
@@ -11,6 +14,15 @@ export class NavbarComponent {
   @Input() lang: string = '';
   @Output() callback: EventEmitter<string> = new EventEmitter<string>();
   @Output() settings: EventEmitter<string> = new EventEmitter<string>();
+  configs: Settings = new Settings();
+
+  constructor(private transloco: TranslocoService) {
+
+  }
+
+  ngOnInit(): void {
+    this.configs = Object.assign(new Settings(), Util.load())
+  }
 
   changeLang(lang: string) {
     this.callback.emit(lang);
@@ -20,7 +32,26 @@ export class NavbarComponent {
     this.settings.emit('');
   }
 
+
   save() {
     Util.save(Util.characters, 'wuteringcalculator-chars');
+  }
+
+  saveConfigs() {
+    Util.save(this.configs);
+  }
+
+  delete() {
+    Swal.fire({
+      title: this.transloco.translate('settings.deleteConfirm'),
+      showDenyButton: true,
+      confirmButtonText: this.transloco.translate('confirm'),
+      denyButtonText: this.transloco.translate('cancel')
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Util.clear()
+      }
+    });
   }
 }
