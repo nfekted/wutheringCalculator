@@ -23,9 +23,11 @@ export class CharacterComponent {
   qtdCrit: number = 1;
 
   newAtk: number = 0;
-  newCritChance: number = 5;
-  newCritDmg: number = 150;
+  newCritChance: number = 0;
+  newCritDmg: number = 0;
   newQtdCrit: number = 0;
+  newBasicBonus: number = 0;
+  newElemental: number = 0;
 
 
   constructor() {
@@ -73,6 +75,12 @@ export class CharacterComponent {
   }
 
   critCalc(simulation?: boolean) {
+    if (this.newCritChance == 0) this.newCritChance = this.character.cChance;
+    if (this.newAtk == 0) this.newAtk = this.character.dmg;
+    if (this.newCritDmg == 0) this.newCritDmg = this.character.cDmg;
+    if (this.newBasicBonus == 0) this.newBasicBonus = this.character.basicBonus;
+    if (this.newElemental == 0) this.newElemental = this.character.elementalBonus;
+
     let currentChance = this.character.cChance;
     let critMult = this.character.cDmg;
     let copy = new Character(0, null);
@@ -82,7 +90,11 @@ export class CharacterComponent {
       this.fixedSimTotal = 0;
       this.newQtdCrit = +(this.newCritChance / 5).toFixed(0);
       copy = Object.assign(copy, this.character);
-      if (this.newAtk > 0) copy.dmg = this.newAtk;
+      copy.dmg = this.newAtk;
+      copy.cChance = this.newCritChance;
+      copy.cDmg = this.newCritDmg;
+      copy.elementalBonus = this.newElemental;
+      copy.basicBonus = this.newBasicBonus;
       copy.calculate();
     } else {
       this.fixedTotal = 0;

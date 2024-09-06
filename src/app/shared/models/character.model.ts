@@ -97,13 +97,14 @@ export class Character {
             const ex = this.getExpected(this.dmg, this.character.basic[i], this.character.basicCurrent - 1, this.elementalBonus, i == this.character.basic.length - 1 ? this.heavyBonus : this.basicBonus);
             //Set expected as Base Damage
             this.basicDmg[i] = +ex.toFixed(0);
-            this.sumBasicDmg[i] = this.basicDmg[i] * this.character.basicMultiplier[i];
+            let multiplier = this.character.basicMultiplier[i]
+            this.sumBasicDmg[i] = this.basicDmg[i] * multiplier;
 
             //Get expected Range value on enemy DEF
             let commonSum: number[] = this.getRangeDamage(ex, false);
             let resSum: number[] = this.getRangeDamage(ex, true);
-            this.basicCommonDmg[i] = this.getRangeString(commonSum);
-            this.basicResDmg[i] = this.getRangeString(resSum);
+            this.basicCommonDmg[i] = (multiplier > 1 ? `<small>${multiplier}x </small>` : '') + this.getRangeString(commonSum);
+            this.basicResDmg[i] = (multiplier > 1 ? `<small>${multiplier}x </small>` : '') + this.getRangeString(resSum);
 
             commonSum = this.multArray(commonSum, this.character.basicMultiplier[i]);
             resSum = this.multArray(resSum, this.character.basicMultiplier[i]);
@@ -114,14 +115,16 @@ export class Character {
                 this.basicSecondDmg[i] = +(this.getExpected(this.dmg, this.character['basicSecondDmg'][i], this.character.basicCurrent - 1, this.elementalBonus, i == this.character.basic.length - 1 ? this.heavyBonus : this.basicBonus)).toFixed(0);
 
                 if (this.basicSecondDmg[i] > 0) {
-                    this.sumBasicDmg[i] += (this.basicSecondDmg[i] * this.character['basicSecondMultiplier'][i]);
+                    multiplier = this.character['basicSecondMultiplier'][i]
+
+                    this.sumBasicDmg[i] += (this.basicSecondDmg[i] * multiplier);
                     range = this.getRangeDamage(this.basicSecondDmg[i], false);
-                    this.basicCommonDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`;
-                    commonSum = this.sumArray(commonSum, this.multArray(range, this.character['basicSecondMultiplier'][i]));
+                    this.basicCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`;
+                    commonSum = this.sumArray(commonSum, this.multArray(range, multiplier));
 
                     range = this.getRangeDamage(this.basicSecondDmg[i], true);
                     this.basicResDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`;
-                    resSum = this.sumArray(resSum, this.multArray(range, this.character['basicSecondMultiplier'][i]));
+                    resSum = this.sumArray(resSum, this.multArray(range, multiplier));
                 }
             }
             //Third Damages
@@ -129,14 +132,16 @@ export class Character {
                 this.basicThirdDmg[i] = +(this.getExpected(this.dmg, this.character['basicThirdDmg'][i], this.character.basicCurrent - 1, this.elementalBonus, i == this.character.basic.length - 1 ? this.heavyBonus : this.basicBonus)).toFixed(0);
 
                 if (this.basicThirdDmg[i] > 0) {
-                    this.sumBasicDmg[i] += (this.basicThirdDmg[i] * this.character['basicThirdMultiplier'][i]);
+                    multiplier = this.character['basicThirdMultiplier'][i]
+
+                    this.sumBasicDmg[i] += (this.basicThirdDmg[i] * multiplier);
                     range = this.getRangeDamage(this.basicThirdDmg[i], false);
-                    this.basicCommonDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`;
-                    commonSum = this.sumArray(commonSum, this.multArray(range, this.character['basicThirdMultiplier'][i]));
+                    this.basicCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`;
+                    commonSum = this.sumArray(commonSum, this.multArray(range, multiplier));
 
                     range = this.getRangeDamage(this.basicThirdDmg[i], true);
-                    this.basicResDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`;
-                    resSum = this.sumArray(resSum, this.multArray(range, this.character['basicThirdMultiplier'][i]));
+                    this.basicResDmg[i] += `<br/>+<br/${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`;
+                    resSum = this.sumArray(resSum, this.multArray(range, multiplier));
                 }
             }
 
@@ -155,13 +160,14 @@ export class Character {
 
             //Set expected as Base Damage
             this.skillDmg[i] = +ex.toFixed(0);
-            this.sumSkillDmg[i] = this.skillDmg[i] * this.character.skillMultiplier[i];
+            let multiplier = this.character.skillMultiplier[i];
+            this.sumSkillDmg[i] = this.skillDmg[i] * multiplier
 
             //Get expected Range value on enemy DEF
             let commonSum: number[] = this.getRangeDamage(ex, false);
             let resSum: number[] = this.getRangeDamage(ex, true);
-            this.skillCommonDmg[i] = this.getRangeString(commonSum);
-            this.skillResDmg[i] = this.getRangeString(resSum);
+            this.skillCommonDmg[i] = (multiplier > 1 ? `<small>${multiplier}x </small>` : '') + this.getRangeString(commonSum);
+            this.skillResDmg[i] = (multiplier > 1 ? `<small>${multiplier}x </small>` : '') + this.getRangeString(resSum);
 
             commonSum = this.multArray(commonSum, this.character.skillMultiplier[i]);
             resSum = this.multArray(resSum, this.character.skillMultiplier[i]);
@@ -172,14 +178,16 @@ export class Character {
                 this.skillSecondDmg[i] = +(this.getExpected(this.dmg, this.character['skillSecondDmg'][i], this.character.skillCurrent - 1, this.elementalBonus, this.skillBonus)).toFixed(0);
 
                 if (this.skillSecondDmg[i] > 0) {
-                    this.sumSkillDmg[i] += this.skillSecondDmg[i] * this.character['skillSecondMultiplier'][i];
+                    multiplier = this.character['skillSecondMultiplier'][i];
+
+                    this.sumSkillDmg[i] += this.skillSecondDmg[i] * multiplier;
                     range = this.getRangeDamage(this.skillSecondDmg[i], false);
-                    this.skillCommonDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`
-                    commonSum = this.sumArray(commonSum, this.multArray(range, this.character['skillSecondMultiplier'][i]));
+                    this.skillCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`
+                    commonSum = this.sumArray(commonSum, this.multArray(range, multiplier));
 
                     range = this.getRangeDamage(this.skillSecondDmg[i], true);
-                    this.skillResDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`;
-                    resSum = this.sumArray(resSum, this.multArray(range, this.character['skillSecondMultiplier'][i]));
+                    this.skillResDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`;
+                    resSum = this.sumArray(resSum, this.multArray(range, multiplier));
                 }
             }
 
@@ -188,14 +196,16 @@ export class Character {
                 this.skillThirdDmg[i] = +(this.getExpected(this.dmg, this.character['skillThirdDmg'][i], this.character.skillCurrent - 1, this.elementalBonus, this.skillBonus)).toFixed(0);
 
                 if (this.skillThirdDmg[i] > 0) {
-                    this.sumSkillDmg[i] += this.skillThirdDmg[i] * this.character['skillThirdMultiplier'][i];
+                    multiplier = this.character['skillThirdMultiplier'][i];
+
+                    this.sumSkillDmg[i] += this.skillThirdDmg[i] * multiplier;
                     range = this.getRangeDamage(this.skillThirdDmg[i], false);
-                    this.skillCommonDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`;
-                    commonSum = this.sumArray(commonSum, this.multArray(range, this.character['skillThirdMultiplier'][i]));
+                    this.skillCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`;
+                    commonSum = this.sumArray(commonSum, this.multArray(range, multiplier));
 
                     range = this.getRangeDamage(this.skillThirdDmg[i], true);
-                    this.skillResDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`;
-                    resSum = this.sumArray(resSum, this.multArray(range, this.character['skillThirdMultiplier'][i]));
+                    this.skillResDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`;
+                    resSum = this.sumArray(resSum, this.multArray(range, multiplier));
                 }
             }
 
@@ -214,13 +224,15 @@ export class Character {
 
             //Set expected as Base Damage
             this.liberationDmg[i] = +ex.toFixed(0);
-            this.sumLiberationDmg[i] = this.liberationDmg[i] * this.character.liberationMultiplier[i];
+            let multiplier = this.character.liberationMultiplier[i]
+
+            this.sumLiberationDmg[i] = this.liberationDmg[i] * multiplier;
 
             //Get expected Range value on enemy DEF
             let commonSum: number[] = this.getRangeDamage(ex, false);
             let resSum: number[] = this.getRangeDamage(ex, true);
-            this.liberationCommonDmg[i] = this.getRangeString(commonSum);
-            this.liberationResDmg[i] = this.getRangeString(resSum);
+            this.liberationCommonDmg[i] = (multiplier > 1 ? `<small>${multiplier}x </small>` : '') + this.getRangeString(commonSum);
+            this.liberationResDmg[i] = (multiplier > 1 ? `<small>${multiplier}x </small>` : '') + this.getRangeString(resSum);
 
             commonSum = this.multArray(commonSum, this.character.liberationMultiplier[i]);
             resSum = this.multArray(resSum, this.character.liberationMultiplier[i]);
@@ -232,14 +244,16 @@ export class Character {
                 this.liberationSecondDmg[i] = +(this.getExpected(this.dmg, this.character['liberationSecondDmg'][i], this.character.liberationCurrent - 1, this.elementalBonus, this.skillBonus)).toFixed(0);
 
                 if (this.liberationSecondDmg[i] > 0) {
-                    this.sumLiberationDmg[i] += this.liberationSecondDmg[i] * this.character['liberationSecondMultiplier'][i];
+                    multiplier = this.character['liberationSecondMultiplier'][i];
+
+                    this.sumLiberationDmg[i] += this.liberationSecondDmg[i] * multiplier;
                     range = this.getRangeDamage(this.liberationSecondDmg[i], false);
-                    this.liberationCommonDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`
-                    commonSum = this.sumArray(commonSum, this.multArray(range, this.character['liberationSecondMultiplier'][i]));
+                    this.liberationCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`
+                    commonSum = this.sumArray(commonSum, this.multArray(range, multiplier));
 
                     range = this.getRangeDamage(this.liberationSecondDmg[i], true);
-                    this.liberationResDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`;
-                    resSum = this.sumArray(resSum, this.multArray(range, this.character['liberationSecondMultiplier'][i]));
+                    this.liberationResDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`;
+                    resSum = this.sumArray(resSum, this.multArray(range, multiplier));
                 }
             }
 
@@ -248,14 +262,16 @@ export class Character {
                 this.liberationThirdDmg[i] = +(this.getExpected(this.dmg, this.character['liberationThirdDmg'][i], this.character.liberationCurrent - 1, this.elementalBonus, this.skillBonus)).toFixed(0);
 
                 if (this.liberationThirdDmg[i] > 0) {
-                    this.sumLiberationDmg[i] += this.liberationThirdDmg[i] * this.character['liberationThirdMultiplier'][i];
+                    multiplier = this.character['liberationThirdMultiplier'][i];
+
+                    this.sumLiberationDmg[i] += this.liberationThirdDmg[i] * multiplier;
                     range = this.getRangeDamage(this.liberationThirdDmg[i], false);
-                    this.liberationCommonDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`
-                    commonSum = this.sumArray(commonSum, this.multArray(range, this.character['liberationThirdMultiplier'][i]));
+                    this.liberationCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`
+                    commonSum = this.sumArray(commonSum, this.multArray(range, multiplier));
 
                     range = this.getRangeDamage(this.liberationThirdDmg[i], true);
-                    this.liberationResDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`;
-                    resSum = this.sumArray(resSum, this.multArray(range, this.character['liberationThirdMultiplier'][i]));
+                    this.liberationResDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`;
+                    resSum = this.sumArray(resSum, this.multArray(range, multiplier));
                 }
             }
 
@@ -274,13 +290,15 @@ export class Character {
 
             //Set expected as Base Damage
             this.introDmg[i] = +ex.toFixed(0);
-            this.sumIntroDmg[i] = this.introDmg[i] * this.character.introMultiplier[i];
+            let multiplier = this.character.introMultiplier[i]
+
+            this.sumIntroDmg[i] = this.introDmg[i] * multiplier;
 
             //Get expected Range value on enemy DEF
             let commonSum: number[] = this.getRangeDamage(ex, false);
             let resSum: number[] = this.getRangeDamage(ex, true);
-            this.introCommonDmg[i] = this.getRangeString(commonSum);
-            this.introResDmg[i] = this.getRangeString(resSum);
+            this.introCommonDmg[i] = (multiplier > 1 ? `<small>${multiplier}x </small>` : '') + this.getRangeString(commonSum);
+            this.introResDmg[i] = (multiplier > 1 ? `<small>${multiplier}x </small>` : '') + this.getRangeString(resSum);
 
             // commonSum = this.multArray(commonSum, this.character.introMultiplier[i]);
             // resSum = this.multArray(resSum, this.character.introMultiplier[i]);
@@ -298,13 +316,15 @@ export class Character {
 
             //Set expected as Base Damage
             this.outroDmg[i] = +ex.toFixed(0);
-            this.sumOutroDmg[i] = this.outroDmg[i] * this.character.outroMultiplier[i];
+            let multiplier = this.character.outroMultiplier[i];
+
+            this.sumOutroDmg[i] = this.outroDmg[i] * multiplier;
 
             //Get expected Range value on enemy DEF
             let commonSum: number[] = this.getRangeDamage(ex, false);
             let resSum: number[] = this.getRangeDamage(ex, true);
-            this.outroCommonDmg[i] = this.getRangeString(commonSum);
-            this.outroResDmg[i] = this.getRangeString(resSum);
+            this.outroCommonDmg[i] = (multiplier > 1 ? `<small>${multiplier}x </small>` : '') + this.getRangeString(commonSum);
+            this.outroResDmg[i] = (multiplier > 1 ? `<small>${multiplier}x </small>` : '') + this.getRangeString(resSum);
 
             // commonSum = this.multArray(commonSum, this.character.outroMultiplier[i]);
             // resSum = this.multArray(resSum, this.character.outroMultiplier[i]);
@@ -322,13 +342,14 @@ export class Character {
 
             //Set expected as Base Damage
             this.forteDmg[i] = +ex.toFixed(0);
-            this.sumForteDmg[i] = this.forteDmg[i] * this.character.forteMultiplier[i];
+            let multiplier = this.character.forteMultiplier[i];
+            this.sumForteDmg[i] = this.forteDmg[i] * multiplier;
 
             //Get expected Range value on enemy DEF
             let commonSum: number[] = this.getRangeDamage(ex, false);
             let resSum: number[] = this.getRangeDamage(ex, true);
-            this.forteCommonDmg[i] = this.getRangeString(commonSum);
-            this.forteResDmg[i] = this.getRangeString(resSum);
+            this.forteCommonDmg[i] = (multiplier > 1 ? `<small>${multiplier}x </small>` : '') + this.getRangeString(commonSum);
+            this.forteResDmg[i] = (multiplier > 1 ? `<small>${multiplier}x </small>` : '') + this.getRangeString(resSum);
 
             commonSum = this.multArray(commonSum, this.character.forteMultiplier[i]);
             resSum = this.multArray(resSum, this.character.forteMultiplier[i]);
@@ -339,14 +360,16 @@ export class Character {
                 this.forteSecondDmg[i] = +(this.getExpected(this.dmg, this.character['forteSecondDmg'][i], this.character.forteCurrent - 1, this.elementalBonus, 1)).toFixed(0);
 
                 if (this.forteSecondDmg[i] > 0) {
-                    this.sumForteDmg[i] += this.forteSecondDmg[i] * this.character['forteSecondMultiplier'][i];
+                    multiplier = this.character['forteSecondMultiplier'][i];
+
+                    this.sumForteDmg[i] += this.forteSecondDmg[i] * multiplier;
                     range = this.getRangeDamage(this.forteSecondDmg[i], false);
-                    this.forteCommonDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`
-                    commonSum = this.sumArray(commonSum, this.multArray(range, this.character['forteSecondMultiplier'][i]));
+                    this.forteCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`
+                    commonSum = this.sumArray(commonSum, this.multArray(range, multiplier));
 
                     range = this.getRangeDamage(this.forteSecondDmg[i], true);
-                    this.forteResDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`;
-                    resSum = this.sumArray(resSum, this.multArray(range, this.character['forteSecondMultiplier'][i]));
+                    this.forteResDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`;
+                    resSum = this.sumArray(resSum, this.multArray(range, multiplier));
                 }
             }
 
@@ -354,14 +377,16 @@ export class Character {
                 this.forteThirdDmg[i] = +(this.getExpected(this.dmg, this.character['forteThirdDmg'][i], this.character.forteCurrent - 1, this.elementalBonus, 1)).toFixed(0);
 
                 if (this.forteThirdDmg[i] > 0) {
-                    this.sumForteDmg[i] += this.forteThirdDmg[i] * this.character['forteThirdMultiplier'][i];
+                    multiplier = this.character['forteThirdMultiplier'][i];
+
+                    this.sumForteDmg[i] += this.forteThirdDmg[i] * multiplier;
                     range = this.getRangeDamage(this.forteThirdDmg[i], false);
-                    this.forteCommonDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`
-                    commonSum = this.sumArray(commonSum, this.multArray(range, this.character['forteThirdMultiplier'][i]));
+                    this.forteCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`
+                    commonSum = this.sumArray(commonSum, this.multArray(range, multiplier));
 
                     range = this.getRangeDamage(this.forteThirdDmg[i], true);
-                    this.forteResDmg[i] += `<br/>+<br/>${this.getRangeString(range)}`;
-                    resSum = this.sumArray(resSum, this.multArray(range, this.character['forteThirdMultiplier'][i]));
+                    this.forteResDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`;
+                    resSum = this.sumArray(resSum, this.multArray(range, multiplier));
                 }
             }
 

@@ -48,13 +48,7 @@
                             <input class="form-control" type="number" placeholder="5%" min="0" max="100"
                                 [(ngModel)]="character.cChance" />
                         </div>
-                        <div class="col-sm-3 mt-2">
-                            <button type="button" data-bs-toggle="modal"
-                                [attr.data-bs-target]="'#critModal'+character.index" (click)="critCalc()"
-                                [class]="'btn btn-primary btn-'+ currentSelection">
-                                {{'char.enhancer' | transloco}}
-                            </button>
-                        </div>
+                        <div class="col-sm-3 mt-2"></div>
                         <div class="col-sm-3"></div>
                         <div class="col-sm-3 mt-2">
                             <span style="float: right">Crit. DMG %:</span>
@@ -104,6 +98,14 @@
                                 [(ngModel)]="character.liberationBonus" (blur)="calculate()" />
                         </div>
                         <div class="col-sm-6"></div>
+                        <div class="col-sm-3 mt-2"></div>
+                        <div class="col-sm-6 mt-2">
+                            <button type="button" data-bs-toggle="modal"
+                                [attr.data-bs-target]="'#critModal'+character.index" (click)="critCalc()"
+                                [class]="'btn btn-primary btn-'+ currentSelection">
+                                {{'char.enhancer' | transloco}}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -597,7 +599,7 @@
 
 <div class="modal fade modal-lg" [id]="'critModal'+character.index" tabindex="-1" aria-labelledby="critModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="margin-top: 10vh;">
         <div class="modal-content">
             <div [class]="'modal-header btn-'+ currentSelection">
                 <h1 class="modal-title fs-5" id="critModalLabel">{{'char.enhancer' | transloco}}</h1>
@@ -669,15 +671,29 @@
                                 Crit. Chance %
                             </div>
                             <div class="col-sm-12">
-                                <input class="form-control" type="number" placeholder="5%" min="0" max="100"
+                                <input class="form-control" type="number" placeholder="5%" min="0"
                                     [(ngModel)]="newCritChance" />
                             </div>
                             <div class="col-sm-12">
                                 Crit. DMG %
                             </div>
                             <div class="col-sm-12">
-                                <input class="form-control" type="number" placeholder="5%" min="0" max="100"
+                                <input class="form-control" type="number" placeholder="5%" min="0"
                                     [(ngModel)]="newCritDmg" />
+                            </div>
+                            <div class="col-sm-12">
+                                Elemental DMG %
+                            </div>
+                            <div class="col-sm-12">
+                                <input class="form-control" type="number" placeholder="0%" min="0"
+                                    [(ngModel)]="newElemental" />
+                            </div>
+                            <div class="col-sm-12">
+                                Basic Bonus %
+                            </div>
+                            <div class="col-sm-12">
+                                <input class="form-control" type="number" placeholder="5%" min="0"
+                                    [(ngModel)]="newBasicBonus" />
                             </div>
                             <div class="col-sm-12 mt-3">
                                 <button type="button" (click)="critCalc(true)"
