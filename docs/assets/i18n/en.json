@@ -7,5 +7,13 @@
     "select": "Select",
     "confirm": "Confirm",
     "new": "New",
-    "lang": "Languages"
+    "lang": "Languages",
+    "settings": {
+        "settings": "Settings",
+        "audio": "Play audios in website",
+        "autosave": "Autosave characters modifications",
+        "deleteSettings": "Delete all saved data",
+        "deleteConfirm": "Delete all saved data? This can't be undone"
+    },
+    "disclaimer": "This site has no direct relationship with KuroGames©. For a better experience, your settings and registered values ​​will be saved in the form of cookies in your browser. No other type of information is collected. Anonymous tabs or clearing the cache may result in the loss of your records permanently. By continuing to access, you agree and are aware of this."
 }

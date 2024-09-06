@@ -11,9 +11,14 @@
     "broadblade": "<b>Broadblade</b> is one of the 5 type of Weapons in game, common in \"phisical\" characters.",
     "gauntlet": "<b>Gauntlet</b> is one of the 5 type of Weapons in game, common in \"phisical\" characters.",
     "pistols": "<b>Pistols</b> is one of the 5 type of Weapons in game, common in \"long-raged\" characters.",
+    "modes": {
+        "full": "Mode: Show all damage detailed",
+        "sum": "Mode: Sum all damages"
+    },
     "characters": {
         "encore": "<b>Encore damage</b> is <b>pure ATK</b> with elemental <b>Fusion</b> bonus, other status like HP, DEF... has no influence in her damage",
-        "sanhua": "<b>Sanhua damage</b> is <b>pure ATK</b> with elemental <b>Glacio</b> bonus, other status like HP, DEF... has no influence in her damage"
+        "sanhua": "<b>Sanhua damage</b> is <b>pure ATK</b> with elemental <b>Glacio</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "jinhsi": "<b>Jinhsi damage</b> is <b>pure ATK</b> with elemental <b>Spectro</b> bonus, other status like HP, DEF... has no influence in her damage"
     },
     "prediction": "PREDICTED NUMBERS",
     "info": "Due to the defense calculation not being exact, may vary by an <b>average of 6.5% of the actual in-game value.</b>",
@@ -26,15 +31,13 @@
     "intro": "Intro",
     "outro": "Outro",
     "type": "Type",
-    "qtdHits": "Nº of Hits",
     "raw": "Raw Damage (Raw Crit.)",
     "dmg": "Common Enemy DMG (Common Crit.) ~Range",
     "dmgR": "RES Enemy DMG (RES Crit.) ~Range",
     "description": "Description",
-    "help1": "<b>Raw Damage</b>: It is your character's damage, ignoring any other type of mechanic (defense, resistance)<br/><b>Common Enemy DMG</b>: Damage stipulated on common enemies, without resistance to their element<br/><b>RES Enemy DMG</b>: Damage stipulated on enemies with resistance to your element.<br/>In-game DMG is purely informative, for upgrade comparisons always use the RAW column as a basis.",
-    "enhancer": "Crit. Calc.",
-    "enhancer2": "Critical Calculator",
-    "compareWith": "Compare with other status:",
+    "help1": "<b>Raw Damage</b>: It is your character's damage, ignoring any other type of mechanic (defense, resistance).<br/><b>Use Raw Damage column as a basis </b>to know if your character is better or worse.<br/><br/><b>Common Enemy DMG</b>: Damage stipulated on common enemies, without resistance to their element<br/><b>RES Enemy DMG</b>: Damage stipulated on enemies with resistance to your element.<br/><b>In-game DMG is purely informative</b>, for better metrics use the Raw Damage column.",
+    "enhancer": "Attribute comparator",
+    "compareWith": "Compare with new attributes:",
     "simulated": "Simulated Values: ",
     "calculate": "Calculate!",
     "fixedCritInfo": "Based on a 20 attack scenario, with <b>{{chance}}% critical chance</b>, <b>{{qtd}} attacks</b> would be critical and <b>{{normal}} would not be</b>, represented by the following table:",

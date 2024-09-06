@@ -7,5 +7,13 @@
     "select": "Selecionar",
     "confirm": "Confirmar",
     "new": "Novo",
-    "lang": "Languages"
+    "lang": "Idiomas",
+    "settings": {
+        "settings": "Configurações",
+        "audio": "Tocar audios no site",
+        "autosave": "Salvar modificações automáticamente",
+        "deleteSettings": "Apagar todos dados",
+        "deleteConfirm": "Apagar todos os dados? Essa ação não pode ser desfeita"
+    },
+    "disclaimer": "Esse site não tem nenhuma relação direta com a KuroGames©. Para uma melhor experiencia, as suas configurações e valores cadastrados serão salvas em formato de coockies em seu navegador. Nenhum outro tipo de informação é coletada. Guias anonimas ou limpar o cache pode resultar na perca de seus registros permanentemente. Ao continuar o acesso, você concorda e tem ciência disso."
 }
