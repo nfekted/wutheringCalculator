@@ -46,8 +46,12 @@ export class HomeComponent {
     }
     this.characters.push(char);
     Util.characters = this.characters;
-    this.currentSelection = ''
+    this.currentSelection = '';
 
+    this.save();
+  }
+
+  save() {
     if (Util.load()['autosave']) {
       Util.save(Util.characters, 'wuteringcalculator-chars');
     };
@@ -74,5 +78,14 @@ export class HomeComponent {
     if (settings?.audio) {
       new Audio(`assets/sound/${type}.wav`).play();
     }
+  }
+
+  delete(index: number) {
+    this.characters = this.characters.filter(c => c.index != index);
+    for (let i = 0; i < this.characters.length; i++) {
+      this.characters[i].index = i;
+    }
+
+    this.save();
   }
 }

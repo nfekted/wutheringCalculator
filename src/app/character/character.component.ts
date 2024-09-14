@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from '../shared/models/character.model';
 import { Util } from '../shared/utils/util.model';
+import Swal from 'sweetalert2';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-character',
@@ -10,6 +12,7 @@ import { Util } from '../shared/utils/util.model';
 export class CharacterComponent {
 
   @Input() character: Character;
+  @Output() callbackDelete: EventEmitter<number> = new EventEmitter<number>();
 
   sum: boolean = false;
 
@@ -30,7 +33,7 @@ export class CharacterComponent {
   newElemental: number = 0;
 
 
-  constructor() {
+  constructor(private transloco: TranslocoService) {
   }
 
   ngOnInit(): void {
@@ -60,6 +63,10 @@ export class CharacterComponent {
 
   calculate() {
     this.character.calculate();
+    this.save();
+  }
+
+  save() {
     if (Util.load()['autosave']) {
       Util.save(Util.characters, 'wuteringcalculator-chars');
     };
@@ -121,7 +128,19 @@ export class CharacterComponent {
     } else {
       this.critSimFixed = list;
     }
+  }
 
+  delete() {
+    Swal.fire({
+      title: this.transloco.translate('char.delete'),
+      showDenyButton: true,
+      confirmButtonText: this.transloco.translate('confirm'),
+      denyButtonText: this.transloco.translate('cancel')
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.callbackDelete.emit(this.character.index);
+      }
+    });
   }
 
 }

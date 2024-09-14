@@ -42,5 +42,6 @@
     "calculate": "Calcular!",
     "fixedCritInfo": "Baseado em um cenário de 20 ataques, com <b>{{chance}}% chance critica</b>, <b>{{qtd}} ataques</b> seriam criticos e <b>{{normal}} seriam normais</b>, representados pela seguinte tabela:",
     "bestScenario": "MELHOR CENÁRIO",
-    "worstScenario": "PIOR CENÁRIO"
+    "worstScenario": "PIOR CENÁRIO",
+    "delete": "Tem certeza? Essa ação não pode ser desfeita"
 }

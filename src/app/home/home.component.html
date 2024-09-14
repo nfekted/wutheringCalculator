@@ -19,7 +19,7 @@
             <div class="tab-content" id="charContents">
                 <ng-container *ngFor="let c of characters; let i=index">
                     <div class="tab-pane fade" [id]="i" role="tabpanel" [attr.aria-labelledby]="i+'-tab'">
-                        <app-character [character]="c"></app-character>
+                        <app-character [character]="c" (callbackDelete)="delete($event)"></app-character>
                     </div>
                 </ng-container>
             </div>
@@ -27,7 +27,7 @@
     </div>
 </div>
 <div class=" modal fade modal-lg" id="charModal" tabindex="-1" aria-labelledby="charModalLabel" aria-hidden="true"
-    style="color: black">
+    style="color: black;">
     <div class="modal-dialog" style="margin-top: 10vh;">
         <div class="modal-content">
             <div [class]="'modal-header btn-'+ currentSelection">
