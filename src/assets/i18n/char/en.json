@@ -36,12 +36,21 @@
     "dmgR": "RES Enemy DMG (RES Crit.) ~Range",
     "description": "Description",
     "help1": "<b>Raw Damage</b>: It is your character's damage, ignoring any other type of mechanic (defense, resistance).<br/><b>Use Raw Damage column as a basis </b>to know if your character is better or worse.<br/><br/><b>Common Enemy DMG</b>: Damage stipulated on common enemies, without resistance to their element<br/><b>RES Enemy DMG</b>: Damage stipulated on enemies with resistance to your element.<br/><b>In-game DMG is purely informative</b>, for better metrics use the Raw Damage column.",
-    "enhancer": "Attribute comparator",
-    "compareWith": "Compare with new attributes:",
-    "simulated": "Simulated Values: ",
-    "calculate": "Calculate!",
-    "fixedCritInfo": "Based on a 20 attack scenario, with <b>{{chance}}% critical chance</b>, <b>{{qtd}} attacks</b> would be critical and <b>{{normal}} would not be</b>, represented by the following table:",
-    "bestScenario": "BEST SCENARIO",
-    "worstScenario": "WORST SCENARIO",
-    "delete": "Are you sure? This action can't be undone"
+    "delete": "Are you sure? This action can't be undone",
+    "enhancer": {
+        "enhancer": "Stat change comparator",
+        "compareWith": "Compare with new attributes:",
+        "calculate": "Recalculate",
+        "fixedCritInfo": "Based on a 20 basic attack scenario, with <b>{{chance}}% critical chance</b>, <b>{{qtd}} attacks</b> would be critical and <b>{{normal}} would not be</b>, fixing the damage we would have the simulation represented by the following table:",
+        "rotationInfo": "<b>Based on popular rotations, the following attacks are used</b>:",
+        "rotationCritInfo": "A total of <b>{{atkNum}} attacks</b> will happen, with <b>{{chance}}% critical chances</b>, <b>{{qtd}} attacks</b> would be critical and <b>{{normal}} would not be</b>, fixing the damage we would have the simulation represented by the following table:",
+        "randomCritInfo": "Leaving <b>random critics</b>, we have the simulation represented by the following table",
+        "bestScenario": "BEST SCENARIO",
+        "worstScenario": "WORST SCENARIO",
+        "enhancerBasic": "Use only basic attacks",
+        "enhancerSkill": "Use recommended rotation",
+        "enhancerCrit": "Randomize all CRIT",
+        "current": "Current attributes",
+        "new": "New attributes"
+    }
 }

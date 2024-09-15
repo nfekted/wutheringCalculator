@@ -28,18 +28,18 @@ export class Encore {
     ]
     skillMultiplier: number[] = [8, 1];
 
-    liberationNames: string[] = ['Cosmos: Frolicking Part 1', 'Cosmos: Frolicking Part 2', 'Cosmos: Frolicking Part 3', 'Cosmos: Frolicking Part 4', 'Cosmos: Heavy Attack', 'Cosmos Rampage', 'Cosmos: Dodge Counter'];
+    liberationNames: string[] = ['Cosmos: Frolicking Part 1', 'Cosmos: Frolicking Part 2', 'Cosmos: Frolicking Part 3', 'Cosmos: Frolicking Part 4', 'Cosmos Rampage', 'Cosmos: Dodge Counter', 'Cosmos: Heavy Attack'];
     liberationCurrent: number = 1;
     liberation: Array<Array<number>> = [
         [45.36, 49.08, 52.8, 58.01, 61.73, 66.01, 71.96, 77.91, 83.86, 90.18],
         [28.37, 30.7, 33.02, 36.28, 38.61, 41.28, 45, 48.72, 52.45, 56.4],
         [33.19, 35.92, 38.64, 42.45, 45.17, 48.3, 52.65, 57.01, 61.36, 65.99],
         [97.59, 105.59, 113.59, 124.79, 132.79, 142, 154.8, 167.6, 180.4, 194.01],
-        [109.44, 118.42, 127.39, 139.96, 148.93, 159.25, 173.61, 187.97, 202.32, 217.58],
         [31.85, 34.46, 37.07, 40.72, 43.34, 46.34, 50.52, 54.7, 58.88, 63.32],
-        [33.19, 35.92, 38.64, 42.45, 45.17, 48.3, 52.65, 57.01, 61.36, 65.99]
+        [33.19, 35.92, 38.64, 42.45, 45.17, 48.3, 52.65, 57.01, 61.36, 65.99],
+        [109.44, 118.42, 127.39, 139.96, 148.93, 159.25, 173.61, 187.97, 202.32, 217.58]
     ];
-    liberationMultiplier: number[] = [2, 3, 4, 3, 1, 4, 4];
+    liberationMultiplier: number[] = [2, 3, 4, 3, 4, 4, 1];
 
     introName: string[] = ['Angry Cosmos'];
     introCurrent: number = 1;
@@ -62,7 +62,6 @@ export class Encore {
     forteSecondDmg: Array<Array<number>> = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [249.08, 269.51, 289.93, 318.53, 338.95, 362.44, 395.12, 427.80, 460.48, 495.21]];
     forteSecondMultiplier: number[] = [0, 1];
 
-
-
-
+    rotation: Array<Array<string | number>> = [['sumSkillDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg'], [0, 1, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 6]];
+    rotationName: Array<string> = ['Resonance Skill + Energetic Welcome', 'Resonance Liberation', 'Cosmos Rampage (Liberation)', '4x Cosmos: Frolicking (Basic Attack)', 'Cosmos Rampage (Liberation)', '4x Cosmos: Frolicking (Basic Attack)', 'Cosmos Rampage (Liberation)', 'Cosmos Heavy Attack'];
 }

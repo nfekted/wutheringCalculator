@@ -31,6 +31,12 @@ export class CharacterComponent {
   newQtdCrit: number = 0;
   newBasicBonus: number = 0;
   newElemental: number = 0;
+  newSkillBonus: number = 0;
+  newLiberationBonus: number = 0;
+
+  enhancerBasic: boolean = true;
+  enhancerSkill: boolean = false;
+  randomCrit: boolean = false;
 
 
   constructor(private transloco: TranslocoService) {
@@ -81,13 +87,20 @@ export class CharacterComponent {
     return this.getHit(dmg, multiplierRange, upgradeLevel) * (bonus / 100) * 1 * 1//Outro bonus and critical multiplier
   }
 
-  critCalc(simulation?: boolean) {
+  critCalc(simulation: boolean) {
     if (this.newCritChance == 0) this.newCritChance = this.character.cChance;
     if (this.newAtk == 0) this.newAtk = this.character.dmg;
     if (this.newCritDmg == 0) this.newCritDmg = this.character.cDmg;
     if (this.newBasicBonus == 0) this.newBasicBonus = this.character.basicBonus;
     if (this.newElemental == 0) this.newElemental = this.character.elementalBonus;
+    if (this.newSkillBonus == 0) this.newSkillBonus = this.character.skillBonus;
+    if (this.newLiberationBonus == 0) this.newLiberationBonus = this.character.liberationBonus;
 
+    if (this.enhancerBasic) this.simulationBasic(simulation);
+    if (this.enhancerSkill) this.simulationRotation(simulation);
+  }
+
+  simulationBasic(simulation: boolean) {
     let currentChance = this.character.cChance;
     let critMult = this.character.cDmg;
     let copy = new Character(0, null);
@@ -102,6 +115,8 @@ export class CharacterComponent {
       copy.cDmg = this.newCritDmg;
       copy.elementalBonus = this.newElemental;
       copy.basicBonus = this.newBasicBonus;
+      copy.skillBonus = this.newSkillBonus;
+      copy.liberationBonus = this.newLiberationBonus;
       copy.calculate();
     } else {
       this.fixedTotal = 0;
@@ -110,17 +125,19 @@ export class CharacterComponent {
 
     let currentAttack = 0;
     const list: Array<Array<number | boolean>> = [];
-    for (let i = 0; i < 20; i++) {
-      const dmg = simulation ? copy.sumBasicDmg[currentAttack] : this.character.sumBasicDmg[currentAttack];
-      if (currentChance >= 5) {
-        list[i] = [+(dmg * (critMult / 100)).toFixed(0), true];
-        currentChance -= 5;
-      } else {
-        list[i] = [dmg, false];
+    if (this.enhancerBasic) {
+      for (let i = 0; i < 20; i++) {
+        const dmg: number = simulation ? copy.sumBasicDmg[currentAttack] : this.character.sumBasicDmg[currentAttack];
+        if ((!this.randomCrit && currentChance >= 5) || (this.randomCrit && (Math.floor(Math.random() * 100) + 1) < currentChance)) {
+          list[i] = [+(dmg * (critMult / 100)).toFixed(0), true];
+          currentChance -= (this.randomCrit ? 0 : 5);
+        } else {
+          list[i] = [dmg, false];
+        }
+        this.fixedTotal += simulation ? 0 : +list[i][0];
+        this.fixedSimTotal += simulation ? +list[i][0] : 0;
+        currentAttack = currentAttack == this.character.character.basicEnds ? 0 : currentAttack + 1;
       }
-      this.fixedTotal += simulation ? 0 : +list[i][0];
-      this.fixedSimTotal += simulation ? +list[i][0] : 0;
-      currentAttack = currentAttack == this.character.character.basicEnds ? 0 : currentAttack + 1;
     }
 
     if (simulation) {
@@ -128,6 +145,57 @@ export class CharacterComponent {
     } else {
       this.critSimFixed = list;
     }
+  }
+
+  simulationRotation(simulation: boolean) {
+    let currentChance = this.character.cChance;
+    let critMult = this.character.cDmg;
+    let copy = new Character(0, null);
+    if (simulation) {
+      currentChance = this.newCritChance;
+      critMult = this.newCritDmg;
+      this.fixedSimTotal = 0;
+      this.newQtdCrit = +(this.character.character.rotation[0].length * (this.newCritChance / 100)).toFixed(0);
+      copy = Object.assign(copy, this.character);
+      copy.dmg = this.newAtk;
+      copy.cChance = this.newCritChance;
+      copy.cDmg = this.newCritDmg;
+      copy.elementalBonus = this.newElemental;
+      copy.basicBonus = this.newBasicBonus;
+      copy.skillBonus = this.newSkillBonus;
+      copy.liberationBonus = this.newLiberationBonus;
+      copy.calculate();
+    } else {
+      this.fixedTotal = 0;
+      this.qtdCrit = +(this.character.character.rotation[0].length * (currentChance / 100)).toFixed(0);
+    }
+
+    const list: Array<Array<number | boolean>> = [];
+    const rotation = this.character.character.rotation;
+    if (!this.randomCrit) currentChance = this.newQtdCrit;
+    for (let i = 0; i < rotation[0].length; i++) {
+      const dmg = simulation ? copy[rotation[0][i]][rotation[1][i]] : this.character[rotation[0][i]][rotation[1][i]];
+      if ((!this.randomCrit && currentChance > 0) || (this.randomCrit && (Math.floor(Math.random() * 100) + 1) < currentChance)) {
+        list[i] = [+(dmg * (critMult / 100)).toFixed(0), true];
+        currentChance -= (this.randomCrit ? 0 : 1);
+      } else {
+        list[i] = [dmg, false];
+      }
+
+      this.fixedTotal += simulation ? 0 : +list[i][0];
+      this.fixedSimTotal += simulation ? +list[i][0] : 0;
+    }
+
+    if (simulation) {
+      this.critSimFixedSim = list;
+    } else {
+      this.critSimFixed = list;
+    }
+  }
+
+  recalculateAll() {
+    this.critCalc(false);
+    this.critCalc(true);
   }
 
   delete() {

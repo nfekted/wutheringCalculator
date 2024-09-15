@@ -86,20 +86,20 @@ export class Jinhsi {
     outroName: string[] = ['Temporal Bender'];
 
     //Forte Skill
-    forteName: string[] = ['Incarnation Part 1', 'Incarnation Part 2', 'Incarnation Part 3', 'Incarnation Part 4', 'Incarnation Heavy Atk', 'Incarnation Dodge Atk', 'Crescent Divinity', 'Illuminous Epiphany: Solar Flare', 'Illuminous Epiphany: Stella Glamor'];
+    forteName: string[] = ['Incarnation Part 1', 'Incarnation Part 2', 'Incarnation Part 3', 'Incarnation Part 4', 'IncarnationDodge Atk', 'Incarnation Heavy Atk', 'Crescent Divinity', 'Illuminous Epiphany: Solar Flare', 'Illuminous Epiphany: Stella Glamor'];
     forteCurrent: number = 1;
     forte: Array<Array<number>> = [
         [40.58, 48.23, 51.89, 57, 60.66, 64.86, 70.71, 76.56, 82.41, 88.62],
         [39.22, 42.44, 45.65, 50.16, 53.37, 57.07, 62.22, 67.36, 72.51, 77.97],
         [50.02, 54.12, 58.23, 63.97, 68.07, 72.79, 79.35, 85.91, 92.47, 99.44],
         [9.39, 10.16, 10.93, 12.01, 12.78, 13.67, 14.90, 16.13, 17.36, 18.67],
-        [24, 25.97, 27.94, 30.70, 32.66, 34.93, 38.08, 41.22, 44.37, 47.72],
         [22.08, 23.89, 25.70, 28.23, 30.04, 32.12, 35.02, 37.91, 40.81, 43.89],
+        [24, 25.97, 27.94, 30.70, 32.66, 34.93, 38.08, 41.22, 44.37, 47.72],
         [50.68, 54.84, 59, 64.81, 68.97, 73.75, 80.40, 87.05, 93.70, 100.76],
         [10, 10.82, 11.64, 12.79, 13.61, 14.56, 15.87, 17.18, 18.49, 19.89],
         [175, 189.35, 203.70, 223.79, 238.14, 254.65, 277.61, 300.57, 323.53, 347.92]
     ];
-    forteMultiplier: number[] = [1, 1, 1, 6, 1, 2, 2, 6, 1];
+    forteMultiplier: number[] = [1, 1, 1, 6, 2, 1, 2, 6, 1];
 
     forteSecondDmg: Array<Array<number>> = [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -127,4 +127,6 @@ export class Jinhsi {
     ];
     forteThirdMultiplier: number[] = [0, 1, 0, 0, 0, 1, 1, 0, 0];
 
+    rotation: Array<Array<string | number>> = [['sumSkillDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg'], [1, 6, 0, 1, 2, 3, 0, 7, 8]];
+    rotationName: Array<string> = ['Intro', 'Skill Overflowing Radiance', 'Skill Crescent Divinity', '4x Basic Attack Incarnation', 'Resonance Liberation', 'Ressonance Skill: Solar Flare + Solar Glamour']
 }

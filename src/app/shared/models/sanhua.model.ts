@@ -57,4 +57,7 @@ export class Sanhua {
     ];
     forteMultiplier: number[] = [2, 1, 1, 1];
 
+    rotation: Array<Array<string | number>> = [['sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg',], [0, 7, 0, 7]];
+    rotationName: Array<string> = ['Resonance Liberation', 'Heavy Attack (Forte Gauge)', 'Resonance Skill', 'Heavy Attack (Forte Gauge)', 'Outro Skill (Buff)'];
+
 }

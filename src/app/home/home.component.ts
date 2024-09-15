@@ -86,6 +86,7 @@ export class HomeComponent {
       this.characters[i].index = i;
     }
 
+    Util.characters = this.characters;
     this.save();
   }
 }

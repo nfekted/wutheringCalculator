@@ -220,7 +220,7 @@ export class Character {
     private calculateLiberation() {
         for (let i = 0; i < this.character.liberation.length; i++) {
             //Get Expected DMG
-            const ex = this.getExpected(this.dmg, this.character.liberation[i], this.character.liberationCurrent - 1, this.elementalBonus, this.liberationBonus);
+            const ex = this.getExpected(this.dmg, this.character.liberation[i], this.character.liberationCurrent - 1, this.elementalBonus, (this.character.icon == 'encore' ? (i == this.character.liberation.length - 1 ? this.heavyBonus : this.basicBonus) : this.liberationBonus));
 
             //Set expected as Base Damage
             this.liberationDmg[i] = +ex.toFixed(0);
@@ -338,7 +338,7 @@ export class Character {
     private calculateForte() {
         for (let i = 0; i < this.character.forte.length; i++) {
             //Get Expected DMG
-            const ex = this.getExpected(this.dmg, this.character.forte[i], this.character.forteCurrent - 1, this.elementalBonus, 1);
+            const ex = this.getExpected(this.dmg, this.character.forte[i], this.character.forteCurrent - 1, this.elementalBonus, (this.character.icon != 'jinhsi' ? 1 : this.jinhsiForteBonus(this.character.forteName[i])));
 
             //Set expected as Base Damage
             this.forteDmg[i] = +ex.toFixed(0);
@@ -393,6 +393,14 @@ export class Character {
             //Range Sums
             this.sumCommonForteDmg[i] = this.getRangeString(commonSum);
             this.sumResForteDmg[i] = this.getRangeString(resSum);
+        }
+    }
+
+    private jinhsiForteBonus(skill: string) {
+        switch (skill) {
+            case 'Crescent Divinity': case 'Illuminous Epiphany: Solar Flare': case 'Illuminous Epiphany: Stella Glamor': return this.skillBonus;
+            case 'Incarnation Heavy Atk': return this.heavyBonus;
+            default: return this.basicBonus;
         }
     }
 

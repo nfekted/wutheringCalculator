@@ -102,9 +102,9 @@
                         <div class="col-sm-3 mt-2"></div>
                         <div class="col-sm-6 mt-2">
                             <button type="button" data-bs-toggle="modal"
-                                [attr.data-bs-target]="'#critModal'+character.index" (click)="critCalc()"
+                                [attr.data-bs-target]="'#critModal'+character.index" (click)="critCalc(false)"
                                 [class]="'btn btn-primary btn-'+ currentSelection">
-                                {{'char.enhancer' | transloco}}
+                                {{'char.enhancer.enhancer' | transloco}}
                             </button>
                         </div>
                     </div>
@@ -603,39 +603,101 @@
     <div class="modal-dialog" style="margin-top: 10vh;">
         <div class="modal-content">
             <div [class]="'modal-header btn-'+ currentSelection">
-                <h1 class="modal-title fs-5" id="critModalLabel">{{'char.enhancer' | transloco}}</h1>
+                <h1 class="modal-title fs-5" id="critModalLabel">{{'char.enhancer.enhancer' | transloco}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <h4></h4>
+                    <div class="col-sm-12">
+                        <b>{{'options' | transloco}}</b>
+                        <div class="row">
+                            <div class="form-group col-sm-12 col-md-4">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="enhancerBasic"
+                                        [(ngModel)]="enhancerBasic" (change)="enhancerSkill = false;recalculateAll()">
+                                    <label class="form-check-label" for="enhancerBasic">{{'char.enhancer.enhancerBasic'
+                                        |
+                                        transloco}}</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12 col-md-4">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="enhancerSkill"
+                                        [(ngModel)]="enhancerSkill" (change)="enhancerBasic = false;recalculateAll()">
+                                    <label class="form-check-label" for="enhancerSkill">{{'char.enhancer.enhancerSkill'
+                                        |
+                                        transloco}}</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12 col-md-4">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="enhancerRandom"
+                                        [(ngModel)]="randomCrit" (change)="recalculateAll()">
+                                    <label class="form-check-label" for="enhancerRandom">{{'char.enhancer.enhancerCrit'
+                                        |
+                                        transloco}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="enhancerSkill">
+                            <div class="col-sm-12">
+                                <div [innerHtml]="'char.enhancer.rotationInfo' | transloco">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 mt-4">
+                                <ol>
+                                    <li *ngFor="let item of character.character.rotationName"><b>{{item}}</b></li>
+                                </ol>
+                            </div>
+                        </div>
+                        <hr />
+                        <hr />
+                    </div>
                     <div class="col-sm-12 col-md-4">
                         <small>
-                            <div
-                                [innerHtml]="'char.fixedCritInfo' | transloco: { chance: character.cChance, qtd: qtdCrit, normal: 20-qtdCrit}">
+                            <div *ngIf="!randomCrit && !enhancerSkill"
+                                [innerHtml]="'char.enhancer.fixedCritInfo' | transloco: { chance: character.cChance, qtd: qtdCrit, normal: 20-qtdCrit}">
                             </div>
+                            <div *ngIf="enhancerSkill && !randomCrit"
+                                [innerHtml]="'char.enhancer.rotationCritInfo' | transloco: {atkNum : character.character.rotation[0].length, chance: character.cChance, qtd: qtdCrit, normal:  character.character.rotation[0].length-qtdCrit}">
+                            </div>
+                            <div *ngIf="randomCrit" [innerHtml]="'char.enhancer.randomCritInfo' | transloco">
+                            </div>
+
                         </small>
                     </div>
-                    <div class="col-sm-12 col-md-4 offset-md-4">
+                    <div class="col-sm-12 col-md-4 text-center">
+
+                    </div>
+                    <div class="col-sm-12 col-md-4">
                         <small>
-                            <div
-                                [innerHtml]="'char.fixedCritInfo' | transloco: { chance: newCritChance, qtd: newQtdCrit, normal: 20-newQtdCrit}">
+                            <div *ngIf="!randomCrit && !enhancerSkill"
+                                [innerHtml]="'char.enhancer.fixedCritInfo' | transloco: { chance: newCritChance, qtd: newQtdCrit, normal: 20-newQtdCrit}">
+                            </div>
+                            <div *ngIf="enhancerSkill && !randomCrit"
+                                [innerHtml]="'char.enhancer.rotationCritInfo' | transloco: {atkNum : character.character.rotation[0].length, chance: newCritChance, qtd: newQtdCrit, normal:  character.character.rotation[0].length-newQtdCrit}">
+                            </div>
+                            <div *ngIf="randomCrit" [innerHtml]="'char.enhancer.randomCritInfo' | transloco">
                             </div>
                         </small>
-                    </div>
-                    <div class="col-sm-12 col-md-4 offset-md-8">
-                        {{'char.simulated' | transloco}}
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-sm-12 col-md-4">
-                        <span class="badge text-bg-success" *ngIf="fixedTotal > fixedSimTotal">{{'char.bestScenario' |
+                        <span class="badge text-bg-success"
+                            *ngIf="fixedTotal > fixedSimTotal">{{'char.enhancer.bestScenario' |
                             transloco}} +{{fixedTotal - fixedSimTotal}} DMG</span>
-                        <span class="badge text-bg-danger" *ngIf="fixedTotal < fixedSimTotal">{{'char.worstScenario' |
+                        <span class="badge text-bg-danger"
+                            *ngIf="fixedTotal < fixedSimTotal">{{'char.enhancer.worstScenario' |
                             transloco}} -{{fixedSimTotal - fixedTotal}} DMG</span>
                         <table class="table table-striped"
                             [ngClass]="{'table-danger': fixedTotal < fixedSimTotal, 'table-success': fixedTotal > fixedSimTotal}">
                             <thead>
+                                <tr class="text-center">
+                                    <td colspan="3" scope="col"><b>{{'char.enhancer.current' | transloco}}</b></td>
+                                </tr>
                                 <tr class="text-center">
                                     <th scope="col">Atk nº</th>
                                     <th scope="col">DMG</th>
@@ -659,7 +721,7 @@
                     <div class="col-sm-12 col-md-4 text-center">
                         <div class="row">
                             <div class="col-sm-12">
-                                {{'char.compareWith' | transloco}}
+                                <b>{{'char.enhancer.compareWith' | transloco}}</b>
                             </div>
                             <div class="col-sm-12 mt-3">
                                 ATK
@@ -696,22 +758,41 @@
                                 <input class="form-control" type="number" placeholder="5%" min="0"
                                     [(ngModel)]="newBasicBonus" />
                             </div>
+                            <div class="col-sm-12">
+                                Skill Bonus %
+                            </div>
+                            <div class="col-sm-12">
+                                <input class="form-control" type="number" placeholder="5%" min="0"
+                                    [(ngModel)]="newSkillBonus" />
+                            </div>
+                            <div class="col-sm-12">
+                                Liberation Bonus %
+                            </div>
+                            <div class="col-sm-12">
+                                <input class="form-control" type="number" placeholder="5%" min="0"
+                                    [(ngModel)]="newLiberationBonus" />
+                            </div>
                             <div class="col-sm-12 mt-3">
-                                <button type="button" (click)="critCalc(true)"
-                                    [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.calculate'
+                                <button type="button" (click)="recalculateAll()"
+                                    [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.calculate'
                                     | transloco}}</button>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-12 col-md-4">
-                        <span class="badge text-bg-success" *ngIf="fixedTotal < fixedSimTotal">{{'char.bestScenario' |
+                        <span class="badge text-bg-success"
+                            *ngIf="fixedTotal < fixedSimTotal">{{'char.enhancer.bestScenario' |
                             transloco}} +{{fixedSimTotal - fixedTotal}} DMG</span>
-                        <span class="badge text-bg-danger" *ngIf="fixedTotal > fixedSimTotal">{{'char.worstScenario' |
+                        <span class="badge text-bg-danger"
+                            *ngIf="fixedTotal > fixedSimTotal">{{'char.enhancer.worstScenario' |
                             transloco}} -{{fixedTotal - fixedSimTotal}} DMG</span>
                         <table class="table table-striped"
                             [ngClass]="{'table-danger': fixedTotal > fixedSimTotal, 'table-success': fixedTotal < fixedSimTotal}">
                             <thead>
+                                <tr class="text-center">
+                                    <td colspan="3" scope="col"><b>{{'char.enhancer.new' | transloco}}</b></td>
+                                </tr>
                                 <tr class="text-center">
                                     <th scope="col">Atk nº</th>
                                     <th scope="col">DMG</th>
@@ -732,6 +813,7 @@
                         </table>
                     </div>
                 </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" data-bs-dismiss="modal"
