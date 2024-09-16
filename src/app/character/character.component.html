@@ -9,8 +9,12 @@
                         <u>{{character.character.name}}</u>
                     </h2>
                     <input [(ngModel)]="character.character.name" *ngIf="nameEdit" (blur)="nameEdit = false;save()" />
+                    <h2 style="cursor: pointer;" *ngIf="!nameEdit" (click)="nameEdit = true">
+                        <u>{{character.character.name}}</u>
+                    </h2>
+                    <input [(ngModel)]="character.character.name" *ngIf="nameEdit" (blur)="nameEdit = false;save()" />
                     <a [href]="character.character.wiki" target="_blank">WIKI</a><br />
-                    <button class="btn btn-sm btn-danger" (click)="delete()">{{'deleteTab' | transloco}}</button>
+                    <button class="btn btn-sm btn-danger mt-4" (click)="delete()">{{'deleteTab' | transloco}}</button>
                 </div>
                 <div class="col-sm-9">
                     <div class="row">

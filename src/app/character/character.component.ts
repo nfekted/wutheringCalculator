@@ -172,7 +172,7 @@ export class CharacterComponent {
 
     const list: Array<Array<number | boolean>> = [];
     const rotation = this.character.character.rotation;
-    if (!this.randomCrit) currentChance = this.newQtdCrit;
+    if (!this.randomCrit) currentChance = (!simulation ? this.qtdCrit : this.newQtdCrit);
     for (let i = 0; i < rotation[0].length; i++) {
       const dmg = simulation ? copy[rotation[0][i]][rotation[1][i]] : this.character[rotation[0][i]][rotation[1][i]];
       if ((!this.randomCrit && currentChance > 0) || (this.randomCrit && (Math.floor(Math.random() * 100) + 1) < currentChance)) {
