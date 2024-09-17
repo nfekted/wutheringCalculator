@@ -16,6 +16,11 @@
         "sum": "Current mode: Sum all damages"
     },
     "characters": {
+        "aalto": "<b>Aalto damage</b> is <b>pure ATK</b> with elemental <b>Aero</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "baizhi": "<b>Baihzi heal</b> is <b>based on HP</b> with elemental <b>Glacio</b> bonus on ATK.",
+        "calcharo": "<b>Calcharo damage</b> is <b>pure ATK</b> with elemental <b>Electro</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "changli": "<b>Changli damage</b> is <b>pure ATK</b> with elemental <b>Fusion</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "chixia": "<b>Chixia damage</b> is <b>pure ATK</b> with elemental <b>Fusion</b> bonus, other status like HP, DEF... has no influence in her damage",
         "encore": "<b>Encore damage</b> is <b>pure ATK</b> with elemental <b>Fusion</b> bonus, other status like HP, DEF... has no influence in her damage",
         "sanhua": "<b>Sanhua damage</b> is <b>pure ATK</b> with elemental <b>Glacio</b> bonus, other status like HP, DEF... has no influence in her damage",
         "jinhsi": "<b>Jinhsi damage</b> is <b>pure ATK</b> with elemental <b>Spectro</b> bonus, other status like HP, DEF... has no influence in her damage"

@@ -1,11 +1,17 @@
+import { Aalto } from "./aalto.model";
+import { Baizhi } from "./baizhi.model";
+import { Calcharo } from "./calcharo.model";
+import { Changli } from "./changli.model";
+import { Chixia } from "./chixia.model";
 import { Encore } from "./encore.model";
 import { Jinhsi } from "./jinhsi.model";
 import { Sanhua } from "./sanhua.model";
 
 export class Character {
     index: number;
-    character: Encore | Sanhua | Jinhsi;
+    character: Aalto | Baizhi | Calcharo | Changli | Chixia | Encore | Sanhua | Jinhsi;
     atk: boolean = false;
+    heal: boolean = false;
     hp: boolean = false;
     def: boolean = false;
 
