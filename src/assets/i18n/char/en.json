@@ -9,7 +9,7 @@
     "rectifier": "<b>Rectifier</b> is one of the 5 type of Weapons in game, common in \"non-phisical\" characters.",
     "sword": "<b>Sword</b> is one of the 5 type of Weapons in game, common in \"phisical\" characters.",
     "broadblade": "<b>Broadblade</b> is one of the 5 type of Weapons in game, common in \"phisical\" characters.",
-    "gauntlet": "<b>Gauntlet</b> is one of the 5 type of Weapons in game, common in \"phisical\" characters.",
+    "gauntlets": "<b>Gauntlet</b> is one of the 5 type of Weapons in game, common in \"phisical\" characters.",
     "pistols": "<b>Pistols</b> is one of the 5 type of Weapons in game, common in \"long-raged\" characters.",
     "modes": {
         "full": "Current mode: Show all damage detailed",
@@ -21,7 +21,13 @@
         "calcharo": "<b>Calcharo damage</b> is <b>pure ATK</b> with elemental <b>Electro</b> bonus, other status like HP, DEF... has no influence in her damage",
         "changli": "<b>Changli damage</b> is <b>pure ATK</b> with elemental <b>Fusion</b> bonus, other status like HP, DEF... has no influence in her damage",
         "chixia": "<b>Chixia damage</b> is <b>pure ATK</b> with elemental <b>Fusion</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "danjin": "<b>Danjin damage</b> is <b>pure ATK</b> with elemental <b>Havoc</b> bonus, other status like HP, DEF... has no influence in her damage",
         "encore": "<b>Encore damage</b> is <b>pure ATK</b> with elemental <b>Fusion</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "jianxin": "<b>Jianxin damage</b> is <b>pure ATK</b> with elemental <b>Aero</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "jiyan": "<b>Jiyan damage</b> is <b>pure ATK</b> with elemental <b>Aero</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "lingyang": "<b>Lingyang damage</b> is <b>pure ATK</b> with elemental <b>Glacio</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "mortefi": "<b>Mortefi damage</b> is <b>pure ATK</b> with elemental <b>Fusion</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "roverh": "<b>Rover (Havoc ver.) damage</b> is <b>pure ATK</b> with elemental <b>Havoc</b> bonus, other status like HP, DEF... has no influence in her damage",
         "sanhua": "<b>Sanhua damage</b> is <b>pure ATK</b> with elemental <b>Glacio</b> bonus, other status like HP, DEF... has no influence in her damage",
         "jinhsi": "<b>Jinhsi damage</b> is <b>pure ATK</b> with elemental <b>Spectro</b> bonus, other status like HP, DEF... has no influence in her damage"
     },

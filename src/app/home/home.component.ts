@@ -9,6 +9,12 @@ import { Baizhi } from '../shared/models/baizhi.model';
 import { Calcharo } from '../shared/models/calcharo.model';
 import { Changli } from '../shared/models/changli.model';
 import { Chixia } from '../shared/models/chixia.model';
+import { Danjin } from '../shared/models/danjin.model';
+import { Jianxin } from '../shared/models/jianxin.model';
+import { Jiyan } from '../shared/models/jiyan.model';
+import { Lingyang } from '../shared/models/lingyang.model';
+import { Mortefi } from '../shared/models/mortefi.model';
+import { RoverHavoc } from '../shared/models/roverh.model';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +28,11 @@ export class HomeComponent {
   currentSelection: string = '';
 
   constructor() {
-    this.characterList = [new Aalto(), new Baizhi(), new Calcharo(), new Changli(), new Chixia(), new Encore(), new Sanhua(), new Jinhsi()];
+    this.characterList = [
+      new Aalto(), new Baizhi(), new Calcharo(), new Changli(),
+      new Chixia(), new Danjin(), new Encore(), new Jianxin(),
+      new Jiyan(), new Lingyang(), new Mortefi(), new RoverHavoc(),
+      new Sanhua(), new Jinhsi()];
   }
 
   ngOnInit(): void {
@@ -58,9 +68,39 @@ export class HomeComponent {
         char = this.charCreation(chi);
         char.atk = true;
         break;
+      case 'danjin':
+        const dan: Danjin = new Danjin();
+        char = this.charCreation(dan);
+        char.atk = true;
+        break;
       case 'encore':
         const enc: Encore = new Encore();
         char = this.charCreation(enc);
+        char.atk = true;
+        break;
+      case 'jianxin':
+        const jia: Jianxin = new Jianxin();
+        char = this.charCreation(jia);
+        char.atk = true;
+        break;
+      case 'jiyan':
+        const jiy: Jiyan = new Jiyan();
+        char = this.charCreation(jiy);
+        char.atk = true;
+        break;
+      case 'lingyang':
+        const lin: Lingyang = new Lingyang();
+        char = this.charCreation(lin);
+        char.atk = true;
+        break;
+      case 'mortefi':
+        const mor: Mortefi = new Mortefi();
+        char = this.charCreation(mor);
+        char.atk = true;
+        break;
+      case 'roverh':
+        const roh: RoverHavoc = new RoverHavoc();
+        char = this.charCreation(roh);
         char.atk = true;
         break;
       case 'sanhua':

@@ -3,13 +3,19 @@ import { Baizhi } from "./baizhi.model";
 import { Calcharo } from "./calcharo.model";
 import { Changli } from "./changli.model";
 import { Chixia } from "./chixia.model";
+import { Danjin } from "./danjin.model";
 import { Encore } from "./encore.model";
+import { Jianxin } from "./jianxin.model";
 import { Jinhsi } from "./jinhsi.model";
+import { Jiyan } from "./jiyan.model";
+import { Lingyang } from "./lingyang.model";
+import { Mortefi } from "./mortefi.model";
+import { RoverHavoc } from "./roverh.model";
 import { Sanhua } from "./sanhua.model";
 
 export class Character {
     index: number;
-    character: Aalto | Baizhi | Calcharo | Changli | Chixia | Encore | Sanhua | Jinhsi;
+    character: Aalto | Baizhi | Calcharo | Changli | Chixia | Danjin | Encore | Jianxin | Jiyan | Lingyang | Mortefi | RoverHavoc | Sanhua | Jinhsi;
     atk: boolean = false;
     heal: boolean = false;
     hp: boolean = false;
