@@ -10,12 +10,14 @@ import { Jinhsi } from "./jinhsi.model";
 import { Jiyan } from "./jiyan.model";
 import { Lingyang } from "./lingyang.model";
 import { Mortefi } from "./mortefi.model";
+import { Rover } from "./rover.model";
 import { RoverHavoc } from "./roverh.model";
 import { Sanhua } from "./sanhua.model";
+import { Taoqi } from "./taoqi.model";
 
 export class Character {
     index: number;
-    character: Aalto | Baizhi | Calcharo | Changli | Chixia | Danjin | Encore | Jianxin | Jiyan | Lingyang | Mortefi | RoverHavoc | Sanhua | Jinhsi;
+    character: Aalto | Baizhi | Calcharo | Changli | Chixia | Danjin | Encore | Jianxin | Jinhsi | Jiyan | Lingyang | Mortefi | RoverHavoc | Rover | Sanhua | Taoqi;
     atk: boolean = false;
     heal: boolean = false;
     hp: boolean = false;

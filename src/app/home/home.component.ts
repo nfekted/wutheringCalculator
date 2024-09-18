@@ -15,6 +15,8 @@ import { Jiyan } from '../shared/models/jiyan.model';
 import { Lingyang } from '../shared/models/lingyang.model';
 import { Mortefi } from '../shared/models/mortefi.model';
 import { RoverHavoc } from '../shared/models/roverh.model';
+import { Rover } from '../shared/models/rover.model';
+import { Taoqi } from '../shared/models/taoqi.model';
 
 @Component({
   selector: 'app-home',
@@ -31,8 +33,8 @@ export class HomeComponent {
     this.characterList = [
       new Aalto(), new Baizhi(), new Calcharo(), new Changli(),
       new Chixia(), new Danjin(), new Encore(), new Jianxin(),
-      new Jiyan(), new Lingyang(), new Mortefi(), new RoverHavoc(),
-      new Sanhua(), new Jinhsi()];
+      new Jinhsi(), new Jiyan(), new Lingyang(), new Mortefi(),
+      new RoverHavoc(), new Rover(), new Sanhua(), new Taoqi()];
   }
 
   ngOnInit(): void {
@@ -83,6 +85,12 @@ export class HomeComponent {
         char = this.charCreation(jia);
         char.atk = true;
         break;
+      case 'jinhsi':
+        const jin: Jinhsi = new Jinhsi();
+        char = this.charCreation(jin);
+        char.atk = true;
+        break;
+      default: break;
       case 'jiyan':
         const jiy: Jiyan = new Jiyan();
         char = this.charCreation(jiy);
@@ -103,17 +111,21 @@ export class HomeComponent {
         char = this.charCreation(roh);
         char.atk = true;
         break;
+      case 'rover':
+        const rov: Rover = new Rover();
+        char = this.charCreation(rov);
+        char.atk = true;
+        break;
       case 'sanhua':
         const san: Sanhua = new Sanhua();
         char = this.charCreation(san);
         char.atk = true;
         break;
-      case 'jinhsi':
-        const jin: Jinhsi = new Jinhsi();
-        char = this.charCreation(jin);
+      case 'taoqi':
+        const tao: Taoqi = new Taoqi();
+        char = this.charCreation(tao);
+        char.def = true;
         char.atk = true;
-        break;
-      default: break;
     }
     this.characters.push(char);
     Util.characters = this.characters;

@@ -24,12 +24,14 @@
         "danjin": "<b>Danjin damage</b> is <b>pure ATK</b> with elemental <b>Havoc</b> bonus, other status like HP, DEF... has no influence in her damage",
         "encore": "<b>Encore damage</b> is <b>pure ATK</b> with elemental <b>Fusion</b> bonus, other status like HP, DEF... has no influence in her damage",
         "jianxin": "<b>Jianxin damage</b> is <b>pure ATK</b> with elemental <b>Aero</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "jinhsi": "<b>Jinhsi damage</b> is <b>pure ATK</b> with elemental <b>Spectro</b> bonus, other status like HP, DEF... has no influence in her damage",
         "jiyan": "<b>Jiyan damage</b> is <b>pure ATK</b> with elemental <b>Aero</b> bonus, other status like HP, DEF... has no influence in her damage",
         "lingyang": "<b>Lingyang damage</b> is <b>pure ATK</b> with elemental <b>Glacio</b> bonus, other status like HP, DEF... has no influence in her damage",
         "mortefi": "<b>Mortefi damage</b> is <b>pure ATK</b> with elemental <b>Fusion</b> bonus, other status like HP, DEF... has no influence in her damage",
         "roverh": "<b>Rover (Havoc ver.) damage</b> is <b>pure ATK</b> with elemental <b>Havoc</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "rover": "<b>Rover damage</b> is <b>pure ATK</b> with elemental <b>Spectro</b> bonus, other status like HP, DEF... has no influence in her damage",
         "sanhua": "<b>Sanhua damage</b> is <b>pure ATK</b> with elemental <b>Glacio</b> bonus, other status like HP, DEF... has no influence in her damage",
-        "jinhsi": "<b>Jinhsi damage</b> is <b>pure ATK</b> with elemental <b>Spectro</b> bonus, other status like HP, DEF... has no influence in her damage"
+        "taoqi": "<b>Taoqi damage</b> is <b>pure ATK</b> with elemental <b>Havoc</b> bonus, other status like HP, DEF... has no influence in her damage"
     },
     "prediction": "PREDICTED NUMBERS",
     "info": "Due to the defense calculation not being exact, may vary by an <b>average of 6.5% of the actual in-game value.</b>",
