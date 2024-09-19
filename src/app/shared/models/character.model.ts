@@ -14,10 +14,21 @@ import { Rover } from "./rover.model";
 import { RoverHavoc } from "./roverh.model";
 import { Sanhua } from "./sanhua.model";
 import { Taoqi } from "./taoqi.model";
+import { Verina } from "./verina.model";
+import { XiangliYao } from "./xiangliyao.model";
+import { Yangyang } from "./yangyang.model";
+import { Yinlin } from "./yinlin.model";
+import { Yuanwu } from "./yuanwu.model";
+import { Zhezhi } from "./zhezhi.model";
 
 export class Character {
     index: number;
-    character: Aalto | Baizhi | Calcharo | Changli | Chixia | Danjin | Encore | Jianxin | Jinhsi | Jiyan | Lingyang | Mortefi | RoverHavoc | Rover | Sanhua | Taoqi;
+    character: Aalto | Baizhi | Calcharo | Changli
+        | Chixia | Danjin | Encore | Jianxin
+        | Jinhsi | Jiyan | Lingyang | Mortefi
+        | RoverHavoc | Rover | Sanhua | Taoqi
+        | Verina | XiangliYao | Yinlin | Yangyang
+        | Yuanwu | Zhezhi;
     atk: boolean = false;
     heal: boolean = false;
     hp: boolean = false;

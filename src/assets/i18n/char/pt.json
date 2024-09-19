@@ -31,7 +31,13 @@
         "roverh": "O dano do <b>Rover (Ver. Havoc)</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Havoc</b>, outros status como HP, DEF... não influênciam em seu dano.",
         "rover": "O dano do <b>Rover</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Spectro</b>, outros status como HP, DEF... não influênciam em seu dano.",
         "sanhua": "O dano da <b>Sanhua</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Glacio</b>, outros status como HP, DEF... não influênciam em seu dano.",
-        "taoqi": "O dano da <b>Taoqi</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Havoc</b>, outros status como HP, DEF... não influênciam em seu dano."
+        "taoqi": "O dano da <b>Taoqi</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Havoc</b>, outros status como HP, DEF... não influênciam em seu dano.",
+        "verina": "<b>A cura de Verina</b> é <b>baseado em seu ATK</b> com elemental <b>Spectro</b> para bonus no ATK.",
+        "xiangliyao": "O dano do <b>Xiangli Yao</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Electro</b>, outros status como HP, DEF... não influênciam em seu dano.",
+        "yangyang": "O dano da <b>Yangyang</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Aero</b>, outros status como HP, DEF... não influênciam em seu dano.",
+        "yinlin": "O dano do <b>Yinlin</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Electro</b>, outros status como HP, DEF... não influênciam em seu dano.",
+        "yuanwu": "O dano do <b>Yuanwu</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Electro</b>, outros status como HP, DEF... não influênciam em seu dano.",
+        "zhezhi": "O dano da <b>Zhezhi</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Glacio</b>, outros status como HP, DEF... não influênciam em seu dano."
     },
     "prediction": "NÚMEROS PREVISTOS",
     "info": "Devido ao calculo de defesa não ser exato, pode variar uma <b>média de 6.5% do valor real in-game.</b>",

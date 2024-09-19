@@ -17,6 +17,12 @@ import { Mortefi } from '../shared/models/mortefi.model';
 import { RoverHavoc } from '../shared/models/roverh.model';
 import { Rover } from '../shared/models/rover.model';
 import { Taoqi } from '../shared/models/taoqi.model';
+import { Verina } from '../shared/models/verina.model';
+import { XiangliYao } from '../shared/models/xiangliyao.model';
+import { Yangyang } from '../shared/models/yangyang.model';
+import { Yinlin } from '../shared/models/yinlin.model';
+import { Yuanwu } from '../shared/models/yuanwu.model';
+import { Zhezhi } from '../shared/models/zhezhi.model';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +40,9 @@ export class HomeComponent {
       new Aalto(), new Baizhi(), new Calcharo(), new Changli(),
       new Chixia(), new Danjin(), new Encore(), new Jianxin(),
       new Jinhsi(), new Jiyan(), new Lingyang(), new Mortefi(),
-      new RoverHavoc(), new Rover(), new Sanhua(), new Taoqi()];
+      new RoverHavoc(), new Rover(), new Sanhua(), new Taoqi(),
+      new Verina(), new XiangliYao(), new Yangyang(), new Yinlin(),
+      new Yuanwu(), new Zhezhi()];
   }
 
   ngOnInit(): void {
@@ -126,6 +134,38 @@ export class HomeComponent {
         char = this.charCreation(tao);
         char.def = true;
         char.atk = true;
+        break;
+      case 'verina':
+        const ver: Verina = new Verina();
+        char = this.charCreation(tao);
+        char.heal = true;
+        char.atk = true;
+        break;
+      case 'xiangliyao':
+        const xia: XiangliYao = new XiangliYao();
+        char = this.charCreation(xia);
+        char.atk = true;
+        break;
+      case 'yangyang':
+        const yan: Yangyang = new Yangyang();
+        char = this.charCreation(yan);
+        char.atk = true;
+        break;
+      case 'yinlin':
+        const yin: Yinlin = new Yinlin();
+        char = this.charCreation(yin);
+        char.atk = true;
+        break;
+      case 'yuanwu':
+        const yua: Yuanwu = new Yuanwu();
+        char = this.charCreation(yua);
+        char.atk = true;
+        break;
+      case 'zhezhi':
+        const zhe: Zhezhi = new Zhezhi();
+        char = this.charCreation(zhe);
+        char.atk = true;
+        break;
     }
     this.characters.push(char);
     Util.characters = this.characters;

@@ -31,7 +31,13 @@
         "roverh": "<b>Rover (Havoc ver.) damage</b> is <b>pure ATK</b> with elemental <b>Havoc</b> bonus, other status like HP, DEF... has no influence in her damage",
         "rover": "<b>Rover damage</b> is <b>pure ATK</b> with elemental <b>Spectro</b> bonus, other status like HP, DEF... has no influence in her damage",
         "sanhua": "<b>Sanhua damage</b> is <b>pure ATK</b> with elemental <b>Glacio</b> bonus, other status like HP, DEF... has no influence in her damage",
-        "taoqi": "<b>Taoqi damage</b> is <b>pure ATK</b> with elemental <b>Havoc</b> bonus, other status like HP, DEF... has no influence in her damage"
+        "taoqi": "<b>Taoqi damage</b> is <b>pure ATK</b> with elemental <b>Havoc</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "verina": "<b>Verina Heal</b> is <b>based on ATK</b> with elemental <b>Spectro</b> bonus",
+        "xiangliyao": "<b>Xiangli Yao damage</b> is <b>pure ATK</b> with elemental <b>Electro</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "yangyang": "<b>Yangyang damage</b> is <b>pure ATK</b> with elemental <b>Aero</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "yinlin": "<b>Yinlin damage</b> is <b>pure ATK</b> with elemental <b>Electro</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "yuanwu": "<b>Yuanwu damage</b> is <b>pure ATK</b> with elemental <b>Electro</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "zhezhi": "<b>Zhezhi damage</b> is <b>pure ATK</b> with elemental <b>Glacio</b> bonus, other status like HP, DEF... has no influence in her damage"
     },
     "prediction": "PREDICTED NUMBERS",
     "info": "Due to the defense calculation not being exact, may vary by an <b>average of 6.5% of the actual in-game value.</b>",
