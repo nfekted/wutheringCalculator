@@ -18,6 +18,7 @@ export class CharacterComponent {
 
   nameEdit: boolean = false;
   currentSelection: string = '';
+  showHelp: boolean = false;
 
   critSimFixed: Array<Array<number | boolean>> = [];
   critSimFixedSim: Array<Array<number | boolean>> = [];

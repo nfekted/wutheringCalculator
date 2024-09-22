@@ -2,7 +2,7 @@
     "attributes": "Atributos necessários para esse personagem:",
     "fusion": "<b class=\"fusion\">FUSION</b> (Fusão) é um dos seis tipos de dano presentes no jogo. Pode ser relacionado como <b class=\"fusion\">Fogo</b>",
     "glacio": "<b class=\"glacio\">GLACIO</b> (Glacial) é um dos seis tipos de dano presentes no jogo. Pode ser relacionado como <b class=\"glacio\">Gelo</b>",
-    "aero": "<b class=\"aero\">AERO</b> (Aéreo) é um dos seis tipos de dano presentes no jogo. Pode ser relacionado como <b class=\"aero\">Vento</b>",
+    "aero": "<b class=\"aero\">AERO</b> é um dos seis tipos de dano presentes no jogo. Pode ser relacionado como <b class=\"aero\">Vento</b>",
     "electro": "<b class=\"electro\">ELECTRO</b> (Eletricidade) é um dos seis tipos de dano presentes no jogo.",
     "spectro": "<b class=\"spectro\">SPECTRO</b> (Espectro) é um dos seis tipos de dano presentes no jogo.",
     "havoc": "<b class=\"havoc\">HAVOC</b> (Destruição) é um dos seis tipos de dano presentes no jogo.",
@@ -10,13 +10,13 @@
     "sword": "<b>Sword</b> é um dos 5 tipos de arma presentes no jogo, comum em personagens \"físicos\".",
     "broadblade": "<b>Broadblade</b> é um dos 5 tipos de arma presentes no jogo, comum em personagens \"físicos\".",
     "gauntlets": "<b>Gauntlet</b> é um dos 5 tipos de arma presentes no jogo, comum em personagens \"físicos\".",
-    "pistols": "<b>Pistols</b> é um dos 5 tipos de arma presentes no jogo, comum em personagens de \"ataque a distância\".",
+    "pistols": "<b>Pistolas</b> é um dos 5 tipos de armas presentes no jogo, comum em personagens de \"ataque a distância\".",
     "modes": {
         "full": "Modo: Mostrar danos detalhados",
         "sum": "Modo: Somar todos danos"
     },
     "characters": {
-        "aalto": "O dano da <b>Aalto</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Aero</b>, outros status como HP, DEF... não influênciam em seu dano.",
+        "aalto": "<b>Aalto</b> é um personagem com bônus elemental <b class=\"aero\">AERO</b>, o dano do <b>Aalto</b> se baseia puramente em <b>ATK</b> sem a influência de outros status como HP, DEF e etc... As principais características do <b>Aalto</b> é sua <b>rápida regeneração de energia</b> e <b>amplificação de dano <b class=\"aero\">AERO</b> em 23% a outros personagens</b>, com sua habilidade <b>Outro: Dissolving Mist</b>.",
         "baizhi": "<b>A cura de Baihzi</b> é <b>baseado em seu HP</b> com elemental <b>Glacio</b> para bonus no ATK.",
         "calcharo": "O dano do <b>Calcharo</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Electro</b>, outros status como HP, DEF... não influênciam em seu dano.",
         "changli": "O dano da <b>Changli</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Fusion</b>, outros status como HP, DEF... não influênciam em seu dano.",
@@ -53,8 +53,9 @@
     "raw": "Dano Puro (Crit. Puro)",
     "dmg": "Intervalo de Dano inimigo comum (Crit. Comum)",
     "dmgR": "Intervalo de Dano inimigo RES (Crit. RES)",
+    "showHelp": "Mostrar descrição dos campos",
     "description": "Legenda",
-    "help1": "<b>Dano Puro</b>: É o dano do seu personagem ignorando qualquer outro tipo de mecânica (defesa, resistencia)<br/><b>Use a coluna Dano Puro</b> como base para saber se seu personagem está melhor, ou pior.<br/><br/><b>Dano inimigo comum</b>: Intervalo de dano estipulado em inimigos comuns, sem resistencia ao seu elemento<br/><b>Dano inimigo resistente</b>: Intervalo de dano estipulado em inimigos com resistencia ao seu elemento.<br/><b>O dano in-game é apenas informativo</b>, use a coluna de Dano Puro para melhores métricas.",
+    "help1": "<b>Dano Puro</b>: É o dano do seu personagem ignorando qualquer outro tipo de mecânica (defesa, resistencia)<br/><u><b>Use a coluna Dano Puro</b></u> como base para saber se seu personagem está melhor ou pior, uma vez que ela não tem influências de variaveis exteriores.<br/><br/><b>Dano inimigo comum</b>: Intervalo de dano estipulado em inimigos comuns, sem resistencia ao seu elemento<br/><b>Dano inimigo resistente</b>: Intervalo de dano estipulado em inimigos com resistencia ao seu elemento.<br/><u><b>O dano in-game é apenas informativo</b></u>, use a coluna de Dano Puro para melhores métricas.",
     "delete": "Tem certeza? Essa ação não pode ser desfeita",
     "enhancer": {
         "enhancer": "Comparador de Atributos.",

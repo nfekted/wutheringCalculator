@@ -16,7 +16,7 @@
         "sum": "Current mode: Sum all damages"
     },
     "characters": {
-        "aalto": "<b>Aalto damage</b> is <b>pure ATK</b> with elemental <b>Aero</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "aalto": "<b>Aalto</b> is a character with <b class=\"aero\">AERO</b> elemental bonus, Aalto damage is based purely on <b>ATK</b> without the influence of other statuses, such as HP, DEF, etc... Aalto`s main characteristis are his <b>Concerto Efficiency</b> and <b><b class=\"aero\">AERO</b> DMG Amplification</b> in 23% to ther characters, with their ability <b>Outro: Dissolving Mist</b>.",
         "baizhi": "<b>Baihzi heal</b> is <b>based on HP</b> with elemental <b>Glacio</b> bonus on ATK.",
         "calcharo": "<b>Calcharo damage</b> is <b>pure ATK</b> with elemental <b>Electro</b> bonus, other status like HP, DEF... has no influence in her damage",
         "changli": "<b>Changli damage</b> is <b>pure ATK</b> with elemental <b>Fusion</b> bonus, other status like HP, DEF... has no influence in her damage",
@@ -53,8 +53,9 @@
     "raw": "Raw Damage (Raw Crit.)",
     "dmg": "Common Enemy DMG (Common Crit.) ~Range",
     "dmgR": "RES Enemy DMG (RES Crit.) ~Range",
+    "showHelp": "Show colmuns help",
     "description": "Description",
-    "help1": "<b>Raw Damage</b>: It is your character's damage, ignoring any other type of mechanic (defense, resistance).<br/><b>Use Raw Damage column as a basis </b>to know if your character is better or worse.<br/><br/><b>Common Enemy DMG</b>: Damage stipulated on common enemies, without resistance to their element<br/><b>RES Enemy DMG</b>: Damage stipulated on enemies with resistance to your element.<br/><b>In-game DMG is purely informative</b>, for better metrics use the Raw Damage column.",
+    "help1": "<b>Raw Damage</b>: It is your character's damage, ignoring any other type of mechanic (defense, resistance).<br/><u><b>Use Raw Damage column as a basis </b></u>to know if your character is better or worse, since it has no external variables.<br/><br/><b>Common Enemy DMG</b>: Damage stipulated on common enemies, without resistance to their element<br/><b>RES Enemy DMG</b>: Damage stipulated on enemies with resistance to your element.<br/><u><b>In-game DMG is purely informative</b></u>, for better metrics use the Raw Damage column.",
     "delete": "Are you sure? This action can't be undone",
     "enhancer": {
         "enhancer": "Stat change comparator",
