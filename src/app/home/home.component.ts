@@ -37,12 +37,14 @@ export class HomeComponent {
 
   constructor() {
     this.characterList = [
-      new Aalto(), new Baizhi(), new Calcharo(), new Changli(),
-      new Chixia(), new Danjin(), new Encore(), new Jianxin(),
-      new Jinhsi(), new Jiyan(), new Lingyang(), new Mortefi(),
-      new RoverHavoc(), new Rover(), new Sanhua(), new Taoqi(),
-      new Verina(), new XiangliYao(), new Yangyang(), new Yinlin(),
-      new Yuanwu(), new Zhezhi()];
+      new Aalto(), 
+      // new Baizhi(), new Calcharo(), new Changli(),
+      // new Chixia(), new Danjin(), new Encore(), new Jianxin(),
+      // new Jinhsi(), new Jiyan(), new Lingyang(), new Mortefi(),
+      // new RoverHavoc(), new Rover(), new Sanhua(), new Taoqi(),
+      // new Verina(), new XiangliYao(), new Yangyang(), new Yinlin(),
+      // new Yuanwu(), new Zhezhi()
+    ];
   }
 
   ngOnInit(): void {
@@ -55,116 +57,115 @@ export class HomeComponent {
       case 'aalto':
         const aal: Aalto = new Aalto();
         char = this.charCreation(aal);
-        char.atk = true;
         break;
       case 'baizhi':
         const bai: Baizhi = new Baizhi();
         char = this.charCreation(bai);
-        char.hp = true;
-        char.heal = true;
+        char.hpType = true;
+        char.healType = true;
         break;
       case 'calcharo':
         const cal: Calcharo = new Calcharo();
         char = this.charCreation(cal);
-        char.atk = true;
+
         break;
       case 'changli':
         const cha: Changli = new Changli();
         char = this.charCreation(cha);
-        char.atk = true;
+
         break;
       case 'chixia':
         const chi: Chixia = new Chixia();
         char = this.charCreation(chi);
-        char.atk = true;
+
         break;
       case 'danjin':
         const dan: Danjin = new Danjin();
         char = this.charCreation(dan);
-        char.atk = true;
+
         break;
       case 'encore':
         const enc: Encore = new Encore();
         char = this.charCreation(enc);
-        char.atk = true;
+
         break;
       case 'jianxin':
         const jia: Jianxin = new Jianxin();
         char = this.charCreation(jia);
-        char.atk = true;
+
         break;
       case 'jinhsi':
         const jin: Jinhsi = new Jinhsi();
         char = this.charCreation(jin);
-        char.atk = true;
+
         break;
       default: break;
       case 'jiyan':
         const jiy: Jiyan = new Jiyan();
         char = this.charCreation(jiy);
-        char.atk = true;
+
         break;
       case 'lingyang':
         const lin: Lingyang = new Lingyang();
         char = this.charCreation(lin);
-        char.atk = true;
+
         break;
       case 'mortefi':
         const mor: Mortefi = new Mortefi();
         char = this.charCreation(mor);
-        char.atk = true;
+
         break;
       case 'roverh':
         const roh: RoverHavoc = new RoverHavoc();
         char = this.charCreation(roh);
-        char.atk = true;
+
         break;
       case 'rover':
         const rov: Rover = new Rover();
         char = this.charCreation(rov);
-        char.atk = true;
+
         break;
       case 'sanhua':
         const san: Sanhua = new Sanhua();
         char = this.charCreation(san);
-        char.atk = true;
+
         break;
       case 'taoqi':
         const tao: Taoqi = new Taoqi();
         char = this.charCreation(tao);
-        char.def = true;
-        char.atk = true;
+        char.defType = true;
+
         break;
       case 'verina':
         const ver: Verina = new Verina();
         char = this.charCreation(tao);
-        char.heal = true;
-        char.atk = true;
+        char.healType = true;
+
         break;
       case 'xiangliyao':
         const xia: XiangliYao = new XiangliYao();
         char = this.charCreation(xia);
-        char.atk = true;
+
         break;
       case 'yangyang':
         const yan: Yangyang = new Yangyang();
         char = this.charCreation(yan);
-        char.atk = true;
+
         break;
       case 'yinlin':
         const yin: Yinlin = new Yinlin();
         char = this.charCreation(yin);
-        char.atk = true;
+
         break;
       case 'yuanwu':
         const yua: Yuanwu = new Yuanwu();
         char = this.charCreation(yua);
-        char.atk = true;
+
         break;
       case 'zhezhi':
         const zhe: Zhezhi = new Zhezhi();
         char = this.charCreation(zhe);
-        char.atk = true;
+
         break;
     }
     this.characters.push(char);

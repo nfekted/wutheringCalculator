@@ -29,12 +29,13 @@ export class Character {
         | RoverHavoc | Rover | Sanhua | Taoqi
         | Verina | XiangliYao | Yinlin | Yangyang
         | Yuanwu | Zhezhi;
-    atk: boolean = false;
-    heal: boolean = false;
-    hp: boolean = false;
-    def: boolean = false;
+    healType: boolean = false;
+    hpType: boolean = false;
+    defType: boolean = false;
 
     dmg: number = 0;
+    hp: number = 0;
+    def: number = 0;
     cChance: number = 5;
     cDmg: number = 150;
     elementalBonus: number = 0;
@@ -42,6 +43,7 @@ export class Character {
     heavyBonus: number = 0;
     skillBonus: number = 0;
     liberationBonus: number = 0;
+    healingBonus: number = 0;
 
     //----------------------------------------
     basicDmg: number[] = [];
@@ -181,7 +183,10 @@ export class Character {
     public calculateSkill() {
         for (let i = 0; i < this.character.skill.length; i++) {
             //Get Expected value
-            const ex = this.getExpected(this.dmg, this.character.skill[i], this.character.skillCurrent - 1, this.elementalBonus, this.skillBonus);
+            const ex = (this.character['skillHeal']?.[i] ?
+                this.getHeal(this.character.skill[i], this.character.skillCurrent - 1) :
+                this.getExpected(this.dmg, this.character.skill[i], this.character.skillCurrent - 1, this.elementalBonus, this.skillBonus)
+            );
 
             //Set expected as Base Damage
             this.skillDmg[i] = +ex.toFixed(0);
@@ -200,7 +205,10 @@ export class Character {
             let range: number[] = [];
             //Second Skill Damages
             if (this.character['skillSecondDmg']) {
-                this.skillSecondDmg[i] = +(this.getExpected(this.dmg, this.character['skillSecondDmg'][i], this.character.skillCurrent - 1, this.elementalBonus, this.skillBonus)).toFixed(0);
+                this.skillSecondDmg[i] = +(this.character[`skillHeal`]?.[i] ?
+                    this.getHeal(this.character['skillSecondDmg'][i], this.character.skillCurrent - 1) :
+                    this.getExpected(this.dmg, this.character['skillSecondDmg'][i], this.character.skillCurrent - 1, this.elementalBonus, this.skillBonus)
+                ).toFixed(0);
 
                 if (this.skillSecondDmg[i] > 0) {
                     multiplier = this.character['skillSecondMultiplier'][i];
@@ -245,7 +253,10 @@ export class Character {
     private calculateLiberation() {
         for (let i = 0; i < this.character.liberation.length; i++) {
             //Get Expected DMG
-            const ex = this.getExpected(this.dmg, this.character.liberation[i], this.character.liberationCurrent - 1, this.elementalBonus, (this.character.icon == 'encore' ? (i == this.character.liberation.length - 1 ? this.heavyBonus : this.basicBonus) : this.liberationBonus));
+            const ex = (this.character['liberationHeal']?.[i] ?
+                this.getHeal(this.character.liberation[i], this.character.liberationCurrent - 1) :
+                this.getExpected(this.hpType ? this.hp : this.dmg, this.character.liberation[i], this.character.liberationCurrent - 1, this.elementalBonus, (this.character.icon == 'encore' ? (i == this.character.liberation.length - 1 ? this.heavyBonus : this.basicBonus) : this.liberationBonus))
+            );
 
             //Set expected as Base Damage
             this.liberationDmg[i] = +ex.toFixed(0);
@@ -266,7 +277,10 @@ export class Character {
 
             //Second Skill Damages
             if (this.character['liberationSecondDmg']) {
-                this.liberationSecondDmg[i] = +(this.getExpected(this.dmg, this.character['liberationSecondDmg'][i], this.character.liberationCurrent - 1, this.elementalBonus, this.skillBonus)).toFixed(0);
+                this.liberationSecondDmg[i] = +(this.character['liberationHeal']?.[i] ?
+                    this.getHeal(this.character['liberationSecondDmg'][i], this.character.liberationCurrent - 1) :
+                    this.getExpected(this.dmg, this.character['liberationSecondDmg'][i], this.character.liberationCurrent - 1, this.elementalBonus, this.skillBonus)
+                ).toFixed(0);
 
                 if (this.liberationSecondDmg[i] > 0) {
                     multiplier = this.character['liberationSecondMultiplier'][i];
@@ -441,9 +455,21 @@ export class Character {
         });
     }
 
+    public getHeal(multiplierRange: Array<number>, upgradeLevel: number): number {
+        let dmg: number = 0;
+        if (this.hpType) {
+            dmg = this.hp;
+        } else if (this.defType) {
+            dmg = this.def;
+        } else {
+            dmg = this.dmg;
+        }
+        return this.getExpected(dmg, multiplierRange, upgradeLevel, this.healingBonus, 0);
+    }
+
     public getExpected(dmg: number, multiplierRange: Array<number>, upgradeLevel: number, elementalBonus: number, damageBonus: number): number {
         const bonus = 100 + elementalBonus + damageBonus;
-        return this.getHit(dmg, multiplierRange, upgradeLevel) * (bonus / 100) * 1 * 1//Outro bonus and critical multiplier
+        return (multiplierRange[upgradeLevel] < 0 ? multiplierRange[upgradeLevel] * -1 : this.getHit(dmg, multiplierRange, upgradeLevel)) * (bonus / 100) * 1 * 1//Outro bonus and critical multiplier
     }
 
     private getHit(dmg: number, multiplierRange: Array<number>, upgradeLevel: number): number {

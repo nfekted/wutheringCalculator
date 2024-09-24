@@ -34,16 +34,24 @@
                         </div>
                         <hr />
                         <div class="col-sm-12 mt-1"><b>{{'char.attributes' | transloco}}</b></div>
-                        <ng-container *ngIf="character.atk">
+                        <ng-container *ngIf="character.hpType">
                             <div class="col-sm-3">
-                                <span style="float: right">ATK:</span>
+                                <span style="float: right">HP:</span>
                             </div>
                             <div class="col-sm-3">
                                 <input class="form-control" type="number" placeholder="100" min="0"
-                                    [(ngModel)]="character.dmg" (blur)="calculate()" />
+                                    [(ngModel)]="character.hp" (blur)="calculate()" />
                             </div>
                             <div class="col-sm-6"></div>
                         </ng-container>
+                        <div class="col-sm-3 mt-2">
+                            <span style="float: right">ATK:</span>
+                        </div>
+                        <div class="col-sm-3 mt-2">
+                            <input class="form-control" type="number" placeholder="100" min="0"
+                                [(ngModel)]="character.dmg" (blur)="calculate()" />
+                        </div>
+                        <div class="col-sm-6"></div>
                         <div class="col-sm-3 mt-2">
                             <span style="float: right">Crit. Chance %:</span>
                         </div>
@@ -100,6 +108,17 @@
                             <input class="form-control" type="number" placeholder="150%" min="0" max="100"
                                 [(ngModel)]="character.liberationBonus" (blur)="calculate()" />
                         </div>
+                        <ng-container *ngIf="character.healType">
+                            <div class="col-sm-6"></div>
+                            <div class="col-sm-3 mt-2">
+                                <span style="float: right">Healing Bonus %:</span>
+                            </div>
+                            <div class="col-sm-3 mt-2">
+                                <input class="form-control" type="number" placeholder="150%" min="0" max="100"
+                                    [(ngModel)]="character.healingBonus" (blur)="calculate()" />
+                            </div>
+                        </ng-container>
+
                         <div class="col-sm-6"></div>
                         <div class="col-sm-3 mt-2"></div>
                         <div class="col-sm-6 mt-2">
@@ -189,7 +208,8 @@
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="showHelp" [(ngModel)]="showHelp">
+                        <input class="form-check-input" type="checkbox" role="switch" id="showHelp"
+                            [(ngModel)]="showHelp">
                         <label class="form-check-label" for="showHelp">{{'char.showHelp' | transloco}}</label>
                     </div>
                 </div>
@@ -321,16 +341,20 @@
                                             </th>
                                             <!-- Detailed Mode -->
                                             <ng-container *ngIf="!sum">
-                                                <td>
+                                                <td
+                                                    [ngStyle]="{'color': character.character['skillHeal']?.[i] ? 'lawngreen' : ''}">
                                                     <!-- Skill First Damage -->
                                                     <ng-container *ngIf="character.character.skillMultiplier[i] > 1">
                                                         <small
                                                             style="color: white;">{{character.character.skillMultiplier[i]}}x
                                                         </small>
                                                     </ng-container>
-                                                    {{character.skillDmg[i]}} (<b>{{(character.skillDmg[i] *
-                                                        (character.cDmg/100)) |
-                                                        number : '1.0-0'}}</b>)
+                                                    {{character.skillDmg[i]}}
+                                                    <ng-container *ngIf="!character.character['skillHeal']?.[i]">
+                                                        (<b>{{(character.skillDmg[i] * (character.cDmg/100)) | number :
+                                                            '1.0-0'}}</b>)
+                                                    </ng-container>
+
 
                                                     <!-- Skill Second Damage -->
                                                     <ng-container *ngIf="character.skillSecondDmg[i] > 0">
@@ -340,9 +364,10 @@
                                                             style="color: white;">{{character.character['skillSecondMultiplier'][i]}}x
                                                         </small>
                                                         {{character.skillSecondDmg[i]}}
-                                                        (<b>{{(character.skillSecondDmg[i] *
-                                                            (character.cDmg/100)) |
-                                                            number : '1.0-0'}}</b>)
+                                                        <ng-container *ngIf="!character.character['skillHeal']?.[i]">
+                                                            (<b>{{(character.skillSecondDmg[i] * (character.cDmg/100)) |
+                                                                number : '1.0-0'}}</b>)
+                                                        </ng-container>
                                                     </ng-container>
 
                                                     <!-- Skill Third Damage -->
@@ -359,25 +384,31 @@
                                                     </ng-container>
                                                 </td>
                                                 <td>
-                                                    <div [innerHtml]="character.skillCommonDmg[i]"></div>
+                                                    <div [innerHtml]="character.skillCommonDmg[i]"
+                                                        *ngIf="!character.character['skillHeal']?.[i]"></div>
                                                 </td>
                                                 <td>
-                                                    <div [innerHtml]="character.skillResDmg[i]"></div>
+                                                    <div [innerHtml]="character.skillResDmg[i]"
+                                                        *ngIf="!character.character['skillHeal']?.[i]"></div>
                                                 </td>
                                             </ng-container>
                                             <!-- Sum Mode -->
                                             <ng-container *ngIf="sum">
-                                                <td>
+                                                <td
+                                                    [ngStyle]="{'color': character.character['skillHeal']?.[i] ? 'lawngreen' : ''}">
                                                     {{character.sumSkillDmg[i]}}
-                                                    (<b>{{(character.sumSkillDmg[i] *
-                                                        (character.cDmg/100)) |
-                                                        number : '1.0-0'}}</b>)
+                                                    <ng-container *ngIf="!character.character['skillHeal']?.[i]">
+                                                        (<b>{{(character.sumSkillDmg[i] * (character.cDmg/100)) | number
+                                                            : '1.0-0'}}</b>)
+                                                    </ng-container>
                                                 </td>
                                                 <td>
-                                                    <div [innerHtml]="character.sumCommonSkillDmg[i]"></div>
+                                                    <div [innerHtml]="character.sumCommonSkillDmg[i]"
+                                                        *ngIf="!character.character['skillHeal']?.[i]"></div>
                                                 </td>
                                                 <td>
-                                                    <div [innerHtml]="character.sumResSkillDmg[i]"></div>
+                                                    <div [innerHtml]="character.sumResSkillDmg[i]"
+                                                        *ngIf="!character.character['skillHeal']?.[i]"></div>
                                                 </td>
                                             </ng-container>
                                         </tr>
@@ -390,7 +421,8 @@
                                             </th>
                                             <!-- Detailed Mode -->
                                             <ng-container *ngIf="!sum">
-                                                <td>
+                                                <td
+                                                    [ngStyle]="{'color': character.character['liberationHeal']?.[i] ? 'lawngreen' : ''}">
                                                     <!-- Liberation Damage -->
                                                     <ng-container
                                                         *ngIf="character.character.liberationMultiplier[i] > 1">
@@ -399,8 +431,10 @@
                                                         </small>
                                                     </ng-container>
                                                     {{character.liberationDmg[i]}}
-                                                    (<b>{{(character.liberationDmg[i] * (character.cDmg/100)) | number :
-                                                        '1.0-0'}}</b>)
+                                                    <ng-container *ngIf="!character.character['liberationHeal']?.[i]">
+                                                        (<b>{{(character.liberationDmg[i] * (character.cDmg/100)) |
+                                                            number : '1.0-0'}}</b>)
+                                                    </ng-container>
 
                                                     <!-- Liberation Second Damage -->
                                                     <ng-container *ngIf="character.liberationSecondDmg[i] > 0">
@@ -410,8 +444,11 @@
                                                             style="color: white;">{{character.character['liberationSecondMultiplier'][i]}}x
                                                         </small>
                                                         {{character.liberationSecondDmg[i]}}
-                                                        (<b>{{(character.liberationSecondDmg[i] * (character.cDmg/100))
-                                                            | number : '1.0-0'}}</b>)
+                                                        <ng-container
+                                                            *ngIf="!character.character['liberationHeal']?.[i]">
+                                                            (<b>{{(character.liberationSecondDmg[i] *
+                                                                (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                        </ng-container>
                                                     </ng-container>
 
                                                     <!-- Liberation Third Damage -->
@@ -427,26 +464,35 @@
                                                     </ng-container>
                                                 </td>
                                                 <td>
-                                                    <div [innerHtml]="character.liberationCommonDmg[i]"></div>
+                                                    <div [innerHtml]="character.liberationCommonDmg[i]"
+                                                        *ngIf="character.character['liberationSecondMultiplier'][i] > 1">
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <div [innerHtml]="character.liberationResDmg[i]"></div>
+                                                    <div [innerHtml]="character.liberationResDmg[i]"
+                                                        *ngIf="character.character['liberationSecondMultiplier'][i] > 1">
+                                                    </div>
                                                 </td>
                                             </ng-container>
 
                                             <!-- Sum mode -->
                                             <ng-container *ngIf="sum">
-                                                <td>
-                                                    {{character.liberationDmg[i]}}
-                                                    (<b>{{(character.liberationDmg[i] *
-                                                        (character.cDmg/100)) |
-                                                        number : '1.0-0'}}</b>)
+                                                <td
+                                                    [ngStyle]="{'color': character.character['liberationHeal']?.[i] ? 'lawngreen' : ''}">
+                                                    {{character.sumLiberationDmg[i]}}
+                                                    <ng-container *ngIf="!character.character['liberationHeal']?.[i]">
+                                                        (<b>{{(character.sumLiberationDmg[i] *
+                                                            (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                    </ng-container>
+
                                                 </td>
                                                 <td>
-                                                    <div [innerHtml]="character.sumCommonLibDmg[i]"></div>
+                                                    <div [innerHtml]="character.sumCommonLibDmg[i]"
+                                                        *ngIf="!character.character['liberationHeal']?.[i]"></div>
                                                 </td>
                                                 <td>
-                                                    <div [innerHtml]="character.sumResLibDmg[i]"></div>
+                                                    <div [innerHtml]="character.sumResLibDmg[i]"
+                                                        *ngIf="!character.character['liberationHeal']?.[i]"></div>
                                                 </td>
                                             </ng-container>
 
