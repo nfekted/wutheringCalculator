@@ -37,7 +37,7 @@ export class HomeComponent {
 
   constructor() {
     this.characterList = [
-      new Aalto(), 
+      new Aalto(),
       // new Baizhi(), new Calcharo(), new Changli(),
       // new Chixia(), new Danjin(), new Encore(), new Jianxin(),
       // new Jinhsi(), new Jiyan(), new Lingyang(), new Mortefi(),
@@ -51,12 +51,12 @@ export class HomeComponent {
     this.load();
   }
 
-  createNew() {
+  createNew(load?: any) {
     let char: Character;
     switch (this.currentSelection) {
       case 'aalto':
         const aal: Aalto = new Aalto();
-        char = this.charCreation(aal);
+        char = this.charCreation(aal, load);
         break;
       case 'baizhi':
         const bai: Baizhi = new Baizhi();
@@ -172,7 +172,7 @@ export class HomeComponent {
     Util.characters = this.characters;
     this.currentSelection = '';
 
-    this.save();
+    if (!load) this.save();
   }
 
   save() {
@@ -181,8 +181,8 @@ export class HomeComponent {
     };
   }
 
-  charCreation(char: any) {
-    return new Character(this.characters.length, char);
+  charCreation(char: any, load?: any) {
+    return new Character(this.characters.length, char, load);
   }
 
   load() {
@@ -191,7 +191,9 @@ export class HomeComponent {
       this.characters = new Array<Character>();
     } else {
       for (const c of load) {
-        this.characters.push(Object.assign(new Character(0, null), c));
+        // this.characters.push(Object.assign(new Character(0, null), c));
+        this.currentSelection = c.character.icon;
+        this.createNew(c);
       }
       Util.characters = this.characters;
     }

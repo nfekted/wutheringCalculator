@@ -23,12 +23,14 @@ import { Zhezhi } from "./zhezhi.model";
 
 export class Character {
     index: number;
-    character: Aalto | Baizhi | Calcharo | Changli
-        | Chixia | Danjin | Encore | Jianxin
-        | Jinhsi | Jiyan | Lingyang | Mortefi
-        | RoverHavoc | Rover | Sanhua | Taoqi
-        | Verina | XiangliYao | Yinlin | Yangyang
-        | Yuanwu | Zhezhi;
+    character:
+        Aalto
+    //  | Baizhi | Calcharo | Changli
+    // | Chixia | Danjin | Encore | Jianxin
+    // | Jinhsi | Jiyan | Lingyang | Mortefi
+    // | RoverHavoc | Rover | Sanhua | Taoqi
+    // | Verina | XiangliYao | Yinlin | Yangyang
+    // | Yuanwu | Zhezhi;
     healType: boolean = false;
     hpType: boolean = false;
     defType: boolean = false;
@@ -115,7 +117,8 @@ export class Character {
 
     public calculate() {
         this.resetCharacter();
-        this.calculateBasic();
+        // this.calculateBasic();
+        this.character.calculateBasic(this);
     }
 
     private calculateBasic() {
@@ -540,8 +543,22 @@ export class Character {
         this.sumResForteDmg = [];
     }
 
-    constructor(index: number, character: any) {
+    constructor(index: number, character: any, load?: any) {
         this.index = index;
         this.character = character;
+
+        if (load) {
+            this.dmg = load.dmg;
+            this.def = load.def;
+            this.cChance = load.cChance;
+            this.cDmg = load.cDmg;
+            this.skillBonus = load.skillBonus;
+            this.basicBonus = load.basicBonus;
+            this.heavyBonus = load.heavyBonus;
+            this.liberationBonus = load.liberationBonus;
+            this.elementalBonus = load.elementalBonus;
+            this.character.name = load.character.name;
+            this.calculate();
+        }
     }
 }
