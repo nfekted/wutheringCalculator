@@ -24,8 +24,8 @@ import { Zhezhi } from "./zhezhi.model";
 export class Character {
     index: number;
     character:
-        Aalto
-    //  | Baizhi | Calcharo | Changli
+        Aalto | Baizhi
+    //| Calcharo | Changli
     // | Chixia | Danjin | Encore | Jianxin
     // | Jinhsi | Jiyan | Lingyang | Mortefi
     // | RoverHavoc | Rover | Sanhua | Taoqi
@@ -73,6 +73,7 @@ export class Character {
 
     //----------------------------------------
     introDmg: number[] = [];
+    introSecondDmg: number[] = [];
     introCommonDmg: string[] = [];
     introResDmg: string[] = [];
     //----------------------------------------
@@ -117,7 +118,6 @@ export class Character {
 
     public calculate() {
         this.resetCharacter();
-        // this.calculateBasic();
         this.character.calculateBasic(this);
     }
 
@@ -550,6 +550,7 @@ export class Character {
         if (load) {
             this.dmg = load.dmg;
             this.def = load.def;
+            this.hp = load.hp;
             this.cChance = load.cChance;
             this.cDmg = load.cDmg;
             this.skillBonus = load.skillBonus;
@@ -557,6 +558,7 @@ export class Character {
             this.heavyBonus = load.heavyBonus;
             this.liberationBonus = load.liberationBonus;
             this.elementalBonus = load.elementalBonus;
+            this.healingBonus = load.healingBonus;
             this.character.name = load.character.name;
             this.calculate();
         }

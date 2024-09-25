@@ -532,22 +532,65 @@
                                             <th scope="row">
                                                 {{b}}
                                             </th>
-                                            <td>
-                                                <ng-container *ngIf="character.character.introMultiplier[i] > 1">
-                                                    <small
-                                                        style="color: white;">{{character.character.introMultiplier[i]}}x
-                                                    </small>
-                                                </ng-container>
-                                                {{character.introDmg[i]}} (<b>{{(character.introDmg[i] *
-                                                    (character.cDmg/100)) |
-                                                    number : '1.0-0'}}</b>)
-                                            </td>
-                                            <td>
-                                                <div [innerHtml]="character.introCommonDmg[i]"></div>
-                                            </td>
-                                            <td>
-                                                <div [innerHtml]="character.introResDmg[i]"></div>
-                                            </td>
+                                            <!-- Detailed Intro -->
+                                            <ng-container *ngIf="!sum">
+                                                <td
+                                                    [ngStyle]="{'color': character.character.introHeal?.[i] ? 'lawngreen' : ''}">
+                                                    <ng-container *ngIf="character.character.introMultiplier[i] > 1">
+                                                        <small
+                                                            style="color: white;">{{character.character.introMultiplier[i]}}x
+                                                        </small>
+                                                    </ng-container>
+                                                    {{character.introDmg[i]}}
+                                                    <ng-container *ngIf="!character.character.introHeal?.[i]">
+                                                        (<b>{{(character.introDmg[i] * (character.cDmg/100)) | number :
+                                                            '1.0-0'}}</b>)
+                                                    </ng-container>
+
+                                                    <!-- Intro Second Damage -->
+                                                    <ng-container *ngIf="character.introSecondDmg[i] > 0">
+                                                        <br />+<br />
+                                                        <small
+                                                            *ngIf="character.character.introSecondMultiplier?.[i] > 1"
+                                                            style="color: white;">{{character.character.introSecondMultiplier[i]}}x
+                                                        </small>
+                                                        {{character.introSecondDmg[i]}}
+                                                        <ng-container *ngIf="!character.character.introHeal?.[i]">
+                                                            (<b>{{(character.introSecondDmg[i] *
+                                                                (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                        </ng-container>
+                                                    </ng-container>
+                                                </td>
+                                                <td>
+                                                    <div [innerHtml]="character.introCommonDmg[i]"
+                                                        *ngIf="!character.character.introHeal?.[i]"></div>
+                                                </td>
+                                                <td>
+                                                    <div [innerHtml]="character.introResDmg[i]"
+                                                        *ngIf="!character.character.introHeal?.[i]"></div>
+                                                </td>
+                                            </ng-container>
+                                            <!-- Sum Intro -->
+                                            <ng-container *ngIf="sum">
+                                                <td
+                                                    [ngStyle]="{'color': character.character.introHeal?.[i] ? 'lawngreen' : ''}">
+                                                    {{character.sumIntroDmg[i]}}
+                                                    <ng-container *ngIf="!character.character.introHeal?.[i]">
+                                                        (<b>{{(character.sumIntroDmg[i] *
+                                                            (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                    </ng-container>
+
+                                                </td>
+                                                <td>
+                                                    <div [innerHtml]="character.sumCommonIntroDmg[i]"
+                                                        *ngIf="!character.character.introHeal?.[i]"></div>
+                                                </td>
+                                                <td>
+                                                    <div [innerHtml]="character.sumResIntroDmg[i]"
+                                                        *ngIf="!character.character.introHeal?.[i]"></div>
+                                                </td>
+                                            </ng-container>
+
                                         </tr>
                                         <!-- OUTRO -->
                                         <ng-container *ngIf="character.character.outroMultiplier[0] > 0">
@@ -558,22 +601,51 @@
                                                 <th scope="row">
                                                     {{b}}
                                                 </th>
-                                                <td>
-                                                    <ng-container *ngIf="character.character.outroMultiplier[i] > 1">
-                                                        <small
-                                                            style="color: white;">{{character.character.outroMultiplier[i]}}x
-                                                        </small>
-                                                    </ng-container>
-                                                    {{character.outroDmg[i]}} (<b>{{(character.outroDmg[i] *
-                                                        (character.cDmg/100)) |
-                                                        number : '1.0-0'}}</b>)
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.outroCommonDmg[i]"></div>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.outroResDmg[i]"></div>
-                                                </td>
+                                                <!-- Detailed Outro -->
+                                                <ng-container *ngIf="!sum">
+                                                    <td
+                                                        [ngStyle]="{'color': character.character.outroHeal?.[i] ? 'lawngreen' : ''}">
+                                                        <ng-container
+                                                            *ngIf="character.character.outroMultiplier[i] > 1">
+                                                            <small
+                                                                style="color: white;">{{character.character.outroMultiplier[i]}}x
+                                                            </small>
+                                                        </ng-container>
+                                                        {{character.outroDmg[i]}}
+                                                        <ng-container *ngIf="!character.character.outroHeal?.[i]">
+                                                            (<b>{{(character.outroDmg[i] * (character.cDmg/100)) |
+                                                                number : '1.0-0'}}</b>)
+                                                        </ng-container>
+                                                    </td>
+                                                    <td>
+                                                        <div [innerHtml]="character.outroCommonDmg[i]"
+                                                            *ngIf="!character.character.outroHeal?.[i]"></div>
+                                                    </td>
+                                                    <td>
+                                                        <div [innerHtml]="character.outroResDmg[i]"
+                                                            *ngIf="!character.character.outroHeal?.[i]"></div>
+                                                    </td>
+                                                </ng-container>
+                                                <!-- Sum Outro -->
+                                                <ng-container *ngIf="sum">
+                                                    <td
+                                                        [ngStyle]="{'color': character.character.outroHeal?.[i] ? 'lawngreen' : ''}">
+                                                        {{character.sumOutroDmg[i]}}
+                                                        <ng-container *ngIf="!character.character.outroHeal?.[i]">
+                                                            (<b>{{(character.sumOutroDmg[i] *
+                                                                (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                        </ng-container>
+
+                                                    </td>
+                                                    <td>
+                                                        <div [innerHtml]="character.sumCommonOutroDmg[i]"
+                                                            *ngIf="!character.character.outroHeal?.[i]"></div>
+                                                    </td>
+                                                    <td>
+                                                        <div [innerHtml]="character.sumResOutroDmg[i]"
+                                                            *ngIf="!character.character.outroHeal?.[i]"></div>
+                                                    </td>
+                                                </ng-container>
                                             </tr>
                                         </ng-container>
                                         <!-- FORTE -->
@@ -585,15 +657,19 @@
                                                 {{b}}
                                             </th>
                                             <ng-container *ngIf="!sum">
-                                                <td>
+                                                <td
+                                                    [ngStyle]="{'color': character.character.forteHeal?.[i] ? 'lawngreen' : ''}">
                                                     <!-- Forte First Damage -->
                                                     <ng-container *ngIf="character.character.forteMultiplier[i] > 1">
                                                         <small
                                                             style="color: white;">{{character.character.forteMultiplier[i]}}x
                                                         </small>
                                                     </ng-container>
-                                                    {{character.forteDmg[i]}} (<b>{{(character.forteDmg[i] *
-                                                        (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                    {{character.forteDmg[i]}}
+                                                    <ng-container *ngIf="!character.character.forteHeal?.[i]">
+                                                        (<b>{{(character.forteDmg[i] * (character.cDmg/100)) | number :
+                                                            '1.0-0'}}</b>)
+                                                    </ng-container>
 
                                                     <!-- Forte Second Damage -->
                                                     <ng-container *ngIf="character.forteSecondDmg[i] > 0">
@@ -602,8 +678,10 @@
                                                             style="color: white;">{{character.character.forteSecondMultiplier[i]}}x
                                                         </small>
                                                         {{character.forteSecondDmg[i]}}
-                                                        (<b>{{(character.forteSecondDmg[i] * (character.cDmg/100)) |
-                                                            number : '1.0-0'}}</b>)
+                                                        <ng-container *ngIf="!character.character.forteHeal?.[i]">
+                                                            (<b>{{(character.forteSecondDmg[i] * (character.cDmg/100)) |
+                                                                number : '1.0-0'}}</b>)
+                                                        </ng-container>
                                                     </ng-container>
 
                                                     <!-- forte Third Damage -->
@@ -612,28 +690,39 @@
                                                         <small *ngIf="character.character.skillThirdMultiplier[i] > 1"
                                                             style="color: white;">{{character.character.forteThirdMultiplier[i]}}x
                                                         </small>
-                                                        {{character.forteThirdDmg[i]}} (<b>{{(character.forteThirdDmg[i]
-                                                            * (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                        {{character.forteThirdDmg[i]}}
+                                                        <ng-container *ngIf="!character.character.forteHeal?.[i]">
+                                                            (<b>{{(character.forteThirdDmg[i]
+                                                                * (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                        </ng-container>
                                                     </ng-container>
                                                 </td>
                                                 <td>
-                                                    <div [innerHtml]="character.forteCommonDmg[i]"></div>
+                                                    <div [innerHtml]="character.forteCommonDmg[i]"
+                                                        *ngIf="!character.character.forteHeal?.[i]"></div>
                                                 </td>
                                                 <td>
-                                                    <div [innerHtml]="character.forteResDmg[i]"></div>
+                                                    <div [innerHtml]="character.forteResDmg[i]"
+                                                        *ngIf="!character.character.forteHeal?.[i]"></div>
                                                 </td>
                                             </ng-container>
                                             <ng-container *ngIf="sum">
-                                                <td>
+                                                <td
+                                                    [ngStyle]="{'color': character.character.forteHeal?.[i] ? 'lawngreen' : ''}">
                                                     {{character.sumForteDmg[i]}}
-                                                    (<b>{{(character.sumForteDmg[i] * (character.cDmg/100)) | number :
-                                                        '1.0-0'}}</b>)
+                                                    <ng-container *ngIf="!character.character.forteHeal?.[i]">
+                                                        (<b>{{(character.sumForteDmg[i] * (character.cDmg/100)) | number
+                                                            :
+                                                            '1.0-0'}}</b>)
+                                                    </ng-container>
                                                 </td>
                                                 <td>
-                                                    <div [innerHtml]="character.sumCommonForteDmg[i]"></div>
+                                                    <div [innerHtml]="character.sumCommonForteDmg[i]"
+                                                        *ngIf="!character.character.forteHeal?.[i]"></div>
                                                 </td>
                                                 <td>
-                                                    <div [innerHtml]="character.sumResForteDmg[i]"></div>
+                                                    <div [innerHtml]="character.sumResForteDmg[i]"
+                                                        *ngIf="!character.character.forteHeal?.[i]"></div>
                                                 </td>
                                             </ng-container>
                                         </tr>

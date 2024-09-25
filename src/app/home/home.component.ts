@@ -37,8 +37,8 @@ export class HomeComponent {
 
   constructor() {
     this.characterList = [
-      new Aalto(),
-      // new Baizhi(), new Calcharo(), new Changli(),
+      new Aalto(), new Baizhi(),
+      //new Calcharo(), new Changli(),
       // new Chixia(), new Danjin(), new Encore(), new Jianxin(),
       // new Jinhsi(), new Jiyan(), new Lingyang(), new Mortefi(),
       // new RoverHavoc(), new Rover(), new Sanhua(), new Taoqi(),
@@ -60,7 +60,7 @@ export class HomeComponent {
         break;
       case 'baizhi':
         const bai: Baizhi = new Baizhi();
-        char = this.charCreation(bai);
+        char = this.charCreation(bai, load);
         char.hpType = true;
         char.healType = true;
         break;
