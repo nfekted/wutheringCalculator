@@ -27,13 +27,17 @@ export class CharacterComponent {
   qtdCrit: number = 1;
 
   newAtk: number = 0;
+  newHp: number = 0;
+  newDef: number = 0;
   newCritChance: number = 0;
   newCritDmg: number = 0;
-  newQtdCrit: number = 0;
-  newBasicBonus: number = 0;
-  newElemental: number = 0;
   newSkillBonus: number = 0;
+  newBasicBonus: number = 0;
+  newHeavyBonus: number = 0;
+  newQtdCrit: number = 0;
+  newElemental: number = 0;
   newLiberationBonus: number = 0;
+  newHealingBonus: number = 0;
 
   enhancerBasic: boolean = true;
   enhancerSkill: boolean = false;
@@ -89,13 +93,17 @@ export class CharacterComponent {
   }
 
   critCalc(simulation: boolean) {
-    if (this.newCritChance == 0) this.newCritChance = this.character.cChance;
     if (this.newAtk == 0) this.newAtk = this.character.dmg;
+    if (this.newHp == 0) this.newHp = this.character.hp;
+    if (this.newDef == 0) this.newDef = this.character.def;
+    if (this.newCritChance == 0) this.newCritChance = this.character.cChance;
     if (this.newCritDmg == 0) this.newCritDmg = this.character.cDmg;
-    if (this.newBasicBonus == 0) this.newBasicBonus = this.character.basicBonus;
-    if (this.newElemental == 0) this.newElemental = this.character.elementalBonus;
     if (this.newSkillBonus == 0) this.newSkillBonus = this.character.skillBonus;
+    if (this.newBasicBonus == 0) this.newBasicBonus = this.character.basicBonus;
+    if (this.newHeavyBonus == 0) this.newHeavyBonus = this.character.heavyBonus;
     if (this.newLiberationBonus == 0) this.newLiberationBonus = this.character.liberationBonus;
+    if (this.newElemental == 0) this.newElemental = this.character.elementalBonus;
+    if (this.newHealingBonus == 0) this.newHealingBonus = this.character.healingBonus;
 
     if (this.enhancerBasic) this.simulationBasic(simulation);
     if (this.enhancerSkill) this.simulationRotation(simulation);
@@ -110,15 +118,7 @@ export class CharacterComponent {
       critMult = this.newCritDmg;
       this.fixedSimTotal = 0;
       this.newQtdCrit = +(this.newCritChance / 5).toFixed(0);
-      copy = Object.assign(copy, this.character);
-      copy.dmg = this.newAtk;
-      copy.cChance = this.newCritChance;
-      copy.cDmg = this.newCritDmg;
-      copy.elementalBonus = this.newElemental;
-      copy.basicBonus = this.newBasicBonus;
-      copy.skillBonus = this.newSkillBonus;
-      copy.liberationBonus = this.newLiberationBonus;
-      copy.calculate();
+      copy = this.characterCopy();
     } else {
       this.fixedTotal = 0;
       this.qtdCrit = +(this.character.cChance / 5).toFixed(0);
@@ -157,15 +157,7 @@ export class CharacterComponent {
       critMult = this.newCritDmg;
       this.fixedSimTotal = 0;
       this.newQtdCrit = +(this.character.character.rotation[0].length * (this.newCritChance / 100)).toFixed(0);
-      copy = Object.assign(copy, this.character);
-      copy.dmg = this.newAtk;
-      copy.cChance = this.newCritChance;
-      copy.cDmg = this.newCritDmg;
-      copy.elementalBonus = this.newElemental;
-      copy.basicBonus = this.newBasicBonus;
-      copy.skillBonus = this.newSkillBonus;
-      copy.liberationBonus = this.newLiberationBonus;
-      copy.calculate();
+      copy = this.characterCopy();
     } else {
       this.fixedTotal = 0;
       this.qtdCrit = +(this.character.character.rotation[0].length * (currentChance / 100)).toFixed(0);
@@ -192,6 +184,24 @@ export class CharacterComponent {
     } else {
       this.critSimFixed = list;
     }
+  }
+
+  characterCopy(): Character {
+    let copy = new Character(0, null);
+    copy = Object.assign(copy, this.character);
+    copy.dmg = this.newAtk;
+    copy.hp = this.newHp;
+    copy.def = this.newDef;
+    copy.cChance = this.newCritChance;
+    copy.cDmg = this.newCritDmg;
+    copy.skillBonus = this.newSkillBonus;
+    copy.basicBonus = this.newBasicBonus;
+    copy.heavyBonus = this.newHeavyBonus;
+    copy.liberationBonus = this.newLiberationBonus;
+    copy.elementalBonus = this.newElemental;
+    copy.healingBonus = this.newHealingBonus;
+    copy.calculate();
+    return copy;
   }
 
   recalculateAll() {

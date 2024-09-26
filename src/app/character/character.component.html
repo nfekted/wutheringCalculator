@@ -712,8 +712,7 @@
                                                     {{character.sumForteDmg[i]}}
                                                     <ng-container *ngIf="!character.character.forteHeal?.[i]">
                                                         (<b>{{(character.sumForteDmg[i] * (character.cDmg/100)) | number
-                                                            :
-                                                            '1.0-0'}}</b>)
+                                                            : '1.0-0'}}</b>)
                                                     </ng-container>
                                                 </td>
                                                 <td>
@@ -864,54 +863,88 @@
                                 <b>{{'char.enhancer.compareWith' | transloco}}</b>
                             </div>
                             <div class="col-sm-12 mt-3">
-                                ATK
+                                {{'new' | transloco}} ATK
                             </div>
                             <div class="col-sm-12">
                                 <input class="form-control" type="number" placeholder="5%" min="0"
                                     [(ngModel)]="newAtk" />
                             </div>
+                            <ng-container *ngIf="character.hpType">
+                                <div class="col-sm-12 mt-3">
+                                    {{'new' | transloco}} HP
+                                </div>
+                                <div class="col-sm-12">
+                                    <input class="form-control" type="number" placeholder="0" min="0"
+                                        [(ngModel)]="newHp" />
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="character.defType">
+                                <div class="col-sm-12 mt-3">
+                                    {{'new' | transloco}} DEF
+                                </div>
+                                <div class="col-sm-12">
+                                    <input class="form-control" type="number" placeholder="0" min="0"
+                                        [(ngModel)]="newDef" />
+                                </div>
+                            </ng-container>
                             <div class="col-sm-12 mt-3">
-                                Crit. Chance %
+                                {{'new' | transloco}} Crit. Rate %
                             </div>
                             <div class="col-sm-12">
                                 <input class="form-control" type="number" placeholder="5%" min="0"
                                     [(ngModel)]="newCritChance" />
                             </div>
                             <div class="col-sm-12">
-                                Crit. DMG %
+                                {{'new' | transloco}} Crit. DMG %
                             </div>
                             <div class="col-sm-12">
                                 <input class="form-control" type="number" placeholder="5%" min="0"
                                     [(ngModel)]="newCritDmg" />
                             </div>
                             <div class="col-sm-12">
-                                Elemental DMG %
-                            </div>
-                            <div class="col-sm-12">
-                                <input class="form-control" type="number" placeholder="0%" min="0"
-                                    [(ngModel)]="newElemental" />
-                            </div>
-                            <div class="col-sm-12">
-                                Basic Bonus %
-                            </div>
-                            <div class="col-sm-12">
-                                <input class="form-control" type="number" placeholder="5%" min="0"
-                                    [(ngModel)]="newBasicBonus" />
-                            </div>
-                            <div class="col-sm-12">
-                                Skill Bonus %
+                                {{'new' | transloco}} Skill Bonus %
                             </div>
                             <div class="col-sm-12">
                                 <input class="form-control" type="number" placeholder="5%" min="0"
                                     [(ngModel)]="newSkillBonus" />
                             </div>
                             <div class="col-sm-12">
-                                Liberation Bonus %
+                                {{'new' | transloco}} Basic Bonus %
+                            </div>
+                            <div class="col-sm-12">
+                                <input class="form-control" type="number" placeholder="5%" min="0"
+                                    [(ngModel)]="newBasicBonus" />
+                            </div>
+                            <div class="col-sm-12">
+                                {{'new' | transloco}} Heavy Bonus %
+                            </div>
+                            <div class="col-sm-12">
+                                <input class="form-control" type="number" placeholder="5%" min="0"
+                                    [(ngModel)]="newHeavyBonus" />
+                            </div>
+                            <div class="col-sm-12">
+                                {{'new' | transloco}} Liberation Bonus %
                             </div>
                             <div class="col-sm-12">
                                 <input class="form-control" type="number" placeholder="5%" min="0"
                                     [(ngModel)]="newLiberationBonus" />
                             </div>
+                            <div class="col-sm-12">
+                                {{'new' | transloco}} Elemental DMG %
+                            </div>
+                            <div class="col-sm-12">
+                                <input class="form-control" type="number" placeholder="0%" min="0"
+                                    [(ngModel)]="newElemental" />
+                            </div>
+                            <ng-container *ngIf="character.healType">
+                                <div class="col-sm-12 mt-3">
+                                    {{'new' | transloco}} Healing Bonus %
+                                </div>
+                                <div class="col-sm-12">
+                                    <input class="form-control" type="number" placeholder="0" min="0"
+                                        [(ngModel)]="newHealingBonus" />
+                                </div>
+                            </ng-container>
                             <div class="col-sm-12 mt-3">
                                 <button type="button" (click)="recalculateAll()"
                                     [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.calculate'
