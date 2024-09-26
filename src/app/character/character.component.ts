@@ -130,10 +130,10 @@ export class CharacterComponent {
       for (let i = 0; i < 20; i++) {
         const dmg: number = simulation ? copy.sumBasicDmg[currentAttack] : this.character.sumBasicDmg[currentAttack];
         if ((!this.randomCrit && currentChance >= 5) || (this.randomCrit && (Math.floor(Math.random() * 100) + 1) < currentChance)) {
-          list[i] = [+(dmg * (critMult / 100)).toFixed(0), true];
+          list[i] = [+(dmg * (critMult / 100)).toFixed(0), true, false];
           currentChance -= (this.randomCrit ? 0 : 5);
         } else {
-          list[i] = [dmg, false];
+          list[i] = [dmg, false, false];
         }
         this.fixedTotal += simulation ? 0 : +list[i][0];
         this.fixedSimTotal += simulation ? +list[i][0] : 0;
@@ -166,17 +166,20 @@ export class CharacterComponent {
     const list: Array<Array<number | boolean>> = [];
     const rotation = this.character.character.rotation;
     if (!this.randomCrit) currentChance = (!simulation ? this.qtdCrit : this.newQtdCrit);
+    let heal: boolean = false;
     for (let i = 0; i < rotation[0].length; i++) {
+      if (this.character.healType) heal = (this.character.character.rotation[0][i] as string).includes('sumHealing');
+
       const dmg = simulation ? copy[rotation[0][i]][rotation[1][i]] : this.character[rotation[0][i]][rotation[1][i]];
       if ((!this.randomCrit && currentChance > 0) || (this.randomCrit && (Math.floor(Math.random() * 100) + 1) < currentChance)) {
-        list[i] = [+(dmg * (critMult / 100)).toFixed(0), true];
+        list[i] = [+(dmg * (critMult / 100)).toFixed(0), true, heal];
         currentChance -= (this.randomCrit ? 0 : 1);
       } else {
-        list[i] = [dmg, false];
+        list[i] = [dmg, false, heal];
       }
 
-      this.fixedTotal += simulation ? 0 : +list[i][0];
-      this.fixedSimTotal += simulation ? +list[i][0] : 0;
+      this.fixedTotal += simulation || (this.character.healType && !heal) ? 0 : +list[i][0];
+      this.fixedSimTotal += !simulation || (this.character.healType && !heal) ? 0 : +list[i][0]
     }
 
     if (simulation) {

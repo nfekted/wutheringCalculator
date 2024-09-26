@@ -103,7 +103,10 @@ export class Baizhi extends Default {
         ];
         this.forteSecondMultiplier = [1, 0];
 
-        this.rotation = [[], []];
-        this.rotationName = [];
+        this.rotation = [
+            ['sumIntroDmg', 'sumHealingIntro', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumHealingSkill', 'sumBasicDmg', 'sumBasicDmg', 'sumLiberationDmg', 'sumHealingLiberation', 'sumHealingLiberation', 'sumHealingOutro'],
+            [0, 1, 0, 1, 2, 3, 0, 1, 0, 1, 0, 1, 2, 0]
+        ];
+        this.rotationName = ['Intro: Overflowing Frost (DMG + Heal)', 'Basic Attack Part 1', 'Basic Attack Part 2', 'Basic Attack Part 3', 'Basic Attack Part 4', 'Resonance Skill: Emergency Plan (DMG + Heal)', 'Basic Attack Part 1', 'Basic Attack Part 2', 'Liberation: Remnant Entities (DMG + 2x Heal)', 'Outro Skill: Rejuvinating Flow'];
     }
 }

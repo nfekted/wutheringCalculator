@@ -115,6 +115,11 @@ export class Character {
     sumForteDmg: number[] = [];
     sumCommonForteDmg: string[] = [];
     sumResForteDmg: string[] = [];
+    //Healing sums
+    sumHealingSkill: number[] = [];
+    sumHealingLiberation: number[] = [];
+    sumHealingIntro: number[] = [];
+    sumHealingOutro: number[] = [];
 
     public calculate() {
         this.resetCharacter();

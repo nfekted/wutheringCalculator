@@ -85,8 +85,6 @@ export class Default {
     rotation: Array<Array<string | number>> = [];
     rotationName: Array<string> = [];
 
-    protected isHealing(type: string,) { }
-
     calculateBasic(character: Character) {
         for (let i = 0; i < this.basic.length; i++) {
             //Get Expected Value
@@ -149,19 +147,22 @@ export class Default {
         this.calculateSkill(character);
     }
 
-    calculateSkill(character: Character) {
+    private calculateSkill(character: Character) {
         for (let i = 0; i < this.skill.length; i++) {
             //Get Expected value
+            const heal: boolean = this.skillHeal[i];
             const dmg: number = this.skillDMGType[i] == 'hp' ? character.hp : this.skillDMGType[i] == 'def' ? character.def : character.dmg;
-            const bonus: number = this.skillHeal[i] ? character.healingBonus : character.skillBonus;
-            const elemental: number = this.skillHeal[i] ? 0 : character.elementalBonus;
+            const bonus: number = heal ? character.healingBonus : character.skillBonus;
+            const elemental: number = heal ? 0 : character.elementalBonus;
             const crit: number = character.cDmg
             const ex = this.getExpected(dmg, this.skill[i], this.skillCurrent - 1, elemental, bonus);
 
             //Set expected as Base Damage
             character.skillDmg[i] = +ex.toFixed(0);
             let multiplier = this.skillMultiplier[i];
-            character.sumSkillDmg[i] = character.skillDmg[i] * multiplier
+            if (heal) character.sumHealingSkill[i] = character.skillDmg[i] * multiplier;
+
+            character.sumSkillDmg[i] = character.skillDmg[i] * multiplier;
 
             //Get expected Range value on enemy DEF
             let commonSum: number[] = this.getRangeDamage(ex, false, crit);
@@ -180,7 +181,10 @@ export class Default {
                 if (character.skillSecondDmg[i] > 0) {
                     multiplier = this.skillSecondMultiplier[i];
 
+                    if (heal) character.sumHealingSkill[i] += character.skillSecondDmg[i] * multiplier;
+
                     character.sumSkillDmg[i] += character.skillSecondDmg[i] * multiplier;
+
                     range = this.getRangeDamage(character.skillSecondDmg[i], false, crit);
                     character.skillCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`
                     commonSum = this.sumArray(commonSum, this.multArray(range, multiplier));
@@ -198,7 +202,10 @@ export class Default {
                 if (character.skillThirdDmg[i] > 0) {
                     multiplier = this.skillThirdMultiplier[i];
 
+                    if (heal) character.sumHealingSkill[i] += character.skillThirdDmg[i] * multiplier;
+
                     character.sumSkillDmg[i] += character.skillThirdDmg[i] * multiplier;
+
                     range = this.getRangeDamage(character.skillThirdDmg[i], false, crit);
                     character.skillCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`;
                     commonSum = this.sumArray(commonSum, this.multArray(range, multiplier));
@@ -220,15 +227,18 @@ export class Default {
     private calculateLiberation(character: Character) {
         for (let i = 0; i < this.liberation.length; i++) {
             //Get Expected DMG
+            const heal: boolean = this.liberationHeal[i];
             const dmg: number = this.liberationDMGType[i] == 'hp' ? character.hp : this.liberationDMGType[i] == 'def' ? character.def : character.dmg;
-            const bonus: number = this.liberationHeal[i] ? character.healingBonus : character.liberationBonus;
-            const elemental: number = this.skillHeal[i] ? 0 : character.elementalBonus;
+            const bonus: number = heal ? character.healingBonus : character.liberationBonus;
+            const elemental: number = heal ? 0 : character.elementalBonus;
             const crit: number = character.cDmg
             const ex = this.getExpected(dmg, this.liberation[i], this.skillCurrent - 1, elemental, bonus);
 
             //Set expected as Base Damage
             character.liberationDmg[i] = +ex.toFixed(0);
             let multiplier = this.liberationMultiplier[i]
+
+            if (heal) character.sumHealingLiberation[i] = character.liberationDmg[i] * multiplier;
 
             character.sumLiberationDmg[i] = character.liberationDmg[i] * multiplier;
 
@@ -250,7 +260,10 @@ export class Default {
                 if (character.liberationSecondDmg[i] > 0) {
                     multiplier = this.liberationSecondMultiplier[i];
 
+                    if (heal) character.sumHealingLiberation[i] += character.liberationSecondDmg[i] * multiplier;
+
                     character.sumLiberationDmg[i] += character.liberationSecondDmg[i] * multiplier;
+
                     range = this.getRangeDamage(character.liberationSecondDmg[i], false, crit);
                     character.liberationCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`
                     commonSum = this.sumArray(commonSum, this.multArray(range, multiplier));
@@ -272,15 +285,18 @@ export class Default {
     private calculateIntro(character: Character) {
         for (let i = 0; i < this.intro.length; i++) {
             //Get Expected DMG
+            const heal: boolean = this.introHeal[i];
             const dmg: number = this.introDMGType[i] == 'hp' ? character.hp : this.introDMGType[i] == 'def' ? character.def : character.dmg;
-            const bonus: number = this.introHeal[i] ? character.healingBonus : 1;
-            const elemental: number = this.skillHeal[i] ? 0 : character.elementalBonus;
+            const bonus: number = heal ? character.healingBonus : 1;
+            const elemental: number = heal ? 0 : character.elementalBonus;
             const crit: number = character.cDmg
             const ex = this.getExpected(dmg, this.intro[i], this.introCurrent - 1, elemental, bonus);
 
             //Set expected as Base Damage
             character.introDmg[i] = +ex.toFixed(0);
             let multiplier = this.introMultiplier[i]
+
+            if (heal) character.sumHealingIntro[i] = character.introDmg[i] * multiplier;
 
             character.sumIntroDmg[i] = character.introDmg[i] * multiplier;
 
@@ -302,7 +318,10 @@ export class Default {
                 if (character.introSecondDmg[i] > 0) {
                     multiplier = this.introSecondMultiplier[i];
 
+                    if (heal) character.sumHealingIntro[i] += character.introSecondDmg[i] * multiplier;
+
                     character.sumIntroDmg[i] += character.introSecondDmg[i] * multiplier;
+
                     range = this.getRangeDamage(character.introSecondDmg[i], false, crit);
                     character.introCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`
                     commonSum = this.sumArray(commonSum, this.multArray(range, multiplier));
@@ -323,9 +342,10 @@ export class Default {
 
     private calculateOutro(character: Character) {
         for (let i = 0; i < this.outro.length; i++) {
+            const heal: boolean = this.outroHeal[i];
             const dmg: number = this.outroDMGType[i] == 'hp' ? character.hp : this.outroDMGType[i] == 'def' ? character.def : character.dmg;
-            const bonus: number = this.outroHeal[i] ? character.healingBonus : 1;
-            const elemental: number = this.outroHeal[i] ? 0 : character.elementalBonus;
+            const bonus: number = heal ? character.healingBonus : 1;
+            const elemental: number = heal ? 0 : character.elementalBonus;
             const crit: number = character.cDmg
             //Get Expected DMG
             const ex = this.getExpected(dmg, this.outro[i], 0, elemental, bonus);
@@ -335,6 +355,9 @@ export class Default {
             character.outroDmg[i] = +ex.toFixed(0);
             let multiplier = this.outroMultiplier[i];
 
+            if (heal) {
+                character.sumHealingOutro[i] = character.outroDmg[i] * multiplier;
+            }
             character.sumOutroDmg[i] = character.outroDmg[i] * multiplier;
 
             //Get expected Range value on enemy DEF

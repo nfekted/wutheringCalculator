@@ -71,7 +71,7 @@ export class Aalto extends Default {
             ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg'],
             [0, 0, 1, 0, 0, 0, 1, 2]
         ];
-        this.rotationName = ['Intro Skill', 'Basic Attack', 'Basic Attack', 'Resonance Skill: Mist Missle', 'Resonance Liberation: Flower in the Mist', 'Basic Attack', 'Basic Attack', 'Basic Attack', 'Outro Skill']
+        this.rotationName = ['Intro Skill', 'Basic Attack Part 1', 'Basic Attack Part 2', 'Resonance Skill: Mist Missle', 'Resonance Liberation: Flower in the Mist', 'Basic Attack Part 1', 'Basic Attack Part 2', 'Basic Attack Part 3', 'Outro Skill']
     }
 
 
