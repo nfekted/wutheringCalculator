@@ -17,7 +17,7 @@
     },
     "characters": {
         "aalto": "<b>Aalto</b> is a character with <b class=\"aero\">AERO</b> elemental bonus, Aalto damage is based purely on <b>ATK</b> without the influence of other statuses, such as HP, DEF, etc... Aalto`s main characteristis are his <b>Concerto Efficiency</b> and <b><b class=\"aero\">AERO</b> DMG Amplification</b> in 23% to ther characters, with their ability <b>Outro: Dissolving Mist</b>.",
-        "baizhi": "<b>Baihzi heal</b> is <b>based on HP</b> with elemental <b>Glacio</b> bonus on ATK.",
+        "baizhi": "<b>Baihzi</b> is a character with <b class=\"glacio\">GLACIO</b> elemental bonus, but her main role is <b>Healing and support</b> the team with her skills, as well buff with <b>DMG Amplification</b> in 15% with <b>Outro: Rejuvinating Flow</b>. Baihzi skills are affected by maximum <b>HP value</b>",
         "calcharo": "<b>Calcharo damage</b> is <b>pure ATK</b> with elemental <b>Electro</b> bonus, other status like HP, DEF... has no influence in her damage",
         "changli": "<b>Changli damage</b> is <b>pure ATK</b> with elemental <b>Fusion</b> bonus, other status like HP, DEF... has no influence in her damage",
         "chixia": "<b>Chixia damage</b> is <b>pure ATK</b> with elemental <b>Fusion</b> bonus, other status like HP, DEF... has no influence in her damage",

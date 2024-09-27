@@ -30,7 +30,7 @@
                 </button>
                 <div class="dropdown mr-2" [title]="'lang' | transloco">
                     <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img [src]="'assets/img/' + (lang == 'en' ? 'enflag.png' : 'ptflag.png')" height="24" />
+                        <img [src]="'assets/img/' + (lang == 'en' ? 'enflag.png' : 'ptflag.png')" height="24" alt="flag"/>
                     </button>
                     <ul class="dropdown-menu">
                         <li style="max-width: fit-content;" (click)="changeLang('en')"><a class="dropdown-item"
