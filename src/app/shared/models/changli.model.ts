@@ -1,91 +1,97 @@
-export class Changli {
-    name: string = 'Changli'
-    icon: string = 'changli';
-    wiki: string = 'https://wutheringwaves.fandom.com/wiki/Changli';
-    type: string = 'fusion';
-    weapon: string = 'sword';
-    //Basic Attacks
-    basicNames: string[] = [];
-    basicCurrent: number = 1;
-    basic: Array<Array<number>> = [
+import { Default } from "./default.model";
 
-    ];
-    basicMultiplier: number[] = [];
-    basicEnds: number = 3;
+export class Changli extends Default {
+    constructor() {
+        super();
+    }
 
-    basicSecondDmg: Array<Array<number>> = [
+    // name: string = 'Changli'
+    // icon: string = 'changli';
+    // wiki: string = 'https://wutheringwaves.fandom.com/wiki/Changli';
+    // type: string = 'fusion';
+    // weapon: string = 'sword';
+    // //Basic Attacks
+    // basicNames: string[] = [];
+    // basicCurrent: number = 1;
+    // basic: Array<Array<number>> = [
 
-    ]
-    basicSecondMultiplier: number[] = [];
+    // ];
+    // basicMultiplier: number[] = [];
+    // basicEnds: number = 3;
 
-    basicThirdDmg: Array<Array<number>> = [
+    // basicSecondDmg: Array<Array<number>> = [
 
-    ]
-    basicThirdMultiplier: number[] = [];
+    // ]
+    // basicSecondMultiplier: number[] = [];
 
-    //Skill
-    skillNames: string[] = [];
-    skillCurrent: number = 1;
-    skill: Array<Array<number>> = [
+    // basicThirdDmg: Array<Array<number>> = [
 
-    ]
-    skillMultiplier: number[] = [];
+    // ]
+    // basicThirdMultiplier: number[] = [];
 
-    skillSecondDmg: Array<Array<number>> = [
+    // //Skill
+    // skillNames: string[] = [];
+    // skillCurrent: number = 1;
+    // skill: Array<Array<number>> = [
 
-    ];
-    skillSecondMultiplier: number[] = [];
+    // ]
+    // skillMultiplier: number[] = [];
 
-    skillThirdDmg: Array<Array<number>> = [
+    // skillSecondDmg: Array<Array<number>> = [
 
-    ];
-    skillThirdMultiplier: number[] = [];
+    // ];
+    // skillSecondMultiplier: number[] = [];
+
+    // skillThirdDmg: Array<Array<number>> = [
+
+    // ];
+    // skillThirdMultiplier: number[] = [];
 
 
-    //Liberation
-    liberationNames: string[] = [];
-    liberationCurrent: number = 1;
-    liberation: Array<Array<number>> = [
+    // //Liberation
+    // liberationNames: string[] = [];
+    // liberationCurrent: number = 1;
+    // liberation: Array<Array<number>> = [
 
-    ];
-    liberationMultiplier: number[] = [1];
+    // ];
+    // liberationMultiplier: number[] = [1];
 
-    liberationSecondDmg: Array<Array<number>> = [
+    // liberationSecondDmg: Array<Array<number>> = [
 
-    ]
-    liberationSecondMultiplier: number[] = [1];
+    // ]
+    // liberationSecondMultiplier: number[] = [1];
 
-    //Intro Skill
-    introName: string[] = [];
-    introCurrent: number = 1;
-    intro: Array<Array<number>> = [
+    // //Intro Skill
+    // introName: string[] = [];
+    // introCurrent: number = 1;
+    // intro: Array<Array<number>> = [
 
-    ];
-    introMultiplier: number[] = [];
+    // ];
+    // introMultiplier: number[] = [];
 
-    //Outro Skill
-    outro: Array<Array<number>> = [];
-    outroMultiplier: number[] = [];
-    outroName: string[] = [];
+    // //Outro Skill
+    // outro: Array<Array<number>> = [];
+    // outroMultiplier: number[] = [];
+    // outroName: string[] = [];
 
-    //Forte Skill
-    forteName: string[] = [];
-    forteCurrent: number = 1;
-    forte: Array<Array<number>> = [
+    // //Forte Skill
+    // forteName: string[] = [];
+    // forteCurrent: number = 1;
+    // forte: Array<Array<number>> = [
 
-    ];
-    forteMultiplier: number[] = [];
+    // ];
+    // forteMultiplier: number[] = [];
 
-    forteSecondDmg: Array<Array<number>> = [
+    // forteSecondDmg: Array<Array<number>> = [
 
-    ];
-    forteSecondMultiplier: number[] = [];
+    // ];
+    // forteSecondMultiplier: number[] = [];
 
-    forteThirdDmg: Array<Array<number>> = [
+    // forteThirdDmg: Array<Array<number>> = [
 
-    ];
-    forteThirdMultiplier: number[] = [];
+    // ];
+    // forteThirdMultiplier: number[] = [];
 
-    rotation: Array<Array<string | number>> = [[], []];
-    rotationName: Array<string> = []
+    // rotation: Array<Array<string | number>> = [[], []];
+    // rotationName: Array<string> = []
 }

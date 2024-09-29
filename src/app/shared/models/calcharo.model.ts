@@ -117,9 +117,12 @@ export class Calcharo extends Default {
             [39.34, 42.57, 45.80, 50.31, 53.54, 57.25, 62.41, 67.57, 72.73, 78.22],
             [98.35, 106.42, 114.48, 125.77, 133.84, 143.11, 156.02, 168.92, 181.82, 195.53]
         ];
-        this.forteMultiplier = [1, 1];
-    }
+        this.forteSecondMultiplier = [1, 1];
 
-    // rotation: Array<Array<string | number>> = [[], []];
-    // rotationName: Array<string> = []
+        this.rotation = [
+            ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumForteDmg', 'sumOutroDmg'],
+            [0, 0, 1, 2, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 1, 2, 3, 4, 5, 6, 0, 1, 2, 1, 0]
+        ];
+        this.rotationName = ['Intro Skill: Wanted Outlaw', 'Ressonance Skill', 'Resonance Liberation', 'Heavy Attack: Death Messager', '5x Basic Attack', 'Ressonance Skill', 'Heavy Attack: Death Messager', '5x Basic Attack', 'Ressonance Skill', 'Heavy Attack: Death Messager', 'Outro: Shadowy Raid']
+    }
 }

@@ -233,7 +233,6 @@ export class Default {
             const heal: boolean = this.liberationHeal[i];
             const dmg: number = this.liberationDMGType[i] == 'hp' ? character.hp : this.liberationDMGType[i] == 'def' ? character.def : character.dmg;
             const bonus: number = heal ? character.healingBonus : this.liberationBonus(character, i);
-            console.log(bonus)
             const elemental: number = heal ? 0 : character.elementalBonus;
             const crit: number = character.cDmg
             const ex = this.getExpected(dmg, this.liberation[i], this.skillCurrent - 1, elemental, bonus);

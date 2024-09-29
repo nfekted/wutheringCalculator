@@ -848,12 +848,12 @@
                         <span class="badge text-bg-success"
                             *ngIf="fixedTotal > fixedSimTotal">{{'char.enhancer.bestScenario' |
                             transloco}} +{{fixedTotal - fixedSimTotal}}
-                            {{(character.healType && enhancerSkill ? 'char.heal' : 'DMG') | transloco}}
+                            {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}
                         </span>
                         <span class="badge text-bg-danger"
                             *ngIf="fixedTotal < fixedSimTotal">{{'char.enhancer.worstScenario' |
                             transloco}} -{{fixedSimTotal - fixedTotal}}
-                            {{(character.healType && enhancerSkill ? 'char.heal' : 'DMG') | transloco}}
+                            {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}
                         </span>
                         <table class="table table-striped"
                             [ngClass]="{'table-danger': fixedTotal < fixedSimTotal, 'table-success': fixedTotal > fixedSimTotal}">
@@ -879,7 +879,7 @@
                                 <tr>
                                     <td><b>Total</b></td>
                                     <td colspan="2">~{{fixedTotal | number:'1.0-0'}}
-                                        {{(character.healType && enhancerSkill ? 'char.heal' : 'DMG') | transloco}}
+                                        {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}
                                     </td>
                                 </tr>
                             </tbody>
@@ -986,12 +986,12 @@
                         <span class="badge text-bg-success"
                             *ngIf="fixedTotal < fixedSimTotal">{{'char.enhancer.bestScenario' |
                             transloco}} +{{fixedSimTotal - fixedTotal}}
-                            {{(character.healType && enhancerSkill ? 'char.heal' : 'DMG') | transloco}}
+                            {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}
                         </span>
                         <span class="badge text-bg-danger"
                             *ngIf="fixedTotal > fixedSimTotal">{{'char.enhancer.worstScenario' |
                             transloco}} -{{fixedTotal - fixedSimTotal}}
-                            {{(character.healType && enhancerSkill ? 'char.heal' : 'DMG') | transloco}}
+                            {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}
                         </span>
                         <table class="table table-striped"
                             [ngClass]="{'table-danger': fixedTotal > fixedSimTotal, 'table-success': fixedTotal < fixedSimTotal}">
@@ -1017,7 +1017,7 @@
                                 <tr>
                                     <td><b>Total</b></td>
                                     <td colspan="2">~{{fixedSimTotal | number:'1.0-0'}}
-                                        {{(character.healType && enhancerSkill ? 'char.heal' : 'DMG') | transloco}}</td>
+                                        {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}</td>
                                 </tr>
                             </tbody>
                         </table>
