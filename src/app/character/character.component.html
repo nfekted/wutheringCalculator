@@ -616,6 +616,20 @@
                                                             (<b>{{(character.outroDmg[i] * (character.cDmg/100)) |
                                                                 number : '1.0-0'}}</b>)
                                                         </ng-container>
+
+                                                        <!-- Outro Second Damage -->
+                                                        <ng-container *ngIf="character.outroSecondDmg[i] > 0">
+                                                            <br />+<br />
+                                                            <small
+                                                                *ngIf="character.character.outroSecondMultiplier?.[i] > 1"
+                                                                style="color: white;">{{character.character.outroSecondMultiplier[i]}}x
+                                                            </small>
+                                                            {{character.outroSecondDmg[i]}}
+                                                            <ng-container *ngIf="!character.character.outroHeal?.[i]">
+                                                                (<b>{{(character.outroSecondDmg[i] *
+                                                                    (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                            </ng-container>
+                                                        </ng-container>
                                                     </td>
                                                     <td>
                                                         <div [innerHtml]="character.outroCommonDmg[i]"

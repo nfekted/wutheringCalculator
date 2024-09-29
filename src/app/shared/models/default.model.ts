@@ -62,6 +62,9 @@ export class Default {
     outro: Array<Array<number>> = [];
     outroMultiplier: number[] = [];
 
+    outroSecondDmg: Array<Array<number>> = [];
+    outroSecondMultiplier: number[] = [];
+
     //Forte Skill
     forteName: string[] = [];
     forteHeal: boolean[] = [];
@@ -229,7 +232,8 @@ export class Default {
             //Get Expected DMG
             const heal: boolean = this.liberationHeal[i];
             const dmg: number = this.liberationDMGType[i] == 'hp' ? character.hp : this.liberationDMGType[i] == 'def' ? character.def : character.dmg;
-            const bonus: number = heal ? character.healingBonus : character.liberationBonus;
+            const bonus: number = heal ? character.healingBonus : this.liberationBonus(character, i);
+            console.log(bonus)
             const elemental: number = heal ? 0 : character.elementalBonus;
             const crit: number = character.cDmg
             const ex = this.getExpected(dmg, this.liberation[i], this.skillCurrent - 1, elemental, bonus);
@@ -280,6 +284,15 @@ export class Default {
         }
 
         this.calculateIntro(character);
+    }
+
+    liberationBonus(character: Character, index: number): number {
+        switch (character.character.icon) {
+            case 'calcharo':
+                return index > 7 ? character.heavyBonus : index > 1 && index <= 6 ? character.basicBonus : character.liberationBonus;
+            default:
+                return character.liberationBonus;
+        }
     }
 
     private calculateIntro(character: Character) {
@@ -369,6 +382,29 @@ export class Default {
             commonSum = this.multArray(commonSum, this.outroMultiplier[i]);
             resSum = this.multArray(resSum, this.outroMultiplier[i]);
 
+            let range: number[] = [];
+
+            //Second Outro Damages
+            if (this.outroSecondDmg.length > 0) {
+                character.outroSecondDmg[i] = +(this.getExpected(dmg, this.outroSecondDmg[i], this.introCurrent - 1, elemental, bonus)).toFixed(0);
+
+                if (character.outroSecondDmg[i] > 0) {
+                    multiplier = this.outroSecondMultiplier[i];
+
+                    if (heal) character.sumHealingOutro[i] += character.outroSecondDmg[i] * multiplier;
+
+                    character.sumOutroDmg[i] += character.outroSecondDmg[i] * multiplier;
+
+                    range = this.getRangeDamage(character.outroSecondDmg[i], false, crit);
+                    character.outroCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`
+                    commonSum = this.sumArray(commonSum, this.multArray(range, multiplier));
+
+                    range = this.getRangeDamage(character.outroSecondDmg[i], true, crit);
+                    character.outroResDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`;
+                    resSum = this.sumArray(resSum, this.multArray(range, multiplier));
+                }
+            }
+
             //Outro summed damage
             character.sumCommonOutroDmg[i] = this.getRangeString(commonSum);
             character.sumResOutroDmg[i] = this.getRangeString(resSum);
@@ -380,7 +416,7 @@ export class Default {
     private calculateForte(character: Character) {
         for (let i = 0; i < this.forte.length; i++) {
             const dmg: number = this.forteDMGType[i] == 'hp' ? character.hp : this.forteDMGType[i] == 'def' ? character.def : character.dmg;
-            const bonus: number = this.forteHeal[i] ? character.healingBonus : 1;
+            const bonus: number = this.forteHeal[i] ? character.healingBonus : this.forteBonus(character, i);
             const elemental: number = this.forteHeal[i] ? 0 : character.elementalBonus;
             const crit: number = character.cDmg
             //Get Expected DMG
@@ -439,6 +475,15 @@ export class Default {
             //Range Sums
             character.sumCommonForteDmg[i] = this.getRangeString(commonSum);
             character.sumResForteDmg[i] = this.getRangeString(resSum);
+        }
+    }
+
+    forteBonus(character: Character, index: number): number {
+        switch (character.character.icon) {
+            case 'calcharo':
+                return index == 0 ? character.heavyBonus : character.liberationBonus;
+            default:
+                return 1;
         }
     }
 
