@@ -1,91 +1,85 @@
-export class Chixia {
-    name: string = 'Chixia'
-    icon: string = 'chixia';
-    wiki: string = 'https://wutheringwaves.fandom.com/wiki/Chixia';
-    type: string = 'fusion';
-    weapon: string = 'pistols';
-    //Basic Attacks
-    basicNames: string[] = [];
-    basicCurrent: number = 1;
-    basic: Array<Array<number>> = [
+import { Default } from "./default.model";
 
-    ];
-    basicMultiplier: number[] = [];
-    basicEnds: number = 3;
+export class Chixia extends Default {
 
-    basicSecondDmg: Array<Array<number>> = [
+    constructor() {
+        super();
 
-    ]
-    basicSecondMultiplier: number[] = [];
+        this.name = 'Chixia'
+        this.icon = 'chixia';
+        this.wiki = 'https://wutheringwaves.fandom.com/wiki/Chixia';
+        this.type = 'fusion';
+        this.weapon = 'pistols';
 
-    basicThirdDmg: Array<Array<number>> = [
+        //Basic Attacks
+        this.basicNames = ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack DMG', 'Charged Heavy Attack DMG'];
+        this.basicCurrent = 1;
+        this.basic = [
+            [33.30, 36.04, 38.77, 42.59, 45.32, 48.46, 52.83, 57.20, 61.57, 66.21],
+            [24.30, 26.30, 28.29, 31.08, 33.07, 35.36, 38.55, 41.74, 44.93, 48.32],
+            [16.88, 18.26, 19.65, 21.58, 22.97, 24.56, 26.77, 28.99, 31.20, 33.55],
+            [117, 126.60, 136.19, 149.62, 159.22, 170.25, 185.60, 200.95, 216.30, 232.61],
+            [16.20, 17.53, 18.86, 20.72, 22.05, 23.58, 25.70, 27.83, 29.95, 32.21],
+            [171, 185.03, 199.05, 218.68, 232.70, 248.83, 271.26, 293.70, 316.13, 339.97],
+            [18, 19.48, 20.96, 23.02, 24.50, 26.20, 28.56, 30.92, 33.28, 35.79],
+            [40.50, 43.83, 47.15, 51.80, 55.12, 58.94, 64.25, 69.56, 74.88, 80.52]
+        ];
+        this.basicMultiplier = [1, 2, 4, 1, 1, 1, 1, 1];
+        this.basicEnds = 3;
 
-    ]
-    basicThirdMultiplier: number[] = [];
+        //Skill
+        this.skillNames = ['Whizzing Fight Spirit'];
+        this.skillCurrent = 1;
+        this.skill = [
+            [16, 17.32, 18.63, 20.47, 21.78, 23.29, 25.39, 27.48, 29.58, 31.81]
+        ]
+        this.skillMultiplier = [8];
 
-    //Skill
-    skillNames: string[] = [];
-    skillCurrent: number = 1;
-    skill: Array<Array<number>> = [
+        //Liberation
+        this.liberationNames = ['Blazing Flames'];
+        this.liberationCurrent = 1;
+        this.liberation = [
+            [480, 519.36, 558.72, 613.83, 653.19, 698.45, 761.43, 824.40, 887.38, 954.29]
+        ];
+        this.liberationMultiplier = [1];
 
-    ]
-    skillMultiplier: number[] = [];
+        this.liberationSecondDmg = [
+            [29.10, 31.48, 33.87, 37.21, 39.59, 42.34, 46.15, 49.97, 53.79, 57.84]
+        ];
+        this.liberationSecondMultiplier = [11];
 
-    skillSecondDmg: Array<Array<number>> = [
+        //Intro Skill
+        this.introName = ['Grand Entrance'];
+        this.introCurrent = 1;
+        this.intro = [
+            [24.75, 26.78, 28.81, 31.66, 33.68, 36.02, 39.27, 42.51, 45.76, 49.21]
+        ];
+        this.introMultiplier = [2];
 
-    ];
-    skillSecondMultiplier: number[] = [];
+        this.introSecondDmg = [
+            [12.38, 13.39, 14.41, 15.83, 16.84, 18.01, 19.64, 21.26, 22.88, 24.61]
+        ];
+        this.introSecondMultiplier = [4]
 
-    skillThirdDmg: Array<Array<number>> = [
+        //Outro Skill
+        this.outroName = ['Leaping Flames'];
+        this.outro = [[530]];
+        this.outroMultiplier = [1];
 
-    ];
-    skillThirdMultiplier: number[] = [];
+        //Forte Skill
+        this.forteName = ['Thermobaric Bullets', 'Thermobaric Bullets x30', 'POW POW'];
+        this.forteCurrent = 1;
+        this.forte = [
+            [10, 10.82, 11.64, 12.79, 13.61, 14.56, 15.87, 17.18, 18.49, 19.89],
+            [10, 10.82, 11.64, 12.79, 13.61, 14.56, 15.87, 17.18, 18.49, 19.89],
+            [220, 238.04, 256.08, 281.34, 299.38, 320.13, 348.99, 377.85, 406.72, 437.39]
+        ];
+        this.forteMultiplier = [1, 30, 1];
 
-
-    //Liberation
-    liberationNames: string[] = [];
-    liberationCurrent: number = 1;
-    liberation: Array<Array<number>> = [
-
-    ];
-    liberationMultiplier: number[] = [1];
-
-    liberationSecondDmg: Array<Array<number>> = [
-
-    ]
-    liberationSecondMultiplier: number[] = [1];
-
-    //Intro Skill
-    introName: string[] = [];
-    introCurrent: number = 1;
-    intro: Array<Array<number>> = [
-
-    ];
-    introMultiplier: number[] = [];
-
-    //Outro Skill
-    outro: Array<Array<number>> = [];
-    outroMultiplier: number[] = [];
-    outroName: string[] = [];
-
-    //Forte Skill
-    forteName: string[] = [];
-    forteCurrent: number = 1;
-    forte: Array<Array<number>> = [
-
-    ];
-    forteMultiplier: number[] = [];
-
-    forteSecondDmg: Array<Array<number>> = [
-
-    ];
-    forteSecondMultiplier: number[] = [];
-
-    forteThirdDmg: Array<Array<number>> = [
-
-    ];
-    forteThirdMultiplier: number[] = [];
-
-    rotation: Array<Array<string | number>> = [[], []];
-    rotationName: Array<string> = []
+        this.rotation = [
+            ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg', 'sumBasicDmg', 'sumForteDmg', 'sumOutroDmg'],
+            [0, 0, 1, 2, 0, 0, 1, 2, 1, 2, 0]
+        ];
+        this.rotationName = ['Intro: ' + this.introName[0], '3x Basic Attack', 'Resonance Skill', 'Resonance Liberation', 'Resonance Skill (Hold FORTE x30)', 'Basic Attack (~30 bullets)', 'Resonance Skill (Hold FORTE x30)', 'Basic Attack (~30 bullets)', 'Outro: ' + this.outroName[0]];
+    }
 }

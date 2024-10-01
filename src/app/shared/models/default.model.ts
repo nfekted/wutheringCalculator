@@ -482,6 +482,10 @@ export class Default {
         switch (character.character.icon) {
             case 'calcharo':
                 return index == 0 ? character.heavyBonus : character.liberationBonus;
+            case 'changli':
+                return character.skillBonus;
+            case 'chixia':
+                return index == 2 ? character.basicBonus : character.skillBonus;
             default:
                 return 1;
         }

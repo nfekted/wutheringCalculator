@@ -25,7 +25,8 @@ export class Character {
     index: number;
     character:
         Aalto | Baizhi | Calcharo | Changli
-    // | Chixia | Danjin | Encore | Jianxin
+        | Chixia
+    //| Danjin | Encore | Jianxin
     // | Jinhsi | Jiyan | Lingyang | Mortefi
     // | RoverHavoc | Rover | Sanhua | Taoqi
     // | Verina | XiangliYao | Yinlin | Yangyang
