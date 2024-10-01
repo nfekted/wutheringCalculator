@@ -70,7 +70,7 @@ export class HomeComponent {
         break;
       case 'changli':
         const cha: Changli = new Changli();
-        char = this.charCreation(cha);
+        char = this.charCreation(cha, load);
 
         break;
       case 'chixia':
