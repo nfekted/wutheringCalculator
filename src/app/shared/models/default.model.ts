@@ -486,6 +486,8 @@ export class Default {
                 return character.skillBonus;
             case 'chixia':
                 return index == 2 ? character.basicBonus : character.skillBonus;
+            case 'danjin':
+                return character.heavyBonus;
             default:
                 return 1;
         }
