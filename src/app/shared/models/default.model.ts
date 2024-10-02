@@ -290,6 +290,8 @@ export class Default {
         switch (character.character.icon) {
             case 'calcharo':
                 return index > 7 ? character.heavyBonus : index > 1 && index <= 6 ? character.basicBonus : character.liberationBonus;
+            case 'encore':
+                return index < 5 ? character.basicBonus : index == 5 ? character.skillBonus : character.heavyBonus;
             default:
                 return character.liberationBonus;
         }
@@ -488,6 +490,8 @@ export class Default {
                 return index == 2 ? character.basicBonus : character.skillBonus;
             case 'danjin':
                 return character.heavyBonus;
+            case 'encore':
+                return character.liberationBonus;
             default:
                 return 1;
         }
