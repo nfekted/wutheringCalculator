@@ -12,7 +12,7 @@ export class Encore extends Default {
         this.weapon = 'rectifier';
 
         //Skills
-        this.basicNames = ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Wooly Strike', 'Air/Jump Attack', 'Dodge Attack', 'Heavy Attack'];
+        this.basicNames = ['Wooly Attack: Part 1', 'Wooly Attack: Part 2', 'Wooly Attack: Part 3', 'Wooly Attack: Part 4', 'Wooly Strike', 'Air/Jump Attack', 'Dodge Attack', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [28, 30.29, 32.59, 35.80, 38.10, 40.74, 44.41, 48.09, 51.76, 55.66],

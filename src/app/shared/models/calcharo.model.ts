@@ -12,7 +12,7 @@ export class Calcharo extends Default {
         this.weapon = 'broadblade';
 
         //Basic Attacks
-        this.basicNames = ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Mid-Air DMG', 'Dodge DGM', 'Heavy DGM'];
+        this.basicNames = ['Gnawing Fangs: Part 1', 'Gnawing Fangs: Part 2', 'Gnawing Fangs: Part 3', 'Gnawing Fangs: Part 4', 'Mid-Air DMG', 'Dodge DGM', 'Heavy DGM'];
         this.basicCurrent = 1;
         this.basic = [
             [23, 24.89, 26.78, 29.42, 31.3, 33.47, 36.49, 39.51, 42.53, 45.73],

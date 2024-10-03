@@ -12,7 +12,7 @@ export class Chixia extends Default {
         this.weapon = 'pistols';
 
         //Basic Attacks
-        this.basicNames = ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack DMG', 'Charged Heavy Attack DMG'];
+        this.basicNames = ['POW POW: Part 1', 'POW POW: Part 2', 'POW POW: Part 3', 'POW POW: Part 4', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack DMG', 'Charged Heavy Attack DMG'];
         this.basicCurrent = 1;
         this.basic = [
             [33.30, 36.04, 38.77, 42.59, 45.32, 48.46, 52.83, 57.20, 61.57, 66.21],

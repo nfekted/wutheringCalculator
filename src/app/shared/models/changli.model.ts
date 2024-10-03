@@ -11,7 +11,7 @@ export class Changli extends Default {
         this.weapon = 'sword';
 
         //Basic Attacks
-        this.basicNames = ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Mid-Air Part 1', 'Mid-Air Part 2', 'Mid-Air Part 3', 'Mid-Air Part 4', 'Dodge DMG', 'Heavy Attack', 'Mid-Air Heavy Attack'];
+        this.basicNames = ['Blazing Enlightment: Part 1', 'Blazing Enlightment: Part 2', 'Blazing Enlightment: Part 3', 'Blazing Enlightment: Part 4', 'Mid-Air Part 1', 'Mid-Air Part 2', 'Mid-Air Part 3', 'Mid-Air Part 4', 'Dodge DMG', 'Heavy Attack', 'Mid-Air Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [14.84, 16.05, 17.27, 18.97, 20.19, 21.59, 23.53, 25.48, 27.43, 29.49],

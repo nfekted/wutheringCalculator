@@ -12,7 +12,7 @@ export class Baizhi extends Default {
         this.weapon = 'rectifier';
 
         //Basic Attacks
-        this.basicNames = ['Part 1', 'Part 2  ', 'Part 3 ', 'Part 4', 'Mid Air', 'Dodge Dmg', 'Heavy Attack'];
+        this.basicNames = ['Destined Promise: Part 1', 'Destined Promise: Part 2  ', 'Destined Promise: Part 3 ', 'Destined Promise: Part 4', 'Mid Air', 'Dodge Dmg', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [32.94, 35.64, 38.34, 42.12, 44.82, 47.93, 52.25, 56.57, 60.89, 65.48],

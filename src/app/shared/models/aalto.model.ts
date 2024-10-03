@@ -13,7 +13,7 @@ export class Aalto extends Default {
         this.weapon = 'pistols';
 
         //Basic Attacks
-        this.basicNames = ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Part 5', 'Mid-Air Attack', 'Dodge Damage', 'Aimed Shot', 'Charged Aim Shot'];
+        this.basicNames = ['Half Truths: Part 1', 'Half Truths: Part 2', 'Half Truths: Part 3', 'Half Truths: Part 4', 'Half Truths: Part 5', 'Mid-Air Attack', 'Dodge Damage', 'Aimed Shot', 'Charged Aim Shot'];
         this.basicCurrent = 1;
         this.basic = [
             [16, 17.32, 18.63, 20.478, 21.78, 23.29, 25.39, 27.48, 29.58, 31.81],
