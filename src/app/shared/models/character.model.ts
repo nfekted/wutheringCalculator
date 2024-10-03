@@ -25,8 +25,9 @@ export class Character {
     index: number;
     character:
         Aalto | Baizhi | Calcharo | Changli |
-        Chixia | Danjin | Encore | Jianxin
-    // | Jinhsi | Jiyan | Lingyang | Mortefi
+        Chixia | Danjin | Encore | Jianxin |
+        Jinhsi
+    // | Jiyan | Lingyang | Mortefi
     // | RoverHavoc | Rover | Sanhua | Taoqi
     // | Verina | XiangliYao | Yinlin | Yangyang
     // | Yuanwu | Zhezhi;
@@ -126,14 +127,6 @@ export class Character {
         this.character.calculateBasic(this);
     }
 
-    private jinhsiForteBonus(skill: string) {
-        switch (skill) {
-            case 'Crescent Divinity': case 'Illuminous Epiphany: Solar Flare': case 'Illuminous Epiphany: Stella Glamor': return this.skillBonus;
-            case 'Incarnation Heavy Atk': return this.heavyBonus;
-            default: return this.basicBonus;
-        }
-    }
-
     resetCharacter() {
         this.basicDmg = [];
         this.basicSecondDmg = [];
@@ -179,6 +172,10 @@ export class Character {
         this.sumForteDmg = [];
         this.sumCommonForteDmg = [];
         this.sumResForteDmg = [];
+        this.sumHealingSkill = [];
+        this.sumHealingLiberation = [];
+        this.sumHealingIntro = [];
+        this.sumHealingOutro = [];
     }
 
     constructor(index: number, character: any, load?: any) {

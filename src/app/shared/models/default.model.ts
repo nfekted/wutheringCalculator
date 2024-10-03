@@ -493,6 +493,8 @@ export class Default {
                 return character.heavyBonus;
             case 'encore':
                 return character.liberationBonus;
+            case 'jinhsi':
+                return index == 4 ? character.basicBonus : index == 5 ? character.heavyBonus : character.skillBonus;
             default:
                 return 1;
         }
