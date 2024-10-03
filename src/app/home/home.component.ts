@@ -92,7 +92,6 @@ export class HomeComponent {
       case 'jianxin':
         const jia: Jianxin = new Jianxin();
         char = this.charCreation(jia, load);
-        char.healType = true;
         break;
       case 'jinhsi':
         const jin: Jinhsi = new Jinhsi();
