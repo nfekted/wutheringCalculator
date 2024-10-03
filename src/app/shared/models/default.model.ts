@@ -68,6 +68,7 @@ export class Default {
     //Forte Skill
     forteName: string[] = [];
     forteHeal: boolean[] = [];
+    forteShield: boolean[] = [];
     forteDMGType: string[] = [];
     forteCurrent: number = 1;
     forte: Array<Array<number>> = [

@@ -38,8 +38,7 @@ export class HomeComponent {
   constructor() {
     this.characterList = [
       new Aalto(), new Baizhi(), new Calcharo(), new Changli(),
-      new Chixia(), new Danjin(), new Encore()
-      //, , new Jianxin(),
+      new Chixia(), new Danjin(), new Encore(),  new Jianxin()
       // new Jinhsi(), new Jiyan(), new Lingyang(), new Mortefi(),
       // new RoverHavoc(), new Rover(), new Sanhua(), new Taoqi(),
       // new Verina(), new XiangliYao(), new Yangyang(), new Yinlin(),
@@ -86,13 +85,13 @@ export class HomeComponent {
         break;
       case 'encore':
         const enc: Encore = new Encore();
-        char = this.charCreation(enc);
+        char = this.charCreation(enc, load);
 
         break;
       case 'jianxin':
         const jia: Jianxin = new Jianxin();
-        char = this.charCreation(jia);
-
+        char = this.charCreation(jia, load);
+        char.healType = true;
         break;
       case 'jinhsi':
         const jin: Jinhsi = new Jinhsi();
