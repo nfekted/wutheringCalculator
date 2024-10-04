@@ -93,7 +93,7 @@ export class Default {
         const heavyIndex = character.character.icon == 'changli' ? this.basic.length - 2 : this.basic.length - 1;
         for (let i = 0; i < this.basic.length; i++) {
             //Get Expected Value
-            const ex = this.getExpected(character.dmg, this.basic[i], this.basicCurrent - 1, character.elementalBonus, i >= heavyIndex ? character.heavyBonus : character.basicBonus);
+            const ex = this.getExpected(character.dmg, this.basic[i], this.basicCurrent - 1, character.elementalBonus, this.basicBonus(character, i));
             //Set expected as Base Damage
             character.basicDmg[i] = +ex.toFixed(0);
             let multiplier = this.basicMultiplier[i]
@@ -111,7 +111,7 @@ export class Default {
             let range: number[] = [];
             //Second Damages
             if (this.basicSecondDmg.length > 0) {
-                character.basicSecondDmg[i] = +(this.getExpected(character.dmg, this.basicSecondDmg[i], this.basicCurrent - 1, character.elementalBonus, i >= heavyIndex ? character.heavyBonus : character.basicBonus)).toFixed(0);
+                character.basicSecondDmg[i] = +(this.getExpected(character.dmg, this.basicSecondDmg[i], this.basicCurrent - 1, character.elementalBonus, this.basicBonus(character, i))).toFixed(0);
 
                 if (character.basicSecondDmg[i] > 0) {
                     multiplier = this.basicSecondMultiplier[i];
@@ -128,7 +128,7 @@ export class Default {
             }
             //Third Damages
             if (this.basicThirdDmg.length > 0) {
-                character.basicThirdDmg[i] = +(this.getExpected(character.dmg, this.basicThirdDmg[i], this.basicCurrent - 1, character.elementalBonus, i >= heavyIndex ? character.heavyBonus : character.basicBonus)).toFixed(0);
+                character.basicThirdDmg[i] = +(this.getExpected(character.dmg, this.basicThirdDmg[i], this.basicCurrent - 1, character.elementalBonus, this.basicBonus(character, i))).toFixed(0);
 
                 if (character.basicThirdDmg[i] > 0) {
                     multiplier = this.basicThirdMultiplier[i];
@@ -150,6 +150,18 @@ export class Default {
         }
 
         this.calculateSkill(character);
+    }
+
+    private basicBonus(character: Character, index: number) {
+        const heavyIndex = this.basic.length - 1;
+        switch (character.character.icon) {
+            case 'changli':
+                return index >= (heavyIndex - 1) ? character.heavyBonus : character.basicBonus;
+            case 'jiyan':
+                return index >= (heavyIndex - 2) ? character.heavyBonus : character.basicBonus;
+            default:
+                return index >= heavyIndex ? character.heavyBonus : character.basicBonus;
+        }
     }
 
     private calculateSkill(character: Character) {
@@ -287,12 +299,14 @@ export class Default {
         this.calculateIntro(character);
     }
 
-    liberationBonus(character: Character, index: number): number {
+    private liberationBonus(character: Character, index: number): number {
         switch (character.character.icon) {
             case 'calcharo':
                 return index > 7 ? character.heavyBonus : index > 1 && index <= 6 ? character.basicBonus : character.liberationBonus;
             case 'encore':
                 return index < 5 ? character.basicBonus : index == 5 ? character.skillBonus : character.heavyBonus;
+            case 'jiyan':
+                return character.heavyBonus;
             default:
                 return character.liberationBonus;
         }
@@ -481,7 +495,7 @@ export class Default {
         }
     }
 
-    forteBonus(character: Character, index: number): number {
+    private forteBonus(character: Character, index: number): number {
         switch (character.character.icon) {
             case 'calcharo':
                 return index == 0 ? character.heavyBonus : character.liberationBonus;
@@ -495,6 +509,8 @@ export class Default {
                 return character.liberationBonus;
             case 'jinhsi':
                 return index == 4 ? character.basicBonus : index == 5 ? character.heavyBonus : character.skillBonus;
+            case 'jiyan':
+                return character.heavyBonus;
             default:
                 return 1;
         }

@@ -39,8 +39,8 @@ export class HomeComponent {
     this.characterList = [
       new Aalto(), new Baizhi(), new Calcharo(), new Changli(),
       new Chixia(), new Danjin(), new Encore(), new Jianxin(),
-      new Jinhsi(), 
-      //new Jiyan(), new Lingyang(), new Mortefi(),
+      new Jinhsi(), new Jiyan(), new Lingyang()
+      //, new Mortefi(),
       // new RoverHavoc(), new Rover(), new Sanhua(), new Taoqi(),
       // new Verina(), new XiangliYao(), new Yangyang(), new Yinlin(),
       // new Yuanwu(), new Zhezhi()
@@ -101,12 +101,12 @@ export class HomeComponent {
       default: break;
       case 'jiyan':
         const jiy: Jiyan = new Jiyan();
-        char = this.charCreation(jiy);
+        char = this.charCreation(jiy, load);
 
         break;
       case 'lingyang':
         const lin: Lingyang = new Lingyang();
-        char = this.charCreation(lin);
+        char = this.charCreation(lin, load);
 
         break;
       case 'mortefi':
