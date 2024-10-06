@@ -511,6 +511,8 @@ export class Default {
                 return index == 4 ? character.basicBonus : index == 5 ? character.heavyBonus : character.skillBonus;
             case 'jiyan':
                 return character.heavyBonus;
+            case 'lingyang':
+                return index == 0 ? character.heavyBonus : index > 0 && index < 5 ? character.basicBonus : character.skillBonus;
             default:
                 return 1;
         }
