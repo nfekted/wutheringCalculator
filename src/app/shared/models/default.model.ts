@@ -513,6 +513,8 @@ export class Default {
                 return character.heavyBonus;
             case 'lingyang':
                 return index == 0 ? character.heavyBonus : index > 0 && index < 5 ? character.basicBonus : character.skillBonus;
+            case 'mortefi':
+                return character.skillBonus;
             default:
                 return 1;
         }
