@@ -515,6 +515,8 @@ export class Default {
                 return index == 0 ? character.heavyBonus : index > 0 && index < 5 ? character.basicBonus : character.skillBonus;
             case 'mortefi':
                 return character.skillBonus;
+            case 'roverh':
+                return index == 8 ? character.skillBonus : index == 0 || index > 8 ? character.heavyBonus : character.basicBonus;
             default:
                 return 1;
         }
