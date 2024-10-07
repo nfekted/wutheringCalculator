@@ -59,8 +59,8 @@ export class Default {
     outroName: string[] = [];
     outroHeal: boolean[] = [];
     outroDMGType: string[] = [];
-    outro: Array<Array<number>> = [];
-    outroMultiplier: number[] = [];
+    outro: Array<Array<number>> = [[0]];
+    outroMultiplier: number[] = [0];
 
     outroSecondDmg: Array<Array<number>> = [];
     outroSecondMultiplier: number[] = [];
@@ -158,6 +158,8 @@ export class Default {
             case 'changli':
                 return index >= (heavyIndex - 1) ? character.heavyBonus : character.basicBonus;
             case 'jiyan':
+                return index >= (heavyIndex - 2) ? character.heavyBonus : character.basicBonus;
+            case 'rover':
                 return index >= (heavyIndex - 2) ? character.heavyBonus : character.basicBonus;
             default:
                 return index >= heavyIndex ? character.heavyBonus : character.basicBonus;
@@ -517,6 +519,8 @@ export class Default {
                 return character.skillBonus;
             case 'roverh':
                 return index == 8 ? character.skillBonus : index == 0 || index > 8 ? character.heavyBonus : character.basicBonus;
+            case 'rover':
+                return character.skillBonus;
             default:
                 return 1;
         }
