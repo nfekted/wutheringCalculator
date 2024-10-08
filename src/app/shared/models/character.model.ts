@@ -27,10 +27,10 @@ export class Character {
         Aalto | Baizhi | Calcharo | Changli |
         Chixia | Danjin | Encore | Jianxin |
         Jinhsi | Jiyan | Lingyang | Mortefi |
-        RoverHavoc | Rover | Sanhua
-    // |  |  |  | Taoqi
+        RoverHavoc | Rover | Sanhua | Taoqi
     // | Verina | XiangliYao | Yinlin | Yangyang
     // | Yuanwu | Zhezhi;
+    atkType: boolean = false;
     healType: boolean = false;
     hpType: boolean = false;
     defType: boolean = false;

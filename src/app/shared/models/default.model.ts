@@ -521,6 +521,10 @@ export class Default {
                 return index == 8 ? character.skillBonus : index == 0 || index > 8 ? character.heavyBonus : character.basicBonus;
             case 'rover':
                 return character.skillBonus;
+            case 'sanhua':
+                return index == 0 ? character.heavyBonus : character.skillBonus;
+            case 'taoqi':
+                return index < 3 ? character.basicBonus : 1;
             default:
                 return 1;
         }

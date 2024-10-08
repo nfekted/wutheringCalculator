@@ -822,10 +822,11 @@
                             <div *ngIf="!randomCrit && !enhancerSkill"
                                 [innerHtml]="'char.enhancer.fixedCritInfo' | transloco: { chance: character.cChance, qtd: qtdCrit, normal: 20-qtdCrit}">
                             </div>
-                            <div *ngIf="enhancerSkill && !randomCrit && !character.healType"
+                            <div *ngIf="enhancerSkill && !randomCrit && (!character.healType || character.atkType)"
                                 [innerHtml]="'char.enhancer.rotationCritInfo' | transloco: {atkNum : character.character.rotation[0].length, chance: character.cChance, qtd: qtdCrit, normal:  character.character.rotation[0].length-qtdCrit}">
                             </div>
-                            <div *ngIf="enhancerSkill && character.healType">{{'char.enhancer.healingInfo' | transloco}}
+                            <div *ngIf="enhancerSkill && (character.healType && !character.atkType)">
+                                {{'char.enhancer.healingInfo' | transloco}}
                             </div>
                             <div *ngIf="randomCrit" [innerHtml]="'char.enhancer.randomCritInfo' | transloco">
                             </div>
@@ -840,10 +841,11 @@
                             <div *ngIf="!randomCrit && !enhancerSkill"
                                 [innerHtml]="'char.enhancer.fixedCritInfo' | transloco: { chance: newCritChance, qtd: newQtdCrit, normal: 20-newQtdCrit}">
                             </div>
-                            <div *ngIf="enhancerSkill && !randomCrit && !character.healType"
+                            <div *ngIf="enhancerSkill && !randomCrit && (!character.healType || character.atkType)"
                                 [innerHtml]="'char.enhancer.rotationCritInfo' | transloco: {atkNum : character.character.rotation[0].length, chance: newCritChance, qtd: newQtdCrit, normal:  character.character.rotation[0].length-newQtdCrit}">
                             </div>
-                            <div *ngIf="enhancerSkill && character.healType">{{'char.enhancer.healingInfo' | transloco}}
+                            <div *ngIf="enhancerSkill && (character.healType && !character.atkType)">
+                                {{'char.enhancer.healingInfo' | transloco}}
                             </div>
                             <div *ngIf="randomCrit" [innerHtml]="'char.enhancer.randomCritInfo' | transloco">
                             </div>
