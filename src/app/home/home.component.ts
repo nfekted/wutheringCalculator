@@ -40,8 +40,8 @@ export class HomeComponent {
       new Aalto(), new Baizhi(), new Calcharo(), new Changli(),
       new Chixia(), new Danjin(), new Encore(), new Jianxin(),
       new Jinhsi(), new Jiyan(), new Lingyang(), new Mortefi(),
-      new RoverHavoc(), new Rover()
-      // , , new Sanhua(), new Taoqi(),
+      new RoverHavoc(), new Rover(), new Sanhua()
+      // , , , new Taoqi(),
       // new Verina(), new XiangliYao(), new Yangyang(), new Yinlin(),
       // new Yuanwu(), new Zhezhi()
     ];
@@ -126,7 +126,7 @@ export class HomeComponent {
         break;
       case 'sanhua':
         const san: Sanhua = new Sanhua();
-        char = this.charCreation(san);
+        char = this.charCreation(san, load);
 
         break;
       case 'taoqi':
