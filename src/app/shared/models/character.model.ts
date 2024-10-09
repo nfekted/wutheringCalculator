@@ -13,6 +13,7 @@ import { Mortefi } from "./mortefi.model";
 import { Rover } from "./rover.model";
 import { RoverHavoc } from "./roverh.model";
 import { Sanhua } from "./sanhua.model";
+import { Shorekeeper } from "./shorekeeper.model";
 import { Taoqi } from "./taoqi.model";
 import { Verina } from "./verina.model";
 import { XiangliYao } from "./xiangliyao.model";
@@ -27,7 +28,8 @@ export class Character {
         Aalto | Baizhi | Calcharo | Changli |
         Chixia | Danjin | Encore | Jianxin |
         Jinhsi | Jiyan | Lingyang | Mortefi |
-        RoverHavoc | Rover | Sanhua | Taoqi
+        RoverHavoc | Rover | Sanhua | Taoqi | 
+        Shorekeeper
     // | Verina | XiangliYao | Yinlin | Yangyang
     // | Yuanwu | Zhezhi;
     atkType: boolean = false;

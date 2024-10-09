@@ -23,6 +23,7 @@ import { Yangyang } from '../shared/models/yangyang.model';
 import { Yinlin } from '../shared/models/yinlin.model';
 import { Yuanwu } from '../shared/models/yuanwu.model';
 import { Zhezhi } from '../shared/models/zhezhi.model';
+import { Shorekeeper } from '../shared/models/shorekeeper.model';
 
 @Component({
   selector: 'app-home',
@@ -41,6 +42,7 @@ export class HomeComponent {
       new Chixia(), new Danjin(), new Encore(), new Jianxin(),
       new Jinhsi(), new Jiyan(), new Lingyang(), new Mortefi(),
       new RoverHavoc(), new Rover(), new Sanhua(), new Taoqi(),
+      new Shorekeeper()
       // new Verina(), new XiangliYao(), new Yangyang(), new Yinlin(),
       // new Yuanwu(), new Zhezhi()
     ];
@@ -136,6 +138,12 @@ export class HomeComponent {
         char.defType = true;
         char.healType = true;
         char.atkType = true;
+        break;
+      case 'shorekeeper':
+        const sho: Shorekeeper = new Shorekeeper();
+        char = this.charCreation(sho, load);
+        char.healType = true;
+        char.hpType = true;
         break;
       case 'verina':
         const ver: Verina = new Verina();
