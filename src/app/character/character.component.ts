@@ -170,16 +170,6 @@ export class CharacterComponent {
     for (let i = 0; i < rotation[0].length; i++) {
       if (this.character.healType) heal = (this.character.character.rotation[0][i] as string).includes('sumHealing');
 
-
-      if(i == 17){
-        console.log(simulation);
-        console.log(i)
-        console.log(rotation);
-        console.log(rotation[0][i]);
-        console.log(rotation[1][i]);
-        console.log(this.character)
-      }
-
       const dmg = simulation ? copy[rotation[0][i]][rotation[1][i]] : this.character[rotation[0][i]][rotation[1][i]];
       if ((!this.randomCrit && currentChance > 0) || (this.randomCrit && (Math.floor(Math.random() * 100) + 1) < currentChance)) {
         list[i] = [+(dmg * (critMult / 100)).toFixed(0), true, heal];

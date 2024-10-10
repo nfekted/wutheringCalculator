@@ -42,8 +42,8 @@ export class HomeComponent {
       new Chixia(), new Danjin(), new Encore(), new Jianxin(),
       new Jinhsi(), new Jiyan(), new Lingyang(), new Mortefi(),
       new RoverHavoc(), new Rover(), new Sanhua(), new Taoqi(),
-      new Shorekeeper(), new Verina(), 
-      // new XiangliYao(), new Yangyang(), new Yinlin(),
+      new Shorekeeper(), new Verina(), new XiangliYao(),
+      // new Yangyang(), new Yinlin(),
       // new Yuanwu(), new Zhezhi()
     ];
   }
@@ -152,8 +152,7 @@ export class HomeComponent {
         break;
       case 'xiangliyao':
         const xia: XiangliYao = new XiangliYao();
-        char = this.charCreation(xia);
-
+        char = this.charCreation(xia, load);
         break;
       case 'yangyang':
         const yan: Yangyang = new Yangyang();

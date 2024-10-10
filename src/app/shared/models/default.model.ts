@@ -311,6 +311,8 @@ export class Default {
                 return index < 5 ? character.basicBonus : index == 5 ? character.skillBonus : character.heavyBonus;
             case 'jiyan':
                 return character.heavyBonus;
+            case 'xiangliyao':
+                return index == 0 ? character.liberationBonus : index > 0 && index < 5 ? character.basicBonus : character.skillBonus
             default:
                 return character.liberationBonus;
         }
@@ -541,6 +543,8 @@ export class Default {
                 return index == 0 ? character.heavyBonus : character.skillBonus;
             case 'taoqi':
                 return index < 3 ? character.basicBonus : 1;
+            case 'xiangliyao':
+                return character.liberationBonus;
             default:
                 return 1;
         }
