@@ -28,9 +28,9 @@ export class Character {
         Aalto | Baizhi | Calcharo | Changli |
         Chixia | Danjin | Encore | Jianxin |
         Jinhsi | Jiyan | Lingyang | Mortefi |
-        RoverHavoc | Rover | Sanhua | Taoqi | 
-        Shorekeeper
-    // | Verina | XiangliYao | Yinlin | Yangyang
+        RoverHavoc | Rover | Sanhua | Taoqi |
+        Shorekeeper | Verina
+    // |  | XiangliYao | Yinlin | Yangyang
     // | Yuanwu | Zhezhi;
     atkType: boolean = false;
     healType: boolean = false;
@@ -123,6 +123,7 @@ export class Character {
     sumHealingLiberation: number[] = [];
     sumHealingIntro: number[] = [];
     sumHealingOutro: number[] = [];
+    sumHealingForte: number[] = [];
 
     public calculate() {
         this.resetCharacter();

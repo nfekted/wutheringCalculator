@@ -42,8 +42,8 @@ export class HomeComponent {
       new Chixia(), new Danjin(), new Encore(), new Jianxin(),
       new Jinhsi(), new Jiyan(), new Lingyang(), new Mortefi(),
       new RoverHavoc(), new Rover(), new Sanhua(), new Taoqi(),
-      new Shorekeeper()
-      // new Verina(), new XiangliYao(), new Yangyang(), new Yinlin(),
+      new Shorekeeper(), new Verina(), 
+      // new XiangliYao(), new Yangyang(), new Yinlin(),
       // new Yuanwu(), new Zhezhi()
     ];
   }
@@ -147,9 +147,8 @@ export class HomeComponent {
         break;
       case 'verina':
         const ver: Verina = new Verina();
-        char = this.charCreation(tao);
+        char = this.charCreation(ver, load);
         char.healType = true;
-
         break;
       case 'xiangliyao':
         const xia: XiangliYao = new XiangliYao();

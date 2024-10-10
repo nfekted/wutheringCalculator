@@ -161,6 +161,8 @@ export class Default {
                 return index >= (heavyIndex - 2) ? character.heavyBonus : character.basicBonus;
             case 'rover':
                 return index >= (heavyIndex - 2) ? character.heavyBonus : character.basicBonus;
+            case 'verina':
+                return index >= (heavyIndex - 1) ? character.heavyBonus : character.basicBonus;
             default:
                 return index >= heavyIndex ? character.heavyBonus : character.basicBonus;
         }
@@ -434,9 +436,10 @@ export class Default {
 
     private calculateForte(character: Character) {
         for (let i = 0; i < this.forte.length; i++) {
+            const heal: boolean = this.forteHeal[i];
             const dmg: number = this.forteDMGType[i] == 'hp' ? character.hp : this.forteDMGType[i] == 'def' ? character.def : character.dmg;
-            const bonus: number = this.forteHeal[i] ? character.healingBonus : this.forteBonus(character, i);
-            const elemental: number = this.forteHeal[i] ? 0 : character.elementalBonus;
+            const bonus: number = heal ? character.healingBonus : this.forteBonus(character, i);
+            const elemental: number = heal ? 0 : character.elementalBonus;
             const crit: number = character.cDmg
             //Get Expected DMG
             const ex = this.getExpected(dmg, this.forte[i], this.forteCurrent - 1, elemental, bonus);
@@ -444,6 +447,11 @@ export class Default {
             //Set expected as Base Damage
             character.forteDmg[i] = +ex.toFixed(0);
             let multiplier = this.forteMultiplier[i];
+
+            if (heal) {
+                character.sumHealingForte[i] = character.forteDmg[i] * multiplier;
+            }
+
             character.sumForteDmg[i] = character.forteDmg[i] * multiplier;
 
             //Get expected Range value on enemy DEF
@@ -463,6 +471,10 @@ export class Default {
                 if (character.forteSecondDmg[i] > 0) {
                     multiplier = this.forteSecondMultiplier[i];
 
+                    if (heal) {
+                        character.sumHealingForte[i] += character.forteSecondDmg[i] * multiplier;
+                    }
+
                     character.sumForteDmg[i] += character.forteSecondDmg[i] * multiplier;
                     range = this.getRangeDamage(character.forteSecondDmg[i], false, crit);
                     character.forteCommonDmg[i] += `<br/>+<br/>${multiplier > 1 ? `<small>${multiplier}x </small>` : ''}${this.getRangeString(range)}`
@@ -479,6 +491,10 @@ export class Default {
 
                 if (character.forteThirdDmg[i] > 0) {
                     multiplier = this.forteThirdMultiplier[i];
+
+                    if (heal) {
+                        character.sumHealingForte[i] += character.forteThirdDmg[i] * multiplier;
+                    }
 
                     character.sumForteDmg[i] += character.forteThirdDmg[i] * multiplier;
                     range = this.getRangeDamage(character.forteThirdDmg[i], false, crit);
