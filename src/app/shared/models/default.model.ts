@@ -547,6 +547,10 @@ export class Default {
                 return index < 3 ? character.basicBonus : 1;
             case 'xiangliyao':
                 return character.liberationBonus;
+            case 'yangyang':
+                return index == 0 ? character.heavyBonus : character.basicBonus;
+            case 'yinlin':
+                return index == 0 ? character.heavyBonus : 1;
             default:
                 return 1;
         }

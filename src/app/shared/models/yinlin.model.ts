@@ -1,91 +1,74 @@
-export class Yinlin {
-    name: string = 'Yinlin'
-    icon: string = 'yinlin';
-    wiki: string = 'https://wutheringwaves.fandom.com/wiki/Yinlin';
-    type: string = 'electro';
-    weapon: string = 'rectifier';
-    //Basic Attacks
-    basicNames: string[] = [];
-    basicCurrent: number = 1;
-    basic: Array<Array<number>> = [
+import { Default } from "./default.model";
 
-    ];
-    basicMultiplier: number[] = [];
-    basicEnds: number = 3;
+export class Yinlin extends Default {
 
-    basicSecondDmg: Array<Array<number>> = [
+    constructor() {
+        super();
 
-    ]
-    basicSecondMultiplier: number[] = [];
+        this.name = 'Yinlin'
+        this.icon = 'yinlin';
+        this.wiki = 'https://wutheringwaves.fandom.com/wiki/Yinlin';
+        this.type = 'electro';
+        this.weapon = 'rectifier';
 
-    basicThirdDmg: Array<Array<number>> = [
+        // Basic Attacks
+        this.basicNames = [`Zapstring's Dance Part 1`, `Zapstring's Dance Part 2`, `Zapstring's Dance Part 3`, `Zapstring's Dance Part 4`, 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
+        this.basicCurrent = 1;
+        this.basic = [
+            [14.49, 15.68, 16.87, 18.53, 19.72, 21.09, 22.99, 24.89, 26.79, 28.81],
+            [17.01, 18.41, 19.8, 21.76, 23.15, 24.76, 26.99, 29.22, 31.45, 33.82],
+            [7.04, 7.62, 8.19, 9, 9.58, 10.24, 11.16, 12.09, 13.01, 13.99],
+            [37.8, 40.9, 44, 48.34, 51.44, 55.01, 59.97, 64.93, 69.89, 75.16],
+            [62, 67.09, 72.17, 79.29, 84.37, 90.22, 98.36, 106.49, 114.62, 123.27],
+            [12.18, 13.18, 14.18, 15.58, 16.58, 17.72, 19.32, 20.92, 22.52, 24.22],
+            [15, 16.23, 17.46, 19.19, 20.42, 21.83, 23.8, 25.77, 27.74, 29.83]
+        ];
+        this.basicMultiplier = [1, 2, 7, 1, 1, 7, 2];
+        this.basicEnds = 3;
 
-    ]
-    basicThirdMultiplier: number[] = [];
+        //Skill
+        this.skillNames = ['Magnetic Roar', 'Lightning Execution', 'Electromagnetic Blast'];
+        this.skillCurrent = 1;
+        this.skill = [
+            [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65],
+            [45, 48.69, 52.38, 57.55, 61.24, 65.48, 71.39, 77.29, 83.2, 89.47],
+            [10, 10.82, 11.64, 12.79, 13.61, 14.56, 15.87, 17.18, 18.49, 19.89]
+        ];
+        this.skillMultiplier = [3, 4, 1];
 
-    //Skill
-    skillNames: string[] = [];
-    skillCurrent: number = 1;
-    skill: Array<Array<number>> = [
+        //Liberation
+        this.liberationNames = ['Thundering Wrath'];
+        this.liberationCurrent = 1;
+        this.liberation = [
+            [58.63, 63.44, 68.25, 74.98, 79.79, 85.32, 93.01, 100.7, 108.39, 116.56]
+        ];
+        this.liberationMultiplier = [7];
 
-    ]
-    skillMultiplier: number[] = [];
+        //Intro Skill
+        this.introName = ['Raging Storm'];
+        this.introCurrent = 1;
+        this.intro = [
+            [7.2, 7.8, 8.39, 9.21, 9.8, 10.48, 11.43, 12.37, 13.32, 14.32]
+        ];
+        this.introMultiplier = [10];
 
-    skillSecondDmg: Array<Array<number>> = [
+        // //Outro Skill
+        this.outroName = ['Strategist'];
 
-    ];
-    skillSecondMultiplier: number[] = [];
+        //Forte Skill
+        this.forteName = ['Chameleon Cipher', 'Judgment Strike'];
+        this.forteCurrent = 1;
+        this.forte = [
+            [90, 97.38, 104.76, 115.1, 122.48, 130.96, 142.77, 154.58, 166.39, 178.93],
+            [39.56, 42.8, 46.05, 50.59, 53.83, 57.56, 62.75, 67.94, 73.13, 78.64]
+        ];
+        this.forteMultiplier = [2, 1];
 
-    skillThirdDmg: Array<Array<number>> = [
+        this.rotationName = ['Intro', 'Resonance Skill', 'Resonance Liberation', '4x Basic Attack', 'Resonance Skill', 'Heavy Attack', 'Outro']
+        this.rotation = [
+            ['sumIntroDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumForteDmg', 'sumForteDmg'],
+            [0, 0, 0, 0, 1, 2, 3, 1, 0, 1]
+        ];
 
-    ];
-    skillThirdMultiplier: number[] = [];
-
-
-    //Liberation
-    liberationNames: string[] = [];
-    liberationCurrent: number = 1;
-    liberation: Array<Array<number>> = [
-
-    ];
-    liberationMultiplier: number[] = [1];
-
-    liberationSecondDmg: Array<Array<number>> = [
-
-    ]
-    liberationSecondMultiplier: number[] = [1];
-
-    //Intro Skill
-    introName: string[] = [];
-    introCurrent: number = 1;
-    intro: Array<Array<number>> = [
-
-    ];
-    introMultiplier: number[] = [];
-
-    //Outro Skill
-    outro: Array<Array<number>> = [];
-    outroMultiplier: number[] = [];
-    outroName: string[] = [];
-
-    //Forte Skill
-    forteName: string[] = [];
-    forteCurrent: number = 1;
-    forte: Array<Array<number>> = [
-
-    ];
-    forteMultiplier: number[] = [];
-
-    forteSecondDmg: Array<Array<number>> = [
-
-    ];
-    forteSecondMultiplier: number[] = [];
-
-    forteThirdDmg: Array<Array<number>> = [
-
-    ];
-    forteThirdMultiplier: number[] = [];
-
-    rotation: Array<Array<string | number>> = [[], []];
-    rotationName: Array<string> = []
+    }
 }
