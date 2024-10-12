@@ -544,15 +544,17 @@ export class Default {
             case 'sanhua':
                 return index == 0 ? character.heavyBonus : character.skillBonus;
             case 'taoqi':
-                return index < 3 ? character.basicBonus : 1;
+                return index < 3 ? character.basicBonus : character.basicBonus;
             case 'xiangliyao':
                 return character.liberationBonus;
             case 'yangyang':
                 return index == 0 ? character.heavyBonus : character.basicBonus;
             case 'yinlin':
-                return index == 0 ? character.heavyBonus : 1;
+                return index == 0 ? character.heavyBonus : character.basicBonus;
+            case 'yuanwu':
+                return index == 8 ? character.heavyBonus : character.basicBonus;
             default:
-                return 1;
+                return character.basicBonus;
         }
     }
 

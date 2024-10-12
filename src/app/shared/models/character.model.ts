@@ -30,8 +30,8 @@ export class Character {
         Jinhsi | Jiyan | Lingyang | Mortefi |
         RoverHavoc | Rover | Sanhua | Taoqi |
         Shorekeeper | Verina | XiangliYao | Yangyang |
-        Yinlin
-    // | Yuanwu | Zhezhi;
+        Yinlin | Yuanwu
+    // |  | Zhezhi;
     atkType: boolean = false;
     healType: boolean = false;
     hpType: boolean = false;
