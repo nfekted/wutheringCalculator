@@ -38,7 +38,7 @@
         "yangyang": "<b>Yangyang</b> é uma personagem com bônus elemental <b class=\"aero\">AERO</b>, o destaque da Yangyang's é sua <b>Regeneração de Resonance Energy</b> em 20 pontos com sua <b>Outro: Whispering Breeze</b>.",
         "yinlin": "<b>Yinlin</b> é uma personagem com bônus elemental<b class=\"electro\">ELECTRO</b>, ela pode ser usada como <b>Main DPS</b> focada em <b>Resonance Liberation</b>, mas seu destaque é como <b>Sub DPS/Suporte</b> com <b>Amplificação de Electro DMG</b> em 20% e <b>Amplificação de Resonance Liberation DMG</b> em 25% com sua <b>Outro: Strategist</b>",
         "yuanwu": "<b>Yuanwu</b> é uma personagem com bônus elemental<b class=\"electro\">ELECTRO</b>, Yuanwu pode até causar algum dano com a <b>rotação de Forte</b>, mas seu destaque é a skill <b>Outro: Lightning Manipulation</b>, que resulta em <b>Redução de Vibration</b> (barra de stun) e <b>Amplificação na Interrupção</b>.",
-        "zhezhi": "O dano da <b>Zhezhi</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Glacio</b>, outros status como HP, DEF... não influênciam em seu dano."
+        "zhezhi": "<b>Zhezhi</b> é uma personagem com bônus elemental<b class=\"glacio\">GLACIO</b>, seu dano é baseado em <b>Ataques básicos</b> mas seu destaque é <b>Amplificar dano GLACIO</b> em 20% e <b>Amplificar dano de Resonance Skill<b> em 25% com sua <b>Outro: Radiant Ruin</b>."
     },
     "prediction": "NÚMEROS PREVISTOS",
     "info": "Devido ao calculo de defesa não ser exato, pode variar uma <b>média de 6.5% do valor real in-game.</b>",

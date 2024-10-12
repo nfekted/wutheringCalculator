@@ -553,6 +553,8 @@ export class Default {
                 return index == 0 ? character.heavyBonus : character.basicBonus;
             case 'yuanwu':
                 return index == 8 ? character.heavyBonus : character.basicBonus;
+            case 'zhezhi':
+                return index == 0 ? character.heavyBonus : character.basicBonus;
             default:
                 return character.basicBonus;
         }

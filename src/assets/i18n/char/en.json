@@ -38,7 +38,7 @@
         "yangyang": "<b>Yangyang</b> is a character with <b class=\"aero\">AERO</b> elemental bonus, Yangyang's highlight are her <b>Resonance Energy Regeneration Buff</b> in 20 points with her <b>Outro: Whispering Breeze</b>.",
         "yinlin": "<b>Yinlin</b> is a character with an elemental bonus <b class=\"electro\">ELECTRO</b>, she can act as a <b>Main DPS</b> focused on <b>Resonance Liberation</b>, but her highlight is the role of <b>Sub DPS/Team support</b> with <b>Electro DMG Amplification</b> in 20% and <b>Resonance Liberation DMG Amplification</b> in 25% with her <b>Outro: Strategist</b>",
         "yuanwu": "<b>Yuanwu</b> is a character with an elemental bonus <b class=\"electro\">ELECTRO</b>, Yuanwu can do some damage with your <b>Forte rotation</b>, but his highlight is the <b>Outro: Lightning Manipulation</b>, causing <b>Vibration Reduction</b> (stun bar) and <b>Interruption Boost</b>.",
-        "zhezhi": "<b>Zhezhi damage</b> is <b>pure ATK</b> with elemental <b>Glacio</b> bonus, other status like HP, DEF... has no influence in her damage"
+        "zhezhi": "<b>Zhezhi</b> is a character with <b class=\"glacio\">GLACIO</b> elemental bonus, her damage is based on <b>Basic Attacks</b> but with emphasis on <b>Glacio DMG Amplification</b> in 20% and <b>Resonance Skill DMG Amplification<b> in 25% with <b>Outro: Radiant Ruin</b>"
     },
     "prediction": "PREDICTED NUMBERS",
     "info": "Due to the defense calculation not being exact, may vary by an <b>average of 6.5% of the actual in-game value.</b>",
