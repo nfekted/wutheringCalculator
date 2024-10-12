@@ -2,7 +2,7 @@
     <div class="row" style="background-color: rgb(148, 148, 148);">
         <div class="col-sm-6">
             <div class="row">
-                <div class="col-sm-3 text-center">
+                <div class="col-sm-3 text-center mb-3">
                     <img class="img-fluid" [src]="'assets/img/characters/'+character.character.icon+'.png'"
                         style="width: 250px;border-radius: 0 0 50% 50%;" />
                     <h2 style="cursor: pointer;" *ngIf="!nameEdit" (click)="nameEdit = true">
@@ -14,20 +14,20 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 text-justify">
                             <div [innerHtml]="'char.characters.' + character.character.icon | transloco"></div>
                         </div>
                         <hr />
                         <div class="col-sm-1">
                             <img class="img-fluid" [src]="'assets/img/icons/'+character.character.type+'.webp'"
-                                style="width: 100px;" />
+                                style="width: 4rem;" />
                         </div>
                         <div class="col-sm-11">
                             <div [innerHtml]="'char.' + character.character.type | transloco"></div>
                         </div>
                         <div class="col-sm-1">
                             <img class="img-fluid" [src]="'assets/img/icons/'+character.character.weapon+'.webp'"
-                                style="width: 100px;" />
+                                style="width: 4rem;" />
                         </div>
                         <div class="col-sm-11">
                             <div [innerHtml]="'char.' + character.character.weapon | transloco"></div>
@@ -35,106 +35,104 @@
                         <hr />
                         <div class="col-sm-12 mt-1"><b>{{'char.attributes' | transloco}}</b></div>
                         <ng-container *ngIf="character.hpType">
-                            <div class="col-sm-3">
-                                <span style="float: right">HP:</span>
+                            <div class="col-sm-12 col-md-3 text-center">
+                                <span class="input-field">HP:</span>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-12 col-md-6 ">
                                 <input class="form-control" type="number" placeholder="100" min="0"
                                     [(ngModel)]="character.hp" (blur)="calculate()" />
                             </div>
-                            <div class="col-sm-6"></div>
+                            <div class="col-sm-12 col-md-3 "></div>
                         </ng-container>
-                        <div class="col-sm-3 mt-2">
-                            <span style="float: right">ATK:</span>
+                        <div class="col-sm-12 col-md-3 mt-2 text-center">
+                            <span class="input-field">ATK:</span>
                         </div>
-                        <div class="col-sm-3 mt-2">
+                        <div class="col-sm-12 col-md-6  mt-2">
                             <input class="form-control" type="number" placeholder="100" min="0"
                                 [(ngModel)]="character.dmg" (blur)="calculate()" />
                         </div>
                         <ng-container *ngIf="character.defType">
-                            <div class="col-sm-6"></div>
-                            <div class="col-sm-3 mt-2">
-                                <span style="float: right">DEF:</span>
+                            <div class="col-sm-12 col-md-3 "></div>
+                            <div class="col-sm-12 col-md-3 mt-2 text-center">
+                                <span class="input-field">DEF:</span>
                             </div>
-                            <div class="col-sm-3 mt-2">
+                            <div class="col-sm-12 col-md-6  mt-2">
                                 <input class="form-control" type="number" placeholder="0" min="0"
                                     [(ngModel)]="character.def" (blur)="calculate()" />
                             </div>
                         </ng-container>
-                        <div class="col-sm-6"></div>
-                        <div class="col-sm-3 mt-2">
-                            <span style="float: right">Crit. Rate %:</span>
+                        <div class="col-sm-12 col-md-3 "></div>
+                        <div class="col-sm-12 col-md-3 mt-2 text-center">
+                            <span class="input-field">Crit. Rate %:</span>
                         </div>
-                        <div class="col-sm-3 mt-2">
+                        <div class="col-sm-12 col-md-6  mt-2">
                             <input class="form-control" type="number" placeholder="5%" min="0" max="100"
                                 [(ngModel)]="character.cChance" />
                         </div>
-                        <div class="col-sm-3 mt-2"></div>
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-3 mt-2">
-                            <span style="float: right">Crit. DMG %:</span>
+                        <div class="col-sm-12 col-md-3 "></div>
+                        <div class="col-sm-12 col-md-3 mt-2 text-center">
+                            <span class="input-field">Crit. DMG %:</span>
                         </div>
-                        <div class="col-sm-3 mt-2">
+                        <div class="col-sm-12 col-md-6  mt-2">
                             <input class="form-control" type="number" placeholder="150%" min="0"
                                 [(ngModel)]="character.cDmg" (blur)="calculate()" />
                         </div>
-                        <div class="col-sm-6"></div>
-                        <div class="col-sm-3 mt-2">
-                            <span style="float: right">{{'char.skill' | transloco}} Bonus %:</span>
+                        <div class="col-sm-12 col-md-3 "></div>
+                        <div class="col-sm-12 col-md-3 mt-2 text-center">
+                            <span class="input-field">{{'char.skill' | transloco}} Bonus %:</span>
                         </div>
-                        <div class="col-sm-3 mt-2">
+                        <div class="col-sm-12 col-md-6  mt-2">
                             <input class="form-control" type="number" placeholder="150%" min="0" max="100"
                                 [(ngModel)]="character.skillBonus" (blur)="calculate()" />
                         </div>
-                        <div class="col-sm-6"></div>
-                        <div class="col-sm-3 mt-2">
-                            <span style="float: right">{{'char.basic' | transloco}} Bonus %:</span>
+                        <div class="col-sm-12 col-md-3 "></div>
+                        <div class="col-sm-12 col-md-3 mt-2 text-center">
+                            <span class="input-field">{{'char.basic' | transloco}} Bonus %:</span>
                         </div>
-                        <div class="col-sm-3 mt-2">
+                        <div class="col-sm-12 col-md-6  mt-2">
                             <input class="form-control" type="number" placeholder="150%" min="0" max="100"
                                 [(ngModel)]="character.basicBonus" (blur)="calculate()" />
                         </div>
-                        <div class="col-sm-6"></div>
-                        <div class="col-sm-3 mt-2">
-                            <span style="float: right">{{'char.heavy' | transloco}} Bonus %:</span>
+                        <div class="col-sm-12 col-md-3 "></div>
+                        <div class="col-sm-12 col-md-3 mt-2 text-center">
+                            <span class="input-field">{{'char.heavy' | transloco}} Bonus %:</span>
                         </div>
-                        <div class="col-sm-3 mt-2">
+                        <div class="col-sm-12 col-md-6  mt-2">
                             <input class="form-control" type="number" placeholder="150%" min="0" max="100"
                                 [(ngModel)]="character.heavyBonus" (blur)="calculate()" />
                         </div>
-                        <div class="col-sm-6"></div>
-                        <div class="col-sm-3 mt-2">
-                            <span style="float: right">Lib. Bonus %:</span>
+                        <div class="col-sm-12 col-md-3 "></div>
+                        <div class="col-sm-12 col-md-3 mt-2 text-center">
+                            <span class="input-field">Lib. Bonus %:</span>
                         </div>
-                        <div class="col-sm-3 mt-2">
+                        <div class="col-sm-12 col-md-6  mt-2">
                             <input class="form-control" type="number" placeholder="150%" min="0" max="100"
                                 [(ngModel)]="character.liberationBonus" (blur)="calculate()" />
                         </div>
-                        <div class="col-sm-6"></div>
-                        <div class="col-sm-3 mt-2">
-                            <span style="float: right">{{'char.elemental' | transloco}} DMG %:</span>
+                        <div class="col-sm-12 col-md-3 "></div>
+                        <div class="col-sm-12 col-md-3 mt-2 text-center">
+                            <span class="input-field">{{'char.elemental' | transloco}} DMG %:</span>
                         </div>
-                        <div class="col-sm-3 mt-2">
+                        <div class="col-sm-12 col-md-6  mt-2">
                             <input class="form-control" type="number" placeholder="150%" min="0" max="100"
                                 [(ngModel)]="character.elementalBonus" (blur)="calculate()" />
                         </div>
                         <ng-container *ngIf="character.healType">
-                            <div class="col-sm-6"></div>
-                            <div class="col-sm-3 mt-2">
-                                <span style="float: right">Healing Bonus %:</span>
+                            <div class="col-sm-12 col-md-3 "></div>
+                            <div class="col-sm-12 col-md-3 mt-2 text-center">
+                                <span class="input-field">Healing Bonus %:</span>
                             </div>
-                            <div class="col-sm-3 mt-2">
+                            <div class="col-sm-12 col-md-6  mt-2">
                                 <input class="form-control" type="number" placeholder="150%" min="0" max="100"
                                     [(ngModel)]="character.healingBonus" (blur)="calculate()" />
                             </div>
                         </ng-container>
 
-                        <div class="col-sm-6"></div>
-                        <div class="col-sm-3 mt-2"></div>
-                        <div class="col-sm-6 mt-2">
+                        <div class="col-sm-12 col-md-3 "></div>
+                        <div class="col-sm-12 mt-2">
                             <button type="button" data-bs-toggle="modal"
                                 [attr.data-bs-target]="'#critModal'+character.index" (click)="recalculateAll()"
-                                [class]="'btn btn-primary btn-'+ currentSelection">
+                                [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
                                 {{'char.enhancer.enhancer' | transloco}}
                             </button>
                         </div>
@@ -237,7 +235,7 @@
                         </div>
 
                         <div id="basic" class="collapse show" aria-labelledby="tableOne" data-parent="#accordion">
-                            <div class="card-body">
+                            <div class="card-body" style="overflow-x: auto;">
                                 <table class="table table-dark table-striped-columns text-center">
                                     <thead>
                                         <tr>
@@ -329,7 +327,7 @@
                         </div>
 
                         <div id="skills" class="collapse" aria-labelledby="tableTwo" data-parent="#accordion">
-                            <div class="card-body">
+                            <div class="card-body" style="overflow-x: auto;">
                                 <table class="table table-dark table-striped-columns text-center">
                                     <thead>
                                         <tr>
@@ -517,7 +515,7 @@
                         </div>
 
                         <div id="intro" class="collapse" aria-labelledby="tableThree" data-parent="#accordion">
-                            <div class="card-body">
+                            <div class="card-body" style="overflow-x: auto;">
                                 <table class="table table-dark table-striped-columns text-center">
                                     <thead>
                                         <tr>

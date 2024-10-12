@@ -7,7 +7,42 @@
     border: 2px double rgba(0, 0, 0, 0.75);
 }
 
-.skill-content{
+.skill-content {
     transform: rotate(-45deg);
     color: white;
-}    
+}
+
+.input-field {
+    font-weight: bold;
+    float: right;
+}
+
+@media (max-width: 575px) {
+    .input-field {
+        float: none;
+    }
+
+    .skill {
+        margin-top: 3rem;
+        margin-left: 3rem;
+    }
+
+    .btn-full-mobile {
+        width: 100%;
+    }
+}
+
+@media (min-width: 576px) {
+    .input-field {
+        float: none;
+    }
+
+    .skill {
+        margin-top: 4rem;
+        margin-left: 4rem;
+    }
+
+    .btn-full-mobile {
+        width: 100%;
+    }
+}
