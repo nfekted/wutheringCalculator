@@ -29,8 +29,8 @@ export class Character {
         Chixia | Danjin | Encore | Jianxin |
         Jinhsi | Jiyan | Lingyang | Mortefi |
         RoverHavoc | Rover | Sanhua | Taoqi |
-        Shorekeeper | Verina | XiangliYao
-    // |  |  | Yinlin | Yangyang
+        Shorekeeper | Verina | XiangliYao | Yangyang
+    // |  |  | Yinlin | 
     // | Yuanwu | Zhezhi;
     atkType: boolean = false;
     healType: boolean = false;

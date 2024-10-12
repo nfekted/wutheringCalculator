@@ -35,7 +35,7 @@
         "shorekeeper": "<b>The Shorekeeper</b> é uma personagem com bônus elemental <b class=\"spectro\">SPECTRO</b>, apesar de poder causar algum dano, seu foco principal é <b>curar o time</b>, se destacando pela sua <b>Resonance Liberation</b> que alem de curar, pode aumentar a <b>Chance critica</b> e <b>Dano crítico</b> em até 12.5% e 25% respectivamente.",
         "verina": "<b>Verina</b> é uma personagem com bônus elemental <b class=\"spectro\">SPECTRO</b>, a cura de Verina é totalmente baseada em <b>ATK puro</b> e também com sua <b>Outro: Blossom</b> pode <b>amplificar todo tipo de dano</b> do time em 15%.",
         "xiangliyao": "<b>Xiangli Yao</b> é uma personagem com bônus elemental <b class=\"electro\">ELECTRO</b>, seu papel principal é ser o <b>Main DPS</b> com foco em sua <b>Resonance Liberation</b>.",
-        "yangyang": "O dano da <b>Yangyang</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Aero</b>, outros status como HP, DEF... não influênciam em seu dano.",
+        "yangyang": "<b>Yangyang</b> é uma personagem com bônus elemental <b class=\"aero\">AERO</b>, o destaque da Yangyang's é sua <b>Regeneração de Resonance Energy</b> em 20 pontos com sua <b>Outro: Whispering Breeze</b>.",
         "yinlin": "O dano do <b>Yinlin</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Electro</b>, outros status como HP, DEF... não influênciam em seu dano.",
         "yuanwu": "O dano do <b>Yuanwu</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Electro</b>, outros status como HP, DEF... não influênciam em seu dano.",
         "zhezhi": "O dano da <b>Zhezhi</b> se baseia em <b>ATK puro</b> com bônus elemental <b>Glacio</b>, outros status como HP, DEF... não influênciam em seu dano."

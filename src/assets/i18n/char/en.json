@@ -35,7 +35,7 @@
         "shorekeeper": "<b>The Shorekeeper</b> is a character with an elemental bonus <b class=\"spectro\">SPECTRO</b>, although she can cause some damage, her main focus is <b>healing the team< /b>, standing out for its <b>Resonance Liberation</b> which, in addition to healing, can increase <b>Critical Chance</b> and <b>Critical Damage</b> by up to 12.5% ​​and 25 % respectively.",
         "verina": "<b>Verina</b> is a character with an elemental bonus <b class=\"spectro\">SPECTRO</b>, her main focus is <b>healing the team</b>, Verina heal uses <b>pure ATK</b> and with <b>Outro: Blossom</b> will apply an <b>All damage Amplification</b> in 15%.",
         "xiangliyao": "<b>Xiangli Yao</b> is a character with an elemental bonus <b class=\"electro\">ELECTRO</b>, his main role is <b>Main DPS</b> focused on <b>Resonance Liberation DMG</b>.",
-        "yangyang": "<b>Yangyang damage</b> is <b>pure ATK</b> with elemental <b>Aero</b> bonus, other status like HP, DEF... has no influence in her damage",
+        "yangyang": "<b>Yangyang</b> is a character with <b class=\"aero\">AERO</b> elemental bonus, Yangyang's highlight are her <b>Resonance Energy Regeneration Buff</b> in 20 points with her <b>Outro: Whispering Breeze</b>.",
         "yinlin": "<b>Yinlin damage</b> is <b>pure ATK</b> with elemental <b>Electro</b> bonus, other status like HP, DEF... has no influence in her damage",
         "yuanwu": "<b>Yuanwu damage</b> is <b>pure ATK</b> with elemental <b>Electro</b> bonus, other status like HP, DEF... has no influence in her damage",
         "zhezhi": "<b>Zhezhi damage</b> is <b>pure ATK</b> with elemental <b>Glacio</b> bonus, other status like HP, DEF... has no influence in her damage"

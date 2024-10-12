@@ -163,6 +163,8 @@ export class Default {
                 return index >= (heavyIndex - 2) ? character.heavyBonus : character.basicBonus;
             case 'verina':
                 return index >= (heavyIndex - 1) ? character.heavyBonus : character.basicBonus;
+            case 'yangyang':
+                return index >= (heavyIndex - 1) ? character.heavyBonus : character.basicBonus;
             default:
                 return index >= heavyIndex ? character.heavyBonus : character.basicBonus;
         }
