@@ -46,14 +46,27 @@
                 </div>
                 <!-- ROTATION INFO -->
                 <div class="row" *ngIf="enhancerSkill">
-                    <div class="col-sm-12">
+                    <div class="col-sm-4">
                         <div [innerHtml]="'char.enhancer.rotationInfo' | transloco">
                         </div>
                     </div>
-                    <div class="col-sm-12 mt-4">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <div [innerHtml]="'char.enhancer.rotationHelp' | transloco">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 mt-4">
                         <ol>
-                            <li *ngFor="let item of character.character.rotationName"><b>{{item}}</b></li>
+                            <li *ngFor="let item of character.character.rotationName; let i=index"><b
+                                    [class]="character.character.rotationColor[i]">{{item}}</b></li>
                         </ol>
+                    </div>
+                    <div class="col-sm-12 col-md-4 mt-4">
+                    </div>
+                    <div class="col-sm-12 col-md-4 mt-4">
+                        <span *ngFor="let item of character.character.rotationCommands">
+                            <img [src]="'assets/img/icons/' + item + '.svg'" style="width: 25px;" />
+                        </span>
                     </div>
                 </div>
                 <hr />

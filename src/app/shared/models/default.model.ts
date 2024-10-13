@@ -88,6 +88,8 @@ export class Default {
 
     rotation: Array<Array<string | number>> = [];
     rotationName: Array<string> = [];
+    rotationColor: Array<string> = [];
+    rotationCommands: Array<string> = [];
 
     calculateBasic(character: Character) {
         const heavyIndex = character.character.icon == 'changli' ? this.basic.length - 2 : this.basic.length - 1;

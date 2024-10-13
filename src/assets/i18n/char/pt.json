@@ -66,6 +66,8 @@
         "calculate": "Recalcular!",
         "fixedCritInfo": "Baseado em um cenário de 20 ataques básicos, com <b>{{chance}}% chance critica</b>, <b>{{qtd}} ataques</b> seriam criticos e <b>{{normal}} seriam normais</b>, fixando o dano teremos a simulação representada pela seguinte tabela:",
         "rotationInfo": "Baseado em rotações populares, o seguintes ataques serão utilizados:",
+        "rotationVisual": "<b>Referencia Visual</b>:",
+        "rotationHelp": "<b>Guia de comandos (Default PC ver.)</b>:",
         "rotationCritInfo": "Um total de <b>{{atkNum}} ataques</b> acontecerão, com <b>{{chance}}% chance crítica</b>, <b>{{qtd}} ataques</b> serão criticos e <b>{{normal}} não serão</b>, fixando o dano teremos a simulação representada pela seguinte tabela:",
         "randomCritInfo": "Deixando os <b>críticos aleatórios</b>, temos a simulação representada pela seguinte tabela:",
         "healingInfo": "Como uma personagem de cura, dano e chance critica, assim como dano no geral não é tão relevante, por isso o foco será em quanto está sendo curado na rotação",

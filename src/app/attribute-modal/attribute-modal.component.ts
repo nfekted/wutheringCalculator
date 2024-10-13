@@ -27,8 +27,8 @@ export class AttributeModalComponent {
   newLiberationBonus: number = 0;
   newHealingBonus: number = 0;
 
-  enhancerBasic: boolean = true;
-  enhancerSkill: boolean = false;
+  enhancerBasic: boolean = false;
+  enhancerSkill: boolean = true;
   randomCrit: boolean = false;
 
   critSimFixed: Array<Array<number | boolean>> = [];

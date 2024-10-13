@@ -65,6 +65,8 @@
         "calculate": "Recalculate",
         "fixedCritInfo": "Based on a 20 basic attack scenario, with <b>{{chance}}% critical chance</b>, <b>{{qtd}} attacks</b> would be critical and <b>{{normal}} would not be</b>, fixing the damage we would have the simulation represented by the following table:",
         "rotationInfo": "<b>Based on popular rotations, the following attacks are used</b>:",
+        "rotationVisual": "<b>Visual Reference</b>:",
+        "rotationHelp": "<b>Commands guide (Default PC ver.)</b>:",
         "rotationCritInfo": "A total of <b>{{atkNum}} attacks</b> will happen, with <b>{{chance}}% critical chances</b>, <b>{{qtd}} attacks</b> would be critical and <b>{{normal}} would not be</b>, fixing the damage we would have the simulation represented by the following table:",
         "healingInfo": "As a healing focus character, critical damage or chance and overall damage it's not that relevant, so the focus will be on how much well be healed",
         "randomCritInfo": "Leaving <b>random critics</b>, we have the simulation represented by the following table",

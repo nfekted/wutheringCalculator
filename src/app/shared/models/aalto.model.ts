@@ -66,12 +66,14 @@ export class Aalto extends Default {
         ];
         this.forteMultiplier = [1];
 
-        //Rotations
+        //rotations
+        this.rotationName = ['Intro Skill', '2x Basic Attack', 'Resonance Skill: Mist Missle', 'Resonance Liberation: Flower in the Mist', '3x Basic Attack', 'Outro Skill'];
         this.rotation = [
             ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg'],
             [0, 0, 1, 0, 0, 0, 1, 2]
         ];
-        this.rotationName = ['Intro Skill', 'Basic Attack Part 1', 'Basic Attack Part 2', 'Resonance Skill: Mist Missle', 'Resonance Liberation: Flower in the Mist', 'Basic Attack Part 1', 'Basic Attack Part 2', 'Basic Attack Part 3', 'Outro Skill']
+        this.rotationColor = ['intro', 'basic', 'skill', 'liberation', 'basic', 'outro']
+        this.rotationCommands = ['mb', 'cv', 'mb', 'cv', 'e', 'cv', 'r', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb'];
     }
 
 
