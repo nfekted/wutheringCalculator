@@ -73,7 +73,7 @@
         "enhancerBasic": "Use only basic attacks",
         "enhancerSkill": "Use recommended rotation",
         "enhancerCrit": "Randomize all CRIT",
-        "current": "Current attributes",
-        "new": "New attributes"
+        "current": "With current attributes",
+        "new": "With new attributes"
     }
 }

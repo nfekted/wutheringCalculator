@@ -74,7 +74,7 @@
         "enhancerBasic": "Usar somente ataques básicos",
         "enhancerSkill": "Usar rotação recomendada",
         "enhancerCrit": "Randomizar CRITICOS",
-        "current": "Atributos Atuais",
-        "new": "Novos atributos"
+        "current": "Com atributos atuais",
+        "new": "Com novos atributos"
     }
 }

@@ -1,0 +1,388 @@
+<div class="modal fade modal-xl" [id]="id" tabindex="-1" aria-labelledby="critModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="margin-top: 10vh;">
+        <div class="modal-content">
+            <div [class]="'modal-header btn-'+ currentSelection">
+                <h1 class="modal-title fs-5" id="critModalLabel">{{'char.enhancer.enhancer' | transloco}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- OPTIONS -->
+                <div class="row">
+                    <h4></h4>
+                    <div class="col-sm-12">
+                        <b>{{'options' | transloco}}</b>
+                        <div class="row">
+                            <div class="form-group col-sm-12 col-md-4">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="enhancerBasic"
+                                        [(ngModel)]="enhancerBasic"
+                                        (change)="enhancerSkill = !enhancerBasic;recalculateAll()">
+                                    <label class="form-check-label" for="enhancerBasic">{{'char.enhancer.enhancerBasic'
+                                        |
+                                        transloco}}</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12 col-md-4">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="enhancerSkill"
+                                        [(ngModel)]="enhancerSkill"
+                                        (change)="enhancerBasic = !enhancerSkill;recalculateAll()">
+                                    <label class="form-check-label" for="enhancerSkill">{{'char.enhancer.enhancerSkill'
+                                        |
+                                        transloco}}</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12 col-md-4">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="enhancerRandom"
+                                        [(ngModel)]="randomCrit" (change)="recalculateAll()">
+                                    <label class="form-check-label" for="enhancerRandom">{{'char.enhancer.enhancerCrit'
+                                        |
+                                        transloco}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ROTATION INFO -->
+                <div class="row" *ngIf="enhancerSkill">
+                    <div class="col-sm-12">
+                        <div [innerHtml]="'char.enhancer.rotationInfo' | transloco">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 mt-4">
+                        <ol>
+                            <li *ngFor="let item of character.character.rotationName"><b>{{item}}</b></li>
+                        </ol>
+                    </div>
+                </div>
+                <hr />
+                <hr />
+
+                <!-- DATA -->
+                <div class="row">
+                    <!-- LEFT -->
+                    <div class="col-sm-12 col-md-4" style="border-right: solid 1px;">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <small>
+                                    <div *ngIf="!randomCrit && !enhancerSkill"
+                                        [innerHtml]="'char.enhancer.fixedCritInfo' | transloco: { chance: character.cChance, qtd: qtdCrit, normal: 20-qtdCrit}">
+                                    </div>
+                                    <div *ngIf="enhancerSkill && !randomCrit && (!character.healType || character.atkType)"
+                                        [innerHtml]="'char.enhancer.rotationCritInfo' | transloco: {atkNum : character.character.rotation[0].length, chance: character.cChance, qtd: qtdCrit, normal:  character.character.rotation[0].length-qtdCrit}">
+                                    </div>
+                                    <div *ngIf="enhancerSkill && (character.healType && !character.atkType)">
+                                        {{'char.enhancer.healingInfo' | transloco}}
+                                    </div>
+                                    <div *ngIf="randomCrit" [innerHtml]="'char.enhancer.randomCritInfo' | transloco">
+                                    </div>
+                                </small>
+                            </div>
+                            <!-- TABLE LEFT -->
+                            <div class="col-sm-12">
+                                <span class="badge text-bg-success"
+                                    *ngIf="fixedTotal > fixedSimTotal">{{'char.enhancer.bestScenario' |
+                                    transloco}} +{{fixedTotal - fixedSimTotal}}
+                                    {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}
+                                </span>
+                                <span class="badge text-bg-danger"
+                                    *ngIf="fixedTotal < fixedSimTotal">{{'char.enhancer.worstScenario' |
+                                    transloco}} -{{fixedSimTotal - fixedTotal}}
+                                    {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}
+                                </span>
+                                <table class="table table-striped"
+                                    [ngClass]="{'table-danger': fixedTotal < fixedSimTotal, 'table-success': fixedTotal > fixedSimTotal}">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <td colspan="3" scope="col"><b>{{'char.enhancer.current' | transloco}}</b>
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <th scope="col">Atk nº</th>
+                                            <th scope="col">DMG</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let a of critSimFixed; let i=index" class="text-center">
+                                            <th scope="row">{{i+1}}</th>
+                                            <td>{{+a[0] | number:'1.0-0'}}</td>
+                                            <td>
+                                                <b *ngIf="!a[2]">{{a[1] ? 'CRIT' : ''}}</b>
+                                                <b *ngIf="a[2]">{{'char.heal' | transloco}}</b>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Total</b></td>
+                                            <td colspan="2">~{{fixedTotal | number:'1.0-0'}}
+                                                {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') |
+                                                transloco}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MIDDLE -->
+                    <div class="col-sm-12 col-md-4 text-center mb-4">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <b>{{'char.enhancer.compareWith' | transloco}}</b>
+                            </div>
+                            <!-- NEW HP -->
+                            <ng-container *ngIf="character.hpType">
+                                <div class="col-6 mt-3">
+                                    {{'current' | transloco}} HP
+                                </div>
+                                <div class="col-6 mt-3">
+                                    {{'new' | transloco}} HP
+                                </div>
+                                <div class="col-6">
+                                    <input class="form-control" disabled type="number" [(ngModel)]="character.hp" />
+                                </div>
+                                <div class="col-6">
+                                    <input class="form-control" type="number" placeholder="0" min="0"
+                                        [(ngModel)]="newHp" />
+                                </div>
+                            </ng-container>
+                            <!-- NEW ATK -->
+                            <div class="col-6 mt-3">
+                                {{'current' | transloco}} ATK
+                            </div>
+                            <div class="col-6 mt-3">
+                                {{'new' | transloco}} ATK
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" disabled [(ngModel)]="character.dmg" />
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" placeholder="5%" min="0"
+                                    [(ngModel)]="newAtk" />
+                            </div>
+                            <!-- NEW DEF -->
+                            <ng-container *ngIf="character.defType">
+                                <div class="col-6 mt-3">
+                                    {{'current' | transloco}} DEF
+                                </div>
+                                <div class="col-6 mt-3">
+                                    {{'new' | transloco}} DEF
+                                </div>
+                                <div class="col-6">
+                                    <input class="form-control" type="number" disabled [(ngModel)]="character.def" />
+                                </div>
+                                <div class="col-6">
+                                    <input class="form-control" type="number" placeholder="0" min="0"
+                                        [(ngModel)]="newDef" />
+                                </div>
+                            </ng-container>
+
+                            <!-- NEW CRIT RATE -->
+                            <div class="col-6 mt-3">
+                                {{'current' | transloco}} Crit. Rate %
+                            </div>
+                            <div class="col-6 mt-3">
+                                {{'new' | transloco}} Crit. Rate %
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" disabled [(ngModel)]="character.cChance" />
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" placeholder="5%" min="0"
+                                    [(ngModel)]="newCritChance" />
+                            </div>
+
+                            <!-- NEW CRIT DMG -->
+                            <div class="col-6">
+                                {{'current' | transloco}} Crit. DMG %
+                            </div>
+                            <div class="col-6">
+                                {{'new' | transloco}} Crit. DMG %
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" disabled [(ngModel)]="character.cDmg" />
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" placeholder="5%" min="0"
+                                    [(ngModel)]="newCritDmg" />
+                            </div>
+
+                            <!-- NEW Skill -->
+                            <div class="col-6">
+                                {{'current' | transloco}} Skill Bonus %
+                            </div>
+                            <div class="col-6">
+                                {{'new' | transloco}} Skill Bonus %
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" disabled [(ngModel)]="character.skillBonus" />
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" placeholder="5%" min="0"
+                                    [(ngModel)]="newSkillBonus" />
+                            </div>
+
+                            <!-- NEW BASIC -->
+                            <div class="col-6">
+                                {{'current' | transloco}} Basic Bonus %
+                            </div>
+                            <div class="col-6">
+                                {{'new' | transloco}} Basic Bonus %
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" disabled [(ngModel)]="character.basicBonus" />
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" placeholder="5%" min="0"
+                                    [(ngModel)]="newBasicBonus" />
+                            </div>
+
+                            <!-- NEW HEAVY -->
+                            <div class="col-6">
+                                {{'current' | transloco}} Heavy Bonus %
+                            </div>
+                            <div class="col-6">
+                                {{'new' | transloco}} Heavy Bonus %
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" disabled [(ngModel)]="character.heavyBonus" />
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" placeholder="5%" min="0"
+                                    [(ngModel)]="newHeavyBonus" />
+                            </div>
+
+                            <!-- NEW LIBERATION -->
+                            <div class="col-6">
+                                {{'current' | transloco}} Liberation Bonus %
+                            </div>
+                            <div class="col-6">
+                                {{'new' | transloco}} Liberation Bonus %
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" disabled
+                                    [(ngModel)]="character.liberationBonus" />
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" placeholder="5%" min="0"
+                                    [(ngModel)]="newLiberationBonus" />
+                            </div>
+
+                            <!-- NEW ELEMENTAL -->
+                            <div class="col-6">
+                                {{'current' | transloco}} Elemental DMG %
+                            </div>
+                            <div class="col-6">
+                                {{'new' | transloco}} Elemental DMG %
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" disabled
+                                    [(ngModel)]="character.elementalBonus" />
+                            </div>
+                            <div class=" col-6">
+                                <input class="form-control" type="number" placeholder="0%" min="0"
+                                    [(ngModel)]="newElemental" />
+                            </div>
+
+                            <!-- NEW HEALING -->
+                            <ng-container *ngIf="character.healType">
+                                <div class="col-6 mt-3">
+                                    {{'current' | transloco}} Healing Bonus %
+                                </div>
+                                <div class="col-6 mt-3">
+                                    {{'new' | transloco}} Healing Bonus %
+                                </div>
+                                <div class="col-6">
+                                    <input class="form-control" type="number" disabled
+                                        [(ngModel)]="character.healingBonus" />
+                                </div>
+                                <div class="col-6">
+                                    <input class="form-control" type="number" placeholder="0" min="0"
+                                        [(ngModel)]="newHealingBonus" />
+                                </div>
+                            </ng-container>
+                            <div class="col-sm-12 mt-3">
+                                <button type="button" (click)="recalculateAll()"
+                                    [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.calculate'
+                                    | transloco}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RIGHT -->
+                    <div class="col-sm-12 col-md-4" style="border-left: solid 1px;">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <small>
+                                    <div *ngIf="!randomCrit && !enhancerSkill"
+                                        [innerHtml]="'char.enhancer.fixedCritInfo' | transloco: { chance: newCritChance, qtd: newQtdCrit, normal: 20-newQtdCrit}">
+                                    </div>
+                                    <div *ngIf="enhancerSkill && !randomCrit && (!character.healType || character.atkType)"
+                                        [innerHtml]="'char.enhancer.rotationCritInfo' | transloco: {atkNum : character.character.rotation[0].length, chance: newCritChance, qtd: newQtdCrit, normal:  character.character.rotation[0].length-newQtdCrit}">
+                                    </div>
+                                    <div *ngIf="enhancerSkill && (character.healType && !character.atkType)">
+                                        {{'char.enhancer.healingInfo' | transloco}}
+                                    </div>
+                                    <div *ngIf="randomCrit" [innerHtml]="'char.enhancer.randomCritInfo' | transloco">
+                                    </div>
+                                </small>
+                            </div>
+                            <!-- TABLE RIGHT -->
+                            <div class="col-sm-12">
+                                <span class="badge text-bg-success"
+                                    *ngIf="fixedTotal < fixedSimTotal">{{'char.enhancer.bestScenario' |
+                                    transloco}} +{{fixedSimTotal - fixedTotal}}
+                                    {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}
+                                </span>
+                                <span class="badge text-bg-danger"
+                                    *ngIf="fixedTotal > fixedSimTotal">{{'char.enhancer.worstScenario' |
+                                    transloco}} -{{fixedTotal - fixedSimTotal}}
+                                    {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}
+                                </span>
+                                <table class="table table-striped"
+                                    [ngClass]="{'table-danger': fixedTotal > fixedSimTotal, 'table-success': fixedTotal < fixedSimTotal}">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <td colspan="3" scope="col"><b>{{'char.enhancer.new' | transloco}}</b></td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <th scope="col">Atk nº</th>
+                                            <th scope="col">DMG</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let a of critSimFixedSim; let i=index" class="text-center">
+                                            <th scope="row">{{i+1}}</th>
+                                            <td>{{+a[0] | number:'1.0-0'}}</td>
+                                            <td>
+                                                <b *ngIf="!a[2]">{{a[1] ? 'CRIT' : ''}}</b>
+                                                <b *ngIf="a[2]">{{'char.heal' | transloco}}</b>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Total</b></td>
+                                            <td colspan="2">~{{fixedSimTotal | number:'1.0-0'}}
+                                                {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') |
+                                                transloco}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal"
+                    [class]="'btn btn-secondary btn-'+ currentSelection">{{'close'
+                    | transloco}}</button>
+            </div>
+        </div>
+    </div>
+</div>
