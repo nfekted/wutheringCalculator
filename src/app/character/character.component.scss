@@ -17,6 +17,10 @@
     float: right;
 }
 
+.aalto-icon {
+    filter: invert(1);
+}
+
 @media (max-width: 575px) {
     .input-field {
         float: none;

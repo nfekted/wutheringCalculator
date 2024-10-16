@@ -78,5 +78,23 @@
         "enhancerCrit": "Randomizar CRITICOS",
         "current": "Com atributos atuais",
         "new": "Com novos atributos"
+    },
+    "echo": {
+        "echo": "Comparador de Echos",
+        "disclaimer": "Todos Echos são considerados 5* e Level 25. Um personagem de simulação será usado, com 1000 em todos atributos de valor e 10% em todos atributos de porcentagem.",
+        "recommended": "Atributos recomendados para {{name}} são:",
+        "attributes": "atributos recomendados",
+        "results": "Resultados",
+        "echoType": "Tipo de Echo",
+        "echo4": "Echo custo 4",
+        "echo3": "Echo custo 3",
+        "echo1": "Echo custo 1",
+        "main": "Atributo Principal",
+        "sub": "Atributo Secundário",
+        "text": "O Echo {{echo}} tem <b>{{perc}}% mais {{type}}</b> ({{value}} <b>VS</b> {{value2}}) na rotação de <b>{{char}}</b>.<br/><br/>",
+        "same": "Parece que ambos Echos tem  <b>os mesmos valores de {{type}}</b>.<br/><br/>",
+        "because": "Isso pode ser porque o Echo 1 tem {{attr}} atributos recomendados <b>VS</b> {{attr2}} atributos recomendados do Echo 2, o que ajuda na rotação de {{char}}.",
+        "however": "<b>Porém</b>, Echo 1 tem {{attr}} atributos recomendados <b>VS</b> {{attr2}} atributos recomendados do Echo 2, esses atributos adicionais podem ajudar na rotação do personagem de alguma forma, alem de apenas os valores de {{type}}.",
+        "aalto": "<b>Pois:</b><br/>Aalto fica <b>pouco tempo em campo</b>, e deve dar <b>o máximo de dano possível</b> antes da troca para o Main DPS com a <b>Outro skill</b>. Por isso, foco em chance/dano crítico e ATK seria o recomendado."
     }
 }

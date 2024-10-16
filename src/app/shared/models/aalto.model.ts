@@ -74,6 +74,12 @@ export class Aalto extends Default {
         ];
         this.rotationColor = ['intro', 'basic', 'skill', 'liberation', 'basic', 'outro']
         this.rotationCommands = ['mb', 'cv', 'mb', 'cv', 'e', 'cv', 'r', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['AERO DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'ATK %', 'ATK'];
     }
 
 

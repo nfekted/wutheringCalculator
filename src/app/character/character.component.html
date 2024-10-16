@@ -133,7 +133,18 @@
                             <button type="button" data-bs-toggle="modal"
                                 [attr.data-bs-target]="'#critModal'+character.index"
                                 [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
+                                <img src="assets/img/icons/resonator.webp" width="25px"
+                                    [class]="currentSelection + '-icon'" />
                                 {{'char.enhancer.enhancer' | transloco}}
+                            </button>
+                        </div>
+                        <div class="col-sm-12 mt-2">
+                            <button type="button" data-bs-toggle="modal"
+                                [attr.data-bs-target]="'#echoModal'+character.index"
+                                [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
+                                <img src="assets/img/icons/echo.webp" width="25px"
+                                    [class]="currentSelection + '-icon'" />
+                                {{'char.echo.echo' | transloco}}
                             </button>
                         </div>
                     </div>
@@ -758,3 +769,4 @@
 </div>
 
 <app-attribute-modal [id]="'critModal'+character.index" [character]="character"></app-attribute-modal>
+<app-echo-comparator-modal [id]="'echoModal'+character.index" [character]="character"></app-echo-comparator-modal>

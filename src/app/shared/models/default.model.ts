@@ -91,6 +91,11 @@ export class Default {
     rotationColor: Array<string> = [];
     rotationCommands: Array<string> = [];
 
+    echo4: Array<string> = [];
+    echo3: Array<string> = [];
+    echo1: Array<string> = [];
+    echoSub: Array<string> = [];
+
     calculateBasic(character: Character) {
         const heavyIndex = character.character.icon == 'changli' ? this.basic.length - 2 : this.basic.length - 1;
         for (let i = 0; i < this.basic.length; i++) {

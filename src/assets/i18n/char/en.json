@@ -77,5 +77,23 @@
         "enhancerCrit": "Randomize all CRIT",
         "current": "With current attributes",
         "new": "With new attributes"
+    },
+    "echo": {
+        "echo": "Echo Comparator",
+        "disclaimer": "All Echos are considered 5* and Level 25. A simulation character is created with 1000 in all value attributes and 10% in all percentage attributes",
+        "recommended": "Recommended attributes for {{name}} is:",
+        "attributes": "recommended attributes",
+        "results": "Results",
+        "echoType": "Echo Type",
+        "echo4": "4 Cost Echo",
+        "echo3": "3 Cost Echo",
+        "echo1": "1 Cost Echo",
+        "main": "Main attribute",
+        "sub": "Sub attribute",
+        "text": "Echo {{echo}} has <b>{{perc}}% more {{type}}</b> points ({{value}} <b>VS</b> {{value2}}) in <b>{{char}}</b> rotation.<br/><br/>",
+        "same": "It seems that both Echoes reach the  <b>same values ​​of {{type}}</b> points.<br/><br/>",
+        "because": "This could be because Echo 1 has {{attr}} recommended attributes <b>VS</b> {{attr2}} recommended attributes from Echo 2, which helps with {{char}} rotation.",
+        "however": "<b>Howver</b>, Echo 1 has {{attr}} recommended attributes <b>VS</b> {{attr2}} recommended attributes from Echo 2, these additional attributes can help the rotation in other ways besides {{type}} values.",
+        "aalto": "<b>Bacause:</b><br/>Aalto spends <b>little time on the battlefield</b>, he must deal as <b>much damage as possible</b> before going to the main DPS with the <b>Outro skill buff's</b>. Therefore, focusing on critical rate/dmg and ATK would be the most recommended."
     }
 }

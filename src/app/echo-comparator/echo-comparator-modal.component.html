@@ -1,0 +1,220 @@
+<div class="modal fade modal-xl" [id]="id" tabindex="-1" aria-labelledby="echoModal" aria-hidden="true">
+    <div class="modal-dialog" style="margin-top: 10vh;">
+        <div class="modal-content">
+            <div [class]="'modal-header btn-'+ currentSelection">
+                <h1 class="modal-title fs-5" id="echoModal">{{'char.echo.echo' | transloco}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <b>{{'char.echo.disclaimer' | transloco}}</b>
+                <!-- BASIC INFO -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        {{'char.echo.recommended' | transloco: {name: character.character.name} }}
+                    </div>
+                    <div class="col-sm-12 col-md-3 echo-border">
+                        <b>{{'char.echo.echo4' | transloco}}</b><br />
+                        <ul>
+                            <li *ngFor="let item of character.character.echo4">{{item}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 col-md-3 echo-border">
+                        <b>{{'char.echo.echo3' | transloco}}</b><br />
+                        <ul>
+                            <li *ngFor="let item of character.character.echo3">{{item}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 col-md-3 echo-border">
+                        <b>{{'char.echo.echo1' | transloco}}</b><br />
+                        <ul>
+                            <li *ngFor="let item of character.character.echo1">{{item}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 col-md-3 echo-border">
+                        <b>{{'char.echo.sub' | transloco}}</b><br />
+                        <ul>
+                            <li *ngFor="let item of character.character.echoSub">{{item}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12">
+                        <div
+                            [innerHtml]="'char.echo.' + currentSelection | transloco: { name: character.character.name}">
+                        </div>
+                    </div>
+                </div>
+                <!-- ECHO STATUS -->
+                <div class="row">
+                    <!-- ECHO 1 -->
+                    <div class="col-12 col-md-4 echo-border">
+                        <div class="col-12 mt-3 text-center">
+                            <img src="assets/img/icons/echo.webp" width="35px" style="filter: invert(1);" />
+                            <h5>ECHO 1</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mt-3 text-center">
+                                <b>{{'char.echo.echoType' | transloco}}</b>
+                            </div>
+                            <div class="col-12">
+                                <select class="form-select" [(ngModel)]="echo1.type" (change)="calculate()">
+                                    <option value="0">{{'char.echo.echo1' | transloco}}</option>
+                                    <option value="1">{{'char.echo.echo3' | transloco}}</option>
+                                    <option value="2">{{'char.echo.echo4' | transloco}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <b>Main 1 Attr</b>
+                            </div>
+                            <div class="col-12">
+                                <select class="form-select" [(ngModel)]="echo1.main1Index" (change)="calculate()">
+                                    <option *ngFor="let item of echo1.mainStats[echo1.type]; let i=index" [value]="i">
+                                        {{item}} - {{echo1.mainValues[echo1.type][i]}} {{i == 0 ? '' : '%'}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-12 text-center">
+                                <b>Main 2 Attr</b>
+                            </div>
+                            <div class="col-12">
+                                <select class="form-select" [(ngModel)]="echo1.main2Index" (change)="calculate()">
+                                    <option *ngFor="let item of echo1.mainStats[echo1.type]; let i=index" [value]="i">
+                                        {{item}} - {{echo1.mainValues[echo1.type][i]}} {{i == 0 ? '' : '%'}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <ng-container *ngFor="let item of echo1.currentSubs; let i=index; trackBy: trackByFn">
+                                <div class="col-12 text-center">
+                                    <b>Substat {{i +1}}</b>
+                                </div>
+                                <div class="col-6">
+                                    <select class="form-select" [(ngModel)]="echo1.currentSubs[i]"
+                                        (change)="calculate()">
+                                        <option [value]="null"></option>
+                                        <option *ngFor="let attr of echo1.secondaryStats" [value]="attr">
+                                            {{attr}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <input class="form-control" type="number" placeholder="0" min="0"
+                                        [(ngModel)]="echo1.currentSubsValue[i]" (change)="calculate()" />
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <!-- ECHO 1 END -->
+                    <!-- ECHO 2 -->
+                    <div class="col-12 col-md-4 echo-border">
+                        <div class="col-12 mt-3 text-center">
+                            <img src="assets/img/icons/echo.webp" width="35px" style="filter: invert(1);" />
+                            <h5>ECHO 2</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mt-3 text-center">
+                                <b>{{'char.echo.echoType' | transloco}}</b>
+                            </div>
+                            <div class="col-12">
+                                <select class="form-select" [(ngModel)]="echo2.type" disabled>
+                                    <option value="0">{{'char.echo.echo1' | transloco}}</option>
+                                    <option value="1">{{'char.echo.echo3' | transloco}}</option>
+                                    <option value="2">{{'char.echo.echo4' | transloco}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <b>Main 1 Attr</b>
+                            </div>
+                            <div class="col-12">
+                                <select class="form-select" [(ngModel)]="echo2.main1Index" (change)="calculate()">
+                                    <option *ngFor="let item of echo2.mainStats[echo2.type]; let i=index" [value]="i">
+                                        {{item}} - {{echo2.mainValues[echo2.type][i]}} {{i == 0 ? '' : '%'}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-12 text-center">
+                                <b>Main 2 Attr</b>
+                            </div>
+                            <div class="col-12">
+                                <select class="form-select" [(ngModel)]="echo2.main2Index" (change)="calculate()">
+                                    <option *ngFor="let item of echo2.mainStats[echo2.type]; let i=index" [value]="i">
+                                        {{item}} - {{echo2.mainValues[echo2.type][i]}} {{i == 0 ? '' : '%'}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <ng-container *ngFor="let item of echo2.currentSubs; let i=index; trackBy: trackByFn">
+                                <div class="col-12 text-center">
+                                    <b>Substat {{i +1}}</b>
+                                </div>
+                                <div class="col-6">
+                                    <select class="form-select" [(ngModel)]="echo2.currentSubs[i]"
+                                        (change)="calculate()">
+                                        <option [value]="null"></option>
+                                        <option *ngFor="let attr of echo2.secondaryStats" [value]="attr">
+                                            {{attr}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <input class="form-control" type="number" placeholder="0" min="0"
+                                        [(ngModel)]="echo2.currentSubsValue[i]" (change)="calculate()" />
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <!-- END ECHO 2 -->
+                    <!-- RESULTS -->
+                    <div class="col-12 col-md-4 echo-border">
+                        <div class="col-12 mt-3 text-center">
+                            <img src="assets/img/icons/echo.webp" width="35px" style="filter: invert(1);" />
+                            <h5>{{'char.echo.results' | transloco}}</h5>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div [innerHtml]="text">
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row" style="font-size: small;">
+                            <div class="col-12 col-md-6">
+                                <div class="row">
+                                    <div class="col-12">
+                                        Echo 1 - {{'char.echo.attributes' | transloco}}
+                                    </div>
+                                    <div class="col-12">
+                                        <ul>
+                                            <li *ngFor="let attr of echo1.commonAttr">{{attr}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="row">
+                                    <div class="col-12">
+                                        Echo 2 - {{'char.echo.attributes' | transloco}}
+                                    </div>
+                                    <div class="col-12">
+                                        <ul>
+                                            <li *ngFor="let attr of echo2.commonAttr">{{attr}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal"
+                    [class]="'btn btn-secondary btn-'+ currentSelection">{{'close'
+                    | transloco}}</button>
+            </div>
+        </div>
+    </div>
+</div>
