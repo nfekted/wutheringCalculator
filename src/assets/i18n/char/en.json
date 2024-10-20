@@ -11,6 +11,27 @@
     "broadblade": "<b>Broadblade</b> is one of the 5 type of Weapons in game, common in \"phisical\" characters.",
     "gauntlets": "<b>Gauntlet</b> is one of the 5 type of Weapons in game, common in \"phisical\" characters.",
     "pistols": "<b>Pistols</b> is one of the 5 type of Weapons in game, common in \"long-raged\" characters.",
+    "prediction": "PREDICTED NUMBERS",
+    "info": "Due to the defense calculation not being exact, may vary by an <b>average of 6.5% of the actual in-game value.</b>",
+    "elemental": "Elemental",
+    "basic": "Basic",
+    "heavy": "Heavy",
+    "skill": "Skill",
+    "forte": "Forte",
+    "liberation": "Liberation",
+    "intro": "Intro",
+    "outro": "Outro",
+    "type": "Type",
+    "name": "Name",
+    "heal": "HEALING",
+    "raw": "Raw Damage (Raw Crit.)",
+    "dmg": "Expected Common Enemy DMG (CRIT) ~Range",
+    "dmgR": "Expected RES Enemy DMG (CRIT) ~Range",
+    "showHelp": "Show colmuns help",
+    "description": "Description",
+    "help1": "<b>Raw Damage</b>: It is your character's damage, ignoring any other type of mechanic (defense, resistance).<br/><u><b>Use Raw Damage column as a basis </b></u>to know if your character is better or worse, since it has no external variables.<br/><br/><b>Common Enemy DMG</b>: Damage stipulated on common enemies, without resistance to their element<br/><b>RES (resistent) Enemy DMG</b>: Damage stipulated on enemies with resistance to your element.<br/><u><b>In-game DMG is purely informative</b></u>, for better metrics use the Raw Damage column.",
+    "delete": "Are you sure? This action can't be undone",
+    "dataTable": "Character Data tables",
     "modes": {
         "full": "Current mode: Show all damage detailed",
         "sum": "Current mode: Sum all damages"
@@ -40,25 +61,6 @@
         "yuanwu": "<b>Yuanwu</b> is a character with an elemental bonus <b class=\"electro\">ELECTRO</b>, Yuanwu can do some damage with your <b>Forte rotation</b>, but his highlight is the <b>Outro: Lightning Manipulation</b>, causing <b>Vibration Reduction</b> (stun bar) and <b>Interruption Boost</b>.",
         "zhezhi": "<b>Zhezhi</b> is a character with <b class=\"glacio\">GLACIO</b> elemental bonus, her damage is based on <b>Basic Attacks</b> but with emphasis on <b>Glacio DMG Amplification</b> in 20% and <b>Resonance Skill DMG Amplification<b> in 25% with <b>Outro: Radiant Ruin</b>"
     },
-    "prediction": "PREDICTED NUMBERS",
-    "info": "Due to the defense calculation not being exact, may vary by an <b>average of 6.5% of the actual in-game value.</b>",
-    "elemental": "Elemental",
-    "basic": "Basic",
-    "heavy": "Heavy",
-    "skill": "Skill",
-    "forte": "Forte",
-    "liberation": "Liberation",
-    "intro": "Intro",
-    "outro": "Outro",
-    "type": "Type",
-    "heal": "HEALING",
-    "raw": "Raw Damage (Raw Crit.)",
-    "dmg": "Expected Common Enemy DMG (CRIT) ~Range",
-    "dmgR": "Expected RES Enemy DMG (CRIT) ~Range",
-    "showHelp": "Show colmuns help",
-    "description": "Description",
-    "help1": "<b>Raw Damage</b>: It is your character's damage, ignoring any other type of mechanic (defense, resistance).<br/><u><b>Use Raw Damage column as a basis </b></u>to know if your character is better or worse, since it has no external variables.<br/><br/><b>Common Enemy DMG</b>: Damage stipulated on common enemies, without resistance to their element<br/><b>RES (resistent) Enemy DMG</b>: Damage stipulated on enemies with resistance to your element.<br/><u><b>In-game DMG is purely informative</b></u>, for better metrics use the Raw Damage column.",
-    "delete": "Are you sure? This action can't be undone",
     "enhancer": {
         "enhancer": "Attribute Comparator",
         "compareWith": "Compare with new attributes:",
@@ -93,7 +95,25 @@
         "text": "Echo {{echo}} has <b>{{perc}}% more {{type}}</b> points ({{value}} <b>VS</b> {{value2}}) in <b>{{char}}</b> rotation.<br/><br/>",
         "same": "It seems that both Echoes reach the  <b>same values ​​of {{type}}</b> points.<br/><br/>",
         "because": "This could be because Echo 1 has {{attr}} recommended attributes <b>VS</b> {{attr2}} recommended attributes from Echo 2, which helps with {{char}} rotation.",
-        "however": "<b>Howver</b>, Echo 1 has {{attr}} recommended attributes <b>VS</b> {{attr2}} recommended attributes from Echo 2, these additional attributes can help the rotation in other ways besides {{type}} values.",
+        "however": "<b>However</b>, Echo 1 has {{attr}} recommended attributes <b>VS</b> {{attr2}} recommended attributes from Echo 2, these additional attributes can help the rotation in other ways besides {{type}} values.",
         "aalto": "<b>Bacause:</b><br/>Aalto spends <b>little time on the battlefield</b>, he must deal as <b>much damage as possible</b> before going to the main DPS with the <b>Outro skill buff's</b>. Therefore, focusing on critical rate/dmg and ATK would be the most recommended."
+    },
+    "basics": {
+        "aalto": "<b class=\"intro\">Half Truths</b><br/>Aalto fires up to 5 consecutive shots, dealing <b class=\"aero\">Aero DMG</b>. Basic Attack 4 will spread the \"Mist\" forward, which lasts for 1.5s.<br/><br/><b class=\"intro\">Heavy Attack</b><br/>Aalto enters the aiming state for a more powerful shot. The aimed shot fired after charging finishes deals <b class=\"aero\">Aero DMG</b>.<br/><br/><b class=\"intro\">Mid-air Attack</b><br/>Aalto consumes Stamina to perform consecutive shots at the target in mid-air, dealing <b class=\"aero\">Aero DMG</b>.<br/><br/><b class=\"intro\">Dodge Counter</b><br/>Use Basic Attack after a successful Dodge to attack the target, dealing <b class=\"aero\">Aero DMG</b>.<br/><br/>"
+    },
+    "skills": {
+        "aalto": "<b class=\"intro\">Mist Avatar</b><br/>Casts \"Mist\" and 1 \"Mist Avatar(s)\" to taunt the surrounding targets. The avatars inherit a portion of Aalto's HP and generate 6 Mist Bullets around them, dealing <b class=\"aero\">Aero DMG</b>.<br/><br/><b class=\"intro\">Mist Bullets</b><br/>Deals <b class=\"aero\">Aero DMG</b>, considered as Resonance Skill DMG."
+    },
+    "liberations": {
+        "aalto": "<b class=\"intro\">Flower in the Mist</b><br/>Generate a \"Gate of Quandary\" in front, dealing <b class=\"aero\">Aero DMG</b>. When bullets pass through the \"Gate of Quandary\", they deal increased DMG. \"Gate of Quandary\" lasts for 10s."
+    },
+    "intros": {
+        "aalto": "<b class=\"intro\">Feint Shot</b><br/>Aalto shows up out of thin air to perform rapid continuous shooting, dealing <b class=\"aero\">Aero DMG</b>."
+    },
+    "outros": {
+        "aalto": "<b class=\"intro\">Dissolving Mist</b><br/>The incoming Resonator has their <b class=\"aero\">Aero DMG</b> Amplified by <b>23% for 14s</b> or until they are switched out."
+    },
+    "fortes": {
+        "aalto": "<b class=\"intro\">Misty Cover</b></br>When Aalto passes through \"Mist\" or \"Gate of Quandary\", he enters the <b class=\"intro\">Mistcloak Dash</b>.<br/><br/><b class=\"intro\">Mistcloak Dash</b></br>-Movement speed increased;<br/>-During this period, \"Mist Drops\" are continuously consumed, and for each 1 \"Mist Drop\" consumed, 1 Mist Bullet(s) is generated.<br/><br/><b class=\"intro\">Mist Drops</b></br>Aalto can hold up to 6 \"Mist Drops\"<br/>When <b>Basic Attack</b> or <b>Mid-air Attack</b> passes through \"Mist\" and hits the target, 1 \"Mist Drop\" is recovered."
     }
 }

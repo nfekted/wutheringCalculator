@@ -67,7 +67,7 @@ export class Jiyan extends Default {
         this.liberationMultiplier = [8, 8, 8];
 
         //Intro Skill
-        this.introName = ['Tactical Strike'];
+       // this.introName = ['Tactical Strike'];
         this.introCurrent = 1;
         this.intro = [
             [100, 108.20, 116.40, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81]
@@ -75,13 +75,13 @@ export class Jiyan extends Default {
         this.introMultiplier = [1];
 
         //Outro Skill
-        this.outroName = ['Discipline'];
+        //this.outroName = ['Discipline'];
         this.outro = [[313.40]];
         this.outroMultiplier = [1];
 
 
         //Forte Skill
-        this.forteName = ['Qingloong at War'];
+        //this.forteName = ['Qingloong at War'];
         this.forteCurrent = 1;
         this.forte = [
             [81.88, 77.77, 83.67, 91.92, 97.81, 104.59, 114.02, 123.45, 132.88, 142.91]

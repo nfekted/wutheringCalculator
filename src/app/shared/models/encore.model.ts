@@ -49,17 +49,17 @@ export class Encore extends Default {
         this.liberationMultiplier = [2, 3, 4, 3, 4, 4, 1];
 
         //Intro
-        this.introName = ['Angry Cosmos'];
+       // this.introName = ['Angry Cosmos'];
         this.introCurrent = 1;
         this.intro = [[100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81]];
         this.introMultiplier = [1];
 
         //Outro
-        this.outroName = ['Woolies Cheer Dance'];
+        //this.outroName = ['Woolies Cheer Dance'];
         this.outro = [[176.76]];
         this.outroMultiplier = [4];
 
-        this.forteName = ['Cloudy: Frenzy', 'Cosmos: Rupture'];
+        //this.forteName = ['Cloudy: Frenzy', 'Cosmos: Rupture'];
         this.forteCurrent = 1;
         this.forte = [
             [168, 181.77, 195.55, 214.83, 228.61, 244.45, 266.49, 288.53, 310.58, 334],

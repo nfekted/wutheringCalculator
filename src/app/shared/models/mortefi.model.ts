@@ -59,7 +59,7 @@ export class Mortefi extends Default {
         this.liberationMultiplier = [1, 1];
 
         //Intro Skill
-        this.introName = ['Dissonance'];
+       // this.introName = ['Dissonance'];
         this.introCurrent = 1;
         this.intro = [
             [85, 91.97, 98.94, 108.70, 115.67, 123.69, 134.84, 145.99, 157.14, 168.99]
@@ -68,13 +68,13 @@ export class Mortefi extends Default {
 
         //Outro Skill
 
-        this.outroName = ['Rage Transposition'];
+        //this.outroName = ['Rage Transposition'];
         this.outro = [[0]];
         this.outroMultiplier = [0];
 
 
         //Forte Skill
-        this.forteName = ['Fury Fugue'];
+        //this.forteName = ['Fury Fugue'];
         this.forteCurrent = 1;
         this.forte = [
             [164, 177.45, 190.90, 209.73, 223.18, 238.64, 260.16, 281.67, 303.19, 326.05]

@@ -77,7 +77,7 @@ export class Changli extends Default {
         this.liberationMultiplier = [1];
 
         //Intro Skill
-        this.introName = ['Obedience of Rules'];
+       // this.introName = ['Obedience of Rules'];
         this.introCurrent = 1;
         this.intro = [
             [22.38, 24.22, 26.06, 28.62, 30.46, 32.57, 35.51, 38.44, 41.38, 44.50]
@@ -92,10 +92,10 @@ export class Changli extends Default {
         //Outro Skill
         this.outro = [[0]];
         this.outroMultiplier = [0];
-        this.outroName = ['Strategy of Duality'];
+        //this.outroName = ['Strategy of Duality'];
 
         //Forte Skill
-        this.forteName = ['Flaming Sacrifice'];
+        //this.forteName = ['Flaming Sacrifice'];
         this.forteCurrent = 1;
         this.forte = [
             [19.74, 21.36, 22.98, 25.25, 26.87, 28.73, 31.32, 33.91, 36.50, 39.25]
@@ -107,7 +107,7 @@ export class Changli extends Default {
         ];
         this.forteSecondMultiplier = [1];
 
-        this.rotationName = ['Intro: ' + this.introName[0], 'Resonance Skill: Capture', 'True Sight Charge', 'True Sight Conquest', 'Resonance Skill: Capture', 'True Sight Charge', 'Heavy Attack', 'Resonance Liberation', 'Heavy Attack', '4x Basic Attack'];
+        this.rotationName = ['Intro', 'Resonance Skill: Capture', 'True Sight Charge', 'True Sight Conquest', 'Resonance Skill: Capture', 'True Sight Charge', 'Heavy Attack', 'Resonance Liberation', 'Heavy Attack', '4x Basic Attack'];
         this.rotation = [
             ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg'],
             [0, 0, 2, 1, 0, 1, 9, 0, 9, 0, 1, 2, 3]

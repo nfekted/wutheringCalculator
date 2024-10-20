@@ -54,7 +54,7 @@ export class Zhezhi extends Default {
         this.liberationMultiplier = [1];
 
         //Intro Skill
-        this.introName = ['Radiant Ruin'];
+       // this.introName = ['Radiant Ruin'];
         this.introCurrent = 1;
         this.intro = [
             [43.34, 46.89, 50.44, 55.42, 58.97, 63.06, 68.74, 74.43, 80.12, 86.16,]
@@ -62,10 +62,10 @@ export class Zhezhi extends Default {
         this.introMultiplier = [3];
 
         //Outro Skill
-        this.outroName = ['Carve and Draw'];
+        //this.outroName = ['Carve and Draw'];
 
         //Forte Skill
-        this.forteName = ['Ink and Wash', 'Ink and Wash: Stroke of Genius', 'Ink and Wash: Creation\'s Zenith'];
+        //this.forteName = ['Ink and Wash', 'Ink and Wash: Stroke of Genius', 'Ink and Wash: Creation\'s Zenith'];
         this.forteCurrent = 1;
         this.forte = [
             [41.75, 45.18, 48.60, 53.39, 56.82, 60.76, 66.23, 71.71, 77.19, 83.01],

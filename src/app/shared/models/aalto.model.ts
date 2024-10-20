@@ -13,7 +13,9 @@ export class Aalto extends Default {
         this.weapon = 'pistols';
 
         //Basic Attacks
-        this.basicNames = ['Half Truths: Part 1', 'Half Truths: Part 2', 'Half Truths: Part 3', 'Half Truths: Part 4', 'Half Truths: Part 5', 'Mid-Air Attack', 'Dodge Damage', 'Aimed Shot', 'Charged Aim Shot'];
+        this.basicName = 'Half Truths';
+        this.basicNames = ['Half Truths: DMG 1', 'Half Truths: DMG 2', 'Half Truths: DMG 3', 'Half Truths: DMG 4', 'Half Truths: DMG 5', 'Mid-Air Attack', 'Dodge Damage', 'Aimed Shot', 'Charged Aim Shot'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'h', 'h'];
         this.basicCurrent = 1;
         this.basic = [
             [16, 17.32, 18.63, 20.478, 21.78, 23.29, 25.39, 27.48, 29.58, 31.81],
@@ -30,7 +32,9 @@ export class Aalto extends Default {
         this.basicEnds = 4;
 
         //Skills
-        this.skillNames = ['Mist Missile'];
+        this.skillBonusType = ['s'];
+        this.skillName = 'Shift Trick'
+        this.skillNames = ['Mist Bullets'];
         this.skillCurrent = 1;
         this.skill = [
             [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65]
@@ -38,6 +42,8 @@ export class Aalto extends Default {
         this.skillMultiplier = [1];
 
         //Liberation
+        this.liberationBonusType = ['l'];
+        this.liberationName = 'Flower in the Mist';
         this.liberationNames = ['Flower in the Mist'];
         this.liberationCurrent = 1;
         this.liberation = [
@@ -46,7 +52,9 @@ export class Aalto extends Default {
         this.liberationMultiplier = [1];
 
         //Intro Skill
-        this.introName = ['Feint Shot'];
+        this.introBonusType = ['i'];
+        this.introName = 'Feint Shot';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [33.34, 36.07, 38.8, 42.63, 45.36, 48.51, 52.88, 57.25, 61.63, 66.27]
@@ -54,12 +62,17 @@ export class Aalto extends Default {
         this.introMultiplier = [3];
 
         //Outro Skill
+        this.outroBonusType = ['o'];
+        this.outroName = 'Dissolving Mist'
+        this.outroNames = [this.outroName];
         this.outro = [[0]];
         this.outroMultiplier = [0];
-        this.outroName = ['Dissolving Mist'];
+
 
         //Forte Skill
-        this.forteName = ['Misty Cover: Mist Missle'];
+        this.forteBonusType = ['s'];
+        this.forteName = 'Misty Cover';
+        this.forteNames = [this.forteName];
         this.forteCurrent = 1;
         this.forte = [
             [30, 32.46, 34.92, 38.47, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65]

@@ -57,7 +57,7 @@ export class Jianxin extends Default {
         this.liberationMultiplier = [1, 12, 1];
 
         //Intro Skill
-        this.introName = ['Essence of Tao'];
+       // this.introName = ['Essence of Tao'];
         this.introCurrent = 1;
         this.intro = [
             [17, 18.40, 19.79, 21.74, 23.14, 24.74, 26.97, 29.20, 31.43, 33.80]
@@ -72,10 +72,10 @@ export class Jianxin extends Default {
         //Outro Skill
         this.outro = [[0]];
         this.outroMultiplier = [0];
-        this.outroName = ['Transcendence'];
+        //this.outroName = ['Transcendence'];
 
         //Forte Skill
-        this.forteName = ['Primordial Chi Spiral: Pushin Punch', '1x Zhoutian Damage', '20x Zhoutian Damage', 'Minor Zhoutian Shock', 'Major Zhoutian: Inner Shock', 'Major Zhoutian: Outer Shock', 'Yielding Pull', 'Incomplete Minor Zhoutian Shield', 'Major Zhoutian: Inner Shield', 'Major Zhoutian: Outer Shield', 'Shield Healing'];
+        //this.forteName = ['Primordial Chi Spiral: Pushin Punch', '1x Zhoutian Damage', '20x Zhoutian Damage', 'Minor Zhoutian Shock', 'Major Zhoutian: Inner Shock', 'Major Zhoutian: Outer Shock', 'Yielding Pull', 'Incomplete Minor Zhoutian Shield', 'Major Zhoutian: Inner Shield', 'Major Zhoutian: Outer Shield', 'Shield Healing'];
         this.forteCurrent = 1;
         this.forteHeal = [false, false, false, false, false, false, false, false, false, false, true];
         this.forteShield = [false, false, false, false, false, false, false, true, true, true, false];

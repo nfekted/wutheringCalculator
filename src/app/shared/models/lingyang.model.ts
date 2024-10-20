@@ -59,7 +59,7 @@ export class Lingyang extends Default {
         this.liberationMultiplier = [1];
 
         //Intro Skill
-        this.introName = ['Lion Awakens'];
+       // this.introName = ['Lion Awakens'];
         this.introCurrent = 1;
         this.intro = [
             [50, 54.10, 58.20, 63.94, 68.04, 72.76, 79.32, 85.88, 92.44, 99.41]
@@ -67,13 +67,13 @@ export class Lingyang extends Default {
         this.introMultiplier = [2];
 
         //Outro Skill
-        this.outroName = ['Frosty Marks'];
+        //this.outroName = ['Frosty Marks'];
         this.outro = [[587.94]];
         this.outroMultiplier = [1];
 
 
         //Forte Skill
-        this.forteName = ['Unification of Spirits: Glorious Plunge', 'Unification of Spirits: Tail Strike', 'Striding Lion: Feral Gyrate 1', 'Striding Lion: Feral Gyrate 2', 'Striding Lion: Stormy Kicks', 'Striding Lion: Mountain Roamer'];
+        //this.forteName = ['Unification of Spirits: Glorious Plunge', 'Unification of Spirits: Tail Strike', 'Striding Lion: Feral Gyrate 1', 'Striding Lion: Feral Gyrate 2', 'Striding Lion: Stormy Kicks', 'Striding Lion: Mountain Roamer'];
         this.forteCurrent = 1;
         this.forte = [
             [86.70, 93.81, 100.92, 110.88, 117.99, 126.16, 137.54, 148.91, 160.29, 172.37],

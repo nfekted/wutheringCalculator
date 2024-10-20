@@ -147,6 +147,15 @@
                                 {{'char.echo.echo' | transloco}}
                             </button>
                         </div>
+                        <div class="col-sm-12 mt-2">
+                            <button type="button" data-bs-toggle="modal"
+                                [attr.data-bs-target]="'#dataTableModal'+character.index"
+                                [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
+                                <img src="assets/img/icons/resonator.webp" width="25px"
+                                    [class]="currentSelection + '-icon'" />
+                                {{'char.dataTable' | transloco}}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -250,7 +259,7 @@
                                 <table class="table table-dark table-striped-columns text-center">
                                     <thead>
                                         <tr>
-                                            <th scope="col">{{'char.type' | transloco}}</th>
+                                            <th scope="col">{{'char.name' | transloco}}</th>
                                             <th scope="col">{{'char.raw' | transloco}}</th>
                                             <th scope="col">{{'char.dmg' | transloco}}</th>
                                             <th scope="col">{{'char.dmgR' | transloco}}</th>
@@ -287,7 +296,7 @@
                                                     <!-- THIRD BASIC DAMAGE -->
                                                     <ng-container *ngIf="character.basicThirdDmg[i] > 0">
                                                         <br />+<br />
-                                                        <small *ngIf="character.character.basicSecondMultiplier[i] > 1"
+                                                        <small *ngIf="character.character.basicThirdMultiplier[i] > 1"
                                                             style="color: white;">{{character.character.basicThirdMultiplier[i]}}x
                                                         </small>
                                                         {{character.basicThirdDmg[i]}} (<b>{{(character.basicThirdDmg[i]
@@ -342,7 +351,7 @@
                                 <table class="table table-dark table-striped-columns text-center">
                                     <thead>
                                         <tr>
-                                            <th scope="col">{{'char.type' | transloco}}</th>
+                                            <th scope="col">{{'char.name' | transloco}}</th>
                                             <th scope="col">{{'char.raw' | transloco}}</th>
                                             <th scope="col">{{'char.dmg' | transloco}}</th>
                                             <th scope="col">{{'char.dmgR' | transloco}}</th>
@@ -530,14 +539,14 @@
                                 <table class="table table-dark table-striped-columns text-center">
                                     <thead>
                                         <tr>
-                                            <th scope="col">{{'char.type' | transloco}}</th>
+                                            <th scope="col">{{'char.name' | transloco}}</th>
                                             <th scope="col">{{'char.raw' | transloco}}</th>
                                             <th scope="col">{{'char.dmg' | transloco}}</th>
                                             <th scope="col">{{'char.dmgR' | transloco}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let b of character.character.introName; let i=index">
+                                        <tr *ngFor="let b of character.character.introNames; let i=index">
                                             <th scope="row">
                                                 {{b}}
                                             </th>
@@ -606,7 +615,7 @@
                                             <tr>
                                                 <td colspan="5">{{'char.outro' | transloco}}</td>
                                             </tr>
-                                            <tr *ngFor="let b of character.character.outroName; let i=index">
+                                            <tr *ngFor="let b of character.character.outroNames; let i=index">
                                                 <th scope="row">
                                                     {{b}}
                                                 </th>
@@ -675,7 +684,7 @@
                                         <tr>
                                             <td colspan="5">{{'char.forte' | transloco}}</td>
                                         </tr>
-                                        <tr *ngFor="let b of character.character.forteName; let i=index">
+                                        <tr *ngFor="let b of character.character.forteNames; let i=index">
                                             <th scope="row">
                                                 {{b}}
                                             </th>
@@ -770,3 +779,4 @@
 
 <app-attribute-modal [id]="'critModal'+character.index" [character]="character"></app-attribute-modal>
 <app-echo-comparator-modal [id]="'echoModal'+character.index" [character]="character"></app-echo-comparator-modal>
+<app-data-table-modal [id]="'dataTableModal'+character.index" [character]="character"></app-data-table-modal>

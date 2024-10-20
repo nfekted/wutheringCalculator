@@ -48,7 +48,7 @@ export class Danjin extends Default {
         this.liberationMultiplier = [8, 1];
 
         //Intro Skill
-        this.introName = ['Vindiction'];
+       // this.introName = ['Vindiction'];
         this.introCurrent = 1;
         this.intro = [
             [25, 27.05, 29.10, 31.97, 34.02, 36.38, 39.66, 42.94, 46.22, 49.71]
@@ -58,10 +58,10 @@ export class Danjin extends Default {
         //Outro Skill
         this.outro = [[0]];
         this.outroMultiplier = [0];
-        this.outroName = ['Duality'];
+        //this.outroName = ['Duality'];
 
         //Forte Skill
-        this.forteName = ['Chaoscleave', 'Full Energy Chaoscleave', 'Scatterbloom', 'Full Energy Scatterbloom'];
+        //this.forteName = ['Chaoscleave', 'Full Energy Chaoscleave', 'Scatterbloom', 'Full Energy Scatterbloom'];
         this.forteCurrent = 1;
         this.forte = [
             [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65],

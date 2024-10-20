@@ -7,19 +7,23 @@ export class Default {
     type: string = '';
     weapon: string = '';
     //Basic Attacks
+    basicBonusType: string[] = [];//b - basic, s - skill, l - liberation, h - heavy, - c - heal
+    basicName: string;
     basicNames: string[] = [];
     basicCurrent: number = 1;
     basic: Array<Array<number>> = [];
     basicMultiplier: number[] = [];
     basicEnds: number = 0;
 
-    basicSecondDmg: Array<Array<number>> = []
+    basicSecondDmg: Array<Array<number>> = [];
     basicSecondMultiplier: number[] = [];
 
-    basicThirdDmg: Array<Array<number>> = []
+    basicThirdDmg: Array<Array<number>> = [];
     basicThirdMultiplier: number[] = [];
 
     //Skill
+    skillBonusType: string[] = [];//b - basic, s - skill, l - liberation, h - heavy, - c - heal
+    skillName: string;
     skillNames: string[] = [];
     skillCurrent: number = 1;
     skillHeal: boolean[] = [];
@@ -34,6 +38,8 @@ export class Default {
     skillThirdMultiplier: number[] = [];
 
     //Liberation
+    liberationBonusType: string[] = [];//b - basic, s - skill, l - liberation, h - heavy, - c - heal
+    liberationName: string;
     liberationNames: string[] = [];
     liberationCurrent: number = 1;
     liberationHeal: boolean[] = [];
@@ -42,10 +48,15 @@ export class Default {
     liberationMultiplier: number[] = [1];
 
     liberationSecondDmg: Array<Array<number>> = []
-    liberationSecondMultiplier: number[] = [1];
+    liberationSecondMultiplier: number[] = [0];
+
+    liberationThirdDmg: Array<Array<number>> = [];
+    liberationThirdMultiplier: number[] = [0];
 
     //Intro Skill
-    introName: string[] = [];
+    introBonusType: string[] = [];//b - basic, s - skill, l - liberation, h - heavy, - c - heal
+    introName: string;
+    introNames: string[] = [];
     introCurrent: number = 1;
     introHeal: boolean[] = [];
     introDMGType: string[] = [];
@@ -53,10 +64,15 @@ export class Default {
     introMultiplier: number[] = [1];
 
     introSecondDmg: Array<Array<number>> = [];
-    introSecondMultiplier: number[] = [1]
+    introSecondMultiplier: number[] = [0]
+
+    introThirdDmg: Array<Array<number>> = [];
+    introThirdMultiplier: number[] = [0]
 
     //Outro Skill
-    outroName: string[] = [];
+    outroBonusType: string[] = [];//b - basic, s - skill, l - liberation, h - heavy, - c - heal
+    outroName: string;
+    outroNames: string[] = [];
     outroHeal: boolean[] = [];
     outroDMGType: string[] = [];
     outro: Array<Array<number>> = [[0]];
@@ -65,8 +81,13 @@ export class Default {
     outroSecondDmg: Array<Array<number>> = [];
     outroSecondMultiplier: number[] = [];
 
+    outroThirdDmg: Array<Array<number>> = [];
+    outroThirdMultiplier: number[] = [];
+
     //Forte Skill
-    forteName: string[] = [];
+    forteBonusType: string[] = [];//b - basic, s - skill, l - liberation, h - heavy, - c - heal
+    forteName: string;
+    forteNames: string[] = [];
     forteHeal: boolean[] = [];
     forteShield: boolean[] = [];
     forteDMGType: string[] = [];
@@ -97,10 +118,10 @@ export class Default {
     echoSub: Array<string> = [];
 
     calculateBasic(character: Character) {
-        const heavyIndex = character.character.icon == 'changli' ? this.basic.length - 2 : this.basic.length - 1;
         for (let i = 0; i < this.basic.length; i++) {
             //Get Expected Value
-            const ex = this.getExpected(character.dmg, this.basic[i], this.basicCurrent - 1, character.elementalBonus, this.basicBonus(character, i));
+            const bonus: number = this.bonus(character, character.character.basicBonusType[i]);
+            const ex = this.getExpected(character.dmg, this.basic[i], this.basicCurrent - 1, character.elementalBonus, bonus);
             //Set expected as Base Damage
             character.basicDmg[i] = +ex.toFixed(0);
             let multiplier = this.basicMultiplier[i]
@@ -118,7 +139,7 @@ export class Default {
             let range: number[] = [];
             //Second Damages
             if (this.basicSecondDmg.length > 0) {
-                character.basicSecondDmg[i] = +(this.getExpected(character.dmg, this.basicSecondDmg[i], this.basicCurrent - 1, character.elementalBonus, this.basicBonus(character, i))).toFixed(0);
+                character.basicSecondDmg[i] = +(this.getExpected(character.dmg, this.basicSecondDmg[i], this.basicCurrent - 1, character.elementalBonus, bonus)).toFixed(0);
 
                 if (character.basicSecondDmg[i] > 0) {
                     multiplier = this.basicSecondMultiplier[i];
@@ -135,7 +156,7 @@ export class Default {
             }
             //Third Damages
             if (this.basicThirdDmg.length > 0) {
-                character.basicThirdDmg[i] = +(this.getExpected(character.dmg, this.basicThirdDmg[i], this.basicCurrent - 1, character.elementalBonus, this.basicBonus(character, i))).toFixed(0);
+                character.basicThirdDmg[i] = +(this.getExpected(character.dmg, this.basicThirdDmg[i], this.basicCurrent - 1, character.elementalBonus, bonus)).toFixed(0);
 
                 if (character.basicThirdDmg[i] > 0) {
                     multiplier = this.basicThirdMultiplier[i];
@@ -159,30 +180,12 @@ export class Default {
         this.calculateSkill(character);
     }
 
-    private basicBonus(character: Character, index: number) {
-        const heavyIndex = this.basic.length - 1;
-        switch (character.character.icon) {
-            case 'changli':
-                return index >= (heavyIndex - 1) ? character.heavyBonus : character.basicBonus;
-            case 'jiyan':
-                return index >= (heavyIndex - 2) ? character.heavyBonus : character.basicBonus;
-            case 'rover':
-                return index >= (heavyIndex - 2) ? character.heavyBonus : character.basicBonus;
-            case 'verina':
-                return index >= (heavyIndex - 1) ? character.heavyBonus : character.basicBonus;
-            case 'yangyang':
-                return index >= (heavyIndex - 1) ? character.heavyBonus : character.basicBonus;
-            default:
-                return index >= heavyIndex ? character.heavyBonus : character.basicBonus;
-        }
-    }
-
     private calculateSkill(character: Character) {
         for (let i = 0; i < this.skill.length; i++) {
             //Get Expected value
             const heal: boolean = this.skillHeal[i];
             const dmg: number = this.skillDMGType[i] == 'hp' ? character.hp : this.skillDMGType[i] == 'def' ? character.def : character.dmg;
-            const bonus: number = heal ? character.healingBonus : character.skillBonus;
+            const bonus: number = this.bonus(character, character.character.skillBonusType[i]);
             const elemental: number = heal ? 0 : character.elementalBonus;
             const crit: number = character.cDmg
             const ex = this.getExpected(dmg, this.skill[i], this.skillCurrent - 1, elemental, bonus);
@@ -259,7 +262,7 @@ export class Default {
             //Get Expected DMG
             const heal: boolean = this.liberationHeal[i];
             const dmg: number = this.liberationDMGType[i] == 'hp' ? character.hp : this.liberationDMGType[i] == 'def' ? character.def : character.dmg;
-            const bonus: number = heal ? character.healingBonus : this.liberationBonus(character, i);
+            const bonus: number = this.bonus(character, character.character.liberationBonusType[i]);
             const elemental: number = heal ? 0 : character.elementalBonus;
             const crit: number = character.cDmg
             const ex = this.getExpected(dmg, this.liberation[i], this.skillCurrent - 1, elemental, bonus);
@@ -310,21 +313,6 @@ export class Default {
         }
 
         this.calculateIntro(character);
-    }
-
-    private liberationBonus(character: Character, index: number): number {
-        switch (character.character.icon) {
-            case 'calcharo':
-                return index > 7 ? character.heavyBonus : index > 1 && index <= 6 ? character.basicBonus : character.liberationBonus;
-            case 'encore':
-                return index < 5 ? character.basicBonus : index == 5 ? character.skillBonus : character.heavyBonus;
-            case 'jiyan':
-                return character.heavyBonus;
-            case 'xiangliyao':
-                return index == 0 ? character.liberationBonus : index > 0 && index < 5 ? character.basicBonus : character.skillBonus
-            default:
-                return character.liberationBonus;
-        }
     }
 
     private calculateIntro(character: Character) {
@@ -564,6 +552,17 @@ export class Default {
                 return index == 0 ? character.heavyBonus : character.basicBonus;
             default:
                 return character.basicBonus;
+        }
+    }
+
+    private bonus(character: Character, type: string) {
+        switch (type) {
+            case 'b': return character.basicBonus;
+            case 'h': return character.heavyBonus;
+            case 's': return character.skillBonus;
+            case 'l': return character.liberationBonus;
+            case 'c': return character.healingBonus;
+            default: return 1;
         }
     }
 

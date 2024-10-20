@@ -49,7 +49,7 @@ export class Chixia extends Default {
         this.liberationSecondMultiplier = [11];
 
         //Intro Skill
-        this.introName = ['Grand Entrance'];
+       // this.introName = ['Grand Entrance'];
         this.introCurrent = 1;
         this.intro = [
             [24.75, 26.78, 28.81, 31.66, 33.68, 36.02, 39.27, 42.51, 45.76, 49.21]
@@ -62,12 +62,12 @@ export class Chixia extends Default {
         this.introSecondMultiplier = [4]
 
         //Outro Skill
-        this.outroName = ['Leaping Flames'];
+        //this.outroName = ['Leaping Flames'];
         this.outro = [[530]];
         this.outroMultiplier = [1];
 
         //Forte Skill
-        this.forteName = ['Thermobaric Bullets', 'Thermobaric Bullets x30', 'POW POW'];
+        //this.forteName = ['Thermobaric Bullets', 'Thermobaric Bullets x30', 'POW POW'];
         this.forteCurrent = 1;
         this.forte = [
             [10, 10.82, 11.64, 12.79, 13.61, 14.56, 15.87, 17.18, 18.49, 19.89],
@@ -80,6 +80,6 @@ export class Chixia extends Default {
             ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg', 'sumBasicDmg', 'sumForteDmg', 'sumOutroDmg'],
             [0, 0, 1, 2, 0, 0, 1, 2, 1, 2, 0]
         ];
-        this.rotationName = ['Intro: ' + this.introName[0], '3x Basic Attack', 'Resonance Skill', 'Resonance Liberation', 'Resonance Skill (Hold FORTE x30)', 'Basic Attack (~30 bullets)', 'Resonance Skill (Hold FORTE x30)', 'Basic Attack (~30 bullets)', 'Outro: ' + this.outroName[0]];
+        this.rotationName = ['Intro', '3x Basic Attack', 'Resonance Skill', 'Resonance Liberation', 'Resonance Skill (Hold FORTE x30)', 'Basic Attack (~30 bullets)', 'Resonance Skill (Hold FORTE x30)', 'Basic Attack (~30 bullets)', 'Outro'];
     }
 }

@@ -44,7 +44,7 @@ export class RoverHavoc extends Default {
         this.liberationMultiplier = [1];
 
         //Intro Skill
-        this.introName = ['Instant of Annihilation'];
+       // this.introName = ['Instant of Annihilation'];
         this.introCurrent = 1;
         this.intro = [
             [100, 108.20, 116.40, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81]
@@ -52,13 +52,13 @@ export class RoverHavoc extends Default {
         this.introMultiplier = [1];
 
         //Outro Skill
-        this.outroName = ['Soundweaver'];
+        //this.outroName = ['Soundweaver'];
         this.outro = [[143.3]];
         this.outroMultiplier = [1];
 
 
         //Forte Skill
-        this.forteName = ['Umbra Eclipse: Devastation', 'Umbra Eclipse: Part 1', 'Umbra Eclipse: Part 2', 'Umbra Eclipse: Part 3', 'Umbra Eclipse: Part 4', 'Umbra Eclipse: Part 5', 'Umbra Eclipse: Plunging', 'Umbra Eclipse: Dodge DMG', 'Umbra Eclipse: Lifetaker', 'Umbra Eclipse: Thwackblade ', 'Umbra Eclipse: Heavy Attack'];
+        //this.forteName = ['Umbra Eclipse: Devastation', 'Umbra Eclipse: Part 1', 'Umbra Eclipse: Part 2', 'Umbra Eclipse: Part 3', 'Umbra Eclipse: Part 4', 'Umbra Eclipse: Part 5', 'Umbra Eclipse: Plunging', 'Umbra Eclipse: Dodge DMG', 'Umbra Eclipse: Lifetaker', 'Umbra Eclipse: Thwackblade ', 'Umbra Eclipse: Heavy Attack'];
         this.forteCurrent = 1;
         this.forte = [
             [114.75, 124.16, 133.57, 146.75, 156.16, 166.98, 182.03, 197.09, 212.14, 228.14],

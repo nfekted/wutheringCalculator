@@ -63,7 +63,7 @@ export class Baizhi extends Default {
         this.liberationSecondMultiplier = [0, 4, 1];
 
         //Intro Skill
-        this.introName = ['Overflowing Frost (DMG)', 'Overflowing Frost'];
+       // this.introName = ['Overflowing Frost (DMG)', 'Overflowing Frost'];
         this.introCurrent = 1;
         this.introHeal = [false, true];
         this.introDMGType = ['atk', 'hp']
@@ -80,14 +80,14 @@ export class Baizhi extends Default {
         this.introSecondMultiplier = [0, 1];
 
         //Outro Skill
-        this.outroName = ['Rejuvinating Flow'];
+        //this.outroName = ['Rejuvinating Flow'];
         this.outroHeal = [true];
         this.outroDMGType = ['hp'];
         this.outro = [[1.54]];
         this.outroMultiplier = [10];
 
         //Forte Skill
-        this.forteName = ['Concentration Healing', 'Inherent: Stimulus Feedback'];
+        //this.forteName = ['Concentration Healing', 'Inherent: Stimulus Feedback'];
         this.forteCurrent = 1;
         this.forteHeal = [true, true];
         this.forteDMGType = ['hp', 'hp'];

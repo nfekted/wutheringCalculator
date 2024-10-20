@@ -65,7 +65,7 @@ export class Verina extends Default {
         this.liberationSecondMultiplier = [0, 1, 0, 1];
 
         //Intro Skill
-        this.introName = ['Verdant Growth'];
+       // this.introName = ['Verdant Growth'];
         this.introCurrent = 1;
         this.intro = [
             [50, 54.1, 58.2, 63.94, 68.04, 72.76, 79.32, 85.88, 92.44, 99.41]
@@ -74,14 +74,14 @@ export class Verina extends Default {
 
         //Outro Skill
         this.outroHeal = [true];
-        this.outroName = ['Blossom'];
+        //this.outroName = ['Blossom'];
         this.outro = [[19]];
         this.outroMultiplier = [1];
 
 
         //Forte Skill
         this.forteHeal = [false, false, false, false, true]
-        this.forteName = ['Starflower Blooms: Heavy Attack', 'Starflower Blooms: Mid-Air Part 1', 'Starflower Blooms: Mid-Air Part 2', 'Starflower Blooms: Mid-Air Part 3', 'Starflower Blooms: Healing'];
+        //this.forteName = ['Starflower Blooms: Heavy Attack', 'Starflower Blooms: Mid-Air Part 1', 'Starflower Blooms: Mid-Air Part 2', 'Starflower Blooms: Mid-Air Part 3', 'Starflower Blooms: Healing'];
         this.forteCurrent = 1;
         this.forte = [
             [32.67, 35.35, 38.03, 41.78, 44.46, 47.54, 51.82, 56.11, 60.40, 64.95],

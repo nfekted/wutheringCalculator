@@ -1,0 +1,20 @@
+.echo-border {
+    border: solid 1px #d3d3d3;
+    background-color: #17191b;
+}
+
+hr {
+    height: 3px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgb(0, 0, 0) 50%, rgba(255, 255, 255, 0) 100%);
+    border: 0px;
+}
+
+.table-striped-columns> :not(caption)>tr> :nth-child(even).current {
+    --bs-table-bg-type: #131516 !important;
+    border: inset 3px rgb(161, 161, 161);
+}
+
+.table-striped-columns> :not(caption)>tr> :nth-child(odd).current {
+    --bs-table-bg-type: #131516 !important;
+    border: inset 3px rgb(161, 161, 161);
+}

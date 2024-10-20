@@ -42,17 +42,17 @@ export class Sanhua extends Default {
         ];
         this.liberationMultiplier = [1];
 
-        this.introName = ['Freezing Thorns'];
+       // this.introName = ['Freezing Thorns'];
         this.introCurrent = 1;
         this.intro = [[70, 75.74, 81.48, 89.52, 95.26, 101.86, 111.05, 120.23, 129.41, 139.17]];
         this.introMultiplier = [1];
 
-        this.outroName = ['Silversnow'];
+        //this.outroName = ['Silversnow'];
         this.outro = [[0]];
         this.outroMultiplier = [0];
 
 
-        this.forteName = ['Clarity of Mind: Detonate', 'Clarity of Mind: Glacier', 'Ice Prism', 'Ice Thorn'];
+        //this.forteName = ['Clarity of Mind: Detonate', 'Clarity of Mind: Glacier', 'Ice Prism', 'Ice Thorn'];
         this.forteCurrent = 1;
         this.forte = [
             [93.70, 101.39, 109.07, 119.83, 127.51, 136.35, 148.64, 160.93, 173.23, 186.29],

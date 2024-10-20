@@ -11,6 +11,27 @@
     "broadblade": "<b>Broadblade</b> é um dos 5 tipos de arma presentes no jogo, comum em personagens \"físicos\".",
     "gauntlets": "<b>Gauntlet</b> é um dos 5 tipos de arma presentes no jogo, comum em personagens \"físicos\".",
     "pistols": "<b>Pistolas</b> é um dos 5 tipos de armas presentes no jogo, comum em personagens de \"ataque a distância\".",
+    "prediction": "NÚMEROS PREVISTOS",
+    "info": "Devido ao calculo de defesa não ser exato, pode variar uma <b>média de 6.5% do valor real in-game.</b>",
+    "elemental": "Elemental",
+    "basic": "Basico",
+    "heavy": "Atk Pesado",
+    "skill": "Skill",
+    "forte": "Forte",
+    "liberation": "Liberation",
+    "intro": "Intro",
+    "outro": "Outro",
+    "type": "Tipo",
+    "name": "Nome",
+    "heal": "CURA",
+    "raw": "Dano Puro (Crit. Puro)",
+    "dmg": "Intervalo de DMG esperado comum (CRIT)",
+    "dmgR": "Intervalo de DMG esperado RES (CRIT)",
+    "showHelp": "Mostrar descrição dos campos",
+    "description": "Legenda",
+    "help1": "<b>Dano Puro</b>: É o dano do seu personagem ignorando qualquer outro tipo de mecânica (defesa, resistencia)<br/><u><b>Use a coluna Dano Puro</b></u> como base para saber se seu personagem está melhor ou pior, uma vez que ela não tem influências de variaveis exteriores.<br/><br/><b>Dano inimigo comum</b>: Intervalo de dano estipulado em inimigos comuns, sem resistencia ao seu elemento<br/><b>Dano inimigo RES (resistente)</b>: Intervalo de dano estipulado em inimigos com resistencia ao seu elemento.<br/><u><b>O dano in-game é apenas informativo</b></u>, use a coluna de Dano Puro para melhores métricas.",
+    "delete": "Tem certeza? Essa ação não pode ser desfeita",
+    "dataTable": "Data table do personagem",
     "modes": {
         "full": "Modo: Mostrar danos detalhados",
         "sum": "Modo: Somar todos danos"
@@ -40,25 +61,6 @@
         "yuanwu": "<b>Yuanwu</b> é uma personagem com bônus elemental<b class=\"electro\">ELECTRO</b>, Yuanwu pode até causar algum dano com a <b>rotação de Forte</b>, mas seu destaque é a skill <b>Outro: Lightning Manipulation</b>, que resulta em <b>Redução de Vibration</b> (barra de stun) e <b>Amplificação na Interrupção</b>.",
         "zhezhi": "<b>Zhezhi</b> é uma personagem com bônus elemental<b class=\"glacio\">GLACIO</b>, seu dano é baseado em <b>Ataques básicos</b> mas seu destaque é <b>Amplificar dano GLACIO</b> em 20% e <b>Amplificar dano de Resonance Skill<b> em 25% com sua <b>Outro: Radiant Ruin</b>."
     },
-    "prediction": "NÚMEROS PREVISTOS",
-    "info": "Devido ao calculo de defesa não ser exato, pode variar uma <b>média de 6.5% do valor real in-game.</b>",
-    "elemental": "Elemental",
-    "basic": "Basico",
-    "heavy": "Atk Pesado",
-    "skill": "Skill",
-    "forte": "Forte",
-    "liberation": "Liberation",
-    "intro": "Intro",
-    "outro": "Outro",
-    "type": "Tipo",
-    "heal": "CURA",
-    "raw": "Dano Puro (Crit. Puro)",
-    "dmg": "Intervalo de DMG esperado comum (CRIT)",
-    "dmgR": "Intervalo de DMG esperado RES (CRIT)",
-    "showHelp": "Mostrar descrição dos campos",
-    "description": "Legenda",
-    "help1": "<b>Dano Puro</b>: É o dano do seu personagem ignorando qualquer outro tipo de mecânica (defesa, resistencia)<br/><u><b>Use a coluna Dano Puro</b></u> como base para saber se seu personagem está melhor ou pior, uma vez que ela não tem influências de variaveis exteriores.<br/><br/><b>Dano inimigo comum</b>: Intervalo de dano estipulado em inimigos comuns, sem resistencia ao seu elemento<br/><b>Dano inimigo RES (resistente)</b>: Intervalo de dano estipulado em inimigos com resistencia ao seu elemento.<br/><u><b>O dano in-game é apenas informativo</b></u>, use a coluna de Dano Puro para melhores métricas.",
-    "delete": "Tem certeza? Essa ação não pode ser desfeita",
     "enhancer": {
         "enhancer": "Comparador de Atributos.",
         "compareWith": "Comparar com novos atributos:",
@@ -96,5 +98,23 @@
         "because": "Isso pode ser porque o Echo 1 tem {{attr}} atributos recomendados <b>VS</b> {{attr2}} atributos recomendados do Echo 2, o que ajuda na rotação de {{char}}.",
         "however": "<b>Porém</b>, Echo 1 tem {{attr}} atributos recomendados <b>VS</b> {{attr2}} atributos recomendados do Echo 2, esses atributos adicionais podem ajudar na rotação do personagem de alguma forma, alem de apenas os valores de {{type}}.",
         "aalto": "<b>Pois:</b><br/>Aalto fica <b>pouco tempo em campo</b>, e deve dar <b>o máximo de dano possível</b> antes da troca para o Main DPS com a <b>Outro skill</b>. Por isso, foco em chance/dano crítico e ATK seria o recomendado."
+    },
+    "basics": {
+        "aalto": "<b class=\"intro\">Half Truths</b><br/>Aalto dispara até 5 tiros consecutivos, causando <b class=\"aero\">Aero DMG</b>. Ataque básico 4 irá espelhar \"Mist\" para frente, que irá durar por 1.5s.<br/><br/><b class=\"intro\">Heavy Attack</b><br/>Aalto entra no modo mira para tiros mais fortes. Disparos carregados causam <b class=\"aero\">Aero DMG</b>.<br/><br/><b class=\"intro\">Mid-air Attack</b><br/>Aalto consome Stamina para dar tiros consecurtivos enquanto no ar, causando <b class=\"aero\">Aero DMG</b>.<br/><br/><b class=\"intro\">Dodge Counter</b><br/>Use o ataque básico após desviar para atacar o alvo e causar <b class=\"aero\">Aero DMG</b>.<br/><br/>"
+    },
+    "skills": {
+        "aalto": "<b class=\"intro\">Mist Avatar</b><br/>Solta uma \"Mist\" e 1 \"Mist Avatar(s)\" para provocar/chamar atenção dos inimigos próximos. O Mist Avatar recebe uma parte do HP do Aalto e gera 6 Mist Bullets ao seu redor, causando <b class=\"aero\">Aero DMG</b>.<br/><br/><b class=\"intro\">Mist Bullets</b><br/>Causa <b class=\"aero\">Aero DMG</b>, considerado como Resonance Skill DMG."
+    },
+    "liberations": {
+        "aalto": "<b class=\"intro\">Flower in the Mist</b><br/>Gera um \"Gate of Quandary\" na sua frente, causando <b class=\"aero\">Aero DMG</b>. Quando projeteis passam por dentro do \"Gate of Quandary\", eles causam mais dano. \"Gate of Quandary\" dura por 10s."
+    },
+    "intros": {
+        "aalto": "<b class=\"intro\">Feint Shot</b><br/>Aalto aparece no ar para disparar continuamente, causando <b class=\"aero\">Aero DMG</b>."
+    },
+    "outros": {
+        "aalto": "<b class=\"intro\">Dissolving Mist</b><br/>O próximo Ressonator a entrar em campo recebe <b class=\"aero\">Aero DMG</b> amplificado em <b>23% por 14s</b> ou até que ele saia de campo."
+    },
+    "fortes": {
+        "aalto": "<b class=\"intro\">Misty Cover</b></br>Quando Aalto passa através da \"Mist\" ou \"Gate of Quandary\", ele entra no estado <b class=\"intro\">Mistcloak Dash</b>.<br/><br/><b class=\"intro\">Mistcloak Dash</b></br>-A velocidade de movimento é aumentada;<br/>-Durante esse estado, \"Mist Drops\" são continuamente consumidas, e para cada 1 \"Mist Drop\" consumida, 1 Mist Bullet(s) é gerada.<br/><br/><b class=\"intro\">Mist Drops</b></br>Aalto pode ter até 6 \"Mist Drops\"<br/>Quando <b>Ataque básico</b> or <b>Ataque no ar</b> passarem através da \"Mist\" a acertar um alvo, 1 \"Mist Drop\" é recuperada."
     }
 }

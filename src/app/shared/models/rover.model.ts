@@ -51,7 +51,7 @@ export class Rover extends Default {
         this.liberationSecondMultiplier = [1];
 
         //Intro Skill
-        this.introName = ['Waveshock'];
+       // this.introName = ['Waveshock'];
         this.introCurrent = 1;
         this.intro = [
             [85, 91.97, 98.94, 108.70, 115.67, 123.69, 134.84, 145.99, 157.14, 168.99]
@@ -59,11 +59,11 @@ export class Rover extends Default {
         this.introMultiplier = [1];
 
         //Outro Skill
-        this.outroName = ['Instant'];
+        //this.outroName = ['Instant'];
 
 
         //Forte Skill
-        this.forteName = ['World in a Grain of Sand: Rosonating Spin', 'Resonating Whirl', 'Resonating Echoes Part 1', 'Resonating Echoes Part 2'];
+        //this.forteName = ['World in a Grain of Sand: Rosonating Spin', 'Resonating Whirl', 'Resonating Echoes Part 1', 'Resonating Echoes Part 2'];
         this.forteCurrent = 1;
         this.forte = [
             [64.93, 70.25, 75.58, 83.03, 88.35, 94.48, 103, 111.51, 120.03, 129.08],

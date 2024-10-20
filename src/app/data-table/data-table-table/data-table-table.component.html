@@ -1,0 +1,87 @@
+<div class="card text-bg-dark">
+    <div class="card-header" [id]="'data' + type">
+        <h5 class="mb-0">
+            <span class="btn btn-dark" data-bs-toggle="collapse" [attr.href]="'#dt' + type" aria-expanded="true"
+                [attr.aria-controls]="type">
+                <h4>{{'char.' + type | transloco}} - {{character[type + 'Name']}}</h4>
+            </span>
+        </h5>
+    </div>
+
+    <div [id]="'dt'+type" class="collapse show" [attr.aria-labelledby]="'data' + type" data-parent="#dataAccordion">
+        <div class="card-body" style="overflow-x: auto;">
+            <table class="table table-dark table-striped-columns">
+                <thead>
+                    <tr>
+                        <td colspan="12">
+                            <div [innerHtml]="'char.' + type + 's.' + character.icon | transloco"></div>
+                        </td>
+                    </tr>
+                    <tr class="text-center" *ngIf="character[type][0][0] > 0">
+                        <th scope="col">{{'char.name' | transloco}}</th>
+                        <th scope="col" [ngClass]="{'current': currentLevel == 1}">Lv. 1
+                        </th>
+                        <th scope="col" [ngClass]="{'current': currentLevel == 2}">Lv. 2
+                        </th>
+                        <th scope="col" [ngClass]="{'current': currentLevel == 3}">Lv. 3
+                        </th>
+                        <th scope="col" [ngClass]="{'current': currentLevel == 4}">Lv. 4
+                        </th>
+                        <th scope="col" [ngClass]="{'current': currentLevel == 5}">Lv. 5
+                        </th>
+                        <th scope="col" [ngClass]="{'current': currentLevel == 6}">Lv. 6
+                        </th>
+                        <th scope="col" [ngClass]="{'current': currentLevel == 7}">Lv. 7
+                        </th>
+                        <th scope="col" [ngClass]="{'current': currentLevel == 8}">Lv. 8
+                        </th>
+                        <th scope="col" [ngClass]="{'current': currentLevel == 9}">Lv. 9
+                        </th>
+                        <th scope="col" [ngClass]="{'current': currentLevel == 10}">Lv. 10
+                        </th>
+                        <th scope="col">{{'char.type' | transloco}}</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center" *ngIf="character[type][0][0] > 0">
+                    <tr *ngFor="let b of character[type + 'Names']; let i=index">
+                        <th scope="row">
+                            {{b}}
+                        </th>
+                        <td *ngFor="let c of [].constructor(10); let j=index"
+                            [ngClass]="{'current': currentLevel == j+1}">
+                            <!-- DAMAGE -->
+                            <small *ngIf="character[type + 'Multiplier'][i] > 1" style="color: white;">{{character[type
+                                + 'Multiplier'][i]}}x
+                            </small>
+                            {{character[type][i][j]}} %
+                            <!-- SECONDARY DAMAGE -->
+                            <ng-container *ngIf="character[type + 'SecondMultiplier'][i] > 0">
+                                <br />+<br />
+                                <small *ngIf="character[type + 'SecondMultiplier'][i] > 1"
+                                    style="color: white;">{{character[type + 'SecondMultiplier'][i]}}x
+                                </small>
+                                {{character[type + 'SecondDmg'][i][j]}} %
+                            </ng-container>
+                            <!-- THIRD DAMAGE -->
+                            <ng-container *ngIf="character[type + 'ThirdMultiplier'][i] > 0">
+                                <br />+<br />
+                                <small *ngIf="character[type + 'ThirdMultiplier'][i] > 1"
+                                    style="color: white;">{{character[type + 'ThirdMultiplier'][i]}}x
+                                </small>
+                                {{character[type + 'ThirdDmg'][i][j]}} %
+                            </ng-container>
+                        </td>
+                        <td>{{(character[type + 'BonusType'][i] == 'b' ? 'char.basic' :
+                            character[type + 'BonusType'][i] == 'h' ? 'char.heavy' :
+                            character[type + 'BonusType'][i] == 's' ? 'char.skill' :
+                            character[type + 'BonusType'][i] == 'l' ? 'char.liberation' :
+                            character[type + 'BonusType'][i] == 'i' ? 'char.intro' :
+                            character[type + 'BonusType'][i] == 'o' ? 'char.outro' :
+                            'char.heal') | transloco }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

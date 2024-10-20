@@ -84,7 +84,7 @@ export class Calcharo extends Default {
         this.liberationSecondMultiplier = [0, 0, 0, 2, 0, 0, 0, 0, 0];
 
         //Intro Skill
-        this.introName = ['Wanted Outlaw'];
+       // this.introName = ['Wanted Outlaw'];
         this.introCurrent = 1;
         this.intro = [
             [20, 21.64, 23.28, 25.58, 27.22, 29.11, 31.73, 34.35, 36.98, 39.77]
@@ -97,7 +97,7 @@ export class Calcharo extends Default {
         this.introSecondMultiplier = [2];
 
         //Outro Skill
-        this.outroName = ['Shadowy Raid'];
+        //this.outroName = ['Shadowy Raid'];
         this.outro = [[195.98]];
         this.outroMultiplier = [1];
 
@@ -105,7 +105,7 @@ export class Calcharo extends Default {
         this.outroSecondMultiplier = [1];
 
         // //Forte Skill
-        this.forteName = ['Hunting Mission: Mercy', 'Hunting Mission: Death Messager'];
+        //this.forteName = ['Hunting Mission: Mercy', 'Hunting Mission: Death Messager'];
         this.forteCurrent = 1;
         this.forte = [
             [19.67, 21.29, 22.90, 25.16, 26.77, 28.63, 31.21, 33.79, 36.37, 39.11],

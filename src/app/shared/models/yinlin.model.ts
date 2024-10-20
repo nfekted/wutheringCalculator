@@ -45,7 +45,7 @@ export class Yinlin extends Default {
         this.liberationMultiplier = [7];
 
         //Intro Skill
-        this.introName = ['Raging Storm'];
+       // this.introName = ['Raging Storm'];
         this.introCurrent = 1;
         this.intro = [
             [7.2, 7.8, 8.39, 9.21, 9.8, 10.48, 11.43, 12.37, 13.32, 14.32]
@@ -53,10 +53,10 @@ export class Yinlin extends Default {
         this.introMultiplier = [10];
 
         // //Outro Skill
-        this.outroName = ['Strategist'];
+        //this.outroName = ['Strategist'];
 
         //Forte Skill
-        this.forteName = ['Chameleon Cipher', 'Judgment Strike'];
+        //this.forteName = ['Chameleon Cipher', 'Judgment Strike'];
         this.forteCurrent = 1;
         this.forte = [
             [90, 97.38, 104.76, 115.1, 122.48, 130.96, 142.77, 154.58, 166.39, 178.93],

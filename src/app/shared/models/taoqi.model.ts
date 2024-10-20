@@ -54,7 +54,7 @@ export class Taoqi extends Default {
         this.liberationMultiplier = [1];
 
         //Intro Skill
-        this.introName = ['Defense Formation'];
+       // this.introName = ['Defense Formation'];
         this.introCurrent = 1;
         this.intro = [
             [105, 113.661, 122.22, 134.28, 142.89, 152.79, 166.57, 180.34, 194.12, 208.76]
@@ -62,13 +62,13 @@ export class Taoqi extends Default {
         this.introMultiplier = [1];
 
         //Outro Skill
-        this.outroName = ['Iron Will'];
+        //this.outroName = ['Iron Will'];
         this.outro = [[0]];
         this.outroMultiplier = [0];
 
         //Forte Skill
         this.forteShield = [false, false, false, true, true, true]
-        this.forteName = ['Power Shift: Timed Counter Part 1', 'Power Shift: Timed Counter Part 2', 'Power Shift: Timed Counter Part 3', 'Power Shift: Timed Counter Shild 1', 'Power Shift: Timed Counter Shild 2', 'Power Shift: Timed Counter Shild 3'];
+        //this.forteName = ['Power Shift: Timed Counter Part 1', 'Power Shift: Timed Counter Part 2', 'Power Shift: Timed Counter Part 3', 'Power Shift: Timed Counter Shild 1', 'Power Shift: Timed Counter Shild 2', 'Power Shift: Timed Counter Shild 3'];
         this.forteCurrent = 1;
         this.forte = [
             [43.36, 46.92, 50.47, 55.45, 59, 63.09, 68.78, 74.47, 80.16, 86.2],

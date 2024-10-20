@@ -60,7 +60,7 @@ export class Yuanwu extends Default {
         this.liberationMultiplier = [2];
 
         //Intro Skill
-        this.introName = ['Thunder Bombardment'];
+       // this.introName = ['Thunder Bombardment'];
         this.introCurrent = 1;
         this.intro = [
             [32.00, 34.63, 37.25, 40.93, 43.55, 46.57, 50.77, 54.96, 59.16, 63.62]
@@ -68,10 +68,10 @@ export class Yuanwu extends Default {
         this.introMultiplier = [1];
 
         //Outro Skill
-        this.outroName = ['Lightning Manipulation'];
+        //this.outroName = ['Lightning Manipulation'];
 
         //Forte Skill
-        this.forteName = ['Unassuming Blade: Thunder Uprising', 'Lightning Infused Part 1', 'Lightning Infused Part 2', 'Lightning Infused Part 3', 'Lightning Infused Part 4', 'Lightning Infused Part 5', 'Lightning Infused Dodge DMG', 'Lightning Infused: Thunderweaver', 'Lightning Infused Heavy Attack'];
+        //this.forteName = ['Unassuming Blade: Thunder Uprising', 'Lightning Infused Part 1', 'Lightning Infused Part 2', 'Lightning Infused Part 3', 'Lightning Infused Part 4', 'Lightning Infused Part 5', 'Lightning Infused Dodge DMG', 'Lightning Infused: Thunderweaver', 'Lightning Infused Heavy Attack'];
         this.forteCurrent = 1;
         this.forte = [
             [20.00, 21.64, 23.28, 25.58, 27.22, 29.11, 31.73, 34.35, 36.98, 39.77],

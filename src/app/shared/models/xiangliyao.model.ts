@@ -72,7 +72,7 @@ export class XiangliYao extends Default {
         this.liberationSecondMultiplier = [0, 0, 0, 0, 1, 2];
 
         //Intro Skill
-        this.introName = ['Principle'];
+       // this.introName = ['Principle'];
         this.introCurrent = 1;
         this.intro = [
             [50, 54.10, 58.20, 63.94, 68.04, 72.76, 79.32, 85.88, 92.44, 99.41]
@@ -80,12 +80,12 @@ export class XiangliYao extends Default {
         this.introMultiplier = [1];
 
         //Outro Skill
-        this.outroName = ['Chain Rule'];
+        //this.outroName = ['Chain Rule'];
         this.outro = [[237.63]];
         this.outroMultiplier = [3];
 
         //Forte Skill
-        this.forteName = ['Forever Seeking : Decipher', 'Forever Seeking: Law of Reigns', 'Forever Seeking: Revamp'];
+        //this.forteName = ['Forever Seeking : Decipher', 'Forever Seeking: Law of Reigns', 'Forever Seeking: Revamp'];
         this.forteCurrent = 1;
         this.forte = [
             [200.10, 216.51, 232.92, 255.89, 272.30, 291.17, 317.42, 343.68, 369.93, 397.82],

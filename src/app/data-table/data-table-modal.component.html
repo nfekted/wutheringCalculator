@@ -1,0 +1,43 @@
+<div class="modal fade modal-xl" [id]="id" tabindex="-1" aria-labelledby="dataTableModal" aria-hidden="true">
+    <div class="modal-dialog" style="margin-top: 10vh;">
+        <div class="modal-content">
+            <div [class]="'modal-header btn-'+ currentSelection">
+                <h1 class="modal-title fs-5" id="dataTableModal">{{character.character.name}} - {{'char.dataTable' |
+                    transloco}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="dataAccordion">
+                    <app-data-table-table [character]="character.character" [type]="'basic'"
+                        [currentSelection]="character.character.icon"
+                        [currentLevel]="character.character.basicCurrent"></app-data-table-table>
+                    <hr />
+                    <app-data-table-table [character]="character.character" [type]="'skill'"
+                        [currentSelection]="character.character.icon"
+                        [currentLevel]="character.character.skillCurrent"></app-data-table-table>
+                    <hr />
+                    <app-data-table-table [character]="character.character" [type]="'liberation'"
+                        [currentSelection]="character.character.icon"
+                        [currentLevel]="character.character.liberationCurrent"></app-data-table-table>
+                    <hr />
+                    <app-data-table-table [character]="character.character" [type]="'intro'"
+                        [currentSelection]="character.character.icon"
+                        [currentLevel]="character.character.introCurrent"></app-data-table-table>
+                    <hr />
+                    <app-data-table-table [character]="character.character" [type]="'outro'"
+                        [currentSelection]="character.character.icon" [currentLevel]="1"></app-data-table-table>
+                    <hr />
+                    <app-data-table-table [character]="character.character" [type]="'forte'"
+                        [currentSelection]="character.character.icon"
+                        [currentLevel]="character.character.forteCurrent"></app-data-table-table>
+                    <hr />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal"
+                    [class]="'btn btn-secondary btn-'+ currentSelection">{{'close'
+                    | transloco}}</button>
+            </div>
+        </div>
+    </div>
+</div>

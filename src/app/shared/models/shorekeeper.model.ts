@@ -61,7 +61,7 @@ export class Shorekeeper extends Default {
         //Intro Skill
         this.introDMGType = ['atk', 'hp', 'hp', 'hp'];
         this.introHeal = [false, false, true, true];
-        this.introName = ['Proof of Existence: Enlightenment', 'Proof of Existence: Discernment', 'Enlightenment Healing', 'Discernment Healing'];
+       // this.introName = ['Proof of Existence: Enlightenment', 'Proof of Existence: Discernment', 'Enlightenment Healing', 'Discernment Healing'];
         this.introCurrent = 1;
         this.intro = [
             [22.79, 24.66, 26.53, 29.14, 31.01, 33.16, 36.15, 39.14, 42.13, 45.30],
@@ -80,13 +80,13 @@ export class Shorekeeper extends Default {
         this.introSecondMultiplier = [0, 0, 1, 1]
 
         //Outro Skill
-        this.outroName = ['Binary Butterfly'];
+        //this.outroName = ['Binary Butterfly'];
         this.outro = [[0]];
         this.outroMultiplier = [0];
 
 
         //Forte Skill
-        this.forteName = ['Astral Chord: Flare Star Butterfly', 'Astral Chord: Illation', 'Astral Chord: Transmutation'];
+        //this.forteName = ['Astral Chord: Flare Star Butterfly', 'Astral Chord: Illation', 'Astral Chord: Transmutation'];
         this.forteCurrent = 1;
         this.forte = [
             [18.76, 20.29, 21.83, 23.99, 25.52, 27.29, 29.75, 32.21, 34.67, 37.29],

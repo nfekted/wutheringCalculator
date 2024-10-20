@@ -66,10 +66,10 @@ export class Yangyang extends Default {
         this.liberationSecondMultiplier = [1];
 
         //Outro
-        this.outroName = ['Whispering Breeze']
+        //this.outroName = ['Whispering Breeze']
 
         //Intro Skill
-        this.introName = ['Cerulean Song'];
+       // this.introName = ['Cerulean Song'];
         this.introCurrent = 1;
         this.intro = [
             [40, 43.28, 46.56, 51.15, 54.43, 58.20, 63.45, 68.70, 73.94, 79.52]
@@ -78,7 +78,7 @@ export class Yangyang extends Default {
 
 
         //Forte Skill
-        this.forteName = ['Echoing Feathers: Stormy Strike', 'Echoing Feathers: Feather Release'];
+        //this.forteName = ['Echoing Feathers: Stormy Strike', 'Echoing Feathers: Feather Release'];
         this.forteCurrent = 1;
         this.forte = [
             [19.12, 20.69, 22.26, 24.45, 26.02, 27.82, 30.33, 32.84, 35.35, 38.02],

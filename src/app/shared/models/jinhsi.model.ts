@@ -81,7 +81,7 @@ export class Jinhsi extends Default {
         this.liberationSecondMultiplier = [1];
 
         //Intro Skill
-        this.introName = ['Loong\'s Halo'];
+       // this.introName = ['Loong\'s Halo'];
         this.introCurrent = 1;
         this.intro = [[80, 86.56, 93.12, 102.31, 108.87, 116.41, 126.91, 137.40, 147.90, 159.05]];
         this.introMultiplier = [1];
@@ -89,10 +89,10 @@ export class Jinhsi extends Default {
         //Outro Skill
         this.outro = [[0]];
         this.outroMultiplier = [0];
-        this.outroName = ['Temporal Bender'];
+        //this.outroName = ['Temporal Bender'];
 
         //Forte Skill
-        this.forteName = ['Incarnation Part 1', 'Incarnation Part 2', 'Incarnation Part 3', 'Incarnation Part 4', 'IncarnationDodge Atk', 'Incarnation Heavy Atk', 'Crescent Divinity', 'Illuminous Epiphany: Solar Flare', 'Illuminous Epiphany: Stella Glamor'];
+        //this.forteName = ['Incarnation Part 1', 'Incarnation Part 2', 'Incarnation Part 3', 'Incarnation Part 4', 'IncarnationDodge Atk', 'Incarnation Heavy Atk', 'Crescent Divinity', 'Illuminous Epiphany: Solar Flare', 'Illuminous Epiphany: Stella Glamor'];
         this.forteCurrent = 1;
         this.forte = [
             [40.58, 48.23, 51.89, 57, 60.66, 64.86, 70.71, 76.56, 82.41, 88.62],
