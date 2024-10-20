@@ -17,7 +17,7 @@
                             <div [innerHtml]="'char.' + type + 's.' + character.icon | transloco"></div>
                         </td>
                     </tr>
-                    <tr class="text-center" *ngIf="character[type][0][0] > 0">
+                    <tr class="text-center" *ngIf="character[type][0][0] != 0">
                         <th scope="col">{{'char.name' | transloco}}</th>
                         <th scope="col" [ngClass]="{'current': currentLevel == 1}">Lv. 1
                         </th>
@@ -42,7 +42,7 @@
                         <th scope="col">{{'char.type' | transloco}}</th>
                     </tr>
                 </thead>
-                <tbody class="text-center" *ngIf="character[type][0][0] > 0">
+                <tbody class="text-center" *ngIf="character[type][0][0] != 0">
                     <tr *ngFor="let b of character[type + 'Names']; let i=index">
                         <th scope="row">
                             {{b}}
@@ -53,14 +53,17 @@
                             <small *ngIf="character[type + 'Multiplier'][i] > 1" style="color: white;">{{character[type
                                 + 'Multiplier'][i]}}x
                             </small>
-                            {{character[type][i][j]}} %
+                            {{character[type][i][j] > 0 ? character[type][i][j] : (character[type][i][j]*-1)}}
+                            {{character[type][i][j] > 0 ? '%' : ''}}
                             <!-- SECONDARY DAMAGE -->
                             <ng-container *ngIf="character[type + 'SecondMultiplier'][i] > 0">
                                 <br />+<br />
                                 <small *ngIf="character[type + 'SecondMultiplier'][i] > 1"
                                     style="color: white;">{{character[type + 'SecondMultiplier'][i]}}x
                                 </small>
-                                {{character[type + 'SecondDmg'][i][j]}} %
+                                {{character[type + 'SecondDmg'][i][j] > 0 ? character[type + 'SecondDmg'][i][j] :
+                                (character[type + 'SecondDmg'][i][j]*-1)}} {{character[type + 'SecondDmg'][i][j] > 0 ?
+                                '%' : ''}}
                             </ng-container>
                             <!-- THIRD DAMAGE -->
                             <ng-container *ngIf="character[type + 'ThirdMultiplier'][i] > 0">
@@ -68,7 +71,9 @@
                                 <small *ngIf="character[type + 'ThirdMultiplier'][i] > 1"
                                     style="color: white;">{{character[type + 'ThirdMultiplier'][i]}}x
                                 </small>
-                                {{character[type + 'ThirdDmg'][i][j]}} %
+                                {{character[type + 'ThirdDmg'][i][j] > 0 ? character[type + 'ThirdDmg'][i][j] :
+                                (character[type + 'ThirdDmg'][i][j]*-1)}} {{character[type + 'ThirdDmg'][i][j] > 0 ?
+                                '%' : ''}}
                             </ng-container>
                         </td>
                         <td>{{(character[type + 'BonusType'][i] == 'b' ? 'char.basic' :

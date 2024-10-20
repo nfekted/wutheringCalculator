@@ -12,7 +12,9 @@ export class Baizhi extends Default {
         this.weapon = 'rectifier';
 
         //Basic Attacks
-        this.basicNames = ['Destined Promise: Part 1', 'Destined Promise: Part 2  ', 'Destined Promise: Part 3 ', 'Destined Promise: Part 4', 'Mid Air', 'Dodge Dmg', 'Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Destined Promise';
+        this.basicNames = ['Destined Promise: DMG 1', 'Destined Promise: DMG 2  ', 'Destined Promise: DMG 3 ', 'Destined Promise: DMG 4', 'Mid Air', 'Dodge Dmg', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [32.94, 35.64, 38.34, 42.12, 44.82, 47.93, 52.25, 56.57, 60.89, 65.48],
@@ -27,7 +29,9 @@ export class Baizhi extends Default {
         this.basicEnds = 3;
 
         //Skill
-        this.skillNames = ['Emergency Plan (DMG)', 'Emergency Plan'];
+        this.skillBonusType = ['s', 'c'];
+        this.skillName = 'Emergency Plan'
+        this.skillNames = ['Emergency Plan DMG', 'Emergency Plan'];
         this.skillCurrent = 1;
         this.skillHeal = [false, true];
         this.skillDMGType = ['atk', 'hp'];
@@ -44,6 +48,8 @@ export class Baizhi extends Default {
         this.skillSecondMultiplier = [0, 1];
 
         //Liberation
+        this.liberationBonusType = ['l', 'c', 'c'];
+        this.liberationName = 'Remnant Entities';
         this.liberationNames = ['Remnant Entities (DMG)', 'Remnant Entities', 'Momentary Union'];
         this.liberationCurrent = 1;
         this.liberationHeal = [false, true, true];
@@ -63,7 +69,8 @@ export class Baizhi extends Default {
         this.liberationSecondMultiplier = [0, 4, 1];
 
         //Intro Skill
-       // this.introName = ['Overflowing Frost (DMG)', 'Overflowing Frost'];
+        this.introName = 'Overflowing Frost';
+        this.introNames = ['Overflowing Frost (DMG)', 'Overflowing Frost'];
         this.introCurrent = 1;
         this.introHeal = [false, true];
         this.introDMGType = ['atk', 'hp']
@@ -80,14 +87,18 @@ export class Baizhi extends Default {
         this.introSecondMultiplier = [0, 1];
 
         //Outro Skill
-        //this.outroName = ['Rejuvinating Flow'];
+        this.outroBonusType = ['c'];
+        this.outroName = 'Rejuvinating Flow';
+        this.outroNames = [this.outroName];
         this.outroHeal = [true];
         this.outroDMGType = ['hp'];
-        this.outro = [[1.54]];
+        this.outro = [[1.54,1.54,1.54,1.54,1.54,1.54,1.54,1.54,1.54,1.54]];
         this.outroMultiplier = [10];
 
         //Forte Skill
-        //this.forteName = ['Concentration Healing', 'Inherent: Stimulus Feedback'];
+        this.forteBonusType = ['c', 'c'];
+        this.forteName = 'Cycle of Life';
+        this.forteNames = ['Concentration Healing', 'Inherent Skill: Stimulus Feedback'];
         this.forteCurrent = 1;
         this.forteHeal = [true, true];
         this.forteDMGType = ['hp', 'hp'];
@@ -103,10 +114,19 @@ export class Baizhi extends Default {
         ];
         this.forteSecondMultiplier = [1, 0];
 
+        this.rotationName = ['Intro: ' + this.introName, '4x Basic Attack: ' + this.basicName, 'Resonance Skill: ' + this.skillName, '2x Basic Attack: ' + this.basicName, 'Liberation: ' + this.liberationName, 'Outro Skill: ' + this.outroName];
         this.rotation = [
             ['sumIntroDmg', 'sumHealingIntro', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumHealingSkill', 'sumBasicDmg', 'sumBasicDmg', 'sumLiberationDmg', 'sumHealingLiberation', 'sumHealingLiberation', 'sumHealingOutro'],
             [0, 1, 0, 1, 2, 3, 0, 1, 0, 1, 0, 1, 2, 0]
         ];
-        this.rotationName = ['Intro: Overflowing Frost (DMG + Heal)', 'Basic Attack Part 1', 'Basic Attack Part 2', 'Basic Attack Part 3', 'Basic Attack Part 4', 'Resonance Skill: Emergency Plan (DMG + Heal)', 'Basic Attack Part 1', 'Basic Attack Part 2', 'Liberation: Remnant Entities (DMG + 2x Heal)', 'Outro Skill: Rejuvinating Flow'];
+
+        this.rotationColor = ['intro', 'basic', 'skill', 'basic', 'liberation', 'outro']
+        this.rotationCommands = ['mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'r'];
+
+        //Recommended Echo
+        this.echo4 = ['Healing %'];
+        this.echo3 = ['Energy Regen %'];
+        this.echo1 = ['HP %'];
+        this.echoSub = ['Energy Regen %', 'HP %', 'HP'];
     }
 }

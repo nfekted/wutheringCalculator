@@ -52,7 +52,6 @@ export class Aalto extends Default {
         this.liberationMultiplier = [1];
 
         //Intro Skill
-        this.introBonusType = ['i'];
         this.introName = 'Feint Shot';
         this.introNames = [this.introName];
         this.introCurrent = 1;
@@ -62,7 +61,6 @@ export class Aalto extends Default {
         this.introMultiplier = [3];
 
         //Outro Skill
-        this.outroBonusType = ['o'];
         this.outroName = 'Dissolving Mist'
         this.outroNames = [this.outroName];
         this.outro = [[0]];
@@ -80,7 +78,7 @@ export class Aalto extends Default {
         this.forteMultiplier = [1];
 
         //rotations
-        this.rotationName = ['Intro Skill', '2x Basic Attack', 'Resonance Skill: Mist Missle', 'Resonance Liberation: Flower in the Mist', '3x Basic Attack', 'Outro Skill'];
+        this.rotationName = ['Intro:' + this.introName, '2x Basic Attack: ' + this.basicName, 'Resonance Skill: ' + this.skillName, 'Resonance Liberation: ' + this.liberationName, '3x Basic Attack: ' + this.basicName, 'Outro Skill: ' + this.outroName];
         this.rotation = [
             ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg'],
             [0, 0, 1, 0, 0, 0, 1, 2]

@@ -54,7 +54,7 @@ export class Default {
     liberationThirdMultiplier: number[] = [0];
 
     //Intro Skill
-    introBonusType: string[] = [];//b - basic, s - skill, l - liberation, h - heavy, - c - heal
+    introBonusType: string[] = ['i'];//b - basic, s - skill, l - liberation, h - heavy, - c - heal
     introName: string;
     introNames: string[] = [];
     introCurrent: number = 1;
@@ -70,7 +70,7 @@ export class Default {
     introThirdMultiplier: number[] = [0]
 
     //Outro Skill
-    outroBonusType: string[] = [];//b - basic, s - skill, l - liberation, h - heavy, - c - heal
+    outroBonusType: string[] = ['o'];//b - basic, s - skill, l - liberation, h - heavy, - c - heal
     outroName: string;
     outroNames: string[] = [];
     outroHeal: boolean[] = [];
