@@ -140,7 +140,7 @@ export class Calcharo extends Default {
 
         //Recommended Echo
         this.echo4 = ['Crit Rate %', 'Crit DMG %'];
-        this.echo3 = ['ELECTRO DMG %'];
+        this.echo3 = ['ELECTRO DMG %', 'ATK %'];
         this.echo1 = ['ATK %'];
         this.echoSub = ['Crit Rate %', 'Crit DMG %', 'ATK %', 'Liberation %', 'Basic %', 'ATK'];
     }

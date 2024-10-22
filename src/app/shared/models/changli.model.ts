@@ -11,7 +11,9 @@ export class Changli extends Default {
         this.weapon = 'sword';
 
         //Basic Attacks
-        this.basicNames = ['Blazing Enlightment: Part 1', 'Blazing Enlightment: Part 2', 'Blazing Enlightment: Part 3', 'Blazing Enlightment: Part 4', 'Mid-Air Part 1', 'Mid-Air Part 2', 'Mid-Air Part 3', 'Mid-Air Part 4', 'Dodge DMG', 'Heavy Attack', 'Mid-Air Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'h', 'h'];
+        this.basicName = 'Blazing Enlightment';
+        this.basicNames = ['Blazing Enlightment: DMG 1', 'Blazing Enlightment: DMG 2', 'Blazing Enlightment: DMG 3', 'Blazing Enlightment: DMG 4', 'Mid-Air Part 1', 'Mid-Air Part 2', 'Mid-Air Part 3', 'Mid-Air Part 4', 'Dodge DMG', 'Heavy Attack', 'Mid-Air Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [14.84, 16.05, 17.27, 18.97, 20.19, 21.59, 23.53, 25.48, 27.43, 29.49],
@@ -45,7 +47,9 @@ export class Changli extends Default {
         this.basicSecondMultiplier = [0, 0, 0, 4, 0, 0, 0, 4, 0, 1, 0];
 
         //Skill
-        this.skillNames = ['Tripartite Flames, True Sight: Capture', 'Tripartite Flames, True Sight: Conquest', 'Tripartite Flames, True Sight: Charge'];
+        this.skillBonusType = ['s', 's', 's'];
+        this.skillName = 'Tripartite Flames';
+        this.skillNames = ['True Sight: Capture', 'True Sight: Conquest', 'True Sight: Charge'];
         this.skillCurrent = 1;
         this.skill = [
             [41.19, 44.57, 47.94, 52.67, 56.05, 59.93, 65.34, 70.74, 76.14, 81.88],
@@ -69,7 +73,9 @@ export class Changli extends Default {
         this.skillThirdMultiplier = [0, 1, 0];
 
         //Liberation
-        this.liberationNames = ['Radiance of Fealty'];
+        this.liberationBonusType = ['l'];
+        this.liberationName = 'Radiance of Fealty'
+        this.liberationNames = [this.liberationName];
         this.liberationCurrent = 1;
         this.liberation = [
             [610, 660.02, 710.04, 780.07, 830.09, 887.62, 967.65, 1047.68, 1127.71, 1212.75]
@@ -77,7 +83,8 @@ export class Changli extends Default {
         this.liberationMultiplier = [1];
 
         //Intro Skill
-       // this.introName = ['Obedience of Rules'];
+        this.introName = 'Obedience of Rules';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [22.38, 24.22, 26.06, 28.62, 30.46, 32.57, 35.51, 38.44, 41.38, 44.50]
@@ -90,12 +97,15 @@ export class Changli extends Default {
         this.introSecondMultiplier = [4];
 
         //Outro Skill
+        this.outroName = 'Strategy of Duality';
+        this.outroNames = [this.outroName];
         this.outro = [[0]];
         this.outroMultiplier = [0];
-        //this.outroName = ['Strategy of Duality'];
 
         //Forte Skill
-        //this.forteName = ['Flaming Sacrifice'];
+        this.forteBonusType = ['s'];
+        this.forteName = 'Flaming Sacrifice';
+        this.forteNames = [this.forteName];
         this.forteCurrent = 1;
         this.forte = [
             [19.74, 21.36, 22.98, 25.25, 26.87, 28.73, 31.32, 33.91, 36.50, 39.25]
@@ -107,10 +117,19 @@ export class Changli extends Default {
         ];
         this.forteSecondMultiplier = [1];
 
-        this.rotationName = ['Intro', 'Resonance Skill: Capture', 'True Sight Charge', 'True Sight Conquest', 'Resonance Skill: Capture', 'True Sight Charge', 'Heavy Attack', 'Resonance Liberation', 'Heavy Attack', '4x Basic Attack'];
+        this.rotationName = ['Intro', 'Basic Attack: True Sight Charge', 'Resonance Skill: Capture', 'Basic Attack: Conquest', 'Resonance Skill: Capture', 'Basic Attack: True Sight Charge', 'Basic Attack', 'Heavy Attack', 'Resonance Liberation', 'Heavy Attack', '4x Basic Attack'];
         this.rotation = [
-            ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg'],
-            [0, 0, 2, 1, 0, 1, 9, 0, 9, 0, 1, 2, 3]
+            ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg'],
+            [0, 2, 0, 1, 0, 1, 9, 8, 0, 8, 0, 1, 2, 3]
         ];
+
+        this.rotationColor = ['intro', 'basic', 'skill', 'basic', 'skill', 'basic', 'basic', 'basic', 'liberation', 'basic', 'basic']
+        this.rotationCommands = ['mb', 'cv', 'e', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mbh', 'cv', 'r', 'cv', 'mbh', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['FUSION DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Energy Regen %', 'Crit Rate %', 'Crit DMG %', 'ATK %', 'Skill %', 'Liberation %', 'ATK'];
     }
 }
