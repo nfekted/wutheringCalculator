@@ -12,7 +12,9 @@ export class Chixia extends Default {
         this.weapon = 'pistols';
 
         //Basic Attacks
-        this.basicNames = ['POW POW: Part 1', 'POW POW: Part 2', 'POW POW: Part 3', 'POW POW: Part 4', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack DMG', 'Charged Heavy Attack DMG'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'h', 'h'];
+        this.basicName = 'POW POW'
+        this.basicNames = ['POW POW: DMG 1', 'POW POW: DMG 2', 'POW POW: DMG 3', 'POW POW: DMG 4', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack DMG', 'Charged Heavy Attack DMG'];
         this.basicCurrent = 1;
         this.basic = [
             [33.30, 36.04, 38.77, 42.59, 45.32, 48.46, 52.83, 57.20, 61.57, 66.21],
@@ -28,7 +30,9 @@ export class Chixia extends Default {
         this.basicEnds = 3;
 
         //Skill
-        this.skillNames = ['Whizzing Fight Spirit'];
+        this.skillBonusType = ['s'];
+        this.skillName = 'Whizzing Fight Spirit'
+        this.skillNames = [this.skillName];
         this.skillCurrent = 1;
         this.skill = [
             [16, 17.32, 18.63, 20.47, 21.78, 23.29, 25.39, 27.48, 29.58, 31.81]
@@ -36,7 +40,9 @@ export class Chixia extends Default {
         this.skillMultiplier = [8];
 
         //Liberation
-        this.liberationNames = ['Blazing Flames'];
+        this.liberationBonusType = ['l'];
+        this.liberationName = 'Blazing Flames';
+        this.liberationNames = [this.liberationName];
         this.liberationCurrent = 1;
         this.liberation = [
             [480, 519.36, 558.72, 613.83, 653.19, 698.45, 761.43, 824.40, 887.38, 954.29]
@@ -49,7 +55,8 @@ export class Chixia extends Default {
         this.liberationSecondMultiplier = [11];
 
         //Intro Skill
-       // this.introName = ['Grand Entrance'];
+        this.introName = 'Grand Entrance'
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [24.75, 26.78, 28.81, 31.66, 33.68, 36.02, 39.27, 42.51, 45.76, 49.21]
@@ -62,12 +69,15 @@ export class Chixia extends Default {
         this.introSecondMultiplier = [4]
 
         //Outro Skill
-        //this.outroName = ['Leaping Flames'];
-        this.outro = [[530]];
+        this.outroName = 'Leaping Flames';
+        this.outroNames = [this.outroName];
+        this.outro = [[530, 530, 530, 530, 530, 530, 530, 530, 530, 530]];
         this.outroMultiplier = [1];
 
         //Forte Skill
-        //this.forteName = ['Thermobaric Bullets', 'Thermobaric Bullets x30', 'POW POW'];
+        this.forteBonusType = ['s', 's', 's'];
+        this.forteName = 'Heroic Bullets';
+        this.forteNames = ['Thermobaric Bullets', 'Thermobaric Bullets x30', 'Boom Boom'];
         this.forteCurrent = 1;
         this.forte = [
             [10, 10.82, 11.64, 12.79, 13.61, 14.56, 15.87, 17.18, 18.49, 19.89],
@@ -76,10 +86,19 @@ export class Chixia extends Default {
         ];
         this.forteMultiplier = [1, 30, 1];
 
+        this.rotationName = ['Intro', '3x Basic Attack', 'Resonance Skill', 'Resonance Liberation', 'Resonance Skill (x30 "Thermobaric Bullets")', 'Basic Attack (~30 bullets)', 'Resonance Skill (x30 "Thermobaric Bullets")', 'Basic Attack (~30 bullets)', 'Outro'];
         this.rotation = [
             ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg', 'sumBasicDmg', 'sumForteDmg', 'sumOutroDmg'],
             [0, 0, 1, 2, 0, 0, 1, 2, 1, 2, 0]
         ];
-        this.rotationName = ['Intro', '3x Basic Attack', 'Resonance Skill', 'Resonance Liberation', 'Resonance Skill (Hold FORTE x30)', 'Basic Attack (~30 bullets)', 'Resonance Skill (Hold FORTE x30)', 'Basic Attack (~30 bullets)', 'Outro'];
+
+        this.rotationColor = ['intro', 'basic', 'skill', 'liberation', 'skill', 'basic', 'skill', 'basic', 'outro'];
+        this.rotationCommands = ['mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'r', 'cv', 'eh', 'cv', 'mb', 'cv', 'eh', 'cv', 'mb'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['FUSION DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'Skill %', 'ATK %', 'Liberation %'];
     }
 }
