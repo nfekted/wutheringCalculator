@@ -12,7 +12,9 @@ export class Danjin extends Default {
         this.weapon = 'sword';
 
         //Basic Attacks
-        this.basicNames = ['Execution Part 1', 'Execution Part 2', 'Execution Part 3', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Execution';
+        this.basicNames = ['Execution DMG 1', 'Execution DMG 2', 'Execution DMG 3', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [28.80, 31.17, 33.53, 36.83, 39.20, 41.91, 45.69, 493.47, 53.25, 57.26],
@@ -26,7 +28,9 @@ export class Danjin extends Default {
         this.basicEnds = 2;
 
         //Skill
-        this.skillNames = ['Carmine Gleam', 'Crimson Erosion Part 1', 'Crimson Erosion', 'Sanguine Pulse Part 1', 'Sanguine Pulse Part 2', 'Sanguine Pulse Part 3'];
+        this.skillBonusType = ['s', 's', 's', 's', 's', 's',];
+        this.skillName = 'Crimson Fragment';
+        this.skillNames = ['Carmine Gleam', 'Crimson Erosion DMG 1', 'Crimson Erosion DMG 2', 'Sanguine Pulse DMG 1', 'Sanguine Pulse DMG 2', 'Sanguine Pulse DMG 3'];
         this.skillCurrent = 1;
         this.skill = [
             [19.20, 20.78, 22.35, 24.56, 26.13, 27.94, 30.46, 32.98, 35.50, 38.18],
@@ -39,7 +43,9 @@ export class Danjin extends Default {
         this.skillMultiplier = [2, 2, 2, 2, 3, 3];
 
         //Liberation
-        this.liberationNames = ['Continuous Attack', 'Scarlet Burst'];
+        this.liberationBonusType = ['l', 'l'];
+        this.liberationName = 'Crimson Bloom';
+        this.liberationNames = ['Consecutive Attack', 'Scarlet Burst'];
         this.liberationCurrent = 1;
         this.liberation = [
             [24.69, 26.72, 28.74, 31.58, 33.60, 35.93, 39.17, 42.41, 45.64, 49.09],
@@ -48,7 +54,8 @@ export class Danjin extends Default {
         this.liberationMultiplier = [8, 1];
 
         //Intro Skill
-       // this.introName = ['Vindiction'];
+        this.introName = 'Vindication';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [25, 27.05, 29.10, 31.97, 34.02, 36.38, 39.66, 42.94, 46.22, 49.71]
@@ -56,12 +63,15 @@ export class Danjin extends Default {
         this.introMultiplier = [4];
 
         //Outro Skill
+        this.outroName = 'Duality';
+        this.outroNames = [this.introName];
         this.outro = [[0]];
         this.outroMultiplier = [0];
-        //this.outroName = ['Duality'];
 
         //Forte Skill
-        //this.forteName = ['Chaoscleave', 'Full Energy Chaoscleave', 'Scatterbloom', 'Full Energy Scatterbloom'];
+        this.forteBonusType = ['h', 'h', 'h', 'h'];
+        this.forteName = 'Serene Vigil';
+        this.forteNames = ['Chaoscleave', 'Full Energy Chaoscleave', 'Scatterbloom', 'Full Energy Scatterbloom'];
         this.forteCurrent = 1;
         this.forte = [
             [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65],
@@ -71,10 +81,19 @@ export class Danjin extends Default {
         ];
         this.forteMultiplier = [7, 7, 1, 1];
 
+        this.rotationName = ['Intro', '2x Resonance Skill', 'Resonance Liberation', '2x Basic Attack', '3x Resonance Skill', '3x Basic Attack', '3x Resonance Skill', 'Heavy Attack (Full Energy)', 'Basic Attack', 'Outro']
         this.rotation = [
             ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumForteDmg', 'sumForteDmg'],
-            [0, 1, 2, 0, 1, 3, 4, 5, 0, 1, 2, 3, 4, 5, 1, 3]
+            [0, 1, 2, 0, 0, 1, 3, 4, 5, 0, 1, 2, 3, 4, 5, 1, 3]
         ];
-        this.rotationName = ['Intro', '2x Resonance Skill', 'Resonance Liberation', '2x Basic Attack', '3x Resonance Skill', '3x Basic Attack', '3x Resonance Skill', 'Heavy Attack (Full Energy)', 'Basic Attack (Full Energy)', 'Outro']
+
+        this.rotationColor = ['intro', 'skill', 'liberation', 'basic', 'skill', 'basic', 'skill', 'basic', 'basic', 'outro']
+        this.rotationCommands = ['e', 'cv', 'e', 'cv', 'r', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'e', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'e', 'cv', 'e', 'cv', 'mbh', 'cv', 'mb'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['HAVOC DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'ATK %', 'Skill %', 'ATK'];
     }
 }
