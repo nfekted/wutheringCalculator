@@ -437,7 +437,7 @@ export class Default {
         for (let i = 0; i < this.forte.length; i++) {
             const heal: boolean = this.forteHeal[i];
             const dmg: number = this.forteDMGType[i] == 'hp' ? character.hp : this.forteDMGType[i] == 'def' ? character.def : character.dmg;
-            const bonus: number = heal ? character.healingBonus : this.forteBonus(character, i);
+            const bonus: number = this.bonus(character, character.character.forteBonusType[i]);
             const elemental: number = heal ? 0 : character.elementalBonus;
             const crit: number = character.cDmg
             //Get Expected DMG
@@ -509,49 +509,6 @@ export class Default {
             //Range Sums
             character.sumCommonForteDmg[i] = this.getRangeString(commonSum);
             character.sumResForteDmg[i] = this.getRangeString(resSum);
-        }
-    }
-
-    private forteBonus(character: Character, index: number): number {
-        switch (character.character.icon) {
-            case 'calcharo':
-                return index == 0 ? character.heavyBonus : character.liberationBonus;
-            case 'changli':
-                return character.skillBonus;
-            case 'chixia':
-                return index == 2 ? character.basicBonus : character.skillBonus;
-            case 'danjin':
-                return character.heavyBonus;
-            case 'encore':
-                return character.liberationBonus;
-            case 'jinhsi':
-                return index == 4 ? character.basicBonus : index == 5 ? character.heavyBonus : character.skillBonus;
-            case 'jiyan':
-                return character.heavyBonus;
-            case 'lingyang':
-                return index == 0 ? character.heavyBonus : index > 0 && index < 5 ? character.basicBonus : character.skillBonus;
-            case 'mortefi':
-                return character.skillBonus;
-            case 'roverh':
-                return index == 8 ? character.skillBonus : index == 0 || index > 8 ? character.heavyBonus : character.basicBonus;
-            case 'rover':
-                return character.skillBonus;
-            case 'sanhua':
-                return index == 0 ? character.heavyBonus : character.skillBonus;
-            case 'taoqi':
-                return index < 3 ? character.basicBonus : character.basicBonus;
-            case 'xiangliyao':
-                return character.liberationBonus;
-            case 'yangyang':
-                return index == 0 ? character.heavyBonus : character.basicBonus;
-            case 'yinlin':
-                return index == 0 ? character.heavyBonus : character.basicBonus;
-            case 'yuanwu':
-                return index == 8 ? character.heavyBonus : character.basicBonus;
-            case 'zhezhi':
-                return index == 0 ? character.heavyBonus : character.basicBonus;
-            default:
-                return character.basicBonus;
         }
     }
 

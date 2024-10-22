@@ -12,7 +12,9 @@ export class Calcharo extends Default {
         this.weapon = 'broadblade';
 
         //Basic Attacks
-        this.basicNames = ['Gnawing Fangs: Part 1', 'Gnawing Fangs: Part 2', 'Gnawing Fangs: Part 3', 'Gnawing Fangs: Part 4', 'Mid-Air DMG', 'Dodge DGM', 'Heavy DGM'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Gnawing Fangs';
+        this.basicNames = ['Gnawing Fangs: DMG 1', 'Gnawing Fangs: DMG 2', 'Gnawing Fangs: DMG 3', 'Gnawing Fangs: DMG 4', 'Mid-Air DMG', 'Dodge DGM', 'Heavy DGM'];
         this.basicCurrent = 1;
         this.basic = [
             [23, 24.89, 26.78, 29.42, 31.3, 33.47, 36.49, 39.51, 42.53, 45.73],
@@ -38,7 +40,9 @@ export class Calcharo extends Default {
         this.basicSecondMultiplier = [0, 0, 3, 1, 0, 1, 0];
 
         //Skill
-        this.skillNames = ['Extermination Order: Part 1', 'Extermination Order: Part 2', 'Extermination Order: Part 3'];
+        this.skillBonusType = ['s', 's', 's'];
+        this.skillName = 'Extermination Order';
+        this.skillNames = ['Extermination Order: DMG 1', 'Extermination Order: DMG 2', 'Extermination Order: DMG 3'];
         this.skillCurrent = 1;
         this.skill = [
             [25.94, 28.07, 30.20, 33.17, 35.30, 37.75, 41.15, 44.55, 47.96, 51.57],
@@ -55,6 +59,8 @@ export class Calcharo extends Default {
         this.skillSecondMultiplier = [1, 1, 0];
 
         //Liberation
+        this.liberationBonusType = ['l', 'i', 'b', 'b', 'b', 'b', 'b', 'l', 'l'];
+        this.liberationName = 'Phantom Etching';
         this.liberationNames = ['Phantom Etching', 'Necessary Means (Liberation Intro)', 'Hounds Roar Part 1', 'Hounds Roar Part 2', 'Hounds Roar Part 3', 'Hounds Roar Part 4', 'Hounds Roar Part 5', 'Dodge DMG', 'Heavy DGM'];
         this.liberationCurrent = 1;
         this.liberation = [
@@ -84,7 +90,8 @@ export class Calcharo extends Default {
         this.liberationSecondMultiplier = [0, 0, 0, 2, 0, 0, 0, 0, 0];
 
         //Intro Skill
-       // this.introName = ['Wanted Outlaw'];
+        this.introName = 'Wanted Outlaw';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [20, 21.64, 23.28, 25.58, 27.22, 29.11, 31.73, 34.35, 36.98, 39.77]
@@ -97,7 +104,8 @@ export class Calcharo extends Default {
         this.introSecondMultiplier = [2];
 
         //Outro Skill
-        //this.outroName = ['Shadowy Raid'];
+        this.outroName = 'Shadowy Raid';
+        this.outroNames = [this.outroName];
         this.outro = [[195.98]];
         this.outroMultiplier = [1];
 
@@ -105,7 +113,9 @@ export class Calcharo extends Default {
         this.outroSecondMultiplier = [1];
 
         // //Forte Skill
-        //this.forteName = ['Hunting Mission: Mercy', 'Hunting Mission: Death Messager'];
+        this.forteName = 'Hunting Mission';
+        this.forteNames = ['Mercy', 'Heavy Attack: Death Messager'];
+        this.forteBonusType = ['h', 'l'];
         this.forteCurrent = 1;
         this.forte = [
             [19.67, 21.29, 22.90, 25.16, 26.77, 28.63, 31.21, 33.79, 36.37, 39.11],
@@ -119,10 +129,19 @@ export class Calcharo extends Default {
         ];
         this.forteSecondMultiplier = [1, 1];
 
+        this.rotationName = [`Intro Skill: ${this.introName}`, 'Ressonance Skill', 'Resonance Liberation', 'Heavy Attack: Death Messager', '5x Basic Attack', 'Ressonance Skill', 'Heavy Attack: Death Messager', '5x Basic Attack', 'Ressonance Skill', 'Heavy Attack: Death Messager', 'Outro: Shadowy Raid']
         this.rotation = [
             ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumForteDmg', 'sumOutroDmg'],
             [0, 0, 1, 2, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 1, 2, 3, 4, 5, 6, 0, 1, 2, 1, 0]
         ];
-        this.rotationName = ['Intro Skill: Wanted Outlaw', 'Ressonance Skill', 'Resonance Liberation', 'Heavy Attack: Death Messager', '5x Basic Attack', 'Ressonance Skill', 'Heavy Attack: Death Messager', '5x Basic Attack', 'Ressonance Skill', 'Heavy Attack: Death Messager', 'Outro: Shadowy Raid']
+
+        this.rotationColor = ['intro', 'skill', 'liberation', 'basic', 'basic', 'skill', 'basic', 'basic', 'skill', 'basic', 'outro'];
+        this.rotationCommands = ['e', 'cv', 'r', 'cv', 'mbh', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mbh'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['ELECTRO DMG %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'ATK %', 'Liberation %', 'Basic %', 'ATK'];
     }
 }
