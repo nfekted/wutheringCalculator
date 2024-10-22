@@ -11,8 +11,10 @@ export class Encore extends Default {
         this.type = 'fusion';
         this.weapon = 'rectifier';
 
-        //Skills
-        this.basicNames = ['Wooly Attack: Part 1', 'Wooly Attack: Part 2', 'Wooly Attack: Part 3', 'Wooly Attack: Part 4', 'Wooly Strike', 'Air/Jump Attack', 'Dodge Attack', 'Heavy Attack'];
+        //Basic
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Wooly Attack';
+        this.basicNames = ['Wooly Attack: DMG 1', 'Wooly Attack: DMG 2', 'Wooly Attack: DMG 3', 'Wooly Attack: DMG 4', 'Wooly Strike', 'Air/Jump Attack', 'Dodge Attack', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [28, 30.29, 32.59, 35.80, 38.10, 40.74, 44.41, 48.09, 51.76, 55.66],
@@ -27,6 +29,9 @@ export class Encore extends Default {
         this.basicMultiplier = [1, 1, 2, 4, 1, 1, 1, 2];
         this.basicEnds = 4;
 
+        //Skill
+        this.skillBonusType = ['s', 's'];
+        this.skillName = 'Flaming Woolies';
         this.skillNames = ['Flaming Woolies', 'Energetic Welcome'];
         this.skillCurrent = 1;
         this.skill = [
@@ -35,6 +40,9 @@ export class Encore extends Default {
         ]
         this.skillMultiplier = [8, 1];
 
+        //Liberation
+        this.liberationBonusType = ['b', 'b', 'b', 'b', 'b', 's', 'h'];
+        this.liberationName = 'Cosmos Rave';
         this.liberationNames = ['Cosmos: Frolicking Part 1', 'Cosmos: Frolicking Part 2', 'Cosmos: Frolicking Part 3', 'Cosmos: Frolicking Part 4', 'Cosmos: Dodge Counter', 'Cosmos Rampage', 'Cosmos: Heavy Attack'];
         this.liberationCurrent = 1;
         this.liberation = [
@@ -49,17 +57,22 @@ export class Encore extends Default {
         this.liberationMultiplier = [2, 3, 4, 3, 4, 4, 1];
 
         //Intro
-       // this.introName = ['Angry Cosmos'];
+        this.introName = 'Woolies Helpers';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [[100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81]];
         this.introMultiplier = [1];
 
         //Outro
-        //this.outroName = ['Woolies Cheer Dance'];
-        this.outro = [[176.76]];
+        this.outroName = 'Thermal Field';
+        this.outroNames = [this.outroName];
+        this.outro = [[176.76, 176.76, 176.76, 176.76, 176.76, 176.76, 176.76, 176.76, 176.76, 176.76]];
         this.outroMultiplier = [4];
 
-        //this.forteName = ['Cloudy: Frenzy', 'Cosmos: Rupture'];
+        //Forte
+        this.forteBonusType = ['l', 'l',];
+        this.forteName = 'Black & White Woolies';
+        this.forteNames = ['Cloudy: Frenzy', 'Cosmos: Rupture'];
         this.forteCurrent = 1;
         this.forte = [
             [168, 181.77, 195.55, 214.83, 228.61, 244.45, 266.49, 288.53, 310.58, 334],
@@ -70,11 +83,20 @@ export class Encore extends Default {
         this.forteSecondDmg = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [249.08, 269.51, 289.93, 318.53, 338.95, 362.44, 395.12, 427.80, 460.48, 495.21]];
         this.forteSecondMultiplier = [0, 1];
 
-        this.rotationName = ['Resonance Skill + Energetic Welcome', 'Resonance Liberation', 'Cosmos Rampage (Liberation)', '4x Cosmos: Frolicking (Basic Attack)', 'Cosmos Rampage (Liberation)', '4x Cosmos: Frolicking (Basic Attack)', 'Cosmos Rampage (Liberation)', 'Cosmos Heavy Attack'];
+        this.rotationName = ['Intro', 'Resonance Skill + Energetic Welcome', 'Resonance Liberation', 'Cosmos Rampage (Skill)', '4x Cosmos: Frolicking (Basic Attack)', 'Cosmos Rampage (Skill)', '4x Cosmos: Frolicking (Basic Attack)', 'Cosmos Rampage (Liberation)', '2x Cosmos: Frolicking (Basic Attack)', 'Cosmos Heavy Attack', 'Outro'];
         this.rotation = [
-            ['sumSkillDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg'],
-            [0, 1, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 6]
+            ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumOutroDmg'],
+            [0, 0, 1, 5, 0, 1, 2, 3, 5, 0, 1, 2, 3, 5, 0, 1, 1, 0]
         ];
+
+        this.rotationColor = ['intro', 'skill', 'liberation', 'skill', 'basic', 'skill', 'basic', 'skill', 'basic', 'basic', 'outro'];
+        this.rotationCommands = ['e', 'cv', 'e', 'cv', 'r', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mbh'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['FUSION DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'Basic %', 'ATK %', 'ATK', 'Skill %'];
 
     }
 }
