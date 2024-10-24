@@ -41,8 +41,22 @@
             </div>
             <div class="modal-body">
                 <div class="row">
+                    <div class="col-12 text-center">
+                        <img class="img-fluid" [src]="'assets/img/icons/aero.webp'" (click)="setFilter('aero')"
+                            [ngClass]="{'character': filterBy != 'aero'}" style="width: 4rem;cursor: pointer" />
+                        <img class="img-fluid" [src]="'assets/img/icons/glacio.webp'" (click)="setFilter('glacio')"
+                            [ngClass]="{'character': filterBy != 'glacio'}" style="width: 4rem;cursor: pointer" />
+                        <img class="img-fluid" [src]="'assets/img/icons/electro.webp'" (click)="setFilter('electro')"
+                            [ngClass]="{'character': filterBy != 'electro'}" style="width: 4rem;cursor: pointer" />
+                        <img class="img-fluid" [src]="'assets/img/icons/fusion.webp'" (click)="setFilter('fusion')"
+                            [ngClass]="{'character': filterBy != 'fusion'}" style="width: 4rem;cursor: pointer" />
+                        <img class="img-fluid" [src]="'assets/img/icons/havoc.webp'" (click)="setFilter('havoc')"
+                            [ngClass]="{'character': filterBy != 'havoc'}" style="width: 4rem;cursor: pointer" />
+                        <img class="img-fluid" [src]="'assets/img/icons/spectro.webp'" (click)="setFilter('spectro')"
+                            [ngClass]="{'character': filterBy != 'spectro'}" style="width: 4rem;cursor: pointer" />
+                    </div>
                     <ng-container *ngFor="let c of characterList">
-                        <div class="col-sm-3"
+                        <div class="col-sm-3" *ngIf="filterBy == '' || filterBy == c.type"
                             (click)="currentSelection = c.icon; audio('characters/' + currentSelection)"
                             [ngClass]="{'character': currentSelection != c.icon}">
                             <img class="img-fluid" [src]="'assets/img/characters/'+c.icon+'.png'" />

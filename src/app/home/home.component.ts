@@ -33,6 +33,7 @@ import { Shorekeeper } from '../shared/models/shorekeeper.model';
 export class HomeComponent {
 
   characterList: any[] = [];
+  filterBy: string = '';
   characters: Array<Character> = new Array<Character>();
   currentSelection: string = '';
 
@@ -216,5 +217,10 @@ export class HomeComponent {
 
     Util.characters = this.characters;
     this.save();
+  }
+
+  setFilter(type: string) {
+    if (this.filterBy == type) this.filterBy = '';
+    else this.filterBy = type;
   }
 }
