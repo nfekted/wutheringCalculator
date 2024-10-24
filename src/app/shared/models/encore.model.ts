@@ -83,14 +83,14 @@ export class Encore extends Default {
         this.forteSecondDmg = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [249.08, 269.51, 289.93, 318.53, 338.95, 362.44, 395.12, 427.80, 460.48, 495.21]];
         this.forteSecondMultiplier = [0, 1];
 
-        this.rotationName = ['Intro', 'Resonance Skill + Energetic Welcome', 'Resonance Liberation', 'Cosmos Rampage (Skill)', '4x Cosmos: Frolicking (Basic Attack)', 'Cosmos Rampage (Skill)', '4x Cosmos: Frolicking (Basic Attack)', 'Cosmos Rampage (Liberation)', '2x Cosmos: Frolicking (Basic Attack)', 'Cosmos Heavy Attack', 'Outro'];
+        this.rotationName = ['Intro', 'Resonance Skill + Energetic Welcome', 'Resonance Liberation', 'Cosmos Rampage (Skill)', '4x Cosmos: Frolicking (Basic Attack)', 'Cosmos Rampage (Skill)', '4x Cosmos: Frolicking (Basic Attack)', 'Cosmos Rampage (Liberation)', 'Cosmos Heavy Attack', 'Outro'];
         this.rotation = [
-            ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumOutroDmg'],
+            ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumOutroDmg'],
             [0, 0, 1, 5, 0, 1, 2, 3, 5, 0, 1, 2, 3, 5, 0, 1, 1, 0]
         ];
 
-        this.rotationColor = ['intro', 'skill', 'liberation', 'skill', 'basic', 'skill', 'basic', 'skill', 'basic', 'basic', 'outro'];
-        this.rotationCommands = ['e', 'cv', 'e', 'cv', 'r', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mbh'];
+        this.rotationColor = ['intro', 'skill', 'liberation', 'skill', 'basic', 'skill', 'basic', 'skill', 'basic', 'outro'];
+        this.rotationCommands = ['e', 'cv', 'e', 'cv', 'r', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mbh'];
 
         //Recommended Echo
         this.echo4 = ['Crit Rate %', 'Crit DMG %'];

@@ -12,7 +12,9 @@ export class Jianxin extends Default {
         this.weapon = 'gauntlets';
 
         //Basic Attacks
-        this.basicNames = ['Fengyiquan Part 1', 'Fengyiquan Part 2', 'Fengyiquan Part 3', 'Fengyiquan Part 4', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Fengyiquan';
+        this.basicNames = ['Fengyiquan DMG 1', 'Fengyiquan DMG 2', 'Fengyiquan DMG 3', 'Fengyiquan DMG 4', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [34.94, 37.8, 40.67, 44.68, 47.54, 50.84, 55.42, 60.01, 64.59, 69.46],
@@ -38,7 +40,9 @@ export class Jianxin extends Default {
         this.basicSecondMultiplier = [0, 1, 0, 0, 0, 1, 0];
 
         //Skill
-        this.skillNames = ['Calming Air: Chi Counter', 'Calming Air: Chi Parry'];
+        this.skillBonusType = ['s', 's'];
+        this.skillName = 'Calming Air';
+        this.skillNames = ['Chi Counter', 'Chi Parry'];
         this.skillCurrent = 1;
         this.skill = [
             [168.3, 182.11, 195.91, 215.23, 229.03, 244.9, 266.98, 289.06, 311.14, 334.6],
@@ -47,7 +51,9 @@ export class Jianxin extends Default {
         this.skillMultiplier = [1, 1];
 
         //Liberation
-        this.liberationNames = ['Purification Force Field: Continuous (1hit)', 'Purification Force Field: Continuous (12hit)', 'Purification Force Field: Explosion'];
+        this.liberationBonusType = ['l', 'l', 'l']
+        this.liberationName = 'Purification Force Field';
+        this.liberationNames = ['Purification Force Field: Single Hit', 'Purification Force Field: Continuous (12hit)', 'Purification Force Field: Explosion'];
         this.liberationCurrent = 1;
         this.liberation = [
             [15, 16.23, 17.46, 19.19, 20.42, 21.83, 23.8, 25.77, 27.74, 29.83],
@@ -57,7 +63,8 @@ export class Jianxin extends Default {
         this.liberationMultiplier = [1, 12, 1];
 
         //Intro Skill
-       // this.introName = ['Essence of Tao'];
+        this.introName = 'Essence of Tao';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [17, 18.40, 19.79, 21.74, 23.14, 24.74, 26.97, 29.20, 31.43, 33.80]
@@ -70,12 +77,18 @@ export class Jianxin extends Default {
         this.introSecondMultiplier = [1];
 
         //Outro Skill
+        this.outroName = 'Transcendence';
+        this.outroNames = [this.outroName];
         this.outro = [[0]];
         this.outroMultiplier = [0];
-        //this.outroName = ['Transcendence'];
+
 
         //Forte Skill
-        //this.forteName = ['Primordial Chi Spiral: Pushin Punch', '1x Zhoutian Damage', '20x Zhoutian Damage', 'Minor Zhoutian Shock', 'Major Zhoutian: Inner Shock', 'Major Zhoutian: Outer Shock', 'Yielding Pull', 'Incomplete Minor Zhoutian Shield', 'Major Zhoutian: Inner Shield', 'Major Zhoutian: Outer Shield', 'Shield Healing'];
+        this.forteBonusType = ['h', 'h', 'h', 'h', 'h', 'h', 'h', 'sh', 'sh', 'sh', 'c'];
+        this.forteName = 'Primordial Chi Spiral';
+        this.forteNames = ['Primordial Chi Spiral: Pushin Punch', '1x Zhoutian Damage', '20x Zhoutian Damage', 'Minor Zhoutian Shock',
+            'Major Zhoutian: Inner Shock', 'Major Zhoutian: Outer Shock', 'Yielding Pull', 'Incomplete Minor Zhoutian Shield', 'Major Zhoutian: Inner Shield',
+            'Major Zhoutian: Outer Shield', 'Shield Healing'];
         this.forteCurrent = 1;
         this.forteHeal = [false, false, false, false, false, false, false, false, false, false, true];
         this.forteShield = [false, false, false, false, false, false, false, true, true, true, false];
@@ -116,6 +129,15 @@ export class Jianxin extends Default {
             ['sumIntroDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumLiberationDmg'],
             [0, 0, 0, 1, 2, 3, 6, 0]
         ];
+
+        this.rotationColor = ['intro', 'basic', 'skill', 'liberation', 'basic', 'outro']
+        this.rotationCommands = ['mb', 'cv', 'mb', 'cv', 'e', 'cv', 'r', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['AERO DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'ATK %', 'ATK', 'Skill %', 'Energy Regen %'];
 
     }
 
