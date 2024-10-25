@@ -92,7 +92,7 @@ export class Baizhi extends Default {
         this.outroNames = [this.outroName];
         this.outroHeal = [true];
         this.outroDMGType = ['hp'];
-        this.outro = [[1.54,1.54,1.54,1.54,1.54,1.54,1.54,1.54,1.54,1.54]];
+        this.outro = [[1.54]];
         this.outroMultiplier = [10];
 
         //Forte Skill

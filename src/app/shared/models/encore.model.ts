@@ -66,7 +66,7 @@ export class Encore extends Default {
         //Outro
         this.outroName = 'Thermal Field';
         this.outroNames = [this.outroName];
-        this.outro = [[176.76, 176.76, 176.76, 176.76, 176.76, 176.76, 176.76, 176.76, 176.76, 176.76]];
+        this.outro = [[176.76]];
         this.outroMultiplier = [4];
 
         //Forte

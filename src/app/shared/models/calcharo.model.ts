@@ -106,7 +106,7 @@ export class Calcharo extends Default {
         //Outro Skill
         this.outroName = 'Shadowy Raid';
         this.outroNames = [this.outroName];
-        this.outro = [[195.98, 195.98, 195.98, 195.98, 195.98, 195.98, 195.98, 195.98, 195.98, 195.98]];
+        this.outro = [[195.98]];
         this.outroMultiplier = [1];
 
         this.outroSecondDmg = [[391.96]];

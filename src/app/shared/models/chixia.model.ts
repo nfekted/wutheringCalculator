@@ -71,7 +71,7 @@ export class Chixia extends Default {
         //Outro Skill
         this.outroName = 'Leaping Flames';
         this.outroNames = [this.outroName];
-        this.outro = [[530, 530, 530, 530, 530, 530, 530, 530, 530, 530]];
+        this.outro = [[530]];
         this.outroMultiplier = [1];
 
         //Forte Skill
