@@ -11,7 +11,9 @@ export class Jinhsi extends Default {
         this.weapon = 'broadblade';
 
         //Basic Attacks
-        this.basicNames = ['Slash of Breaking Dawn: Part1', 'Slash of Breaking Dawn: Part2', 'Slash of Breaking Dawn: Part3', 'Slash of Breaking Dawn: Part4', 'Air/Jump Attack', 'Dodge Attack', 'Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Slash of Breaking Dawn';
+        this.basicNames = ['Slash of Breaking Dawn DMG 1', 'Slash of Breaking Dawn DMG 2', 'Slash of Breaking Dawn DMG 3', 'Slash of Breaking Dawn DMG 4', 'Air/Jump Attack', 'Dodge Attack', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [33.43, 36.18, 38.92, 42.75, 45.50, 48.65, 53.03, 57.42, 61.81, 66.47],
@@ -47,7 +49,9 @@ export class Jinhsi extends Default {
         this.basicThirdMultiplier = [0, 0, 0, 0, 1, 0, 1];
 
         //Skill
-        this.skillNames = ['Skill DMG', 'Overflowing Radiance'];
+        this.skillBonusType = ['s', 's'];
+        this.skillName = 'Trailing Lights of Eons';
+        this.skillNames = ['Trailing Lights of Eons DMG', 'Overflowing Radiance'];
         this.skillCurrent = 1;
         this.skill = [
             [9.79, 10.60, 11.40, 12.52, 13.32, 14.25, 15.53, 16.82, 18.10, 19.46],
@@ -68,7 +72,9 @@ export class Jinhsi extends Default {
 
 
         //Liberation
-        this.liberationNames = ['Liberation DMG'];
+        this.liberationBonusType = ['l'];
+        this.liberationName = 'Purge of Light';
+        this.liberationNames = ['Purge of Light DMG'];
         this.liberationCurrent = 1;
         this.liberation = [
             [251.40, 272.02, 292.63, 321.50, 342.11, 365.82, 398.80, 431.78, 464.77, 499.81]
@@ -81,18 +87,22 @@ export class Jinhsi extends Default {
         this.liberationSecondMultiplier = [1];
 
         //Intro Skill
-       // this.introName = ['Loong\'s Halo'];
+        this.introName = 'Loong\'s Halo';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [[80, 86.56, 93.12, 102.31, 108.87, 116.41, 126.91, 137.40, 147.90, 159.05]];
         this.introMultiplier = [1];
 
         //Outro Skill
+        this.outroName = 'Temporal Bender';
+        this.outroNames = [this.outroName];
         this.outro = [[0]];
         this.outroMultiplier = [0];
-        //this.outroName = ['Temporal Bender'];
 
         //Forte Skill
-        //this.forteName = ['Incarnation Part 1', 'Incarnation Part 2', 'Incarnation Part 3', 'Incarnation Part 4', 'IncarnationDodge Atk', 'Incarnation Heavy Atk', 'Crescent Divinity', 'Illuminous Epiphany: Solar Flare', 'Illuminous Epiphany: Stella Glamor'];
+        this.forteBonusType = ['s', 's', 's', 's', 'b', 'b', 's', 's', 's',];
+        this.forteName = '';
+        this.forteNames = ['Incarnation Basic 1', 'Incarnation Basic 2', 'Incarnation Basic 3', 'Incarnation Basic 4', 'IncarnationDodge Atk', 'Incarnation Heavy Atk', 'Crescent Divinity', 'Illuminous Epiphany: Solar Flare', 'Illuminous Epiphany: Stella Glamor'];
         this.forteCurrent = 1;
         this.forte = [
             [40.58, 48.23, 51.89, 57, 60.66, 64.86, 70.71, 76.56, 82.41, 88.62],
@@ -133,8 +143,16 @@ export class Jinhsi extends Default {
         ];
         this.forteThirdMultiplier = [0, 1, 0, 0, 0, 1, 1, 0, 0];
 
-        this.rotationName = ['Intro', 'Skill Overflowing Radiance', 'Skill Crescent Divinity', '4x Basic Attack Incarnation', 'Resonance Liberation', 'Ressonance Skill: Solar Flare + Solar Glamour']
+        this.rotationName = ['Intro', 'Skill Overflowing Radiance', 'Skill Crescent Divinity', '4x Basic Attack Incarnation', 'Resonance Liberation', 'Ressonance Skill: Solar Flare + Solar Glamour', 'Outro']
         this.rotation = [['sumSkillDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg'], [1, 6, 0, 1, 2, 3, 0, 7, 8]];
 
+        this.rotationColor = ['intro', 'skill', 'skill', 'basic', 'liberation', 'skill', 'outro']
+        this.rotationCommands = ['e', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'r', 'cv', 'e'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['SPECTRO DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Energy Regen %', 'Crit Rate %', 'Crit DMG %', 'ATK %', 'Skill %', 'ATK', 'Liberation %'];
     }
 }
