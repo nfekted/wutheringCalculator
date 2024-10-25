@@ -17,8 +17,8 @@
                             <div [innerHtml]="'char.' + type + 's.' + character.icon | transloco"></div>
                         </td>
                     </tr>
-                    <tr class="text-center" *ngIf="character[type][0][0] != 0">
-                        <th scope="col">{{'char.name' | transloco}}</th>
+                    <tr class="text-center" *ngIf="character[type][0][0] != 0 && type != 'outro'">
+                        <th scope=" col">{{'char.name' | transloco}}</th>
                         <th scope="col" [ngClass]="{'current': currentLevel == 1}">Lv. 1
                         </th>
                         <th scope="col" [ngClass]="{'current': currentLevel == 2}">Lv. 2
@@ -42,7 +42,7 @@
                         <th scope="col">{{'char.type' | transloco}}</th>
                     </tr>
                 </thead>
-                <tbody class="text-center" *ngIf="character[type][0][0] != 0">
+                <tbody class="text-center" *ngIf="character[type][0][0] != 0 && type != 'outro'">
                     <tr *ngFor="let b of character[type + 'Names']; let i=index">
                         <th scope="row">
                             {{b}}

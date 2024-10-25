@@ -12,7 +12,9 @@ export class Jiyan extends Default {
         this.weapon = 'broadblade';
 
         //Basic Attacks
-        this.basicNames = ['Lone Lance Part 1', 'Lone Lance Part 2', 'Lone Lance Part 3', 'Lone Lance Part 4', 'Lone Lance Part 5', 'Mid-Air DMG', 'Mid-Air: Banner of Triumph', 'Mid-Air Follow Up DMG', 'Dodge DMG', 'Heavy Attack', 'Heavy Attack: Windborne Strike', 'Heavy Attack: Abyssal Slash'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'h', 'h', 'h'];
+        this.basicName = 'Lone Lance';
+        this.basicNames = ['Lone Lance DMG 1', 'Lone Lance DMG 2', 'Lone Lance DMG 3', 'Lone Lance DMG 4', 'Lone Lance DMG 5', 'Mid-Air DMG', 'Mid-Air: Banner of Triumph', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack', 'Heavy Attack: Windborne Strike', 'Heavy Attack: Abyssal Slash'];
         this.basicCurrent = 1;
         this.basic = [
             [36.80, 39.81, 42.83, 47.05, 50.07, 53.54, 58.37, 63.20, 68.03, 73.16],
@@ -48,7 +50,9 @@ export class Jiyan extends Default {
         this.basicSecondMultiplier = [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0];
 
         //Skill
-        this.skillNames = ['Windqueller'];
+        this.skillBonusType = ['s'];
+        this.skillName = 'Windqueller';
+        this.skillNames = [this.skillName];
         this.skillCurrent = 1;
         this.skill = [
             [53.50, 57.88, 62.27, 68.41, 72.80, 77.84, 84.86, 91.88, 98.90, 106.36]
@@ -57,7 +61,9 @@ export class Jiyan extends Default {
 
 
         //Liberation
-        this.liberationNames = ['Emerald Storm: Prelude - Lance of Qingloong 1', 'Emerald Storm: Prelude - Lance of Qingloong 2', 'Emerald Storm: Prelude - Lance of Qingloong 3'];
+        this.liberationBonusType = ['h', 'h', 'h'];
+        this.liberationName = 'Emerald Storm: Prelude';
+        this.liberationNames = ['Lance of Qingloong DMG 1', 'Lance of Qingloong DMG 2', 'Lance of Qingloong DMG 3'];
         this.liberationCurrent = 1;
         this.liberation = [
             [32.95, 35.66, 38.36, 42.14, 44.84, 47.95, 52.28, 56.60, 60.93, 65.52],
@@ -67,7 +73,8 @@ export class Jiyan extends Default {
         this.liberationMultiplier = [8, 8, 8];
 
         //Intro Skill
-       // this.introName = ['Tactical Strike'];
+        this.introName = 'Tactical Strike';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [100, 108.20, 116.40, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81]
@@ -75,13 +82,16 @@ export class Jiyan extends Default {
         this.introMultiplier = [1];
 
         //Outro Skill
-        //this.outroName = ['Discipline'];
+        this.outroName = 'Discipline'
+        this.outroNames = [this.outroName];
         this.outro = [[313.40]];
         this.outroMultiplier = [1];
 
 
         //Forte Skill
-        //this.forteName = ['Qingloong at War'];
+        this.forteBonusType = ['h'];
+        this.forteName = 'Qingloong at War'
+        this.forteNames = [this.forteName];
         this.forteCurrent = 1;
         this.forte = [
             [81.88, 77.77, 83.67, 91.92, 97.81, 104.59, 114.02, 123.45, 132.88, 142.91]
@@ -99,6 +109,14 @@ export class Jiyan extends Default {
             [0, 0, 0, 1, 2, 0, 1, 2, 0, 0]
         ];
 
+        this.rotationColor = ['intro', 'skill', 'liberation', 'basic', 'outro']
+        this.rotationCommands = ['e', 'cv', 'r', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['AERO DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'ATK %', 'Heavy %', 'ATK', 'Energy Regen %'];
     }
 
 }
