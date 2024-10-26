@@ -12,7 +12,9 @@ export class Mortefi extends Default {
         this.weapon = 'pistols';
 
         // Basic Attacks
-        this.basicNames = ['Impromptu Show: Part 1', 'Impromptu Show: Part 2', 'Impromptu Show: Part 3', 'Impromptu Show: Part 4', 'Mid-Air DMG Part 1', 'Mid-Air DMG Part 2', 'Dodge DMG', 'Aimed DMG', 'Full Charged Aimed DMG'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'h', 'h'];
+        this.basicName = 'Impromptu Show';
+        this.basicNames = ['Impromptu Show DMG 1', 'Impromptu Show DMG 2', 'Impromptu Show DMG 3', 'Impromptu Show DMG 4', 'Mid-Air DMG Part 1', 'Mid-Air DMG Part 2', 'Dodge DMG', 'Aimed DMG', 'Full Charged Aimed DMG'];
         this.basicCurrent = 1;
         this.basic = [
             [24.29, 26.29, 28.28, 31.07, 33.06, 35.35, 38.54, 41.72, 44.91, 48.30],
@@ -42,7 +44,9 @@ export class Mortefi extends Default {
         this.basicSecondMultiplier = [0, 0, 0, 1, 0, 0, 0, 0, 0];
 
         //Skill
-        this.skillNames = ['Passionate Variation'];
+        this.skillBonusType = ['s'];
+        this.skillName = 'Passionate Variation';
+        this.skillNames = [this.skillName];
         this.skillCurrent = 1;
         this.skill = [
             [105, 113.61, 122.22, 134.28, 142.89, 152.79, 166.57, 180.34, 194.12, 208.76]
@@ -50,7 +54,9 @@ export class Mortefi extends Default {
         this.skillMultiplier = [1];
 
         //Liberation
-        this.liberationNames = ['Violent Finale', 'Violent Finale: Marcato'];
+        this.liberationBonusType = ['l', 'l'];
+        this.liberationName = 'Violent Finale';
+        this.liberationNames = [this.liberationName, 'Violent Finale: Marcato'];
         this.liberationCurrent = 1;
         this.liberation = [
             [80, 86.56, 93.12, 102.31, 108.87, 116.41, 126.91, 137.40, 147.90, 159.05],
@@ -59,7 +65,8 @@ export class Mortefi extends Default {
         this.liberationMultiplier = [1, 1];
 
         //Intro Skill
-       // this.introName = ['Dissonance'];
+        this.introName = 'Dissonance';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [85, 91.97, 98.94, 108.70, 115.67, 123.69, 134.84, 145.99, 157.14, 168.99]
@@ -68,13 +75,15 @@ export class Mortefi extends Default {
 
         //Outro Skill
 
-        //this.outroName = ['Rage Transposition'];
+        this.outroName = 'Rage Transposition';
+        this.outroNames = [this.outroName];
         this.outro = [[0]];
         this.outroMultiplier = [0];
 
 
         //Forte Skill
-        //this.forteName = ['Fury Fugue'];
+        this.forteName = 'Fury Fugue';
+        this.forteNames = [this.forteName];
         this.forteCurrent = 1;
         this.forte = [
             [164, 177.45, 190.90, 209.73, 223.18, 238.64, 260.16, 281.67, 303.19, 326.05]
@@ -86,6 +95,15 @@ export class Mortefi extends Default {
             ['sumIntroDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumLiberationDmg'],
             [0, 0, 0, 1, 2, 3, 0, 0]
         ];
+
+        this.rotationColor = ['intro', 'skill', 'basic', 'skill', 'liberation', 'outro']
+        this.rotationCommands = ['e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'r'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['Energy Regen %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Energy Regen %', 'Crit Rate %', 'Crit DMG %', 'ATK %', 'Skill %'];
 
     }
 
