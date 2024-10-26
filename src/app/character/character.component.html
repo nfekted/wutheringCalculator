@@ -432,7 +432,8 @@
                                             </ng-container>
                                         </tr>
                                         <tr>
-                                            <td colspan="5"><b>{{'char.liberation' | transloco}}</b></td>
+                                            <td colspan="5"><b>{{'char.liberation' | transloco}}:
+                                                    {{character.character.basicName}}</b></td>
                                         </tr>
                                         <tr *ngFor="let b of character.character.liberationNames; let i=index">
                                             <th scope="row">
@@ -613,7 +614,7 @@
                                         <!-- OUTRO -->
                                         <ng-container *ngIf="character.character.outroMultiplier[0] > 0">
                                             <tr>
-                                                <td colspan="5">{{'char.outro' | transloco}}</td>
+                                                <td colspan="5">{{'char.outro' | transloco}}: {{character.character.outroName}}</td>
                                             </tr>
                                             <tr *ngFor="let b of character.character.outroNames; let i=index">
                                                 <th scope="row">
@@ -682,7 +683,7 @@
                                         </ng-container>
                                         <!-- FORTE -->
                                         <tr>
-                                            <td colspan="5">{{'char.forte' | transloco}}</td>
+                                            <td colspan="5">{{'char.forte' | transloco}}: {{character.character.forteName}}</td>
                                         </tr>
                                         <tr *ngFor="let b of character.character.forteNames; let i=index">
                                             <th scope="row">
