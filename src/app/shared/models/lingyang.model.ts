@@ -11,7 +11,9 @@ export class Lingyang extends Default {
         this.weapon = 'gauntlets';
 
         //Basic Attacks
-        this.basicNames = ['Majestic Fists: Part 1', 'Majestic Fists: Part 2', 'Majestic Fists: Part 3', 'Majestic Fists: Part 4', 'Majestic Fists: Part 5', 'Feral Roars', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Majestic Fists';
+        this.basicNames = ['Majestic Fists: DMG 1', 'Majestic Fists: DMG 2', 'Majestic Fists: DMG 3', 'Majestic Fists: DMG 4', 'Majestic Fists: DMG 5', 'Feral Roars', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65],
@@ -41,6 +43,8 @@ export class Lingyang extends Default {
         this.basicSecondMultiplier = [0, 0, 0, 1, 0, 0, 0, 0, 0];
 
         //Skill
+        this.skillBonusType = ['s', 's'];
+        this.skillName = 'Ancient Arts';
         this.skillNames = ['Ancient Arts', 'Furious Punches'];
         this.skillCurrent = 1;
         this.skill = [
@@ -51,7 +55,9 @@ export class Lingyang extends Default {
 
 
         //Liberation
-        this.liberationNames = ['Strive: Lion\'s Vigor'];
+        this.liberationBonusType = ['l'];
+        this.liberationName = 'Strive: Lion\'s Vigor';
+        this.liberationNames = [this.liberationName];
         this.liberationCurrent = 1;
         this.liberation = [
             [200, 216.40, 232.80, 255.76, 272.16, 291.02, 317.26, 343.50, 369.74, 397.62]
@@ -59,7 +65,8 @@ export class Lingyang extends Default {
         this.liberationMultiplier = [1];
 
         //Intro Skill
-       // this.introName = ['Lion Awakens'];
+        this.introName = 'Lion Awakens';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [50, 54.10, 58.20, 63.94, 68.04, 72.76, 79.32, 85.88, 92.44, 99.41]
@@ -67,13 +74,16 @@ export class Lingyang extends Default {
         this.introMultiplier = [2];
 
         //Outro Skill
-        //this.outroName = ['Frosty Marks'];
+        this.outroName = 'Frosty Marks';
+        this.outroNames = [this.outroName];
         this.outro = [[587.94]];
         this.outroMultiplier = [1];
 
 
         //Forte Skill
-        //this.forteName = ['Unification of Spirits: Glorious Plunge', 'Unification of Spirits: Tail Strike', 'Striding Lion: Feral Gyrate 1', 'Striding Lion: Feral Gyrate 2', 'Striding Lion: Stormy Kicks', 'Striding Lion: Mountain Roamer'];
+        this.forteBonusType = ['h', 'b', 'b', 'b', 'b', 's'];
+        this.forteName = 'Unification of Spirits';
+        this.forteNames = ['Glorious Plunge', 'Tail Strike', 'Striding Lion: Feral Gyrate 1', 'Striding Lion: Feral Gyrate 2', 'Striding Lion: Stormy Kicks', 'Striding Lion: Mountain Roamer'];
         this.forteCurrent = 1;
         this.forte = [
             [86.70, 93.81, 100.92, 110.88, 117.99, 126.16, 137.54, 148.91, 160.29, 172.37],
@@ -105,6 +115,15 @@ export class Lingyang extends Default {
             ],
             [0, 0, 1, 2, 1, 3, 1, 4, 1, 0, 1, 2, 1, 3, 1, 4, 1, 0, 0, 2, 3, 5, 2, 3, 5, 2, 3, 4, 2, 0]
         ];
+
+        this.rotationColor = ['intro', 'basic', 'skill', 'basic', 'skill', 'basic', 'skill', 'basic', 'skill', 'basic', 'skill', 'basic', 'skill', 'liberation', 'basic', 'basic', 'skill', 'basic', 'skill', 'basic', 'basic', 'basic', 'outro']
+        this.rotationCommands = ['mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'e', 'cv', 'r', 'cv', 'mbh', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb',];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['GLACIO DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'ATK %', 'ATK', 'Basic %', 'Skill %'];
 
     }
 
