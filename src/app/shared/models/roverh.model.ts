@@ -12,7 +12,9 @@ export class RoverHavoc extends Default {
         this.weapon = 'sword';
 
         //Basic Attacks
-        this.basicNames = ['Tuneslayer Part 1', 'Tuneslayer Part 2', 'Tuneslayer Part 3', 'Tuneslayer Part 4', 'Tuneslayer Part 5', 'Mid-Air DMG', 'Counter DMG', 'Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Tuneslayer';
+        this.basicNames = ['Tuneslayer: DMG 1', 'Tuneslayer: DMG 2', 'Tuneslayer: DMG 3', 'Tuneslayer: DMG 4', 'Tuneslayer: DMG 5', 'Mid-Air DMG', 'Counter DMG', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [28.50, 30.84, 33.18, 36.45, 38.79, 41.48, 45.21, 48.95, 52.69, 56.67],
@@ -28,7 +30,9 @@ export class RoverHavoc extends Default {
         this.basicEnds = 4;
 
         //Skill
-        this.skillNames = ['Wingblade'];
+        this.skillBonusType = ['s'];
+        this.skillName = 'Wingblade';
+        this.skillNames = [this.skillName];
         this.skillCurrent = 1;
         this.skill = [
             [144, 155.81, 167.62, 184.15, 195.96, 209.54, 228.43, 247.32, 266.22, 286.29]
@@ -36,7 +40,9 @@ export class RoverHavoc extends Default {
         this.skillMultiplier = [2];
 
         //Liberation
-        this.liberationNames = ['Deadening Abyss'];
+        this.liberationBonusType = ['l'];
+        this.liberationName = 'Deadening Abyss';
+        this.liberationNames = [this.liberationName];
         this.liberationCurrent = 1;
         this.liberation = [
             [765, 827.73, 890.46, 978.29, 1041.02, 1113.16, 1213.52, 1313.89, 1414.26, 1520.90]
@@ -44,7 +50,8 @@ export class RoverHavoc extends Default {
         this.liberationMultiplier = [1];
 
         //Intro Skill
-       // this.introName = ['Instant of Annihilation'];
+        this.introName = 'Instant of Annihilation';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [100, 108.20, 116.40, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81]
@@ -52,13 +59,16 @@ export class RoverHavoc extends Default {
         this.introMultiplier = [1];
 
         //Outro Skill
-        //this.outroName = ['Soundweaver'];
+        this.outroName = 'Soundweaver';
+        this.outroNames = [this.outroName];
         this.outro = [[143.3]];
         this.outroMultiplier = [1];
 
 
         //Forte Skill
-        //this.forteName = ['Umbra Eclipse: Devastation', 'Umbra Eclipse: Part 1', 'Umbra Eclipse: Part 2', 'Umbra Eclipse: Part 3', 'Umbra Eclipse: Part 4', 'Umbra Eclipse: Part 5', 'Umbra Eclipse: Plunging', 'Umbra Eclipse: Dodge DMG', 'Umbra Eclipse: Lifetaker', 'Umbra Eclipse: Thwackblade ', 'Umbra Eclipse: Heavy Attack'];
+        this.forteBonusType = ['h', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 's', 'h', 'h'];
+        this.forteName = 'Umbra Eclipse';
+        this.forteNames = [' Devastation', 'Umbra Eclipse: DMG 1', 'Umbra Eclipse: DMG 2', 'Umbra Eclipse: DMG 3', 'Umbra Eclipse: DMG 4', 'Umbra Eclipse: DMG 5', 'Umbra Eclipse: Plunging', 'Umbra Eclipse: Dodge DMG', 'Umbra Eclipse: Lifetaker', 'Umbra Eclipse: Thwackblade ', 'Umbra Eclipse: Heavy Attack'];
         this.forteCurrent = 1;
         this.forte = [
             [114.75, 124.16, 133.57, 146.75, 156.16, 166.98, 182.03, 197.09, 212.14, 228.14],
@@ -95,6 +105,15 @@ export class RoverHavoc extends Default {
             ['sumIntroDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumOutroDmg'],
             [0, 0, 0, 1, 2, 3, 4, 0, 10, 9, 8, 10, 9, 3, 4, 10, 9, 3, 4, 0, 0]
         ];
+
+        this.rotationColor = ['intro', 'skill', 'basic', 'basic', 'basic', 'basic', 'skill', 'basic', 'basic', 'basic', 'basic', 'liberation', 'outro'];
+        this.rotationCommands = ['e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mbh', 'cv', 'mbh', 'cv', 'mb', 'cv', 'e', 'cv', 'mbh', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mbh', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'r'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['AERO DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'ATK %', 'ATK', 'Skill %', 'Liberation %'];
 
     }
 }
