@@ -12,7 +12,9 @@ export class Rover extends Default {
         this.weapon = 'sword';
 
         //Basic Attacks
-        this.basicNames = ['Vibration Manifestation Part 1', 'Vibration Manifestation Part 2', 'Vibration Manifestation Part 3', 'Vibration Manifestation Part 4', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack', 'Heavy: Resonance ', 'Heavy: Aftertune '];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'h', 'h', 'h'];
+        this.basicName = 'Vibration Manifestation';
+        this.basicNames = ['Vibration Manifestation DMG 1', 'Vibration Manifestation DMG 2', 'Vibration Manifestation DMG 3', 'Vibration Manifestation DMG 4', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack', 'Heavy: Resonance ', 'Heavy: Aftertune '];
         this.basicCurrent = 1;
         this.basic = [
             [29.75, 32.19, 34.63, 38.05, 40.49, 43.29, 47.20, 51.10, 55, 59.15],
@@ -29,7 +31,9 @@ export class Rover extends Default {
         this.basicEnds = 3;
 
         //Skill
-        this.skillNames = ['Resonating Slashes'];
+        this.basicBonusType = ['s'];
+        this.skillName = 'Resonating Slashes';
+        this.skillNames = [this.skillName];
         this.skillCurrent = 1;
         this.skill = [
             [118.80, 128.55, 138.29, 151.93, 161.67, 172.87, 188.46, 204.04, 219.63, 236.19]
@@ -38,7 +42,9 @@ export class Rover extends Default {
 
 
         //Liberation
-        this.liberationNames = ['Echoing Orchestra'];
+        this.liberationBonusType = ['l'];
+        this.liberationName = 'Echoing Orchestra';
+        this.liberationNames = [this.liberationName];
         this.liberationCurrent = 1;
         this.liberation = [
             [100, 108.20, 116.40, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81]
@@ -51,7 +57,8 @@ export class Rover extends Default {
         this.liberationSecondMultiplier = [1];
 
         //Intro Skill
-       // this.introName = ['Waveshock'];
+        this.introName = 'Waveshock';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [85, 91.97, 98.94, 108.70, 115.67, 123.69, 134.84, 145.99, 157.14, 168.99]
@@ -59,11 +66,16 @@ export class Rover extends Default {
         this.introMultiplier = [1];
 
         //Outro Skill
-        //this.outroName = ['Instant'];
+        this.outroName = 'Instant';
+        this.outroNames = [this.outroName];
+        this.outro = [[0]];
+        this.outroMultiplier = [0];
 
 
         //Forte Skill
-        //this.forteName = ['World in a Grain of Sand: Rosonating Spin', 'Resonating Whirl', 'Resonating Echoes Part 1', 'Resonating Echoes Part 2'];
+        this.forteBonusType = ['s', 's', 's', 's'];
+        this.forteName = 'World in a Grain of Sand';
+        this.forteNames = ['Resonating Spin', 'Resonating Whirl', 'Resonating Echoes DMG 1', 'Resonating Echoes DMG 2'];
         this.forteCurrent = 1;
         this.forte = [
             [64.93, 70.25, 75.58, 83.03, 88.35, 94.48, 103, 111.51, 120.03, 129.08],
@@ -78,6 +90,15 @@ export class Rover extends Default {
             ['sumIntroDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg'],
             [0, 0, 6, 7, 0, 2, 3]
         ];
+
+        this.rotationColor = ['intro', 'liberation', 'basic', 'basic', 'skill', 'basic', 'outro']
+        this.rotationCommands = ['r', 'cv', 'mbh', 'cv', 'mbh', 'cv', 'e', 'cv', 'mb', 'cv', 'mb'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['SPECTRO DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'ATK %', 'ATK', 'Skill %'];
 
     }
 
