@@ -31,7 +31,7 @@ export class Rover extends Default {
         this.basicEnds = 3;
 
         //Skill
-        this.basicBonusType = ['s'];
+        this.skillBonusType = ['s'];
         this.skillName = 'Resonating Slashes';
         this.skillNames = [this.skillName];
         this.skillCurrent = 1;

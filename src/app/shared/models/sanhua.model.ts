@@ -12,7 +12,9 @@ export class Sanhua extends Default {
         this.weapon = 'sword';
 
         //Basic
-        this.basicNames = ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Part 5', 'Air/Jump Attack', 'Dodge Attack', 'Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Frigid Light';
+        this.basicNames = ['Frigid Light DMG 1', 'Frigid Light DMG 2', 'Frigid Light DMG 3', 'Frigid Light DMG 4', 'Frigid Light DMG 5', 'Air/Jump Attack', 'Dodge Attack', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [24.5, 26.51, 28.52, 31.34, 33.34, 35.65, 38.87, 42.08, 45.3, 48.71],
@@ -28,31 +30,42 @@ export class Sanhua extends Default {
         this.basicEnds = 4;
 
         //Skills
-        this.skillNames = ['Eternal Frost'];
+        this.skillBonusType = ['s'];
+        this.skillName = 'Eternal Frost';
+        this.skillNames = [this.skillName];
         this.skillCurrent = 1;
         this.skill = [
             [181, 195.85, 210.69, 231.47, 246.31, 263.38, 287.13, 310.87, 334.62, 359.85]
         ]
         this.skillMultiplier = [1];
 
-        this.liberationNames = ['Glacial Gaze'];
+        //Liberation
+        this.liberationBonusType = ['l'];
+        this.liberationName = 'Glacial Gaze';
+        this.liberationNames = [this.liberationName];
         this.liberationCurrent = 1;
         this.liberation = [
             [407.16, 440.55, 473.94, 520.68, 554.07, 592.46, 645.88, 699.30, 752.72, 809.48]
         ];
         this.liberationMultiplier = [1];
 
-       // this.introName = ['Freezing Thorns'];
+        //Intro
+        this.introName = 'Freezing Thorns';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [[70, 75.74, 81.48, 89.52, 95.26, 101.86, 111.05, 120.23, 129.41, 139.17]];
         this.introMultiplier = [1];
 
-        //this.outroName = ['Silversnow'];
+        //Outro
+        this.outroName = 'Silversnow';
+        this.outroNames = [this.outroName];
         this.outro = [[0]];
         this.outroMultiplier = [0];
 
-
-        //this.forteName = ['Clarity of Mind: Detonate', 'Clarity of Mind: Glacier', 'Ice Prism', 'Ice Thorn'];
+        //Forte
+        this.forteBonusType = ['h', 's', 's', 's'];
+        this.forteName = 'Clarity of Mind';
+        this.forteNames = ['Clarity of Mind: Detonate', 'Clarity of Mind: Glacier', 'Ice Prism', 'Ice Thorn'];
         this.forteCurrent = 1;
         this.forte = [
             [93.70, 101.39, 109.07, 119.83, 127.51, 136.35, 148.64, 160.93, 173.23, 186.29],
@@ -63,10 +76,19 @@ export class Sanhua extends Default {
         this.forteMultiplier = [2, 1, 1, 1];
 
 
-        this.rotationName = ['Resonance Liberation', 'Heavy Attack (Detonate)', 'Resonance Skill', 'Heavy Attack (Detonate)', 'Outro Skill'];
+        this.rotationName = ['intro', 'Resonance Liberation', 'Heavy Attack (Detonate)', 'Resonance Skill', 'Heavy Attack (Detonate)', 'Outro Skill'];
         this.rotation = [
-            ['sumLiberationDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumSkillDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg'],
-            [0, 0, 1, 2, 3, 0, 0, 1, 2, 3]
+            ['sumIntroDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumSkillDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg'],
+            [0, 0, 0, 1, 2, 3, 0, 0, 1, 2, 3]
         ];
+
+        this.rotationColor = ['intro', 'liberation', 'basic', 'skill', 'basic', 'outro']
+        this.rotationCommands = ['r', 'cv', 'mbh', 'cv', 'e', 'cv', 'mbh'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['AERO DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'ATK %', 'Liberation %', 'Skill %', 'Energy Regen %'];
     }
 }
