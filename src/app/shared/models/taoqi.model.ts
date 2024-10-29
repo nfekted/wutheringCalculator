@@ -12,7 +12,9 @@ export class Taoqi extends Default {
         this.weapon = 'broadblade';
 
         //Basic Attacks
-        this.basicNames = ['Concealed Edge : Part 1', 'Concealed Edge : Part 2', 'Concealed Edge : Part 3', 'Concealed Edge : Part 4', 'Mid-Air DMG', 'Counter DMG', 'Strategic Parry', 'Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Concealed Edge';
+        this.basicNames = ['Concealed Edge: DMG 1', 'Concealed Edge: DMG 2', 'Concealed Edge: DMG 3', 'Concealed Edge: DMG 4', 'Mid-Air DMG', 'Counter DMG', 'Strategic Parry', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [45.34, 49.06, 52.78, 57.99, 61.7, 65.98, 71.93, 77.88, 83.83, 90.15],
@@ -28,7 +30,9 @@ export class Taoqi extends Default {
         this.basicEnds = 3;
 
         //Skill
+        this.basicBonusType = ['s', 's'];
         this.skillHeal = [false, true];
+        this.skillName = 'Fortified Defense';
         this.skillNames = ['Fortified Defense', 'HP Recover'];
         this.skillCurrent = 1;
         this.skill = [
@@ -45,8 +49,10 @@ export class Taoqi extends Default {
 
 
         //Liberation
-        this.liberationDMGType = ['def']
-        this.liberationNames = ['Unmovable'];
+        this.liberationBonusType = ['l'];
+        this.liberationDMGType = ['def'];
+        this.liberationName = 'Unmovable';
+        this.liberationNames = [this.liberationName];
         this.liberationCurrent = 1;
         this.liberation = [
             [226.2, 224.75, 263.3, 289.27, 307.82, 329.15, 358.83, 388.5, 418.18, 449.91]
@@ -54,7 +60,8 @@ export class Taoqi extends Default {
         this.liberationMultiplier = [1];
 
         //Intro Skill
-       // this.introName = ['Defense Formation'];
+        this.introName = 'Defense Formation';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [105, 113.661, 122.22, 134.28, 142.89, 152.79, 166.57, 180.34, 194.12, 208.76]
@@ -62,13 +69,16 @@ export class Taoqi extends Default {
         this.introMultiplier = [1];
 
         //Outro Skill
-        //this.outroName = ['Iron Will'];
+        this.outroName = 'Iron Will';
+        this.outroNames = [this.outroName];
         this.outro = [[0]];
         this.outroMultiplier = [0];
 
         //Forte Skill
-        this.forteShield = [false, false, false, true, true, true]
-        //this.forteName = ['Power Shift: Timed Counter Part 1', 'Power Shift: Timed Counter Part 2', 'Power Shift: Timed Counter Part 3', 'Power Shift: Timed Counter Shild 1', 'Power Shift: Timed Counter Shild 2', 'Power Shift: Timed Counter Shild 3'];
+        this.forteBonusType = ['b', 'b', 'b', 'b', 'b', 'b'];
+        this.forteShield = [false, false, false, true, true, true];
+        this.forteName = 'Power Shift';
+        this.forteNames = ['Timed Counter: DMG 1', 'Timed Counter: DMG 2', 'Timed Counter: DMG 3', 'Timed Counter Shild 1', 'Timed Counter Shild 2', 'Timed Counter Shild 3'];
         this.forteCurrent = 1;
         this.forte = [
             [43.36, 46.92, 50.47, 55.45, 59, 63.09, 68.78, 74.47, 80.16, 86.2],
@@ -91,11 +101,19 @@ export class Taoqi extends Default {
         this.forteSecondMultiplier = [0, 0, 0, 1, 1, 1];
 
         this.rotationName = ['Intro', '3x Basic Attack', 'Resonance Skill', 'Resonance Liberation', 'Outro'];
-        this.rotation =
-            [
-                ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumLiberationDmg'],
-                [0, 0, 1, 2, 0, 0]
-            ];
+        this.rotation = [
+            ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumLiberationDmg'],
+            [0, 0, 1, 2, 0, 0]
+        ];
+
+        this.rotationColor = ['intro', 'basic', 'skill', 'liberation', 'outro']
+        this.rotationCommands = ['mb', 'cv','mb', 'cv','mb', 'cv', 'e', 'cv', 'r'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['Energy Regen %', 'HAVOC DMG %'];
+        this.echo1 = ['DEF %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'DEF %', 'Energy Regen %'];
 
     }
 }
