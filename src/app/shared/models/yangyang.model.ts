@@ -10,8 +10,11 @@ export class Yangyang extends Default {
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Yangyang';
         this.type = 'aero';
         this.weapon = 'sword';
+
         //Basic Attacks
-        this.basicNames = ['Feather as Blade Part 1', 'Feather as Blade Part 2', 'Feather as Blade Part 3', 'Feather as Blade Part 4', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack', 'Zephyr Song'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'h', 'h'];
+        this.basicName = 'Feather as Blade';
+        this.basicNames = ['Feather as Blade DMG 1', 'Feather as Blade DMG 2', 'Feather as Blade DMG 3', 'Feather as Blade DMG 4', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack', 'Zephyr Song'];
         this.basicCurrent = 1;
         this.basic = [
             [22.50, 24.34, 26.18, 28.77, 30.61, 32.73, 35.69, 38.64, 41.59, 44.73],
@@ -39,7 +42,9 @@ export class Yangyang extends Default {
         this.basicSecondMultiplier = [0, 0, 0, 1, 0, 0, 0, 0];
 
         //Skill
-        this.skillNames = ['Zephyr Domain'];
+        this.skillBonusType = ['s'];
+        this.skillName = 'Zephyr Domain';
+        this.skillNames = [this.skillName];
         this.skillCurrent = 1;
         this.skill = [
             [17.37, 18.79, 20.21, 22.21, 23.63, 25.27, 27.55, 29.83, 32.11, 34.53]
@@ -53,7 +58,9 @@ export class Yangyang extends Default {
 
 
         //Liberation
-        this.liberationNames = ['Wind Spirals'];
+        this.liberationBonusType = ['l'];
+        this.liberationName = 'Wind Spirals';
+        this.liberationNames = [this.liberationName];
         this.liberationCurrent = 1;
         this.liberation = [
             [23.43, 25.35, 27.27, 29.96, 31.88, 34.09, 37.17, 40.24, 43.32, 46.58]
@@ -66,10 +73,14 @@ export class Yangyang extends Default {
         this.liberationSecondMultiplier = [1];
 
         //Outro
-        //this.outroName = ['Whispering Breeze']
+        this.outroName = 'Whispering Breeze';
+        this.outroNames = [this.outroName]
+        this.outro = [[0]];
+        this.outroMultiplier = [0];
 
         //Intro Skill
-       // this.introName = ['Cerulean Song'];
+        this.introName = 'Cerulean Song';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [40, 43.28, 46.56, 51.15, 54.43, 58.20, 63.45, 68.70, 73.94, 79.52]
@@ -78,7 +89,9 @@ export class Yangyang extends Default {
 
 
         //Forte Skill
-        //this.forteName = ['Echoing Feathers: Stormy Strike', 'Echoing Feathers: Feather Release'];
+        this.forteBonusType = ['b', 'h'];
+        this.forteName = 'Echoing Feathers';
+        this.forteNames = ['Stormy Strike', 'Feather Release'];
         this.forteCurrent = 1;
         this.forte = [
             [19.12, 20.69, 22.26, 24.45, 26.02, 27.82, 30.33, 32.84, 35.35, 38.02],
@@ -97,6 +110,15 @@ export class Yangyang extends Default {
             ['sumIntroDmg', 'sumLiberationDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg'],
             [0, 0, 0, 6, 7, 0, 1]
         ];
+
+        this.rotationColor = ['intro', 'liberation', 'skill', 'basic', 'basic', 'basic', 'basic', 'outro']
+        this.rotationCommands = ['r', 'cv', 'e', 'cv', 'mbh', 'cv', 'mb', 'cv', 'mbh', 'cv', 'mb',];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['AERO DMG %', 'Energy Regen %', 'ATK %',];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'ATK %', 'Energy Regen %', 'Basic %', 'ATK'];
 
     }
 }
