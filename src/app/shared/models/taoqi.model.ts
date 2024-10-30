@@ -30,7 +30,7 @@ export class Taoqi extends Default {
         this.basicEnds = 3;
 
         //Skill
-        this.basicBonusType = ['s', 's'];
+        this.basicBonusType = ['s', 'c'];
         this.skillHeal = [false, true];
         this.skillName = 'Fortified Defense';
         this.skillNames = ['Fortified Defense', 'HP Recover'];

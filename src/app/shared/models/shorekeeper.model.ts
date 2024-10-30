@@ -12,7 +12,9 @@ export class Shorekeeper extends Default {
         this.weapon = 'rectifier';
 
         //Basic Attacks
-        this.basicNames = ['Origin Calculus Part 1', 'Origin Calculus Part 2', 'Origin Calculus Part 3', 'Origin Calculus Part 4', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Origin Calculus';
+        this.basicNames = ['Origin Calculus DMG 1', 'Origin Calculus DMG 2', 'Origin Calculus DMG 3', 'Origin Calculus DMG 4', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [15.99, 17.30, 18.61, 20.45, 21.76, 23.26, 25.36, 27.46, 29.55, 31.78],
@@ -27,9 +29,11 @@ export class Shorekeeper extends Default {
         this.basicEnds = 3;
 
         //Skill
+        this.skillBonusType = ['s', 'c'];
         this.skillHeal = [false, true];
+        this.skillName = 'Chaos Theory';
         this.skillDMGType = ['atk', 'hp']
-        this.skillNames = ['Chaos Theory: Dim Star Butterfly', 'Chaos Theory Healing'];
+        this.skillNames = ['Dim Star Butterfly', 'Chaos Theory Healing'];
         this.skillCurrent = 1;
         this.skill = [
             [15.75, 17.04, 18.33, 20.14, 21.43, 22.91, 24.98, 27.05, 29.11, 31.31],
@@ -44,9 +48,11 @@ export class Shorekeeper extends Default {
         this.skillSecondMultiplier = [0, 1];
 
         //Liberation
+        this.liberationBonusType = ['c'];
         this.liberationHeal = [true];
         this.liberationDMGType = ['hp'];
-        this.liberationNames = ['End Loop'];
+        this.liberationName = 'End Loop';
+        this.liberationNames = ['End Loop Healing'];
         this.liberationCurrent = 1;
         this.liberation = [
             [-220, -239, -257, -282, -300, -321, -349, -378, -407, -438]
@@ -59,9 +65,11 @@ export class Shorekeeper extends Default {
         this.liberationSecondMultiplier = [1];
 
         //Intro Skill
+        this.introBonusType = ['s', 's', 'c', 'c'];
         this.introDMGType = ['atk', 'hp', 'hp', 'hp'];
         this.introHeal = [false, false, true, true];
-       // this.introName = ['Proof of Existence: Enlightenment', 'Proof of Existence: Discernment', 'Enlightenment Healing', 'Discernment Healing'];
+        this.introName = 'Proof of Existence';
+        this.introNames = ['Enlightenment', 'Discernment', 'Enlightenment Healing', 'Discernment Healing'];
         this.introCurrent = 1;
         this.intro = [
             [22.79, 24.66, 26.53, 29.14, 31.01, 33.16, 36.15, 39.14, 42.13, 45.30],
@@ -80,13 +88,16 @@ export class Shorekeeper extends Default {
         this.introSecondMultiplier = [0, 0, 1, 1]
 
         //Outro Skill
-        //this.outroName = ['Binary Butterfly'];
+        this.outroName = 'Binary Butterfly';
+        this.outroNames = [this.outroName];
         this.outro = [[0]];
         this.outroMultiplier = [0];
 
 
         //Forte Skill
-        //this.forteName = ['Astral Chord: Flare Star Butterfly', 'Astral Chord: Illation', 'Astral Chord: Transmutation'];
+        this.forteBonusType = ['b', 'h', 'b'];
+        this.forteName = 'Astral Chord';
+        this.forteNames = ['Flare Star Butterfly', 'Illation', 'Transmutation'];
         this.forteCurrent = 1;
         this.forte = [
             [18.76, 20.29, 21.83, 23.99, 25.52, 27.29, 29.75, 32.21, 34.67, 37.29],
@@ -95,13 +106,22 @@ export class Shorekeeper extends Default {
         ];
         this.forteMultiplier = [1, 5, 1];
 
-        this.rotationName = ['3x Basic Attack', 'Mid-Air Attack', 'Heavy Attack', 'Resonance Skill', '3x Basic Attack', 'Heavy Attack', 'Resonance Liberation', 'Outro'];
+        this.rotationName = ['intro', '3x Basic Attack', 'Mid-Air Attack', 'Heavy Attack', 'Resonance Skill', '3x Basic Attack', 'Heavy Attack', 'Resonance Liberation', 'Outro'];
         this.rotation = [
-            ['sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumSkillDmg', 'sumHealingSkill',
+            ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumSkillDmg', 'sumHealingSkill',
                 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumHealingLiberation'
             ],
-            [0, 1, 2, 4, 6, 1, 1, 1, 1, 1, 0, 1, 1, 2, 3, 6, 1, 1, 1, 1, 1, 0]
+            [0, 0, 1, 2, 4, 6, 1, 1, 1, 1, 1, 0, 1, 1, 2, 3, 6, 1, 1, 1, 1, 1, 0]
         ];
+
+        this.rotationColor = ['intro', 'basic', 'basic', 'basic', 'skill', 'basic', 'basic', 'liberation', 'outro']
+        this.rotationCommands = ['mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'space', 'cv', 'mb', 'cv', 'mbh', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mbh', 'cv', 'r'];
+
+        //Recommended Echo
+        this.echo4 = ['Healing %'];
+        this.echo3 = ['Energy Regen'];
+        this.echo1 = ['HP %'];
+        this.echoSub = ['Energy Regen %', 'HP %', 'HP'];
 
     }
 }
