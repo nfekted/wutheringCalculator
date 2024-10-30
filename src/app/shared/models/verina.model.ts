@@ -12,7 +12,9 @@ export class Verina extends Default {
         this.weapon = 'rectifier';
 
         //Basic Attacks
-        this.basicNames = ['Cultivation: Part 1', 'Cultivation: Part 2', 'Cultivation: Part 3', 'Cultivation: Part 4', 'Cultivation: Part 5', 'Mid-Air Part 1', 'Mid-Air Part 2', 'Mid-Air Part 3', 'Dodge DMG', 'Heavy Attack', 'Mid-Air Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'h', 'h'];
+        this.basicName = 'Cultivation';
+        this.basicNames = ['Cultivation: DMG 1', 'Cultivation: DMG 2', 'Cultivation: DMG 3', 'Cultivation: DMG 4', 'Cultivation: DMG 5', 'Mid-Air Part 1', 'Mid-Air Part 2', 'Mid-Air Part 3', 'Dodge DMG', 'Heavy Attack', 'Mid-Air Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [19.04, 20.61, 22.17, 24.35, 25.91, 27.71, 30.21, 32.70, 35.20, 37.86],
@@ -31,7 +33,9 @@ export class Verina extends Default {
         this.basicEnds = 4;
 
         //Skill
-        this.skillNames = ['Botany Experiment'];
+        this.skillBonusType = ['s'];
+        this.skillName = 'Botany Experiment';
+        this.skillNames = [this.skillName];
         this.skillCurrent = 1;
         this.skill = [
             [18, 19.48, 20.96, 23.02, 24.5, 26.2, 28.56, 30.92, 33.28, 35.79]
@@ -45,7 +49,9 @@ export class Verina extends Default {
 
 
         //Liberation
+        this.liberationBonusType = ['l', 'c', 'l', 'c'];
         this.liberationHeal = [false, true, false, true];
+        this.liberationName = 'Arboreal Flourish';
         this.liberationNames = ['Arboreal Flourish', 'Arboreal Flourish Healing', 'Coordinated DMG', 'Coordinated Healing'];
         this.liberationCurrent = 1;
         this.liberation = [
@@ -65,7 +71,8 @@ export class Verina extends Default {
         this.liberationSecondMultiplier = [0, 1, 0, 1];
 
         //Intro Skill
-       // this.introName = ['Verdant Growth'];
+        this.introName = 'Verdant Growth';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [50, 54.1, 58.2, 63.94, 68.04, 72.76, 79.32, 85.88, 92.44, 99.41]
@@ -73,15 +80,19 @@ export class Verina extends Default {
         this.introMultiplier = [1];
 
         //Outro Skill
+        this.outroBonusType = ['c'];
         this.outroHeal = [true];
-        //this.outroName = ['Blossom'];
+        this.outroName = 'Blossom';
+        this.outroNames = [this.outroName];
         this.outro = [[19]];
         this.outroMultiplier = [1];
 
 
         //Forte Skill
+        this.forteBonusType = ['h', 'b', 'b', 'b', 'c'];
         this.forteHeal = [false, false, false, false, true]
-        //this.forteName = ['Starflower Blooms: Heavy Attack', 'Starflower Blooms: Mid-Air Part 1', 'Starflower Blooms: Mid-Air Part 2', 'Starflower Blooms: Mid-Air Part 3', 'Starflower Blooms: Healing'];
+        this.forteName = 'Starflower Blooms';
+        this.forteNames = ['Starflower Blooms: Heavy Attack', 'Starflower Blooms: Mid-Air Part 1', 'Starflower Blooms: Mid-Air Part 2', 'Starflower Blooms: Mid-Air Part 3', 'Starflower Blooms: Healing'];
         this.forteCurrent = 1;
         this.forte = [
             [32.67, 35.35, 38.03, 41.78, 44.46, 47.54, 51.82, 56.11, 60.40, 64.95],
@@ -107,5 +118,13 @@ export class Verina extends Default {
             [0, 0, 1, 2, 3, 4, 0, 0, 1, 2, 4, 4, 4, 0, 2, 1, 3, 0]
         ];
 
+        this.rotationColor = ['intro', 'basic', 'skill', 'basic', 'basic', 'liberation', 'outro']
+        this.rotationCommands = ['mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mbh', 'cv', 'mb', 'cv', 'mb', 'cv', 'r',];
+
+        //Recommended Echo
+        this.echo4 = ['Healing %'];
+        this.echo3 = ['Energy Regen %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Energy Regen %', 'ATK %', 'ATK'];
     }
 }
