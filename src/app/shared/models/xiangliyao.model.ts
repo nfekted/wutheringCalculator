@@ -12,7 +12,9 @@ export class XiangliYao extends Default {
         this.weapon = 'gauntlets';
 
         //Basic Attacks
-        this.basicNames = ['Probe: Part 1', 'Probe: Part 2', 'Probe: Part 3', 'Probe: Part 4', 'Probe: Part 5', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Probe';
+        this.basicNames = ['Probe: DMG 1', 'Probe: DMG 2', 'Probe: DMG 3', 'Probe: DMG 4', 'Probe: DMG 5', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [16.65, 18.02, 19.39, 21.30, 22.66, 24.23, 26.42, 28.60, 30.79, 33.11],
@@ -40,7 +42,9 @@ export class XiangliYao extends Default {
         this.basicSecondMultiplier = [0, 0, 0, 1, 0, 0, 0, 0];
 
         //Skill
-        this.skillNames = ['Deduction'];
+        this.skillBonusType = ['s'];
+        this.skillName = 'Deduction';
+        this.skillNames = [this.skillName];
         this.skillCurrent = 1;
         this.skill = [
             [100, 108.20, 116.40, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81]
@@ -49,7 +53,9 @@ export class XiangliYao extends Default {
 
 
         //Liberation
-        this.liberationNames = ['Cogitation Model', 'Pivot - Impale Part 1', 'Pivot - Impale Part 2', 'Pivot - Impale Part 3', 'Pivot Dodge - Unfathomed', 'Divergence'];
+        this.liberationBonusType = ['l', 'b', 'b', 'b', 'l', 's'];
+        this.liberationName = 'Cogitation Model';
+        this.liberationNames = ['Cogitation Model DMG', 'Pivot - Impale Part 1', 'Pivot - Impale Part 2', 'Pivot - Impale Part 3', 'Pivot Dodge - Unfathomed', 'Divergence'];
         this.liberationCurrent = 1;
         this.liberation = [
             [737.42, 797.89, 858.35, 943.01, 1003.48, 1073.02, 1169.76, 1266.51, 1363.26, 1466.06],
@@ -72,7 +78,8 @@ export class XiangliYao extends Default {
         this.liberationSecondMultiplier = [0, 0, 0, 0, 1, 2];
 
         //Intro Skill
-       // this.introName = ['Principle'];
+        this.introName = 'Principle';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [50, 54.10, 58.20, 63.94, 68.04, 72.76, 79.32, 85.88, 92.44, 99.41]
@@ -80,12 +87,15 @@ export class XiangliYao extends Default {
         this.introMultiplier = [1];
 
         //Outro Skill
-        //this.outroName = ['Chain Rule'];
+        this.outroName = 'Chain Rule';
+        this.outroNames = [this.outroName];
         this.outro = [[237.63]];
         this.outroMultiplier = [3];
 
         //Forte Skill
-        //this.forteName = ['Forever Seeking : Decipher', 'Forever Seeking: Law of Reigns', 'Forever Seeking: Revamp'];
+        this.forteBonusType = ['l', 'l', 'l'];
+        this.forteName = 'Forever Seeking';
+        this.forteNames = ['Forever Seeking : Decipher', 'Forever Seeking: Law of Reigns', 'Forever Seeking: Revamp'];
         this.forteCurrent = 1;
         this.forte = [
             [200.10, 216.51, 232.92, 255.89, 272.30, 291.17, 317.42, 343.68, 369.93, 397.82],
@@ -102,10 +112,23 @@ export class XiangliYao extends Default {
         ];
         this.forteSecondMultiplier = [0, 1, 2];
 
-        this.rotationName = ['Intro', 'Resonance Skill', 'Resonance Liberation', 'Resonance Skill: Divergence', 'Basic Attack - Revamp', 'Resonance Skill Law of Reigns', 'Resonance Skill: Divergence', 'Basic Attack - Revamp', 'Resonance Skill Law of Reigns', 'Outro']
+        this.rotationName = ['Intro', 'Resonance Skill', 'Resonance Liberation',
+            'Resonance Skill: Divergence', 'Basic Attack - Revamp', 'Resonance Skill Law of Reigns',
+            'Resonance Skill: Divergence', 'Basic Attack - Revamp', 'Resonance Skill Law of Reigns',
+            'Resonance Skill: Divergence', 'Basic Attack - Revamp', 'Resonance Skill Law of Reigns',
+            'Outro'];
         this.rotation = [
-            ['sumIntroDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg', 'sumOutroDmg'],
-            [0, 0, 0, 5, 2, 1, 5, 2, 1, 0]
+            ['sumIntroDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg', 'sumOutroDmg'],
+            [0, 0, 0, 5, 2, 1, 5, 2, 1, 5, 2, 1, 0]
         ];
+
+        this.rotationColor = ['intro', 'skill', 'liberation', 'skill', 'basic', 'skill', 'skill', 'basic', 'skill', 'skill', 'basic', 'skill', 'outro']
+        this.rotationCommands = ['e', 'cv', 'r', 'cv', 'e', 'cv', 'mb', 'cv', 'e', 'cv', 'e', 'cv', 'mb', 'cv', 'e', 'cv', 'e', 'cv', 'mb', 'cv', 'e'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['Electro DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'Liberation %', 'ATK %', 'ATK'];
     }
 }
