@@ -12,7 +12,9 @@ export class Yinlin extends Default {
         this.weapon = 'rectifier';
 
         // Basic Attacks
-        this.basicNames = [`Zapstring's Dance Part 1`, `Zapstring's Dance Part 2`, `Zapstring's Dance Part 3`, `Zapstring's Dance Part 4`, 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = `Zapstring's Dance`;
+        this.basicNames = [`Zapstring's Dance DMG 1`, `Zapstring's Dance DMG 2`, `Zapstring's Dance DMG 3`, `Zapstring's Dance DMG 4`, 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [14.49, 15.68, 16.87, 18.53, 19.72, 21.09, 22.99, 24.89, 26.79, 28.81],
@@ -27,7 +29,9 @@ export class Yinlin extends Default {
         this.basicEnds = 3;
 
         //Skill
-        this.skillNames = ['Magnetic Roar', 'Lightning Execution', 'Electromagnetic Blast'];
+        this.skillBonusType = ['s', 's', 's'];
+        this.skillName = 'Magnetic Roar'
+        this.skillNames = [this.skillName, 'Lightning Execution', 'Electromagnetic Blast'];
         this.skillCurrent = 1;
         this.skill = [
             [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65],
@@ -37,7 +41,9 @@ export class Yinlin extends Default {
         this.skillMultiplier = [3, 4, 1];
 
         //Liberation
-        this.liberationNames = ['Thundering Wrath'];
+        this.liberationBonusType = ['l'];
+        this.liberationName = 'Thundering Wrath';
+        this.liberationNames = [this.liberationName];
         this.liberationCurrent = 1;
         this.liberation = [
             [58.63, 63.44, 68.25, 74.98, 79.79, 85.32, 93.01, 100.7, 108.39, 116.56]
@@ -45,18 +51,24 @@ export class Yinlin extends Default {
         this.liberationMultiplier = [7];
 
         //Intro Skill
-       // this.introName = ['Raging Storm'];
+        this.introName = 'Raging Storm';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [7.2, 7.8, 8.39, 9.21, 9.8, 10.48, 11.43, 12.37, 13.32, 14.32]
         ];
         this.introMultiplier = [10];
 
-        // //Outro Skill
-        //this.outroName = ['Strategist'];
+        //Outro Skill
+        this.outroName = 'Strategist';
+        this.outroNames = [this.outroName];
+        this.outro = [[0]];
+        this.outroMultiplier = [0];
 
         //Forte Skill
-        //this.forteName = ['Chameleon Cipher', 'Judgment Strike'];
+        this.forteBonusType = ['h', 's'];
+        this.forteName = 'Chameleon Cipher';
+        this.forteNames = ['Chameleon Cipher', 'Judgment Strike'];
         this.forteCurrent = 1;
         this.forte = [
             [90, 97.38, 104.76, 115.1, 122.48, 130.96, 142.77, 154.58, 166.39, 178.93],
@@ -64,11 +76,20 @@ export class Yinlin extends Default {
         ];
         this.forteMultiplier = [2, 1];
 
-        this.rotationName = ['Intro', 'Resonance Skill', 'Resonance Liberation', '4x Basic Attack', 'Resonance Skill', 'Heavy Attack', 'Outro']
+        this.rotationName = ['Intro', 'Resonance Liberation', 'Resonance Skill', '8x Basic Attack', 'Resonance Skill', 'Heavy Attack', 'Outro']
         this.rotation = [
-            ['sumIntroDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumForteDmg', 'sumForteDmg'],
-            [0, 0, 0, 0, 1, 2, 3, 1, 0, 1]
+            ['sumIntroDmg', 'sumLiberationDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumForteDmg', 'sumForteDmg'],
+            [0, 0, 0, 0, 1, 2, 3, 0, 1, 2, 3, 1, 0, 1]
         ];
+
+        this.rotationColor = ['intro', 'liberation', 'skill', 'basic', 'skill', 'basic', 'outro']
+        this.rotationCommands = ['r', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mbh'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['ELECTRO DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'ATK %', 'Skill %', 'ATK'];
 
     }
 }
