@@ -12,7 +12,9 @@ export class Yuanwu extends Default {
         this.weapon = 'gauntlets';
 
         //Basic Attacks
-        this.basicNames = ['Leihuangquan Part 1', 'Leihuangquan Part 2', 'Leihuangquan Part 3', 'Leihuangquan Part 4', 'Leihuangquan Part 5', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Leihuangquan';
+        this.basicNames = ['Leihuangquan DMG 1', 'Leihuangquan DMG 2', 'Leihuangquan DMG 3', 'Leihuangquan DMG 4', 'Leihuangquan DMG 5', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [24.70, 26.73, 28.76, 31.59, 33.62, 35.95, 39.19, 42.43, 45.67, 49.11],
@@ -40,6 +42,8 @@ export class Yuanwu extends Default {
         this.basicSecondMultiplier = [0, 0, 2, 0, 1, 0, 0, 0];
 
         //Skill
+        this.skillBonusType = ['s', 's', 's', 's'];
+        this.skillName = 'Leihuang Master';
         this.skillNames = ['Leihuang Master', 'Thunder Wedge', 'Thunder Wedge Detonation', 'Rumbling Spark'];
         this.skillCurrent = 1;
         this.skill = [
@@ -52,7 +56,9 @@ export class Yuanwu extends Default {
 
 
         //Liberation
-        this.liberationNames = ['Blazing Might'];
+        this.liberationBonusType = ['l'];
+        this.liberationName = 'Blazing Might'
+        this.liberationNames = [this.liberationName];
         this.liberationCurrent = 1;
         this.liberation = [
             [88.00, 95.22, 102.44, 112.54, 119.76, 128.05, 139.60, 151.14, 162.69, 174.96]
@@ -60,7 +66,8 @@ export class Yuanwu extends Default {
         this.liberationMultiplier = [2];
 
         //Intro Skill
-       // this.introName = ['Thunder Bombardment'];
+        this.introName = 'Thunder Bombardment';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [32.00, 34.63, 37.25, 40.93, 43.55, 46.57, 50.77, 54.96, 59.16, 63.62]
@@ -68,10 +75,15 @@ export class Yuanwu extends Default {
         this.introMultiplier = [1];
 
         //Outro Skill
-        //this.outroName = ['Lightning Manipulation'];
+        this.outroName = 'Lightning Manipulation';
+        this.outroNames = [this.outroName];
+        this.outro = [[0]];
+        this.outroMultiplier = [0];
 
         //Forte Skill
-        //this.forteName = ['Unassuming Blade: Thunder Uprising', 'Lightning Infused Part 1', 'Lightning Infused Part 2', 'Lightning Infused Part 3', 'Lightning Infused Part 4', 'Lightning Infused Part 5', 'Lightning Infused Dodge DMG', 'Lightning Infused: Thunderweaver', 'Lightning Infused Heavy Attack'];
+        this.forteBonusType = ['s', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'h'];
+        this.forteName = 'Unassuming Blade';
+        this.forteNames = ['Unassuming Blade: Thunder Uprising', 'Lightning Infused DMG 1', 'Lightning Infused DMG 2', 'Lightning Infused DMG 3', 'Lightning Infused DMG 4', 'Lightning Infused DMG 5', 'Lightning Infused Dodge DMG', 'Lightning Infused: Thunderweaver', 'Lightning Infused Heavy Attack'];
         this.forteCurrent = 1;
         this.forte = [
             [20.00, 21.64, 23.28, 25.58, 27.22, 29.11, 31.73, 34.35, 36.98, 39.77],
@@ -104,6 +116,15 @@ export class Yuanwu extends Default {
             ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumLiberationDmg'],
             [0, 0, 1, 2, 3, 0]
         ];
+
+        this.rotationColor = ['intro', 'skill', 'liberation', 'outro']
+        this.rotationCommands = ['e', 'cv', 'r'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['Energy Regen %'];
+        this.echo1 = ['DEF %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'DEF %', 'Energy Regen %'];
 
     }
 }
