@@ -7,11 +7,13 @@ export class Zhezhi extends Default {
         this.name = 'Zhezhi'
         this.icon = 'zhezhi';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Zhezhi';
-        this.type = 'electro';
-        this.weapon = 'gauntlets';
+        this.type = 'glacio';
+        this.weapon = 'rectifier';
 
         //Basic Attacks
-        this.basicNames = ['Dimming Brush Part 1', 'Dimming Brush Part 2', 'Dimming Brush Part 3', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
+        this.basicBonusType = ['b', 'b', 'b', 'b', 'b', 'h'];
+        this.basicName = 'Dimming Brush';
+        this.basicNames = ['Dimming Brush DMG 1', 'Dimming Brush DMG 2', 'Dimming Brush DMG 3', 'Mid-Air DMG', 'Dodge DMG', 'Heavy Attack'];
         this.basicCurrent = 1;
         this.basic = [
             [21.00, 22.73, 24.45, 26.86, 28.58, 30.56, 33.32, 36.07, 38.83, 41.76],
@@ -35,6 +37,8 @@ export class Zhezhi extends Default {
         this.basicSecondMultiplier = [0, 0, 0, 1, 0, 0];
 
         //Skill
+        this.skillBonusType = ['s', 's'];
+        this.skillName = 'Manifestation';
         this.skillNames = ['Manifestation', 'Manifestation: Hold', 'Manifestation: Mid-Air'];
         this.skillCurrent = 1;
         this.skill = [
@@ -46,7 +50,9 @@ export class Zhezhi extends Default {
 
 
         //Liberation
-        this.liberationNames = ['Living Canvas'];
+        this.liberationBonusType = ['b'];
+        this.liberationName = 'Living Canvas';
+        this.liberationNames = [this.liberationName];
         this.liberationCurrent = 1;
         this.liberation = [
             [32.80, 35.49, 38.18, 41.95, 44.64, 47.73, 52.04, 56.34, 60.64, 65.21]
@@ -54,7 +60,8 @@ export class Zhezhi extends Default {
         this.liberationMultiplier = [1];
 
         //Intro Skill
-       // this.introName = ['Radiant Ruin'];
+        this.introName = 'Radiant Ruin';
+        this.introNames = [this.introName];
         this.introCurrent = 1;
         this.intro = [
             [43.34, 46.89, 50.44, 55.42, 58.97, 63.06, 68.74, 74.43, 80.12, 86.16,]
@@ -62,10 +69,13 @@ export class Zhezhi extends Default {
         this.introMultiplier = [3];
 
         //Outro Skill
-        //this.outroName = ['Carve and Draw'];
+        this.outroName = 'Carve and Draw';
+        this.outroNames = [];
 
         //Forte Skill
-        //this.forteName = ['Ink and Wash', 'Ink and Wash: Stroke of Genius', 'Ink and Wash: Creation\'s Zenith'];
+        this.forteBonusType = ['h', 'b', 'b'];
+        this.forteName = 'Ink and Wash';
+        this.forteNames = ['Ink and Wash: Conjuration', 'Ink and Wash: Stroke of Genius', 'Ink and Wash: Creation\'s Zenith'];
         this.forteCurrent = 1;
         this.forte = [
             [41.75, 45.18, 48.60, 53.39, 56.82, 60.76, 66.23, 71.71, 77.19, 83.01],
@@ -80,5 +90,13 @@ export class Zhezhi extends Default {
             [0, 0, 1, 2, 0, 0, 1, 1, 2, 0]
         ];
 
+        this.rotationColor = ['intro', 'basic', 'skill', 'basic', 'skill', 'skill', 'skill', 'liberation', 'outro']
+        this.rotationCommands = ['mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'mbh', 'cv', 'e', 'cv', 'e', 'cv', 'e', 'cv', 'r'];
+
+        //Recommended Echo
+        this.echo4 = ['Crit Rate %', 'Crit DMG %'];
+        this.echo3 = ['GLACIO DMG %', 'ATK %'];
+        this.echo1 = ['ATK %'];
+        this.echoSub = ['Crit Rate %', 'Crit DMG %', 'Energy Regen %', 'ATK %', 'Skill %', 'ATK', 'Basic %'];
     }
 }
