@@ -86,7 +86,7 @@ export class Chixia extends Default {
         ];
         this.forteMultiplier = [1, 30, 1];
 
-        this.rotationName = ['Intro', '3x Basic Attack', 'Resonance Skill', 'Resonance Liberation', 'Resonance Skill (x30 "Thermobaric Bullets")', 'Basic Attack (~30 bullets)', 'Resonance Skill (x30 "Thermobaric Bullets")', 'Basic Attack (~30 bullets)', 'Outro'];
+        this.rotationDesc = ['Intro', '3x Basic Attack', 'Resonance Skill', 'Resonance Liberation', 'Resonance Skill (x30 "Thermobaric Bullets")', 'Basic Attack (~30 bullets)', 'Resonance Skill (x30 "Thermobaric Bullets")', 'Basic Attack (~30 bullets)', 'Outro'];
         this.rotation = [
             ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg', 'sumBasicDmg', 'sumForteDmg', 'sumOutroDmg'],
             [0, 0, 1, 2, 0, 0, 1, 2, 1, 2, 0]

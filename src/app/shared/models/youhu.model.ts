@@ -125,7 +125,7 @@ export class Youhu extends Default {
         ];
         this.forteSecondMultiplier = [0, 1, 1];
 
-        this.rotationName = ['Intro', 'Basic Attack (Auspieces 1)', 'Lucky Draw', 'Auspieces Basic Attack (Auspieces 2)', 'Resonance Skill', 'Auspieces Basic Attack (Auspieces 3)', 'Resonance Liberation', 'Auspieces Basic Attack (Auspieces 4)', 'Heavy Attack Poetic Essence', 'Outro'];
+        this.rotationDesc = ['Intro', 'Basic Attack (Auspieces 1)', 'Lucky Draw', 'Auspieces Basic Attack (Auspieces 2)', 'Resonance Skill', 'Auspieces Basic Attack (Auspieces 3)', 'Resonance Liberation', 'Auspieces Basic Attack (Auspieces 4)', 'Heavy Attack Poetic Essence', 'Outro'];
         this.rotation = [
             ['sumIntroDmg'],
             []

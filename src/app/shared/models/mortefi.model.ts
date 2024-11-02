@@ -90,7 +90,7 @@ export class Mortefi extends Default {
         ];
         this.forteMultiplier = [1];
 
-        this.rotationName = ['Intro', 'Resonance Skill', '4x Basic', 'Resonance Skill (Fury Fugue)', 'Resonance Liberation', 'Outro']
+        this.rotationDesc = ['Intro', 'Resonance Skill', '4x Basic', 'Resonance Skill (Fury Fugue)', 'Resonance Liberation', 'Outro']
         this.rotation = [
             ['sumIntroDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumLiberationDmg'],
             [0, 0, 0, 1, 2, 3, 0, 0]

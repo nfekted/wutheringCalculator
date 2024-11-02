@@ -84,7 +84,7 @@ export class Zhezhi extends Default {
         ];
         this.forteMultiplier = [3, 1, 3];
 
-        this.rotationName = ['Intro', '3x Basic Attack', 'Resonance Skill', 'Heavy Attack', 'Resonance Skill: Stroke of Genius', 'Resonance Skill: Stroke of Genius', 'Resonance Skill: Stroke of Maestro', 'Resonance Liberation', 'Outro']
+        this.rotationDesc = ['Intro', '3x Basic Attack', 'Resonance Skill', 'Heavy Attack', 'Resonance Skill: Stroke of Genius', 'Resonance Skill: Stroke of Genius', 'Resonance Skill: Stroke of Maestro', 'Resonance Liberation', 'Outro']
         this.rotation = [
             ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumLiberationDmg'],
             [0, 0, 1, 2, 0, 0, 1, 1, 2, 0]

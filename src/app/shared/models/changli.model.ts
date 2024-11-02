@@ -117,7 +117,7 @@ export class Changli extends Default {
         ];
         this.forteSecondMultiplier = [1];
 
-        this.rotationName = ['Intro', 'Basic Attack: True Sight Charge', 'Resonance Skill: Capture', 'Basic Attack: Conquest', 'Resonance Skill: Capture', 'Basic Attack: True Sight Charge', 'Basic Attack', 'Heavy Attack', 'Resonance Liberation', 'Heavy Attack', '4x Basic Attack'];
+        this.rotationDesc = ['Intro', 'Basic Attack: True Sight Charge', 'Resonance Skill: Capture', 'Basic Attack: Conquest', 'Resonance Skill: Capture', 'Basic Attack: True Sight Charge', 'Basic Attack', 'Heavy Attack', 'Resonance Liberation', 'Heavy Attack', '4x Basic Attack'];
         this.rotation = [
             ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg'],
             [0, 2, 0, 1, 0, 1, 9, 8, 0, 8, 0, 1, 2, 3]

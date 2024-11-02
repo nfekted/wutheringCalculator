@@ -78,7 +78,7 @@ export class Aalto extends Default {
         this.forteMultiplier = [1];
 
         //rotations
-        this.rotationName = ['Intro:' + this.introName, '2x Basic Attack: ' + this.basicName, 'Resonance Skill: ' + this.skillName, 'Resonance Liberation: ' + this.liberationName, '3x Basic Attack: ' + this.basicName, 'Outro Skill: ' + this.outroName];
+        this.rotationDesc = ['Intro:' + this.introName, '2x Basic Attack: ' + this.basicName, 'Resonance Skill: ' + this.skillName, 'Resonance Liberation: ' + this.liberationName, '3x Basic Attack: ' + this.basicName, 'Outro Skill: ' + this.outroName];
         this.rotation = [
             ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg'],
             [0, 0, 1, 0, 0, 0, 1, 2]

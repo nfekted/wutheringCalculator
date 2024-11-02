@@ -100,7 +100,7 @@ export class RoverHavoc extends Default {
         ];
         this.forteSecondMultiplier = [0, 0, 0, 0, 1, 1, 0, 4, 0, 4, 0];
 
-        this.rotationName = ['Intro', 'Resonance Skill', '5x Basic Attack', 'Heavy Attack (Devastation)', 'Heavy Attack (Dark Surge)', 'Basic Attack', 'Resonance Skill', 'Heavy Attack', '3x Basic Attack', 'Heavy Attack', '3x Basic Attack', 'Resonance Liberation', 'Outro'];
+        this.rotationDesc = ['Intro', 'Resonance Skill', '5x Basic Attack', 'Heavy Attack (Devastation)', 'Heavy Attack (Dark Surge)', 'Basic Attack', 'Resonance Skill', 'Heavy Attack', '3x Basic Attack', 'Heavy Attack', '3x Basic Attack', 'Resonance Liberation', 'Outro'];
         this.rotation = [
             ['sumIntroDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumOutroDmg'],
             [0, 0, 0, 1, 2, 3, 4, 0, 10, 9, 8, 10, 9, 3, 4, 10, 9, 3, 4, 0, 0]

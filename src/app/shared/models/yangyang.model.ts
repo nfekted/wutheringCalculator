@@ -105,7 +105,7 @@ export class Yangyang extends Default {
         ];
         this.forteSecondMultiplier = [0, 2];
 
-        this.rotationName = ['Intro', 'Resonance Liberation', 'Resonance Skill', 'Heavy Attack', 'Zephyr Song', 'Echoing Feathers: Stormy Strike', 'Echoing Feathers: Feather Release', 'Outro']
+        this.rotationDesc = ['Intro', 'Resonance Liberation', 'Resonance Skill', 'Heavy Attack', 'Zephyr Song', 'Echoing Feathers: Stormy Strike', 'Echoing Feathers: Feather Release', 'Outro']
         this.rotation = [
             ['sumIntroDmg', 'sumLiberationDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg'],
             [0, 0, 0, 6, 7, 0, 1]

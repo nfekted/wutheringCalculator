@@ -103,7 +103,7 @@ export class Jiyan extends Default {
         ];
         this.forteSecondMultiplier = [1];
 
-        this.rotationName = ['Intro', 'Resonance Skill', 'Resonance Liberation', '7x Basic Attack', 'Outro']
+        this.rotationDesc = ['Intro', 'Resonance Skill', 'Resonance Liberation', '7x Basic Attack', 'Outro']
         this.rotation = [
             ['sumIntroDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumOutroDmg'],
             [0, 0, 0, 1, 2, 0, 1, 2, 0, 0]

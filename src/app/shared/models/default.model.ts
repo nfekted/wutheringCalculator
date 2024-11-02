@@ -108,7 +108,7 @@ export class Default {
     forteThirdMultiplier: number[] = [];
 
     rotation: Array<Array<string | number>> = [];
-    rotationName: Array<string> = [];
+    rotationDesc: Array<string> = [];
     rotationColor: Array<string> = [];
     rotationCommands: Array<string> = [];
 

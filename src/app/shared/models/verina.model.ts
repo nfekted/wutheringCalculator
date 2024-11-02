@@ -112,7 +112,7 @@ export class Verina extends Default {
         ];
         this.forteSecondMultiplier = [1, 0, 0, 0, 1];
 
-        this.rotationName = ['Intro', '5x Basic Attack', 'Resonance Skill', 'Heavy Attack', '2x Mid-Air ATK', 'Resonance Liberation', 'Outro']
+        this.rotationDesc = ['Intro', '5x Basic Attack', 'Resonance Skill', 'Heavy Attack', '2x Mid-Air ATK', 'Resonance Liberation', 'Outro']
         this.rotation = [
             ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumHealingForte', 'sumHealingForte', 'sumHealingForte', 'sumLiberationDmg', 'sumLiberationDmg', 'sumHealingLiberation', 'sumHealingLiberation', 'sumHealingOutro'],
             [0, 0, 1, 2, 3, 4, 0, 0, 1, 2, 4, 4, 4, 0, 2, 1, 3, 0]

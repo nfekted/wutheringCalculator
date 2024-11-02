@@ -100,7 +100,7 @@ export class Taoqi extends Default {
         ];
         this.forteSecondMultiplier = [0, 0, 0, 1, 1, 1];
 
-        this.rotationName = ['Intro', '3x Basic Attack', 'Resonance Skill', 'Resonance Liberation', 'Outro'];
+        this.rotationDesc = ['Intro', '3x Basic Attack', 'Resonance Skill', 'Resonance Liberation', 'Outro'];
         this.rotation = [
             ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumLiberationDmg'],
             [0, 0, 1, 2, 0, 0]

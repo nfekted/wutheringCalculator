@@ -85,7 +85,7 @@ export class Rover extends Default {
         ];
         this.forteMultiplier = [2, 1, 1, 1];
 
-        this.rotationName = ['Intro', 'Resonance Liberation', 'Heavy Attack', 'Heavy Attack: Resonance', 'Resonance Skill: Resonating Spin', '2x Basic Attack: Resonating Echoes', 'Outro']
+        this.rotationDesc = ['Intro', 'Resonance Liberation', 'Heavy Attack', 'Heavy Attack: Resonance', 'Resonance Skill: Resonating Spin', '2x Basic Attack: Resonating Echoes', 'Outro']
         this.rotation = [
             ['sumIntroDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg'],
             [0, 0, 6, 7, 0, 2, 3]

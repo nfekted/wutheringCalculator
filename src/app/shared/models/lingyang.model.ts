@@ -105,7 +105,7 @@ export class Lingyang extends Default {
         ];
         this.forteSecondMultiplier = [0, 0, 1, 0, 1, 0];
 
-        this.rotationName = ['Intro', '3x Basic Attack', 'Resonance Skill', 'Basic Attack', 'Resonance Skill', 'Basic Attack', 'Resonance Skill',
+        this.rotationDesc = ['Intro', '3x Basic Attack', 'Resonance Skill', 'Basic Attack', 'Resonance Skill', 'Basic Attack', 'Resonance Skill',
             '3x Basic Attack', 'Resonance Skill', 'Basic Attack', 'Resonance Skill', 'Basic Attack', 'Resonance Skill',
             'Resonance Liberation', ' Heavy Attack', '2x Feral Gyrate', 'Resonance Skill Mountain Roamer', '2x Feral Gyrate', 'Resonance Skill Mountain Roamer', '2x Feral Gyrate', 'Basic Attack: Stormy Kicks', 'Basic Attack: Tail Strike', 'Outro']
         this.rotation = [

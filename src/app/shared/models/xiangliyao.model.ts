@@ -112,7 +112,7 @@ export class XiangliYao extends Default {
         ];
         this.forteSecondMultiplier = [0, 1, 2];
 
-        this.rotationName = ['Intro', 'Resonance Skill', 'Resonance Liberation',
+        this.rotationDesc = ['Intro', 'Resonance Skill', 'Resonance Liberation',
             'Resonance Skill: Divergence', 'Basic Attack - Revamp', 'Resonance Skill Law of Reigns',
             'Resonance Skill: Divergence', 'Basic Attack - Revamp', 'Resonance Skill Law of Reigns',
             'Resonance Skill: Divergence', 'Basic Attack - Revamp', 'Resonance Skill Law of Reigns',

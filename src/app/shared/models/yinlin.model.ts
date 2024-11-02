@@ -76,7 +76,7 @@ export class Yinlin extends Default {
         ];
         this.forteMultiplier = [2, 1];
 
-        this.rotationName = ['Intro', 'Resonance Liberation', 'Resonance Skill', '8x Basic Attack', 'Resonance Skill', 'Heavy Attack', 'Outro']
+        this.rotationDesc = ['Intro', 'Resonance Liberation', 'Resonance Skill', '8x Basic Attack', 'Resonance Skill', 'Heavy Attack', 'Outro']
         this.rotation = [
             ['sumIntroDmg', 'sumLiberationDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumForteDmg', 'sumForteDmg'],
             [0, 0, 0, 0, 1, 2, 3, 0, 1, 2, 3, 1, 0, 1]

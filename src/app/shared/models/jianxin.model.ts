@@ -124,7 +124,7 @@ export class Jianxin extends Default {
         ];
         this.forteSecondMultiplier = [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1];
 
-        this.rotationName = ['Intro', 'Resonance Skill', '4x Basic Attack', 'Heavy Attack', 'Resonance Liberation', 'Outro Skill']
+        this.rotationDesc = ['Intro', 'Resonance Skill', '4x Basic Attack', 'Heavy Attack', 'Resonance Liberation', 'Outro Skill']
         this.rotation = [
             ['sumIntroDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumLiberationDmg'],
             [0, 0, 0, 1, 2, 3, 6, 0]

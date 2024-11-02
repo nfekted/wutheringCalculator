@@ -106,7 +106,7 @@ export class Shorekeeper extends Default {
         ];
         this.forteMultiplier = [1, 5, 1];
 
-        this.rotationName = ['intro', '3x Basic Attack', 'Mid-Air Attack', 'Heavy Attack', 'Resonance Skill', '3x Basic Attack', 'Heavy Attack', 'Resonance Liberation', 'Outro'];
+        this.rotationDesc = ['intro', '3x Basic Attack', 'Mid-Air Attack', 'Heavy Attack', 'Resonance Skill', '3x Basic Attack', 'Heavy Attack', 'Resonance Liberation', 'Outro'];
         this.rotation = [
             ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumSkillDmg', 'sumHealingSkill',
                 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumHealingLiberation'

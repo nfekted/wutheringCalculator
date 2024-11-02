@@ -143,7 +143,7 @@ export class Jinhsi extends Default {
         ];
         this.forteThirdMultiplier = [0, 1, 0, 0, 0, 1, 1, 0, 0];
 
-        this.rotationName = ['Intro', 'Skill Overflowing Radiance', 'Skill Crescent Divinity', '4x Basic Attack Incarnation', 'Resonance Liberation', 'Ressonance Skill: Solar Flare + Solar Glamour', 'Outro']
+        this.rotationDesc = ['Intro', 'Skill Overflowing Radiance', 'Skill Crescent Divinity', '4x Basic Attack Incarnation', 'Resonance Liberation', 'Ressonance Skill: Solar Flare + Solar Glamour', 'Outro']
         this.rotation = [['sumSkillDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg'], [1, 6, 0, 1, 2, 3, 0, 7, 8]];
 
         this.rotationColor = ['intro', 'skill', 'skill', 'basic', 'liberation', 'skill', 'outro']

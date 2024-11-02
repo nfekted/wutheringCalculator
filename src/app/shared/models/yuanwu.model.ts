@@ -111,7 +111,7 @@ export class Yuanwu extends Default {
         ];
         this.forteSecondMultiplier = [0, 0, 0, 2, 0, 1, 2, 2, 0];
 
-        this.rotationName = ['Intro', 'Resonance Skill', 'Resonance Liberation', 'Outro']
+        this.rotationDesc = ['Intro', 'Resonance Skill', 'Resonance Liberation', 'Outro']
         this.rotation = [
             ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumLiberationDmg'],
             [0, 0, 1, 2, 3, 0]

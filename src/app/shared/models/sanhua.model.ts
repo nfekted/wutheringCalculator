@@ -76,7 +76,7 @@ export class Sanhua extends Default {
         this.forteMultiplier = [2, 1, 1, 1];
 
 
-        this.rotationName = ['intro', 'Resonance Liberation', 'Heavy Attack (Detonate)', 'Resonance Skill', 'Heavy Attack (Detonate)', 'Outro Skill'];
+        this.rotationDesc = ['intro', 'Resonance Liberation', 'Heavy Attack (Detonate)', 'Resonance Skill', 'Heavy Attack (Detonate)', 'Outro Skill'];
         this.rotation = [
             ['sumIntroDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumSkillDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg'],
             [0, 0, 0, 1, 2, 3, 0, 0, 1, 2, 3]

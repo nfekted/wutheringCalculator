@@ -129,7 +129,7 @@ export class Calcharo extends Default {
         ];
         this.forteSecondMultiplier = [1, 1];
 
-        this.rotationName = [`Intro Skill: ${this.introName}`, 'Ressonance Skill', 'Resonance Liberation', 'Heavy Attack: Death Messager', '5x Basic Attack', 'Ressonance Skill', 'Heavy Attack: Death Messager', '5x Basic Attack', 'Ressonance Skill', 'Heavy Attack: Death Messager', 'Outro: Shadowy Raid']
+        this.rotationDesc = [`Intro Skill: ${this.introName}`, 'Ressonance Skill', 'Resonance Liberation', 'Heavy Attack: Death Messager', '5x Basic Attack', 'Ressonance Skill', 'Heavy Attack: Death Messager', '5x Basic Attack', 'Ressonance Skill', 'Heavy Attack: Death Messager', 'Outro: Shadowy Raid']
         this.rotation = [
             ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumForteDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumLiberationDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumForteDmg', 'sumOutroDmg'],
             [0, 0, 1, 2, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 1, 2, 3, 4, 5, 6, 0, 1, 2, 1, 0]

@@ -114,7 +114,7 @@ export class Baizhi extends Default {
         ];
         this.forteSecondMultiplier = [1, 0];
 
-        this.rotationName = ['Intro: ' + this.introName, '4x Basic Attack: ' + this.basicName, 'Resonance Skill: ' + this.skillName, '2x Basic Attack: ' + this.basicName, 'Liberation: ' + this.liberationName, 'Outro Skill: ' + this.outroName];
+        this.rotationDesc = ['Intro: ' + this.introName, '4x Basic Attack: ' + this.basicName, 'Resonance Skill: ' + this.skillName, '2x Basic Attack: ' + this.basicName, 'Liberation: ' + this.liberationName, 'Outro Skill: ' + this.outroName];
         this.rotation = [
             ['sumIntroDmg', 'sumHealingIntro', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumHealingSkill', 'sumBasicDmg', 'sumBasicDmg', 'sumLiberationDmg', 'sumHealingLiberation', 'sumHealingLiberation', 'sumHealingOutro'],
             [0, 1, 0, 1, 2, 3, 0, 1, 0, 1, 0, 1, 2, 0]

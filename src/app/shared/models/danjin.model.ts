@@ -81,7 +81,7 @@ export class Danjin extends Default {
         ];
         this.forteMultiplier = [7, 7, 1, 1];
 
-        this.rotationName = ['Intro', '2x Resonance Skill', 'Resonance Liberation', '2x Basic Attack', '3x Resonance Skill', '3x Basic Attack', '3x Resonance Skill', 'Heavy Attack (Full Energy)', 'Basic Attack', 'Outro']
+        this.rotationDesc = ['Intro', '2x Resonance Skill', 'Resonance Liberation', '2x Basic Attack', '3x Resonance Skill', '3x Basic Attack', '3x Resonance Skill', 'Heavy Attack (Full Energy)', 'Basic Attack', 'Outro']
         this.rotation = [
             ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumLiberationDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumForteDmg', 'sumForteDmg'],
             [0, 1, 2, 0, 0, 1, 3, 4, 5, 0, 1, 2, 3, 4, 5, 1, 3]
