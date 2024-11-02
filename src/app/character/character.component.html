@@ -117,7 +117,7 @@
                             <input class="form-control" type="number" placeholder="150%" min="0" max="100"
                                 [(ngModel)]="character.elementalBonus" (blur)="calculate()" />
                         </div>
-                        <ng-container *ngIf="character.healType">
+                        <ng-container *ngIf="character.canHeal || character.healType">
                             <div class="col-sm-12 col-md-3 "></div>
                             <div class="col-sm-12 col-md-3 mt-2 text-center">
                                 <span class="input-field">Healing Bonus %:</span>
@@ -614,7 +614,8 @@
                                         <!-- OUTRO -->
                                         <ng-container *ngIf="character.character.outroMultiplier[0] > 0">
                                             <tr>
-                                                <td colspan="5">{{'char.outro' | transloco}}: {{character.character.outroName}}</td>
+                                                <td colspan="5">{{'char.outro' | transloco}}:
+                                                    {{character.character.outroName}}</td>
                                             </tr>
                                             <tr *ngFor="let b of character.character.outroNames; let i=index">
                                                 <th scope="row">
@@ -683,7 +684,8 @@
                                         </ng-container>
                                         <!-- FORTE -->
                                         <tr>
-                                            <td colspan="5">{{'char.forte' | transloco}}: {{character.character.forteName}}</td>
+                                            <td colspan="5">{{'char.forte' | transloco}}:
+                                                {{character.character.forteName}}</td>
                                         </tr>
                                         <tr *ngFor="let b of character.character.forteNames; let i=index">
                                             <th scope="row">

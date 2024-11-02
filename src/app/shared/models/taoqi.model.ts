@@ -30,7 +30,7 @@ export class Taoqi extends Default {
         this.basicEnds = 3;
 
         //Skill
-        this.basicBonusType = ['s', 'c'];
+        this.skillBonusType = ['s', 'c'];
         this.skillHeal = [false, true];
         this.skillName = 'Fortified Defense';
         this.skillNames = ['Fortified Defense', 'HP Recover'];
@@ -107,7 +107,7 @@ export class Taoqi extends Default {
         ];
 
         this.rotationColor = ['intro', 'basic', 'skill', 'liberation', 'outro']
-        this.rotationCommands = ['mb', 'cv','mb', 'cv','mb', 'cv', 'e', 'cv', 'r'];
+        this.rotationCommands = ['mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'e', 'cv', 'r'];
 
         //Recommended Echo
         this.echo4 = ['Crit Rate %', 'Crit DMG %'];

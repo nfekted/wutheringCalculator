@@ -29,23 +29,25 @@ export class Shorekeeper extends Default {
         this.basicEnds = 3;
 
         //Skill
-        this.skillBonusType = ['s', 'c'];
-        this.skillHeal = [false, true];
+        this.skillBonusType = ['s', 's', 'c'];
+        this.skillHeal = [false, false, true];
         this.skillName = 'Chaos Theory';
         this.skillDMGType = ['atk', 'hp']
-        this.skillNames = ['Dim Star Butterfly', 'Chaos Theory Healing'];
+        this.skillNames = ['Dim Star Butterfly', 'Dim Star Butterfly x5', 'Chaos Theory Healing'];
         this.skillCurrent = 1;
         this.skill = [
             [15.75, 17.04, 18.33, 20.14, 21.43, 22.91, 24.98, 27.05, 29.11, 31.31],
+            [15.75, 17.04, 18.33, 20.14, 21.43, 22.91, 24.98, 27.05, 29.11, 31.31],
             [-660, -715, -769, -845, -899, -961, -1047, -1134, -1221, -1313]
         ]
-        this.skillMultiplier = [1, 1];
+        this.skillMultiplier = [1, 5, 1];
 
         this.skillSecondDmg = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [3, 3.25, 3.50, 3.84, 4.09, 4.37, 4.76, 5.16, 5.55, 5.97]
         ];
-        this.skillSecondMultiplier = [0, 1];
+        this.skillSecondMultiplier = [0, 0, 1];
 
         //Liberation
         this.liberationBonusType = ['c'];
@@ -95,27 +97,27 @@ export class Shorekeeper extends Default {
 
 
         //Forte Skill
-        this.forteBonusType = ['b', 'h', 'b'];
+        this.forteBonusType = ['b', 'b', 'h', 'b'];
         this.forteName = 'Astral Chord';
-        this.forteNames = ['Flare Star Butterfly', 'Illation', 'Transmutation'];
+        this.forteNames = ['Flare Star Butterfly', 'Flare Star Butterfly x5', 'Illation', 'Transmutation'];
         this.forteCurrent = 1;
         this.forte = [
+            [18.76, 20.29, 21.83, 23.99, 25.52, 27.29, 29.75, 32.21, 34.67, 37.29],
             [18.76, 20.29, 21.83, 23.99, 25.52, 27.29, 29.75, 32.21, 34.67, 37.29],
             [9.54, 10.33, 11.11, 12.20, 12.99, 13.89, 15.14, 16.39, 17.64, 18.97],
             [37.20, 40.26, 43.31, 47.58, 50.63, 54.13, 59.02, 53.90, 68.78, 73.96]
         ];
-        this.forteMultiplier = [1, 5, 1];
+        this.forteMultiplier = [1, 5, 5, 1];
 
-        this.rotationDesc = ['intro', '3x Basic Attack', 'Mid-Air Attack', 'Heavy Attack', 'Resonance Skill', '3x Basic Attack', 'Heavy Attack', 'Resonance Liberation', 'Outro'];
+        this.rotationDesc = ['Intro', '3x Basic Attack', 'Mid-Air Attack', 'Heavy Attack', 'Resonance Skill', '3x Basic Attack', 'Mid-Air Attack', 'Heavy Attack', 'Resonance Liberation', 'Outro', '(2x Resonator Intro)', 'Intro: Discernment'];
         this.rotation = [
-            ['sumIntroDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumSkillDmg', 'sumHealingSkill',
-                'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumForteDmg', 'sumHealingLiberation'
-            ],
-            [0, 0, 1, 2, 4, 6, 1, 1, 1, 1, 1, 0, 1, 1, 2, 3, 6, 1, 1, 1, 1, 1, 0]
+            ['sumIntroDmg', 'sumHealingIntro', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg', 'sumSkillDmg', 'sumHealingSkill', 'sumBasicDmg', 'sumBasicDmg',
+                'sumBasicDmg', 'sumBasicDmg', 'sumForteDmg', 'sumForteDmg', 'sumHealingLiberation', 'sumIntroDmg', 'sumHealingIntro'],
+            [0, 2, 0, 1, 2, 4, 2, 1, 1, 2, 0, 1, 2, 4, 2, 1, 0, 1, 3]
         ];
 
-        this.rotationColor = ['intro', 'basic', 'basic', 'basic', 'skill', 'basic', 'basic', 'liberation', 'outro']
-        this.rotationCommands = ['mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'space', 'cv', 'mb', 'cv', 'mbh', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'mbh', 'cv', 'r'];
+        this.rotationColor = ['intro', 'basic', 'basic', 'basic', 'skill', 'basic', 'basic', 'basic', 'liberation', 'outro', 'basic', 'intro']
+        this.rotationCommands = ['mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'space', 'cv', 'mb', 'cv', 'mbh', 'cv', 'e', 'cv', 'mb', 'cv', 'mb', 'cv', 'mb', 'cv', 'space', 'cv', 'mb', 'cv', 'mbh', 'cv', 'r'];
 
         //Recommended Echo
         this.echo4 = ['Healing %'];

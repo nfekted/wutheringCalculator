@@ -108,6 +108,7 @@ export class Youhu extends Default {
 
         //Forte Skill
         this.forteBonusType = ['s', 'c', 'c'];
+        this.forteHeal = [false, true, true];
         this.forteName = 'Poetic Essence';
         this.forteNames = ['Poetic Essence', 'Poetic Essence Healing', 'Double Pun Bonus Healing	'];
         this.forteCurrent = 1;
@@ -127,11 +128,11 @@ export class Youhu extends Default {
 
         this.rotationDesc = ['Intro', 'Basic Attack (Auspieces 1)', 'Lucky Draw', 'Auspieces Basic Attack (Auspieces 2)', 'Resonance Skill', 'Auspieces Basic Attack (Auspieces 3)', 'Resonance Liberation', 'Auspieces Basic Attack (Auspieces 4)', 'Heavy Attack Poetic Essence', 'Outro'];
         this.rotation = [
-            ['sumIntroDmg'],
-            []
+            ['sumIntroDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumSkillDmg', 'sumHealingSkill', 'sumSkillDmg', 'sumLiberationDmg', 'sumSkillDmg', 'sumForteDmg', 'sumHealingForte'],
+            [0, 2, 2, 0, 1, 2, 0, 2, 0, 1]
         ];
 
-        this.rotationColor = ['intro', 'basic', 'basic', 'basic', 'skill', 'basic', 'liberation', 'basic', 'outro'];
+        this.rotationColor = ['intro', 'basic', 'basic', 'basic', 'skill', 'basic', 'liberation', 'basic', 'basic', 'outro'];
         this.rotationCommands = ['mb', 'cv', 'mbh', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'l', 'cv', 'mbh'];
 
         //Recommended Echo

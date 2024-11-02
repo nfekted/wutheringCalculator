@@ -92,7 +92,6 @@ export class HomeComponent {
         char = this.charCreation(jia, load);
         char.healType = true;
         char.atkType = true;
-        char.canHeal = true;
         break;
       case 'jinhsi':
         const jin: Jinhsi = new Jinhsi();
@@ -129,7 +128,6 @@ export class HomeComponent {
         char.defType = true;
         char.healType = true;
         char.atkType = true;
-        char.canHeal = true;
         break;
       case 'shorekeeper':
         const sho: Shorekeeper = new Shorekeeper();

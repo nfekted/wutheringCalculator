@@ -75,12 +75,12 @@
                     <div class="col-sm-12 col-md-4" style="border-right: solid 1px;">
                         <div class="row">
                             <div class="col-sm-12" *ngIf="character.canHeal">
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="enhancerBasic"
-                                        [(ngModel)]="character.healType" (change)="recalculateAll()">
-                                    <label class="form-check-label" for="enhancerBasic">{{'char.enhancer.enhancerBasic'
-                                        | transloco}}</label>
-                                </div>
+                                <button type="button" *ngIf="character.healType" (click)="character.healType = false"
+                                    [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealDMG' |
+                                    transloco}}</button>
+                                <button type="button" *ngIf="!character.healType" (click)="character.healType = true"
+                                    [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealHeal' |
+                                    transloco}}</button>
                             </div>
                             <div class="col-sm-12">
                                 <small>
@@ -134,7 +134,7 @@
                                         <tr>
                                             <td><b>Total</b></td>
                                             <td colspan="2">~{{fixedTotal | number:'1.0-0'}}
-                                                {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') |
+                                                {{(character.healType && character.canHeal && enhancerSkill ? 'char.heal' : 'dmg') |
                                                 transloco}}
                                             </td>
                                         </tr>
@@ -304,7 +304,7 @@
                             </div>
 
                             <!-- NEW HEALING -->
-                            <ng-container *ngIf="character.healType">
+                            <ng-container *ngIf="character.canHeal || character.healType">
                                 <div class="col-6 mt-3">
                                     {{'current' | transloco}} Healing Bonus %
                                 </div>
@@ -330,6 +330,14 @@
                     <!-- RIGHT -->
                     <div class="col-sm-12 col-md-4" style="border-left: solid 1px;">
                         <div class="row">
+                            <div class="col-sm-12" *ngIf="character.canHeal">
+                                <button type="button" *ngIf="character.healType" (click)="character.healType = false"
+                                    [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealDMG' |
+                                    transloco}}</button>
+                                <button type="button" *ngIf="!character.healType" (click)="character.healType = true"
+                                    [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealHeal' |
+                                    transloco}}</button>
+                            </div>
                             <div class="col-sm-12">
                                 <small>
                                     <div *ngIf="!randomCrit && !enhancerSkill"
@@ -381,7 +389,7 @@
                                         <tr>
                                             <td><b>Total</b></td>
                                             <td colspan="2">~{{fixedSimTotal | number:'1.0-0'}}
-                                                {{(character.healType && enhancerSkill ? 'char.heal' : 'dmg') |
+                                                {{(character.healType && character.canHeal && enhancerSkill ? 'char.heal' : 'dmg') |
                                                 transloco}}</td>
                                         </tr>
                                     </tbody>

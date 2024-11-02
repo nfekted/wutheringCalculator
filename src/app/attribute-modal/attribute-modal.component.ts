@@ -138,8 +138,8 @@ export class AttributeModalComponent {
         list[i] = [dmg, false, heal];
       }
 
-      this.fixedTotal += simulation || (this.character.healType && !heal) || (!this.character.healType && heal) ? 0 : +list[i][0];
-      this.fixedSimTotal += !simulation || (this.character.healType && !heal) || (!this.character.healType && heal) ? 0 : +list[i][0]
+      this.fixedTotal += simulation || (this.character.healType && !heal && this.character.canHeal) || (!this.character.healType && heal) ? 0 : +list[i][0];
+      this.fixedSimTotal += !simulation || (this.character.healType && !heal && this.character.canHeal) || (!this.character.healType && heal) ? 0 : +list[i][0]
     }
 
     if (simulation) {

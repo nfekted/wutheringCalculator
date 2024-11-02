@@ -11,7 +11,7 @@
     "settings": {
         "settings": "Configurações",
         "audio": "Tocar audios no site",
-        "autosave": "Salvar modificações automáticamente",
+        "autosave": "Salvar modificações automaticamente",
         "deleteSettings": "Apagar todos dados",
         "deleteConfirm": "Apagar todos os dados? Essa ação não pode ser desfeita"
     },
