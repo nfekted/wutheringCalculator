@@ -24,6 +24,7 @@ import { Yinlin } from '../shared/models/yinlin.model';
 import { Yuanwu } from '../shared/models/yuanwu.model';
 import { Zhezhi } from '../shared/models/zhezhi.model';
 import { Shorekeeper } from '../shared/models/shorekeeper.model';
+import { Youhu } from '../shared/models/youhu.model';
 
 @Component({
   selector: 'app-home',
@@ -44,7 +45,7 @@ export class HomeComponent {
       new Jinhsi(), new Jiyan(), new Lingyang(), new Mortefi(),
       new RoverHavoc(), new Rover(), new Sanhua(), new Taoqi(),
       new Shorekeeper(), new Verina(), new XiangliYao(), new Yangyang(),
-      new Yinlin(), new Yuanwu(), new Zhezhi()
+      new Yinlin(), new Youhu(), new Yuanwu(), new Zhezhi()
     ];
   }
 
@@ -68,27 +69,22 @@ export class HomeComponent {
       case 'calcharo':
         const cal: Calcharo = new Calcharo();
         char = this.charCreation(cal, load);
-
         break;
       case 'changli':
         const cha: Changli = new Changli();
         char = this.charCreation(cha, load);
-
         break;
       case 'chixia':
         const chi: Chixia = new Chixia();
         char = this.charCreation(chi, load);
-
         break;
       case 'danjin':
         const dan: Danjin = new Danjin();
         char = this.charCreation(dan, load);
-
         break;
       case 'encore':
         const enc: Encore = new Encore();
         char = this.charCreation(enc, load);
-
         break;
       case 'jianxin':
         const jia: Jianxin = new Jianxin();
@@ -99,38 +95,31 @@ export class HomeComponent {
       case 'jinhsi':
         const jin: Jinhsi = new Jinhsi();
         char = this.charCreation(jin, load);
-
         break;
       default: break;
       case 'jiyan':
         const jiy: Jiyan = new Jiyan();
         char = this.charCreation(jiy, load);
-
         break;
       case 'lingyang':
         const lin: Lingyang = new Lingyang();
         char = this.charCreation(lin, load);
-
         break;
       case 'mortefi':
         const mor: Mortefi = new Mortefi();
         char = this.charCreation(mor, load);
-
         break;
       case 'roverh':
         const roh: RoverHavoc = new RoverHavoc();
         char = this.charCreation(roh, load);
-
         break;
       case 'rover':
         const rov: Rover = new Rover();
         char = this.charCreation(rov, load);
-
         break;
       case 'sanhua':
         const san: Sanhua = new Sanhua();
         char = this.charCreation(san, load);
-
         break;
       case 'taoqi':
         const tao: Taoqi = new Taoqi();
@@ -161,6 +150,12 @@ export class HomeComponent {
       case 'yinlin':
         const yin: Yinlin = new Yinlin();
         char = this.charCreation(yin, load);
+        break;
+      case 'youhu':
+        const you: Youhu = new Youhu();
+        char = this.charCreation(you, load);
+        char.healType = true;
+        char.atkType = true;
         break;
       case 'yuanwu':
         const yua: Yuanwu = new Yuanwu();

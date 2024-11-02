@@ -19,6 +19,7 @@ import { Verina } from "./verina.model";
 import { XiangliYao } from "./xiangliyao.model";
 import { Yangyang } from "./yangyang.model";
 import { Yinlin } from "./yinlin.model";
+import { Youhu } from "./youhu.model";
 import { Yuanwu } from "./yuanwu.model";
 import { Zhezhi } from "./zhezhi.model";
 
@@ -30,7 +31,7 @@ export class Character {
         Jinhsi | Jiyan | Lingyang | Mortefi |
         RoverHavoc | Rover | Sanhua | Taoqi |
         Shorekeeper | Verina | XiangliYao | Yangyang |
-        Yinlin | Yuanwu | Zhezhi
+        Yinlin | Youhu | Yuanwu | Zhezhi
     atkType: boolean = false;
     healType: boolean = false;
     hpType: boolean = false;
