@@ -1,7 +1,5 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Character } from '../shared/models/character.model';
-import { Util } from '../shared/utils/util.model';
-import Swal from 'sweetalert2';
 import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
@@ -130,7 +128,7 @@ export class AttributeModalComponent {
     if (!this.randomCrit) currentChance = (!simulation ? this.qtdCrit : this.newQtdCrit);
     let heal: boolean = false;
     for (let i = 0; i < rotation[0].length; i++) {
-      if (this.character.healType) heal = (this.character.character.rotation[0][i] as string).includes('sumHealing');
+      if (this.character.canHeal) heal = (this.character.character.rotation[0][i] as string).includes('sumHealing');
 
       const dmg = simulation ? copy[rotation[0][i]][rotation[1][i]] : this.character[rotation[0][i]][rotation[1][i]];
       if ((!this.randomCrit && currentChance > 0) || (this.randomCrit && (Math.floor(Math.random() * 100) + 1) < currentChance)) {
@@ -140,8 +138,8 @@ export class AttributeModalComponent {
         list[i] = [dmg, false, heal];
       }
 
-      this.fixedTotal += simulation || (this.character.healType && !heal) ? 0 : +list[i][0];
-      this.fixedSimTotal += !simulation || (this.character.healType && !heal) ? 0 : +list[i][0]
+      this.fixedTotal += simulation || (this.character.healType && !heal) || (!this.character.healType && heal) ? 0 : +list[i][0];
+      this.fixedSimTotal += !simulation || (this.character.healType && !heal) || (!this.character.healType && heal) ? 0 : +list[i][0]
     }
 
     if (simulation) {

@@ -34,6 +34,7 @@ export class Character {
         Yinlin | Youhu | Yuanwu | Zhezhi
     atkType: boolean = false;
     healType: boolean = false;
+    canHeal: boolean = false;
     hpType: boolean = false;
     defType: boolean = false;
 
