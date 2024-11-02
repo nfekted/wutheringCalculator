@@ -172,6 +172,14 @@
                     <!-- END ECHO 2 -->
                     <!-- RESULTS -->
                     <div class="col-12 col-md-4 echo-border">
+                        <div class="col-sm-12 text-center" *ngIf="character.canHeal">
+                            <button type="button" *ngIf="character.healType" (click)="character.healType = false;calculate()"
+                                [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealDMG' |
+                                transloco}}</button>
+                            <button type="button" *ngIf="!character.healType" (click)="character.healType = true;calculate()"
+                                [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealHeal' |
+                                transloco}}</button>
+                        </div>
                         <div class="col-12 mt-3 text-center">
                             <img src="assets/img/icons/echo.webp" width="35px" style="filter: invert(1);" />
                             <h5>{{'char.echo.results' | transloco}}</h5>

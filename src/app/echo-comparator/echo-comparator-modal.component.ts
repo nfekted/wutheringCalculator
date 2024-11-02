@@ -64,15 +64,15 @@ export class EchoComparatorModalComponent {
     this.echoScore(this.echo2);
 
     if (total1 == total2) {
-      this.text = this.transloco.translate('char.echo.same', { type: this.character.healType ? 'HEAL' : 'DMG' });
+      this.text = this.transloco.translate('char.echo.same', { type: (this.character.healType && this.character.canHeal) ? this.transloco.translate('char.heal') : 'DMG' });
     } else {
-      this.text = this.transloco.translate('char.echo.text', { echo: (total1 > total2 ? 1 : 2), perc: diff, type: this.character.healType ? this.transloco.translate('char.heal') : 'DMG', value: total1, value2: total2, char: this.character.character.name });
+      this.text = this.transloco.translate('char.echo.text', { echo: (total1 > total2 ? 1 : 2), perc: diff, type: (this.character.healType && this.character.canHeal) ? this.transloco.translate('char.heal') : 'DMG', value: total1, value2: total2, char: this.character.character.name });
     }
 
     if ((total1 > total2 && this.echo1.commonAttr.length < this.echo2.commonAttr.length) ||
       (total2 > total1 && this.echo2.commonAttr.length < this.echo1.commonAttr.length) ||
       (total1 == total2 && this.echo1.commonAttr.length != this.echo2.commonAttr.length)) {
-      this.text += this.transloco.translate('char.echo.however', { attr: this.echo1.commonAttr.length, attr2: this.echo2.commonAttr.length, type: this.character.healType ? this.transloco.translate('char.heal') : 'DMG' });
+      this.text += this.transloco.translate('char.echo.however', { attr: this.echo1.commonAttr.length, attr2: this.echo2.commonAttr.length, type: (this.character.healType && this.character.canHeal) ? this.transloco.translate('char.heal') : 'DMG' });
     } else {
       this.text += total1 == total2 ? '' : this.transloco.translate('char.echo.because', { attr: this.echo1.commonAttr.length, attr2: this.echo2.commonAttr.length, char: this.character.character.name });
     }
@@ -184,7 +184,7 @@ export class EchoComparatorModalComponent {
         list[i] = [dmg, false, heal];
       }
 
-      total += (this.character.healType && !heal) ? 0 : +list[i][0];
+      total += (this.character.healType && !heal && this.character.canHeal) ? 0 : +list[i][0];
     }
 
     return total;
