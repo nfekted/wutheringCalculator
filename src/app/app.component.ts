@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { Settings } from './shared/models/settings.model';
 import { Util } from './shared/utils/util.model';
-import Twitch from '../assets/scripts/twitch.js';
-
 
 @Component({
   selector: 'app-root',
@@ -16,7 +14,6 @@ export class AppComponent {
 
   lang: string = '';
   settings: Settings;
-  embedTwitch: any;
 
   constructor(private translocoService: TranslocoService) {
     const settings = Util.load();
@@ -32,16 +29,6 @@ export class AppComponent {
       this.settings = Object.assign(new Settings(), settings);
       this.changeLang(this.settings.language, true);
     }
-  }
-
-  async ngOnInit(): Promise<void> {
-    // this.embedTwitch = new Twitch.Embed("twitch-embed", {
-    //   width: 854,
-    //   height: 480,
-    //   channel: "zawthz",
-    //   muted: true,
-    //   layout: 'video'
-    // });
   }
 
   changeOptions(option: string) {
