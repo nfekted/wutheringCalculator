@@ -13,6 +13,11 @@
     "options": "Options",
     "dmg": "DMG",
     "partner": "Partners",
+    "info": "INFORMATION",
+    "contactInfo": "<b>CONTACT</b>: Use <a href=\"https://forms.gle/kUUBYNQA39uYxfQ26\" target=\"_blank\">this form</a> if you need contact us.",
+    "aboutInfo": "<b>ABOUT</b>: Make by players for players, a tool to help players. This website <b>has no relation</b> to KuroGames©.",
+    "disclaimerInfo": "Terms such as KuroGames, WutheringWaves, character names, skills and other social networks, as well images of: characters, skill icons and other icons, as well audios, are the property of their respective owners.",
+    "donation": "Would you like to thank the developers? Share the site with your friends or make a donation with Ko-fi, any amount is welcome :)",
     "settings": {
         "settings": "Settings",
         "audio": "Play audios in website",
@@ -20,5 +25,5 @@
         "deleteSettings": "Delete all saved data",
         "deleteConfirm": "Delete all saved data? This can't be undone"
     },
-    "disclaimer": "This site has no direct relationship with KuroGames©. For a better experience, your settings and registered values ​​will be saved in the form of cookies in your browser. No other type of information is collected. Anonymous tabs or clearing the cache may result in the loss of your records permanently. By continuing to access, you agree and are aware of this."
+    "disclaimer": "This site has no direct relationship with KuroGames©. For a better experience, your settings and registered values will be saved in the form of cookies in your browser. No other type of information is collected. Anonymous tabs or clearing the cache may result in the loss of your records permanently. By continuing to access, you agree and are aware of this."
 }

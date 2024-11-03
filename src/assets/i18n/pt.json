@@ -13,6 +13,11 @@
     "options": "Opções",
     "dmg": "DMG",
     "partner": "Parceiros",
+    "info": "INFORMAÇÕES",
+    "contactInfo": "<b>CONTATO</b>: Use <a href=\"https://forms.gle/kUUBYNQA39uYxfQ26\" target=\"_blank\">esse formulário</a> se precisar entrar em contato.",
+    "aboutInfo": "<b>DO SITE</b>: Feito de fã para fã, uma ferramenta para ajudar os jogadores. Esse site <b>não tem relação</b> com a KuroGames©.",
+    "disclaimerInfo": "Termos como KuroGames, WutheringWaves, nomes de personagens, habilidades e outras redes sociais, assim como imagens de: personagens, icones de habilidade e outros icones, juntamente com audios representativos, são de propriedade de seus respectivos proprietários.",
+    "donation":"Gostaria de agradeçer os desenvolvedores? Divulge o site para seus amigos ou faça uma doação via PIX, qualquer quantia é bem vinda :)",
     "settings": {
         "settings": "Configurações",
         "audio": "Tocar audios no site",
