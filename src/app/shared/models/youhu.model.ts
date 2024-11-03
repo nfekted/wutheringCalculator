@@ -133,7 +133,7 @@ export class Youhu extends Default {
         ];
 
         this.rotationColor = ['intro', 'basic', 'basic', 'basic', 'skill', 'basic', 'liberation', 'basic', 'basic', 'outro'];
-        this.rotationCommands = ['mb', 'cv', 'mbh', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'l', 'cv', 'mbh'];
+        this.rotationCommands = ['mb', 'cv', 'mbh', 'cv', 'mb', 'cv', 'e', 'cv', 'mb', 'cv', 'r', 'cv', 'mbh'];
 
         //Recommended Echo
         this.echo4 = ['Healing %'];

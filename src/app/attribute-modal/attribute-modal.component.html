@@ -75,10 +75,10 @@
                     <div class="col-sm-12 col-md-4" style="border-right: solid 1px;">
                         <div class="row">
                             <div class="col-sm-12" *ngIf="character.canHeal">
-                                <button type="button" *ngIf="character.healType" (click)="character.healType = false"
+                                <button type="button" *ngIf="character.healType" (click)="character.healType = false;recalculateAll();"
                                     [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealDMG' |
                                     transloco}}</button>
-                                <button type="button" *ngIf="!character.healType" (click)="character.healType = true"
+                                <button type="button" *ngIf="!character.healType" (click)="character.healType = true;recalculateAll();"
                                     [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealHeal' |
                                     transloco}}</button>
                             </div>
@@ -331,10 +331,10 @@
                     <div class="col-sm-12 col-md-4" style="border-left: solid 1px;">
                         <div class="row">
                             <div class="col-sm-12" *ngIf="character.canHeal">
-                                <button type="button" *ngIf="character.healType" (click)="character.healType = false"
+                                <button type="button" *ngIf="character.healType" (click)="character.healType = false;recalculateAll();"
                                     [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealDMG' |
                                     transloco}}</button>
-                                <button type="button" *ngIf="!character.healType" (click)="character.healType = true"
+                                <button type="button" *ngIf="!character.healType" (click)="character.healType = true;recalculateAll();"
                                     [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealHeal' |
                                     transloco}}</button>
                             </div>

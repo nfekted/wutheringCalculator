@@ -278,6 +278,19 @@ hr {
     color: white;
 }
 
+.btn-youhu {
+    background-color: #9bcdfa;
+    border-color: #3e5b96;
+    color: black;
+}
+
+.btn-youhu:hover {
+    background-color: #46bdee;
+    border-color: black;
+    color: black;
+}
+
+
 .btn-yuanwu {
     background-color: #2f3f70;
     border-color: #50526a;
@@ -320,16 +333,4 @@ hr {
 
 .outro {
     color: blue;
-}
-
-.teste {
-    border: solid 2px red;
-}
-
-.teste2 {
-    border: solid 2px blue;
-}
-
-.teste3 {
-    border: solid 2px orange;
 }
