@@ -75,10 +75,12 @@
                     <div class="col-sm-12 col-md-4" style="border-right: solid 1px;">
                         <div class="row">
                             <div class="col-sm-12" *ngIf="character.canHeal">
-                                <button type="button" *ngIf="character.healType" (click)="character.healType = false;recalculateAll();"
+                                <button type="button" *ngIf="character.healType"
+                                    (click)="character.healType = false;recalculateAll();"
                                     [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealDMG' |
                                     transloco}}</button>
-                                <button type="button" *ngIf="!character.healType" (click)="character.healType = true;recalculateAll();"
+                                <button type="button" *ngIf="!character.healType"
+                                    (click)="character.healType = true;recalculateAll();"
                                     [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealHeal' |
                                     transloco}}</button>
                             </div>
@@ -134,7 +136,8 @@
                                         <tr>
                                             <td><b>Total</b></td>
                                             <td colspan="2">~{{fixedTotal | number:'1.0-0'}}
-                                                {{(character.healType && character.canHeal && enhancerSkill ? 'char.heal' : 'dmg') |
+                                                {{(character.healType && character.canHeal && enhancerSkill ?
+                                                'char.heal' : 'dmg') |
                                                 transloco}}
                                             </td>
                                         </tr>
@@ -146,6 +149,11 @@
                     <!-- MIDDLE -->
                     <div class="col-sm-12 col-md-4 text-center mb-4">
                         <div class="row">
+                            <div class="col-sm-12 mt-3">
+                                <button type="button" (click)="recalculateAll()"
+                                    [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.calculate'
+                                    | transloco}}</button>
+                            </div>
                             <div class="col-sm-12">
                                 <b>{{'char.enhancer.compareWith' | transloco}}</b>
                             </div>
@@ -331,10 +339,12 @@
                     <div class="col-sm-12 col-md-4" style="border-left: solid 1px;">
                         <div class="row">
                             <div class="col-sm-12" *ngIf="character.canHeal">
-                                <button type="button" *ngIf="character.healType" (click)="character.healType = false;recalculateAll();"
+                                <button type="button" *ngIf="character.healType"
+                                    (click)="character.healType = false;recalculateAll();"
                                     [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealDMG' |
                                     transloco}}</button>
-                                <button type="button" *ngIf="!character.healType" (click)="character.healType = true;recalculateAll();"
+                                <button type="button" *ngIf="!character.healType"
+                                    (click)="character.healType = true;recalculateAll();"
                                     [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealHeal' |
                                     transloco}}</button>
                             </div>
@@ -389,7 +399,8 @@
                                         <tr>
                                             <td><b>Total</b></td>
                                             <td colspan="2">~{{fixedSimTotal | number:'1.0-0'}}
-                                                {{(character.healType && character.canHeal && enhancerSkill ? 'char.heal' : 'dmg') |
+                                                {{(character.healType && character.canHeal && enhancerSkill ?
+                                                'char.heal' : 'dmg') |
                                                 transloco}}</td>
                                         </tr>
                                     </tbody>

@@ -132,7 +132,7 @@ export class AttributeModalComponent {
 
       const dmg = simulation ? copy[rotation[0][i]][rotation[1][i]] : this.character[rotation[0][i]][rotation[1][i]];
       if ((!this.randomCrit && currentChance > 0) || (this.randomCrit && (Math.floor(Math.random() * 100) + 1) < currentChance)) {
-        list[i] = [+(dmg * (critMult / 100)).toFixed(0), true, heal];
+        list[i] = [+(dmg * ((heal ? 100 : critMult) / 100)).toFixed(0), true, heal];
         currentChance -= (this.randomCrit ? 0 : 1);
       } else {
         list[i] = [dmg, false, heal];
