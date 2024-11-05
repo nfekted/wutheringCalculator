@@ -17,7 +17,7 @@
     "contactInfo": "<b>CONTATO</b>: Use <a href=\"https://forms.gle/kUUBYNQA39uYxfQ26\" target=\"_blank\">esse formulário</a> se precisar entrar em contato.",
     "aboutInfo": "<b>DO SITE</b>: Feito de fã para fã, uma ferramenta para ajudar os jogadores. Esse site <b>não tem relação</b> com a KuroGames©.",
     "disclaimerInfo": "Termos como KuroGames, WutheringWaves, nomes de personagens, habilidades e outras redes sociais, assim como imagens de: personagens, icones de habilidade e outros icones, juntamente com audios representativos, são de propriedade de seus respectivos proprietários.",
-    "donation":"Gostaria de agradeçer os desenvolvedores? Divulge o site para seus amigos ou faça uma doação via PIX, qualquer quantia é bem vinda :)",
+    "donation": "Gostaria de agradeçer os desenvolvedores? Divulge o site para seus amigos ou faça uma doação via PIX, qualquer quantia é bem vinda :)",
     "settings": {
         "settings": "Configurações",
         "audio": "Tocar audios no site",
@@ -25,5 +25,6 @@
         "deleteSettings": "Apagar todos dados",
         "deleteConfirm": "Apagar todos os dados? Essa ação não pode ser desfeita"
     },
-    "disclaimer": "Esse site não tem nenhuma relação direta com a KuroGames©. Para uma melhor experiencia, as suas configurações e valores cadastrados serão salvas em formato de coockies em seu navegador. Nenhum outro tipo de informação é coletada. Guias anonimas ou limpar o cache pode resultar na perca de seus registros permanentemente. Ao continuar o acesso, você concorda e tem ciência disso."
+    "disclaimer": "Esse site não tem nenhuma relação direta com a KuroGames©. Para uma melhor experiencia, as suas configurações e valores cadastrados serão salvas em formato de coockies em seu navegador. Nenhum outro tipo de informação é coletada. Guias anonimas ou limpar o cache pode resultar na perca de seus registros permanentemente. Ao continuar o acesso, você concorda e tem ciência disso.",
+    "subtitle": "Preencha os dados, compare status, analise echos, escolha a melhor opção, fique mais forte"
 }
