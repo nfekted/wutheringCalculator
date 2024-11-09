@@ -1,7 +1,8 @@
 <nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style="z-index: 9999;">
     <div class="container-fluid">
         <img src="assets/img/logo.png" alt="logo" height="50" [routerLink]="['']" style="cursor:pointer">
-        <span class="mr-2" [routerLink]="['']" style="cursor:pointer">&nbsp;WuWa calculator <small style="font-size: 9px;">by NfeKteD</small></span>
+        <span class="mr-2" [routerLink]="['']" style="cursor:pointer">&nbsp;WuWa calculator <small
+                style="font-size: 9px;">by NfeKteD</small></span>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation"
             style="color: white !important" aria-controls="navigation" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -23,6 +24,20 @@
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/partners']" routerLinkActive="active">{{'partner' |
                         transloco}}</a>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown mr-2" [title]="'tools' | transloco">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{'tools'|transloco}}
+                        </button>
+                        <ul class="dropdown-menu p-3 tools">
+                            <li style="max-width: fit-content;">
+                                <img src="assets/img/zzz.jpg" height="150"/>
+                                <div class="centered text-center">{{'zzz' | transloco}}</div>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
             <div class="d-flex">

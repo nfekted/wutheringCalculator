@@ -30,3 +30,17 @@ nav {
     width: fit-content;
     border: none;
 }
+
+.tools {
+    border: solid 2px #bea966 !important;
+    background-color: #000000cf;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
+  }
