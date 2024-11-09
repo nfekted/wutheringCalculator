@@ -5,7 +5,8 @@ export class Sanhua extends Default {
     constructor() {
         super();
 
-        this.name = 'Sanhua'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Sanhua'
         this.icon = 'sanhua';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Sanhua';
         this.type = 'glacio';

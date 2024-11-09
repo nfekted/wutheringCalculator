@@ -5,7 +5,8 @@ export class Yinlin extends Default {
     constructor() {
         super();
 
-        this.name = 'Yinlin'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Yinlin'
         this.icon = 'yinlin';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Yinlin';
         this.type = 'electro';

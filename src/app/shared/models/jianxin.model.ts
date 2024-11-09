@@ -5,7 +5,8 @@ export class Jianxin extends Default {
     constructor() {
         super();
 
-        this.name = 'Jianxin'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Jianxin'
         this.icon = 'jianxin';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Jianxin';
         this.type = 'aero';

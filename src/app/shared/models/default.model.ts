@@ -1,6 +1,7 @@
 import { Character } from "./character.model";
 
 export class Default {
+    lastUpdate: Date;
     name: string = ''
     icon: string = '';
     wiki: string = '';

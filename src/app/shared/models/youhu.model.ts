@@ -5,7 +5,8 @@ export class Youhu extends Default {
     constructor() {
         super();
 
-        this.name = 'Youhu'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Youhu'
         this.icon = 'youhu';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Youhu';
         this.type = 'glacio';

@@ -5,7 +5,8 @@ export class Danjin extends Default {
     constructor() {
         super();
 
-        this.name = 'Danjin'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Danjin'
         this.icon = 'danjin';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Danjin';
         this.type = 'havoc';

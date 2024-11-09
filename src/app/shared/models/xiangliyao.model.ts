@@ -5,7 +5,8 @@ export class XiangliYao extends Default {
     constructor() {
         super();
 
-        this.name = 'Xiangli Yao'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Xiangli Yao'
         this.icon = 'xiangliyao';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Xiangli_Yao';
         this.type = 'electro';

@@ -5,7 +5,8 @@ export class RoverHavoc extends Default {
     constructor() {
         super();
 
-        this.name = 'Rover (Havoc)'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Rover (Havoc)'
         this.icon = 'roverh';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Rover-Havoc';
         this.type = 'havoc';

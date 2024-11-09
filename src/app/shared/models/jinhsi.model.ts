@@ -4,7 +4,8 @@ export class Jinhsi extends Default {
     constructor() {
         super();
 
-        this.name = 'Jinhsi'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Jinhsi'
         this.icon = 'jinhsi';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Jinhsi';
         this.type = 'spectro';

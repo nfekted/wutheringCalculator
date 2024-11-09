@@ -5,7 +5,8 @@ export class Rover extends Default {
     constructor() {
         super();
 
-        this.name = 'Rover (Spectro)'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Rover (Spectro)'
         this.icon = 'rover';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Rover';
         this.type = 'spectro';

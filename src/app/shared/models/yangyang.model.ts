@@ -5,7 +5,8 @@ export class Yangyang extends Default {
     constructor() {
         super();
 
-        this.name = 'Yangyang'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Yangyang'
         this.icon = 'yangyang';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Yangyang';
         this.type = 'aero';

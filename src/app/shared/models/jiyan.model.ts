@@ -5,7 +5,8 @@ export class Jiyan extends Default {
     constructor() {
         super();
 
-        this.name = 'Jiyan'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Jiyan'
         this.icon = 'jiyan';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Jiyan';
         this.type = 'aero';

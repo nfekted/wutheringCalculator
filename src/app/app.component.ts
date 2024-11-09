@@ -10,7 +10,7 @@ import { Util } from './shared/utils/util.model';
 })
 
 export class AppComponent {
-  title = 'PLACEHOLDER';
+  title = 'NfeKteD Tools - Wuthering Waves Calculator';
 
   lang: string = '';
   settings: Settings;

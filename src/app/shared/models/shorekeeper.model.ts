@@ -5,7 +5,8 @@ export class Shorekeeper extends Default {
     constructor() {
         super();
 
-        this.name = 'The Shorekeeper'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'The Shorekeeper'
         this.icon = 'shorekeeper';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/The_Shorekeeper';
         this.type = 'spectro';

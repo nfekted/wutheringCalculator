@@ -5,7 +5,8 @@ export class Calcharo extends Default {
     constructor() {
         super();
 
-        this.name = 'Calcharo'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Calcharo'
         this.icon = 'calcharo';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Calcharo';
         this.type = 'electro';

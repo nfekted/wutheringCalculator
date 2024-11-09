@@ -5,7 +5,8 @@ export class Encore extends Default {
     constructor() {
         super();
 
-        this.name = 'Encore'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Encore'
         this.icon = 'encore';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Encore';
         this.type = 'fusion';

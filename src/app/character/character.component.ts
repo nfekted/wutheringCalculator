@@ -19,12 +19,14 @@ export class CharacterComponent {
   nameEdit: boolean = false;
   currentSelection: string = '';
   showHelp: boolean = false;
+  lang: string = 'en';
 
   constructor(private transloco: TranslocoService) {
   }
 
   ngOnInit(): void {
     this.currentSelection = this.character.character.icon;
+    this.lang = this.transloco.getActiveLang();
   }
 
   upgrade(type: number) {

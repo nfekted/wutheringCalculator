@@ -5,7 +5,8 @@ export class Verina extends Default {
     constructor() {
         super();
 
-        this.name = 'Verina'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Verina'
         this.icon = 'verina';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Verina';
         this.type = 'spectro';

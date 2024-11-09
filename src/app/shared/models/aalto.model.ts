@@ -6,6 +6,7 @@ export class Aalto extends Default {
         super();
 
         //Character
+        this.lastUpdate = new Date(2024, 10, 9, 1, 44, 0);
         this.name = 'Aalto'
         this.icon = 'aalto';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Aalto';

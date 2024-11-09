@@ -4,7 +4,8 @@ export class Changli extends Default {
     constructor() {
         super();
 
-        this.name = 'Changli'
+      this.lastUpdate = new Date(2024,10,9,0,0,0);
+this.name =  'Changli'
         this.icon = 'changli';
         this.wiki = 'https://wutheringwaves.fandom.com/wiki/Changli';
         this.type = 'fusion';
