@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style="z-index: 9999;">
     <div class="container-fluid">
-        <img src="assets/img/logo.png" alt="logo" height="50">
-         <span class="mr-2">&nbsp;WuWa calculator <small style="font-size: 9px;">by NfeKteD</small></span>
+        <img src="assets/img/logo.png" alt="logo" height="50" [routerLink]="['']" style="cursor:pointer">
+        <span class="mr-2" [routerLink]="['']" style="cursor:pointer">&nbsp;WuWa calculator <small style="font-size: 9px;">by NfeKteD</small></span>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation"
             style="color: white !important" aria-controls="navigation" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -10,17 +10,19 @@
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">{{'home' | transloco}}</a>
+                    <a class="nav-link" routerLinkActive="active" aria-current="page" [routerLink]="['']">{{'home' |
+                        transloco}}</a>
                 </li>
                 <li class="nav-item">
                     <button class="nav-link" data-bs-toggle="modal"
                         data-bs-target="#settingsModal">{{'settings.settings'| transloco}}</button>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/faq']">FAQ</a>
+                    <a class="nav-link" [routerLink]="['/faq']" routerLinkActive="active">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/partners']">{{'partner' | transloco}}</a>
+                    <a class="nav-link" [routerLink]="['/partners']" routerLinkActive="active">{{'partner' |
+                        transloco}}</a>
                 </li>
             </ul>
             <div class="d-flex">
