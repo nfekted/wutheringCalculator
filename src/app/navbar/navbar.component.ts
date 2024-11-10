@@ -31,8 +31,6 @@ export class NavbarComponent {
 
 
   save() {
-    // Util.save(Util.characters, 'wuteringcalculator-chars');
-    console.log('chamou nav')
     Util.saveCharacters();
   }
 

@@ -179,8 +179,6 @@ export class HomeComponent {
 
   save() {
     if (Util.load()['autosave']) {
-      // Util.save(Util.characters, 'wuteringcalculator-chars');
-      console.log('home')
       Util.saveCharacters();
     };
   }

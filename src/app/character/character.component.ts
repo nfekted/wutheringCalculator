@@ -57,8 +57,6 @@ export class CharacterComponent {
 
   save() {
     if (Util.load()['autosave']) {
-      // Util.save(Util.characters, 'wuteringcalculator-chars');
-      console.log('chamou character')
       Util.saveCharacters();
     };
   }
