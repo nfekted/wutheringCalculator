@@ -179,7 +179,9 @@ export class HomeComponent {
 
   save() {
     if (Util.load()['autosave']) {
-      Util.save(Util.characters, 'wuteringcalculator-chars');
+      // Util.save(Util.characters, 'wuteringcalculator-chars');
+      console.log('home')
+      Util.saveCharacters();
     };
   }
 
@@ -193,7 +195,7 @@ export class HomeComponent {
       this.characters = new Array<Character>();
     } else {
       for (const c of load) {
-        this.currentSelection = c.character.icon;
+        this.currentSelection = c.icon;
         this.createNew(c);
       }
       Util.characters = this.characters;

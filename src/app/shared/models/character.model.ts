@@ -198,7 +198,7 @@ export class Character {
             this.liberationBonus = load.liberationBonus;
             this.elementalBonus = load.elementalBonus;
             this.healingBonus = load.healingBonus;
-            this.character.name = load.character.name;
+            this.character.name = load.name;
             this.calculate();
         }
     }
