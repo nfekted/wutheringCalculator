@@ -30,8 +30,9 @@
     "subtitle": "Fill in the data, compare status, analyze echos, choose the best option, be stronger",
     "tools": "More tools",
     "versions": {
+        "versions": "Versions",
         "1": "<b>Version 1.0</b>:<br/><ul><li>Created and mapped data for all characters up to Wuthering V 1.3 - To the Shore's End.</li><li>Created attribute comparison routine.</li><li>Created Echo comparison routine.</li><ul/>",
-        "future": "<b>Future Planning</b>:<ul><li>Tool: Create your own skill rotation.</li><li>Create your own team.</li><li>Tool: Team vs Team comparator.</li></ul>"
+        "future": "<b>Future Planning</b>:<ul><li>Tool: Create your own skill rotation.</li><li>Create your own team.</li><li>Tool: Team vs Team comparator.</li><li>Desktop Version.</li></ul>"
     },
     "zzz": "ZZZ is Coming next"
 }
