@@ -193,7 +193,6 @@ export class HomeComponent {
       this.characters = new Array<Character>();
     } else {
       for (const c of load) {
-        // this.characters.push(Object.assign(new Character(0, null), c));
         this.currentSelection = c.character.icon;
         this.createNew(c);
       }
