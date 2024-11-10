@@ -16,7 +16,10 @@ export class NavbarComponent {
   @Output() settings: EventEmitter<string> = new EventEmitter<string>();
   @Input() configs: Settings = new Settings();
 
-  constructor(private transloco: TranslocoService) { }
+  versions: number[] = [...Array.from(Array(1).keys())]
+
+  constructor(private transloco: TranslocoService) {
+  }
 
   changeLang(lang: string) {
     this.callback.emit(lang);

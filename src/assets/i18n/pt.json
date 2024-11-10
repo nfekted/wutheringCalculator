@@ -18,7 +18,7 @@
     "aboutInfo": "<b>DO SITE</b>: Feito de fã para fã, uma ferramenta para ajudar os jogadores. Esse site <b>não tem relação</b> com a KuroGames©.",
     "disclaimerInfo": "Termos como KuroGames, WutheringWaves, nomes de personagens, habilidades e outras redes sociais, assim como imagens de: personagens, icones de habilidade e outros icones, juntamente com audios representativos, são de propriedade de seus respectivos proprietários.",
     "donation": "Gostaria de agradeçer os desenvolvedores? <b>Divulge o site para seus amigos</b> ou me pague um café pelo Ko-Fi <a href=\"https://ko-fi.com/nfekted\" target=\"blank_\" style=\"color: white\">clicando aqui</a>, qualquer quantia é bem vinda :)",
-    "x":"Veja essa calculadora de atributos para Wutherin Waves",
+    "x": "Veja essa calculadora de atributos para Wutherin Waves",
     "settings": {
         "settings": "Configurações",
         "audio": "Tocar audios no site",
@@ -29,5 +29,10 @@
     "disclaimer": "Esse site não tem nenhuma relação direta com a KuroGames©. Para uma melhor experiencia, as suas configurações e valores cadastrados serão salvas em formato de coockies em seu navegador. Nenhum outro tipo de informação é coletada. Guias anonimas ou limpar o cache pode resultar na perca de seus registros permanentemente. Ao continuar o acesso, você concorda e tem ciência disso.",
     "subtitle": "Preencha os dados, compare status, analise echos, escolha a melhor opção, fique mais forte",
     "tools": "Mais ferramentas",
+    "versions": {
+        "versions": "Versões",
+        "1": "<b>Versão 1.0</b>:<br/><ul><li>Criado e mapeado data de todos personagens até Wuthering V 1.3 - To the Shore's End.</li><li>Criado rotina comparativa de atributos.</li><li>Criado rotina comparadora de Echos.</li><ul/>",
+        "future": "<b>Planejamento futuro</b>:<ul><li>Ferramenta: Crie sua própria rotação de comandos.</li><li>Crie sua própria equipe.</li><li>Comparador: equipe vs equipe.</li></ul>"
+    },
     "zzz": "ZZZ está vindo"
 }

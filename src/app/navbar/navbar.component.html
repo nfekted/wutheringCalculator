@@ -33,7 +33,7 @@
                         </button>
                         <ul class="dropdown-menu p-3 tools">
                             <li style="max-width: fit-content;">
-                                <img src="assets/img/zzz.jpg" height="150"/>
+                                <img src="assets/img/zzz.jpg" height="150" />
                                 <div class="centered text-center">{{'zzz' | transloco}}</div>
                             </li>
                         </ul>
@@ -41,6 +41,18 @@
                 </li>
             </ul>
             <div class="d-flex">
+                <button class="btn btn-dark" style="background-color: #121212;border: none;" data-bs-toggle="modal"
+                    data-bs-target="#versionModal">
+                    <span class="material-symbols-outlined">
+                        news
+                    </span>
+                </button>
+                <a href="https://forms.gle/kUUBYNQA39uYxfQ26" target="_blank" class="btn btn-dark"
+                    style="background-color: #121212;border: none;">
+                    <span class="material-symbols-outlined">
+                        bug_report
+                    </span>
+                </a>
                 <button class="btn btn-secondary btn-sm" [title]="'save' | transloco" (click)="save()"
                     *ngIf="!configs.autosave">
                     <span class="material-symbols-outlined align-middle">
@@ -108,6 +120,25 @@
                         save
                     </span>
                     &nbsp;{{'save' | transloco}} {{'settings.settings' | transloco}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-lg" id="versionModal" tabindex="-1" aria-labelledby="versionModalLabel" aria-hidden="true"
+    style="color: black;">
+    <div class="modal-dialog" style="margin-top: 10vh;">
+        <div class="modal-content">
+            <div class="modal-header btn-dark">
+                <h5 class="modal-title" id="versionModalLabel">{{'versions.versions' | transloco}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div [innerHtml]="'versions.future' | transloco"></div>
+                <hr style="border-bottom: solid 1px"/>
+                <ng-container *ngFor="let v of versions">
+                    <div [innerHtml]="'versions.' + (v+1) | transloco"></div>
+                </ng-container>
             </div>
         </div>
     </div>
