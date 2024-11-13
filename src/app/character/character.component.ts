@@ -61,6 +61,13 @@ export class CharacterComponent {
     };
   }
 
+  audio(type: string) {
+    const settings = Util.load();
+    if (settings?.audio) {
+      new Audio(`assets/sound/${type}.wav`).play();
+    }
+  }
+
   getHit(dmg: number, multiplierRange: Array<number>, upgradeLevel: number): number {
     return dmg * ((multiplierRange[upgradeLevel] / 100) * 1)//1 Relative to Ressonance Chain
   }

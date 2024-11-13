@@ -132,7 +132,7 @@
 
                         <div class="col-sm-12 col-md-3 "></div>
                         <div class="col-sm-12 mt-2">
-                            <button type="button" data-bs-toggle="modal"
+                            <button type="button" data-bs-toggle="modal" (click)="audio('click')"
                                 [attr.data-bs-target]="'#critModal'+character.index"
                                 [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
                                 <img src="assets/img/icons/resonator.webp" width="25px"
@@ -141,7 +141,7 @@
                             </button>
                         </div>
                         <div class="col-sm-12 mt-2">
-                            <button type="button" data-bs-toggle="modal"
+                            <button type="button" data-bs-toggle="modal" (click)="audio('click')"
                                 [attr.data-bs-target]="'#echoModal'+character.index"
                                 [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
                                 <img src="assets/img/icons/echo.webp" width="25px"
@@ -150,7 +150,7 @@
                             </button>
                         </div>
                         <div class="col-sm-12 mt-2">
-                            <button type="button" data-bs-toggle="modal"
+                            <button type="button" data-bs-toggle="modal" (click)="audio('click')"
                                 [attr.data-bs-target]="'#dataTableModal'+character.index"
                                 [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
                                 <img src="assets/img/icons/resonator.webp" width="25px"
