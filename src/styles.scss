@@ -29,14 +29,14 @@ hr {
 
 @media (max-width: 575px) {
 
-    .title{
+    .title {
         font-size: 2rem;
         font-weight: bold;
     }
 }
 
 @media (min-width: 576px) {
-    .title{
+    .title {
         font-size: 5rem;
     }
 }
@@ -96,6 +96,18 @@ hr {
 .btn-calcharo:hover {
     background-color: #1d193c;
     border-color: #3e519d;
+}
+
+.btn-camellya {
+    background-color: #ad1c19;
+    border-color: #613d1f;
+    color: white;
+}
+
+.btn-camellya:hover {
+    background-color: #580f0e;
+    border-color: #3d2614;
+    color: white;
 }
 
 .btn-changli {

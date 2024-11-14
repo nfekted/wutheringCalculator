@@ -62,7 +62,9 @@
                     </div>
                     <div class="col-sm-12 col-md-4 mt-4">
                         <span *ngFor="let item of character.character.rotationCommands">
-                            <img [src]="'assets/img/icons/' + item + '.svg'" style="width: 25px;" />
+                            <img [src]="'assets/img/icons/' + item + '.svg'" style="width: 25px;"
+                                *ngIf="item.length < 4" />
+                            <span *ngIf="item.length > 3">{{item}}</span>
                         </span>
                     </div>
                 </div>

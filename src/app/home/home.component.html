@@ -45,11 +45,6 @@
                 <h5 class="modal-title" id="charModalLabel">{{'home.char-modal-title' | transloco}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-footer">
-                <button type="button" [class]="'btn btn-primary btn-'+ currentSelection" data-bs-dismiss="modal"
-                    *ngIf="currentSelection != ''" aria-label="Close" (click)="createNew()">
-                    {{'new' | transloco}} {{currentSelection}}</button>
-            </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-12 text-center">
@@ -76,14 +71,13 @@
                                 <img class=img-fluid [src]="'assets/img/icons/'+c.weapon+'.webp'" style="width: 20%;" />
                                 {{c.name}}
                             </p>
+                            <button type="button" [class]="'mb-3 btn btn-primary btn-'+ currentSelection"
+                                *ngIf="currentSelection === c.icon" data-bs-dismiss="modal" aria-label="Close"
+                                (click)="createNew()" style="width: 100%;">
+                                {{'new' | transloco}} {{currentSelection}}</button>
                         </div>
                     </ng-container>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" [class]="'btn btn-primary btn-'+ currentSelection" data-bs-dismiss="modal"
-                    *ngIf="currentSelection != ''" aria-label="Close" (click)="createNew()">
-                    {{'new' | transloco}} {{currentSelection}}</button>
             </div>
         </div>
     </div>

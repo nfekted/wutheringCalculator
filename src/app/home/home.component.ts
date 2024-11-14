@@ -25,6 +25,7 @@ import { Yuanwu } from '../shared/models/yuanwu.model';
 import { Zhezhi } from '../shared/models/zhezhi.model';
 import { Shorekeeper } from '../shared/models/shorekeeper.model';
 import { Youhu } from '../shared/models/youhu.model';
+import { Camellya } from '../shared/models/camellya';
 
 @Component({
   selector: 'app-home',
@@ -40,12 +41,13 @@ export class HomeComponent {
 
   constructor() {
     this.characterList = [
-      new Aalto(), new Baizhi(), new Calcharo(), new Changli(),
-      new Chixia(), new Danjin(), new Encore(), new Jianxin(),
-      new Jinhsi(), new Jiyan(), new Lingyang(), new Mortefi(),
-      new RoverHavoc(), new Rover(), new Sanhua(), new Taoqi(),
-      new Shorekeeper(), new Verina(), new XiangliYao(), new Yangyang(),
-      new Yinlin(), new Youhu(), new Yuanwu(), new Zhezhi()
+      new Aalto(), new Baizhi(), new Calcharo(), new Camellya(),
+      new Changli(), new Chixia(), new Danjin(), new Encore(),
+      new Jianxin(), new Jinhsi(), new Jiyan(), new Lingyang(),
+      new Mortefi(), new RoverHavoc(), new Rover(), new Sanhua(),
+      new Taoqi(), new Shorekeeper(), new Verina(), new XiangliYao(),
+      new Yangyang(), new Yinlin(), new Youhu(), new Yuanwu(),
+      new Zhezhi()
     ];
   }
 
@@ -70,6 +72,10 @@ export class HomeComponent {
       case 'calcharo':
         const cal: Calcharo = new Calcharo();
         char = this.charCreation(cal, load);
+        break;
+      case 'camellya':
+        const cam: Camellya = new Camellya();
+        char = this.charCreation(cam, load);
         break;
       case 'changli':
         const cha: Changli = new Changli();
