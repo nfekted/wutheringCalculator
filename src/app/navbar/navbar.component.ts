@@ -16,7 +16,7 @@ export class NavbarComponent {
   @Output() settings: EventEmitter<string> = new EventEmitter<string>();
   @Input() configs: Settings = new Settings();
 
-  versions: number[] = [...Array.from(Array(1).keys())]
+  versions: number[] = [...Array.from(Array(2).keys()).reverse()]
 
   constructor(private transloco: TranslocoService) {
   }
