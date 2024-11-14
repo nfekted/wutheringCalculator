@@ -63,8 +63,7 @@
                     </div>
                     <ng-container *ngFor="let c of characterList">
                         <div class="col-sm-3" *ngIf="filterBy == '' || filterBy == c.type"
-                            (click)="currentSelection = c.icon; audio('characters/' + currentSelection)"
-                            [ngClass]="{'character': currentSelection != c.icon}">
+                            (click)="currentSelection = c.icon;" [ngClass]="{'character': currentSelection != c.icon}">
                             <img class="img-fluid" [src]="'assets/img/characters/'+c.icon+'.png'" />
                             <p class="text-center">
                                 <img class=img-fluid [src]="'assets/img/icons/'+c.type+'.webp'" style="width: 20%;" />
@@ -73,7 +72,7 @@
                             </p>
                             <button type="button" [class]="'mb-3 btn btn-primary btn-'+ currentSelection"
                                 *ngIf="currentSelection === c.icon" data-bs-dismiss="modal" aria-label="Close"
-                                (click)="createNew()" style="width: 100%;">
+                                (click)="createNew(); audio('characters/' + currentSelection)" style="width: 100%;">
                                 {{'new' | transloco}} {{currentSelection}}</button>
                         </div>
                     </ng-container>
