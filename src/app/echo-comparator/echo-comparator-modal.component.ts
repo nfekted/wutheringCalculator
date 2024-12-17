@@ -47,35 +47,35 @@ export class EchoComparatorModalComponent {
     char1.elementalBonus = 10;
     char1.healingBonus = 10;
 
-    let char2 = Object.assign(new Character(0, this.character.character, char1), char1);
+    let char2 = Object.assign(new Character(1, null, char1), char1);
 
-    this.echoUpgrade(char1, this.echo1);
-    this.echoUpgrade(char2, this.echo2);
+    // this.echoUpgrade(char1, this.echo1);
+    // this.echoUpgrade(char2, this.echo2);
 
-    char1.calculate();
-    char2.calculate();
+    // char1.calculate();
+    // char2.calculate();
 
-    const total1: number = this.simulate(char1);
-    const total2: number = this.simulate(char2);
+    // const total1: number = this.simulate(char1);
+    // const total2: number = this.simulate(char2);
 
-    const diff = Math.abs(+((total2 - total1) / total1).toFixed(4) * 100).toFixed(2);
+    // const diff = Math.abs(+((total2 - total1) / total1).toFixed(4) * 100).toFixed(2);
 
-    this.echoScore(this.echo1);
-    this.echoScore(this.echo2);
+    // this.echoScore(this.echo1);
+    // this.echoScore(this.echo2);
 
-    if (total1 == total2) {
-      this.text = this.transloco.translate('char.echo.same', { type: (this.character.healType && this.character.canHeal) ? this.transloco.translate('char.heal') : 'DMG' });
-    } else {
-      this.text = this.transloco.translate('char.echo.text', { echo: (total1 > total2 ? 1 : 2), perc: diff, type: (this.character.healType && this.character.canHeal) ? this.transloco.translate('char.heal') : 'DMG', value: total1, value2: total2, char: this.character.character.name });
-    }
+    // if (total1 == total2) {
+    //   this.text = this.transloco.translate('char.echo.same', { type: (this.character.healType && this.character.canHeal) ? this.transloco.translate('char.heal') : 'DMG' });
+    // } else {
+    //   this.text = this.transloco.translate('char.echo.text', { echo: (total1 > total2 ? 1 : 2), perc: diff, type: (this.character.healType && this.character.canHeal) ? this.transloco.translate('char.heal') : 'DMG', value: total1, value2: total2, char: this.character.character.name });
+    // }
 
-    if ((total1 > total2 && this.echo1.commonAttr.length < this.echo2.commonAttr.length) ||
-      (total2 > total1 && this.echo2.commonAttr.length < this.echo1.commonAttr.length) ||
-      (total1 == total2 && this.echo1.commonAttr.length != this.echo2.commonAttr.length)) {
-      this.text += this.transloco.translate('char.echo.however', { attr: this.echo1.commonAttr.length, attr2: this.echo2.commonAttr.length, type: (this.character.healType && this.character.canHeal) ? this.transloco.translate('char.heal') : 'DMG' });
-    } else {
-      this.text += total1 == total2 ? '' : this.transloco.translate('char.echo.because', { attr: this.echo1.commonAttr.length, attr2: this.echo2.commonAttr.length, char: this.character.character.name });
-    }
+    // if ((total1 > total2 && this.echo1.commonAttr.length < this.echo2.commonAttr.length) ||
+    //   (total2 > total1 && this.echo2.commonAttr.length < this.echo1.commonAttr.length) ||
+    //   (total1 == total2 && this.echo1.commonAttr.length != this.echo2.commonAttr.length)) {
+    //   this.text += this.transloco.translate('char.echo.however', { attr: this.echo1.commonAttr.length, attr2: this.echo2.commonAttr.length, type: (this.character.healType && this.character.canHeal) ? this.transloco.translate('char.heal') : 'DMG' });
+    // } else {
+    //   this.text += total1 == total2 ? '' : this.transloco.translate('char.echo.because', { attr: this.echo1.commonAttr.length, attr2: this.echo2.commonAttr.length, char: this.character.character.name });
+    // }
   }
 
   echoUpgrade(char: Character, echo: Echo): Character {
