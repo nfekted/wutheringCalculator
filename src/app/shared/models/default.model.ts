@@ -185,9 +185,7 @@ export class Default {
         for (let i = 0; i < this.skill.length; i++) {
             //Get Expected value
             const heal: boolean = this.skillHeal[i];
-            if (heal) {
-                console.log(`teste`)
-            } const dmg: number = this.skillDMGType[i] == 'hp' ? character.hp : this.skillDMGType[i] == 'def' ? character.def : character.dmg;
+            const dmg: number = this.skillDMGType[i] == 'hp' ? character.hp : this.skillDMGType[i] == 'def' ? character.def : character.dmg;
             const bonus: number = this.bonus(character, character.character.skillBonusType[i]);
             const elemental: number = heal ? 0 : character.elementalBonus;
             const crit: number = character.cDmg
