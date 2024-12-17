@@ -34,7 +34,7 @@ export class EchoComparatorModalComponent {
   calculate() {
     this.echo2.type = this.echo1.type;
 
-    let char1 = Object.assign(new Character(0, null), this.character);
+    let char1 = Object.assign(new Character(0, this.character.character), this.character);
     char1.dmg = 1000;
     char1.cChance = 5;
     char1.cDmg = 150;
@@ -47,7 +47,7 @@ export class EchoComparatorModalComponent {
     char1.elementalBonus = 10;
     char1.healingBonus = 10;
 
-    let char2 = Object.assign(new Character(1, null, char1), char1);
+    let char2 = Object.assign(new Character(1, this.character.character), char1);
 
     this.echoUpgrade(char1, this.echo1);
     this.echoUpgrade(char2, this.echo2);

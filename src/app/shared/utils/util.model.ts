@@ -23,10 +23,6 @@ export abstract class Util {
         for (const c of this.characters) {
             save.push(new CharacterSave(c));
         }
-        // if (this.characters.length > 0) {
-        //     this.characters.map((c) => save.push(new CharacterSave(c)))
-
         this.save(save, 'wuteringcalculator-chars');
-        // }
     }
 }
