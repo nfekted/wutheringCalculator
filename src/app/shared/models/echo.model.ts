@@ -18,7 +18,7 @@ export class Echo {
     mainValues: Array<Array<number>> = [
         [2280, 25.5, 18, 18],
         [100, 30, 30, 38, 32, 30, 30, 30, 30, 30, 30],
-        [150, 33, 33, 41.5, 22, 44, 26, 35.5]
+        [150, 33, 33, 41.5, 22, 26, 44, 35.5]
     ];
 
     secondaryStats: Array<string> = [
