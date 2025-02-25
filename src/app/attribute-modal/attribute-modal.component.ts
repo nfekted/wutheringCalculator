@@ -128,6 +128,12 @@ export class AttributeModalComponent {
     if (!this.randomCrit) currentChance = (!simulation ? this.qtdCrit : this.newQtdCrit);
     let heal: boolean = false;
     for (let i = 0; i < rotation[0].length; i++) {
+if(i == 15){
+  console.log(``)
+  console.log(copy[rotation[0][i]][rotation[1][i]])
+  console.log(this.character[rotation[0][i]][rotation[1][i]])
+}
+
       if (this.character.canHeal) heal = (this.character.character.rotation[0][i] as string).includes('sumHealing');
 
       const dmg = simulation ? copy[rotation[0][i]][rotation[1][i]] : this.character[rotation[0][i]][rotation[1][i]];

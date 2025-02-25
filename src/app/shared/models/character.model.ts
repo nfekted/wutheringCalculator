@@ -1,6 +1,8 @@
 import { Aalto } from "./aalto.model";
 import { Baizhi } from "./baizhi.model";
 import { Calcharo } from "./calcharo.model";
+import { Camellya } from "./camellya";
+import { Carlotta } from "./carlotta.model";
 import { Changli } from "./changli.model";
 import { Chixia } from "./chixia.model";
 import { Danjin } from "./danjin.model";
@@ -26,12 +28,13 @@ import { Zhezhi } from "./zhezhi.model";
 export class Character {
     index: number;
     character:
-        Aalto | Baizhi | Calcharo | Changli |
-        Chixia | Danjin | Encore | Jianxin |
-        Jinhsi | Jiyan | Lingyang | Mortefi |
-        RoverHavoc | Rover | Sanhua | Taoqi |
-        Shorekeeper | Verina | XiangliYao | Yangyang |
-        Yinlin | Youhu | Yuanwu | Zhezhi
+        Aalto | Baizhi | Calcharo | Camellya |
+        Carlotta | Changli | Chixia | Danjin |
+        Encore | Jianxin | Jinhsi | Jiyan |
+        Lingyang | Mortefi | RoverHavoc | Rover |
+        Sanhua | Taoqi | Shorekeeper | Verina |
+        XiangliYao | Yangyang | Yinlin | Youhu |
+        Yuanwu | Zhezhi
     atkType: boolean = false;
     healType: boolean = false;
     canHeal: boolean = false;
