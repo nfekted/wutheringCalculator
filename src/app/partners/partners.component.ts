@@ -24,7 +24,7 @@ export class PartnersComponent implements OnInit {
   constructor(private transloco: TranslocoService) { }
 
   ngOnInit(): void {
-    this.partners.push(this.zawthz());
+    // this.partners.push(this.zawthz());
   }
 
   private zawthz(): Partner {
