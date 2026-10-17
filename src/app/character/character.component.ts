@@ -1,59 +1,58 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, computed, inject, input, output, signal } from '@angular/core';
+import { DatePipe, DecimalPipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Character } from '../shared/models/character.model';
 import { Util } from '../shared/utils/util.model';
 import Swal from 'sweetalert2';
-import { TranslocoService } from '@jsverse/transloco';
+import { TranslocoPipe, TranslocoService, provideTranslocoScope } from '@jsverse/transloco';
+import { AttributeModalComponent } from '../attribute-modal/attribute-modal.component';
+import { EchoComparatorModalComponent } from '../echo-comparator/echo-comparator-modal.component';
 
 @Component({
     selector: 'app-character',
     templateUrl: './character.component.html',
     styleUrl: './character.component.scss',
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [FormsModule, DatePipe, DecimalPipe, TranslocoPipe, AttributeModalComponent, EchoComparatorModalComponent],
+    providers: [provideTranslocoScope('char')]
 })
 export class CharacterComponent {
 
-  @Input() character: Character;
-  @Output() callbackDelete: EventEmitter<number> = new EventEmitter<number>();
+  private transloco = inject(TranslocoService);
 
-  sum: boolean = false;
+  character = input.required<Character>();
+  callbackDelete = output<number>();
 
-  nameEdit: boolean = false;
-  currentSelection: string = '';
-  showHelp: boolean = false;
-  lang: string = 'en';
+  sum = signal(false);
 
-  constructor(private transloco: TranslocoService) {
-  }
-
-  ngOnInit(): void {
-    this.currentSelection = this.character.character.icon;
-    this.lang = this.transloco.getActiveLang();
-  }
+  nameEdit = signal(false);
+  currentSelection = computed(() => this.character().character.icon);
+  showHelp = signal(false);
+  lang: string = this.transloco.getActiveLang();
 
   upgrade(type: number) {
     switch (type) {
       case 0:
-        this.character.character.basicCurrent += this.character.character.basicCurrent == 10 ? -9 : 1;
+        this.character().character.basicCurrent += this.character().character.basicCurrent == 10 ? -9 : 1;
         break;
       case 1:
-        this.character.character.skillCurrent += this.character.character.skillCurrent == 10 ? -9 : 1;
+        this.character().character.skillCurrent += this.character().character.skillCurrent == 10 ? -9 : 1;
         break;
       case 2:
-        this.character.character.forteCurrent += this.character.character.forteCurrent == 10 ? -9 : 1;
+        this.character().character.forteCurrent += this.character().character.forteCurrent == 10 ? -9 : 1;
         break;
       case 3:
-        this.character.character.liberationCurrent += this.character.character.liberationCurrent == 10 ? -9 : 1;
+        this.character().character.liberationCurrent += this.character().character.liberationCurrent == 10 ? -9 : 1;
         break;
       case 4:
-        this.character.character.introCurrent += this.character.character.introCurrent == 10 ? -9 : 1;
+        this.character().character.introCurrent += this.character().character.introCurrent == 10 ? -9 : 1;
         break;
     }
     this.calculate();
   }
 
   calculate() {
-    this.character.calculate();
+    this.character().calculate();
     this.save();
   }
 
@@ -87,14 +86,14 @@ export class CharacterComponent {
       denyButtonText: this.transloco.translate('cancel')
     }).then((result) => {
       if (result.isConfirmed) {
-        this.callbackDelete.emit(this.character.index);
+        this.callbackDelete.emit(this.character().index);
       }
     });
   }
 
   download() {
     var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.character)));
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.character())));
     element.setAttribute('download', 'antigo');
 
     element.style.display = 'none';

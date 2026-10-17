@@ -1,7 +1,7 @@
-<div class="modal fade modal-xl" [id]="id" tabindex="-1" aria-labelledby="echoModal" aria-hidden="true">
+<div class="modal fade modal-xl" [id]="id()" tabindex="-1" aria-labelledby="echoModal" aria-hidden="true">
   <div class="modal-dialog" style="margin-top: 10vh;">
     <div class="modal-content">
-      <div [class]="'modal-header btn-'+ currentSelection">
+      <div [class]="'modal-header btn-'+ currentSelection()">
         <h1 class="modal-title fs-5" id="echoModal">{{'char.echo.echo' | transloco}}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -10,12 +10,12 @@
         <!-- BASIC INFO -->
         <div class="row">
           <div class="col-sm-12">
-            {{'char.echo.recommended' | transloco: {name: character.character.name} }}
+            {{'char.echo.recommended' | transloco: {name: character().character.name} }}
           </div>
           <div class="col-sm-12 col-md-3 echo-border">
             <b>{{'char.echo.echo4' | transloco}}</b><br />
             <ul>
-              @for (item of character.character.echo4; track item) {
+              @for (item of character().character.echo4; track item) {
                 <li>{{item}}</li>
               }
             </ul>
@@ -23,7 +23,7 @@
           <div class="col-sm-12 col-md-3 echo-border">
             <b>{{'char.echo.echo3' | transloco}}</b><br />
             <ul>
-              @for (item of character.character.echo3; track item) {
+              @for (item of character().character.echo3; track item) {
                 <li>{{item}}</li>
               }
             </ul>
@@ -31,7 +31,7 @@
           <div class="col-sm-12 col-md-3 echo-border">
             <b>{{'char.echo.echo1' | transloco}}</b><br />
             <ul>
-              @for (item of character.character.echo1; track item) {
+              @for (item of character().character.echo1; track item) {
                 <li>{{item}}</li>
               }
             </ul>
@@ -39,14 +39,14 @@
           <div class="col-sm-12 col-md-3 echo-border">
             <b>{{'char.echo.sub' | transloco}}</b><br />
             <ul>
-              @for (item of character.character.echoSub; track item) {
+              @for (item of character().character.echoSub; track item) {
                 <li>{{item}}</li>
               }
             </ul>
           </div>
           <div class="col-sm-12">
             <div
-              [innerHtml]="'char.echo.' + currentSelection | transloco: { name: character.character.name}">
+              [innerHtml]="'char.echo.' + currentSelection() | transloco: { name: character().character.name}">
             </div>
           </div>
         </div>
@@ -192,16 +192,16 @@
               <!-- END ECHO 2 -->
               <!-- RESULTS -->
               <div class="col-12 col-md-4 echo-border">
-                @if (character.canHeal) {
+                @if (character().canHeal) {
                   <div class="col-sm-12 text-center">
-                    @if (character.healType) {
-                      <button type="button" (click)="character.healType = false;calculate()"
-                        [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealDMG' |
+                    @if (character().healType) {
+                      <button type="button" (click)="character().healType = false;calculate()"
+                        [class]="'btn btn-secondary btn-'+ currentSelection()">{{'char.enhancer.canHealDMG' |
                       transloco}}</button>
                     }
-                    @if (!character.healType) {
-                      <button type="button" (click)="character.healType = true;calculate()"
-                        [class]="'btn btn-secondary btn-'+ currentSelection">{{'char.enhancer.canHealHeal' |
+                    @if (!character().healType) {
+                      <button type="button" (click)="character().healType = true;calculate()"
+                        [class]="'btn btn-secondary btn-'+ currentSelection()">{{'char.enhancer.canHealHeal' |
                       transloco}}</button>
                     }
                   </div>
@@ -250,7 +250,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" data-bs-dismiss="modal"
-              [class]="'btn btn-secondary btn-'+ currentSelection">{{'close'
+              [class]="'btn btn-secondary btn-'+ currentSelection()">{{'close'
             | transloco}}</button>
           </div>
         </div>

@@ -1,4 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { TranslocoPipe, provideTranslocoScope } from '@jsverse/transloco';
+import { CharacterComponent } from '../character/character.component';
 import { Character } from '../shared/models/character.model';
 import { Encore } from '../shared/models/encore.model';
 import { Sanhua } from '../shared/models/sanhua.model';
@@ -33,14 +35,15 @@ import { Carlotta } from '../shared/models/carlotta.model';
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss',
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [TranslocoPipe, CharacterComponent],
+    providers: [provideTranslocoScope('home')]
 })
 export class HomeComponent {
 
   characterList: any[] = [];
-  filterBy: string = '';
-  characters: Array<Character> = new Array<Character>();
-  currentSelection: string = '';
+  filterBy = signal('');
+  characters = signal<Array<Character>>([]);
+  currentSelection = signal('');
 
   constructor() {
     this.characterList = [
@@ -60,7 +63,7 @@ export class HomeComponent {
 
   createNew(load?: any) {
     let char: Character;
-    switch (this.currentSelection) {
+    switch (this.currentSelection()) {
       case 'aalto':
         const aal: Aalto = new Aalto();
         char = this.charCreation(aal, load);
@@ -183,9 +186,9 @@ export class HomeComponent {
         char = this.charCreation(zhe, load);
         break;
     }
-    this.characters.push(char);
-    Util.characters = this.characters;
-    this.currentSelection = '';
+    this.characters.update(list => [...list, char]);
+    Util.characters = this.characters();
+    this.currentSelection.set('');
 
     if (!load) this.save();
   }
@@ -197,19 +200,19 @@ export class HomeComponent {
   }
 
   charCreation(char: any, load?: any) {
-    return new Character(this.characters.length, char, load);
+    return new Character(this.characters().length, char, load);
   }
 
   load() {
     const load = Util.load('wuteringcalculator-chars');
     if (!load) {
-      this.characters = new Array<Character>();
+      this.characters.set([]);
     } else {
       for (const c of load) {
-        this.currentSelection = c.icon;
+        this.currentSelection.set(c.icon);
         this.createNew(c);
       }
-      Util.characters = this.characters;
+      Util.characters = this.characters();
     }
   }
 
@@ -221,17 +224,17 @@ export class HomeComponent {
   }
 
   delete(index: number) {
-    this.characters = this.characters.filter(c => c.index != index);
-    for (let i = 0; i < this.characters.length; i++) {
-      this.characters[i].index = i;
+    const list = this.characters().filter(c => c.index != index);
+    for (let i = 0; i < list.length; i++) {
+      list[i].index = i;
     }
 
-    Util.characters = this.characters;
+    this.characters.set(list);
+    Util.characters = list;
     this.save();
   }
 
   setFilter(type: string) {
-    if (this.filterBy == type) this.filterBy = '';
-    else this.filterBy = type;
+    this.filterBy.set(this.filterBy() == type ? '' : type);
   }
 }

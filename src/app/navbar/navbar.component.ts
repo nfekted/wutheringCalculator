@@ -1,27 +1,28 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Util } from '../shared/utils/util.model';
 import { Settings } from '../shared/models/settings.model';
 import Swal from 'sweetalert2';
-import { TranslocoService } from '@jsverse/transloco';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.scss',
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [FormsModule, RouterLink, RouterLinkActive, TranslocoPipe]
 })
 export class NavbarComponent {
 
-  @Input() lang: string = '';
-  @Output() callback: EventEmitter<string> = new EventEmitter<string>();
-  @Output() settings: EventEmitter<string> = new EventEmitter<string>();
-  @Input() configs: Settings = new Settings();
+  private transloco = inject(TranslocoService);
+
+  lang = input('');
+  callback = output<string>();
+  settings = output<string>();
+  configs = input(new Settings());
 
   versions: number[] = [...Array.from(Array(2).keys()).reverse()]
-
-  constructor(private transloco: TranslocoService) {
-  }
 
   changeLang(lang: string) {
     this.callback.emit(lang);
@@ -37,7 +38,7 @@ export class NavbarComponent {
   }
 
   saveConfigs() {
-    Util.save(this.configs);
+    Util.save(this.configs());
   }
 
   delete() {

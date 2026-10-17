@@ -1,12 +1,13 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { provideTranslocoScope } from '@jsverse/transloco';
+import { TranslocoPipe, provideTranslocoScope } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-faq',
     templateUrl: './faq.component.html',
     styleUrl: './faq.component.scss',
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [TranslocoPipe],
+    providers: [provideTranslocoScope('faq')]
 })
 export class FaqComponent {
 

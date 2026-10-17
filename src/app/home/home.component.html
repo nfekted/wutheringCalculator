@@ -4,11 +4,11 @@
   <div class="row">
     <div class="col-sm-12" style="padding: 5;">
       <ul class="nav nav-tabs" id="charTabs" role="tablist">
-        <li class="nav-item" role="presentation" (click)="currentSelection = ''">
+        <li class="nav-item" role="presentation" (click)="currentSelection.set('')">
           <button type="button" class="nav-link charMenu" data-bs-toggle="modal"
             data-bs-target="#charModal"><u>{{'new'| transloco}}</u> +</button>
           </li>
-          @for (c of characters; track c; let i = $index) {
+          @for (c of characters(); track c; let i = $index) {
             <li class="nav-item" role="presentation" (click)="audio('click')">
               <button class="nav-link charMenu" [id]="i + '-tab'" data-bs-toggle="tab"
                 [attr.data-bs-target]="'#'+i" type="button" role="tab" [attr.aria-controls]="i"
@@ -17,7 +17,7 @@
           }
         </ul>
         <div class="tab-content" id="charContents">
-          @for (c of characters; track c; let i = $index) {
+          @for (c of characters(); track c; let i = $index) {
             <div class="tab-pane fade" [id]="i" role="tabpanel" [attr.aria-labelledby]="i+'-tab'">
               <app-character [character]="c" (callbackDelete)="delete($event)"></app-character>
             </div>
@@ -41,7 +41,7 @@
     style="color: black;">
     <div class="modal-dialog" style="margin-top: 10vh;">
       <div class="modal-content">
-        <div [class]="'modal-header btn-'+ currentSelection">
+        <div [class]="'modal-header btn-'+ currentSelection()">
           <h5 class="modal-title" id="charModalLabel">{{'home.char-modal-title' | transloco}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -49,33 +49,33 @@
           <div class="row">
             <div class="col-12 text-center">
               <img class="img-fluid" [src]="'assets/img/icons/aero.webp'" (click)="setFilter('aero')"
-                [ngClass]="{'character': filterBy != 'aero'}" style="width: 4rem;cursor: pointer" />
+                [class.character]="filterBy() != 'aero'" style="width: 4rem;cursor: pointer" />
                 <img class="img-fluid" [src]="'assets/img/icons/glacio.webp'" (click)="setFilter('glacio')"
-                  [ngClass]="{'character': filterBy != 'glacio'}" style="width: 4rem;cursor: pointer" />
+                  [class.character]="filterBy() != 'glacio'" style="width: 4rem;cursor: pointer" />
                   <img class="img-fluid" [src]="'assets/img/icons/electro.webp'" (click)="setFilter('electro')"
-                    [ngClass]="{'character': filterBy != 'electro'}" style="width: 4rem;cursor: pointer" />
+                    [class.character]="filterBy() != 'electro'" style="width: 4rem;cursor: pointer" />
                     <img class="img-fluid" [src]="'assets/img/icons/fusion.webp'" (click)="setFilter('fusion')"
-                      [ngClass]="{'character': filterBy != 'fusion'}" style="width: 4rem;cursor: pointer" />
+                      [class.character]="filterBy() != 'fusion'" style="width: 4rem;cursor: pointer" />
                       <img class="img-fluid" [src]="'assets/img/icons/havoc.webp'" (click)="setFilter('havoc')"
-                        [ngClass]="{'character': filterBy != 'havoc'}" style="width: 4rem;cursor: pointer" />
+                        [class.character]="filterBy() != 'havoc'" style="width: 4rem;cursor: pointer" />
                         <img class="img-fluid" [src]="'assets/img/icons/spectro.webp'" (click)="setFilter('spectro')"
-                          [ngClass]="{'character': filterBy != 'spectro'}" style="width: 4rem;cursor: pointer" />
+                          [class.character]="filterBy() != 'spectro'" style="width: 4rem;cursor: pointer" />
                         </div>
                         @for (c of characterList; track c) {
-                          @if (filterBy == '' || filterBy == c.type) {
+                          @if (filterBy() == '' || filterBy() == c.type) {
                             <div class="col-sm-3"
-                              (click)="currentSelection = c.icon;" [ngClass]="{'character': currentSelection != c.icon}">
+                              (click)="currentSelection.set(c.icon)" [class.character]="currentSelection() != c.icon">
                               <img class="img-fluid" [src]="'assets/img/characters/'+c.icon+'.png'" />
                               <p class="text-center">
                                 <img class=img-fluid [src]="'assets/img/icons/'+c.type+'.webp'" style="width: 20%;" />
                                 <img class=img-fluid [src]="'assets/img/icons/'+c.weapon+'.webp'" style="width: 20%;" />
                                 {{c.name}}
                               </p>
-                              @if (currentSelection === c.icon) {
-                                <button type="button" [class]="'mb-3 btn btn-primary btn-'+ currentSelection"
+                              @if (currentSelection() === c.icon) {
+                                <button type="button" [class]="'mb-3 btn btn-primary btn-'+ currentSelection()"
                                   data-bs-dismiss="modal" aria-label="Close"
                                   (click)="createNew(); audio('characters/' + c.icon)" style="width: 100%;">
-                                {{'new' | transloco}} {{currentSelection}}</button>
+                                {{'new' | transloco}} {{currentSelection()}}</button>
                               }
                             </div>
                           }

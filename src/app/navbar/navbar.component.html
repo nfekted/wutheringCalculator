@@ -29,7 +29,7 @@
             news
           </span>
         </button>
-        @if (!configs.autosave) {
+        @if (!configs().autosave) {
           <button class="btn btn-secondary btn-sm" [title]="'save' | transloco" (click)="save()"
             >
             <span class="material-symbols-outlined align-middle">
@@ -40,7 +40,7 @@
         }
         <div class="dropdown mr-2" [title]="'lang' | transloco">
           <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img [src]="'assets/img/' + (lang == 'en' ? 'enflag.png' : 'ptflag.png')" height="24"
+            <img [src]="'assets/img/' + (lang() == 'en' ? 'enflag.png' : 'ptflag.png')" height="24"
               alt="flag" />
             </button>
             <ul class="dropdown-menu">
@@ -70,14 +70,14 @@
           <div class="col-sm-12">
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" id="audioSwitch"
-                [(ngModel)]="configs.audio">
+                [(ngModel)]="configs().audio">
                 <label class="form-check-label" for="audioSwitch">{{'settings.audio' | transloco}}</label>
               </div>
             </div>
             <div class="col-sm-12">
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="autosaveSwitch"
-                  [(ngModel)]="configs.autosave">
+                  [(ngModel)]="configs().autosave">
                   <label class="form-check-label" for="autosaveSwitch">{{'settings.autosave' |
                   transloco}}</label>
                 </div>

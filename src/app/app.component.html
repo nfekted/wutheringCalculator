@@ -1,9 +1,9 @@
-<app-navbar [lang]="lang" [configs]="settings" (callback)="changeLang($event)"
+<app-navbar [lang]="lang()" [configs]="settings()" (callback)="changeLang($event)"
 (settings)="changeOptions($event)"></app-navbar>
 <router-outlet></router-outlet>
 <div class="row">
 </div>
-@if (!settings?.coockie) {
+@if (!settings().coockie) {
   <div class="form-row">
     <div class="col-sm-10 offset-1 mb-2"
       style="background-color: white; position: absolute; bottom: 0; border-radius: 15px;">
