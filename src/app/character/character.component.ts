@@ -2,7 +2,6 @@ import { Component, ChangeDetectionStrategy, computed, inject, input, output, si
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Character } from '../shared/models/character.model';
-import { Util } from '../shared/utils/util.model';
 import Swal from 'sweetalert2';
 import { TranslocoPipe, TranslocoService, provideTranslocoScope } from '@jsverse/transloco';
 import { AttributeModalComponent } from '../attribute-modal/attribute-modal.component';
@@ -22,6 +21,7 @@ export class CharacterComponent {
 
   character = input.required<Character>();
   callbackDelete = output<number>();
+  changed = output<void>();
 
   sum = signal(false);
 
@@ -53,20 +53,7 @@ export class CharacterComponent {
 
   calculate() {
     this.character().calculate();
-    this.save();
-  }
-
-  save() {
-    if (Util.load()['autosave']) {
-      Util.saveCharacters();
-    };
-  }
-
-  audio(type: string) {
-    const settings = Util.load();
-    if (settings?.audio) {
-      new Audio(`assets/sound/${type}.wav`).play();
-    }
+    this.changed.emit();
   }
 
   getHit(dmg: number, multiplierRange: Array<number>, upgradeLevel: number): number {

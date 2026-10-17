@@ -1,7 +1,6 @@
 {
     "home": "Inicio",
     "close": "Fechar",
-    "save": "Salvar",
     "load": "Carregar",
     "cancel": "Cancelar",
     "select": "Selecionar",
@@ -18,8 +17,6 @@
     "donation": "Gostaria de agradeçer os desenvolvedores? <b>Divulge o site para seus amigos</b> ou me pague um café pelo Ko-Fi <a href=\"https://ko-fi.com/nfekted\" target=\"blank_\" style=\"color: white\">clicando aqui</a>, qualquer quantia é bem vinda :)",
     "settings": {
         "settings": "Configurações",
-        "audio": "Tocar audios no site",
-        "autosave": "Salvar modificações automaticamente",
         "deleteSettings": "Apagar todos dados",
         "deleteConfirm": "Apagar todos os dados? Essa ação não pode ser desfeita"
     },

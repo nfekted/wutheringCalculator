@@ -9,7 +9,7 @@
             data-bs-target="#charModal"><u>{{'new'| transloco}}</u> +</button>
           </li>
           @for (c of characters(); track c; let i = $index) {
-            <li class="nav-item" role="presentation" (click)="audio('click')">
+            <li class="nav-item" role="presentation">
               <button class="nav-link charMenu" [id]="i + '-tab'" data-bs-toggle="tab"
                 [attr.data-bs-target]="'#'+i" type="button" role="tab" [attr.aria-controls]="i"
               aria-selected="true">{{c.character.name}}</button>
@@ -19,7 +19,7 @@
         <div class="tab-content" id="charContents">
           @for (c of characters(); track c; let i = $index) {
             <div class="tab-pane fade" [id]="i" role="tabpanel" [attr.aria-labelledby]="i+'-tab'">
-              <app-character [character]="c" (callbackDelete)="delete($event)"></app-character>
+              <app-character [character]="c" (callbackDelete)="delete($event)" (changed)="save()"></app-character>
             </div>
           }
         </div>
@@ -74,7 +74,7 @@
                               @if (currentSelection() === c.icon) {
                                 <button type="button" [class]="'mb-3 btn btn-primary btn-'+ currentSelection()"
                                   data-bs-dismiss="modal" aria-label="Close"
-                                  (click)="createNew(); audio('characters/' + c.icon)" style="width: 100%;">
+                                  (click)="createNew()" style="width: 100%;">
                                 {{'new' | transloco}} {{currentSelection()}}</button>
                               }
                             </div>

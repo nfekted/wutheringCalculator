@@ -1,7 +1,6 @@
 {
     "home": "Home",
     "close": "Close",
-    "save": "Save",
     "load": "Load",
     "cancel": "Cancel",
     "select": "Select",
@@ -18,8 +17,6 @@
     "donation": "Would you like to thank the developers? <b>Share the site with your friends</b> or make a <a href=\"https://ko-fi.com/nfekted\" target=\"blank_\" style=\"color: white\">donation with Ko-fi</a>, any tip is welcome :)",
     "settings": {
         "settings": "Settings",
-        "audio": "Play audios in website",
-        "autosave": "Autosave characters modifications",
         "deleteSettings": "Delete all saved data",
         "deleteConfirm": "Delete all saved data? This can't be undone"
     },

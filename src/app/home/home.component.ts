@@ -1,10 +1,10 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { TranslocoPipe, provideTranslocoScope } from '@jsverse/transloco';
 import { CharacterComponent } from '../character/character.component';
 import { Character } from '../shared/models/character.model';
 import { Encore } from '../shared/models/encore.model';
 import { Sanhua } from '../shared/models/sanhua.model';
-import { Util } from '../shared/utils/util.model';
+import { StorageService } from '../shared/services/storage.service';
 import { Jinhsi } from '../shared/models/jinhsi.model';
 import { Aalto } from '../shared/models/aalto.model';
 import { Baizhi } from '../shared/models/baizhi.model';
@@ -39,6 +39,8 @@ import { Carlotta } from '../shared/models/carlotta.model';
     providers: [provideTranslocoScope('home')]
 })
 export class HomeComponent {
+
+  private storage = inject(StorageService);
 
   characterList: any[] = [];
   filterBy = signal('');
@@ -187,39 +189,23 @@ export class HomeComponent {
         break;
     }
     this.characters.update(list => [...list, char]);
-    Util.characters = this.characters();
     this.currentSelection.set('');
 
     if (!load) this.save();
   }
 
   save() {
-    if (Util.load()['autosave']) {
-      Util.saveCharacters();
-    };
+    this.storage.saveCharacters(this.characters());
   }
 
   charCreation(char: any, load?: any) {
     return new Character(this.characters().length, char, load);
   }
 
-  load() {
-    const load = Util.load('wuteringcalculator-chars');
-    if (!load) {
-      this.characters.set([]);
-    } else {
-      for (const c of load) {
-        this.currentSelection.set(c.icon);
-        this.createNew(c);
-      }
-      Util.characters = this.characters();
-    }
-  }
-
-  audio(type: string) {
-    const settings = Util.load();
-    if (settings?.audio) {
-      new Audio(`assets/sound/${type}.wav`).play();
+  async load() {
+    for (const c of await this.storage.loadCharacters()) {
+      this.currentSelection.set(c.icon);
+      this.createNew(c);
     }
   }
 
@@ -230,7 +216,6 @@ export class HomeComponent {
     }
 
     this.characters.set(list);
-    Util.characters = list;
     this.save();
   }
 
