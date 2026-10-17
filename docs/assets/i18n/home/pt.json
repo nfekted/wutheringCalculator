@@ -1,3 +1,5 @@
 {
-       "char-modal-title" : "Selecione o personagem"
+    "char-modal-title": "Selecione o personagem",
+    "add": "Adicionar personagem",
+    "roster": "Seus personagens"
 }
