@@ -29,9 +29,10 @@ import { Camellya } from '../shared/models/camellya';
 import { Carlotta } from '../shared/models/carlotta.model';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss',
+    standalone: false
 })
 export class HomeComponent {
 

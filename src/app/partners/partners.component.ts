@@ -3,9 +3,10 @@ import { Partner } from '../shared/models/partner.model.js';
 import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
-  selector: 'app-partners',
-  templateUrl: './partners.component.html',
-  styleUrl: './partners.component.scss',
+    selector: 'app-partners',
+    templateUrl: './partners.component.html',
+    styleUrl: './partners.component.scss',
+    standalone: false
 })
 export class PartnersComponent implements OnInit {
 

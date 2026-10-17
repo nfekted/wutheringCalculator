@@ -3,8 +3,9 @@ import { Character } from '../shared/models/character.model';
 import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
-  selector: 'app-attribute-modal',
-  templateUrl: './attribute-modal.component.html',
+    selector: 'app-attribute-modal',
+    templateUrl: './attribute-modal.component.html',
+    standalone: false
 })
 export class AttributeModalComponent {
 

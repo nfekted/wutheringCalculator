@@ -3,9 +3,10 @@ import { Character } from '../shared/models/character.model';
 import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
-  selector: 'app-data-table-modal',
-  templateUrl: './data-table-modal.component.html',
-  styleUrl: './data-table-modal.component.scss'
+    selector: 'app-data-table-modal',
+    templateUrl: './data-table-modal.component.html',
+    styleUrl: './data-table-modal.component.scss',
+    standalone: false
 })
 export class DataTableModalComponent {
 

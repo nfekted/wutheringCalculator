@@ -4,9 +4,10 @@ import { TranslocoService } from '@ngneat/transloco';
 import { Echo } from '../shared/models/echo.model';
 
 @Component({
-  selector: 'app-echo-comparator-modal',
-  templateUrl: './echo-comparator-modal.component.html',
-  styleUrl: './echo-comparator-modal.component.scss'
+    selector: 'app-echo-comparator-modal',
+    templateUrl: './echo-comparator-modal.component.html',
+    styleUrl: './echo-comparator-modal.component.scss',
+    standalone: false
 })
 export class EchoComparatorModalComponent {
 

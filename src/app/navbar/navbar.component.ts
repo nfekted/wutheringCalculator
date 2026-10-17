@@ -5,9 +5,10 @@ import Swal from 'sweetalert2';
 import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.scss',
+    standalone: false
 })
 export class NavbarComponent {
 

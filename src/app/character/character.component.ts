@@ -5,9 +5,10 @@ import Swal from 'sweetalert2';
 import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
-  selector: 'app-character',
-  templateUrl: './character.component.html',
-  styleUrl: './character.component.scss'
+    selector: 'app-character',
+    templateUrl: './character.component.html',
+    styleUrl: './character.component.scss',
+    standalone: false
 })
 export class CharacterComponent {
 
