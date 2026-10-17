@@ -153,16 +153,7 @@
                                                 {{'char.echo.echo' | transloco}}
                                               </button>
                                             </div>
-                                            <div class="col-sm-12 mt-2">
-                                              <button type="button" data-bs-toggle="modal" (click)="audio('click')"
-                                                [attr.data-bs-target]="'#dataTableModal'+character.index"
-                                                [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
-                                                <img src="assets/img/icons/resonator.webp" width="25px"
-                                                  [class]="currentSelection + '-icon'" />
-                                                  {{'char.dataTable' | transloco}}
-                                                </button>
-                                              </div>
-                                            </div>
+                                                                            </div>
                                           </div>
                                         </div>
                                         <div class="row mt-5 mb-5">
@@ -835,4 +826,3 @@
 
 <app-attribute-modal [id]="'critModal'+character.index" [character]="character"></app-attribute-modal>
 <app-echo-comparator-modal [id]="'echoModal'+character.index" [character]="character"></app-echo-comparator-modal>
-<app-data-table-modal [id]="'dataTableModal'+character.index" [character]="character"></app-data-table-modal>

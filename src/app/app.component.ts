@@ -51,11 +51,4 @@ export class AppComponent {
       Util.save(this.settings)
     }
   }
-
-  share(media: 'f' | 'x') {
-    switch (media) {
-      case 'f': window.open("https://www.facebook.com/sharer/sharer.php?u=https://nfekted.github.io/wutheringCalculator/"); break;
-      case 'x': window.open("https://twitter.com/intent/tweet?url=https://nfekted.github.io/wutheringCalculator/&text=" + this.translocoService.translate('x') + "&hashtags=WutheringWaves,Wuthering_waves");
-    }
-  }
 }

@@ -7,11 +7,9 @@ import { CharacterComponent } from './character.component';
 import { FormsModule } from '@angular/forms';
 import { AttributeModalComponent } from '../attribute-modal/attribute-modal.component';
 import { EchoComparatorModalComponent } from '../echo-comparator/echo-comparator-modal.component';
-import { DataTableModalComponent } from '../data-table/data-table-modal.component';
-import { DataTableTableComponent } from '../data-table/data-table-table/data-table-table.component';
 
 @NgModule({
-  declarations: [CharacterComponent, AttributeModalComponent, EchoComparatorModalComponent, DataTableModalComponent, DataTableTableComponent],
+  declarations: [CharacterComponent, AttributeModalComponent, EchoComparatorModalComponent],
   imports: [
     CommonModule,
     CharacterRoutingModule,

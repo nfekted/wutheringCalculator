@@ -21,24 +21,6 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/faq']" routerLinkActive="active">FAQ</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/partners']" routerLinkActive="active">{{'partner' |
-          transloco}}</a>
-        </li>
-        <li class="nav-item">
-          <div class="dropdown mr-2" [title]="'tools' | transloco">
-            <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              {{'tools'|transloco}}
-            </button>
-            <ul class="dropdown-menu p-3 tools">
-              <li style="max-width: fit-content;">
-                <img src="assets/img/zzz.jpg" height="150" />
-                <div class="centered text-center">{{'zzz' | transloco}}</div>
-              </li>
-            </ul>
-          </div>
-        </li>
       </ul>
       <div class="d-flex">
         <button class="btn btn-dark" style="background-color: #121212;border: none;" data-bs-toggle="modal"
@@ -47,12 +29,6 @@
             news
           </span>
         </button>
-        <a href="https://forms.gle/kUUBYNQA39uYxfQ26" target="_blank" class="btn btn-dark"
-          style="background-color: #121212;border: none;">
-          <span class="material-symbols-outlined">
-            bug_report
-          </span>
-        </a>
         @if (!configs.autosave) {
           <button class="btn btn-secondary btn-sm" [title]="'save' | transloco" (click)="save()"
             >
