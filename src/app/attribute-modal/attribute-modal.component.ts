@@ -15,7 +15,7 @@ export class AttributeModalComponent {
   id = input.required<string>();
   character = input.required<Character>();
 
-  currentSelection = computed(() => this.character().character.icon);
+  currentSelection = computed(() => this.character().data.icon);
   newAtk: number = 0;
   newHp: number = 0;
   newDef: number = 0;
@@ -77,7 +77,7 @@ export class AttributeModalComponent {
   simulationBasic(simulation: boolean) {
     let currentChance = this.character().cChance;
     let critMult = this.character().cDmg;
-    let copy = new Character(0, null);
+    let copy: Character;
     if (simulation) {
       currentChance = this.newCritChance;
       critMult = this.newCritDmg;
@@ -93,7 +93,7 @@ export class AttributeModalComponent {
     const list: Array<Array<number | boolean>> = [];
     if (this.enhancerBasic) {
       for (let i = 0; i < 20; i++) {
-        const dmg: number = simulation ? copy.sumBasicDmg[currentAttack] : this.character().sumBasicDmg[currentAttack];
+        const dmg: number = simulation ? copy.results.basic.sum[currentAttack] : this.character().results.basic.sum[currentAttack];
         if ((!this.randomCrit && currentChance >= 5) || (this.randomCrit && (Math.floor(Math.random() * 100) + 1) < currentChance)) {
           list[i] = [+(dmg * (critMult / 100)).toFixed(0), true, false];
           currentChance -= (this.randomCrit ? 0 : 5);
@@ -102,7 +102,7 @@ export class AttributeModalComponent {
         }
         this.fixedTotal += simulation ? 0 : +list[i][0];
         this.fixedSimTotal += simulation ? +list[i][0] : 0;
-        currentAttack = currentAttack == this.character().character.basicEnds ? 0 : currentAttack + 1;
+        currentAttack = currentAttack == this.character().data.basic.ends ? 0 : currentAttack + 1;
       }
     }
 
@@ -116,32 +116,26 @@ export class AttributeModalComponent {
   simulationRotation(simulation: boolean) {
     let currentChance = this.character().cChance;
     let critMult = this.character().cDmg;
-    let copy = new Character(0, null);
+    let copy: Character;
     if (simulation) {
       currentChance = this.newCritChance;
       critMult = this.newCritDmg;
       this.fixedSimTotal = 0;
-      this.newQtdCrit = +(this.character().character.rotation[0].length * (this.newCritChance / 100)).toFixed(0);
+      this.newQtdCrit = +(this.character().data.rotation.length * (this.newCritChance / 100)).toFixed(0);
       copy = this.characterCopy();
     } else {
       this.fixedTotal = 0;
-      this.qtdCrit = +(this.character().character.rotation[0].length * (currentChance / 100)).toFixed(0);
+      this.qtdCrit = +(this.character().data.rotation.length * (currentChance / 100)).toFixed(0);
     }
 
     const list: Array<Array<number | boolean>> = [];
-    const rotation = this.character().character.rotation;
+    const rotation = this.character().data.rotation;
     if (!this.randomCrit) currentChance = (!simulation ? this.qtdCrit : this.newQtdCrit);
     let heal: boolean = false;
-    for (let i = 0; i < rotation[0].length; i++) {
-if(i == 15){
-  console.log(``)
-  console.log(copy[rotation[0][i]][rotation[1][i]])
-  console.log(this.character()[rotation[0][i]][rotation[1][i]])
-}
+    for (let i = 0; i < rotation.length; i++) {
+      if (this.character().canHeal) heal = !!rotation[i].healing;
 
-      if (this.character().canHeal) heal = (this.character().character.rotation[0][i] as string).includes('sumHealing');
-
-      const dmg = simulation ? copy[rotation[0][i]][rotation[1][i]] : this.character()[rotation[0][i]][rotation[1][i]];
+      const dmg = simulation ? copy.rotationValue(rotation[i]) : this.character().rotationValue(rotation[i]);
       if ((!this.randomCrit && currentChance > 0) || (this.randomCrit && (Math.floor(Math.random() * 100) + 1) < currentChance)) {
         list[i] = [+(dmg * ((heal ? 100 : critMult) / 100)).toFixed(0), true, heal];
         currentChance -= (this.randomCrit ? 0 : 1);
@@ -161,8 +155,7 @@ if(i == 15){
   }
 
   characterCopy(): Character {
-    let copy = new Character(0, null);
-    copy = Object.assign(copy, this.character());
+    const copy = this.character().clone();
     copy.dmg = this.newAtk;
     copy.hp = this.newHp;
     copy.def = this.newDef;

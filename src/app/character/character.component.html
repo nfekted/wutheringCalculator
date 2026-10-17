@@ -3,40 +3,40 @@
     <div class="col-sm-6">
       <div class="row">
         <div class="col-sm-3 text-center mb-3">
-          <img class="img-fluid" [src]="'assets/img/characters/'+character().character.icon+'.png'"
+          <img class="img-fluid" [src]="'assets/img/characters/'+character().data.icon+'.png'"
             style="width: 250px;border-radius: 0 0 50% 50%;" />
             @if (!nameEdit()) {
               <h2 style="cursor: pointer;" (click)="nameEdit.set(true)">
-                <u>{{character().character.name}}</u>
+                <u>{{character().name}}</u>
               </h2>
             }
             @if (nameEdit()) {
-              <input [(ngModel)]="character().character.name" (blur)="nameEdit.set(false);changed.emit()" />
+              <input [(ngModel)]="character().name" (blur)="nameEdit.set(false);changed.emit()" />
             }
-            <a [href]="character().character.wiki" target="_blank">WIKI</a><br />
+            <a [href]="character().data.wiki" target="_blank">WIKI</a><br />
             <span>{{'char.update' | transloco}}</span><br />
-            <span>{{character().character.lastUpdate | date : (lang == 'pt' ? 'dd/MM/yyyy hh:mm' : 'MM/dd/yyyy hh:mm')}}</span>
+            <span>{{character().data.lastUpdate | date : (lang == 'pt' ? 'dd/MM/yyyy hh:mm' : 'MM/dd/yyyy hh:mm')}}</span>
             <button class="btn btn-sm btn-danger mt-4" (click)="delete()">{{'deleteTab' | transloco}}</button>
           </div>
           <div class="col-sm-9">
             <div class="row">
               <div class="col-sm-12 text-justify">
-                <div [innerHtml]="'char.characters.' + character().character.icon | transloco"></div>
+                <div [innerHtml]="'char.characters.' + character().data.icon | transloco"></div>
               </div>
               <hr />
               <div class="col-sm-1">
-                <img class="img-fluid" [src]="'assets/img/icons/'+character().character.type+'.webp'"
+                <img class="img-fluid" [src]="'assets/img/icons/'+character().data.type+'.webp'"
                   style="width: 4rem;" />
                 </div>
                 <div class="col-sm-11">
-                  <div [innerHtml]="'char.' + character().character.type | transloco"></div>
+                  <div [innerHtml]="'char.' + character().data.type | transloco"></div>
                 </div>
                 <div class="col-sm-1">
-                  <img class="img-fluid" [src]="'assets/img/icons/'+character().character.weapon+'.webp'"
+                  <img class="img-fluid" [src]="'assets/img/icons/'+character().data.weapon+'.webp'"
                     style="width: 4rem;" />
                   </div>
                   <div class="col-sm-11">
-                    <div [innerHtml]="'char.' + character().character.weapon | transloco"></div>
+                    <div [innerHtml]="'char.' + character().data.weapon | transloco"></div>
                   </div>
                   <hr />
                   <div class="col-sm-12 mt-1"><b>{{'char.attributes' | transloco}}</b></div>
@@ -157,55 +157,55 @@
                                           </div>
                                         </div>
                                         <div class="row mt-5 mb-5">
-                                          <div class="offset-1 col-sm-2 skill" (click)="upgrade(0)">
+                                          <div class="offset-1 col-sm-2 skill" (click)="upgrade('basic')">
                                             <div class="row skill-content text-center">
                                               <div class="col-sm-12">
-                                                <img class="img-fluid" [src]="'assets/img/icons/'+character().character.weapon+'.webp'"
+                                                <img class="img-fluid" [src]="'assets/img/icons/'+character().data.weapon+'.webp'"
                                                   style="width: 50px;" />
                                                 </div>
                                                 <div class="col-sm-12">{{'char.basic' | transloco}}</div>
-                                                <div class="col-sm-12"><u>{{character().character.basicCurrent}}</u></div>
+                                                <div class="col-sm-12"><u>{{character().levels.basic}}</u></div>
                                               </div>
                                             </div>
-                                            <div class="offset-1 col-sm-2 skill" (click)="upgrade(1)">
+                                            <div class="offset-1 col-sm-2 skill" (click)="upgrade('skill')">
                                               <div class="row skill-content text-center">
                                                 <div class="col-sm-12">
-                                                  <img class="img-fluid" [src]="'assets/img/icons/'+character().character.icon+'-skill.webp'"
+                                                  <img class="img-fluid" [src]="'assets/img/icons/'+character().data.icon+'-skill.webp'"
                                                     style="width: 50px;" />
                                                   </div>
                                                   <div class="col-sm-12">{{'char.skill' | transloco}}</div>
-                                                  <div class="col-sm-12"><u>{{character().character.skillCurrent}}</u></div>
+                                                  <div class="col-sm-12"><u>{{character().levels.skill}}</u></div>
                                                 </div>
                                               </div>
-                                              <div class="offset-1 col-sm-2 skill" (click)="upgrade(2)">
+                                              <div class="offset-1 col-sm-2 skill" (click)="upgrade('forte')">
                                                 <div class="row skill-content text-center">
                                                   <div class="col-sm-12">
-                                                    <img class="img-fluid" [src]="'assets/img/icons/'+character().character.icon+'-forte.webp'"
+                                                    <img class="img-fluid" [src]="'assets/img/icons/'+character().data.icon+'-forte.webp'"
                                                       style="width: 50px;" />
                                                     </div>
                                                     <div class="col-sm-12">{{'char.forte' | transloco}}</div>
-                                                    <div class="col-sm-12"><u>{{character().character.forteCurrent}}</u></div>
+                                                    <div class="col-sm-12"><u>{{character().levels.forte}}</u></div>
                                                   </div>
                                                 </div>
-                                                <div class="offset-1 col-sm-2 skill" (click)="upgrade(3)">
+                                                <div class="offset-1 col-sm-2 skill" (click)="upgrade('liberation')">
                                                   <div class="row skill-content text-center">
                                                     <div class="col-sm-12">
                                                       <img class="img-fluid"
-                                                        [src]="'assets/img/icons/'+character().character.icon+'-liberation.webp'"
+                                                        [src]="'assets/img/icons/'+character().data.icon+'-liberation.webp'"
                                                         style="width: 50px;" />
                                                       </div>
                                                       <div class="col-sm-12">{{'char.liberation' | transloco}}</div>
-                                                      <div class="col-sm-12"><u>{{character().character.liberationCurrent}}</u></div>
+                                                      <div class="col-sm-12"><u>{{character().levels.liberation}}</u></div>
                                                     </div>
                                                   </div>
-                                                  <div class="offset-1 col-sm-2 skill" (click)="upgrade(4)">
+                                                  <div class="offset-1 col-sm-2 skill" (click)="upgrade('intro')">
                                                     <div class="row skill-content text-center">
                                                       <div class="col-sm-12">
-                                                        <img class="img-fluid" [src]="'assets/img/icons/'+character().character.icon+'-intro.webp'"
+                                                        <img class="img-fluid" [src]="'assets/img/icons/'+character().data.icon+'-intro.webp'"
                                                           style="width: 50px;" />
                                                         </div>
                                                         <div class="col-sm-12">{{'char.intro' | transloco}}</div>
-                                                        <div class="col-sm-12"><u>{{character().character.introCurrent}}</u></div>
+                                                        <div class="col-sm-12"><u>{{character().levels.intro}}</u></div>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -265,7 +265,7 @@
                                                                   </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                  @for (b of character().character.basicNames; track b; let i = $index) {
+                                                                  @for (b of character().data.basic.names; track b; let i = $index) {
                                                                     <tr>
                                                                       <th scope="row">
                                                                         {{b}}
@@ -274,59 +274,59 @@
                                                                       @if (!sum()) {
                                                                         <td>
                                                                           <!-- BASIC DAMAGE -->
-                                                                          @if (character().character.basicMultiplier[i] > 1) {
+                                                                          @if (character().data.basic.multiplier[i] > 1) {
                                                                             <small
-                                                                              style="color: white;">{{character().character.basicMultiplier[i]}}x
+                                                                              style="color: white;">{{character().data.basic.multiplier[i]}}x
                                                                             </small>
                                                                           }
-                                                                          {{character().basicDmg[i]}} (<b>{{(character().basicDmg[i] *
+                                                                          {{character().results.basic.dmg[i]}} (<b>{{(character().results.basic.dmg[i] *
                                                                           (character().cDmg/100)) |
                                                                         number : '1.0-0'}}</b>)
                                                                         <!-- SECOND BASIC DAMAGE -->
-                                                                        @if (character().basicSecondDmg[i] > 0) {
+                                                                        @if (character().results.basic.second[i] > 0) {
                                                                           <br />+<br />
-                                                                          @if (character().character.basicSecondMultiplier[i] > 1) {
+                                                                          @if (character().data.basic.secondMultiplier[i] > 1) {
                                                                             <small
-                                                                              style="color: white;">{{character().character.basicSecondMultiplier[i]}}x
+                                                                              style="color: white;">{{character().data.basic.secondMultiplier[i]}}x
                                                                             </small>
                                                                           }
-                                                                          {{character().basicSecondDmg[i]}}
-                                                                          (<b>{{(character().basicSecondDmg[i] *
+                                                                          {{character().results.basic.second[i]}}
+                                                                          (<b>{{(character().results.basic.second[i] *
                                                                           (character().cDmg/100)) |
                                                                         number : '1.0-0'}}</b>)
                                                                       }
                                                                       <!-- THIRD BASIC DAMAGE -->
-                                                                      @if (character().basicThirdDmg[i] > 0) {
+                                                                      @if (character().results.basic.third[i] > 0) {
                                                                         <br />+<br />
-                                                                        @if (character().character.basicThirdMultiplier[i] > 1) {
+                                                                        @if (character().data.basic.thirdMultiplier[i] > 1) {
                                                                           <small
-                                                                            style="color: white;">{{character().character.basicThirdMultiplier[i]}}x
+                                                                            style="color: white;">{{character().data.basic.thirdMultiplier[i]}}x
                                                                           </small>
                                                                         }
-                                                                        {{character().basicThirdDmg[i]}} (<b>{{(character().basicThirdDmg[i]
+                                                                        {{character().results.basic.third[i]}} (<b>{{(character().results.basic.third[i]
                                                                       * (character().cDmg/100)) | number : '1.0-0'}}</b>)
                                                                     }
                                                                   </td>
                                                                   <td>
-                                                                    <div [innerHtml]="character().basicCommonDmg[i]"></div>
+                                                                    <div [innerHtml]="character().results.basic.common[i]"></div>
                                                                   </td>
                                                                   <td>
-                                                                    <div [innerHtml]="character().basicResDmg[i]"></div>
+                                                                    <div [innerHtml]="character().results.basic.res[i]"></div>
                                                                   </td>
                                                                 }
                                                                 <!-- End Detailed Mode -->
                                                                 <!-- Sum mode -->
                                                                 @if (sum()) {
                                                                   <td>
-                                                                    {{character().sumBasicDmg[i]}}
-                                                                    (<b>{{(character().sumBasicDmg[i] * (character().cDmg/100)) | number :
+                                                                    {{character().results.basic.sum[i]}}
+                                                                    (<b>{{(character().results.basic.sum[i] * (character().cDmg/100)) | number :
                                                                   '1.0-0'}}</b>)
                                                                 </td>
                                                                 <td>
-                                                                  <div [innerHtml]="character().sumCommonDmg[i]"></div>
+                                                                  <div [innerHtml]="character().results.basic.sumCommon[i]"></div>
                                                                 </td>
                                                                 <td>
-                                                                  <div [innerHtml]="character().sumResDmg[i]"></div>
+                                                                  <div [innerHtml]="character().results.basic.sumRes[i]"></div>
                                                                 </td>
                                                               }
                                                               <!-- End Sum Mode -->
@@ -362,7 +362,7 @@
                                                           </tr>
                                                         </thead>
                                                         <tbody>
-                                                          @for (b of character().character.skillNames; track b; let i = $index) {
+                                                          @for (b of character().data.skill.names; track b; let i = $index) {
                                                             <tr>
                                                               <th scope="row">
                                                                 {{b}}
@@ -370,53 +370,53 @@
                                                               <!-- Detailed Mode -->
                                                               @if (!sum()) {
                                                                 <td
-                                                                  [style.color]="character().character.skillHeal?.[i] ? 'lawngreen' : ''">
+                                                                  [style.color]="character().data.skill.heal?.[i] ? 'lawngreen' : ''">
                                                                   <!-- Skill First Damage -->
-                                                                  @if (character().character.skillMultiplier[i] > 1) {
+                                                                  @if (character().data.skill.multiplier[i] > 1) {
                                                                     <small
-                                                                      style="color: white;">{{character().character.skillMultiplier[i]}}x
+                                                                      style="color: white;">{{character().data.skill.multiplier[i]}}x
                                                                     </small>
                                                                   }
-                                                                  {{character().skillDmg[i]}}
-                                                                  @if (!character().character.skillHeal?.[i]) {
-                                                                    (<b>{{(character().skillDmg[i] * (character().cDmg/100)) | number :
+                                                                  {{character().results.skill.dmg[i]}}
+                                                                  @if (!character().data.skill.heal?.[i]) {
+                                                                    (<b>{{(character().results.skill.dmg[i] * (character().cDmg/100)) | number :
                                                                   '1.0-0'}}</b>)
                                                                 }
                                                                 <!-- Skill Second Damage -->
-                                                                @if (character().skillSecondDmg[i] > 0) {
+                                                                @if (character().results.skill.second[i] > 0) {
                                                                   <br />+<br />
-                                                                  @if (character().character.skillSecondMultiplier[i] > 1) {
+                                                                  @if (character().data.skill.secondMultiplier[i] > 1) {
                                                                     <small
-                                                                      style="color: white;">{{character().character.skillSecondMultiplier[i]}}x
+                                                                      style="color: white;">{{character().data.skill.secondMultiplier[i]}}x
                                                                     </small>
                                                                   }
-                                                                  {{character().skillSecondDmg[i]}}
-                                                                  @if (!character().character.skillHeal?.[i]) {
-                                                                    (<b>{{(character().skillSecondDmg[i] * (character().cDmg/100)) |
+                                                                  {{character().results.skill.second[i]}}
+                                                                  @if (!character().data.skill.heal?.[i]) {
+                                                                    (<b>{{(character().results.skill.second[i] * (character().cDmg/100)) |
                                                                   number : '1.0-0'}}</b>)
                                                                 }
                                                               }
                                                               <!-- Skill Third Damage -->
-                                                              @if (character().skillThirdDmg[i] > 0) {
+                                                              @if (character().results.skill.third[i] > 0) {
                                                                 <br />+<br />
-                                                                @if (character().character.skillThirdMultiplier[i] > 1) {
+                                                                @if (character().data.skill.thirdMultiplier[i] > 1) {
                                                                   <small
-                                                                    style="color: white;">{{character().character.skillThirdMultiplier[i]}}x
+                                                                    style="color: white;">{{character().data.skill.thirdMultiplier[i]}}x
                                                                   </small>
                                                                 }
-                                                                {{character().skillThirdDmg[i]}} (<b>{{(character().skillThirdDmg[i]
+                                                                {{character().results.skill.third[i]}} (<b>{{(character().results.skill.third[i]
                                                               * (character().cDmg/100)) | number : '1.0-0'}}</b>)
                                                             }
                                                           </td>
                                                           <td>
-                                                            @if (!character().character['skillHeal']?.[i]) {
-                                                              <div [innerHtml]="character().skillCommonDmg[i]"
+                                                            @if (!character().data.skill.heal?.[i]) {
+                                                              <div [innerHtml]="character().results.skill.common[i]"
                                                               ></div>
                                                             }
                                                           </td>
                                                           <td>
-                                                            @if (!character().character['skillHeal']?.[i]) {
-                                                              <div [innerHtml]="character().skillResDmg[i]"
+                                                            @if (!character().data.skill.heal?.[i]) {
+                                                              <div [innerHtml]="character().results.skill.res[i]"
                                                               ></div>
                                                             }
                                                           </td>
@@ -424,22 +424,22 @@
                                                         <!-- Sum Mode -->
                                                         @if (sum()) {
                                                           <td
-                                                            [style.color]="character().character.skillHeal?.[i] ? 'lawngreen' : ''">
-                                                            {{character().sumSkillDmg[i]}}
-                                                            @if (!character().character.skillHeal?.[i]) {
-                                                              (<b>{{(character().sumSkillDmg[i] * (character().cDmg/100)) | number
+                                                            [style.color]="character().data.skill.heal?.[i] ? 'lawngreen' : ''">
+                                                            {{character().results.skill.sum[i]}}
+                                                            @if (!character().data.skill.heal?.[i]) {
+                                                              (<b>{{(character().results.skill.sum[i] * (character().cDmg/100)) | number
                                                             : '1.0-0'}}</b>)
                                                           }
                                                         </td>
                                                         <td>
-                                                          @if (!character().character.skillHeal?.[i]) {
-                                                            <div [innerHtml]="character().sumCommonSkillDmg[i]"
+                                                          @if (!character().data.skill.heal?.[i]) {
+                                                            <div [innerHtml]="character().results.skill.sumCommon[i]"
                                                             ></div>
                                                           }
                                                         </td>
                                                         <td>
-                                                          @if (!character().character.skillHeal?.[i]) {
-                                                            <div [innerHtml]="character().sumResSkillDmg[i]"
+                                                          @if (!character().data.skill.heal?.[i]) {
+                                                            <div [innerHtml]="character().results.skill.sumRes[i]"
                                                             ></div>
                                                           }
                                                         </td>
@@ -448,9 +448,9 @@
                                                   }
                                                   <tr>
                                                     <td colspan="5"><b>{{'char.liberation' | transloco}}:
-                                                    {{character().character.basicName}}</b></td>
+                                                    {{character().data.basic.name}}</b></td>
                                                   </tr>
-                                                  @for (b of character().character.liberationNames; track b; let i = $index) {
+                                                  @for (b of character().data.liberation.names; track b; let i = $index) {
                                                     <tr>
                                                       <th scope="row">
                                                         {{b}}
@@ -458,54 +458,54 @@
                                                       <!-- Detailed Mode -->
                                                       @if (!sum()) {
                                                         <td
-                                                          [style.color]="character().character.liberationHeal?.[i] ? 'lawngreen' : ''">
+                                                          [style.color]="character().data.liberation.heal?.[i] ? 'lawngreen' : ''">
                                                           <!-- Liberation Damage -->
-                                                          @if (character().character.liberationMultiplier[i] > 1) {
+                                                          @if (character().data.liberation.multiplier[i] > 1) {
                                                             <small
-                                                              style="color: white;">{{character().character.liberationMultiplier[i]}}x
+                                                              style="color: white;">{{character().data.liberation.multiplier[i]}}x
                                                             </small>
                                                           }
-                                                          {{character().liberationDmg[i]}}
-                                                          @if (!character().character.liberationHeal?.[i]) {
-                                                            (<b>{{(character().liberationDmg[i] * (character().cDmg/100)) |
+                                                          {{character().results.liberation.dmg[i]}}
+                                                          @if (!character().data.liberation.heal?.[i]) {
+                                                            (<b>{{(character().results.liberation.dmg[i] * (character().cDmg/100)) |
                                                           number : '1.0-0'}}</b>)
                                                         }
                                                         <!-- Liberation Second Damage -->
-                                                        @if (character().liberationSecondDmg[i] > 0) {
+                                                        @if (character().results.liberation.second[i] > 0) {
                                                           <br />+<br />
-                                                          @if (character().character.liberationSecondMultiplier?.[i] > 1) {
+                                                          @if (character().data.liberation.secondMultiplier?.[i] > 1) {
                                                             <small
-                                                              style="color: white;">{{character().character.liberationSecondMultiplier[i]}}x
+                                                              style="color: white;">{{character().data.liberation.secondMultiplier[i]}}x
                                                             </small>
                                                           }
-                                                          {{character().liberationSecondDmg[i]}}
-                                                          @if (!character().character.liberationHeal?.[i]) {
-                                                            (<b>{{(character().liberationSecondDmg[i] *
+                                                          {{character().results.liberation.second[i]}}
+                                                          @if (!character().data.liberation.heal?.[i]) {
+                                                            (<b>{{(character().results.liberation.second[i] *
                                                           (character().cDmg/100)) | number : '1.0-0'}}</b>)
                                                         }
                                                       }
                                                       <!-- Liberation Third Damage -->
-                                                      <!-- <ng-container *ngIf="character().liberationThirdDmg[i] > 0">
+                                                      <!-- <ng-container *ngIf="character().results.liberation.third[i] > 0">
                                                       <br />+<br />
                                                       <small
-                                                        *ngIf="character().character.liberationThirdMultiplier[i] > 1"
-                                                        style="color: white;">{{character().character.liberationThirdMultiplier[i]}}x
+                                                        *ngIf="character().data.liberation.thirdMultiplier[i] > 1"
+                                                        style="color: white;">{{character().data.liberation.thirdMultiplier[i]}}x
                                                       </small>
-                                                      {{character().liberationThirdDmg[i]}}
-                                                      (<b>{{(character().liberationThirdDmg[i]
+                                                      {{character().results.liberation.third[i]}}
+                                                      (<b>{{(character().results.liberation.third[i]
                                                     * (character().cDmg/100)) | number : '1.0-0'}}</b>)
                                                   </ng-container> -->
                                                 </td>
                                                 <td>
-                                                  @if (!character().character.liberationHeal?.[i]) {
-                                                    <div [innerHtml]="character().liberationCommonDmg[i]"
+                                                  @if (!character().data.liberation.heal?.[i]) {
+                                                    <div [innerHtml]="character().results.liberation.common[i]"
                                                       >
                                                     </div>
                                                   }
                                                 </td>
                                                 <td>
-                                                  @if (!character().character.liberationHeal?.[i]) {
-                                                    <div [innerHtml]="character().liberationResDmg[i]"
+                                                  @if (!character().data.liberation.heal?.[i]) {
+                                                    <div [innerHtml]="character().results.liberation.res[i]"
                                                       >
                                                     </div>
                                                   }
@@ -514,22 +514,22 @@
                                               <!-- Sum mode -->
                                               @if (sum()) {
                                                 <td
-                                                  [style.color]="character().character.liberationHeal?.[i] ? 'lawngreen' : ''">
-                                                  {{character().sumLiberationDmg[i]}}
-                                                  @if (!character().character.liberationHeal?.[i]) {
-                                                    (<b>{{(character().sumLiberationDmg[i] *
+                                                  [style.color]="character().data.liberation.heal?.[i] ? 'lawngreen' : ''">
+                                                  {{character().results.liberation.sum[i]}}
+                                                  @if (!character().data.liberation.heal?.[i]) {
+                                                    (<b>{{(character().results.liberation.sum[i] *
                                                   (character().cDmg/100)) | number : '1.0-0'}}</b>)
                                                 }
                                               </td>
                                               <td>
-                                                @if (!character().character.liberationHeal?.[i]) {
-                                                  <div [innerHtml]="character().sumCommonLibDmg[i]"
+                                                @if (!character().data.liberation.heal?.[i]) {
+                                                  <div [innerHtml]="character().results.liberation.sumCommon[i]"
                                                   ></div>
                                                 }
                                               </td>
                                               <td>
-                                                @if (!character().character.liberationHeal?.[i]) {
-                                                  <div [innerHtml]="character().sumResLibDmg[i]"
+                                                @if (!character().data.liberation.heal?.[i]) {
+                                                  <div [innerHtml]="character().results.liberation.sumRes[i]"
                                                   ></div>
                                                 }
                                               </td>
@@ -567,7 +567,7 @@
                                         </tr>
                                       </thead>
                                       <tbody>
-                                        @for (b of character().character.introNames; track b; let i = $index) {
+                                        @for (b of character().data.intro.names; track b; let i = $index) {
                                           <tr>
                                             <th scope="row">
                                               {{b}}
@@ -575,41 +575,41 @@
                                             <!-- Detailed Intro -->
                                             @if (!sum()) {
                                               <td
-                                                [style.color]="character().character.introHeal?.[i] ? 'lawngreen' : ''">
-                                                @if (character().character.introMultiplier[i] > 1) {
+                                                [style.color]="character().data.intro.heal?.[i] ? 'lawngreen' : ''">
+                                                @if (character().data.intro.multiplier[i] > 1) {
                                                   <small
-                                                    style="color: white;">{{character().character.introMultiplier[i]}}x
+                                                    style="color: white;">{{character().data.intro.multiplier[i]}}x
                                                   </small>
                                                 }
-                                                {{character().introDmg[i]}}
-                                                @if (!character().character.introHeal?.[i]) {
-                                                  (<b>{{(character().introDmg[i] * (character().cDmg/100)) | number :
+                                                {{character().results.intro.dmg[i]}}
+                                                @if (!character().data.intro.heal?.[i]) {
+                                                  (<b>{{(character().results.intro.dmg[i] * (character().cDmg/100)) | number :
                                                 '1.0-0'}}</b>)
                                               }
                                               <!-- Intro Second Damage -->
-                                              @if (character().introSecondDmg[i] > 0) {
+                                              @if (character().results.intro.second[i] > 0) {
                                                 <br />+<br />
-                                                @if (character().character.introSecondMultiplier?.[i] > 1) {
+                                                @if (character().data.intro.secondMultiplier?.[i] > 1) {
                                                   <small
-                                                    style="color: white;">{{character().character.introSecondMultiplier[i]}}x
+                                                    style="color: white;">{{character().data.intro.secondMultiplier[i]}}x
                                                   </small>
                                                 }
-                                                {{character().introSecondDmg[i]}}
-                                                @if (!character().character.introHeal?.[i]) {
-                                                  (<b>{{(character().introSecondDmg[i] *
+                                                {{character().results.intro.second[i]}}
+                                                @if (!character().data.intro.heal?.[i]) {
+                                                  (<b>{{(character().results.intro.second[i] *
                                                 (character().cDmg/100)) | number : '1.0-0'}}</b>)
                                               }
                                             }
                                           </td>
                                           <td>
-                                            @if (!character().character.introHeal?.[i]) {
-                                              <div [innerHtml]="character().introCommonDmg[i]"
+                                            @if (!character().data.intro.heal?.[i]) {
+                                              <div [innerHtml]="character().results.intro.common[i]"
                                               ></div>
                                             }
                                           </td>
                                           <td>
-                                            @if (!character().character.introHeal?.[i]) {
-                                              <div [innerHtml]="character().introResDmg[i]"
+                                            @if (!character().data.intro.heal?.[i]) {
+                                              <div [innerHtml]="character().results.intro.res[i]"
                                               ></div>
                                             }
                                           </td>
@@ -617,22 +617,22 @@
                                         <!-- Sum Intro -->
                                         @if (sum()) {
                                           <td
-                                            [style.color]="character().character.introHeal?.[i] ? 'lawngreen' : ''">
-                                            {{character().sumIntroDmg[i]}}
-                                            @if (!character().character.introHeal?.[i]) {
-                                              (<b>{{(character().sumIntroDmg[i] *
+                                            [style.color]="character().data.intro.heal?.[i] ? 'lawngreen' : ''">
+                                            {{character().results.intro.sum[i]}}
+                                            @if (!character().data.intro.heal?.[i]) {
+                                              (<b>{{(character().results.intro.sum[i] *
                                             (character().cDmg/100)) | number : '1.0-0'}}</b>)
                                           }
                                         </td>
                                         <td>
-                                          @if (!character().character.introHeal?.[i]) {
-                                            <div [innerHtml]="character().sumCommonIntroDmg[i]"
+                                          @if (!character().data.intro.heal?.[i]) {
+                                            <div [innerHtml]="character().results.intro.sumCommon[i]"
                                             ></div>
                                           }
                                         </td>
                                         <td>
-                                          @if (!character().character.introHeal?.[i]) {
-                                            <div [innerHtml]="character().sumResIntroDmg[i]"
+                                          @if (!character().data.intro.heal?.[i]) {
+                                            <div [innerHtml]="character().results.intro.sumRes[i]"
                                             ></div>
                                           }
                                         </td>
@@ -640,12 +640,12 @@
                                     </tr>
                                   }
                                   <!-- OUTRO -->
-                                  @if (character().character.outroMultiplier[0] > 0) {
+                                  @if (character().data.outro.multiplier[0] > 0) {
                                     <tr>
                                       <td colspan="5">{{'char.outro' | transloco}}:
-                                      {{character().character.outroName}}</td>
+                                      {{character().data.outro.name}}</td>
                                     </tr>
-                                    @for (b of character().character.outroNames; track b; let i = $index) {
+                                    @for (b of character().data.outro.names; track b; let i = $index) {
                                       <tr>
                                         <th scope="row">
                                           {{b}}
@@ -653,41 +653,41 @@
                                         <!-- Detailed Outro -->
                                         @if (!sum()) {
                                           <td
-                                            [style.color]="character().character.outroHeal?.[i] ? 'lawngreen' : ''">
-                                            @if (character().character.outroMultiplier[i] > 1) {
+                                            [style.color]="character().data.outro.heal?.[i] ? 'lawngreen' : ''">
+                                            @if (character().data.outro.multiplier[i] > 1) {
                                               <small
-                                                style="color: white;">{{character().character.outroMultiplier[i]}}x
+                                                style="color: white;">{{character().data.outro.multiplier[i]}}x
                                               </small>
                                             }
-                                            {{character().outroDmg[i]}}
-                                            @if (!character().character.outroHeal?.[i]) {
-                                              (<b>{{(character().outroDmg[i] * (character().cDmg/100)) |
+                                            {{character().results.outro.dmg[i]}}
+                                            @if (!character().data.outro.heal?.[i]) {
+                                              (<b>{{(character().results.outro.dmg[i] * (character().cDmg/100)) |
                                             number : '1.0-0'}}</b>)
                                           }
                                           <!-- Outro Second Damage -->
-                                          @if (character().outroSecondDmg[i] > 0) {
+                                          @if (character().results.outro.second[i] > 0) {
                                             <br />+<br />
-                                            @if (character().character.outroSecondMultiplier?.[i] > 1) {
+                                            @if (character().data.outro.secondMultiplier?.[i] > 1) {
                                               <small
-                                                style="color: white;">{{character().character.outroSecondMultiplier[i]}}x
+                                                style="color: white;">{{character().data.outro.secondMultiplier[i]}}x
                                               </small>
                                             }
-                                            {{character().outroSecondDmg[i]}}
-                                            @if (!character().character.outroHeal?.[i]) {
-                                              (<b>{{(character().outroSecondDmg[i] *
+                                            {{character().results.outro.second[i]}}
+                                            @if (!character().data.outro.heal?.[i]) {
+                                              (<b>{{(character().results.outro.second[i] *
                                             (character().cDmg/100)) | number : '1.0-0'}}</b>)
                                           }
                                         }
                                       </td>
                                       <td>
-                                        @if (!character().character.outroHeal?.[i]) {
-                                          <div [innerHtml]="character().outroCommonDmg[i]"
+                                        @if (!character().data.outro.heal?.[i]) {
+                                          <div [innerHtml]="character().results.outro.common[i]"
                                           ></div>
                                         }
                                       </td>
                                       <td>
-                                        @if (!character().character.outroHeal?.[i]) {
-                                          <div [innerHtml]="character().outroResDmg[i]"
+                                        @if (!character().data.outro.heal?.[i]) {
+                                          <div [innerHtml]="character().results.outro.res[i]"
                                           ></div>
                                         }
                                       </td>
@@ -695,22 +695,22 @@
                                     <!-- Sum Outro -->
                                     @if (sum()) {
                                       <td
-                                        [style.color]="character().character.outroHeal?.[i] ? 'lawngreen' : ''">
-                                        {{character().sumOutroDmg[i]}}
-                                        @if (!character().character.outroHeal?.[i]) {
-                                          (<b>{{(character().sumOutroDmg[i] *
+                                        [style.color]="character().data.outro.heal?.[i] ? 'lawngreen' : ''">
+                                        {{character().results.outro.sum[i]}}
+                                        @if (!character().data.outro.heal?.[i]) {
+                                          (<b>{{(character().results.outro.sum[i] *
                                         (character().cDmg/100)) | number : '1.0-0'}}</b>)
                                       }
                                     </td>
                                     <td>
-                                      @if (!character().character.outroHeal?.[i]) {
-                                        <div [innerHtml]="character().sumCommonOutroDmg[i]"
+                                      @if (!character().data.outro.heal?.[i]) {
+                                        <div [innerHtml]="character().results.outro.sumCommon[i]"
                                         ></div>
                                       }
                                     </td>
                                     <td>
-                                      @if (!character().character.outroHeal?.[i]) {
-                                        <div [innerHtml]="character().sumResOutroDmg[i]"
+                                      @if (!character().data.outro.heal?.[i]) {
+                                        <div [innerHtml]="character().results.outro.sumRes[i]"
                                         ></div>
                                       }
                                     </td>
@@ -721,66 +721,66 @@
                             <!-- FORTE -->
                             <tr>
                               <td colspan="5">{{'char.forte' | transloco}}:
-                              {{character().character.forteName}}</td>
+                              {{character().data.forte.name}}</td>
                             </tr>
-                            @for (b of character().character.forteNames; track b; let i = $index) {
+                            @for (b of character().data.forte.names; track b; let i = $index) {
                               <tr>
                                 <th scope="row">
                                   {{b}}
                                 </th>
                                 @if (!sum()) {
                                   <td
-                                    [style.color]="character().character.forteHeal?.[i] ? 'lawngreen' : character().character.forteShield[i] ? 'yellow' : ''">
+                                    [style.color]="character().data.forte.heal?.[i] ? 'lawngreen' : character().data.forte.shield[i] ? 'yellow' : ''">
                                     <!-- Forte First Damage -->
-                                    @if (character().character.forteMultiplier[i] > 1) {
+                                    @if (character().data.forte.multiplier[i] > 1) {
                                       <small
-                                        style="color: white;">{{character().character.forteMultiplier[i]}}x
+                                        style="color: white;">{{character().data.forte.multiplier[i]}}x
                                       </small>
                                     }
-                                    {{character().forteDmg[i]}}
-                                    @if (!character().character.forteHeal?.[i] && !character().character.forteShield[i]) {
-                                      (<b>{{(character().forteDmg[i] * (character().cDmg/100)) | number :
+                                    {{character().results.forte.dmg[i]}}
+                                    @if (!character().data.forte.heal?.[i] && !character().data.forte.shield[i]) {
+                                      (<b>{{(character().results.forte.dmg[i] * (character().cDmg/100)) | number :
                                     '1.0-0'}}</b>)
                                   }
                                   <!-- Forte Second Damage -->
-                                  @if (character().forteSecondDmg[i] > 0) {
+                                  @if (character().results.forte.second[i] > 0) {
                                     <br />+<br />
-                                    @if (character().character.forteSecondMultiplier[i] > 1) {
+                                    @if (character().data.forte.secondMultiplier[i] > 1) {
                                       <small
-                                        style="color: white;">{{character().character.forteSecondMultiplier[i]}}x
+                                        style="color: white;">{{character().data.forte.secondMultiplier[i]}}x
                                       </small>
                                     }
-                                    {{character().forteSecondDmg[i]}}
-                                    @if (!character().character.forteHeal?.[i] && !character().character.forteShield[i]) {
-                                      (<b>{{(character().forteSecondDmg[i] * (character().cDmg/100)) |
+                                    {{character().results.forte.second[i]}}
+                                    @if (!character().data.forte.heal?.[i] && !character().data.forte.shield[i]) {
+                                      (<b>{{(character().results.forte.second[i] * (character().cDmg/100)) |
                                     number : '1.0-0'}}</b>)
                                   }
                                 }
                                 <!-- forte Third Damage -->
-                                @if (character().forteThirdDmg[i] > 0) {
+                                @if (character().results.forte.third[i] > 0) {
                                   <br />+<br />
-                                  @if (character().character.skillThirdMultiplier[i] > 1) {
+                                  @if (character().data.skill.thirdMultiplier[i] > 1) {
                                     <small
-                                      style="color: white;">{{character().character.forteThirdMultiplier[i]}}x
+                                      style="color: white;">{{character().data.forte.thirdMultiplier[i]}}x
                                     </small>
                                   }
-                                  {{character().forteThirdDmg[i]}}
-                                  @if (!character().character.forteHeal?.[i] && !character().character.forteShield[i]) {
-                                    (<b>{{(character().forteThirdDmg[i]
+                                  {{character().results.forte.third[i]}}
+                                  @if (!character().data.forte.heal?.[i] && !character().data.forte.shield[i]) {
+                                    (<b>{{(character().results.forte.third[i]
                                   * (character().cDmg/100)) | number : '1.0-0'}}</b>)
                                 }
                               }
                             </td>
                             <td>
-                              @if (!character().character.forteHeal?.[i] && !character().character.forteShield[i]) {
-                                <div [innerHtml]="character().forteCommonDmg[i]"
+                              @if (!character().data.forte.heal?.[i] && !character().data.forte.shield[i]) {
+                                <div [innerHtml]="character().results.forte.common[i]"
                                   >
                                 </div>
                               }
                             </td>
                             <td>
-                              @if (!character().character.forteHeal?.[i] && !character().character.forteShield[i]) {
-                                <div [innerHtml]="character().forteResDmg[i]"
+                              @if (!character().data.forte.heal?.[i] && !character().data.forte.shield[i]) {
+                                <div [innerHtml]="character().results.forte.res[i]"
                                   >
                                 </div>
                               }
@@ -788,23 +788,23 @@
                           }
                           @if (sum()) {
                             <td
-                              [style.color]="character().character.forteHeal?.[i] ? 'lawngreen' : character().character.forteShield[i] ? 'yellow' : ''">
-                              {{character().sumForteDmg[i]}}
-                              @if (!character().character.forteHeal?.[i] && !character().character.forteShield[i]) {
-                                (<b>{{(character().sumForteDmg[i] * (character().cDmg/100)) | number
+                              [style.color]="character().data.forte.heal?.[i] ? 'lawngreen' : character().data.forte.shield[i] ? 'yellow' : ''">
+                              {{character().results.forte.sum[i]}}
+                              @if (!character().data.forte.heal?.[i] && !character().data.forte.shield[i]) {
+                                (<b>{{(character().results.forte.sum[i] * (character().cDmg/100)) | number
                               : '1.0-0'}}</b>)
                             }
                           </td>
                           <td>
-                            @if (!character().character.forteHeal?.[i] && !character().character.forteShield[i]) {
-                              <div [innerHtml]="character().sumCommonForteDmg[i]"
+                            @if (!character().data.forte.heal?.[i] && !character().data.forte.shield[i]) {
+                              <div [innerHtml]="character().results.forte.sumCommon[i]"
                                 >
                               </div>
                             }
                           </td>
                           <td>
-                            @if (!character().character.forteHeal?.[i] && !character().character.forteShield[i]) {
-                              <div [innerHtml]="character().sumResForteDmg[i]"
+                            @if (!character().data.forte.heal?.[i] && !character().data.forte.shield[i]) {
+                              <div [innerHtml]="character().results.forte.sumRes[i]"
                                 >
                               </div>
                             }

@@ -1,0 +1,129 @@
+{
+  "id": "aalto",
+  "name": "Aalto",
+  "icon": "aalto",
+  "wiki": "https://wutheringwaves.fandom.com/wiki/Aalto",
+  "type": "aero",
+  "weapon": "pistols",
+  "lastUpdate": "2024-11-09T04:44:00.000Z",
+  "atkType": false,
+  "healType": false,
+  "canHeal": false,
+  "hpType": false,
+  "defType": false,
+  "basic": {
+    "name": "Half Truths",
+    "names": ["Half Truths: DMG 1", "Half Truths: DMG 2", "Half Truths: DMG 3", "Half Truths: DMG 4", "Half Truths: DMG 5", "Mid-Air Attack", "Dodge Damage", "Aimed Shot", "Charged Aim Shot"],
+    "bonusType": ["b", "b", "b", "b", "b", "b", "b", "h", "h"],
+    "scaling": [
+      [16, 17.32, 18.63, 20.478, 21.78, 23.29, 25.39, 27.48, 29.58, 31.81],
+      [26.67, 28.86, 31.04, 34.11, 36.29, 38.81, 42.31, 45.8, 49.3, 53.02],
+      [24, 25.97, 27.94, 30.7, 32.66, 34.93, 38.08, 41.22, 44.37, 47.72],
+      [25.34, 27.42, 29.49, 32.4, 34.48, 36.84, 40.19, 43.51, 46.84, 50.37],
+      [90.4, 97.82, 105.23, 115.61, 123.02, 131.55, 143.41, 155.27, 167.13, 179.73],
+      [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65],
+      [107.7, 116.54, 125.37, 137.73, 146.56, 156.72, 170.85, 184.98, 199.11, 214.12],
+      [18, 19.48, 20.96, 23.02, 24.5, 26.2, 28.56, 30.92, 33.28, 35.79],
+      [40.5, 43.83, 47.15, 51.8, 55.12, 58.94, 64.25, 69.56, 74.88, 80.52]
+    ],
+    "multiplier": [1, 1, 2, 2, 1, 1, 1, 1, 1],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": [],
+    "ends": 4
+  },
+  "skill": {
+    "name": "Shift Trick",
+    "names": ["Mist Bullets"],
+    "bonusType": ["s"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65]
+    ],
+    "multiplier": [1],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "liberation": {
+    "name": "Flower in the Mist",
+    "names": ["Flower in the Mist"],
+    "bonusType": ["l"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [200, 216.4, 232.8, 255.76, 272.16, 291.02, 317.26, 343.5, 369.74, 397.62]
+    ],
+    "multiplier": [1],
+    "second": [],
+    "secondMultiplier": [0],
+    "third": [],
+    "thirdMultiplier": [0]
+  },
+  "intro": {
+    "name": "Feint Shot",
+    "names": ["Feint Shot"],
+    "bonusType": ["i"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [33.34, 36.07, 38.8, 42.63, 45.36, 48.51, 52.88, 57.25, 61.63, 66.27]
+    ],
+    "multiplier": [3],
+    "second": [],
+    "secondMultiplier": [0],
+    "third": [],
+    "thirdMultiplier": [0]
+  },
+  "outro": {
+    "name": "Dissolving Mist",
+    "names": ["Dissolving Mist"],
+    "bonusType": ["o"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [0]
+    ],
+    "multiplier": [0],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "forte": {
+    "name": "Misty Cover",
+    "names": ["Misty Cover"],
+    "bonusType": ["s"],
+    "heal": [],
+    "dmgType": [],
+    "shield": [],
+    "scaling": [
+      [30, 32.46, 34.92, 38.47, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65]
+    ],
+    "multiplier": [1],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "rotation": [
+    { "section": "intro", "index": 0 },
+    { "section": "basic", "index": 0 },
+    { "section": "basic", "index": 1 },
+    { "section": "skill", "index": 0 },
+    { "section": "liberation", "index": 0 },
+    { "section": "basic", "index": 0 },
+    { "section": "basic", "index": 1 },
+    { "section": "basic", "index": 2 }
+  ],
+  "rotationDesc": ["Intro:Feint Shot", "2x Basic Attack: Half Truths", "Resonance Skill: Shift Trick", "Resonance Liberation: Flower in the Mist", "3x Basic Attack: Half Truths", "Outro Skill: Dissolving Mist"],
+  "rotationColor": ["intro", "basic", "skill", "liberation", "basic", "outro"],
+  "rotationCommands": ["mb", "cv", "mb", "cv", "e", "cv", "r", "cv", "mb", "cv", "mb", "cv", "mb"],
+  "echo4": ["Crit Rate %", "Crit DMG %"],
+  "echo3": ["AERO DMG %", "ATK %"],
+  "echo1": ["ATK %"],
+  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "ATK"]
+}

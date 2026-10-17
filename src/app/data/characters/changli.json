@@ -1,0 +1,163 @@
+{
+  "id": "changli",
+  "name": "Changli",
+  "icon": "changli",
+  "wiki": "https://wutheringwaves.fandom.com/wiki/Changli",
+  "type": "fusion",
+  "weapon": "sword",
+  "lastUpdate": "2024-11-09T03:00:00.000Z",
+  "atkType": false,
+  "healType": false,
+  "canHeal": false,
+  "hpType": false,
+  "defType": false,
+  "basic": {
+    "name": "Blazing Enlightment",
+    "names": ["Blazing Enlightment: DMG 1", "Blazing Enlightment: DMG 2", "Blazing Enlightment: DMG 3", "Blazing Enlightment: DMG 4", "Mid-Air Part 1", "Mid-Air Part 2", "Mid-Air Part 3", "Mid-Air Part 4", "Dodge DMG", "Heavy Attack", "Mid-Air Heavy Attack"],
+    "bonusType": ["b", "b", "b", "b", "b", "b", "b", "b", "b", "h", "h"],
+    "scaling": [
+      [14.84, 16.05, 17.27, 18.97, 20.19, 21.59, 23.53, 25.48, 27.43, 29.49],
+      [17.85, 19.32, 20.78, 22.83, 24.3, 25.98, 28.32, 30.66, 33, 35.49],
+      [18.34, 19.84, 21.34, 23.45, 24.95, 26.68, 29.08, 34.49, 33.89, 36.45],
+      [25.5, 27.6, 29.69, 32.61, 34.71, 37.11, 40.46, 43.8, 47.15, 50.7],
+      [30.86, 33.39, 35.92, 39.46, 41.99, 44.9, 48.95, 53, 57.05, 61.35],
+      [25.59, 27.69, 29.79, 32.72, 34.82, 37.23, 40.59, 43.95, 47.3, 50.87],
+      [22.13, 23.95, 25.76, 28.3, 30.12, 32.2, 35.11, 38.01, 40.91, 44],
+      [19.13, 20.7, 22.27, 24.46, 26.03, 27.83, 30.34, 32.85, 35.36, 38.03],
+      [41.57, 44.98, 48.39, 53.16, 56.57, 60.49, 65.94, 71.4, 76.85, 82.64],
+      [14.58, 15.78, 16.97, 18.65, 19.84, 21.22, 23.13, 25.04, 26.95, 28.99],
+      [62, 67.09, 72.17, 79.29, 84.37, 90.22, 98.36, 106.49, 114.62, 123.27]
+    ],
+    "multiplier": [2, 2, 3, 1, 1, 2, 3, 1, 3, 3, 1],
+    "second": [
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [14.88, 16.1, 17.32, 19.03, 20.25, 21.65, 23.6, 25.55, 27.5, 29.58],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [11.16, 12.08, 12.99, 14.27, 15.19, 16.24, 17.7, 19.17, 20.63, 22.18],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [18.75, 20.28, 21.82, 23.97, 25.51, 27.28, 29.74, 32.2, 34.65, 37.27],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ],
+    "secondMultiplier": [0, 0, 0, 4, 0, 0, 0, 4, 0, 1, 0],
+    "third": [],
+    "thirdMultiplier": [],
+    "ends": 7
+  },
+  "skill": {
+    "name": "Tripartite Flames",
+    "names": ["True Sight: Capture", "True Sight: Conquest", "True Sight: Charge"],
+    "bonusType": ["s", "s", "s"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [41.19, 44.57, 47.94, 52.67, 56.05, 59.93, 65.34, 70.74, 76.14, 81.88],
+      [29.65, 32.08, 34.51, 37.92, 40.35, 43.14, 47.03, 50.92, 54.81, 58.95],
+      [36.56, 39.56, 42.56, 46.75, 49.75, 53.2, 58, 62.79, 67.59, 72.68]
+    ],
+    "multiplier": [3, 2, 1],
+    "second": [
+      [82.37, 89.13, 95.88, 105.34, 112.09, 119.86, 130.67, 141.47, 152.28, 163.76],
+      [41.51, 44.91, 48.32, 53.08, 56.49, 60.4, 65.85, 71.29, 76.74, 82.52],
+      [54.84, 59.34, 63.83, 70.13, 74.62, 79.8, 86.99, 94.18, 101.38, 109.02]
+    ],
+    "secondMultiplier": [1, 1, 1],
+    "third": [
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [47.44, 51.33, 55.22, 60.67, 64.56, 69.03, 75.25, 81.48, 87.7, 94.31],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ],
+    "thirdMultiplier": [0, 1, 0]
+  },
+  "liberation": {
+    "name": "Radiance of Fealty",
+    "names": ["Radiance of Fealty"],
+    "bonusType": ["l"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [610, 660.02, 710.04, 780.07, 830.09, 887.62, 967.65, 1047.68, 1127.71, 1212.75]
+    ],
+    "multiplier": [1],
+    "second": [],
+    "secondMultiplier": [0],
+    "third": [],
+    "thirdMultiplier": [0]
+  },
+  "intro": {
+    "name": "Obedience of Rules",
+    "names": ["Obedience of Rules"],
+    "bonusType": ["i"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [22.38, 24.22, 26.06, 28.62, 30.46, 32.57, 35.51, 38.44, 41.38, 44.5]
+    ],
+    "multiplier": [1],
+    "second": [
+      [13.06, 14.13, 15.2, 16.7, 17.77, 19, 20.71, 22.43, 24.14, 26.96]
+    ],
+    "secondMultiplier": [4],
+    "third": [],
+    "thirdMultiplier": [0]
+  },
+  "outro": {
+    "name": "Strategy of Duality",
+    "names": ["Strategy of Duality"],
+    "bonusType": ["o"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [0]
+    ],
+    "multiplier": [0],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "forte": {
+    "name": "Flaming Sacrifice",
+    "names": ["Flaming Sacrifice"],
+    "bonusType": ["s"],
+    "heal": [],
+    "dmgType": [],
+    "shield": [],
+    "scaling": [
+      [19.74, 21.36, 22.98, 25.25, 26.87, 28.73, 31.32, 33.91, 36.5, 39.25]
+    ],
+    "multiplier": [5],
+    "second": [
+      [230.3, 249.18, 268.07, 294.51, 313.39, 335.11, 365.32, 395.54, 425.75, 457.85]
+    ],
+    "secondMultiplier": [1],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "rotation": [
+    { "section": "intro", "index": 0 },
+    { "section": "skill", "index": 2 },
+    { "section": "skill", "index": 0 },
+    { "section": "skill", "index": 1 },
+    { "section": "skill", "index": 0 },
+    { "section": "skill", "index": 1 },
+    { "section": "basic", "index": 9 },
+    { "section": "basic", "index": 8 },
+    { "section": "liberation", "index": 0 },
+    { "section": "basic", "index": 8 },
+    { "section": "basic", "index": 0 },
+    { "section": "basic", "index": 1 },
+    { "section": "basic", "index": 2 },
+    { "section": "basic", "index": 3 }
+  ],
+  "rotationDesc": ["Intro", "Basic Attack: True Sight Charge", "Resonance Skill: Capture", "Basic Attack: Conquest", "Resonance Skill: Capture", "Basic Attack: True Sight Charge", "Basic Attack", "Heavy Attack", "Resonance Liberation", "Heavy Attack", "4x Basic Attack"],
+  "rotationColor": ["intro", "basic", "skill", "basic", "skill", "basic", "basic", "basic", "liberation", "basic", "basic"],
+  "rotationCommands": ["mb", "cv", "e", "cv", "mb", "cv", "e", "cv", "mb", "cv", "mb", "cv", "mbh", "cv", "r", "cv", "mbh", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "mb"],
+  "echo4": ["Crit Rate %", "Crit DMG %"],
+  "echo3": ["FUSION DMG %", "ATK %"],
+  "echo1": ["ATK %"],
+  "echoSub": ["Energy Regen %", "Crit Rate %", "Crit DMG %", "ATK %", "Skill %", "Liberation %", "ATK"]
+}

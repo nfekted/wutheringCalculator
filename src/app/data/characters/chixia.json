@@ -1,0 +1,147 @@
+{
+  "id": "chixia",
+  "name": "Chixia",
+  "icon": "chixia",
+  "wiki": "https://wutheringwaves.fandom.com/wiki/Chixia",
+  "type": "fusion",
+  "weapon": "pistols",
+  "lastUpdate": "2024-11-09T03:00:00.000Z",
+  "atkType": false,
+  "healType": false,
+  "canHeal": false,
+  "hpType": false,
+  "defType": false,
+  "basic": {
+    "name": "POW POW",
+    "names": ["POW POW: DMG 1", "POW POW: DMG 2", "POW POW: DMG 3", "POW POW: DMG 4", "Mid-Air DMG", "Dodge DMG", "Heavy Attack DMG", "Charged Heavy Attack DMG"],
+    "bonusType": ["b", "b", "b", "b", "b", "b", "h", "h"],
+    "scaling": [
+      [33.3, 36.04, 38.77, 42.59, 45.32, 48.46, 52.83, 57.2, 61.57, 66.21],
+      [24.3, 26.3, 28.29, 31.08, 33.07, 35.36, 38.55, 41.74, 44.93, 48.32],
+      [16.88, 18.26, 19.65, 21.58, 22.97, 24.56, 26.77, 28.99, 31.2, 33.55],
+      [117, 126.6, 136.19, 149.62, 159.22, 170.25, 185.6, 200.95, 216.3, 232.61],
+      [16.2, 17.53, 18.86, 20.72, 22.05, 23.58, 25.7, 27.83, 29.95, 32.21],
+      [171, 185.03, 199.05, 218.68, 232.7, 248.83, 271.26, 293.7, 316.13, 339.97],
+      [18, 19.48, 20.96, 23.02, 24.5, 26.2, 28.56, 30.92, 33.28, 35.79],
+      [40.5, 43.83, 47.15, 51.8, 55.12, 58.94, 64.25, 69.56, 74.88, 80.52]
+    ],
+    "multiplier": [1, 2, 4, 1, 1, 1, 1, 1],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": [],
+    "ends": 3
+  },
+  "skill": {
+    "name": "Whizzing Fight Spirit",
+    "names": ["Whizzing Fight Spirit"],
+    "bonusType": ["s"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [16, 17.32, 18.63, 20.47, 21.78, 23.29, 25.39, 27.48, 29.58, 31.81]
+    ],
+    "multiplier": [8],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "liberation": {
+    "name": "Blazing Flames",
+    "names": ["Blazing Flames"],
+    "bonusType": ["l"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [480, 519.36, 558.72, 613.83, 653.19, 698.45, 761.43, 824.4, 887.38, 954.29]
+    ],
+    "multiplier": [1],
+    "second": [
+      [29.1, 31.48, 33.87, 37.21, 39.59, 42.34, 46.15, 49.97, 53.79, 57.84]
+    ],
+    "secondMultiplier": [11],
+    "third": [],
+    "thirdMultiplier": [0]
+  },
+  "intro": {
+    "name": "Grand Entrance",
+    "names": ["Grand Entrance"],
+    "bonusType": ["i"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [24.75, 26.78, 28.81, 31.66, 33.68, 36.02, 39.27, 42.51, 45.76, 49.21]
+    ],
+    "multiplier": [2],
+    "second": [
+      [12.38, 13.39, 14.41, 15.83, 16.84, 18.01, 19.64, 21.26, 22.88, 24.61]
+    ],
+    "secondMultiplier": [4],
+    "third": [],
+    "thirdMultiplier": [0]
+  },
+  "outro": {
+    "name": "Leaping Flames",
+    "names": ["Leaping Flames"],
+    "bonusType": ["o"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [530]
+    ],
+    "multiplier": [1],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "forte": {
+    "name": "Heroic Bullets",
+    "names": ["Thermobaric Bullets", "Thermobaric Bullets x30", "Boom Boom"],
+    "bonusType": ["s", "s", "s"],
+    "heal": [],
+    "dmgType": [],
+    "shield": [],
+    "scaling": [
+      [10, 10.82, 11.64, 12.79, 13.61, 14.56, 15.87, 17.18, 18.49, 19.89],
+      [10, 10.82, 11.64, 12.79, 13.61, 14.56, 15.87, 17.18, 18.49, 19.89],
+      [220, 238.04, 256.08, 281.34, 299.38, 320.13, 348.99, 377.85, 406.72, 437.39]
+    ],
+    "multiplier": [1, 30, 1],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "rotation": [
+    { "section": "intro", "index": 0 },
+    { "section": "basic", "index": 0 },
+    { "section": "basic", "index": 1 },
+    { "section": "basic", "index": 2 },
+    { "section": "skill", "index": 0 },
+    { "section": "liberation", "index": 0 },
+    { "section": "forte", "index": 1 },
+    { "section": "forte", "index": 2 },
+    { "section": "basic", "index": 1 },
+    { "section": "forte", "index": 2 },
+    { "section": "outro", "index": 0 }
+  ],
+  "rotationDesc": [
+    "Intro",
+    "3x Basic Attack",
+    "Resonance Skill",
+    "Resonance Liberation",
+    "Resonance Skill (x30 \"Thermobaric Bullets\")",
+    "Basic Attack (~30 bullets)",
+    "Resonance Skill (x30 \"Thermobaric Bullets\")",
+    "Basic Attack (~30 bullets)",
+    "Outro"
+  ],
+  "rotationColor": ["intro", "basic", "skill", "liberation", "skill", "basic", "skill", "basic", "outro"],
+  "rotationCommands": ["mb", "cv", "mb", "cv", "mb", "cv", "e", "cv", "r", "cv", "eh", "cv", "mb", "cv", "eh", "cv", "mb"],
+  "echo4": ["Crit Rate %", "Crit DMG %"],
+  "echo3": ["FUSION DMG %", "ATK %"],
+  "echo1": ["ATK %"],
+  "echoSub": ["Crit Rate %", "Crit DMG %", "Skill %", "ATK %", "Liberation %"]
+}

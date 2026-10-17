@@ -16,7 +16,7 @@ export class EchoComparatorModalComponent {
   id = input.required<string>();
   character = input.required<Character>();
 
-  currentSelection = computed(() => this.character().character.icon);
+  currentSelection = computed(() => this.character().data.icon);
   echo1: Echo = new Echo();
   echo2: Echo = new Echo();
 
@@ -31,7 +31,7 @@ export class EchoComparatorModalComponent {
   calculate() {
     this.echo2.type = this.echo1.type;
 
-    let char1 = Object.assign(new Character(0, this.character().character), this.character());
+    const char1 = this.character().clone();
     char1.dmg = 1000;
     char1.cChance = 5;
     char1.cDmg = 150;
@@ -44,7 +44,7 @@ export class EchoComparatorModalComponent {
     char1.elementalBonus = 10;
     char1.healingBonus = 10;
 
-    let char2 = Object.assign(new Character(1, this.character().character), char1);
+    const char2 = char1.clone();
 
     this.echoUpgrade(char1, this.echo1);
     this.echoUpgrade(char2, this.echo2);
@@ -63,7 +63,7 @@ export class EchoComparatorModalComponent {
     if (total1 == total2) {
       this.text = this.transloco.translate('char.echo.same', { type: (this.character().healType && this.character().canHeal) ? this.transloco.translate('char.heal') : 'DMG' });
     } else {
-      this.text = this.transloco.translate('char.echo.text', { echo: (total1 > total2 ? 1 : 2), perc: diff, type: (this.character().healType && this.character().canHeal) ? this.transloco.translate('char.heal') : 'DMG', value: total1, value2: total2, char: this.character().character.name });
+      this.text = this.transloco.translate('char.echo.text', { echo: (total1 > total2 ? 1 : 2), perc: diff, type: (this.character().healType && this.character().canHeal) ? this.transloco.translate('char.heal') : 'DMG', value: total1, value2: total2, char: this.character().name });
     }
 
     if ((total1 > total2 && this.echo1.commonAttr.length < this.echo2.commonAttr.length) ||
@@ -71,7 +71,7 @@ export class EchoComparatorModalComponent {
       (total1 == total2 && this.echo1.commonAttr.length != this.echo2.commonAttr.length)) {
       this.text += this.transloco.translate('char.echo.however', { attr: this.echo1.commonAttr.length, attr2: this.echo2.commonAttr.length, type: (this.character().healType && this.character().canHeal) ? this.transloco.translate('char.heal') : 'DMG' });
     } else {
-      this.text += total1 == total2 ? '' : this.transloco.translate('char.echo.because', { attr: this.echo1.commonAttr.length, attr2: this.echo2.commonAttr.length, char: this.character().character.name });
+      this.text += total1 == total2 ? '' : this.transloco.translate('char.echo.because', { attr: this.echo1.commonAttr.length, attr2: this.echo2.commonAttr.length, char: this.character().name });
     }
   }
 
@@ -110,7 +110,7 @@ export class EchoComparatorModalComponent {
         char.def += index == 3 ? +(baseDef * (value / 100)).toFixed(0) : 0;//DEF
         //4 - Energy regen
         if (echo.type == 1) {
-          char.elementalBonus += index > 4 && (attr.toLocaleLowerCase().replace(' DMG', '') == char.character.type) ? value : 0;//ELEMENTAL
+          char.elementalBonus += index > 4 && (attr.toLocaleLowerCase().replace(' DMG', '') == char.data.type) ? value : 0;//ELEMENTAL
         } else if (echo.type == 2) {
           char.cChance += index == 5 ? value : 0;//Critical chance
           char.cDmg += index == 6 ? value : 0;//Critical damage
@@ -143,22 +143,22 @@ export class EchoComparatorModalComponent {
     const attr1 = echo.mainStats[echo.type][echo.main1Index];
     const attr2 = echo.mainStats[echo.type][echo.main2Index];
     if (echo.type == 0) {
-      if (this.character().character.echo1.indexOf(attr1) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr1}`);
-      if (this.character().character.echo1.indexOf(attr2) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr2}`);
+      if (this.character().data.echo1.indexOf(attr1) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr1}`);
+      if (this.character().data.echo1.indexOf(attr2) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr2}`);
     }
 
     if (echo.type == 1) {
-      if (this.character().character.echo3.indexOf(attr1) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr1}`);
-      if (this.character().character.echo3.indexOf(attr2) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr2}`);
+      if (this.character().data.echo3.indexOf(attr1) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr1}`);
+      if (this.character().data.echo3.indexOf(attr2) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr2}`);
     }
 
     if (echo.type == 2) {
-      if (this.character().character.echo4.indexOf(attr1) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr1}`);
-      if (this.character().character.echo4.indexOf(attr2) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr2}`);
+      if (this.character().data.echo4.indexOf(attr1) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr1}`);
+      if (this.character().data.echo4.indexOf(attr2) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr2}`);
     }
 
     for (const attr of echo.currentSubs) {
-      if (this.character().character.echoSub.indexOf(attr) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.sub')}: ${attr}`);
+      if (this.character().data.echoSub.indexOf(attr) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.sub')}: ${attr}`);
     }
 
     return echo;
@@ -167,13 +167,13 @@ export class EchoComparatorModalComponent {
   simulate(char: Character): number {
     let total: number = 0;
     const list: Array<Array<number | boolean>> = [];
-    const rotation = char.character.rotation;
+    const rotation = char.data.rotation;
     let heal: boolean = false;
-    let currentChance = +(this.character().character.rotation[0].length * (char.cChance / 100)).toFixed(0);
-    for (let i = 0; i < rotation[0].length; i++) {
-      if (this.character().healType) heal = (this.character().character.rotation[0][i] as string).includes('sumHealing');
+    let currentChance = +(this.character().data.rotation.length * (char.cChance / 100)).toFixed(0);
+    for (let i = 0; i < rotation.length; i++) {
+      if (this.character().healType) heal = !!rotation[i].healing;
 
-      const dmg = char[rotation[0][i]][rotation[1][i]];
+      const dmg = char.rotationValue(rotation[i]);
       if (currentChance > 0) {
         list[i] = [+(dmg * (char.cDmg / 100)).toFixed(0), true, heal];
         currentChance -= 1;

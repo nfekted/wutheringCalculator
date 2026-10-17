@@ -19,8 +19,8 @@ export class CharacterSave {
 
     constructor(char: Character) {
         this.index = char.index;
-        this.icon = char.character.icon;
-        this.name = char.character.name;
+        this.icon = char.data.icon;
+        this.name = char.name;
         this.dmg = char.dmg;
         this.hp = char.hp;
         this.def = char.def;

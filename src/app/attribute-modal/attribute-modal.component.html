@@ -55,16 +55,16 @@
                   </div>
                   <div class="col-sm-12 col-md-4 mt-4">
                     <ol>
-                      @for (item of character().character.rotationDesc; track item; let i = $index) {
+                      @for (item of character().data.rotationDesc; track item; let i = $index) {
                         <li><b
-                        [class]="character().character.rotationColor[i]">{{item}}</b></li>
+                        [class]="character().data.rotationColor[i]">{{item}}</b></li>
                       }
                     </ol>
                   </div>
                   <div class="col-sm-12 col-md-4 mt-4">
                   </div>
                   <div class="col-sm-12 col-md-4 mt-4">
-                    @for (item of character().character.rotationCommands; track item) {
+                    @for (item of character().data.rotationCommands; track item) {
                       <span>
                         @if (item.length < 4) {
                           <img [src]="'assets/img/icons/' + item + '.svg'" style="width: 25px;"
@@ -111,7 +111,7 @@
                         }
                         @if (enhancerSkill && !randomCrit && (!character().healType || character().atkType)) {
                           <div
-                            [innerHtml]="'char.enhancer.rotationCritInfo' | transloco: {atkNum : character().character.rotation[0].length, chance: character().cChance, qtd: qtdCrit, normal:  character().character.rotation[0].length-qtdCrit}">
+                            [innerHtml]="'char.enhancer.rotationCritInfo' | transloco: {atkNum : character().data.rotation.length, chance: character().cChance, qtd: qtdCrit, normal:  character().data.rotation.length-qtdCrit}">
                           </div>
                         }
                         @if (enhancerSkill && (character().healType && !character().atkType)) {
@@ -399,7 +399,7 @@
                                                   }
                                                   @if (enhancerSkill && !randomCrit && (!character().healType || character().atkType)) {
                                                     <div
-                                                      [innerHtml]="'char.enhancer.rotationCritInfo' | transloco: {atkNum : character().character.rotation[0].length, chance: newCritChance, qtd: newQtdCrit, normal:  character().character.rotation[0].length-newQtdCrit}">
+                                                      [innerHtml]="'char.enhancer.rotationCritInfo' | transloco: {atkNum : character().data.rotation.length, chance: newCritChance, qtd: newQtdCrit, normal:  character().data.rotation.length-newQtdCrit}">
                                                     </div>
                                                   }
                                                   @if (enhancerSkill && (character().healType && !character().atkType)) {

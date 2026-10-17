@@ -1,0 +1,144 @@
+{
+  "id": "danjin",
+  "name": "Danjin",
+  "icon": "danjin",
+  "wiki": "https://wutheringwaves.fandom.com/wiki/Danjin",
+  "type": "havoc",
+  "weapon": "sword",
+  "lastUpdate": "2024-11-09T03:00:00.000Z",
+  "atkType": false,
+  "healType": false,
+  "canHeal": false,
+  "hpType": false,
+  "defType": false,
+  "basic": {
+    "name": "Execution",
+    "names": ["Execution DMG 1", "Execution DMG 2", "Execution DMG 3", "Mid-Air DMG", "Dodge DMG", "Heavy Attack"],
+    "bonusType": ["b", "b", "b", "b", "b", "h"],
+    "scaling": [
+      [28.8, 31.17, 33.53, 36.83, 39.2, 41.91, 45.69, 493.47, 53.25, 57.26],
+      [29.6, 32.03, 34.46, 37.86, 40.28, 43.08, 46.96, 50.84, 54.73, 58.85],
+      [40, 43.28, 46.56, 51.16, 54.44, 58.21, 63.46, 68.7, 73.95, 79.53],
+      [49.6, 53.67, 57.74, 63.43, 67.5, 72.18, 78.69, 85.19, 91.7, 98.61],
+      [32, 34.63, 37.25, 40.93, 43.55, 46.57, 50.77, 54.96, 59.16, 63.62],
+      [18.67, 20.2, 21.373, 23.88, 25.41, 27.17, 29.62, 32.06, 34.51, 37.12]
+    ],
+    "multiplier": [1, 1, 1, 1, 3, 3],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": [],
+    "ends": 2
+  },
+  "skill": {
+    "name": "Crimson Fragment",
+    "names": ["Carmine Gleam", "Crimson Erosion DMG 1", "Crimson Erosion DMG 2", "Sanguine Pulse DMG 1", "Sanguine Pulse DMG 2", "Sanguine Pulse DMG 3"],
+    "bonusType": ["s", "s", "s", "s", "s", "s"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [19.2, 20.78, 22.35, 24.56, 26.13, 27.94, 30.46, 32.98, 35.5, 38.18],
+      [32.4, 35.06, 37.72, 41.44, 44.09, 47.15, 51.4, 55.65, 59.9, 64.42],
+      [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65],
+      [28.2, 30.52, 32.83, 36.07, 38.38, 41.04, 44.74, 48.44, 52.14, 56.07],
+      [21.6, 23.38, 25.15, 27.63, 29.4, 31.44, 34.27, 37.1, 39.94, 42.95],
+      [32.4, 35.06, 37.72, 41.44, 44.09, 47.15, 51.4, 55.65, 59.9, 64.42]
+    ],
+    "multiplier": [2, 2, 2, 2, 3, 3],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "liberation": {
+    "name": "Crimson Bloom",
+    "names": ["Consecutive Attack", "Scarlet Burst"],
+    "bonusType": ["l", "l"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [24.69, 26.72, 28.74, 31.58, 33.6, 35.93, 39.17, 42.41, 45.64, 49.09],
+      [197.5, 213.7, 229.89, 252.57, 268.76, 287.39, 313.3, 339.21, 365.12, 392.65]
+    ],
+    "multiplier": [8, 1],
+    "second": [],
+    "secondMultiplier": [0],
+    "third": [],
+    "thirdMultiplier": [0]
+  },
+  "intro": {
+    "name": "Vindication",
+    "names": ["Vindication"],
+    "bonusType": ["i"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [25, 27.05, 29.1, 31.97, 34.02, 36.38, 39.66, 42.94, 46.22, 49.71]
+    ],
+    "multiplier": [4],
+    "second": [],
+    "secondMultiplier": [0],
+    "third": [],
+    "thirdMultiplier": [0]
+  },
+  "outro": {
+    "name": "Duality",
+    "names": ["Vindication"],
+    "bonusType": ["o"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [0]
+    ],
+    "multiplier": [0],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "forte": {
+    "name": "Serene Vigil",
+    "names": ["Chaoscleave", "Full Energy Chaoscleave", "Scatterbloom", "Full Energy Scatterbloom"],
+    "bonusType": ["h", "h", "h", "h"],
+    "heal": [],
+    "dmgType": [],
+    "shield": [],
+    "scaling": [
+      [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65],
+      [72, 77.91, 83.81, 92.08, 97.98, 104.77, 114.22, 123.66, 133.11, 143.15],
+      [90, 97, 105, 115, 122, 131, 143, 155, 166, 179],
+      [216, 233.72, 251.43, 276.23, 293.94, 314.31, 342.65, 370.98, 399.32, 429.43]
+    ],
+    "multiplier": [7, 7, 1, 1],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "rotation": [
+    { "section": "intro", "index": 0 },
+    { "section": "skill", "index": 1 },
+    { "section": "skill", "index": 2 },
+    { "section": "liberation", "index": 0 },
+    { "section": "basic", "index": 0 },
+    { "section": "basic", "index": 1 },
+    { "section": "skill", "index": 3 },
+    { "section": "skill", "index": 4 },
+    { "section": "skill", "index": 5 },
+    { "section": "basic", "index": 0 },
+    { "section": "basic", "index": 1 },
+    { "section": "basic", "index": 2 },
+    { "section": "skill", "index": 3 },
+    { "section": "skill", "index": 4 },
+    { "section": "skill", "index": 5 },
+    { "section": "forte", "index": 1 },
+    { "section": "forte", "index": 3 }
+  ],
+  "rotationDesc": ["Intro", "2x Resonance Skill", "Resonance Liberation", "2x Basic Attack", "3x Resonance Skill", "3x Basic Attack", "3x Resonance Skill", "Heavy Attack (Full Energy)", "Basic Attack", "Outro"],
+  "rotationColor": ["intro", "skill", "liberation", "basic", "skill", "basic", "skill", "basic", "basic", "outro"],
+  "rotationCommands": ["e", "cv", "e", "cv", "r", "cv", "mb", "cv", "mb", "cv", "e", "cv", "e", "cv", "e", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "e", "cv", "e", "cv", "e", "cv", "mbh", "cv", "mb"],
+  "echo4": ["Crit Rate %", "Crit DMG %"],
+  "echo3": ["HAVOC DMG %", "ATK %"],
+  "echo1": ["ATK %"],
+  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "Skill %", "ATK"]
+}

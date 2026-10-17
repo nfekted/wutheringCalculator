@@ -1,45 +1,17 @@
-import { Aalto } from "./aalto.model";
-import { Baizhi } from "./baizhi.model";
-import { Calcharo } from "./calcharo.model";
-import { Camellya } from "./camellya";
-import { Carlotta } from "./carlotta.model";
-import { Changli } from "./changli.model";
-import { Chixia } from "./chixia.model";
-import { Danjin } from "./danjin.model";
-import { Encore } from "./encore.model";
-import { Jianxin } from "./jianxin.model";
-import { Jinhsi } from "./jinhsi.model";
-import { Jiyan } from "./jiyan.model";
-import { Lingyang } from "./lingyang.model";
-import { Mortefi } from "./mortefi.model";
-import { Rover } from "./rover.model";
-import { RoverHavoc } from "./roverh.model";
-import { Sanhua } from "./sanhua.model";
-import { Shorekeeper } from "./shorekeeper.model";
-import { Taoqi } from "./taoqi.model";
-import { Verina } from "./verina.model";
-import { XiangliYao } from "./xiangliyao.model";
-import { Yangyang } from "./yangyang.model";
-import { Yinlin } from "./yinlin.model";
-import { Youhu } from "./youhu.model";
-import { Yuanwu } from "./yuanwu.model";
-import { Zhezhi } from "./zhezhi.model";
+import { CharacterResults, Levels, Stats, calculateResults, emptyResults } from "../../core/damage-engine";
+import { CharacterData, RotationStep } from "../../data/character-data.model";
+import { CharacterSave } from "./character-save.model";
 
-export class Character {
+export class Character implements Stats {
     index: number;
-    character:
-        Aalto | Baizhi | Calcharo | Camellya |
-        Carlotta | Changli | Chixia | Danjin |
-        Encore | Jianxin | Jinhsi | Jiyan |
-        Lingyang | Mortefi | RoverHavoc | Rover |
-        Sanhua | Taoqi | Shorekeeper | Verina |
-        XiangliYao | Yangyang | Yinlin | Youhu |
-        Yuanwu | Zhezhi
-    atkType: boolean = false;
-    healType: boolean = false;
-    canHeal: boolean = false;
-    hpType: boolean = false;
-    defType: boolean = false;
+    data: CharacterData;
+    name: string;
+
+    atkType: boolean;
+    healType: boolean;
+    canHeal: boolean;
+    hpType: boolean;
+    defType: boolean;
 
     dmg: number = 0;
     hp: number = 0;
@@ -53,141 +25,18 @@ export class Character {
     liberationBonus: number = 0;
     healingBonus: number = 0;
 
-    //----------------------------------------
-    basicDmg: number[] = [];
-    basicSecondDmg: number[] = [];
-    basicThirdDmg: number[] = [];
-    basicCommonDmg: string[] = [];
-    basicResDmg: string[] = [];
-    //----------------------------------------
+    levels: Levels = { basic: 1, skill: 1, liberation: 1, intro: 1, forte: 1 };
+    results: CharacterResults = emptyResults();
 
-    //----------------------------------------
-    skillDmg: number[] = [];
-    skillSecondDmg: number[] = [];
-    skillThirdDmg: number[] = [];
-    skillCommonDmg: string[] = [];
-    skillResDmg: string[] = [];
-    //----------------------------------------
-
-    //----------------------------------------
-    liberationDmg: number[] = [];
-    liberationSecondDmg: number[] = [];
-    liberationThirdDmg: number[] = [];
-    liberationCommonDmg: string[] = [];
-    liberationResDmg: string[] = [];
-    //----------------------------------------
-
-    //----------------------------------------
-    introDmg: number[] = [];
-    introSecondDmg: number[] = [];
-    introCommonDmg: string[] = [];
-    introResDmg: string[] = [];
-    //----------------------------------------
-
-    //----------------------------------------
-    outroDmg: number[] = [];
-    outroSecondDmg: number[] = [];
-    outroCommonDmg: string[] = [];
-    outroResDmg: string[] = [];
-    //----------------------------------------
-
-    //----------------------------------------
-    forteDmg: number[] = [];
-    forteSecondDmg: number[] = [];
-    forteThirdDmg: number[] = [];
-    forteCommonDmg: string[] = [];
-    forteResDmg: string[] = [];
-    //----------------------------------------
-    //Basic Sums
-    sumBasicDmg: number[] = [];
-    sumCommonDmg: string[] = [];
-    sumResDmg: string[] = [];
-    //Skill Sums
-    sumSkillDmg: number[] = [];
-    sumCommonSkillDmg: string[] = [];
-    sumResSkillDmg: string[] = [];
-    //Liberation Sums
-    sumLiberationDmg: number[] = [];
-    sumCommonLibDmg: string[] = [];
-    sumResLibDmg: string[] = [];
-    //Intro sums
-    sumIntroDmg: number[] = [];
-    sumCommonIntroDmg: string[] = [];
-    sumResIntroDmg: string[] = [];
-    //Outro sums
-    sumOutroDmg: number[] = [];
-    sumCommonOutroDmg: string[] = [];
-    sumResOutroDmg: string[] = [];
-    //Forte sums
-    sumForteDmg: number[] = [];
-    sumCommonForteDmg: string[] = [];
-    sumResForteDmg: string[] = [];
-    //Healing sums
-    sumHealingSkill: number[] = [];
-    sumHealingLiberation: number[] = [];
-    sumHealingIntro: number[] = [];
-    sumHealingOutro: number[] = [];
-    sumHealingForte: number[] = [];
-
-    public calculate() {
-        this.resetCharacter();
-        this.character.calculateBasic(this);
-    }
-
-    resetCharacter() {
-        this.basicDmg = [];
-        this.basicSecondDmg = [];
-        this.basicThirdDmg = [];
-        this.basicCommonDmg = [];
-        this.basicResDmg = [];
-        this.skillDmg = [];
-        this.skillSecondDmg = [];
-        this.skillThirdDmg = [];
-        this.skillCommonDmg = [];
-        this.skillResDmg = [];
-        this.liberationDmg = [];
-        this.liberationSecondDmg = [];
-        this.liberationThirdDmg = [];
-        this.liberationCommonDmg = [];
-        this.liberationResDmg = [];
-        this.introDmg = [];
-        this.introCommonDmg = [];
-        this.introResDmg = [];
-        this.outroDmg = [];
-        this.outroCommonDmg = [];
-        this.outroResDmg = [];
-        this.forteDmg = [];
-        this.forteSecondDmg = [];
-        this.forteThirdDmg = [];
-        this.forteCommonDmg = [];
-        this.forteResDmg = [];
-        this.sumBasicDmg = [];
-        this.sumCommonDmg = [];
-        this.sumResDmg = [];
-        this.sumSkillDmg = [];
-        this.sumCommonSkillDmg = [];
-        this.sumResSkillDmg = [];
-        this.sumLiberationDmg = [];
-        this.sumCommonLibDmg = [];
-        this.sumResLibDmg = [];
-        this.sumIntroDmg = [];
-        this.sumCommonIntroDmg = [];
-        this.sumResIntroDmg = [];
-        this.sumOutroDmg = [];
-        this.sumCommonOutroDmg = [];
-        this.sumResOutroDmg = [];
-        this.sumForteDmg = [];
-        this.sumCommonForteDmg = [];
-        this.sumResForteDmg = [];
-        this.sumHealingSkill = [];
-        this.sumHealingLiberation = [];
-        this.sumHealingIntro = [];
-        this.sumHealingOutro = [];
-    }
-
-    constructor(index: number, character: any, load?: any) {
+    constructor(index: number, data: CharacterData, load?: CharacterSave) {
         this.index = index;
-        this.character = character;
+        this.data = data;
+        this.name = data.name;
+        this.atkType = data.atkType;
+        this.healType = data.healType;
+        this.canHeal = data.canHeal;
+        this.hpType = data.hpType;
+        this.defType = data.defType;
 
         if (load) {
             this.dmg = load.dmg;
@@ -201,8 +50,22 @@ export class Character {
             this.liberationBonus = load.liberationBonus;
             this.elementalBonus = load.elementalBonus;
             this.healingBonus = load.healingBonus;
-            this.character.name = load.name;
+            this.name = load.name;
             this.calculate();
         }
+    }
+
+    calculate() {
+        this.results = calculateResults(this.data, this, this.levels);
+    }
+
+    /** Total damage (or healing) of a rotation step */
+    rotationValue(step: RotationStep): number {
+        const result = this.results[step.section];
+        return (step.healing ? result.healing : result.sum)[step.index];
+    }
+
+    clone(): Character {
+        return Object.assign(new Character(this.index, this.data), this);
     }
 }

@@ -1,0 +1,136 @@
+{
+  "id": "yinlin",
+  "name": "Yinlin",
+  "icon": "yinlin",
+  "wiki": "https://wutheringwaves.fandom.com/wiki/Yinlin",
+  "type": "electro",
+  "weapon": "rectifier",
+  "lastUpdate": "2024-11-09T03:00:00.000Z",
+  "atkType": false,
+  "healType": false,
+  "canHeal": false,
+  "hpType": false,
+  "defType": false,
+  "basic": {
+    "name": "Zapstring's Dance",
+    "names": ["Zapstring's Dance DMG 1", "Zapstring's Dance DMG 2", "Zapstring's Dance DMG 3", "Zapstring's Dance DMG 4", "Mid-Air DMG", "Dodge DMG", "Heavy Attack"],
+    "bonusType": ["b", "b", "b", "b", "b", "b", "h"],
+    "scaling": [
+      [14.49, 15.68, 16.87, 18.53, 19.72, 21.09, 22.99, 24.89, 26.79, 28.81],
+      [17.01, 18.41, 19.8, 21.76, 23.15, 24.76, 26.99, 29.22, 31.45, 33.82],
+      [7.04, 7.62, 8.19, 9, 9.58, 10.24, 11.16, 12.09, 13.01, 13.99],
+      [37.8, 40.9, 44, 48.34, 51.44, 55.01, 59.97, 64.93, 69.89, 75.16],
+      [62, 67.09, 72.17, 79.29, 84.37, 90.22, 98.36, 106.49, 114.62, 123.27],
+      [12.18, 13.18, 14.18, 15.58, 16.58, 17.72, 19.32, 20.92, 22.52, 24.22],
+      [15, 16.23, 17.46, 19.19, 20.42, 21.83, 23.8, 25.77, 27.74, 29.83]
+    ],
+    "multiplier": [1, 2, 7, 1, 1, 7, 2],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": [],
+    "ends": 3
+  },
+  "skill": {
+    "name": "Magnetic Roar",
+    "names": ["Magnetic Roar", "Lightning Execution", "Electromagnetic Blast"],
+    "bonusType": ["s", "s", "s"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65],
+      [45, 48.69, 52.38, 57.55, 61.24, 65.48, 71.39, 77.29, 83.2, 89.47],
+      [10, 10.82, 11.64, 12.79, 13.61, 14.56, 15.87, 17.18, 18.49, 19.89]
+    ],
+    "multiplier": [3, 4, 1],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "liberation": {
+    "name": "Thundering Wrath",
+    "names": ["Thundering Wrath"],
+    "bonusType": ["l"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [58.63, 63.44, 68.25, 74.98, 79.79, 85.32, 93.01, 100.7, 108.39, 116.56]
+    ],
+    "multiplier": [7],
+    "second": [],
+    "secondMultiplier": [0],
+    "third": [],
+    "thirdMultiplier": [0]
+  },
+  "intro": {
+    "name": "Raging Storm",
+    "names": ["Raging Storm"],
+    "bonusType": ["i"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [7.2, 7.8, 8.39, 9.21, 9.8, 10.48, 11.43, 12.37, 13.32, 14.32]
+    ],
+    "multiplier": [10],
+    "second": [],
+    "secondMultiplier": [0],
+    "third": [],
+    "thirdMultiplier": [0]
+  },
+  "outro": {
+    "name": "Strategist",
+    "names": ["Strategist"],
+    "bonusType": ["o"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [0]
+    ],
+    "multiplier": [0],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "forte": {
+    "name": "Chameleon Cipher",
+    "names": ["Chameleon Cipher", "Judgment Strike"],
+    "bonusType": ["h", "s"],
+    "heal": [],
+    "dmgType": [],
+    "shield": [],
+    "scaling": [
+      [90, 97.38, 104.76, 115.1, 122.48, 130.96, 142.77, 154.58, 166.39, 178.93],
+      [39.56, 42.8, 46.05, 50.59, 53.83, 57.56, 62.75, 67.94, 73.13, 78.64]
+    ],
+    "multiplier": [2, 1],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "rotation": [
+    { "section": "intro", "index": 0 },
+    { "section": "liberation", "index": 0 },
+    { "section": "skill", "index": 0 },
+    { "section": "basic", "index": 0 },
+    { "section": "basic", "index": 1 },
+    { "section": "basic", "index": 2 },
+    { "section": "basic", "index": 3 },
+    { "section": "basic", "index": 0 },
+    { "section": "basic", "index": 1 },
+    { "section": "basic", "index": 2 },
+    { "section": "basic", "index": 3 },
+    { "section": "skill", "index": 1 },
+    { "section": "forte", "index": 0 },
+    { "section": "forte", "index": 1 }
+  ],
+  "rotationDesc": ["Intro", "Resonance Liberation", "Resonance Skill", "8x Basic Attack", "Resonance Skill", "Heavy Attack", "Outro"],
+  "rotationColor": ["intro", "liberation", "skill", "basic", "skill", "basic", "outro"],
+  "rotationCommands": ["r", "cv", "e", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "e", "cv", "mbh"],
+  "echo4": ["Crit Rate %", "Crit DMG %"],
+  "echo3": ["ELECTRO DMG %", "ATK %"],
+  "echo1": ["ATK %"],
+  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "Skill %", "ATK"]
+}

@@ -26,28 +26,13 @@ export class CharacterComponent {
   sum = signal(false);
 
   nameEdit = signal(false);
-  currentSelection = computed(() => this.character().character.icon);
+  currentSelection = computed(() => this.character().data.icon);
   showHelp = signal(false);
   lang: string = this.transloco.getActiveLang();
 
-  upgrade(type: number) {
-    switch (type) {
-      case 0:
-        this.character().character.basicCurrent += this.character().character.basicCurrent == 10 ? -9 : 1;
-        break;
-      case 1:
-        this.character().character.skillCurrent += this.character().character.skillCurrent == 10 ? -9 : 1;
-        break;
-      case 2:
-        this.character().character.forteCurrent += this.character().character.forteCurrent == 10 ? -9 : 1;
-        break;
-      case 3:
-        this.character().character.liberationCurrent += this.character().character.liberationCurrent == 10 ? -9 : 1;
-        break;
-      case 4:
-        this.character().character.introCurrent += this.character().character.introCurrent == 10 ? -9 : 1;
-        break;
-    }
+  upgrade(type: 'basic' | 'skill' | 'forte' | 'liberation' | 'intro') {
+    const levels = this.character().levels;
+    levels[type] += levels[type] == 10 ? -9 : 1;
     this.calculate();
   }
 

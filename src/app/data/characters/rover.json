@@ -1,0 +1,133 @@
+{
+  "id": "rover",
+  "name": "Rover (Spectro)",
+  "icon": "rover",
+  "wiki": "https://wutheringwaves.fandom.com/wiki/Rover",
+  "type": "spectro",
+  "weapon": "sword",
+  "lastUpdate": "2024-11-09T03:00:00.000Z",
+  "atkType": false,
+  "healType": false,
+  "canHeal": false,
+  "hpType": false,
+  "defType": false,
+  "basic": {
+    "name": "Vibration Manifestation",
+    "names": ["Vibration Manifestation DMG 1", "Vibration Manifestation DMG 2", "Vibration Manifestation DMG 3", "Vibration Manifestation DMG 4", "Mid-Air DMG", "Dodge DMG", "Heavy Attack", "Heavy: Resonance ", "Heavy: Aftertune "],
+    "bonusType": ["b", "b", "b", "b", "b", "b", "h", "h", "h"],
+    "scaling": [
+      [29.75, 32.19, 34.63, 38.05, 40.49, 43.29, 47.2, 51.1, 55, 59.15],
+      [38.25, 41.39, 44.53, 48.92, 52.06, 55.66, 60.68, 35.7, 70.72, 76.05],
+      [7.65, 8.28, 8.91, 9.79, 10.42, 11.14, 12.14, 13.14, 14.15, 15.21],
+      [65.45, 70.82, 76.19, 83.7, 89.07, 95.24, 103.83, 112.42, 121, 130.13],
+      [52.7, 57.03, 61.35, 67.4, 71.72, 76.69, 83.6, 90.52, 97.43, 104.78],
+      [98.25, 106.31, 114.37, 125.65, 133.7, 142.97, 155.86, 168.75, 181.64, 195.34],
+      [9.69, 10.49, 11.28, 12.4, 13.19, 14.1, 15.38, 16.65, 17.92, 19.27],
+      [38.25, 41.39, 44.53, 48.92, 52.06, 55.66, 60.68, 65.7, 70.72, 76.05],
+      [63.75, 68.98, 74.21, 81.53, 86.76, 92.77, 101.13, 109.5, 117.86, 126.75]
+    ],
+    "multiplier": [1, 1, 5, 1, 1, 1, 1, 1, 5],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": [],
+    "ends": 3
+  },
+  "skill": {
+    "name": "Resonating Slashes",
+    "names": ["Resonating Slashes"],
+    "bonusType": ["s"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [118.8, 128.55, 138.29, 151.93, 161.67, 172.87, 188.46, 204.04, 219.63, 236.19]
+    ],
+    "multiplier": [1],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "liberation": {
+    "name": "Echoing Orchestra",
+    "names": ["Echoing Orchestra"],
+    "bonusType": ["l"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81]
+    ],
+    "multiplier": [1],
+    "second": [
+      [340, 367.88, 395.76, 434.8, 462.68, 494.74, 539.35, 583.95, 628.56, 675.96]
+    ],
+    "secondMultiplier": [1],
+    "third": [],
+    "thirdMultiplier": [0]
+  },
+  "intro": {
+    "name": "Waveshock",
+    "names": ["Waveshock"],
+    "bonusType": ["i"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [85, 91.97, 98.94, 108.7, 115.67, 123.69, 134.84, 145.99, 157.14, 168.99]
+    ],
+    "multiplier": [1],
+    "second": [],
+    "secondMultiplier": [0],
+    "third": [],
+    "thirdMultiplier": [0]
+  },
+  "outro": {
+    "name": "Instant",
+    "names": ["Instant"],
+    "bonusType": ["o"],
+    "heal": [],
+    "dmgType": [],
+    "scaling": [
+      [0]
+    ],
+    "multiplier": [0],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "forte": {
+    "name": "World in a Grain of Sand",
+    "names": ["Resonating Spin", "Resonating Whirl", "Resonating Echoes DMG 1", "Resonating Echoes DMG 2"],
+    "bonusType": ["s", "s", "s", "s"],
+    "heal": [],
+    "dmgType": [],
+    "shield": [],
+    "scaling": [
+      [64.93, 70.25, 75.58, 83.03, 88.35, 94.48, 103, 111.51, 120.03, 129.08],
+      [20, 21.64, 23.28, 25.58, 27.22, 29.11, 31.73, 34.35, 36.98, 39.77],
+      [40, 43.28, 46.56, 51.16, 54.44, 58.21, 53.46, 68.7, 73.95, 79.53],
+      [80, 86.56, 93.12, 102.31, 108.87, 116.41, 126.91, 137.4, 147.9, 159.05]
+    ],
+    "multiplier": [2, 1, 1, 1],
+    "second": [],
+    "secondMultiplier": [],
+    "third": [],
+    "thirdMultiplier": []
+  },
+  "rotation": [
+    { "section": "intro", "index": 0 },
+    { "section": "liberation", "index": 0 },
+    { "section": "basic", "index": 6 },
+    { "section": "basic", "index": 7 },
+    { "section": "forte", "index": 0 },
+    { "section": "forte", "index": 2 },
+    { "section": "forte", "index": 3 }
+  ],
+  "rotationDesc": ["Intro", "Resonance Liberation", "Heavy Attack", "Heavy Attack: Resonance", "Resonance Skill: Resonating Spin", "2x Basic Attack: Resonating Echoes", "Outro"],
+  "rotationColor": ["intro", "liberation", "basic", "basic", "skill", "basic", "outro"],
+  "rotationCommands": ["r", "cv", "mbh", "cv", "mbh", "cv", "e", "cv", "mb", "cv", "mb"],
+  "echo4": ["Crit Rate %", "Crit DMG %"],
+  "echo3": ["SPECTRO DMG %", "ATK %"],
+  "echo1": ["ATK %"],
+  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "ATK", "Skill %"]
+}
