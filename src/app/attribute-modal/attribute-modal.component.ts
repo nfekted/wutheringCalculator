@@ -1,10 +1,11 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Character } from '../shared/models/character.model';
 import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
     selector: 'app-attribute-modal',
     templateUrl: './attribute-modal.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AttributeModalComponent {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Util } from '../shared/utils/util.model';
 import { Settings } from '../shared/models/settings.model';
 import Swal from 'sweetalert2';
@@ -8,6 +8,7 @@ import { TranslocoService } from '@ngneat/transloco';
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NavbarComponent {

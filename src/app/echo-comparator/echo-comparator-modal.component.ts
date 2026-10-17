@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Character } from '../shared/models/character.model';
 import { TranslocoService } from '@ngneat/transloco';
 import { Echo } from '../shared/models/echo.model';
@@ -7,6 +7,7 @@ import { Echo } from '../shared/models/echo.model';
     selector: 'app-echo-comparator-modal',
     templateUrl: './echo-comparator-modal.component.html',
     styleUrl: './echo-comparator-modal.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class EchoComparatorModalComponent {

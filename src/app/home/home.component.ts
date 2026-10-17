@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Character } from '../shared/models/character.model';
 import { Encore } from '../shared/models/encore.model';
 import { Sanhua } from '../shared/models/sanhua.model';
@@ -32,6 +32,7 @@ import { Carlotta } from '../shared/models/carlotta.model';
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class HomeComponent {

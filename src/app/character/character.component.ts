@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Character } from '../shared/models/character.model';
 import { Util } from '../shared/utils/util.model';
 import Swal from 'sweetalert2';
@@ -8,6 +8,7 @@ import { TranslocoService } from '@ngneat/transloco';
     selector: 'app-character',
     templateUrl: './character.component.html',
     styleUrl: './character.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CharacterComponent {

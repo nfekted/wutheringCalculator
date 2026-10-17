@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Partner } from '../shared/models/partner.model.js';
 import { TranslocoService } from '@ngneat/transloco';
 
@@ -6,6 +6,7 @@ import { TranslocoService } from '@ngneat/transloco';
     selector: 'app-partners',
     templateUrl: './partners.component.html',
     styleUrl: './partners.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PartnersComponent implements OnInit {

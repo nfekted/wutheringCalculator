@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { Settings } from './shared/models/settings.model';
 import { Util } from './shared/utils/util.model';
@@ -7,6 +7,7 @@ import { Util } from './shared/utils/util.model';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

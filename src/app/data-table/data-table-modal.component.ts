@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Character } from '../shared/models/character.model';
 import { TranslocoService } from '@ngneat/transloco';
 
@@ -6,6 +6,7 @@ import { TranslocoService } from '@ngneat/transloco';
     selector: 'app-data-table-modal',
     templateUrl: './data-table-modal.component.html',
     styleUrl: './data-table-modal.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DataTableModalComponent {
