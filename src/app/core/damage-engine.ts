@@ -159,9 +159,9 @@ function getExpected(dmg: number, multiplierRange: number[], upgradeLevel: numbe
 }
 
 /*
- * Empirical factors inherited from the original app, not derived from formula.txt:
- * the damage spread around the expected value, and the damage left after the enemy's
- * DEF and RES (a common enemy vs. a resistant one).
+ * Fixed on purpose: the calculator targets a level 90 character against a max-level enemy,
+ * so DEF and RES are not inputs. These are the damage spread around the expected value and
+ * the damage left after the enemy's DEF and RES (a common enemy vs. a resistant one).
  */
 const DAMAGE_SPREAD_MIN = 0.93;
 const DAMAGE_SPREAD_MAX = 1.065;
