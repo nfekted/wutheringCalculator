@@ -13,6 +13,7 @@
     "gauntlets": "<b>Gauntlet</b> is one of the 5 type of Weapons in game, common in \"phisical\" characters.",
     "pistols": "<b>Pistols</b> is one of the 5 type of Weapons in game, common in \"long-raged\" characters.",
     "prediction": "PREDICTED NUMBERS",
+    "peak": "Peak",
     "info": "Due to the defense calculation not being exact, may vary by an <b>average of 6.5% of the actual in-game value.</b>",
     "elemental": "Elemental",
     "basic": "Basic",
@@ -32,10 +33,6 @@
     "description": "Description",
     "help1": "<b>Raw Damage</b>: It is your character's damage, ignoring any other type of mechanic (defense, resistance).<br/><u><b>Use Raw Damage column as a basis </b></u>to know if your character is better or worse, since it has no external variables.<br/><br/><b>Common Enemy DMG</b>: Damage stipulated on common enemies, without resistance to their element<br/><b>RES (resistent) Enemy DMG</b>: Damage stipulated on enemies with resistance to your element.<br/><u><b>In-game DMG is purely informative</b></u>, for better metrics use the Raw Damage column.",
     "delete": "Are you sure? This action can't be undone",
-    "modes": {
-        "full": "Current mode: Show all damage detailed",
-        "sum": "Current mode: Sum all damages"
-    },
     "characters": {
         "aalto": "<b>Aalto</b> is a character with <b class=\"aero\">AERO</b> elemental bonus, Aalto's main characteristis are his <b>Concerto Efficiency</b> and <b><b class=\"aero\">AERO</b> DMG Amplification</b> in 23% to other characters, with their ability <b>Outro: Dissolving Mist</b>.",
         "baizhi": "<b>Baihzi</b> is a character with <b class=\"glacio\">GLACIO</b> elemental bonus, but her main role is <b>Healing and support</b> the team with her skills, as well buff with <b>DMG Amplification</b> in 15% with <b>Outro: Rejuvinating Flow</b>. Baihzi skills are affected by maximum <b>HP value</b>",
@@ -127,5 +124,13 @@
         "yuanwu": "<b>Because:</b><br/>The highlight of Yuanwu is being able to reduce the stun bar of enemies with greater speed, since his rotation does not cause as much damage, so the Energy Regen % to activate his Outro Skill can be the ideal so far.",
         "zhezhi": "<b>Because:</b><br/>Zhezhi has her liberation using Basic DMG as a bonus attribute, so investing a little in Basic DMG can help increase Zhezhi's damage, in addition, Energy Regen will help fill the Outro Skill faster to bonus the next character entering the field.",
         "": ""
+    },
+    "rename": "Rename",
+    "levels": "Skill levels",
+    "about": "About this character",
+    "view": {
+        "label": "View",
+        "detailed": "Detailed",
+        "total": "Total"
     }
 }

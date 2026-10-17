@@ -1,31 +1,42 @@
-import { Component, ChangeDetectionStrategy, computed, inject, input } from '@angular/core';
-import { Character } from '../shared/models/character.model';
+import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
+import { DIALOG_DATA } from '@angular/cdk/dialog';
 import { FormsModule } from '@angular/forms';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
+import { Character } from '../shared/models/character.model';
 import { Echo } from '../shared/models/echo.model';
+import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
 
 @Component({
     selector: 'app-echo-comparator-modal',
     templateUrl: './echo-comparator-modal.component.html',
-    styleUrl: './echo-comparator-modal.component.scss',
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [FormsModule, TranslocoPipe]
+    host: { class: 'block w-[min(90rem,calc(100vw-2rem))]' },
+    imports: [FormsModule, TranslocoPipe, DialogPanelComponent]
 })
 export class EchoComparatorModalComponent {
 
-  id = input.required<string>();
-  character = input.required<Character>();
+  private transloco = inject(TranslocoService);
 
-  currentSelection = computed(() => this.character().data.icon);
+  character = signal(inject<Character>(DIALOG_DATA)).asReadonly();
+
   echo1: Echo = new Echo();
   echo2: Echo = new Echo();
+  echoes = [this.echo1, this.echo2];
 
   text: string = '';
 
-  private transloco = inject(TranslocoService);
+  constructor() {
+    this.calculate();
+  }
 
-  trackByFn(index: number, item: any): number {
-    return index;
+  protected recommended() {
+    const data = this.character().data;
+    return [
+      { title: 'char.echo.echo4', items: data.echo4 },
+      { title: 'char.echo.echo3', items: data.echo3 },
+      { title: 'char.echo.echo1', items: data.echo1 },
+      { title: 'char.echo.sub', items: data.echoSub },
+    ];
   }
 
   calculate() {

@@ -1,42 +1,25 @@
-import { Component, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Dialog } from '@angular/cdk/dialog';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { StorageService } from '../shared/services/storage.service';
-import Swal from 'sweetalert2';
-import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
+import { TranslocoPipe } from '@jsverse/transloco';
+import { NewsDialogComponent } from './news-dialog.component';
+import { SettingsDialogComponent } from './settings-dialog.component';
 
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
-    styleUrl: './navbar.component.scss',
     changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RouterLink, RouterLinkActive, TranslocoPipe]
 })
 export class NavbarComponent {
 
-  private transloco = inject(TranslocoService);
+  private dialog = inject(Dialog);
 
-  private storage = inject(StorageService);
-
-  lang = input('');
-  callback = output<string>();
-
-  versions: number[] = [...Array.from(Array(2).keys()).reverse()]
-
-  changeLang(lang: string) {
-    this.callback.emit(lang);
+  openSettings() {
+    this.dialog.open(SettingsDialogComponent, { backdropClass: 'app-backdrop', ariaLabelledBy: 'settings-title' });
   }
 
-  delete() {
-    Swal.fire({
-      title: this.transloco.translate('settings.deleteConfirm'),
-      showDenyButton: true,
-      confirmButtonText: this.transloco.translate('confirm'),
-      denyButtonText: this.transloco.translate('cancel')
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        this.storage.clear()
-      }
-    });
+  openNews() {
+    this.dialog.open(NewsDialogComponent, { backdropClass: 'app-backdrop', ariaLabelledBy: 'news-title' });
   }
 }

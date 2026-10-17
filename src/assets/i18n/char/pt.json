@@ -13,6 +13,7 @@
     "gauntlets": "<b>Gauntlet</b> é um dos 5 tipos de arma presentes no jogo, comum em personagens \"físicos\".",
     "pistols": "<b>Pistolas</b> é um dos 5 tipos de armas presentes no jogo, comum em personagens de \"ataque a distância\".",
     "prediction": "NÚMEROS PREVISTOS",
+    "peak": "Pico",
     "info": "Devido ao calculo de defesa não ser exato, pode variar uma <b>média de 6.5% do valor real in-game.</b>",
     "elemental": "Elemental",
     "basic": "Basico",
@@ -32,10 +33,6 @@
     "description": "Legenda",
     "help1": "<b>Dano Puro</b>: É o dano do seu personagem ignorando qualquer outro tipo de mecânica (defesa, resistencia)<br/><u><b>Use a coluna Dano Puro</b></u> como base para saber se seu personagem está melhor ou pior, uma vez que ela não tem influências de variaveis exteriores.<br/><br/><b>Dano inimigo comum</b>: Intervalo de dano estipulado em inimigos comuns, sem resistencia ao seu elemento<br/><b>Dano inimigo RES (resistente)</b>: Intervalo de dano estipulado em inimigos com resistencia ao seu elemento.<br/><u><b>O dano in-game é apenas informativo</b></u>, use a coluna de Dano Puro para melhores métricas.",
     "delete": "Tem certeza? Essa ação não pode ser desfeita",
-    "modes": {
-        "full": "Modo: Mostrar danos detalhados",
-        "sum": "Modo: Somar todos danos"
-    },
     "characters": {
         "aalto": "<b>Aalto</b> é um personagem com bônus elemental <b class=\"aero\">AERO</b>, as principais características do <b>Aalto</b> é sua <b>rápida regeneração de energia</b> e <b>amplificação de dano <b class=\"aero\">AERO</b> em 23% a outros personagens</b>, com sua habilidade <b>Outro: Dissolving Mist</b>.",
         "baizhi": "<b>Baihzi</b>é uma personagem com elemental <b class=\"glacio\">GLACIO</b>, seu foco é <b>dar suporte e curar</b> o time com suas habilidades, assim como <b>aumentar o dano</b> de outros personagens em 15% com sua habilidade <b>Outro: Rejuvinating Flow</b>. As habilidades de Baihzi são afetadas pelo seu <b>HP MÁXIMO</b>",
@@ -128,5 +125,13 @@
         "yuanwu": "<b>Pois:</b><br/>O destaque de Yuanwu é poder reduzir a barra de stun dos inimigos com maior velocidade, uma vez que sua rotação não causa tanto dano, então o Energy Regen % para ativar sua Outro pode ser o ideal até o momento.",
         "zhezhi": "<b>Pois:</b><br/>Zhezhi tem sua liberation utilizando o Basic DMG como atributo bônus, então investir um pouco em Basic DMG pode ajudar a aumentar o dano da Zhezhi, além disso, Energy Regen ajudará a encher a Outro Skill mais rápidamente para bonificar o próximo personagem entrando em campo.",
         "": ""
+    },
+    "rename": "Renomear",
+    "levels": "Níveis das skills",
+    "about": "Sobre o personagem",
+    "view": {
+        "label": "Visualização",
+        "detailed": "Detalhado",
+        "total": "Total"
     }
 }

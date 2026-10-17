@@ -1,258 +1,103 @@
-<div class="modal fade modal-xl" [id]="id()" tabindex="-1" aria-labelledby="echoModal" aria-hidden="true">
-  <div class="modal-dialog" style="margin-top: 10vh;">
-    <div class="modal-content">
-      <div [class]="'modal-header btn-'+ currentSelection()">
-        <h1 class="modal-title fs-5" id="echoModal">{{'char.echo.echo' | transloco}}</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <b>{{'char.echo.disclaimer' | transloco}}</b>
-        <!-- BASIC INFO -->
-        <div class="row">
-          <div class="col-sm-12">
-            {{'char.echo.recommended' | transloco: {name: character().name} }}
-          </div>
-          <div class="col-sm-12 col-md-3 echo-border">
-            <b>{{'char.echo.echo4' | transloco}}</b><br />
-            <ul>
-              @for (item of character().data.echo4; track item) {
-                <li>{{item}}</li>
-              }
-            </ul>
-          </div>
-          <div class="col-sm-12 col-md-3 echo-border">
-            <b>{{'char.echo.echo3' | transloco}}</b><br />
-            <ul>
-              @for (item of character().data.echo3; track item) {
-                <li>{{item}}</li>
-              }
-            </ul>
-          </div>
-          <div class="col-sm-12 col-md-3 echo-border">
-            <b>{{'char.echo.echo1' | transloco}}</b><br />
-            <ul>
-              @for (item of character().data.echo1; track item) {
-                <li>{{item}}</li>
-              }
-            </ul>
-          </div>
-          <div class="col-sm-12 col-md-3 echo-border">
-            <b>{{'char.echo.sub' | transloco}}</b><br />
-            <ul>
-              @for (item of character().data.echoSub; track item) {
-                <li>{{item}}</li>
-              }
-            </ul>
-          </div>
-          <div class="col-sm-12">
-            <div
-              [innerHtml]="'char.echo.' + currentSelection() | transloco: { name: character().name}">
-            </div>
-          </div>
+<app-dialog-panel [title]="'char.echo.echo' | transloco" titleId="echo-title">
+  <p class="text-sm font-medium text-ink">{{ 'char.echo.disclaimer' | transloco }}</p>
+
+  <!-- Recommended echoes -->
+  <section class="ui-card mt-4 p-4">
+    <p class="text-sm text-body">{{ 'char.echo.recommended' | transloco: { name: character().name } }}</p>
+    <div class="mt-3 grid gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
+      @for (group of recommended(); track group.title) {
+        <div>
+          <h3 class="font-bold text-ink">{{ group.title | transloco }}</h3>
+          <ul class="mt-1 list-disc pl-5 text-body">
+            @for (item of group.items; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
         </div>
-        <!-- ECHO STATUS -->
-        <div class="row">
-          <!-- ECHO 1 -->
-          <div class="col-12 col-md-4 echo-border">
-            <div class="col-12 mt-3 text-center">
-              <img src="assets/img/icons/echo.webp" width="35px" style="filter: invert(1);" />
-              <h5>ECHO 1</h5>
-            </div>
-            <div class="row">
-              <div class="col-12 mt-3 text-center">
-                <b>{{'char.echo.echoType' | transloco}}</b>
-              </div>
-              <div class="col-12">
-                <select class="form-select" [(ngModel)]="echo1.type" (change)="calculate()">
-                  <option value="0">{{'char.echo.echo1' | transloco}}</option>
-                  <option value="1">{{'char.echo.echo3' | transloco}}</option>
-                  <option value="2">{{'char.echo.echo4' | transloco}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12 text-center">
-                <b>Main 1 Attr</b>
-              </div>
-              <div class="col-12">
-                <select class="form-select" [(ngModel)]="echo1.main1Index" (change)="calculate()">
-                  @for (item of echo1.mainStats[echo1.type]; track item; let i = $index) {
-                    <option [value]="i">
-                      {{item}} - {{echo1.mainValues[echo1.type][i]}} {{i == 0 ? '' : '%'}}
-                    </option>
-                  }
-                </select>
-              </div>
-              <div class="col-12 text-center">
-                <b>Main 2 Attr</b>
-              </div>
-              <div class="col-12">
-                <select class="form-select" [(ngModel)]="echo1.main2Index" (change)="calculate()">
-                  @for (item of echo1.mainStats[echo1.type]; track item; let i = $index) {
-                    <option [value]="i">
-                      {{item}} - {{echo1.mainValues[echo1.type][i]}} {{i == 0 ? '' : '%'}}
-                    </option>
-                  }
-                </select>
-              </div>
-            </div>
-            <hr />
-            <div class="row">
-              @for (item of echo1.currentSubs; track trackByFn(i, item); let i = $index) {
-                <div class="col-12 text-center">
-                  <b>Substat {{i +1}}</b>
-                </div>
-                <div class="col-6">
-                  <select class="form-select" [(ngModel)]="echo1.currentSubs[i]"
-                    (change)="calculate()">
-                    <option [value]="null"></option>
-                    @for (attr of echo1.secondaryStats; track attr) {
-                      <option [value]="attr">
-                        {{attr}}
-                      </option>
-                    }
-                  </select>
-                </div>
-                <div class="col-6">
-                  <input class="form-control" type="number" placeholder="0" min="0"
-                    [(ngModel)]="echo1.currentSubsValue[i]" (change)="calculate()" />
-                  </div>
-                }
-              </div>
-            </div>
-            <!-- ECHO 1 END -->
-            <!-- ECHO 2 -->
-            <div class="col-12 col-md-4 echo-border">
-              <div class="col-12 mt-3 text-center">
-                <img src="assets/img/icons/echo.webp" width="35px" style="filter: invert(1);" />
-                <h5>ECHO 2</h5>
-              </div>
-              <div class="row">
-                <div class="col-12 mt-3 text-center">
-                  <b>{{'char.echo.echoType' | transloco}}</b>
-                </div>
-                <div class="col-12">
-                  <select class="form-select" [(ngModel)]="echo2.type" disabled>
-                    <option value="0">{{'char.echo.echo1' | transloco}}</option>
-                    <option value="1">{{'char.echo.echo3' | transloco}}</option>
-                    <option value="2">{{'char.echo.echo4' | transloco}}</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 text-center">
-                  <b>Main 1 Attr</b>
-                </div>
-                <div class="col-12">
-                  <select class="form-select" [(ngModel)]="echo2.main1Index" (change)="calculate()">
-                    @for (item of echo2.mainStats[echo2.type]; track item; let i = $index) {
-                      <option [value]="i">
-                        {{item}} - {{echo2.mainValues[echo2.type][i]}} {{i == 0 ? '' : '%'}}
-                      </option>
-                    }
-                  </select>
-                </div>
-                <div class="col-12 text-center">
-                  <b>Main 2 Attr</b>
-                </div>
-                <div class="col-12">
-                  <select class="form-select" [(ngModel)]="echo2.main2Index" (change)="calculate()">
-                    @for (item of echo2.mainStats[echo2.type]; track item; let i = $index) {
-                      <option [value]="i">
-                        {{item}} - {{echo2.mainValues[echo2.type][i]}} {{i == 0 ? '' : '%'}}
-                      </option>
-                    }
-                  </select>
-                </div>
-              </div>
-              <hr />
-              <div class="row">
-                @for (item of echo2.currentSubs; track trackByFn(i, item); let i = $index) {
-                  <div class="col-12 text-center">
-                    <b>Substat {{i +1}}</b>
-                  </div>
-                  <div class="col-6">
-                    <select class="form-select" [(ngModel)]="echo2.currentSubs[i]"
-                      (change)="calculate()">
-                      <option [value]="null"></option>
-                      @for (attr of echo2.secondaryStats; track attr) {
-                        <option [value]="attr">
-                          {{attr}}
-                        </option>
-                      }
-                    </select>
-                  </div>
-                  <div class="col-6">
-                    <input class="form-control" type="number" placeholder="0" min="0"
-                      [(ngModel)]="echo2.currentSubsValue[i]" (change)="calculate()" />
-                    </div>
-                  }
-                </div>
-              </div>
-              <!-- END ECHO 2 -->
-              <!-- RESULTS -->
-              <div class="col-12 col-md-4 echo-border">
-                @if (character().canHeal) {
-                  <div class="col-sm-12 text-center">
-                    @if (character().healType) {
-                      <button type="button" (click)="character().healType = false;calculate()"
-                        [class]="'btn btn-secondary btn-'+ currentSelection()">{{'char.enhancer.canHealDMG' |
-                      transloco}}</button>
-                    }
-                    @if (!character().healType) {
-                      <button type="button" (click)="character().healType = true;calculate()"
-                        [class]="'btn btn-secondary btn-'+ currentSelection()">{{'char.enhancer.canHealHeal' |
-                      transloco}}</button>
-                    }
-                  </div>
-                }
-                <div class="col-12 mt-3 text-center">
-                  <img src="assets/img/icons/echo.webp" width="35px" style="filter: invert(1);" />
-                  <h5>{{'char.echo.results' | transloco}}</h5>
-                </div>
-                <div class="col-12 mt-3">
-                  <div [innerHtml]="text">
-                  </div>
-                </div>
-                <hr />
-                <div class="row" style="font-size: small;">
-                  <div class="col-12 col-md-6">
-                    <div class="row">
-                      <div class="col-12">
-                        Echo 1 - {{'char.echo.attributes' | transloco}}
-                      </div>
-                      <div class="col-12">
-                        <ul>
-                          @for (attr of echo1.commonAttr; track attr) {
-                            <li>{{attr}}</li>
-                          }
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="row">
-                      <div class="col-12">
-                        Echo 2 - {{'char.echo.attributes' | transloco}}
-                      </div>
-                      <div class="col-12">
-                        <ul>
-                          @for (attr of echo2.commonAttr; track attr) {
-                            <li>{{attr}}</li>
-                          }
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" data-bs-dismiss="modal"
-              [class]="'btn btn-secondary btn-'+ currentSelection()">{{'close'
-            | transloco}}</button>
-          </div>
-        </div>
-      </div>
+      }
     </div>
+    <div class="mt-3 text-sm text-mute" [innerHTML]="'char.echo.' + character().data.icon | transloco: { name: character().name }"></div>
+  </section>
+
+  <div class="mt-6 grid gap-4 lg:grid-cols-3">
+    @for (echo of echoes; track $index; let n = $index) {
+      <section class="ui-card space-y-3 p-4">
+        <h3 class="flex items-center gap-2 font-bold text-ink">
+          <img src="assets/img/icons/echo.webp" alt="" class="ui-glyph h-6 w-6" />
+          Echo {{ n + 1 }}
+        </h3>
+
+        <label class="block text-xs text-mute">
+          <span class="mb-1 block">{{ 'char.echo.echoType' | transloco }}</span>
+          <select class="ui-input text-sm" [(ngModel)]="echo.type" [disabled]="n === 1" (change)="calculate()">
+            <option value="0">{{ 'char.echo.echo1' | transloco }}</option>
+            <option value="1">{{ 'char.echo.echo3' | transloco }}</option>
+            <option value="2">{{ 'char.echo.echo4' | transloco }}</option>
+          </select>
+        </label>
+
+        <label class="block text-xs text-mute">
+          <span class="mb-1 block">Main 1</span>
+          <select class="ui-input text-sm" [(ngModel)]="echo.main1Index" (change)="calculate()">
+            @for (item of echo.mainStats[echo.type]; track item; let i = $index) {
+              <option [value]="i">{{ item }} - {{ echo.mainValues[echo.type][i] }} {{ i == 0 ? '' : '%' }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="block text-xs text-mute">
+          <span class="mb-1 block">Main 2</span>
+          <select class="ui-input text-sm" [(ngModel)]="echo.main2Index" (change)="calculate()">
+            @for (item of echo.mainStats[echo.type]; track item; let i = $index) {
+              <option [value]="i">{{ item }} - {{ echo.mainValues[echo.type][i] }} {{ i == 0 ? '' : '%' }}</option>
+            }
+          </select>
+        </label>
+
+        <div class="space-y-2 border-t border-hairline pt-3">
+          @for (sub of echo.currentSubs; track $index; let i = $index) {
+            <div class="grid grid-cols-[1fr_5.5rem] gap-2">
+              <select class="ui-input text-sm" [attr.aria-label]="'Substat ' + (i + 1)" [(ngModel)]="echo.currentSubs[i]" (change)="calculate()">
+                <option [ngValue]="null">Substat {{ i + 1 }}</option>
+                @for (attr of echo.secondaryStats; track attr) {
+                  <option [ngValue]="attr">{{ attr }}</option>
+                }
+              </select>
+              <input type="number" min="0" placeholder="0" class="ui-input text-sm" [attr.aria-label]="'Substat ' + (i + 1)"
+                [(ngModel)]="echo.currentSubsValue[i]" (change)="calculate()" />
+            </div>
+          }
+        </div>
+      </section>
+    }
+
+    <!-- Results -->
+    <section class="ui-card space-y-3 bg-surface-2 p-4">
+      <h3 class="flex items-center gap-2 font-bold text-ink">
+        <img src="assets/img/icons/echo.webp" alt="" class="ui-glyph h-6 w-6" />
+        {{ 'char.echo.results' | transloco }}
+      </h3>
+
+      @if (character().canHeal) {
+        <button type="button" class="ui-btn ui-btn-secondary" (click)="character().healType = !character().healType; calculate()">
+          {{ (character().healType ? 'char.enhancer.canHealDMG' : 'char.enhancer.canHealHeal') | transloco }}
+        </button>
+      }
+
+      <div class="text-sm leading-relaxed text-body" [innerHTML]="text"></div>
+
+      <div class="grid gap-3 border-t border-hairline pt-3 text-xs text-mute">
+        @for (echo of echoes; track $index; let n = $index) {
+          <div>
+            <p class="font-medium text-body">Echo {{ n + 1 }} - {{ 'char.echo.attributes' | transloco }}</p>
+            <ul class="mt-1 list-disc pl-5">
+              @for (attr of echo.commonAttr; track attr) {
+                <li>{{ attr }}</li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+    </section>
+  </div>
+</app-dialog-panel>

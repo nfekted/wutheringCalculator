@@ -1,41 +1,21 @@
-<app-navbar [lang]="lang()" (callback)="changeLang($event)"></app-navbar>
-<router-outlet></router-outlet>
-<div class="row">
-</div>
-@if (settings() && !settings()!.coockie) {
-  <div class="form-row">
-    <div class="col-sm-10 offset-1 mb-2"
-      style="background-color: white; position: absolute; bottom: 0; border-radius: 15px;">
-      <div class="row" style="padding: 10px;">
-        <div class="form-group col-sm-11" style="padding: 10px;">
-          {{'disclaimer' | transloco}}
-        </div>
-        <div class="form-group col-sm-1">
-          <button class="btn btn-lg btn-primary" (click)="acceptCookies()">
-            OK
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-}
-<footer style="background-color: black;">
-  <div class="container">
-    <div class="row" style="color: white;">
-      <div class="col-12  mt-4">
-        <b>{{'info' | transloco}}</b>
-        <div class="row" style="font-size: 14px;">
-          <div class="col-12 mt-3">
-            <div [innerHtml]="'aboutInfo' | transloco"></div>
-          </div>
-          <div class="col-12 mt-2">
-            <div [innerHtml]="'disclaimerInfo' | transloco"></div>
-          </div>
-          <div class="col-12 mt-2">
-            <div [innerHtml]="'donation' | transloco"></div>
-          </div>
-        </div>
-      </div>
+<app-navbar />
+<router-outlet />
+
+<footer class="mt-24 border-t border-hairline bg-surface">
+  <div class="mx-auto max-w-[120rem] px-4 py-12 text-sm sm:px-6 lg:px-10 leading-relaxed text-mute">
+    <h2 class="text-base font-bold text-ink">{{ 'info' | transloco }}</h2>
+    <div class="mt-4 space-y-3 [&_a]:text-accent [&_a]:underline">
+      <div [innerHtml]="'aboutInfo' | transloco"></div>
+      <div [innerHtml]="'disclaimerInfo' | transloco"></div>
+      <div [innerHtml]="'donation' | transloco"></div>
     </div>
   </div>
 </footer>
+
+@if (showCookieBanner()) {
+  <div role="region" aria-label="Cookies"
+    class="fixed inset-x-4 bottom-4 z-40 mx-auto flex max-w-3xl items-center gap-4 rounded-sm border border-hairline bg-surface p-4 text-xs text-body sm:text-sm">
+    <p class="flex-1">{{ 'disclaimer' | transloco }}</p>
+    <button type="button" class="ui-btn ui-btn-primary" (click)="settings.acceptCookies()">OK</button>
+  </div>
+}

@@ -4,7 +4,6 @@ import { TranslocoPipe, provideTranslocoScope } from '@jsverse/transloco';
 @Component({
     selector: 'app-faq',
     templateUrl: './faq.component.html',
-    styleUrl: './faq.component.scss',
     changeDetection: ChangeDetectionStrategy.Eager,
     imports: [TranslocoPipe],
     providers: [provideTranslocoScope('faq')]

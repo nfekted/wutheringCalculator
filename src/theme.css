@@ -1,0 +1,286 @@
+/*
+ * Design tokens + Tailwind. Every color and font lives here, so the whole look can be changed in this one file.
+ * Light is the base; dark overrides the same tokens (set by data-theme on <html>).
+ */
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --canvas: #efedec;
+  --surface: #fdfcfc;
+  --surface-2: #f4f2f1;
+  --hairline: rgb(15 0 0 / 0.12);
+  --hairline-strong: #9a9898;
+  --ink: #201d1d;
+  --body: #424245;
+  --mute: #646262;
+  --accent: #007aff;
+  --accent-hover: #0056b3;
+  --on-accent: #fdfcfc;
+  --danger: #d70015;
+  --warning: #cc7f08;
+  --success: #1f8a3b;
+  --overlay: rgb(15 0 0 / 0.45);
+
+  /* elements */
+  --fusion: #c40b0b;
+  --glacio: #0e8fb8;
+  --aero: #0f9d7a;
+  --electro: #8b2293;
+  --spectro: #9a8200;
+  --havoc: #9a1754;
+
+  /* skill kinds */
+  --kind-basic: #201d1d;
+  --kind-skill: #1f8a3b;
+  --kind-liberation: #d70015;
+  --kind-intro: #9a6a00;
+  --kind-outro: #0056b3;
+  --kind-heavy: #8b2293;
+  --heal: #1f8a3b;
+  --shield: #9a8200;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #0b0e11;
+  --surface: #1e2329;
+  --surface-2: #2b3139;
+  --hairline: #2b3139;
+  --hairline-strong: #707a8a;
+  --ink: #ffffff;
+  --body: #eaecef;
+  --mute: #929aa5;
+  --accent: #4da3ff;
+  --accent-hover: #7bbcff;
+  --on-accent: #0b0e11;
+  --danger: #ff5c52;
+  --warning: #ffb340;
+  --success: #3ddc6e;
+  --overlay: rgb(0 0 0 / 0.65);
+
+  --fusion: #ff5a4d;
+  --glacio: #89e5ff;
+  --aero: #3fffcc;
+  --electro: #c76bd0;
+  --spectro: #e7d13d;
+  --havoc: #ee5c99;
+
+  --kind-basic: #eaecef;
+  --kind-skill: #3ddc6e;
+  --kind-liberation: #ff5c52;
+  --kind-intro: #f0c040;
+  --kind-outro: #7bbcff;
+  --kind-heavy: #c76bd0;
+  --heal: #7dff6a;
+  --shield: #f0e050;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-mute: var(--mute);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-success: var(--success);
+  --color-overlay: var(--overlay);
+  --color-fusion: var(--fusion);
+  --color-glacio: var(--glacio);
+  --color-aero: var(--aero);
+  --color-electro: var(--electro);
+  --color-spectro: var(--spectro);
+  --color-havoc: var(--havoc);
+  --color-kind-basic: var(--kind-basic);
+  --color-kind-skill: var(--kind-skill);
+  --color-kind-liberation: var(--kind-liberation);
+  --color-kind-intro: var(--kind-intro);
+  --color-kind-outro: var(--kind-outro);
+  --color-kind-heavy: var(--kind-heavy);
+  --color-heal: var(--heal);
+  --color-shield: var(--shield);
+}
+
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --radius-sm: 4px;
+}
+
+@layer base {
+  body {
+    background: var(--canvas);
+    color: var(--body);
+    font-family: var(--font-sans);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+/* Shared UI primitives */
+@layer components {
+  .app-backdrop {
+    background: var(--overlay);
+  }
+
+  .ui-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 2.25rem;
+    padding: 0 1rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 120ms, border-color 120ms;
+  }
+
+  .ui-btn-primary {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .ui-btn-primary:hover {
+    background: var(--accent-hover);
+  }
+
+  .ui-btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--hairline-strong);
+  }
+
+  .ui-btn-secondary:hover {
+    background: var(--surface-2);
+  }
+
+  .ui-btn-danger {
+    background: transparent;
+    color: var(--danger);
+    border-color: var(--danger);
+  }
+
+  .ui-btn-danger:hover {
+    background: var(--danger);
+    color: var(--surface);
+  }
+
+  .ui-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--radius-sm);
+    color: var(--mute);
+    cursor: pointer;
+  }
+
+  .ui-icon-btn:hover {
+    background: var(--surface-2);
+    color: var(--ink);
+  }
+
+  .ui-input {
+    width: 100%;
+    height: 2.25rem;
+    padding: 0 0.75rem;
+    border: 1px solid var(--hairline-strong);
+    border-radius: var(--radius-sm);
+    background: var(--canvas);
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ui-input:disabled {
+    background: var(--surface);
+    color: var(--mute);
+  }
+
+  .ui-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sm);
+    color: var(--body);
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+
+  .ui-option:hover {
+    background: var(--surface);
+  }
+
+  .ui-option:has(:checked) {
+    border-color: var(--accent);
+    color: var(--ink);
+    background: var(--surface);
+  }
+
+  .ui-option:has(:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* White glyph icons (weapons, skills): flipped to dark in the light theme */
+  .ui-glyph {
+    filter: invert(1);
+  }
+
+  :root[data-theme="dark"] .ui-glyph {
+    filter: none;
+  }
+
+  .ui-card {
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+  }
+
+  .ui-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ui-table th,
+  .ui-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--hairline);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .ui-table thead th {
+    color: var(--mute);
+    font-weight: 500;
+    background: var(--surface-2);
+  }
+
+  .ui-table tbody tr:nth-child(even) {
+    background: color-mix(in srgb, var(--surface-2) 55%, transparent);
+  }
+
+  /* numeric columns */
+  .ui-table th:nth-child(n + 2),
+  .ui-table td:nth-child(n + 2) {
+    text-align: right;
+    font-family: var(--font-mono);
+  }
+}

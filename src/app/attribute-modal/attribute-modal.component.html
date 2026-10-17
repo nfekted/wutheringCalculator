@@ -1,485 +1,143 @@
-<div class="modal fade modal-xl" [id]="id()" tabindex="-1" aria-labelledby="critModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="margin-top: 10vh;">
-    <div class="modal-content">
-      <div [class]="'modal-header btn-'+ currentSelection()">
-        <h1 class="modal-title fs-5" id="critModalLabel">{{'char.enhancer.enhancer' | transloco}}</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<app-dialog-panel [title]="'char.enhancer.enhancer' | transloco" titleId="enhancer-title">
+  <!-- Options -->
+  <fieldset>
+    <legend class="mb-2 text-sm font-bold text-ink">{{ 'options' | transloco }}</legend>
+    <div class="grid gap-2 sm:grid-cols-3">
+      <label class="ui-option">
+        <input type="radio" name="mode" class="sr-only" [checked]="enhancerBasic" (change)="setMode(true)" />
+        {{ 'char.enhancer.enhancerBasic' | transloco }}
+      </label>
+      <label class="ui-option">
+        <input type="radio" name="mode" class="sr-only" [checked]="enhancerSkill" (change)="setMode(false)" />
+        {{ 'char.enhancer.enhancerSkill' | transloco }}
+      </label>
+      <label class="ui-option">
+        <input type="checkbox" class="sr-only" [(ngModel)]="randomCrit" (change)="recalculateAll()" />
+        {{ 'char.enhancer.enhancerCrit' | transloco }}
+      </label>
+    </div>
+  </fieldset>
+
+  <!-- Rotation used by the simulation -->
+  @if (enhancerSkill) {
+    <section class="ui-card mt-4 grid gap-4 p-4 text-sm lg:grid-cols-2">
+      <div>
+        <div class="text-mute" [innerHTML]="'char.enhancer.rotationInfo' | transloco"></div>
+        <ol class="mt-3 list-decimal space-y-1 pl-5">
+          @for (item of character().data.rotationDesc; track $index; let i = $index) {
+            <li><b class="font-medium" [class]="kindColor(character().data.rotationColor[i])">{{ item }}</b></li>
+          }
+        </ol>
       </div>
-      <div class="modal-body">
-        <!-- OPTIONS -->
-        <div class="row">
-          <h4></h4>
-          <div class="col-sm-12">
-            <b>{{'options' | transloco}}</b>
-            <div class="row">
-              <div class="form-group col-sm-12 col-md-4">
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="enhancerBasic"
-                    [(ngModel)]="enhancerBasic"
-                    (change)="enhancerSkill = !enhancerBasic;recalculateAll()">
-                    <label class="form-check-label" for="enhancerBasic">{{'char.enhancer.enhancerBasic'
-                    | transloco}}</label>
-                  </div>
-                </div>
-                <div class="form-group col-sm-12 col-md-4">
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="enhancerSkill"
-                      [(ngModel)]="enhancerSkill"
-                      (change)="enhancerBasic = !enhancerSkill;recalculateAll()">
-                      <label class="form-check-label" for="enhancerSkill">{{'char.enhancer.enhancerSkill'
-                      | transloco}}</label>
-                    </div>
-                  </div>
-                  <div class="form-group col-sm-12 col-md-4">
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" role="switch" id="enhancerRandom"
-                        [(ngModel)]="randomCrit" (change)="recalculateAll()">
-                        <label class="form-check-label" for="enhancerRandom">{{'char.enhancer.enhancerCrit'
-                        | transloco}}</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- ROTATION INFO -->
-              @if (enhancerSkill) {
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div [innerHtml]="'char.enhancer.rotationInfo' | transloco">
-                    </div>
-                  </div>
-                  <div class="col-sm-4"></div>
-                  <div class="col-sm-4">
-                    <div [innerHtml]="'char.enhancer.rotationHelp' | transloco">
-                    </div>
-                  </div>
-                  <div class="col-sm-12 col-md-4 mt-4">
-                    <ol>
-                      @for (item of character().data.rotationDesc; track item; let i = $index) {
-                        <li><b
-                        [class]="character().data.rotationColor[i]">{{item}}</b></li>
-                      }
-                    </ol>
-                  </div>
-                  <div class="col-sm-12 col-md-4 mt-4">
-                  </div>
-                  <div class="col-sm-12 col-md-4 mt-4">
-                    @for (item of character().data.rotationCommands; track item) {
-                      <span>
-                        @if (item.length < 4) {
-                          <img [src]="'assets/img/icons/' + item + '.svg'" style="width: 25px;"
-                            />
-                        }
-                        @if (item.length > 3) {
-                          <span>{{item}}</span>
-                        }
-                      </span>
-                    }
-                  </div>
-                </div>
-              }
-              <hr />
-              <hr />
+      <div>
+        <div class="text-mute" [innerHTML]="'char.enhancer.rotationHelp' | transloco"></div>
+        <div class="mt-3 flex flex-wrap items-center gap-1">
+          @for (item of character().data.rotationCommands; track $index) {
+            @if (item.length < 4) {
+              <img [src]="'assets/img/icons/' + item + '.svg'" alt="" class="h-6 w-6" />
+            } @else {
+              <span class="text-xs text-mute">{{ item }}</span>
+            }
+          }
+        </div>
+      </div>
+    </section>
+  }
 
-              <!-- DATA -->
-              <div class="row">
-                <!-- LEFT -->
-                <div class="col-sm-12 col-md-4" style="border-right: solid 1px;">
-                  <div class="row">
-                    @if (character().canHeal) {
-                      <div class="col-sm-12">
-                        @if (character().healType) {
-                          <button type="button"
-                            (click)="character().healType = false;recalculateAll();"
-                            [class]="'btn btn-secondary btn-'+ currentSelection()">{{'char.enhancer.canHealDMG' |
-                          transloco}}</button>
-                        }
-                        @if (!character().healType) {
-                          <button type="button"
-                            (click)="character().healType = true;recalculateAll();"
-                            [class]="'btn btn-secondary btn-'+ currentSelection()">{{'char.enhancer.canHealHeal' |
-                          transloco}}</button>
-                        }
-                      </div>
-                    }
-                    <div class="col-sm-12">
-                      <small>
-                        @if (!randomCrit && !enhancerSkill) {
-                          <div
-                            [innerHtml]="'char.enhancer.fixedCritInfo' | transloco: { chance: character().cChance, qtd: qtdCrit, normal: 20-qtdCrit}">
-                          </div>
-                        }
-                        @if (enhancerSkill && !randomCrit && (!character().healType || character().atkType)) {
-                          <div
-                            [innerHtml]="'char.enhancer.rotationCritInfo' | transloco: {atkNum : character().data.rotation.length, chance: character().cChance, qtd: qtdCrit, normal:  character().data.rotation.length-qtdCrit}">
-                          </div>
-                        }
-                        @if (enhancerSkill && (character().healType && !character().atkType)) {
-                          <div>
-                            {{'char.enhancer.healingInfo' | transloco}}
-                          </div>
-                        }
-                        @if (randomCrit) {
-                          <div [innerHtml]="'char.enhancer.randomCritInfo' | transloco">
-                          </div>
-                        }
-                      </small>
-                    </div>
-                    <!-- TABLE LEFT -->
-                    <div class="col-sm-12">
-                      @if (fixedTotal > fixedSimTotal) {
-                        <span class="badge text-bg-success"
-                          >{{'char.enhancer.bestScenario' |
-                          transloco}} +{{fixedTotal - fixedSimTotal}}
-                          {{(character().healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}
-                        </span>
-                      }
-                      @if (fixedTotal < fixedSimTotal) {
-                        <span class="badge text-bg-danger"
-                          >{{'char.enhancer.worstScenario' |
-                          transloco}} -{{fixedSimTotal - fixedTotal}}
-                          {{(character().healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}
-                        </span>
-                      }
-                      <table class="table table-striped"
-                        [class.table-danger]="fixedTotal < fixedSimTotal" [class.table-success]="fixedTotal > fixedSimTotal">
-                        <thead>
-                          <tr class="text-center">
-                            <td colspan="3" scope="col"><b>{{'char.enhancer.current' | transloco}}</b>
-                          </td>
-                        </tr>
-                        <tr class="text-center">
-                          <th scope="col">Atk nº</th>
-                          <th scope="col">DMG</th>
-                          <th scope="col"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @for (a of critSimFixed; track a; let i = $index) {
-                          <tr class="text-center">
-                            <th scope="row">{{i+1}}</th>
-                            <td>{{+a[0] | number:'1.0-0'}}</td>
-                            <td>
-                              @if (!a[2]) {
-                                <b>{{a[1] ? 'CRIT' : ''}}</b>
-                              }
-                              @if (a[2]) {
-                                <b>{{'char.heal' | transloco}}</b>
-                              }
-                            </td>
-                          </tr>
-                        }
-                        <tr>
-                          <td><b>Total</b></td>
-                          <td colspan="2">~{{fixedTotal | number:'1.0-0'}}
-                            {{(character().healType && character().canHeal && enhancerSkill ?
-                            'char.heal' : 'dmg') |
-                            transloco}}
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <!-- MIDDLE -->
-              <div class="col-sm-12 col-md-4 text-center mb-4">
-                <div class="row">
-                  <div class="col-sm-12 mt-3">
-                    <button type="button" (click)="recalculateAll()"
-                      [class]="'btn btn-secondary btn-'+ currentSelection()">{{'char.enhancer.calculate'
-                    | transloco}}</button>
-                  </div>
-                  <div class="col-sm-12">
-                    <b>{{'char.enhancer.compareWith' | transloco}}</b>
-                  </div>
-                  <!-- NEW HP -->
-                  @if (character().hpType) {
-                    <div class="col-6 mt-3">
-                      {{'current' | transloco}} HP
-                    </div>
-                    <div class="col-6 mt-3">
-                      {{'new' | transloco}} HP
-                    </div>
-                    <div class="col-6">
-                      <input class="form-control" disabled type="number" [(ngModel)]="character().hp" />
-                    </div>
-                    <div class="col-6">
-                      <input class="form-control" type="number" placeholder="0" min="0"
-                        [(ngModel)]="newHp" />
-                      </div>
-                    }
-                    <!-- NEW ATK -->
-                    <div class="col-6 mt-3">
-                      {{'current' | transloco}} ATK
-                    </div>
-                    <div class="col-6 mt-3">
-                      {{'new' | transloco}} ATK
-                    </div>
-                    <div class="col-6">
-                      <input class="form-control" type="number" disabled [(ngModel)]="character().dmg" />
-                    </div>
-                    <div class="col-6">
-                      <input class="form-control" type="number" placeholder="5%" min="0"
-                        [(ngModel)]="newAtk" />
-                      </div>
-                      <!-- NEW DEF -->
-                      @if (character().defType) {
-                        <div class="col-6 mt-3">
-                          {{'current' | transloco}} DEF
-                        </div>
-                        <div class="col-6 mt-3">
-                          {{'new' | transloco}} DEF
-                        </div>
-                        <div class="col-6">
-                          <input class="form-control" type="number" disabled [(ngModel)]="character().def" />
-                        </div>
-                        <div class="col-6">
-                          <input class="form-control" type="number" placeholder="0" min="0"
-                            [(ngModel)]="newDef" />
-                          </div>
-                        }
+  <!-- Current vs new stats -->
+  <section class="ui-card mt-4 p-4">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <h3 class="text-sm font-bold text-ink">{{ 'char.enhancer.compareWith' | transloco }}</h3>
+      <div class="flex gap-2">
+        @if (character().canHeal) {
+          <button type="button" class="ui-btn ui-btn-secondary" (click)="character().healType = !character().healType; recalculateAll()">
+            {{ (character().healType ? 'char.enhancer.canHealDMG' : 'char.enhancer.canHealHeal') | transloco }}
+          </button>
+        }
+        <button type="button" class="ui-btn ui-btn-primary" (click)="recalculateAll()">{{ 'char.enhancer.calculate' | transloco }}</button>
+      </div>
+    </div>
 
-                        <!-- NEW CRIT RATE -->
-                        <div class="col-6 mt-3">
-                          {{'current' | transloco}} Crit. Rate %
-                        </div>
-                        <div class="col-6 mt-3">
-                          {{'new' | transloco}} Crit. Rate %
-                        </div>
-                        <div class="col-6">
-                          <input class="form-control" type="number" disabled [(ngModel)]="character().cChance" />
-                        </div>
-                        <div class="col-6">
-                          <input class="form-control" type="number" placeholder="5%" min="0"
-                            [(ngModel)]="newCritChance" />
-                          </div>
+    <div class="mt-3 grid gap-x-4 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+      @for (row of rows(); track row.key) {
+        <div class="grid grid-cols-2 gap-2">
+          <label class="block text-xs text-mute">
+            <span class="mb-1 block">{{ 'current' | transloco }} {{ row.prefix ? (row.prefix | transloco) + ' ' : '' }}{{ row.label }}</span>
+            <input type="number" class="ui-input text-sm" disabled [ngModel]="character()[row.key]" />
+          </label>
+          <label class="block text-xs text-mute">
+            <span class="mb-1 block">{{ 'new' | transloco }}</span>
+            <input type="number" min="0" class="ui-input text-sm" [(ngModel)]="draft[row.key]" />
+          </label>
+        </div>
+      }
+    </div>
+  </section>
 
-                          <!-- NEW CRIT DMG -->
-                          <div class="col-6">
-                            {{'current' | transloco}} Crit. DMG %
-                          </div>
-                          <div class="col-6">
-                            {{'new' | transloco}} Crit. DMG %
-                          </div>
-                          <div class="col-6">
-                            <input class="form-control" type="number" disabled [(ngModel)]="character().cDmg" />
-                          </div>
-                          <div class="col-6">
-                            <input class="form-control" type="number" placeholder="5%" min="0"
-                              [(ngModel)]="newCritDmg" />
-                            </div>
+  <!-- Results -->
+  <div class="mt-4 grid gap-4 lg:grid-cols-2">
+    <ng-container *ngTemplateOutlet="scenario; context: { title: 'char.enhancer.current', list: critSimFixed, total: fixedTotal, delta: fixedTotal - fixedSimTotal, chance: character().cChance, qtd: qtdCrit }" />
+    <ng-container *ngTemplateOutlet="scenario; context: { title: 'char.enhancer.new', list: critSimFixedSim, total: fixedSimTotal, delta: fixedSimTotal - fixedTotal, chance: draft.cChance, qtd: newQtdCrit }" />
+  </div>
 
-                            <!-- NEW Skill -->
-                            <div class="col-6">
-                              {{'current' | transloco}} Skill Bonus %
-                            </div>
-                            <div class="col-6">
-                              {{'new' | transloco}} Skill Bonus %
-                            </div>
-                            <div class="col-6">
-                              <input class="form-control" type="number" disabled [(ngModel)]="character().skillBonus" />
-                            </div>
-                            <div class="col-6">
-                              <input class="form-control" type="number" placeholder="5%" min="0"
-                                [(ngModel)]="newSkillBonus" />
-                              </div>
+  <ng-template #scenario let-title="title" let-list="list" let-total="total" let-delta="delta" let-chance="chance" let-qtd="qtd">
+    <section class="ui-card p-4" [class.border-success]="delta > 0" [class.border-danger]="delta < 0">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <h3 class="text-sm font-bold text-ink">{{ title | transloco }}</h3>
+        @if (delta > 0) {
+          <span class="rounded-sm bg-success px-2 py-0.5 text-xs font-medium text-canvas">
+            {{ 'char.enhancer.bestScenario' | transloco }} +{{ delta | number: '1.0-0' }} {{ unit() | transloco }}
+          </span>
+        } @else if (delta < 0) {
+          <span class="rounded-sm bg-danger px-2 py-0.5 text-xs font-medium text-canvas">
+            {{ 'char.enhancer.worstScenario' | transloco }} {{ delta | number: '1.0-0' }} {{ unit() | transloco }}
+          </span>
+        }
+      </div>
 
-                              <!-- NEW BASIC -->
-                              <div class="col-6">
-                                {{'current' | transloco}} Basic Bonus %
-                              </div>
-                              <div class="col-6">
-                                {{'new' | transloco}} Basic Bonus %
-                              </div>
-                              <div class="col-6">
-                                <input class="form-control" type="number" disabled [(ngModel)]="character().basicBonus" />
-                              </div>
-                              <div class="col-6">
-                                <input class="form-control" type="number" placeholder="5%" min="0"
-                                  [(ngModel)]="newBasicBonus" />
-                                </div>
+      <div class="mt-2 text-xs text-mute">
+        @if (!randomCrit && !enhancerSkill) {
+          <div [innerHTML]="'char.enhancer.fixedCritInfo' | transloco: { chance: chance, qtd: qtd, normal: 20 - qtd }"></div>
+        }
+        @if (enhancerSkill && !randomCrit && (!character().healType || character().atkType)) {
+          <div [innerHTML]="'char.enhancer.rotationCritInfo' | transloco: { atkNum: character().data.rotation.length, chance: chance, qtd: qtd, normal: character().data.rotation.length - qtd }"></div>
+        }
+        @if (enhancerSkill && character().healType && !character().atkType) {
+          <div>{{ 'char.enhancer.healingInfo' | transloco }}</div>
+        }
+        @if (randomCrit) {
+          <div [innerHTML]="'char.enhancer.randomCritInfo' | transloco"></div>
+        }
+      </div>
 
-                                <!-- NEW HEAVY -->
-                                <div class="col-6">
-                                  {{'current' | transloco}} Heavy Bonus %
-                                </div>
-                                <div class="col-6">
-                                  {{'new' | transloco}} Heavy Bonus %
-                                </div>
-                                <div class="col-6">
-                                  <input class="form-control" type="number" disabled [(ngModel)]="character().heavyBonus" />
-                                </div>
-                                <div class="col-6">
-                                  <input class="form-control" type="number" placeholder="5%" min="0"
-                                    [(ngModel)]="newHeavyBonus" />
-                                  </div>
-
-                                  <!-- NEW LIBERATION -->
-                                  <div class="col-6">
-                                    {{'current' | transloco}} Liberation Bonus %
-                                  </div>
-                                  <div class="col-6">
-                                    {{'new' | transloco}} Liberation Bonus %
-                                  </div>
-                                  <div class="col-6">
-                                    <input class="form-control" type="number" disabled
-                                      [(ngModel)]="character().liberationBonus" />
-                                    </div>
-                                    <div class="col-6">
-                                      <input class="form-control" type="number" placeholder="5%" min="0"
-                                        [(ngModel)]="newLiberationBonus" />
-                                      </div>
-
-                                      <!-- NEW ELEMENTAL -->
-                                      <div class="col-6">
-                                        {{'current' | transloco}} Elemental DMG %
-                                      </div>
-                                      <div class="col-6">
-                                        {{'new' | transloco}} Elemental DMG %
-                                      </div>
-                                      <div class="col-6">
-                                        <input class="form-control" type="number" disabled
-                                          [(ngModel)]="character().elementalBonus" />
-                                        </div>
-                                        <div class=" col-6">
-                                          <input class="form-control" type="number" placeholder="0%" min="0"
-                                            [(ngModel)]="newElemental" />
-                                          </div>
-
-                                          <!-- NEW HEALING -->
-                                          @if (character().canHeal || character().healType) {
-                                            <div class="col-6 mt-3">
-                                              {{'current' | transloco}} Healing Bonus %
-                                            </div>
-                                            <div class="col-6 mt-3">
-                                              {{'new' | transloco}} Healing Bonus %
-                                            </div>
-                                            <div class="col-6">
-                                              <input class="form-control" type="number" disabled
-                                                [(ngModel)]="character().healingBonus" />
-                                              </div>
-                                              <div class="col-6">
-                                                <input class="form-control" type="number" placeholder="0" min="0"
-                                                  [(ngModel)]="newHealingBonus" />
-                                                </div>
-                                              }
-                                              <div class="col-sm-12 mt-3">
-                                                <button type="button" (click)="recalculateAll()"
-                                                  [class]="'btn btn-secondary btn-'+ currentSelection()">{{'char.enhancer.calculate'
-                                                | transloco}}</button>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <!-- RIGHT -->
-                                          <div class="col-sm-12 col-md-4" style="border-left: solid 1px;">
-                                            <div class="row">
-                                              @if (character().canHeal) {
-                                                <div class="col-sm-12">
-                                                  @if (character().healType) {
-                                                    <button type="button"
-                                                      (click)="character().healType = false;recalculateAll();"
-                                                      [class]="'btn btn-secondary btn-'+ currentSelection()">{{'char.enhancer.canHealDMG' |
-                                                    transloco}}</button>
-                                                  }
-                                                  @if (!character().healType) {
-                                                    <button type="button"
-                                                      (click)="character().healType = true;recalculateAll();"
-                                                      [class]="'btn btn-secondary btn-'+ currentSelection()">{{'char.enhancer.canHealHeal' |
-                                                    transloco}}</button>
-                                                  }
-                                                </div>
-                                              }
-                                              <div class="col-sm-12">
-                                                <small>
-                                                  @if (!randomCrit && !enhancerSkill) {
-                                                    <div
-                                                      [innerHtml]="'char.enhancer.fixedCritInfo' | transloco: { chance: newCritChance, qtd: newQtdCrit, normal: 20-newQtdCrit}">
-                                                    </div>
-                                                  }
-                                                  @if (enhancerSkill && !randomCrit && (!character().healType || character().atkType)) {
-                                                    <div
-                                                      [innerHtml]="'char.enhancer.rotationCritInfo' | transloco: {atkNum : character().data.rotation.length, chance: newCritChance, qtd: newQtdCrit, normal:  character().data.rotation.length-newQtdCrit}">
-                                                    </div>
-                                                  }
-                                                  @if (enhancerSkill && (character().healType && !character().atkType)) {
-                                                    <div>
-                                                      {{'char.enhancer.healingInfo' | transloco}}
-                                                    </div>
-                                                  }
-                                                  @if (randomCrit) {
-                                                    <div [innerHtml]="'char.enhancer.randomCritInfo' | transloco">
-                                                    </div>
-                                                  }
-                                                </small>
-                                              </div>
-                                              <!-- TABLE RIGHT -->
-                                              <div class="col-sm-12">
-                                                @if (fixedTotal < fixedSimTotal) {
-                                                  <span class="badge text-bg-success"
-                                                    >{{'char.enhancer.bestScenario' |
-                                                    transloco}} +{{fixedSimTotal - fixedTotal}}
-                                                    {{(character().healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}
-                                                  </span>
-                                                }
-                                                @if (fixedTotal > fixedSimTotal) {
-                                                  <span class="badge text-bg-danger"
-                                                    >{{'char.enhancer.worstScenario' |
-                                                    transloco}} -{{fixedTotal - fixedSimTotal}}
-                                                    {{(character().healType && enhancerSkill ? 'char.heal' : 'dmg') | transloco}}
-                                                  </span>
-                                                }
-                                                <table class="table table-striped"
-                                                  [class.table-danger]="fixedTotal > fixedSimTotal" [class.table-success]="fixedTotal < fixedSimTotal">
-                                                  <thead>
-                                                    <tr class="text-center">
-                                                      <td colspan="3" scope="col"><b>{{'char.enhancer.new' | transloco}}</b></td>
-                                                    </tr>
-                                                    <tr class="text-center">
-                                                      <th scope="col">Atk nº</th>
-                                                      <th scope="col">DMG</th>
-                                                      <th scope="col"></th>
-                                                    </tr>
-                                                  </thead>
-                                                  <tbody>
-                                                    @for (a of critSimFixedSim; track a; let i = $index) {
-                                                      <tr class="text-center">
-                                                        <th scope="row">{{i+1}}</th>
-                                                        <td>{{+a[0] | number:'1.0-0'}}</td>
-                                                        <td>
-                                                          @if (!a[2]) {
-                                                            <b>{{a[1] ? 'CRIT' : ''}}</b>
-                                                          }
-                                                          @if (a[2]) {
-                                                            <b>{{'char.heal' | transloco}}</b>
-                                                          }
-                                                        </td>
-                                                      </tr>
-                                                    }
-                                                    <tr>
-                                                      <td><b>Total</b></td>
-                                                      <td colspan="2">~{{fixedSimTotal | number:'1.0-0'}}
-                                                        {{(character().healType && character().canHeal && enhancerSkill ?
-                                                        'char.heal' : 'dmg') |
-                                                      transloco}}</td>
-                                                    </tr>
-                                                  </tbody>
-                                                </table>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-
-                                        <div class="row">
-
-                                        </div>
-
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" data-bs-dismiss="modal"
-                                          [class]="'btn btn-secondary btn-'+ currentSelection()">{{'close'
-                                        | transloco}}</button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
+      <table class="ui-table mt-3">
+        <thead>
+          <tr>
+            <th scope="col">Atk nº</th>
+            <th scope="col">DMG</th>
+            <th scope="col"><span class="sr-only">Crit</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (a of list; track $index; let i = $index) {
+            <tr>
+              <th scope="row" class="font-medium text-ink">{{ i + 1 }}</th>
+              <td>{{ +a[0] | number: '1.0-0' }}</td>
+              <td class="font-medium">
+                @if (a[2]) {
+                  <span class="text-heal">{{ 'char.heal' | transloco }}</span>
+                } @else if (a[1]) {
+                  CRIT
+                }
+              </td>
+            </tr>
+          }
+          <tr>
+            <th scope="row" class="font-bold text-ink">Total</th>
+            <td colspan="2">~{{ total | number: '1.0-0' }} {{ totalUnit() | transloco }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </ng-template>
+</app-dialog-panel>

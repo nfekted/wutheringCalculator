@@ -1,33 +1,48 @@
-import { Component, ChangeDetectionStrategy, computed, effect, inject, input } from '@angular/core';
-import { Character } from '../shared/models/character.model';
+import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
+import { DIALOG_DATA } from '@angular/cdk/dialog';
+import { DecimalPipe, NgTemplateOutlet } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { DecimalPipe } from '@angular/common';
-import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
+import { TranslocoPipe } from '@jsverse/transloco';
+import { Stats } from '../core/damage-engine';
+import { Character } from '../shared/models/character.model';
+import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
+
+export type StatKey = keyof Stats;
+
+/** Stats compared in the "new" column, in display order */
+const STAT_ROWS: Array<{ key: StatKey; prefix?: string; label: string; visible?: (c: Character) => boolean }> = [
+  { key: 'hp', label: 'HP', visible: c => c.hpType },
+  { key: 'dmg', label: 'ATK' },
+  { key: 'def', label: 'DEF', visible: c => c.defType },
+  { key: 'cChance', label: 'Crit. Rate %' },
+  { key: 'cDmg', label: 'Crit. DMG %' },
+  { key: 'skillBonus', prefix: 'char.skill', label: 'Bonus %' },
+  { key: 'basicBonus', prefix: 'char.basic', label: 'Bonus %' },
+  { key: 'heavyBonus', prefix: 'char.heavy', label: 'Bonus %' },
+  { key: 'liberationBonus', label: 'Lib. Bonus %' },
+  { key: 'elementalBonus', prefix: 'char.elemental', label: 'DMG %' },
+  { key: 'healingBonus', label: 'Healing Bonus %', visible: c => c.canHeal || c.healType },
+];
+
+const KIND_COLORS: Record<string, string> = {
+  basic: 'text-kind-basic', skill: 'text-kind-skill', liberation: 'text-kind-liberation',
+  intro: 'text-kind-intro', outro: 'text-kind-outro', heavy: 'text-kind-heavy',
+};
 
 @Component({
     selector: 'app-attribute-modal',
     templateUrl: './attribute-modal.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [FormsModule, DecimalPipe, TranslocoPipe]
+    host: { class: 'block w-[min(90rem,calc(100vw-2rem))]' },
+    imports: [FormsModule, DecimalPipe, NgTemplateOutlet, TranslocoPipe, DialogPanelComponent]
 })
 export class AttributeModalComponent {
 
-  id = input.required<string>();
-  character = input.required<Character>();
+  character = signal(inject<Character>(DIALOG_DATA)).asReadonly();
 
-  currentSelection = computed(() => this.character().data.icon);
-  newAtk: number = 0;
-  newHp: number = 0;
-  newDef: number = 0;
-  newCritChance: number = 0;
-  newCritDmg: number = 0;
-  newSkillBonus: number = 0;
-  newBasicBonus: number = 0;
-  newHeavyBonus: number = 0;
+  /** Values typed in the "new" column (0 means "not filled yet": starts from the current value) */
+  draft: Stats = { dmg: 0, hp: 0, def: 0, cChance: 0, cDmg: 0, elementalBonus: 0, basicBonus: 0, heavyBonus: 0, skillBonus: 0, liberationBonus: 0, healingBonus: 0 };
   newQtdCrit: number = 0;
-  newElemental: number = 0;
-  newLiberationBonus: number = 0;
-  newHealingBonus: number = 0;
 
   enhancerBasic: boolean = false;
   enhancerSkill: boolean = true;
@@ -39,36 +54,38 @@ export class AttributeModalComponent {
   fixedSimTotal: number = 0;
   qtdCrit: number = 1;
 
-  private transloco = inject(TranslocoService);
-
   constructor() {
-    effect(() => {
-      this.character();
-      this.recalculateAll();
-    });
+    this.recalculateAll();
   }
 
-  getHit(dmg: number, multiplierRange: Array<number>, upgradeLevel: number): number {
-    return dmg * ((multiplierRange[upgradeLevel] / 100) * 1)//1 Relative to Ressonance Chain
+  protected rows() {
+    return STAT_ROWS.filter(r => !r.visible || r.visible(this.character()));
   }
 
-  getExpected(dmg: number, multiplierRange: Array<number>, upgradeLevel: number, elementalBonus: number, damageBonus: number): number {
-    const bonus = 100 + elementalBonus + damageBonus;
-    return this.getHit(dmg, multiplierRange, upgradeLevel) * (bonus / 100) * 1 * 1//Outro bonus and critical multiplier
+  protected setMode(basic: boolean) {
+    this.enhancerBasic = basic;
+    this.enhancerSkill = !basic;
+    this.recalculateAll();
+  }
+
+  /** Unit shown next to the difference between scenarios */
+  protected unit(): string {
+    return this.character().healType && this.enhancerSkill ? 'char.heal' : 'dmg';
+  }
+
+  /** Unit shown next to a scenario total */
+  protected totalUnit(): string {
+    return this.character().healType && this.character().canHeal && this.enhancerSkill ? 'char.heal' : 'dmg';
+  }
+
+  protected kindColor(kind: string): string {
+    return KIND_COLORS[kind] ?? '';
   }
 
   critCalc(simulation: boolean) {
-    if (this.newAtk == 0) this.newAtk = this.character().dmg;
-    if (this.newHp == 0) this.newHp = this.character().hp;
-    if (this.newDef == 0) this.newDef = this.character().def;
-    if (this.newCritChance == 0) this.newCritChance = this.character().cChance;
-    if (this.newCritDmg == 0) this.newCritDmg = this.character().cDmg;
-    if (this.newSkillBonus == 0) this.newSkillBonus = this.character().skillBonus;
-    if (this.newBasicBonus == 0) this.newBasicBonus = this.character().basicBonus;
-    if (this.newHeavyBonus == 0) this.newHeavyBonus = this.character().heavyBonus;
-    if (this.newLiberationBonus == 0) this.newLiberationBonus = this.character().liberationBonus;
-    if (this.newElemental == 0) this.newElemental = this.character().elementalBonus;
-    if (this.newHealingBonus == 0) this.newHealingBonus = this.character().healingBonus;
+    for (const row of STAT_ROWS) {
+      if (this.draft[row.key] == 0) this.draft[row.key] = this.character()[row.key];
+    }
 
     if (this.enhancerBasic) this.simulationBasic(simulation);
     if (this.enhancerSkill) this.simulationRotation(simulation);
@@ -79,10 +96,10 @@ export class AttributeModalComponent {
     let critMult = this.character().cDmg;
     let copy: Character;
     if (simulation) {
-      currentChance = this.newCritChance;
-      critMult = this.newCritDmg;
+      currentChance = this.draft.cChance;
+      critMult = this.draft.cDmg;
       this.fixedSimTotal = 0;
-      this.newQtdCrit = +(this.newCritChance / 5).toFixed(0);
+      this.newQtdCrit = +(this.draft.cChance / 5).toFixed(0);
       copy = this.characterCopy();
     } else {
       this.fixedTotal = 0;
@@ -118,10 +135,10 @@ export class AttributeModalComponent {
     let critMult = this.character().cDmg;
     let copy: Character;
     if (simulation) {
-      currentChance = this.newCritChance;
-      critMult = this.newCritDmg;
+      currentChance = this.draft.cChance;
+      critMult = this.draft.cDmg;
       this.fixedSimTotal = 0;
-      this.newQtdCrit = +(this.character().data.rotation.length * (this.newCritChance / 100)).toFixed(0);
+      this.newQtdCrit = +(this.character().data.rotation.length * (this.draft.cChance / 100)).toFixed(0);
       copy = this.characterCopy();
     } else {
       this.fixedTotal = 0;
@@ -156,17 +173,7 @@ export class AttributeModalComponent {
 
   characterCopy(): Character {
     const copy = this.character().clone();
-    copy.dmg = this.newAtk;
-    copy.hp = this.newHp;
-    copy.def = this.newDef;
-    copy.cChance = this.newCritChance;
-    copy.cDmg = this.newCritDmg;
-    copy.skillBonus = this.newSkillBonus;
-    copy.basicBonus = this.newBasicBonus;
-    copy.heavyBonus = this.newHeavyBonus;
-    copy.liberationBonus = this.newLiberationBonus;
-    copy.elementalBonus = this.newElemental;
-    copy.healingBonus = this.newHealingBonus;
+    Object.assign(copy, this.draft);
     copy.calculate();
     return copy;
   }

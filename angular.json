@@ -37,10 +37,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.js"
+              "node_modules/@angular/cdk/overlay-prebuilt.css",
+              "src/theme.css"
             ]
           },
           "configurations": {
