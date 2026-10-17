@@ -12,7 +12,7 @@ export class Echo {
     mainStats: Array<Array<string>> = [
         ['HP', 'HP %', 'ATK %', 'DEF %'],
         ['ATK', 'HP %', 'ATK %', 'DEF %', 'Energy Regen %', 'AERO DMG %', 'GLACIO DMG %', 'FUSION DMG %', 'ELECTRO DMG %', 'HAVOC DMG %', 'SPECTRO DMG %'],
-        ['ATK', 'HP %', 'ATK %', 'DEF %', 'Energy Regen %', 'Crit Rate %', 'Crit Dmg %', 'Healing %'],
+        ['ATK', 'HP %', 'ATK %', 'DEF %', 'Energy Regen %', 'Crit Rate %', 'Crit DMG %', 'Healing %'],
     ];
 
     mainValues: Array<Array<number>> = [

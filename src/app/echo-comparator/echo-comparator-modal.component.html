@@ -79,8 +79,8 @@
       </h3>
 
       @if (character().canHeal) {
-        <button type="button" class="ui-btn ui-btn-secondary" (click)="character().healType = !character().healType; calculate()">
-          {{ (character().healType ? 'char.enhancer.canHealDMG' : 'char.enhancer.canHealHeal') | transloco }}
+        <button type="button" class="ui-btn ui-btn-secondary" (click)="healType = !healType; calculate()">
+          {{ (healType ? 'char.enhancer.canHealDMG' : 'char.enhancer.canHealHeal') | transloco }}
         </button>
       }
 

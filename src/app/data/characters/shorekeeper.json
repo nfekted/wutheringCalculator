@@ -151,7 +151,7 @@
   "rotationColor": ["intro", "basic", "basic", "basic", "skill", "basic", "basic", "basic", "liberation", "outro", "basic", "intro"],
   "rotationCommands": ["mb", "cv", "mb", "cv", "mb", "cv", "space", "cv", "mb", "cv", "mbh", "cv", "e", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "space", "cv", "mb", "cv", "mbh", "cv", "r"],
   "echo4": ["Healing %"],
-  "echo3": ["Energy Regen"],
+  "echo3": ["Energy Regen %"],
   "echo1": ["HP %"],
   "echoSub": ["Energy Regen %", "HP %", "HP"]
 }

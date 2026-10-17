@@ -34,8 +34,8 @@ interface Hit {
                 <div>
                   @if (!$first) { <span class="text-mute">+ </span> }
                   @if (hit.multiplier > 1) { <small class="text-mute">{{ hit.multiplier }}x </small> }
-                  {{ hit.value ?? '–' }}
-                  @if (!isHeal(i) && hit.value !== undefined) {
+                  {{ isValid(hit.value) ? hit.value : '–' }}
+                  @if (!isHeal(i) && isValid(hit.value)) {
                     <span class="text-mute">({{ crit(hit.value) | number: '1.0-0' }})</span>
                   }
                 </div>
@@ -74,6 +74,11 @@ export class DamageTableComponent {
     return !this.isHeal(i) && !!this.skill().shield?.[i];
   }
 
+  /** Hits built from incomplete character data come out as NaN or undefined */
+  protected isValid(value: number | undefined): boolean {
+    return Number.isFinite(value);
+  }
+
   protected crit(value: number): number {
     return value * (this.character().cDmg / 100);
   }
@@ -94,6 +99,6 @@ export class DamageTableComponent {
     const text = this.total()
       ? (resistant ? result.sumRes[i] : result.sumCommon[i])
       : (resistant ? result.res[i] : result.common[i]);
-    return text ?? '–';
+    return text && !text.includes('NaN') ? text : '–';
   }
 }

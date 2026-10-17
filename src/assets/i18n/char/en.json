@@ -83,7 +83,7 @@
     },
     "echo": {
         "echo": "Echo Comparator",
-        "disclaimer": "All Echos are considered 5* and Level 25. A simulation character is created with 1000 in all value attributes and 10% in all percentage attributes",
+        "disclaimer": "All Echos are considered 5* and Level 25. The simulation uses your character's attributes, with 1000 standing in for empty ATK, HP and DEF",
         "recommended": "Recommended attributes for {{name}} is:",
         "attributes": "recommended attributes",
         "results": "Results",

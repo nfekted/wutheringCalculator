@@ -59,10 +59,11 @@ export class Character implements Stats {
         this.results = calculateResults(this.data, this, this.levels);
     }
 
-    /** Total damage (or healing) of a rotation step */
+    /** Total damage (or healing) of a rotation step; steps without valid data count as 0 */
     rotationValue(step: RotationStep): number {
         const result = this.results[step.section];
-        return (step.healing ? result.healing : result.sum)[step.index];
+        const value = (step.healing ? result.healing : result.sum)[step.index];
+        return Number.isFinite(value) ? value : 0;
     }
 
     clone(): Character {

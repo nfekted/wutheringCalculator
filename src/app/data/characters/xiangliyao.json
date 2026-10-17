@@ -154,7 +154,7 @@
   "rotationColor": ["intro", "skill", "liberation", "skill", "basic", "skill", "skill", "basic", "skill", "skill", "basic", "skill", "outro"],
   "rotationCommands": ["e", "cv", "r", "cv", "e", "cv", "mb", "cv", "e", "cv", "e", "cv", "mb", "cv", "e", "cv", "e", "cv", "mb", "cv", "e"],
   "echo4": ["Crit Rate %", "Crit DMG %"],
-  "echo3": ["Electro DMG %", "ATK %"],
+  "echo3": ["ELECTRO DMG %", "ATK %"],
   "echo1": ["ATK %"],
   "echoSub": ["Crit Rate %", "Crit DMG %", "Liberation %", "ATK %", "ATK"]
 }

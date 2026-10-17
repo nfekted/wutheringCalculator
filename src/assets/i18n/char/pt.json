@@ -84,7 +84,7 @@
     },
     "echo": {
         "echo": "Comparador de Echos",
-        "disclaimer": "Todos Echos são considerados 5* e Level 25. Um personagem de simulação será usado, com 1000 em todos atributos de valor e 10% em todos atributos de porcentagem.",
+        "disclaimer": "Todos Echos são considerados 5* e Level 25. A simulação usa os atributos do seu personagem, com 1000 no lugar de ATK, HP e DEF vazios.",
         "recommended": "Atributos recomendados para {{name}} são:",
         "attributes": "atributos recomendados",
         "results": "Resultados",

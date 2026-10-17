@@ -50,14 +50,13 @@ interface SectionRules {
   scalesByType: boolean;
 }
 
-// Some levels intentionally mirror the original app behavior (see formula review stage):
-// liberation's first hit uses the skill level and outro's second hit uses the intro level.
+// The outro skill has a single value and no level, so both of its hits use level 1.
 const RULES: Record<SectionKey, SectionRules> = {
   basic: { level: l => l.basic, secondLevel: l => l.basic, hasThird: true, bonusByType: true, scalesByType: false },
   skill: { level: l => l.skill, secondLevel: l => l.skill, hasThird: true, bonusByType: true, scalesByType: true },
-  liberation: { level: l => l.skill, secondLevel: l => l.liberation, hasThird: false, bonusByType: true, scalesByType: true },
+  liberation: { level: l => l.liberation, secondLevel: l => l.liberation, hasThird: false, bonusByType: true, scalesByType: true },
   intro: { level: l => l.intro, secondLevel: l => l.intro, hasThird: false, bonusByType: false, scalesByType: true },
-  outro: { level: () => 1, secondLevel: l => l.intro, hasThird: false, bonusByType: false, scalesByType: true },
+  outro: { level: () => 1, secondLevel: () => 1, hasThird: false, bonusByType: false, scalesByType: true },
   forte: { level: l => l.forte, secondLevel: l => l.forte, hasThird: true, bonusByType: true, scalesByType: true },
 };
 
@@ -159,11 +158,21 @@ function getExpected(dmg: number, multiplierRange: number[], upgradeLevel: numbe
   return (value < 0 ? value * -1 : dmg * (value / 100)) * (bonus / 100);
 }
 
+/*
+ * Empirical factors inherited from the original app, not derived from formula.txt:
+ * the damage spread around the expected value, and the damage left after the enemy's
+ * DEF and RES (a common enemy vs. a resistant one).
+ */
+const DAMAGE_SPREAD_MIN = 0.93;
+const DAMAGE_SPREAD_MAX = 1.065;
+const ENEMY_MITIGATION_COMMON = 0.49;
+const ENEMY_MITIGATION_RESISTANT = 0.33;
+
 /** @returns [min, max, min Crit, max Crit] */
 function getRangeDamage(ex: number, resistance: boolean, critDmg: number): number[] {
-  const res = resistance ? 0.33 : 0.49;
-  const minValue = +(ex * 0.93 * res).toFixed(0);
-  const maxValue = +(ex * 1.065 * res).toFixed(0);
+  const res = resistance ? ENEMY_MITIGATION_RESISTANT : ENEMY_MITIGATION_COMMON;
+  const minValue = +(ex * DAMAGE_SPREAD_MIN * res).toFixed(0);
+  const maxValue = +(ex * DAMAGE_SPREAD_MAX * res).toFixed(0);
   const crit = critDmg / 100;
   return [minValue, maxValue, +(minValue * crit).toFixed(0), +(maxValue * crit).toFixed(0)];
 }
