@@ -1,145 +1,147 @@
 <nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style="z-index: 9999;">
-    <div class="container-fluid">
-        <img src="assets/img/logo.png" alt="logo" height="50" [routerLink]="['']" style="cursor:pointer">
-        <span class="mr-2" [routerLink]="['']" style="cursor:pointer">&nbsp;WuWa calculator <small
-                style="font-size: 9px;">by NfeKteD</small></span>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation"
-            style="color: white !important" aria-controls="navigation" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navigation">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" aria-current="page" [routerLink]="['']">{{'home' |
-                        transloco}}</a>
-                </li>
-                <li class="nav-item">
-                    <button class="nav-link" data-bs-toggle="modal"
-                        data-bs-target="#settingsModal">{{'settings.settings'| transloco}}</button>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/faq']" routerLinkActive="active">FAQ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/partners']" routerLinkActive="active">{{'partner' |
-                        transloco}}</a>
-                </li>
-                <li class="nav-item">
-                    <div class="dropdown mr-2" [title]="'tools' | transloco">
-                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            {{'tools'|transloco}}
-                        </button>
-                        <ul class="dropdown-menu p-3 tools">
-                            <li style="max-width: fit-content;">
-                                <img src="assets/img/zzz.jpg" height="150" />
-                                <div class="centered text-center">{{'zzz' | transloco}}</div>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+  <div class="container-fluid">
+    <img src="assets/img/logo.png" alt="logo" height="50" [routerLink]="['']" style="cursor:pointer">
+    <span class="mr-2" [routerLink]="['']" style="cursor:pointer">&nbsp;WuWa calculator <small
+    style="font-size: 9px;">by NfeKteD</small></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation"
+      style="color: white !important" aria-controls="navigation" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navigation">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" aria-current="page" [routerLink]="['']">{{'home' |
+          transloco}}</a>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="modal"
+          data-bs-target="#settingsModal">{{'settings.settings'| transloco}}</button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/faq']" routerLinkActive="active">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/partners']" routerLinkActive="active">{{'partner' |
+          transloco}}</a>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown mr-2" [title]="'tools' | transloco">
+            <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              {{'tools'|transloco}}
+            </button>
+            <ul class="dropdown-menu p-3 tools">
+              <li style="max-width: fit-content;">
+                <img src="assets/img/zzz.jpg" height="150" />
+                <div class="centered text-center">{{'zzz' | transloco}}</div>
+              </li>
             </ul>
-            <div class="d-flex">
-                <button class="btn btn-dark" style="background-color: #121212;border: none;" data-bs-toggle="modal"
-                    data-bs-target="#versionModal">
-                    <span class="material-symbols-outlined">
-                        news
-                    </span>
-                </button>
-                <a href="https://forms.gle/kUUBYNQA39uYxfQ26" target="_blank" class="btn btn-dark"
-                    style="background-color: #121212;border: none;">
-                    <span class="material-symbols-outlined">
-                        bug_report
-                    </span>
-                </a>
-                <button class="btn btn-secondary btn-sm" [title]="'save' | transloco" (click)="save()"
-                    *ngIf="!configs.autosave">
-                    <span class="material-symbols-outlined align-middle">
-                        save
-                    </span>
-                    &nbsp;{{'save' | transloco}}
-                </button>
-                <div class="dropdown mr-2" [title]="'lang' | transloco">
-                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img [src]="'assets/img/' + (lang == 'en' ? 'enflag.png' : 'ptflag.png')" height="24"
-                            alt="flag" />
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li style="max-width: fit-content;" (click)="changeLang('en')"><a class="dropdown-item"
-                                href="#"><img src="assets/img/enflag.png" height="24" /></a>
-                        </li>
-                        <li style="max-width: fit-content;" (click)="changeLang('pt')"><a class=" dropdown-item"
-                                href="#"><img src="assets/img/ptflag.png" height="24" /></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+          </div>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <button class="btn btn-dark" style="background-color: #121212;border: none;" data-bs-toggle="modal"
+          data-bs-target="#versionModal">
+          <span class="material-symbols-outlined">
+            news
+          </span>
+        </button>
+        <a href="https://forms.gle/kUUBYNQA39uYxfQ26" target="_blank" class="btn btn-dark"
+          style="background-color: #121212;border: none;">
+          <span class="material-symbols-outlined">
+            bug_report
+          </span>
+        </a>
+        @if (!configs.autosave) {
+          <button class="btn btn-secondary btn-sm" [title]="'save' | transloco" (click)="save()"
+            >
+            <span class="material-symbols-outlined align-middle">
+              save
+            </span>
+            &nbsp;{{'save' | transloco}}
+          </button>
+        }
+        <div class="dropdown mr-2" [title]="'lang' | transloco">
+          <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img [src]="'assets/img/' + (lang == 'en' ? 'enflag.png' : 'ptflag.png')" height="24"
+              alt="flag" />
+            </button>
+            <ul class="dropdown-menu">
+              <li style="max-width: fit-content;" (click)="changeLang('en')"><a class="dropdown-item"
+              href="#"><img src="assets/img/enflag.png" height="24" /></a>
+            </li>
+            <li style="max-width: fit-content;" (click)="changeLang('pt')"><a class=" dropdown-item"
+            href="#"><img src="assets/img/ptflag.png" height="24" /></a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
+</div>
 </nav>
 
 <!-- Settings -->
 <div class="modal fade modal-lg" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel"
-    data-bs-backdrop="static" aria-hidden="true" style="color: black">
-    <div class="modal-dialog" style="margin-top: 10vh;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="settingsModalLabel">{{'settings.settings' | transloco}}</h5>
+  data-bs-backdrop="static" aria-hidden="true" style="color: black">
+  <div class="modal-dialog" style="margin-top: 10vh;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="settingsModalLabel">{{'settings.settings' | transloco}}</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="audioSwitch"
+                [(ngModel)]="configs.audio">
+                <label class="form-check-label" for="audioSwitch">{{'settings.audio' | transloco}}</label>
+              </div>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="audioSwitch"
-                                [(ngModel)]="configs.audio">
-                            <label class="form-check-label" for="audioSwitch">{{'settings.audio' | transloco}}</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="autosaveSwitch"
-                                [(ngModel)]="configs.autosave">
-                            <label class="form-check-label" for="autosaveSwitch">{{'settings.autosave' |
-                                transloco}}</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 mt-4">
-                        <button class="btn btn-danger" (click)="delete()"><span
-                                class="material-symbols-outlined align-middle">
-                                delete
-                            </span> {{'settings.deleteSettings' |
-                            transloco}}</button>
-                    </div>
+            <div class="col-sm-12">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="autosaveSwitch"
+                  [(ngModel)]="configs.autosave">
+                  <label class="form-check-label" for="autosaveSwitch">{{'settings.autosave' |
+                  transloco}}</label>
                 </div>
+              </div>
+              <div class="col-sm-12 mt-4">
+                <button class="btn btn-danger" (click)="delete()"><span
+                  class="material-symbols-outlined align-middle">
+                  delete
+                </span> {{'settings.deleteSettings' |
+              transloco}}</button>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close"
-                    (click)="saveConfigs()">
-                    <span class="material-symbols-outlined align-middle">
-                        save
-                    </span>
-                    &nbsp;{{'save' | transloco}} {{'settings.settings' | transloco}}</button>
-            </div>
+          </div>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close"
+            (click)="saveConfigs()">
+            <span class="material-symbols-outlined align-middle">
+              save
+            </span>
+          &nbsp;{{'save' | transloco}} {{'settings.settings' | transloco}}</button>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<div class="modal fade modal-lg" id="versionModal" tabindex="-1" aria-labelledby="versionModalLabel" aria-hidden="true"
+  <div class="modal fade modal-lg" id="versionModal" tabindex="-1" aria-labelledby="versionModalLabel" aria-hidden="true"
     style="color: black;">
     <div class="modal-dialog" style="margin-top: 10vh;">
-        <div class="modal-content">
-            <div class="modal-header btn-dark">
-                <h5 class="modal-title" id="versionModalLabel">{{'versions.versions' | transloco}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div [innerHtml]="'versions.future' | transloco"></div>
-                <hr style="border-bottom: solid 1px"/>
-                <ng-container *ngFor="let v of versions">
-                    <div [innerHtml]="'versions.' + (v+1) | transloco"></div>
-                </ng-container>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header btn-dark">
+          <h5 class="modal-title" id="versionModalLabel">{{'versions.versions' | transloco}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <div [innerHtml]="'versions.future' | transloco"></div>
+          <hr style="border-bottom: solid 1px"/>
+          @for (v of versions; track v) {
+            <div [innerHtml]="'versions.' + (v+1) | transloco"></div>
+          }
+        </div>
+      </div>
     </div>
-</div>
+  </div>

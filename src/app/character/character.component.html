@@ -1,785 +1,836 @@
 <div class="container-fluid">
-    <div class="row" style="background-color: rgb(148, 148, 148);">
-        <div class="col-sm-6">
+  <div class="row" style="background-color: rgb(148, 148, 148);">
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="col-sm-3 text-center mb-3">
+          <img class="img-fluid" [src]="'assets/img/characters/'+character.character.icon+'.png'"
+            style="width: 250px;border-radius: 0 0 50% 50%;" />
+            @if (!nameEdit) {
+              <h2 style="cursor: pointer;" (click)="nameEdit = true">
+                <u>{{character.character.name}}</u>
+              </h2>
+            }
+            @if (nameEdit) {
+              <input [(ngModel)]="character.character.name" (blur)="nameEdit = false;save()" />
+            }
+            <a [href]="character.character.wiki" target="_blank">WIKI</a><br />
+            <span>{{'char.update' | transloco}}</span><br />
+            <span>{{character.character.lastUpdate | date : (lang == 'pt' ? 'dd/MM/yyyy hh:mm' : 'MM/dd/yyyy hh:mm')}}</span>
+            <button class="btn btn-sm btn-danger mt-4" (click)="delete()">{{'deleteTab' | transloco}}</button>
+          </div>
+          <div class="col-sm-9">
             <div class="row">
-                <div class="col-sm-3 text-center mb-3">
-                    <img class="img-fluid" [src]="'assets/img/characters/'+character.character.icon+'.png'"
-                        style="width: 250px;border-radius: 0 0 50% 50%;" />
-                    <h2 style="cursor: pointer;" *ngIf="!nameEdit" (click)="nameEdit = true">
-                        <u>{{character.character.name}}</u>
-                    </h2>
-                    <input [(ngModel)]="character.character.name" *ngIf="nameEdit" (blur)="nameEdit = false;save()" />
-                    <a [href]="character.character.wiki" target="_blank">WIKI</a><br />
-                    <span>{{'char.update' | transloco}}</span><br />
-                    <span>{{character.character.lastUpdate | date : (lang == 'pt' ? 'dd/MM/yyyy hh:mm' : 'MM/dd/yyyy hh:mm')}}</span>
-                    <button class="btn btn-sm btn-danger mt-4" (click)="delete()">{{'deleteTab' | transloco}}</button>
+              <div class="col-sm-12 text-justify">
+                <div [innerHtml]="'char.characters.' + character.character.icon | transloco"></div>
+              </div>
+              <hr />
+              <div class="col-sm-1">
+                <img class="img-fluid" [src]="'assets/img/icons/'+character.character.type+'.webp'"
+                  style="width: 4rem;" />
                 </div>
-                <div class="col-sm-9">
-                    <div class="row">
-                        <div class="col-sm-12 text-justify">
-                            <div [innerHtml]="'char.characters.' + character.character.icon | transloco"></div>
-                        </div>
-                        <hr />
-                        <div class="col-sm-1">
-                            <img class="img-fluid" [src]="'assets/img/icons/'+character.character.type+'.webp'"
-                                style="width: 4rem;" />
-                        </div>
-                        <div class="col-sm-11">
-                            <div [innerHtml]="'char.' + character.character.type | transloco"></div>
-                        </div>
-                        <div class="col-sm-1">
-                            <img class="img-fluid" [src]="'assets/img/icons/'+character.character.weapon+'.webp'"
-                                style="width: 4rem;" />
-                        </div>
-                        <div class="col-sm-11">
-                            <div [innerHtml]="'char.' + character.character.weapon | transloco"></div>
-                        </div>
-                        <hr />
-                        <div class="col-sm-12 mt-1"><b>{{'char.attributes' | transloco}}</b></div>
-                        <ng-container *ngIf="character.hpType">
-                            <div class="col-sm-12 col-md-3 text-center">
-                                <span class="input-field">HP:</span>
-                            </div>
-                            <div class="col-sm-12 col-md-6 ">
-                                <input class="form-control" type="number" placeholder="100" min="0"
-                                    [(ngModel)]="character.hp" (blur)="calculate()" />
-                            </div>
-                            <div class="col-sm-12 col-md-3 "></div>
-                        </ng-container>
-                        <div class="col-sm-12 col-md-3 mt-2 text-center">
-                            <span class="input-field">ATK:</span>
-                        </div>
-                        <div class="col-sm-12 col-md-6  mt-2">
-                            <input class="form-control" type="number" placeholder="100" min="0"
-                                [(ngModel)]="character.dmg" (blur)="calculate()" />
-                        </div>
-                        <ng-container *ngIf="character.defType">
-                            <div class="col-sm-12 col-md-3 "></div>
-                            <div class="col-sm-12 col-md-3 mt-2 text-center">
-                                <span class="input-field">DEF:</span>
-                            </div>
-                            <div class="col-sm-12 col-md-6  mt-2">
-                                <input class="form-control" type="number" placeholder="0" min="0"
-                                    [(ngModel)]="character.def" (blur)="calculate()" />
-                            </div>
-                        </ng-container>
+                <div class="col-sm-11">
+                  <div [innerHtml]="'char.' + character.character.type | transloco"></div>
+                </div>
+                <div class="col-sm-1">
+                  <img class="img-fluid" [src]="'assets/img/icons/'+character.character.weapon+'.webp'"
+                    style="width: 4rem;" />
+                  </div>
+                  <div class="col-sm-11">
+                    <div [innerHtml]="'char.' + character.character.weapon | transloco"></div>
+                  </div>
+                  <hr />
+                  <div class="col-sm-12 mt-1"><b>{{'char.attributes' | transloco}}</b></div>
+                  @if (character.hpType) {
+                    <div class="col-sm-12 col-md-3 text-center">
+                      <span class="input-field">HP:</span>
+                    </div>
+                    <div class="col-sm-12 col-md-6 ">
+                      <input class="form-control" type="number" placeholder="100" min="0"
+                        [(ngModel)]="character.hp" (blur)="calculate()" />
+                      </div>
+                      <div class="col-sm-12 col-md-3 "></div>
+                    }
+                    <div class="col-sm-12 col-md-3 mt-2 text-center">
+                      <span class="input-field">ATK:</span>
+                    </div>
+                    <div class="col-sm-12 col-md-6  mt-2">
+                      <input class="form-control" type="number" placeholder="100" min="0"
+                        [(ngModel)]="character.dmg" (blur)="calculate()" />
+                      </div>
+                      @if (character.defType) {
                         <div class="col-sm-12 col-md-3 "></div>
                         <div class="col-sm-12 col-md-3 mt-2 text-center">
-                            <span class="input-field">Crit. Rate %:</span>
+                          <span class="input-field">DEF:</span>
                         </div>
                         <div class="col-sm-12 col-md-6  mt-2">
-                            <input class="form-control" type="number" placeholder="5%" min="0" max="100"
-                                [(ngModel)]="character.cChance" />
-                        </div>
+                          <input class="form-control" type="number" placeholder="0" min="0"
+                            [(ngModel)]="character.def" (blur)="calculate()" />
+                          </div>
+                        }
                         <div class="col-sm-12 col-md-3 "></div>
                         <div class="col-sm-12 col-md-3 mt-2 text-center">
+                          <span class="input-field">Crit. Rate %:</span>
+                        </div>
+                        <div class="col-sm-12 col-md-6  mt-2">
+                          <input class="form-control" type="number" placeholder="5%" min="0" max="100"
+                            [(ngModel)]="character.cChance" />
+                          </div>
+                          <div class="col-sm-12 col-md-3 "></div>
+                          <div class="col-sm-12 col-md-3 mt-2 text-center">
                             <span class="input-field">Crit. DMG %:</span>
-                        </div>
-                        <div class="col-sm-12 col-md-6  mt-2">
+                          </div>
+                          <div class="col-sm-12 col-md-6  mt-2">
                             <input class="form-control" type="number" placeholder="150%" min="0"
-                                [(ngModel)]="character.cDmg" (blur)="calculate()" />
-                        </div>
-                        <div class="col-sm-12 col-md-3 "></div>
-                        <div class="col-sm-12 col-md-3 mt-2 text-center">
-                            <span class="input-field">{{'char.skill' | transloco}} Bonus %:</span>
-                        </div>
-                        <div class="col-sm-12 col-md-6  mt-2">
-                            <input class="form-control" type="number" placeholder="150%" min="0" max="100"
-                                [(ngModel)]="character.skillBonus" (blur)="calculate()" />
-                        </div>
-                        <div class="col-sm-12 col-md-3 "></div>
-                        <div class="col-sm-12 col-md-3 mt-2 text-center">
-                            <span class="input-field">{{'char.basic' | transloco}} Bonus %:</span>
-                        </div>
-                        <div class="col-sm-12 col-md-6  mt-2">
-                            <input class="form-control" type="number" placeholder="150%" min="0" max="100"
-                                [(ngModel)]="character.basicBonus" (blur)="calculate()" />
-                        </div>
-                        <div class="col-sm-12 col-md-3 "></div>
-                        <div class="col-sm-12 col-md-3 mt-2 text-center">
-                            <span class="input-field">{{'char.heavy' | transloco}} Bonus %:</span>
-                        </div>
-                        <div class="col-sm-12 col-md-6  mt-2">
-                            <input class="form-control" type="number" placeholder="150%" min="0" max="100"
-                                [(ngModel)]="character.heavyBonus" (blur)="calculate()" />
-                        </div>
-                        <div class="col-sm-12 col-md-3 "></div>
-                        <div class="col-sm-12 col-md-3 mt-2 text-center">
-                            <span class="input-field">Lib. Bonus %:</span>
-                        </div>
-                        <div class="col-sm-12 col-md-6  mt-2">
-                            <input class="form-control" type="number" placeholder="150%" min="0" max="100"
-                                [(ngModel)]="character.liberationBonus" (blur)="calculate()" />
-                        </div>
-                        <div class="col-sm-12 col-md-3 "></div>
-                        <div class="col-sm-12 col-md-3 mt-2 text-center">
-                            <span class="input-field">{{'char.elemental' | transloco}} DMG %:</span>
-                        </div>
-                        <div class="col-sm-12 col-md-6  mt-2">
-                            <input class="form-control" type="number" placeholder="150%" min="0" max="100"
-                                [(ngModel)]="character.elementalBonus" (blur)="calculate()" />
-                        </div>
-                        <ng-container *ngIf="character.canHeal || character.healType">
+                              [(ngModel)]="character.cDmg" (blur)="calculate()" />
+                            </div>
                             <div class="col-sm-12 col-md-3 "></div>
                             <div class="col-sm-12 col-md-3 mt-2 text-center">
-                                <span class="input-field">Healing Bonus %:</span>
+                              <span class="input-field">{{'char.skill' | transloco}} Bonus %:</span>
                             </div>
                             <div class="col-sm-12 col-md-6  mt-2">
+                              <input class="form-control" type="number" placeholder="150%" min="0" max="100"
+                                [(ngModel)]="character.skillBonus" (blur)="calculate()" />
+                              </div>
+                              <div class="col-sm-12 col-md-3 "></div>
+                              <div class="col-sm-12 col-md-3 mt-2 text-center">
+                                <span class="input-field">{{'char.basic' | transloco}} Bonus %:</span>
+                              </div>
+                              <div class="col-sm-12 col-md-6  mt-2">
                                 <input class="form-control" type="number" placeholder="150%" min="0" max="100"
-                                    [(ngModel)]="character.healingBonus" (blur)="calculate()" />
-                            </div>
-                        </ng-container>
+                                  [(ngModel)]="character.basicBonus" (blur)="calculate()" />
+                                </div>
+                                <div class="col-sm-12 col-md-3 "></div>
+                                <div class="col-sm-12 col-md-3 mt-2 text-center">
+                                  <span class="input-field">{{'char.heavy' | transloco}} Bonus %:</span>
+                                </div>
+                                <div class="col-sm-12 col-md-6  mt-2">
+                                  <input class="form-control" type="number" placeholder="150%" min="0" max="100"
+                                    [(ngModel)]="character.heavyBonus" (blur)="calculate()" />
+                                  </div>
+                                  <div class="col-sm-12 col-md-3 "></div>
+                                  <div class="col-sm-12 col-md-3 mt-2 text-center">
+                                    <span class="input-field">Lib. Bonus %:</span>
+                                  </div>
+                                  <div class="col-sm-12 col-md-6  mt-2">
+                                    <input class="form-control" type="number" placeholder="150%" min="0" max="100"
+                                      [(ngModel)]="character.liberationBonus" (blur)="calculate()" />
+                                    </div>
+                                    <div class="col-sm-12 col-md-3 "></div>
+                                    <div class="col-sm-12 col-md-3 mt-2 text-center">
+                                      <span class="input-field">{{'char.elemental' | transloco}} DMG %:</span>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6  mt-2">
+                                      <input class="form-control" type="number" placeholder="150%" min="0" max="100"
+                                        [(ngModel)]="character.elementalBonus" (blur)="calculate()" />
+                                      </div>
+                                      @if (character.canHeal || character.healType) {
+                                        <div class="col-sm-12 col-md-3 "></div>
+                                        <div class="col-sm-12 col-md-3 mt-2 text-center">
+                                          <span class="input-field">Healing Bonus %:</span>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6  mt-2">
+                                          <input class="form-control" type="number" placeholder="150%" min="0" max="100"
+                                            [(ngModel)]="character.healingBonus" (blur)="calculate()" />
+                                          </div>
+                                        }
 
-                        <div class="col-sm-12 col-md-3 "></div>
-                        <div class="col-sm-12 mt-2">
-                            <button type="button" data-bs-toggle="modal" (click)="audio('click')"
-                                [attr.data-bs-target]="'#critModal'+character.index"
-                                [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
-                                <img src="assets/img/icons/resonator.webp" width="25px"
-                                    [class]="currentSelection + '-icon'" />
-                                {{'char.enhancer.enhancer' | transloco}}
-                            </button>
-                        </div>
-                        <div class="col-sm-12 mt-2">
-                            <button type="button" data-bs-toggle="modal" (click)="audio('click')"
-                                [attr.data-bs-target]="'#echoModal'+character.index"
-                                [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
-                                <img src="assets/img/icons/echo.webp" width="25px"
-                                    [class]="currentSelection + '-icon'" />
-                                {{'char.echo.echo' | transloco}}
-                            </button>
-                        </div>
-                        <div class="col-sm-12 mt-2">
-                            <button type="button" data-bs-toggle="modal" (click)="audio('click')"
-                                [attr.data-bs-target]="'#dataTableModal'+character.index"
-                                [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
-                                <img src="assets/img/icons/resonator.webp" width="25px"
-                                    [class]="currentSelection + '-icon'" />
-                                {{'char.dataTable' | transloco}}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-5 mb-5">
-                <div class="offset-1 col-sm-2 skill" (click)="upgrade(0)">
-                    <div class="row skill-content text-center">
-                        <div class="col-sm-12">
-                            <img class="img-fluid" [src]="'assets/img/icons/'+character.character.weapon+'.webp'"
-                                style="width: 50px;" />
-                        </div>
-                        <div class="col-sm-12">{{'char.basic' | transloco}}</div>
-                        <div class="col-sm-12"><u>{{character.character.basicCurrent}}</u></div>
-                    </div>
-                </div>
-                <div class="offset-1 col-sm-2 skill" (click)="upgrade(1)">
-                    <div class="row skill-content text-center">
-                        <div class="col-sm-12">
-                            <img class="img-fluid" [src]="'assets/img/icons/'+character.character.icon+'-skill.webp'"
-                                style="width: 50px;" />
-                        </div>
-                        <div class="col-sm-12">{{'char.skill' | transloco}}</div>
-                        <div class="col-sm-12"><u>{{character.character.skillCurrent}}</u></div>
-                    </div>
-                </div>
-                <div class="offset-1 col-sm-2 skill" (click)="upgrade(2)">
-                    <div class="row skill-content text-center">
-                        <div class="col-sm-12">
-                            <img class="img-fluid" [src]="'assets/img/icons/'+character.character.icon+'-forte.webp'"
-                                style="width: 50px;" />
-                        </div>
-                        <div class="col-sm-12">{{'char.forte' | transloco}}</div>
-                        <div class="col-sm-12"><u>{{character.character.forteCurrent}}</u></div>
-                    </div>
-                </div>
-                <div class="offset-1 col-sm-2 skill" (click)="upgrade(3)">
-                    <div class="row skill-content text-center">
-                        <div class="col-sm-12">
-                            <img class="img-fluid"
-                                [src]="'assets/img/icons/'+character.character.icon+'-liberation.webp'"
-                                style="width: 50px;" />
-                        </div>
-                        <div class="col-sm-12">{{'char.liberation' | transloco}}</div>
-                        <div class="col-sm-12"><u>{{character.character.liberationCurrent}}</u></div>
-                    </div>
-                </div>
-                <div class="offset-1 col-sm-2 skill" (click)="upgrade(4)">
-                    <div class="row skill-content text-center">
-                        <div class="col-sm-12">
-                            <img class="img-fluid" [src]="'assets/img/icons/'+character.character.icon+'-intro.webp'"
-                                style="width: 50px;" />
-                        </div>
-                        <div class="col-sm-12">{{'char.intro' | transloco}}</div>
-                        <div class="col-sm-12"><u>{{character.character.introCurrent}}</u></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6" style="border-left: solid 1px black;">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <u>{{'char.prediction' | transloco}}</u>
-                    <small>
-                        <div [innerHtml]="'char.info' | transloco"></div>
-                    </small>
-                </div>
-                <div class="col-sm-12 mb-3" *ngIf="showHelp">
-                    <small>
-                        <span>{{'char.description' | transloco}}:</span>
-                        <div [innerHtml]="'char.help1' | transloco"></div>
-                    </small>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="modeSwitch" [(ngModel)]="sum">
-                        <label class="form-check-label" for="modeSwitch">{{'char.modes.' + (sum ? 'sum' : 'full')|
-                            transloco}}</label>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="showHelp"
-                            [(ngModel)]="showHelp">
-                        <label class="form-check-label" for="showHelp">{{'char.showHelp' | transloco}}</label>
-                    </div>
-                </div>
-
-                <div id="accordion">
-                    <!-- Basic DMG -->
-                    <div class="card text-bg-dark">
-                        <div class="card-header" id="tableOne">
-                            <h5 class="mb-0">
-                                <span class="btn btn-dark" data-bs-toggle="collapse" href="#basic" aria-expanded="true"
-                                    aria-controls="basic">
-                                    <h4>{{'char.basic' | transloco}} DMG</h4>
-                                </span>
-                            </h5>
-                        </div>
-
-                        <div id="basic" class="collapse show" aria-labelledby="tableOne" data-parent="#accordion">
-                            <div class="card-body" style="overflow-x: auto;">
-                                <table class="table table-dark table-striped-columns text-center">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">{{'char.name' | transloco}}</th>
-                                            <th scope="col">{{'char.raw' | transloco}}</th>
-                                            <th scope="col">{{'char.dmg' | transloco}}</th>
-                                            <th scope="col">{{'char.dmgR' | transloco}}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let b of character.character.basicNames; let i=index">
-                                            <th scope="row">
-                                                {{b}}
-                                            </th>
-                                            <!-- Detailed Mode -->
-                                            <ng-container *ngIf="!sum">
-                                                <td>
-                                                    <!-- BASIC DAMAGE -->
-                                                    <small *ngIf="character.character.basicMultiplier[i] > 1"
-                                                        style="color: white;">{{character.character.basicMultiplier[i]}}x
-                                                    </small>
-                                                    {{character.basicDmg[i]}} (<b>{{(character.basicDmg[i] *
-                                                        (character.cDmg/100)) |
-                                                        number : '1.0-0'}}</b>)
-
-                                                    <!-- SECOND BASIC DAMAGE -->
-                                                    <ng-container *ngIf="character.basicSecondDmg[i] > 0">
-                                                        <br />+<br />
-                                                        <small *ngIf="character.character.basicSecondMultiplier[i] > 1"
-                                                            style="color: white;">{{character.character.basicSecondMultiplier[i]}}x
+                                        <div class="col-sm-12 col-md-3 "></div>
+                                        <div class="col-sm-12 mt-2">
+                                          <button type="button" data-bs-toggle="modal" (click)="audio('click')"
+                                            [attr.data-bs-target]="'#critModal'+character.index"
+                                            [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
+                                            <img src="assets/img/icons/resonator.webp" width="25px"
+                                              [class]="currentSelection + '-icon'" />
+                                              {{'char.enhancer.enhancer' | transloco}}
+                                            </button>
+                                          </div>
+                                          <div class="col-sm-12 mt-2">
+                                            <button type="button" data-bs-toggle="modal" (click)="audio('click')"
+                                              [attr.data-bs-target]="'#echoModal'+character.index"
+                                              [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
+                                              <img src="assets/img/icons/echo.webp" width="25px"
+                                                [class]="currentSelection + '-icon'" />
+                                                {{'char.echo.echo' | transloco}}
+                                              </button>
+                                            </div>
+                                            <div class="col-sm-12 mt-2">
+                                              <button type="button" data-bs-toggle="modal" (click)="audio('click')"
+                                                [attr.data-bs-target]="'#dataTableModal'+character.index"
+                                                [class]="'btn btn-full-mobile btn-primary btn-'+ currentSelection">
+                                                <img src="assets/img/icons/resonator.webp" width="25px"
+                                                  [class]="currentSelection + '-icon'" />
+                                                  {{'char.dataTable' | transloco}}
+                                                </button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row mt-5 mb-5">
+                                          <div class="offset-1 col-sm-2 skill" (click)="upgrade(0)">
+                                            <div class="row skill-content text-center">
+                                              <div class="col-sm-12">
+                                                <img class="img-fluid" [src]="'assets/img/icons/'+character.character.weapon+'.webp'"
+                                                  style="width: 50px;" />
+                                                </div>
+                                                <div class="col-sm-12">{{'char.basic' | transloco}}</div>
+                                                <div class="col-sm-12"><u>{{character.character.basicCurrent}}</u></div>
+                                              </div>
+                                            </div>
+                                            <div class="offset-1 col-sm-2 skill" (click)="upgrade(1)">
+                                              <div class="row skill-content text-center">
+                                                <div class="col-sm-12">
+                                                  <img class="img-fluid" [src]="'assets/img/icons/'+character.character.icon+'-skill.webp'"
+                                                    style="width: 50px;" />
+                                                  </div>
+                                                  <div class="col-sm-12">{{'char.skill' | transloco}}</div>
+                                                  <div class="col-sm-12"><u>{{character.character.skillCurrent}}</u></div>
+                                                </div>
+                                              </div>
+                                              <div class="offset-1 col-sm-2 skill" (click)="upgrade(2)">
+                                                <div class="row skill-content text-center">
+                                                  <div class="col-sm-12">
+                                                    <img class="img-fluid" [src]="'assets/img/icons/'+character.character.icon+'-forte.webp'"
+                                                      style="width: 50px;" />
+                                                    </div>
+                                                    <div class="col-sm-12">{{'char.forte' | transloco}}</div>
+                                                    <div class="col-sm-12"><u>{{character.character.forteCurrent}}</u></div>
+                                                  </div>
+                                                </div>
+                                                <div class="offset-1 col-sm-2 skill" (click)="upgrade(3)">
+                                                  <div class="row skill-content text-center">
+                                                    <div class="col-sm-12">
+                                                      <img class="img-fluid"
+                                                        [src]="'assets/img/icons/'+character.character.icon+'-liberation.webp'"
+                                                        style="width: 50px;" />
+                                                      </div>
+                                                      <div class="col-sm-12">{{'char.liberation' | transloco}}</div>
+                                                      <div class="col-sm-12"><u>{{character.character.liberationCurrent}}</u></div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="offset-1 col-sm-2 skill" (click)="upgrade(4)">
+                                                    <div class="row skill-content text-center">
+                                                      <div class="col-sm-12">
+                                                        <img class="img-fluid" [src]="'assets/img/icons/'+character.character.icon+'-intro.webp'"
+                                                          style="width: 50px;" />
+                                                        </div>
+                                                        <div class="col-sm-12">{{'char.intro' | transloco}}</div>
+                                                        <div class="col-sm-12"><u>{{character.character.introCurrent}}</u></div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="col-sm-6" style="border-left: solid 1px black;">
+                                                  <div class="row">
+                                                    <div class="col-sm-12 text-center">
+                                                      <u>{{'char.prediction' | transloco}}</u>
+                                                      <small>
+                                                        <div [innerHtml]="'char.info' | transloco"></div>
+                                                      </small>
+                                                    </div>
+                                                    @if (showHelp) {
+                                                      <div class="col-sm-12 mb-3">
+                                                        <small>
+                                                          <span>{{'char.description' | transloco}}:</span>
+                                                          <div [innerHtml]="'char.help1' | transloco"></div>
                                                         </small>
-                                                        {{character.basicSecondDmg[i]}}
-                                                        (<b>{{(character.basicSecondDmg[i] *
-                                                            (character.cDmg/100)) |
-                                                            number : '1.0-0'}}</b>)
-                                                    </ng-container>
+                                                      </div>
+                                                    }
+                                                    <div class="col-sm-12 col-md-6">
+                                                      <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="modeSwitch" [(ngModel)]="sum">
+                                                        <label class="form-check-label" for="modeSwitch">{{'char.modes.' + (sum ? 'sum' : 'full')|
+                                                        transloco}}</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                      <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="showHelp"
+                                                          [(ngModel)]="showHelp">
+                                                          <label class="form-check-label" for="showHelp">{{'char.showHelp' | transloco}}</label>
+                                                        </div>
+                                                      </div>
 
-                                                    <!-- THIRD BASIC DAMAGE -->
-                                                    <ng-container *ngIf="character.basicThirdDmg[i] > 0">
-                                                        <br />+<br />
-                                                        <small *ngIf="character.character.basicThirdMultiplier[i] > 1"
-                                                            style="color: white;">{{character.character.basicThirdMultiplier[i]}}x
-                                                        </small>
-                                                        {{character.basicThirdDmg[i]}} (<b>{{(character.basicThirdDmg[i]
-                                                            * (character.cDmg/100)) | number : '1.0-0'}}</b>)
-                                                    </ng-container>
+                                                      <div id="accordion">
+                                                        <!-- Basic DMG -->
+                                                        <div class="card text-bg-dark">
+                                                          <div class="card-header" id="tableOne">
+                                                            <h5 class="mb-0">
+                                                              <span class="btn btn-dark" data-bs-toggle="collapse" href="#basic" aria-expanded="true"
+                                                                aria-controls="basic">
+                                                                <h4>{{'char.basic' | transloco}} DMG</h4>
+                                                              </span>
+                                                            </h5>
+                                                          </div>
 
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.basicCommonDmg[i]"></div>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.basicResDmg[i]"></div>
-                                                </td>
-                                            </ng-container>
-                                            <!-- End Detailed Mode -->
-                                            <!-- Sum mode -->
-                                            <ng-container *ngIf="sum">
-                                                <td>
-                                                    {{character.sumBasicDmg[i]}}
-                                                    (<b>{{(character.sumBasicDmg[i] * (character.cDmg/100)) | number :
-                                                        '1.0-0'}}</b>)
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.sumCommonDmg[i]"></div>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.sumResDmg[i]"></div>
-                                                </td>
-                                            </ng-container>
-                                            <!-- End Sum Mode -->
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End basic DMG-->
-                    <hr />
-                    <!-- Skills -->
-                    <div class="card text-bg-dark">
-                        <div class="card-header" id="tableTwo">
-                            <h5 class="mb-0">
-                                <span class="btn btn-dark" data-bs-toggle="collapse" href="#skills" aria-expanded="true"
-                                    aria-controls="skills">
-                                    <h4>{{'char.skill' | transloco}} DMG</h4>
-                                </span>
-                            </h5>
-                        </div>
+                                                          <div id="basic" class="collapse show" aria-labelledby="tableOne" data-parent="#accordion">
+                                                            <div class="card-body" style="overflow-x: auto;">
+                                                              <table class="table table-dark table-striped-columns text-center">
+                                                                <thead>
+                                                                  <tr>
+                                                                    <th scope="col">{{'char.name' | transloco}}</th>
+                                                                    <th scope="col">{{'char.raw' | transloco}}</th>
+                                                                    <th scope="col">{{'char.dmg' | transloco}}</th>
+                                                                    <th scope="col">{{'char.dmgR' | transloco}}</th>
+                                                                  </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                  @for (b of character.character.basicNames; track b; let i = $index) {
+                                                                    <tr>
+                                                                      <th scope="row">
+                                                                        {{b}}
+                                                                      </th>
+                                                                      <!-- Detailed Mode -->
+                                                                      @if (!sum) {
+                                                                        <td>
+                                                                          <!-- BASIC DAMAGE -->
+                                                                          @if (character.character.basicMultiplier[i] > 1) {
+                                                                            <small
+                                                                              style="color: white;">{{character.character.basicMultiplier[i]}}x
+                                                                            </small>
+                                                                          }
+                                                                          {{character.basicDmg[i]}} (<b>{{(character.basicDmg[i] *
+                                                                          (character.cDmg/100)) |
+                                                                        number : '1.0-0'}}</b>)
+                                                                        <!-- SECOND BASIC DAMAGE -->
+                                                                        @if (character.basicSecondDmg[i] > 0) {
+                                                                          <br />+<br />
+                                                                          @if (character.character.basicSecondMultiplier[i] > 1) {
+                                                                            <small
+                                                                              style="color: white;">{{character.character.basicSecondMultiplier[i]}}x
+                                                                            </small>
+                                                                          }
+                                                                          {{character.basicSecondDmg[i]}}
+                                                                          (<b>{{(character.basicSecondDmg[i] *
+                                                                          (character.cDmg/100)) |
+                                                                        number : '1.0-0'}}</b>)
+                                                                      }
+                                                                      <!-- THIRD BASIC DAMAGE -->
+                                                                      @if (character.basicThirdDmg[i] > 0) {
+                                                                        <br />+<br />
+                                                                        @if (character.character.basicThirdMultiplier[i] > 1) {
+                                                                          <small
+                                                                            style="color: white;">{{character.character.basicThirdMultiplier[i]}}x
+                                                                          </small>
+                                                                        }
+                                                                        {{character.basicThirdDmg[i]}} (<b>{{(character.basicThirdDmg[i]
+                                                                      * (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                                    }
+                                                                  </td>
+                                                                  <td>
+                                                                    <div [innerHtml]="character.basicCommonDmg[i]"></div>
+                                                                  </td>
+                                                                  <td>
+                                                                    <div [innerHtml]="character.basicResDmg[i]"></div>
+                                                                  </td>
+                                                                }
+                                                                <!-- End Detailed Mode -->
+                                                                <!-- Sum mode -->
+                                                                @if (sum) {
+                                                                  <td>
+                                                                    {{character.sumBasicDmg[i]}}
+                                                                    (<b>{{(character.sumBasicDmg[i] * (character.cDmg/100)) | number :
+                                                                  '1.0-0'}}</b>)
+                                                                </td>
+                                                                <td>
+                                                                  <div [innerHtml]="character.sumCommonDmg[i]"></div>
+                                                                </td>
+                                                                <td>
+                                                                  <div [innerHtml]="character.sumResDmg[i]"></div>
+                                                                </td>
+                                                              }
+                                                              <!-- End Sum Mode -->
+                                                            </tr>
+                                                          }
+                                                        </tbody>
+                                                      </table>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <!-- End basic DMG-->
+                                                <hr />
+                                                <!-- Skills -->
+                                                <div class="card text-bg-dark">
+                                                  <div class="card-header" id="tableTwo">
+                                                    <h5 class="mb-0">
+                                                      <span class="btn btn-dark" data-bs-toggle="collapse" href="#skills" aria-expanded="true"
+                                                        aria-controls="skills">
+                                                        <h4>{{'char.skill' | transloco}} DMG</h4>
+                                                      </span>
+                                                    </h5>
+                                                  </div>
 
-                        <div id="skills" class="collapse" aria-labelledby="tableTwo" data-parent="#accordion">
-                            <div class="card-body" style="overflow-x: auto;">
-                                <table class="table table-dark table-striped-columns text-center">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">{{'char.name' | transloco}}</th>
-                                            <th scope="col">{{'char.raw' | transloco}}</th>
-                                            <th scope="col">{{'char.dmg' | transloco}}</th>
-                                            <th scope="col">{{'char.dmgR' | transloco}}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let b of character.character.skillNames; let i=index">
-                                            <th scope="row">
-                                                {{b}}
-                                            </th>
-                                            <!-- Detailed Mode -->
-                                            <ng-container *ngIf="!sum">
-                                                <td
-                                                    [ngStyle]="{'color': character.character.skillHeal?.[i] ? 'lawngreen' : ''}">
-                                                    <!-- Skill First Damage -->
-                                                    <ng-container *ngIf="character.character.skillMultiplier[i] > 1">
-                                                        <small
-                                                            style="color: white;">{{character.character.skillMultiplier[i]}}x
-                                                        </small>
-                                                    </ng-container>
-                                                    {{character.skillDmg[i]}}
-                                                    <ng-container *ngIf="!character.character.skillHeal?.[i]">
-                                                        (<b>{{(character.skillDmg[i] * (character.cDmg/100)) | number :
-                                                            '1.0-0'}}</b>)
-                                                    </ng-container>
-
-
-                                                    <!-- Skill Second Damage -->
-                                                    <ng-container *ngIf="character.skillSecondDmg[i] > 0">
-                                                        <br />+<br />
-                                                        <small *ngIf="character.character.skillSecondMultiplier[i] > 1"
-                                                            style="color: white;">{{character.character.skillSecondMultiplier[i]}}x
-                                                        </small>
-                                                        {{character.skillSecondDmg[i]}}
-                                                        <ng-container *ngIf="!character.character.skillHeal?.[i]">
-                                                            (<b>{{(character.skillSecondDmg[i] * (character.cDmg/100)) |
-                                                                number : '1.0-0'}}</b>)
-                                                        </ng-container>
-                                                    </ng-container>
-
-                                                    <!-- Skill Third Damage -->
-                                                    <ng-container *ngIf="character.skillThirdDmg[i] > 0">
-                                                        <br />+<br />
-                                                        <small *ngIf="character.character.skillThirdMultiplier[i] > 1"
-                                                            style="color: white;">{{character.character.skillThirdMultiplier[i]}}x
-                                                        </small>
-                                                        {{character.skillThirdDmg[i]}} (<b>{{(character.skillThirdDmg[i]
-                                                            * (character.cDmg/100)) | number : '1.0-0'}}</b>)
-                                                    </ng-container>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.skillCommonDmg[i]"
-                                                        *ngIf="!character.character['skillHeal']?.[i]"></div>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.skillResDmg[i]"
-                                                        *ngIf="!character.character['skillHeal']?.[i]"></div>
-                                                </td>
-                                            </ng-container>
-                                            <!-- Sum Mode -->
-                                            <ng-container *ngIf="sum">
-                                                <td
-                                                    [ngStyle]="{'color': character.character.skillHeal?.[i] ? 'lawngreen' : ''}">
-                                                    {{character.sumSkillDmg[i]}}
-                                                    <ng-container *ngIf="!character.character.skillHeal?.[i]">
-                                                        (<b>{{(character.sumSkillDmg[i] * (character.cDmg/100)) | number
+                                                  <div id="skills" class="collapse" aria-labelledby="tableTwo" data-parent="#accordion">
+                                                    <div class="card-body" style="overflow-x: auto;">
+                                                      <table class="table table-dark table-striped-columns text-center">
+                                                        <thead>
+                                                          <tr>
+                                                            <th scope="col">{{'char.name' | transloco}}</th>
+                                                            <th scope="col">{{'char.raw' | transloco}}</th>
+                                                            <th scope="col">{{'char.dmg' | transloco}}</th>
+                                                            <th scope="col">{{'char.dmgR' | transloco}}</th>
+                                                          </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                          @for (b of character.character.skillNames; track b; let i = $index) {
+                                                            <tr>
+                                                              <th scope="row">
+                                                                {{b}}
+                                                              </th>
+                                                              <!-- Detailed Mode -->
+                                                              @if (!sum) {
+                                                                <td
+                                                                  [ngStyle]="{'color': character.character.skillHeal?.[i] ? 'lawngreen' : ''}">
+                                                                  <!-- Skill First Damage -->
+                                                                  @if (character.character.skillMultiplier[i] > 1) {
+                                                                    <small
+                                                                      style="color: white;">{{character.character.skillMultiplier[i]}}x
+                                                                    </small>
+                                                                  }
+                                                                  {{character.skillDmg[i]}}
+                                                                  @if (!character.character.skillHeal?.[i]) {
+                                                                    (<b>{{(character.skillDmg[i] * (character.cDmg/100)) | number :
+                                                                  '1.0-0'}}</b>)
+                                                                }
+                                                                <!-- Skill Second Damage -->
+                                                                @if (character.skillSecondDmg[i] > 0) {
+                                                                  <br />+<br />
+                                                                  @if (character.character.skillSecondMultiplier[i] > 1) {
+                                                                    <small
+                                                                      style="color: white;">{{character.character.skillSecondMultiplier[i]}}x
+                                                                    </small>
+                                                                  }
+                                                                  {{character.skillSecondDmg[i]}}
+                                                                  @if (!character.character.skillHeal?.[i]) {
+                                                                    (<b>{{(character.skillSecondDmg[i] * (character.cDmg/100)) |
+                                                                  number : '1.0-0'}}</b>)
+                                                                }
+                                                              }
+                                                              <!-- Skill Third Damage -->
+                                                              @if (character.skillThirdDmg[i] > 0) {
+                                                                <br />+<br />
+                                                                @if (character.character.skillThirdMultiplier[i] > 1) {
+                                                                  <small
+                                                                    style="color: white;">{{character.character.skillThirdMultiplier[i]}}x
+                                                                  </small>
+                                                                }
+                                                                {{character.skillThirdDmg[i]}} (<b>{{(character.skillThirdDmg[i]
+                                                              * (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                            }
+                                                          </td>
+                                                          <td>
+                                                            @if (!character.character['skillHeal']?.[i]) {
+                                                              <div [innerHtml]="character.skillCommonDmg[i]"
+                                                              ></div>
+                                                            }
+                                                          </td>
+                                                          <td>
+                                                            @if (!character.character['skillHeal']?.[i]) {
+                                                              <div [innerHtml]="character.skillResDmg[i]"
+                                                              ></div>
+                                                            }
+                                                          </td>
+                                                        }
+                                                        <!-- Sum Mode -->
+                                                        @if (sum) {
+                                                          <td
+                                                            [ngStyle]="{'color': character.character.skillHeal?.[i] ? 'lawngreen' : ''}">
+                                                            {{character.sumSkillDmg[i]}}
+                                                            @if (!character.character.skillHeal?.[i]) {
+                                                              (<b>{{(character.sumSkillDmg[i] * (character.cDmg/100)) | number
                                                             : '1.0-0'}}</b>)
-                                                    </ng-container>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.sumCommonSkillDmg[i]"
-                                                        *ngIf="!character.character.skillHeal?.[i]"></div>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.sumResSkillDmg[i]"
-                                                        *ngIf="!character.character.skillHeal?.[i]"></div>
-                                                </td>
-                                            </ng-container>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5"><b>{{'char.liberation' | transloco}}:
+                                                          }
+                                                        </td>
+                                                        <td>
+                                                          @if (!character.character.skillHeal?.[i]) {
+                                                            <div [innerHtml]="character.sumCommonSkillDmg[i]"
+                                                            ></div>
+                                                          }
+                                                        </td>
+                                                        <td>
+                                                          @if (!character.character.skillHeal?.[i]) {
+                                                            <div [innerHtml]="character.sumResSkillDmg[i]"
+                                                            ></div>
+                                                          }
+                                                        </td>
+                                                      }
+                                                    </tr>
+                                                  }
+                                                  <tr>
+                                                    <td colspan="5"><b>{{'char.liberation' | transloco}}:
                                                     {{character.character.basicName}}</b></td>
-                                        </tr>
-                                        <tr *ngFor="let b of character.character.liberationNames; let i=index">
-                                            <th scope="row">
-                                                {{b}}
-                                            </th>
-                                            <!-- Detailed Mode -->
-                                            <ng-container *ngIf="!sum">
-                                                <td
-                                                    [ngStyle]="{'color': character.character.liberationHeal?.[i] ? 'lawngreen' : ''}">
-                                                    <!-- Liberation Damage -->
-                                                    <ng-container
-                                                        *ngIf="character.character.liberationMultiplier[i] > 1">
-                                                        <small
-                                                            style="color: white;">{{character.character.liberationMultiplier[i]}}x
-                                                        </small>
-                                                    </ng-container>
-                                                    {{character.liberationDmg[i]}}
-                                                    <ng-container *ngIf="!character.character.liberationHeal?.[i]">
-                                                        (<b>{{(character.liberationDmg[i] * (character.cDmg/100)) |
-                                                            number : '1.0-0'}}</b>)
-                                                    </ng-container>
-
-                                                    <!-- Liberation Second Damage -->
-                                                    <ng-container *ngIf="character.liberationSecondDmg[i] > 0">
-                                                        <br />+<br />
-                                                        <small
-                                                            *ngIf="character.character.liberationSecondMultiplier?.[i] > 1"
-                                                            style="color: white;">{{character.character.liberationSecondMultiplier[i]}}x
-                                                        </small>
-                                                        {{character.liberationSecondDmg[i]}}
-                                                        <ng-container *ngIf="!character.character.liberationHeal?.[i]">
+                                                  </tr>
+                                                  @for (b of character.character.liberationNames; track b; let i = $index) {
+                                                    <tr>
+                                                      <th scope="row">
+                                                        {{b}}
+                                                      </th>
+                                                      <!-- Detailed Mode -->
+                                                      @if (!sum) {
+                                                        <td
+                                                          [ngStyle]="{'color': character.character.liberationHeal?.[i] ? 'lawngreen' : ''}">
+                                                          <!-- Liberation Damage -->
+                                                          @if (character.character.liberationMultiplier[i] > 1) {
+                                                            <small
+                                                              style="color: white;">{{character.character.liberationMultiplier[i]}}x
+                                                            </small>
+                                                          }
+                                                          {{character.liberationDmg[i]}}
+                                                          @if (!character.character.liberationHeal?.[i]) {
+                                                            (<b>{{(character.liberationDmg[i] * (character.cDmg/100)) |
+                                                          number : '1.0-0'}}</b>)
+                                                        }
+                                                        <!-- Liberation Second Damage -->
+                                                        @if (character.liberationSecondDmg[i] > 0) {
+                                                          <br />+<br />
+                                                          @if (character.character.liberationSecondMultiplier?.[i] > 1) {
+                                                            <small
+                                                              style="color: white;">{{character.character.liberationSecondMultiplier[i]}}x
+                                                            </small>
+                                                          }
+                                                          {{character.liberationSecondDmg[i]}}
+                                                          @if (!character.character.liberationHeal?.[i]) {
                                                             (<b>{{(character.liberationSecondDmg[i] *
-                                                                (character.cDmg/100)) | number : '1.0-0'}}</b>)
-                                                        </ng-container>
-                                                    </ng-container>
-
-                                                    <!-- Liberation Third Damage -->
-                                                    <!-- <ng-container *ngIf="character.liberationThirdDmg[i] > 0">
-                                                        <br />+<br />
-                                                        <small
-                                                            *ngIf="character.character.liberationThirdMultiplier[i] > 1"
-                                                            style="color: white;">{{character.character.liberationThirdMultiplier[i]}}x
-                                                        </small>
-                                                        {{character.liberationThirdDmg[i]}}
-                                                        (<b>{{(character.liberationThirdDmg[i]
-                                                            * (character.cDmg/100)) | number : '1.0-0'}}</b>)
-                                                    </ng-container> -->
+                                                          (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                        }
+                                                      }
+                                                      <!-- Liberation Third Damage -->
+                                                      <!-- <ng-container *ngIf="character.liberationThirdDmg[i] > 0">
+                                                      <br />+<br />
+                                                      <small
+                                                        *ngIf="character.character.liberationThirdMultiplier[i] > 1"
+                                                        style="color: white;">{{character.character.liberationThirdMultiplier[i]}}x
+                                                      </small>
+                                                      {{character.liberationThirdDmg[i]}}
+                                                      (<b>{{(character.liberationThirdDmg[i]
+                                                    * (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                  </ng-container> -->
                                                 </td>
                                                 <td>
+                                                  @if (!character.character.liberationHeal?.[i]) {
                                                     <div [innerHtml]="character.liberationCommonDmg[i]"
-                                                        *ngIf="!character.character.liberationHeal?.[i]">
+                                                      >
                                                     </div>
+                                                  }
                                                 </td>
                                                 <td>
+                                                  @if (!character.character.liberationHeal?.[i]) {
                                                     <div [innerHtml]="character.liberationResDmg[i]"
-                                                        *ngIf="!character.character.liberationHeal?.[i]">
+                                                      >
                                                     </div>
+                                                  }
                                                 </td>
-                                            </ng-container>
-
-                                            <!-- Sum mode -->
-                                            <ng-container *ngIf="sum">
+                                              }
+                                              <!-- Sum mode -->
+                                              @if (sum) {
                                                 <td
-                                                    [ngStyle]="{'color': character.character.liberationHeal?.[i] ? 'lawngreen' : ''}">
-                                                    {{character.sumLiberationDmg[i]}}
-                                                    <ng-container *ngIf="!character.character.liberationHeal?.[i]">
-                                                        (<b>{{(character.sumLiberationDmg[i] *
-                                                            (character.cDmg/100)) | number : '1.0-0'}}</b>)
-                                                    </ng-container>
+                                                  [ngStyle]="{'color': character.character.liberationHeal?.[i] ? 'lawngreen' : ''}">
+                                                  {{character.sumLiberationDmg[i]}}
+                                                  @if (!character.character.liberationHeal?.[i]) {
+                                                    (<b>{{(character.sumLiberationDmg[i] *
+                                                  (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                                }
+                                              </td>
+                                              <td>
+                                                @if (!character.character.liberationHeal?.[i]) {
+                                                  <div [innerHtml]="character.sumCommonLibDmg[i]"
+                                                  ></div>
+                                                }
+                                              </td>
+                                              <td>
+                                                @if (!character.character.liberationHeal?.[i]) {
+                                                  <div [innerHtml]="character.sumResLibDmg[i]"
+                                                  ></div>
+                                                }
+                                              </td>
+                                            }
+                                          </tr>
+                                        }
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- End Skill DMG-->
+                              <hr />
+                              <!-- Intro, Outro, Forte -->
+                              <div class="card text-bg-dark">
+                                <div class="card-header" id="tableThree">
+                                  <h5 class="mb-0">
+                                    <span class="btn btn-dark" data-bs-toggle="collapse" href="#intro" aria-expanded="true"
+                                      aria-controls="intro">
+                                      <h4>{{'char.intro' | transloco}}, {{'char.outro' | transloco}}, {{'char.forte' |
+                                      transloco}} DMG</h4>
+                                    </span>
+                                  </h5>
+                                </div>
 
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.sumCommonLibDmg[i]"
-                                                        *ngIf="!character.character.liberationHeal?.[i]"></div>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.sumResLibDmg[i]"
-                                                        *ngIf="!character.character.liberationHeal?.[i]"></div>
-                                                </td>
-                                            </ng-container>
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Skill DMG-->
-                    <hr />
-                    <!-- Intro, Outro, Forte -->
-                    <div class="card text-bg-dark">
-                        <div class="card-header" id="tableThree">
-                            <h5 class="mb-0">
-                                <span class="btn btn-dark" data-bs-toggle="collapse" href="#intro" aria-expanded="true"
-                                    aria-controls="intro">
-                                    <h4>{{'char.intro' | transloco}}, {{'char.outro' | transloco}}, {{'char.forte' |
-                                        transloco}} DMG</h4>
-                                </span>
-                            </h5>
-                        </div>
-
-                        <div id="intro" class="collapse" aria-labelledby="tableThree" data-parent="#accordion">
-                            <div class="card-body" style="overflow-x: auto;">
-                                <table class="table table-dark table-striped-columns text-center">
-                                    <thead>
+                                <div id="intro" class="collapse" aria-labelledby="tableThree" data-parent="#accordion">
+                                  <div class="card-body" style="overflow-x: auto;">
+                                    <table class="table table-dark table-striped-columns text-center">
+                                      <thead>
                                         <tr>
-                                            <th scope="col">{{'char.name' | transloco}}</th>
-                                            <th scope="col">{{'char.raw' | transloco}}</th>
-                                            <th scope="col">{{'char.dmg' | transloco}}</th>
-                                            <th scope="col">{{'char.dmgR' | transloco}}</th>
+                                          <th scope="col">{{'char.name' | transloco}}</th>
+                                          <th scope="col">{{'char.raw' | transloco}}</th>
+                                          <th scope="col">{{'char.dmg' | transloco}}</th>
+                                          <th scope="col">{{'char.dmgR' | transloco}}</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let b of character.character.introNames; let i=index">
+                                      </thead>
+                                      <tbody>
+                                        @for (b of character.character.introNames; track b; let i = $index) {
+                                          <tr>
                                             <th scope="row">
-                                                {{b}}
+                                              {{b}}
                                             </th>
                                             <!-- Detailed Intro -->
-                                            <ng-container *ngIf="!sum">
-                                                <td
-                                                    [ngStyle]="{'color': character.character.introHeal?.[i] ? 'lawngreen' : ''}">
-                                                    <ng-container *ngIf="character.character.introMultiplier[i] > 1">
-                                                        <small
-                                                            style="color: white;">{{character.character.introMultiplier[i]}}x
-                                                        </small>
-                                                    </ng-container>
-                                                    {{character.introDmg[i]}}
-                                                    <ng-container *ngIf="!character.character.introHeal?.[i]">
-                                                        (<b>{{(character.introDmg[i] * (character.cDmg/100)) | number :
-                                                            '1.0-0'}}</b>)
-                                                    </ng-container>
-
-                                                    <!-- Intro Second Damage -->
-                                                    <ng-container *ngIf="character.introSecondDmg[i] > 0">
-                                                        <br />+<br />
-                                                        <small
-                                                            *ngIf="character.character.introSecondMultiplier?.[i] > 1"
-                                                            style="color: white;">{{character.character.introSecondMultiplier[i]}}x
-                                                        </small>
-                                                        {{character.introSecondDmg[i]}}
-                                                        <ng-container *ngIf="!character.character.introHeal?.[i]">
-                                                            (<b>{{(character.introSecondDmg[i] *
-                                                                (character.cDmg/100)) | number : '1.0-0'}}</b>)
-                                                        </ng-container>
-                                                    </ng-container>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.introCommonDmg[i]"
-                                                        *ngIf="!character.character.introHeal?.[i]"></div>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.introResDmg[i]"
-                                                        *ngIf="!character.character.introHeal?.[i]"></div>
-                                                </td>
-                                            </ng-container>
-                                            <!-- Sum Intro -->
-                                            <ng-container *ngIf="sum">
-                                                <td
-                                                    [ngStyle]="{'color': character.character.introHeal?.[i] ? 'lawngreen' : ''}">
-                                                    {{character.sumIntroDmg[i]}}
-                                                    <ng-container *ngIf="!character.character.introHeal?.[i]">
-                                                        (<b>{{(character.sumIntroDmg[i] *
-                                                            (character.cDmg/100)) | number : '1.0-0'}}</b>)
-                                                    </ng-container>
-
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.sumCommonIntroDmg[i]"
-                                                        *ngIf="!character.character.introHeal?.[i]"></div>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.sumResIntroDmg[i]"
-                                                        *ngIf="!character.character.introHeal?.[i]"></div>
-                                                </td>
-                                            </ng-container>
-
-                                        </tr>
-                                        <!-- OUTRO -->
-                                        <ng-container *ngIf="character.character.outroMultiplier[0] > 0">
-                                            <tr>
-                                                <td colspan="5">{{'char.outro' | transloco}}:
-                                                    {{character.character.outroName}}</td>
-                                            </tr>
-                                            <tr *ngFor="let b of character.character.outroNames; let i=index">
-                                                <th scope="row">
-                                                    {{b}}
-                                                </th>
-                                                <!-- Detailed Outro -->
-                                                <ng-container *ngIf="!sum">
-                                                    <td
-                                                        [ngStyle]="{'color': character.character.outroHeal?.[i] ? 'lawngreen' : ''}">
-                                                        <ng-container
-                                                            *ngIf="character.character.outroMultiplier[i] > 1">
-                                                            <small
-                                                                style="color: white;">{{character.character.outroMultiplier[i]}}x
-                                                            </small>
-                                                        </ng-container>
-                                                        {{character.outroDmg[i]}}
-                                                        <ng-container *ngIf="!character.character.outroHeal?.[i]">
-                                                            (<b>{{(character.outroDmg[i] * (character.cDmg/100)) |
-                                                                number : '1.0-0'}}</b>)
-                                                        </ng-container>
-
-                                                        <!-- Outro Second Damage -->
-                                                        <ng-container *ngIf="character.outroSecondDmg[i] > 0">
-                                                            <br />+<br />
-                                                            <small
-                                                                *ngIf="character.character.outroSecondMultiplier?.[i] > 1"
-                                                                style="color: white;">{{character.character.outroSecondMultiplier[i]}}x
-                                                            </small>
-                                                            {{character.outroSecondDmg[i]}}
-                                                            <ng-container *ngIf="!character.character.outroHeal?.[i]">
-                                                                (<b>{{(character.outroSecondDmg[i] *
-                                                                    (character.cDmg/100)) | number : '1.0-0'}}</b>)
-                                                            </ng-container>
-                                                        </ng-container>
-                                                    </td>
-                                                    <td>
-                                                        <div [innerHtml]="character.outroCommonDmg[i]"
-                                                            *ngIf="!character.character.outroHeal?.[i]"></div>
-                                                    </td>
-                                                    <td>
-                                                        <div [innerHtml]="character.outroResDmg[i]"
-                                                            *ngIf="!character.character.outroHeal?.[i]"></div>
-                                                    </td>
-                                                </ng-container>
-                                                <!-- Sum Outro -->
-                                                <ng-container *ngIf="sum">
-                                                    <td
-                                                        [ngStyle]="{'color': character.character.outroHeal?.[i] ? 'lawngreen' : ''}">
-                                                        {{character.sumOutroDmg[i]}}
-                                                        <ng-container *ngIf="!character.character.outroHeal?.[i]">
-                                                            (<b>{{(character.sumOutroDmg[i] *
-                                                                (character.cDmg/100)) | number : '1.0-0'}}</b>)
-                                                        </ng-container>
-
-                                                    </td>
-                                                    <td>
-                                                        <div [innerHtml]="character.sumCommonOutroDmg[i]"
-                                                            *ngIf="!character.character.outroHeal?.[i]"></div>
-                                                    </td>
-                                                    <td>
-                                                        <div [innerHtml]="character.sumResOutroDmg[i]"
-                                                            *ngIf="!character.character.outroHeal?.[i]"></div>
-                                                    </td>
-                                                </ng-container>
-                                            </tr>
-                                        </ng-container>
-                                        <!-- FORTE -->
-                                        <tr>
-                                            <td colspan="5">{{'char.forte' | transloco}}:
-                                                {{character.character.forteName}}</td>
-                                        </tr>
-                                        <tr *ngFor="let b of character.character.forteNames; let i=index">
-                                            <th scope="row">
-                                                {{b}}
-                                            </th>
-                                            <ng-container *ngIf="!sum">
-                                                <td
-                                                    [ngStyle]="{'color': character.character.forteHeal?.[i] ? 'lawngreen' : character.character.forteShield[i] ? 'yellow' : ''}">
-                                                    <!-- Forte First Damage -->
-                                                    <ng-container *ngIf="character.character.forteMultiplier[i] > 1">
-                                                        <small
-                                                            style="color: white;">{{character.character.forteMultiplier[i]}}x
-                                                        </small>
-                                                    </ng-container>
-                                                    {{character.forteDmg[i]}}
-                                                    <ng-container
-                                                        *ngIf="!character.character.forteHeal?.[i] && !character.character.forteShield[i]">
-                                                        (<b>{{(character.forteDmg[i] * (character.cDmg/100)) | number :
-                                                            '1.0-0'}}</b>)
-                                                    </ng-container>
-
-                                                    <!-- Forte Second Damage -->
-                                                    <ng-container *ngIf="character.forteSecondDmg[i] > 0">
-                                                        <br />+<br />
-                                                        <small *ngIf="character.character.forteSecondMultiplier[i] > 1"
-                                                            style="color: white;">{{character.character.forteSecondMultiplier[i]}}x
-                                                        </small>
-                                                        {{character.forteSecondDmg[i]}}
-                                                        <ng-container
-                                                            *ngIf="!character.character.forteHeal?.[i] && !character.character.forteShield[i]">
-                                                            (<b>{{(character.forteSecondDmg[i] * (character.cDmg/100)) |
-                                                                number : '1.0-0'}}</b>)
-                                                        </ng-container>
-                                                    </ng-container>
-
-                                                    <!-- forte Third Damage -->
-                                                    <ng-container *ngIf="character.forteThirdDmg[i] > 0">
-                                                        <br />+<br />
-                                                        <small *ngIf="character.character.skillThirdMultiplier[i] > 1"
-                                                            style="color: white;">{{character.character.forteThirdMultiplier[i]}}x
-                                                        </small>
-                                                        {{character.forteThirdDmg[i]}}
-                                                        <ng-container
-                                                            *ngIf="!character.character.forteHeal?.[i] && !character.character.forteShield[i]">
-                                                            (<b>{{(character.forteThirdDmg[i]
-                                                                * (character.cDmg/100)) | number : '1.0-0'}}</b>)
-                                                        </ng-container>
-                                                    </ng-container>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.forteCommonDmg[i]"
-                                                        *ngIf="!character.character.forteHeal?.[i] && !character.character.forteShield[i]">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.forteResDmg[i]"
-                                                        *ngIf="!character.character.forteHeal?.[i] && !character.character.forteShield[i]">
-                                                    </div>
-                                                </td>
-                                            </ng-container>
-                                            <ng-container *ngIf="sum">
-                                                <td
-                                                    [ngStyle]="{'color': character.character.forteHeal?.[i] ? 'lawngreen' : character.character.forteShield[i] ? 'yellow' : ''}">
-                                                    {{character.sumForteDmg[i]}}
-                                                    <ng-container
-                                                        *ngIf="!character.character.forteHeal?.[i] && !character.character.forteShield[i]">
-                                                        (<b>{{(character.sumForteDmg[i] * (character.cDmg/100)) | number
-                                                            : '1.0-0'}}</b>)
-                                                    </ng-container>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.sumCommonForteDmg[i]"
-                                                        *ngIf="!character.character.forteHeal?.[i] && !character.character.forteShield[i]">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div [innerHtml]="character.sumResForteDmg[i]"
-                                                        *ngIf="!character.character.forteHeal?.[i] && !character.character.forteShield[i]">
-                                                    </div>
-                                                </td>
-                                            </ng-container>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                            @if (!sum) {
+                                              <td
+                                                [ngStyle]="{'color': character.character.introHeal?.[i] ? 'lawngreen' : ''}">
+                                                @if (character.character.introMultiplier[i] > 1) {
+                                                  <small
+                                                    style="color: white;">{{character.character.introMultiplier[i]}}x
+                                                  </small>
+                                                }
+                                                {{character.introDmg[i]}}
+                                                @if (!character.character.introHeal?.[i]) {
+                                                  (<b>{{(character.introDmg[i] * (character.cDmg/100)) | number :
+                                                '1.0-0'}}</b>)
+                                              }
+                                              <!-- Intro Second Damage -->
+                                              @if (character.introSecondDmg[i] > 0) {
+                                                <br />+<br />
+                                                @if (character.character.introSecondMultiplier?.[i] > 1) {
+                                                  <small
+                                                    style="color: white;">{{character.character.introSecondMultiplier[i]}}x
+                                                  </small>
+                                                }
+                                                {{character.introSecondDmg[i]}}
+                                                @if (!character.character.introHeal?.[i]) {
+                                                  (<b>{{(character.introSecondDmg[i] *
+                                                (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                              }
+                                            }
+                                          </td>
+                                          <td>
+                                            @if (!character.character.introHeal?.[i]) {
+                                              <div [innerHtml]="character.introCommonDmg[i]"
+                                              ></div>
+                                            }
+                                          </td>
+                                          <td>
+                                            @if (!character.character.introHeal?.[i]) {
+                                              <div [innerHtml]="character.introResDmg[i]"
+                                              ></div>
+                                            }
+                                          </td>
+                                        }
+                                        <!-- Sum Intro -->
+                                        @if (sum) {
+                                          <td
+                                            [ngStyle]="{'color': character.character.introHeal?.[i] ? 'lawngreen' : ''}">
+                                            {{character.sumIntroDmg[i]}}
+                                            @if (!character.character.introHeal?.[i]) {
+                                              (<b>{{(character.sumIntroDmg[i] *
+                                            (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                          }
+                                        </td>
+                                        <td>
+                                          @if (!character.character.introHeal?.[i]) {
+                                            <div [innerHtml]="character.sumCommonIntroDmg[i]"
+                                            ></div>
+                                          }
+                                        </td>
+                                        <td>
+                                          @if (!character.character.introHeal?.[i]) {
+                                            <div [innerHtml]="character.sumResIntroDmg[i]"
+                                            ></div>
+                                          }
+                                        </td>
+                                      }
+                                    </tr>
+                                  }
+                                  <!-- OUTRO -->
+                                  @if (character.character.outroMultiplier[0] > 0) {
+                                    <tr>
+                                      <td colspan="5">{{'char.outro' | transloco}}:
+                                      {{character.character.outroName}}</td>
+                                    </tr>
+                                    @for (b of character.character.outroNames; track b; let i = $index) {
+                                      <tr>
+                                        <th scope="row">
+                                          {{b}}
+                                        </th>
+                                        <!-- Detailed Outro -->
+                                        @if (!sum) {
+                                          <td
+                                            [ngStyle]="{'color': character.character.outroHeal?.[i] ? 'lawngreen' : ''}">
+                                            @if (character.character.outroMultiplier[i] > 1) {
+                                              <small
+                                                style="color: white;">{{character.character.outroMultiplier[i]}}x
+                                              </small>
+                                            }
+                                            {{character.outroDmg[i]}}
+                                            @if (!character.character.outroHeal?.[i]) {
+                                              (<b>{{(character.outroDmg[i] * (character.cDmg/100)) |
+                                            number : '1.0-0'}}</b>)
+                                          }
+                                          <!-- Outro Second Damage -->
+                                          @if (character.outroSecondDmg[i] > 0) {
+                                            <br />+<br />
+                                            @if (character.character.outroSecondMultiplier?.[i] > 1) {
+                                              <small
+                                                style="color: white;">{{character.character.outroSecondMultiplier[i]}}x
+                                              </small>
+                                            }
+                                            {{character.outroSecondDmg[i]}}
+                                            @if (!character.character.outroHeal?.[i]) {
+                                              (<b>{{(character.outroSecondDmg[i] *
+                                            (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                          }
+                                        }
+                                      </td>
+                                      <td>
+                                        @if (!character.character.outroHeal?.[i]) {
+                                          <div [innerHtml]="character.outroCommonDmg[i]"
+                                          ></div>
+                                        }
+                                      </td>
+                                      <td>
+                                        @if (!character.character.outroHeal?.[i]) {
+                                          <div [innerHtml]="character.outroResDmg[i]"
+                                          ></div>
+                                        }
+                                      </td>
+                                    }
+                                    <!-- Sum Outro -->
+                                    @if (sum) {
+                                      <td
+                                        [ngStyle]="{'color': character.character.outroHeal?.[i] ? 'lawngreen' : ''}">
+                                        {{character.sumOutroDmg[i]}}
+                                        @if (!character.character.outroHeal?.[i]) {
+                                          (<b>{{(character.sumOutroDmg[i] *
+                                        (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                      }
+                                    </td>
+                                    <td>
+                                      @if (!character.character.outroHeal?.[i]) {
+                                        <div [innerHtml]="character.sumCommonOutroDmg[i]"
+                                        ></div>
+                                      }
+                                    </td>
+                                    <td>
+                                      @if (!character.character.outroHeal?.[i]) {
+                                        <div [innerHtml]="character.sumResOutroDmg[i]"
+                                        ></div>
+                                      }
+                                    </td>
+                                  }
+                                </tr>
+                              }
+                            }
+                            <!-- FORTE -->
+                            <tr>
+                              <td colspan="5">{{'char.forte' | transloco}}:
+                              {{character.character.forteName}}</td>
+                            </tr>
+                            @for (b of character.character.forteNames; track b; let i = $index) {
+                              <tr>
+                                <th scope="row">
+                                  {{b}}
+                                </th>
+                                @if (!sum) {
+                                  <td
+                                    [ngStyle]="{'color': character.character.forteHeal?.[i] ? 'lawngreen' : character.character.forteShield[i] ? 'yellow' : ''}">
+                                    <!-- Forte First Damage -->
+                                    @if (character.character.forteMultiplier[i] > 1) {
+                                      <small
+                                        style="color: white;">{{character.character.forteMultiplier[i]}}x
+                                      </small>
+                                    }
+                                    {{character.forteDmg[i]}}
+                                    @if (!character.character.forteHeal?.[i] && !character.character.forteShield[i]) {
+                                      (<b>{{(character.forteDmg[i] * (character.cDmg/100)) | number :
+                                    '1.0-0'}}</b>)
+                                  }
+                                  <!-- Forte Second Damage -->
+                                  @if (character.forteSecondDmg[i] > 0) {
+                                    <br />+<br />
+                                    @if (character.character.forteSecondMultiplier[i] > 1) {
+                                      <small
+                                        style="color: white;">{{character.character.forteSecondMultiplier[i]}}x
+                                      </small>
+                                    }
+                                    {{character.forteSecondDmg[i]}}
+                                    @if (!character.character.forteHeal?.[i] && !character.character.forteShield[i]) {
+                                      (<b>{{(character.forteSecondDmg[i] * (character.cDmg/100)) |
+                                    number : '1.0-0'}}</b>)
+                                  }
+                                }
+                                <!-- forte Third Damage -->
+                                @if (character.forteThirdDmg[i] > 0) {
+                                  <br />+<br />
+                                  @if (character.character.skillThirdMultiplier[i] > 1) {
+                                    <small
+                                      style="color: white;">{{character.character.forteThirdMultiplier[i]}}x
+                                    </small>
+                                  }
+                                  {{character.forteThirdDmg[i]}}
+                                  @if (!character.character.forteHeal?.[i] && !character.character.forteShield[i]) {
+                                    (<b>{{(character.forteThirdDmg[i]
+                                  * (character.cDmg/100)) | number : '1.0-0'}}</b>)
+                                }
+                              }
+                            </td>
+                            <td>
+                              @if (!character.character.forteHeal?.[i] && !character.character.forteShield[i]) {
+                                <div [innerHtml]="character.forteCommonDmg[i]"
+                                  >
+                                </div>
+                              }
+                            </td>
+                            <td>
+                              @if (!character.character.forteHeal?.[i] && !character.character.forteShield[i]) {
+                                <div [innerHtml]="character.forteResDmg[i]"
+                                  >
+                                </div>
+                              }
+                            </td>
+                          }
+                          @if (sum) {
+                            <td
+                              [ngStyle]="{'color': character.character.forteHeal?.[i] ? 'lawngreen' : character.character.forteShield[i] ? 'yellow' : ''}">
+                              {{character.sumForteDmg[i]}}
+                              @if (!character.character.forteHeal?.[i] && !character.character.forteShield[i]) {
+                                (<b>{{(character.sumForteDmg[i] * (character.cDmg/100)) | number
+                              : '1.0-0'}}</b>)
+                            }
+                          </td>
+                          <td>
+                            @if (!character.character.forteHeal?.[i] && !character.character.forteShield[i]) {
+                              <div [innerHtml]="character.sumCommonForteDmg[i]"
+                                >
+                              </div>
+                            }
+                          </td>
+                          <td>
+                            @if (!character.character.forteHeal?.[i] && !character.character.forteShield[i]) {
+                              <div [innerHtml]="character.sumResForteDmg[i]"
+                                >
+                              </div>
+                            }
+                          </td>
+                        }
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
             </div>
+          </div>
         </div>
-        <hr />
+      </div>
     </div>
+    <hr />
+  </div>
 </div>
 
 <app-attribute-modal [id]="'critModal'+character.index" [character]="character"></app-attribute-modal>
