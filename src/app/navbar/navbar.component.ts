@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from 
 import { Util } from '../shared/utils/util.model';
 import { Settings } from '../shared/models/settings.model';
 import Swal from 'sweetalert2';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-navbar',

@@ -1,6 +1,6 @@
 import { Component, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Character } from '../shared/models/character.model';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { Echo } from '../shared/models/echo.model';
 
 @Component({

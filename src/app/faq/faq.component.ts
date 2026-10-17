@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { provideTranslocoScope } from '@ngneat/transloco';
+import { provideTranslocoScope } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-faq',

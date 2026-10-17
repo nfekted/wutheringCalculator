@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PartnersRoutingModule } from './partners-routing.module';
-import { TranslocoModule, provideTranslocoScope } from '@ngneat/transloco';
+import { TranslocoModule, provideTranslocoScope } from '@jsverse/transloco';
 import { PartnersComponent } from './partners.component';
 
 

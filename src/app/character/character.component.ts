@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from 
 import { Character } from '../shared/models/character.model';
 import { Util } from '../shared/utils/util.model';
 import Swal from 'sweetalert2';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-character',

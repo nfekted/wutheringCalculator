@@ -1,5 +1,5 @@
 import { Component, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { Character } from '../../shared/models/character.model';
 
 @Component({
