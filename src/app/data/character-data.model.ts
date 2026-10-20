@@ -34,11 +34,11 @@ export interface CharacterData {
   type: string;
   weapon: string;
   lastUpdate: string;
-  atkType: boolean;
+  damageHealer: boolean;
   healType: boolean;
   canHeal: boolean;
-  hpType: boolean;
-  defType: boolean;
+  hpScale: boolean;
+  defScale: boolean;
   basic: SkillData;
   skill: SkillData;
   liberation: SkillData;

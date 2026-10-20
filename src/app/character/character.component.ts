@@ -20,9 +20,9 @@ interface StatField {
 }
 
 const STAT_FIELDS: StatField[] = [
-  { key: 'hp', label: 'HP', visible: c => c.hpType },
+  { key: 'hp', label: 'HP', visible: c => c.hpScale },
   { key: 'dmg', label: 'ATK' },
-  { key: 'def', label: 'DEF', visible: c => c.defType },
+  { key: 'def', label: 'DEF', visible: c => c.defScale },
   { key: 'cChance', label: 'Crit. Rate %' },
   { key: 'cDmg', label: 'Crit. DMG %' },
   { key: 'skillBonus', prefix: 'char.skill', label: 'Bonus %' },

@@ -7,11 +7,11 @@ export class Character implements Stats {
     data: CharacterData;
     name: string;
 
-    atkType: boolean;
+    damageHealer: boolean;
     healType: boolean;
     canHeal: boolean;
-    hpType: boolean;
-    defType: boolean;
+    hpScale: boolean;
+    defScale: boolean;
 
     dmg: number = 0;
     hp: number = 0;
@@ -32,11 +32,11 @@ export class Character implements Stats {
         this.index = index;
         this.data = data;
         this.name = data.name;
-        this.atkType = data.atkType;
+        this.damageHealer = data.damageHealer;
         this.healType = data.healType;
         this.canHeal = data.canHeal;
-        this.hpType = data.hpType;
-        this.defType = data.defType;
+        this.hpScale = data.hpScale;
+        this.defScale = data.defScale;
 
         if (load) {
             this.dmg = load.dmg;

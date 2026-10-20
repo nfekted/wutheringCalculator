@@ -99,10 +99,10 @@
         @if (!randomCrit && !enhancerSkill) {
           <div [innerHTML]="'char.enhancer.fixedCritInfo' | transloco: { chance: chance, qtd: qtd, normal: 20 - qtd }"></div>
         }
-        @if (enhancerSkill && !randomCrit && (!character().healType || character().atkType)) {
+        @if (enhancerSkill && !randomCrit && (!character().healType || character().damageHealer)) {
           <div [innerHTML]="'char.enhancer.rotationCritInfo' | transloco: { atkNum: character().data.rotation.length, chance: chance, qtd: qtd, normal: character().data.rotation.length - qtd }"></div>
         }
-        @if (enhancerSkill && character().healType && !character().atkType) {
+        @if (enhancerSkill && character().healType && !character().damageHealer) {
           <div>{{ 'char.enhancer.healingInfo' | transloco }}</div>
         }
         @if (randomCrit) {

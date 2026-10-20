@@ -11,9 +11,9 @@ export type StatKey = keyof Stats;
 
 /** Stats compared in the "new" column, in display order */
 const STAT_ROWS: Array<{ key: StatKey; prefix?: string; label: string; visible?: (c: Character) => boolean }> = [
-  { key: 'hp', label: 'HP', visible: c => c.hpType },
+  { key: 'hp', label: 'HP', visible: c => c.hpScale },
   { key: 'dmg', label: 'ATK' },
-  { key: 'def', label: 'DEF', visible: c => c.defType },
+  { key: 'def', label: 'DEF', visible: c => c.defScale },
   { key: 'cChance', label: 'Crit. Rate %' },
   { key: 'cDmg', label: 'Crit. DMG %' },
   { key: 'skillBonus', prefix: 'char.skill', label: 'Bonus %' },
