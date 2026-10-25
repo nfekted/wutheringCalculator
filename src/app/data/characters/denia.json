@@ -1,0 +1,295 @@
+{
+  "id": "denia",
+  "name": "Denia",
+  "icon": "denia",
+  "type": "fusion",
+  "weapon": "rectifier",
+  "lastUpdate": "2026-10-25T21:42:01.837Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Dreamweaver's Banquet",
+    "hits": [
+      {
+        "name": "Basic Attack - Stagecraft Form Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [16.44, 17.79, 19.14, 21.03, 22.38, 23.93, 26.08, 28.24, 30.4, 32.69] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Stagecraft Form Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [15.18, 16.43, 17.67, 19.42, 20.66, 22.09, 24.09, 26.08, 28.07, 30.18],
+            "times": 2
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Stagecraft Form Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [12.82, 13.88, 14.93, 16.4, 17.45, 18.66, 20.34, 22.02, 23.71, 25.49],
+            "times": 3
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Stagecraft Form Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [64.38, 69.66, 74.94, 82.33, 87.61, 93.68, 102.13, 110.58, 119.02, 128] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack - Stagecraft Form DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [40.62, 43.96, 47.29, 51.95, 55.28, 59.11, 64.44, 69.77, 75.1, 80.76],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Stagecraft Form DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [14.88, 16.11, 17.33, 19.03, 20.25, 21.66, 23.61, 25.56, 27.51, 29.59] },
+          { "stat": "atk", "values": [22.32, 24.16, 25.99, 28.55, 30.38, 32.48, 35.41, 38.34, 41.27, 44.38] }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Stagecraft Form DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [24.82, 26.86, 28.9, 31.74, 33.78, 36.12, 39.38, 42.63, 45.89, 49.35],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Breakdown Form Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [18.36, 19.87, 21.38, 23.48, 24.99, 26.72, 29.13, 31.54, 33.95, 36.51] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Breakdown Form Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [18.87, 20.42, 21.96, 24.13, 25.68, 27.45, 29.93, 32.4, 34.88, 37.51] },
+          {
+            "stat": "atk",
+            "values": [7.08, 7.66, 8.24, 9.05, 9.63, 10.3, 11.23, 12.15, 13.08, 14.07],
+            "times": 4
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Breakdown Form Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [31.38, 33.96, 36.53, 40.13, 42.71, 45.67, 49.78, 53.9, 58.02, 62.39] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Breakdown Form Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [17.88, 19.34, 20.81, 22.86, 24.33, 26.01, 28.36, 30.7, 33.05, 35.54] },
+          { "stat": "atk", "values": [41.71, 45.13, 48.55, 53.34, 56.76, 60.69, 66.16, 71.64, 77.11, 82.92] }
+        ]
+      },
+      {
+        "name": "Heavy Attack - Breakdown Form DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [68.94, 74.6, 80.25, 88.17, 93.82, 100.32, 109.36, 118.41, 127.45, 137.06] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Breakdown Form Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [18.36, 19.87, 21.38, 23.48, 24.99, 26.72, 29.13, 31.54, 33.95, 36.51] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Breakdown Form Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [18.87, 20.42, 21.96, 24.13, 25.68, 27.45, 29.93, 32.4, 34.88, 37.51] },
+          {
+            "stat": "atk",
+            "values": [7.08, 7.66, 8.24, 9.05, 9.63, 10.3, 11.23, 12.15, 13.08, 14.07],
+            "times": 4
+          }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Breakdown Form Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [31.38, 33.96, 36.53, 40.13, 42.71, 45.67, 49.78, 53.9, 58.02, 62.39] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Breakdown Form Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [17.88, 19.34, 20.81, 22.86, 24.33, 26.01, 28.36, 30.7, 33.05, 35.54] },
+          { "stat": "atk", "values": [41.71, 45.13, 48.55, 53.34, 56.76, 60.69, 66.16, 71.64, 77.11, 82.92] }
+        ]
+      },
+      {
+        "name": "Mid-air Heavy Attack - Breakdown Form DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [14.88, 16.11, 17.33, 19.03, 20.25, 21.66, 23.61, 25.56, 27.51, 29.59] },
+          { "stat": "atk", "values": [22.32, 24.16, 25.99, 28.55, 30.38, 32.48, 35.41, 38.34, 41.27, 44.38] }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Breakdown Form DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [54.36, 58.82, 63.28, 69.52, 73.98, 79.1, 86.24, 93.37, 100.5, 108.08] }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Bubbles and Baits",
+    "hits": [
+      {
+        "name": "Phantom Bubble - Stagecraft Form DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [8.76, 9.48, 10.2, 11.21, 11.93, 12.75, 13.9, 15.05, 16.2, 17.42],
+            "times": 3
+          },
+          { "stat": "atk", "values": [26.28, 28.44, 30.59, 33.61, 35.77, 38.25, 41.69, 45.14, 48.59, 52.25] }
+        ]
+      },
+      {
+        "name": "Beckon - Breakdown Form DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [15.65, 16.93, 18.21, 20.01, 21.29, 22.77, 24.82, 26.87, 28.92, 31.1] },
+          {
+            "stat": "atk",
+            "values": [7.3, 7.9, 8.5, 9.34, 9.94, 10.63, 11.58, 12.54, 13.5, 14.52],
+            "times": 5
+          }
+        ]
+      },
+      {
+        "name": "Banish - Breakdown Form Stage 1 DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [17.44, 18.88, 20.31, 22.31, 23.74, 25.38, 27.67, 29.96, 32.25, 34.68],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Banish - Breakdown Form Stage 2 DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [56.34, 60.96, 65.58, 72.05, 76.67, 81.99, 89.38, 96.77, 104.16, 112.01] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Final Act",
+    "hits": [
+      {
+        "name": "Final Act - Stagecraft Form DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [200, 216.4, 232.8, 255.76, 272.16, 291.02, 317.26, 343.5, 369.74, 397.62] }
+        ]
+      },
+      {
+        "name": "Final Act - Breakdown Form DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81],
+            "times": 4
+          }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Formal Greetings",
+    "hits": [
+      {
+        "name": "It's Been A While! DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [52.62, 56.94, 61.25, 67.3, 71.61, 76.57, 83.48, 90.38, 97.28, 104.62] }
+        ]
+      },
+      {
+        "name": "Knock Knock DMG",
+        "kind": "intro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [26.02, 28.16, 30.29, 33.28, 35.41, 37.87, 41.28, 44.69, 48.11, 51.74],
+            "times": 3
+          }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "",
+    "hits": []
+  },
+  "forte": {
+    "name": "\"Flawless\"",
+    "hits": [
+      {
+        "name": "Erosion Field DMG per tick",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [68.58, 74.2, 79.82, 87.69, 93.32, 99.78, 108.78, 117.78, 126.77, 136.33] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

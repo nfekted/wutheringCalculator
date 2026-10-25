@@ -1,0 +1,327 @@
+{
+  "id": "aemeath",
+  "name": "Aemeath",
+  "icon": "aemeath",
+  "type": "fusion",
+  "weapon": "sword",
+  "lastUpdate": "2026-10-25T21:29:24.723Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Infinity Calibration",
+    "hits": [
+      {
+        "name": "Basic Attack - Aemeath Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [23.31, 25.23, 27.14, 29.81, 31.73, 33.92, 36.98, 40.04, 43.1, 46.35] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Aemeath Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [6.99, 7.56, 8.14, 8.94, 9.51, 10.17, 11.09, 12, 12.92, 13.89] },
+          { "stat": "atk", "values": [10.48, 11.34, 12.2, 13.41, 14.26, 15.25, 16.63, 18, 19.38, 20.84] },
+          { "stat": "atk", "values": [17.47, 18.9, 20.33, 22.34, 23.77, 25.42, 27.71, 30, 32.29, 34.73] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Aemeath Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [4.69, 5.07, 5.46, 5.99, 6.38, 6.82, 7.43, 8.05, 8.66, 9.32],
+            "times": 3
+          },
+          { "stat": "atk", "values": [9.37, 10.14, 10.91, 11.98, 12.75, 13.63, 14.86, 16.09, 17.32, 18.63] },
+          { "stat": "atk", "values": [23.42, 25.34, 27.26, 29.95, 31.87, 34.08, 37.15, 40.22, 43.29, 46.56] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Aemeath Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [3.39, 3.67, 3.94, 4.33, 4.61, 4.93, 5.37, 5.82, 6.26, 6.73],
+            "times": 5
+          },
+          { "stat": "atk", "values": [50.77, 54.94, 59.1, 64.93, 69.09, 73.88, 80.54, 87.2, 93.86, 100.94] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack - Aemeath Charged I DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [9.34, 10.11, 10.87, 11.95, 12.71, 13.59, 14.82, 16.04, 17.27, 18.57] },
+          { "stat": "atk", "values": [37.36, 40.42, 43.48, 47.77, 50.83, 54.36, 59.26, 64.16, 69.06, 74.26] }
+        ]
+      },
+      {
+        "name": "Heavy Attack - Aemeath Charged II DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [5.84, 6.32, 6.8, 7.47, 7.94, 8.49, 9.26, 10.03, 10.79, 11.6],
+            "times": 4
+          },
+          { "stat": "atk", "values": [93.36, 101.01, 108.67, 119.38, 127.04, 135.84, 148.09, 160.34, 172.58, 185.6] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Aemeath DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [43.4, 46.96, 50.52, 55.5, 59.06, 63.16, 68.85, 74.54, 80.24, 86.29] }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Aemeath DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [13.09, 14.16, 15.23, 16.74, 17.81, 19.04, 20.76, 22.48, 24.19, 26.02],
+            "times": 3
+          },
+          { "stat": "atk", "values": [26.17, 28.32, 30.46, 33.47, 35.61, 38.08, 41.51, 44.95, 48.38, 52.03] },
+          { "stat": "atk", "values": [65.42, 70.78, 76.15, 83.66, 89.02, 95.19, 103.77, 112.36, 120.94, 130.06] }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Shared Voyage",
+    "hits": [
+      {
+        "name": "Sync Strike: Armament Merge DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [13.54, 14.65, 15.76, 17.32, 18.43, 19.7, 21.48, 23.26, 25.03, 26.92] },
+          { "stat": "atk", "values": [20.31, 21.98, 23.64, 25.97, 27.64, 29.55, 32.22, 34.88, 37.55, 40.38] },
+          { "stat": "atk", "values": [33.85, 36.63, 39.4, 43.29, 46.06, 49.25, 53.69, 58.13, 62.57, 67.29] }
+        ]
+      },
+      {
+        "name": "Sync Strike: Call of Dawn DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [8.22, 8.89, 9.56, 10.51, 11.18, 11.95, 13.03, 14.11, 15.18, 16.33],
+            "times": 3
+          },
+          { "stat": "atk", "values": [57.48, 62.2, 66.91, 73.51, 78.22, 83.64, 91.18, 98.72, 106.26, 114.28] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Mech Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [11.67, 12.63, 13.58, 14.92, 15.88, 16.98, 18.51, 20.04, 21.57, 23.2],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Mech Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [9.34, 10.11, 10.87, 11.95, 12.71, 13.59, 14.82, 16.04, 17.27, 18.57] },
+          { "stat": "atk", "values": [37.36, 40.42, 43.48, 47.77, 50.83, 54.36, 59.26, 64.16, 69.06, 74.26] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Mech Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [1.96, 2.12, 2.28, 2.5, 2.66, 2.85, 3.1, 3.36, 3.62, 3.89],
+            "times": 6
+          },
+          { "stat": "atk", "values": [41.02, 44.38, 47.74, 52.45, 55.82, 59.68, 65.06, 70.44, 75.83, 81.54] },
+          { "stat": "atk", "values": [5.86, 6.34, 6.82, 7.5, 7.98, 8.53, 9.3, 10.07, 10.84, 11.65] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Mech Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [20.31, 21.98, 23.64, 25.97, 27.64, 29.55, 32.22, 34.88, 37.55, 40.38] },
+          { "stat": "atk", "values": [47.39, 51.27, 55.16, 60.6, 64.48, 68.95, 75.17, 81.39, 87.6, 94.21] }
+        ]
+      },
+      {
+        "name": "Heavy Attack - Mech Charged I DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [46.69, 50.52, 54.35, 59.71, 63.54, 67.94, 74.07, 80.2, 86.32, 92.83] }
+        ]
+      },
+      {
+        "name": "Heavy Attack - Mech Charged II DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [116.69, 126.26, 135.83, 149.23, 158.8, 169.8, 185.11, 200.42, 215.73, 232] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Mech DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [36.89, 39.92, 42.94, 47.18, 50.2, 53.68, 58.52, 63.36, 68.2, 73.35] },
+          {
+            "stat": "atk",
+            "values": [2.17, 2.35, 2.53, 2.78, 2.96, 3.16, 3.45, 3.73, 4.02, 4.32],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Mech DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [4.76, 5.15, 5.54, 6.08, 6.47, 6.92, 7.54, 8.17, 8.79, 9.45],
+            "times": 6
+          },
+          { "stat": "atk", "values": [99.82, 108, 116.19, 127.65, 135.83, 145.24, 158.34, 171.43, 184.53, 198.44] },
+          { "stat": "atk", "values": [14.26, 15.43, 16.6, 18.24, 19.41, 20.75, 22.62, 24.49, 26.37, 28.35] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Towards the Daybreak",
+    "hits": [
+      {
+        "name": "Heavenfall Edict: Overdrive DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [101, 109.29, 117.57, 129.16, 137.45, 146.97, 160.22, 173.47, 186.72, 200.8] },
+          {
+            "stat": "atk",
+            "values": [134.67, 145.71, 156.76, 172.22, 183.26, 195.96, 213.63, 231.29, 248.96, 267.74],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Heavenfall Edict: Finale DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [900, 973.8, 1047.6, 1150.92, 1224.72, 1309.59, 1427.67, 1545.75, 1663.83, 1789.29] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Overture of Departure",
+    "hits": [
+      {
+        "name": "Songs Across the Universe DMG",
+        "kind": "intro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [6.77, 7.33, 7.88, 8.66, 9.22, 9.85, 10.74, 11.63, 12.52, 13.46],
+            "times": 2
+          },
+          { "stat": "atk", "values": [54.16, 58.6, 63.04, 69.25, 73.7, 78.8, 85.91, 93.01, 100.12, 107.66] }
+        ]
+      },
+      {
+        "name": "Debut of Meteoric Radiance DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [32.85, 35.54, 38.24, 42.01, 44.7, 47.8, 52.11, 56.41, 60.72, 65.3] },
+          { "stat": "atk", "values": [49.27, 53.31, 57.35, 63.01, 67.05, 71.69, 78.16, 84.62, 91.08, 97.95] }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "Silent Protection",
+    "hits": []
+  },
+  "forte": {
+    "name": "To Sculpt the Silence",
+    "hits": [
+      {
+        "name": "Seraphic Duet: Encore DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [9, 9.74, 10.48, 11.51, 12.25, 13.1, 14.28, 15.46, 16.64, 17.9],
+            "times": 4
+          },
+          {
+            "stat": "atk",
+            "values": [18, 19.48, 20.96, 23.02, 24.5, 26.2, 28.56, 30.92, 33.28, 35.79],
+            "times": 3
+          },
+          { "stat": "atk", "values": [90, 97.38, 104.76, 115.1, 122.48, 130.96, 142.77, 154.58, 166.39, 178.93] }
+        ]
+      },
+      {
+        "name": "Seraphic Duet: Overture DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [9, 9.74, 10.48, 11.51, 12.25, 13.1, 14.28, 15.46, 16.64, 17.9] },
+          {
+            "stat": "atk",
+            "values": [7.5, 8.12, 8.73, 9.6, 10.21, 10.92, 11.9, 12.89, 13.87, 14.92],
+            "times": 6
+          },
+          {
+            "stat": "atk",
+            "values": [12, 12.99, 13.97, 15.35, 16.33, 17.47, 19.04, 20.61, 22.19, 23.86],
+            "times": 3
+          },
+          {
+            "stat": "atk",
+            "values": [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Tune Rupture Response - Starburst DMG",
+        "kind": "tune",
+        "parts": [
+          { "stat": "atk", "values": [300, 324.6, 349.2, 383.64, 408.24, 436.53, 475.89, 515.25, 554.61, 596.43] }
+        ]
+      },
+      {
+        "name": "Seraphic Duet Bonus DMG (Per Instance)",
+        "kind": "tune",
+        "parts": [
+          { "stat": "atk", "values": [55, 59.51, 64.02, 70.34, 74.85, 80.04, 87.25, 94.47, 101.68, 109.35] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

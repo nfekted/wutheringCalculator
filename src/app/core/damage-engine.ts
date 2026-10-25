@@ -13,6 +13,8 @@ export interface Stats {
   liberationBonus: number;
   echoBonus: number;
   healingBonus: number;
+  /** Total Energy Regen in % (100 is the base) */
+  energyRegen: number;
 }
 
 export interface Levels {
@@ -78,7 +80,10 @@ function calculateHit(hit: Hit, kind: HitKind, stats: Stats, level: number): Hit
   const parts = hit.parts.map(part => {
     // A skill without levels has a single value
     const raw = part.values.length === 1 ? part.values[0] : part.values[level - 1];
-    const expected = (part.stat === 'flat' ? raw : statOf(stats, part.stat) * (raw / 100)) * (bonus / 100);
+    const base = part.stat === 'flat' ? raw
+      : part.stat === 'er' ? raw * stats.energyRegen
+      : statOf(stats, part.stat) * (raw / 100);
+    const expected = base * (bonus / 100);
     return {
       value: +expected.toFixed(0),
       times: part.times ?? 1,
@@ -95,7 +100,7 @@ function calculateHit(hit: Hit, kind: HitKind, stats: Stats, level: number): Hit
   };
 }
 
-function statOf(stats: Stats, stat: Exclude<PartStat, 'flat'>): number {
+function statOf(stats: Stats, stat: Exclude<PartStat, 'flat' | 'er'>): number {
   return stat === 'hp' ? stats.hp : stat === 'def' ? stats.def : stats.dmg;
 }
 

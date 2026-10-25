@@ -17,6 +17,7 @@ export class CharacterSave {
     liberationBonus: number = 0;
     healingBonus: number = 0;
     echoBonus: number = 0;
+    energyRegen: number = 100;
     mode: number = 0;
 
     constructor(char: Character) {
@@ -35,6 +36,7 @@ export class CharacterSave {
         this.liberationBonus = char.liberationBonus;
         this.healingBonus = char.healingBonus;
         this.echoBonus = char.echoBonus;
+        this.energyRegen = char.energyRegen;
         this.mode = char.mode;
     }
 }

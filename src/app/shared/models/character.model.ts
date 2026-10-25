@@ -11,6 +11,7 @@ export class Character implements Stats {
     showHealing: boolean;
     hpScale: boolean;
     defScale: boolean;
+    erScale: boolean;
 
     dmg: number = 0;
     hp: number = 0;
@@ -24,6 +25,7 @@ export class Character implements Stats {
     liberationBonus: number = 0;
     echoBonus: number = 0;
     healingBonus: number = 0;
+    energyRegen: number = 100;
 
     /** Active way of playing, as an index in `data.modes` */
     mode: number = 0;
@@ -38,6 +40,7 @@ export class Character implements Stats {
         this.showHealing = data.hasHealing && !data.primaryDamage;
         this.hpScale = data.hpScale;
         this.defScale = data.defScale;
+        this.erScale = data.erScale ?? false;
 
         if (load) {
             this.dmg = load.dmg;
@@ -52,6 +55,7 @@ export class Character implements Stats {
             this.elementalBonus = load.elementalBonus;
             this.healingBonus = load.healingBonus;
             this.echoBonus = load.echoBonus ?? 0;
+            this.energyRegen = load.energyRegen ?? 100;
             this.mode = load.mode ?? 0;
             this.name = load.name;
             this.calculate();

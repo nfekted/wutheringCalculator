@@ -1,0 +1,303 @@
+{
+  "id": "brant",
+  "name": "Brant",
+  "icon": "brant",
+  "type": "fusion",
+  "weapon": "sword",
+  "lastUpdate": "2026-10-25T20:41:07.794Z",
+  "hasHealing": true,
+  "healsAllies": true,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "erScale": true,
+  "basic": {
+    "name": "Captain's Rhapsody",
+    "hits": [
+      {
+        "name": "Captain's Rhapsody DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [25.42, 27.5, 29.59, 32.51, 34.59, 36.99, 40.32, 43.66, 46.99, 50.53] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Captain's Rhapsody DMG 2",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [25.5, 27.6, 29.69, 32.61, 34.71, 37.11, 40.46, 43.8, 47.15, 50.7] },
+          { "stat": "atk", "values": [25.5, 27.6, 29.69, 32.61, 34.71, 37.11, 40.46, 43.8, 47.15, 50.7] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Captain's Rhapsody DMG 3",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [11.1, 12.01, 12.92, 14.19, 15.1, 16.15, 17.6, 19.06, 20.51, 22.06],
+            "times": 3
+          },
+          {
+            "stat": "atk",
+            "values": [16.64, 18.01, 19.37, 21.28, 22.65, 24.22, 26.4, 28.58, 30.77, 33.08],
+            "times": 2
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Captain's Rhapsody DMG 4",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [14.1, 15.25, 16.41, 18.03, 19.18, 20.51, 22.36, 24.21, 26.06, 28.02] },
+          {
+            "stat": "atk",
+            "values": [11.28, 12.2, 13.13, 14.42, 15.35, 16.41, 17.89, 19.37, 20.85, 22.42],
+            "times": 5
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [99.37, 107.52, 115.67, 127.07, 135.22, 144.59, 157.63, 170.66, 183.7, 197.55] }
+        ]
+      },
+      {
+        "name": "Heavy Attack - Rhapsodic Riff DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [85, 91.97, 98.94, 108.7, 115.67, 123.69, 134.84, 145.99, 157.14, 168.99] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [61.8, 66.87, 71.93, 79.03, 84.1, 89.92, 98.03, 106.14, 114.25, 122.86] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 1: Charged Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [16.72, 18.1, 19.47, 21.39, 22.76, 24.33, 26.53, 28.72, 30.91, 33.25] },
+          { "stat": "atk", "values": [25.08, 27.14, 29.2, 32.08, 34.13, 36.5, 39.79, 43.08, 46.37, 49.87] },
+          {
+            "stat": "atk",
+            "values": [20.9, 22.62, 24.33, 26.73, 28.44, 30.42, 33.16, 35.9, 38.64, 41.56],
+            "times": 6
+          }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 1: Flip DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [17, 18.4, 19.79, 21.74, 23.14, 24.74, 26.97, 29.2, 31.43, 33.8] },
+          { "stat": "atk", "values": [29.75, 32.19, 34.63, 38.05, 40.49, 43.29, 47.2, 51.1, 55, 59.15] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 1 Slash DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [14.17, 15.33, 16.49, 18.12, 19.28, 20.62, 22.48, 24.34, 26.19, 28.17],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [42.72, 46.22, 49.72, 54.63, 58.13, 62.16, 67.76, 73.36, 78.97, 84.92] },
+          { "stat": "atk", "values": [42.72, 46.22, 49.72, 54.63, 58.13, 62.16, 67.76, 73.36, 78.97, 84.92] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 2: Charged Attack DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [16.54, 17.89, 19.25, 21.15, 22.5, 24.06, 26.23, 28.4, 30.57, 32.87],
+            "times": 6
+          }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 2: Flip DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [17, 18.4, 19.79, 21.74, 23.14, 24.74, 26.97, 29.2, 31.43, 33.8] },
+          { "stat": "atk", "values": [29.75, 32.19, 34.63, 38.05, 40.49, 43.29, 47.2, 51.1, 55, 59.15] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [14.17, 15.33, 16.49, 18.12, 19.28, 20.62, 22.48, 24.34, 26.19, 28.17],
+            "times": 6
+          }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 3: Flip DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [17, 18.4, 19.79, 21.74, 23.14, 24.74, 26.97, 29.2, 31.43, 33.8] },
+          { "stat": "atk", "values": [29.75, 32.19, 34.63, 38.05, 40.49, 43.29, 47.2, 51.1, 55, 59.15] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [51.07, 55.26, 59.45, 65.31, 69.5, 74.31, 81.01, 87.71, 94.41, 101.53] },
+          {
+            "stat": "atk",
+            "values": [12.77, 13.82, 14.87, 16.33, 17.38, 18.58, 20.26, 21.93, 23.61, 25.39],
+            "times": 3
+          },
+          { "stat": "atk", "values": [38.31, 41.45, 44.59, 48.98, 52.13, 55.74, 60.76, 65.79, 70.81, 76.15] }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [19.13, 20.7, 22.27, 24.46, 26.03, 27.83, 30.34, 32.85, 35.36, 38.03],
+            "times": 3
+          },
+          {
+            "stat": "atk",
+            "values": [28.69, 31.04, 33.4, 36.69, 39.04, 41.75, 45.51, 49.28, 53.04, 57.04],
+            "times": 2
+          }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Anchors Aweigh!",
+    "hits": [
+      {
+        "name": "Anchors Aweigh! DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [100.77, 109.04, 117.3, 128.87, 137.13, 146.64, 159.86, 173.08, 186.3, 200.35] },
+          { "stat": "atk", "values": [67.18, 72.69, 78.2, 85.91, 91.42, 97.76, 106.57, 115.39, 124.2, 133.57] }
+        ]
+      },
+      {
+        "name": "Plunging Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [52.7, 57.03, 61.35, 67.4, 71.72, 76.69, 83.6, 90.52, 97.43, 104.78] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "To the Horizon",
+    "hits": [
+      {
+        "name": "To the Horizon DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [42.78, 46.29, 49.8, 54.71, 58.22, 62.25, 67.87, 73.48, 79.09, 85.06],
+            "times": 4
+          },
+          { "stat": "atk", "values": [171.12, 185.16, 199.19, 218.83, 232.87, 249, 271.45, 293.9, 316.35, 340.21] }
+        ]
+      },
+      {
+        "name": "To the Horizon Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [500, 560, 625, 700, 790, 875, 890, 910, 925, 950] },
+          { "stat": "er", "values": [1.75, 1.96, 2.18, 2.45, 2.76, 3.06, 3.11, 3.18, 3.23, 3.32] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Applaud for Me!",
+    "hits": [
+      {
+        "name": "Applaud for Me! DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [102, 110.37, 118.73, 130.44, 138.81, 148.43, 161.81, 175.19, 188.57, 202.79] },
+          { "stat": "atk", "values": [25.5, 27.6, 29.69, 32.61, 34.71, 37.11, 40.46, 43.8, 47.15, 50.7] }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "",
+    "hits": []
+  },
+  "forte": {
+    "name": "Ocean Odyssey",
+    "hits": [
+      {
+        "name": "Returned from Ashes DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [23.75, 25.7, 27.65, 30.38, 32.32, 34.56, 37.68, 40.8, 43.91, 47.22],
+            "times": 2
+          },
+          { "stat": "atk", "values": [47.5, 51.4, 55.29, 60.75, 64.64, 69.12, 75.35, 81.59, 87.82, 94.44] },
+          {
+            "stat": "atk",
+            "values": [95, 102.79, 110.58, 121.49, 129.28, 138.24, 150.7, 163.17, 175.63, 188.87],
+            "times": 2
+          },
+          { "stat": "atk", "values": [665, 719.53, 774.06, 850.41, 904.94, 967.65, 1054.89, 1142.14, 1229.39, 1322.09] }
+        ]
+      },
+      {
+        "name": "Waves of Acclaims Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [312, 350, 390, 437, 493, 546, 556, 568, 578, 593] },
+          { "stat": "er", "values": [1.09, 1.22, 1.36, 1.53, 1.72, 1.91, 1.94, 1.99, 2.02, 2.07] }
+        ]
+      },
+      {
+        "name": "Shield",
+        "kind": "shield",
+        "parts": [
+          { "stat": "flat", "values": [2500, 2800, 3125, 3500, 3950, 4375, 4450, 4550, 4625, 4750] },
+          { "stat": "er", "values": [9, 10.08, 11.25, 12.6, 14.22, 15.75, 16.02, 16.38, 16.65, 17.1] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

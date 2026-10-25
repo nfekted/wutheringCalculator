@@ -32,6 +32,7 @@ const STAT_FIELDS: StatField[] = [
   { key: 'elementalBonus', prefix: 'char.elemental', label: 'DMG %' },
   { key: 'echoBonus', label: 'Echo Bonus %', visible: c => c.usesEcho },
   { key: 'healingBonus', label: 'Healing Bonus %', visible: c => c.data.hasHealing },
+  { key: 'energyRegen', label: 'Energy Regen %', visible: c => c.erScale },
 ];
 
 @Component({

@@ -1,0 +1,259 @@
+{
+  "id": "mornye",
+  "name": "Mornye",
+  "icon": "mornye",
+  "type": "fusion",
+  "weapon": "broadblade",
+  "lastUpdate": "2026-10-25T20:58:41.717Z",
+  "hasHealing": true,
+  "healsAllies": true,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": true,
+  "basic": {
+    "name": "Ground State Calibration",
+    "hits": [
+      {
+        "name": "Ground State Calibration DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [11.2, 12.12, 13.04, 14.33, 15.25, 16.3, 17.77, 19.24, 20.71, 22.27] },
+          {
+            "stat": "atk",
+            "values": [8.4, 9.09, 9.78, 10.75, 11.44, 12.23, 13.33, 14.43, 15.53, 16.71],
+            "times": 2
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Ground State Calibration DMG 2",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [12, 12.99, 13.97, 15.35, 16.33, 17.47, 19.04, 20.61, 22.19, 23.86] },
+          { "stat": "atk", "values": [12, 12.99, 13.97, 15.35, 16.33, 17.47, 19.04, 20.61, 22.19, 23.86] },
+          {
+            "stat": "atk",
+            "values": [9, 9.74, 10.48, 11.51, 12.25, 13.1, 14.28, 15.46, 16.64, 17.9],
+            "times": 4
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Ground State Calibration DMG 3",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [20.8, 22.51, 24.22, 26.6, 28.31, 30.27, 33, 35.73, 38.46, 41.36] },
+          {
+            "stat": "atk",
+            "values": [5.2, 5.63, 6.06, 6.65, 7.08, 7.57, 8.25, 8.94, 9.62, 10.34],
+            "times": 6
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Ground State Calibration DMG 4",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [68, 73.58, 79.16, 86.96, 92.54, 98.95, 107.87, 116.79, 125.72, 135.2] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Wide Field Observation Mode Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [7, 7.58, 8.15, 8.96, 9.53, 10.19, 11.11, 12.03, 12.95, 13.92],
+            "times": 4
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Wide Field Observation Mode Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [13, 14.07, 15.14, 16.63, 17.7, 18.92, 20.63, 22.33, 24.04, 25.85],
+            "times": 4
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Wide Field Observation Mode Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [4.68, 5.07, 5.45, 5.99, 6.37, 6.81, 7.43, 8.04, 8.66, 9.31],
+            "times": 4
+          },
+          {
+            "stat": "atk",
+            "values": [16.64, 18.01, 19.37, 21.28, 22.65, 24.22, 26.4, 28.58, 30.77, 33.09],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [5.58, 6.04, 6.5, 7.14, 7.6, 8.12, 8.86, 9.59, 10.32, 11.1] },
+          { "stat": "atk", "values": [5.58, 6.04, 6.5, 7.14, 7.6, 8.12, 8.86, 9.59, 10.32, 11.1] },
+          { "stat": "atk", "values": [7.44, 8.06, 8.67, 9.52, 10.13, 10.83, 11.81, 12.78, 13.76, 14.8] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [49.6, 53.67, 57.74, 63.43, 67.5, 72.18, 78.69, 85.19, 91.7, 98.61] }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [81.6, 88.3, 94.99, 104.36, 111.05, 118.74, 129.45, 140.15, 150.86, 162.23] }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Wide Field Observation Mode DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [13, 14.07, 15.14, 16.63, 17.7, 18.92, 20.63, 22.33, 24.04, 25.85],
+            "times": 4
+          }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Resolution",
+    "hits": [
+      {
+        "name": "Distributed Array Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [225, 252, 281, 315, 355, 393, 400, 409, 416, 427] },
+          { "stat": "def", "values": [54, 56.16, 58.32, 61.56, 65.88, 70.2, 78.3, 87.48, 97.2, 113.4] }
+        ]
+      },
+      {
+        "name": "Expectation Error Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [49, 55, 61, 69, 78, 86, 88, 90, 91, 94] },
+          { "stat": "def", "values": [11.88, 12.35, 12.83, 13.54, 14.49, 15.44, 17.22, 19.24, 21.38, 24.94] }
+        ]
+      },
+      {
+        "name": "Optimal Solution DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [90.4, 97.82, 105.23, 115.61, 123.02, 131.55, 143.41, 155.27, 167.13, 179.73] }
+        ]
+      },
+      {
+        "name": "Distributed Array DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [20, 21.64, 23.28, 25.58, 27.22, 29.11, 31.73, 34.35, 36.98, 39.77],
+            "times": 4
+          }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Critical Protocol",
+    "hits": [
+      {
+        "name": "Critical Protocol DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "def", "values": [262.73, 284.27, 305.82, 335.98, 357.52, 382.3, 416.77, 451.24, 485.7, 522.33] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Convergence",
+    "hits": [
+      {
+        "name": "Convergence DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [102, 110.37, 118.73, 130.44, 138.81, 148.43, 161.81, 175.19, 188.57, 202.79] }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "Recursion",
+    "hits": []
+  },
+  "forte": {
+    "name": "Mass-Energy Equivalence",
+    "hits": [
+      {
+        "name": "Syntony Field Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [40, 44, 50, 56, 63, 70, 71, 73, 74, 76] },
+          { "stat": "def", "values": [9.63, 10.02, 10.41, 10.98, 11.75, 12.53, 13.97, 15.61, 17.35, 20.24] }
+        ]
+      },
+      {
+        "name": "Syntony Field DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [20, 21.64, 23.28, 25.58, 27.22, 29.11, 31.73, 34.35, 36.98, 39.77],
+            "times": 5
+          }
+        ]
+      },
+      {
+        "name": "Heavy Attack - Geopotential Shift DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [22.2, 24.02, 25.84, 28.39, 30.21, 32.3, 35.22, 38.13, 41.04, 44.14] },
+          { "stat": "atk", "values": [49.81, 53.89, 57.97, 63.69, 67.78, 72.47, 79.01, 85.54, 92.07, 99.02] }
+        ]
+      },
+      {
+        "name": "Heavy Attack - Inversion DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [130, 140.66, 151.32, 166.25, 176.91, 189.17, 206.22, 223.28, 240.34, 258.46] }
+        ]
+      },
+      {
+        "name": "Tune Rupture Response - Particle Jet DMG",
+        "kind": "tune",
+        "parts": [
+          { "stat": "atk", "values": [150, 162.3, 174.6, 191.82, 204.12, 218.27, 237.95, 257.63, 277.31, 298.22] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

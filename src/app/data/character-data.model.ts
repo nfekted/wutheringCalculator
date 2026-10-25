@@ -3,12 +3,12 @@ export type SectionKey = 'basic' | 'skill' | 'liberation' | 'intro' | 'outro' | 
 /** What a hit is; decides which damage bonus applies to it */
 export type HitKind = 'basic' | 'heavy' | 'skill' | 'liberation' | 'intro' | 'outro' | 'echo' | 'tune' | 'heal' | 'shield';
 
-/** What a part of a hit is based on: a percentage of the character's ATK, HP or DEF, or a flat value */
-export type PartStat = 'atk' | 'hp' | 'def' | 'flat';
+/** What a part of a hit is based on: a percentage of the character's ATK, HP or DEF, a flat value, or a value per 1% of Energy Regen */
+export type PartStat = 'atk' | 'hp' | 'def' | 'flat' | 'er';
 
 export interface HitPart {
   stat: PartStat;
-  /** One value per skill level (percent for atk/hp/def); a single value when the skill has no levels */
+  /** One value per skill level (percent for atk/hp/def, the value of each 1% for er); a single value when the skill has no levels */
   values: number[];
   /** How many times the part lands (the "x7" of the wiki) */
   times?: number;
@@ -51,6 +51,8 @@ export interface CharacterData {
   primaryDamage: boolean;
   hpScale: boolean;
   defScale: boolean;
+  /** Some part scales with Energy Regen */
+  erScale?: boolean;
   /** Two ways of playing the character, e.g. ["chafe", "echo"]; the first uses `kind` of the hits, the second `altKind` */
   modes?: string[];
   basic: SkillData;

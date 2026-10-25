@@ -23,6 +23,7 @@ const STAT_ROWS: Array<{ key: StatKey; prefix?: string; label: string; visible?:
   { key: 'elementalBonus', prefix: 'char.elemental', label: 'DMG %' },
   { key: 'echoBonus', label: 'Echo Bonus %', visible: c => c.usesEcho },
   { key: 'healingBonus', label: 'Healing Bonus %', visible: c => c.data.hasHealing },
+  { key: 'energyRegen', label: 'Energy Regen %', visible: c => c.erScale },
 ];
 
 const KIND_COLORS: Record<string, string> = {
@@ -42,7 +43,7 @@ export class AttributeModalComponent {
   character = signal(inject<Character>(DIALOG_DATA)).asReadonly();
 
   /** Values typed in the "new" column (0 means "not filled yet": starts from the current value) */
-  draft: Stats = { dmg: 0, hp: 0, def: 0, cChance: 0, cDmg: 0, elementalBonus: 0, basicBonus: 0, heavyBonus: 0, skillBonus: 0, liberationBonus: 0, echoBonus: 0, healingBonus: 0 };
+  draft: Stats = { dmg: 0, hp: 0, def: 0, cChance: 0, cDmg: 0, elementalBonus: 0, basicBonus: 0, heavyBonus: 0, skillBonus: 0, liberationBonus: 0, echoBonus: 0, healingBonus: 0, energyRegen: 0 };
   newQtdCrit: number = 0;
 
   /** The rotation is not available for every character yet */
