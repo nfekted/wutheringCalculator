@@ -1,0 +1,299 @@
+{
+  "id": "yangyang-xuanling",
+  "name": "Yangyang Xuanling",
+  "icon": "yangyang-xuanling",
+  "type": "havoc",
+  "weapon": "sword",
+  "lastUpdate": "2026-10-25T01:40:09.139Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Succor and Smite",
+    "hits": [
+      {
+        "name": "Basic Attack - Azure Sword Stance Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [24, 25.97, 27.94, 30.7, 32.66, 34.93, 38.08, 41.22, 44.37, 47.72] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Azure Sword Stance Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [10.13, 10.96, 11.79, 12.96, 13.79, 14.74, 16.07, 17.4, 18.73, 20.14] },
+          { "stat": "atk", "values": [10.13, 10.96, 11.79, 12.96, 13.79, 14.74, 16.07, 17.4, 18.73, 20.14] },
+          { "stat": "atk", "values": [30.39, 32.88, 35.37, 38.86, 41.35, 44.22, 48.2, 52.19, 56.18, 60.41] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Azure Sword Stance Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [15.2, 16.44, 17.69, 19.43, 20.68, 22.11, 24.1, 26.1, 28.09, 30.21] },
+          { "stat": "atk", "values": [35.45, 38.36, 41.27, 45.34, 48.24, 51.59, 56.24, 60.89, 65.54, 70.48] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Azure Sword Stance Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [9.34, 10.11, 10.87, 11.94, 12.71, 13.59, 14.81, 16.04, 17.26, 18.57] },
+          { "stat": "atk", "values": [9.34, 10.11, 10.87, 11.94, 12.71, 13.59, 14.81, 16.04, 17.26, 18.57] },
+          { "stat": "atk", "values": [74.69, 80.82, 86.94, 95.52, 101.64, 108.68, 118.48, 128.28, 138.08, 148.49] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Feather Sword Stance Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [20, 21.64, 23.28, 25.58, 27.22, 29.11, 31.73, 34.35, 36.98, 39.77] },
+          { "stat": "atk", "values": [20, 21.64, 23.28, 25.58, 27.22, 29.11, 31.73, 34.35, 36.98, 39.77] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Feather Sword Stance Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [16.88, 18.27, 19.65, 21.59, 22.98, 24.57, 26.78, 29, 31.21, 33.56],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Feather Sword Stance Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [7.48, 8.09, 8.7, 9.56, 10.17, 10.88, 11.86, 12.84, 13.82, 14.86] },
+          {
+            "stat": "atk",
+            "values": [3.74, 4.05, 4.35, 4.78, 5.09, 5.44, 5.93, 6.42, 6.91, 7.43],
+            "times": 3
+          },
+          { "stat": "atk", "values": [18.68, 20.22, 21.75, 23.89, 25.42, 27.19, 29.64, 32.09, 34.54, 37.14] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Feather Sword Stance Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [36, 38.96, 41.91, 46.04, 48.99, 52.39, 57.11, 61.83, 66.56, 71.58] },
+          { "stat": "atk", "values": [36, 38.96, 41.91, 46.04, 48.99, 52.39, 57.11, 61.83, 66.56, 71.58] },
+          { "stat": "atk", "values": [48, 51.94, 55.88, 61.39, 65.32, 69.85, 76.15, 82.44, 88.74, 95.43] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Azure Sword Stance DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [49.6, 53.67, 57.74, 63.43, 67.5, 72.18, 78.69, 85.19, 91.7, 98.61] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Feather Sword Stance DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [49.6, 53.67, 57.74, 63.43, 67.5, 72.18, 78.69, 85.19, 91.7, 98.61] }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Azure Sword Stance DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [19.73, 21.35, 22.97, 25.23, 26.85, 28.71, 31.3, 33.89, 36.48, 39.23] },
+          { "stat": "atk", "values": [19.73, 21.35, 22.97, 25.23, 26.85, 28.71, 31.3, 33.89, 36.48, 39.23] },
+          { "stat": "atk", "values": [59.19, 64.04, 68.9, 75.69, 80.54, 86.12, 93.89, 101.65, 109.42, 117.67] }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Feather Sword Stance DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [32.88, 35.58, 38.28, 42.05, 44.75, 47.85, 52.16, 56.48, 60.79, 65.37],
+            "times": 3
+          }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Feather's Edge",
+    "hits": [
+      {
+        "name": "Sword Stance Switch: Azure DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [35.19, 38.07, 40.96, 45, 47.88, 51.2, 55.82, 60.43, 65.05, 69.95] },
+          {
+            "stat": "atk",
+            "values": [7.82, 8.46, 9.11, 10, 10.64, 11.38, 12.41, 13.43, 14.46, 15.55],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Sword Stance Switch: Feather DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [16.88, 18.27, 19.65, 21.59, 22.98, 24.57, 26.78, 29, 31.21, 33.56],
+            "times": 3
+          }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Hush of a Thousand Voices",
+    "hits": [
+      {
+        "name": "Hush of a Thousand Voices DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [1000, 1082, 1164, 1278.8, 1360.8, 1455.1, 1586.3, 1717.5, 1848.7, 1988.1] }
+        ]
+      },
+      {
+        "name": "Shadow of Xuanling DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [170, 183.94, 197.88, 217.4, 231.34, 247.37, 269.68, 291.98, 314.28, 337.98] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Skybound Feather",
+    "hits": [
+      {
+        "name": "Skybound Feather DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [58.64, 63.45, 68.26, 74.99, 79.8, 85.33, 93.03, 100.72, 108.41, 116.59] }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "As the Wind Wills",
+    "hits": []
+  },
+  "forte": {
+    "name": "The Way of Ten Thousand Voices",
+    "hits": [
+      {
+        "name": "Heavy Attack - Azure Sword Stance DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [67.99, 73.56, 79.14, 86.94, 92.52, 98.93, 107.85, 116.77, 125.69, 135.16] },
+          { "stat": "atk", "values": [67.99, 73.56, 79.14, 86.94, 92.52, 98.93, 107.85, 116.77, 125.69, 135.16] },
+          { "stat": "atk", "values": [90.65, 98.08, 105.51, 115.92, 123.35, 131.9, 143.79, 155.69, 167.58, 180.21] }
+        ]
+      },
+      {
+        "name": "Heavy Attack - Feather Sword Stance DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [10.92, 11.82, 12.71, 13.97, 14.86, 15.89, 17.32, 18.75, 20.19, 21.71] },
+          { "stat": "atk", "values": [98.26, 106.31, 114.37, 125.65, 133.71, 142.97, 155.86, 168.75, 181.65, 195.34] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Feather Sword Stance: Feather Fall DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [7.44, 8.06, 8.67, 9.52, 10.13, 10.83, 11.81, 12.78, 13.76, 14.8],
+            "times": 3
+          },
+          { "stat": "atk", "values": [33.48, 36.23, 38.98, 42.82, 45.56, 48.72, 53.11, 57.51, 61.9, 66.57] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Havoc in Bloom Stage 1 DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [20.01, 21.66, 23.3, 25.59, 27.23, 29.12, 31.75, 34.37, 37, 39.79],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Havoc in Bloom Stage 2 DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [44.9, 48.58, 52.26, 57.41, 61.09, 65.33, 71.22, 77.11, 83, 89.25] },
+          { "stat": "atk", "values": [33.67, 36.43, 39.2, 43.06, 45.82, 49, 53.41, 57.83, 62.25, 66.94] },
+          { "stat": "atk", "values": [33.67, 36.43, 39.2, 43.06, 45.82, 49, 53.41, 57.83, 62.25, 66.94] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Havoc in Bloom Stage 3 DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [12.06, 13.05, 14.04, 15.43, 16.41, 17.55, 19.13, 20.71, 22.3, 23.98],
+            "times": 5
+          },
+          { "stat": "atk", "values": [140.68, 152.22, 163.76, 179.91, 191.44, 204.71, 223.16, 241.62, 260.08, 279.69] }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Havoc in Bloom Stage 1 DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [20.01, 21.66, 23.3, 25.59, 27.23, 29.12, 31.75, 34.37, 37, 39.79],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Havoc in Bloom Stage 2 DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [44.9, 48.58, 52.26, 57.41, 61.09, 65.33, 71.22, 77.11, 83, 89.25] },
+          { "stat": "atk", "values": [33.67, 36.43, 39.2, 43.06, 45.82, 49, 53.41, 57.83, 62.25, 66.94] },
+          { "stat": "atk", "values": [33.67, 36.43, 39.2, 43.06, 45.82, 49, 53.41, 57.83, 62.25, 66.94] }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Havoc in Bloom Stage 3 DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [12.06, 13.05, 14.04, 15.43, 16.41, 17.55, 19.13, 20.71, 22.3, 23.98],
+            "times": 5
+          },
+          { "stat": "atk", "values": [140.68, 152.22, 163.76, 179.91, 191.44, 204.71, 223.16, 241.62, 260.08, 279.69] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

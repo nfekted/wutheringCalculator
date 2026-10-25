@@ -1,0 +1,239 @@
+{
+  "id": "luuk",
+  "name": "Luuk",
+  "icon": "luuk",
+  "type": "spectro",
+  "weapon": "gauntlets",
+  "lastUpdate": "2026-10-25T14:06:02.638Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Such is Light",
+    "hits": [
+      {
+        "name": "Such is Light DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [20.4, 22.08, 23.75, 26.09, 27.77, 29.69, 32.37, 35.04, 37.72, 40.56] },
+          { "stat": "atk", "values": [20.4, 22.08, 23.75, 26.09, 27.77, 29.69, 32.37, 35.04, 37.72, 40.56] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Such is Light DMG 2",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [30.26, 32.75, 35.23, 38.7, 41.18, 44.04, 48.01, 51.98, 55.95, 60.16] },
+          { "stat": "atk", "values": [45.39, 49.12, 52.84, 58.05, 61.77, 66.05, 72.01, 77.96, 83.92, 90.24] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Such is Light DMG 3",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [2.53, 2.73, 2.94, 3.23, 3.44, 3.67, 4.01, 4.34, 4.67, 5.02],
+            "times": 30
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Such is Light DMG 4",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [48.45, 52.43, 56.4, 61.96, 65.94, 70.5, 76.86, 83.22, 89.57, 96.33] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [45.9, 49.67, 53.43, 58.7, 62.47, 66.79, 72.82, 78.84, 84.86, 91.26] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [28.9, 31.27, 33.64, 36.96, 39.33, 42.06, 45.85, 49.64, 53.43, 57.46] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 2 Scythe: Dissection DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [14.2, 15.36, 16.53, 18.16, 19.32, 20.66, 22.52, 24.38, 26.25, 28.23] },
+          { "stat": "atk", "values": [14.2, 15.36, 16.53, 18.16, 19.32, 20.66, 22.52, 24.38, 26.25, 28.23] },
+          { "stat": "atk", "values": [18.93, 20.48, 22.04, 24.21, 25.76, 27.55, 30.03, 32.51, 34.99, 37.63] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 3 Scythe: Dissection DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [21.59, 23.37, 25.14, 27.61, 29.38, 31.42, 34.25, 37.09, 39.92, 42.93] },
+          { "stat": "atk", "values": [21.59, 23.37, 25.14, 27.61, 29.38, 31.42, 34.25, 37.09, 39.92, 42.93] },
+          { "stat": "atk", "values": [28.79, 31.15, 33.51, 36.82, 39.18, 41.89, 45.67, 49.45, 53.22, 57.24] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 2 Scythe: Reaction DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [25.36, 27.44, 29.52, 32.43, 34.51, 36.9, 40.23, 43.56, 46.88, 50.42] },
+          { "stat": "atk", "values": [25.36, 27.44, 29.52, 32.43, 34.51, 36.9, 40.23, 43.56, 46.88, 50.42] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 3 Scythe: Reaction DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [37.69, 40.78, 43.87, 48.19, 51.28, 54.84, 59.78, 64.73, 69.67, 74.92] },
+          { "stat": "atk", "values": [37.69, 40.78, 43.87, 48.19, 51.28, 54.84, 59.78, 64.73, 69.67, 74.92] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [52.7, 57.03, 61.35, 67.4, 71.72, 76.69, 83.6, 90.52, 97.43, 104.78] }
+        ]
+      },
+      {
+        "name": "Ground Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [63.33, 68.52, 73.72, 80.99, 86.18, 92.15, 100.46, 108.77, 117.07, 125.9] },
+          { "stat": "atk", "values": [63.33, 68.52, 73.72, 80.99, 86.18, 92.15, 100.46, 108.77, 117.07, 125.9] }
+        ]
+      },
+      {
+        "name": "Mid-air Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [129.2, 139.8, 150.39, 165.23, 175.82, 188, 204.95, 221.91, 238.86, 256.87] }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Reunion of All the Fallen",
+    "hits": [
+      {
+        "name": "Golden Reflux DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [101.2, 109.5, 117.8, 129.42, 137.72, 147.26, 160.54, 173.82, 187.09, 201.2] }
+        ]
+      },
+      {
+        "name": "Aureole of Execution: Ring DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [13.36, 14.46, 15.55, 17.09, 18.18, 19.44, 21.2, 22.95, 24.7, 26.56],
+            "times": 5
+          },
+          { "stat": "atk", "values": [44.53, 48.18, 51.84, 56.95, 60.6, 64.8, 70.64, 76.48, 82.32, 88.53] }
+        ]
+      },
+      {
+        "name": "Aureole of Execution: Breach DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [48.24, 52.2, 56.15, 61.69, 65.65, 70.2, 76.53, 82.85, 89.18, 95.91],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Aureole of Execution: Glare DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [178.12, 192.72, 207.33, 227.77, 242.38, 259.18, 282.54, 305.91, 329.28, 354.11] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Golden Impale DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [78.2, 84.62, 91.03, 100.01, 106.42, 113.79, 124.05, 134.31, 144.57, 155.47] }
+        ]
+      },
+      {
+        "name": "Ichor Deposit DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [77.19, 83.52, 89.84, 98.71, 105.03, 112.31, 122.44, 132.56, 142.69, 153.45] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Rewritten in Winter's Margins",
+    "hits": [
+      {
+        "name": "Rewritten in Winter's Margins DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [375, 405.75, 436.5, 479.55, 510.3, 545.67, 594.87, 644.07, 693.27, 745.54] },
+          {
+            "stat": "atk",
+            "values": [25, 27.05, 29.1, 31.97, 34.02, 36.38, 39.66, 42.94, 46.22, 49.71],
+            "times": 5
+          }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Before Injection of Dawn",
+    "hits": [
+      {
+        "name": "Before Injection of Dawn DMG",
+        "kind": "intro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [36.55, 39.55, 42.55, 46.75, 49.74, 53.19, 57.98, 62.78, 67.57, 72.67],
+            "times": 3
+          }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "Bow to the Last Light",
+    "hits": []
+  },
+  "forte": {
+    "name": "Spark from the Frost",
+    "hits": [
+      {
+        "name": "Gavel of Earthshaker DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [154.37, 167.03, 179.68, 197.41, 210.06, 224.62, 244.87, 265.12, 285.38, 306.9] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

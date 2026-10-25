@@ -1,0 +1,228 @@
+{
+  "id": "phrolova",
+  "name": "Phrolova",
+  "icon": "phrolova",
+  "type": "havoc",
+  "weapon": "rectifier",
+  "lastUpdate": "2026-10-25T01:23:34.223Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Movement of Life and Death",
+    "hits": [
+      {
+        "name": "Movement of Life and Death DMG 1",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [26.88, 29.09, 31.29, 34.38, 36.58, 39.12, 42.64, 46.17, 49.7, 53.45],
+            "times": 2
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Movement of Life and Death DMG 2",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [48, 51.94, 55.88, 61.39, 65.32, 69.85, 76.15, 82.44, 88.74, 95.43] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Movement of Life and Death DMG 3",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [16.44, 17.79, 19.14, 21.03, 22.38, 23.93, 26.08, 28.24, 30.4, 32.69],
+            "times": 6
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [40.16, 43.46, 46.75, 51.36, 54.65, 58.44, 63.71, 68.98, 74.25, 79.85],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Scarlet Coda DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [16.61, 17.97, 19.33, 21.24, 22.6, 24.16, 26.34, 28.52, 30.7, 33.01],
+            "times": 2
+          },
+          {
+            "stat": "atk",
+            "values": [6.23, 6.74, 7.25, 7.97, 8.48, 9.06, 9.88, 10.7, 11.51, 12.38],
+            "times": 8
+          },
+          { "stat": "atk", "values": [249.03, 269.46, 289.88, 318.46, 338.89, 362.37, 395.04, 427.71, 460.39, 495.1] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [64, 69.25, 74.5, 81.85, 87.1, 93.13, 101.53, 109.92, 118.32, 127.24] }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [61.36, 66.4, 71.43, 78.47, 83.5, 89.29, 97.34, 105.39, 113.44, 121.99] }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Whispers in a Fleeting Dream",
+    "hits": [
+      {
+        "name": "Whispers in a Fleeting Dream DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [53.3, 57.68, 62.05, 68.17, 72.54, 77.56, 84.55, 91.55, 98.54, 105.97],
+            "times": 2
+          }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Waltz of Forsaken Depths",
+    "hits": [
+      {
+        "name": "Basic Attack - Hecate Stage 1 DMG",
+        "kind": "echo",
+        "parts": [
+          { "stat": "atk", "values": [14, 15.15, 16.3, 17.91, 19.06, 20.38, 22.21, 24.05, 25.89, 27.84] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Hecate Stage 2 DMG",
+        "kind": "echo",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [7, 7.58, 8.15, 8.96, 9.53, 10.19, 11.11, 12.03, 12.95, 13.92],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Enhanced Attack - Hecate: Strings DMG",
+        "kind": "echo",
+        "parts": [
+          { "stat": "atk", "values": [52.5, 56.81, 61.11, 67.14, 71.45, 76.4, 83.29, 90.17, 97.06, 104.38] },
+          { "stat": "atk", "values": [122.5, 132.55, 142.59, 156.66, 166.7, 178.25, 194.33, 210.4, 226.47, 243.55] }
+        ]
+      },
+      {
+        "name": "Enhanced Attack - Hecate: Winds DMG",
+        "kind": "echo",
+        "parts": [
+          { "stat": "atk", "values": [49.88, 53.97, 58.06, 63.79, 67.87, 72.58, 79.12, 85.67, 92.21, 99.16] },
+          { "stat": "atk", "values": [116.38, 125.92, 135.47, 148.83, 158.37, 169.34, 184.61, 199.88, 215.15, 231.37] }
+        ]
+      },
+      {
+        "name": "Enhanced Attack - Hecate: Cadenza DMG",
+        "kind": "echo",
+        "parts": [
+          { "stat": "atk", "values": [52.5, 56.81, 61.11, 67.14, 71.45, 76.4, 83.29, 90.17, 97.06, 104.38] },
+          { "stat": "atk", "values": [122.5, 132.55, 142.59, 156.66, 166.7, 178.25, 194.33, 210.4, 226.47, 243.55] }
+        ]
+      },
+      {
+        "name": "Curtain Call DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [234, 253.19, 272.38, 299.24, 318.43, 340.5, 371.2, 401.9, 432.6, 465.22] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Suite of Quietus",
+    "hits": [
+      {
+        "name": "Suite of Quietus DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [40.55, 43.87, 47.2, 51.85, 55.18, 59, 64.32, 69.64, 74.96, 80.61] },
+          { "stat": "atk", "values": [60.82, 65.81, 70.79, 77.78, 82.76, 88.5, 96.48, 104.46, 112.44, 120.91] }
+        ]
+      },
+      {
+        "name": "Suite of Immortality DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [300, 324.6, 349.2, 383.64, 408.24, 436.53, 475.89, 515.25, 554.61, 596.43] }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "Unfinished Piece",
+    "hits": []
+  },
+  "forte": {
+    "name": "Rhapsody of a New World",
+    "hits": [
+      {
+        "name": "Movement of Fate and Finality DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [19.05, 20.62, 22.18, 24.37, 25.93, 27.72, 30.22, 32.72, 35.22, 37.88],
+            "times": 4
+          },
+          {
+            "stat": "atk",
+            "values": [59.27, 64.13, 68.99, 75.8, 80.66, 86.24, 94.02, 101.8, 109.57, 117.83],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Murmurs in a Haunting Dream DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [11.67, 12.63, 13.59, 14.93, 15.89, 16.99, 18.52, 20.05, 21.58, 23.21],
+            "times": 4
+          },
+          { "stat": "atk", "values": [23.34, 25.26, 27.17, 29.85, 31.77, 33.97, 37.03, 40.09, 43.15, 46.41] },
+          { "stat": "atk", "values": [163.38, 176.78, 190.18, 208.94, 222.33, 237.74, 259.17, 280.61, 302.05, 324.82] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

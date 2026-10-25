@@ -1,7 +1,7 @@
 export type SectionKey = 'basic' | 'skill' | 'liberation' | 'intro' | 'outro' | 'forte';
 
 /** What a hit is; decides which damage bonus applies to it */
-export type HitKind = 'basic' | 'heavy' | 'skill' | 'liberation' | 'intro' | 'outro' | 'echo' | 'heal' | 'shield';
+export type HitKind = 'basic' | 'heavy' | 'skill' | 'liberation' | 'intro' | 'outro' | 'echo' | 'tune' | 'heal' | 'shield';
 
 /** What a part of a hit is based on: a percentage of the character's ATK, HP or DEF, or a flat value */
 export type PartStat = 'atk' | 'hp' | 'def' | 'flat';

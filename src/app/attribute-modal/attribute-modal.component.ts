@@ -21,7 +21,7 @@ const STAT_ROWS: Array<{ key: StatKey; prefix?: string; label: string; visible?:
   { key: 'heavyBonus', prefix: 'char.heavy', label: 'Bonus %' },
   { key: 'liberationBonus', label: 'Lib. Bonus %' },
   { key: 'elementalBonus', prefix: 'char.elemental', label: 'DMG %' },
-  { key: 'echoBonus', label: 'Echo Bonus %', visible: c => c.isEchoMode },
+  { key: 'echoBonus', label: 'Echo Bonus %', visible: c => c.usesEcho },
   { key: 'healingBonus', label: 'Healing Bonus %', visible: c => c.data.hasHealing },
 ];
 

@@ -30,7 +30,7 @@ const STAT_FIELDS: StatField[] = [
   { key: 'heavyBonus', prefix: 'char.heavy', label: 'Bonus %' },
   { key: 'liberationBonus', label: 'Lib. Bonus %' },
   { key: 'elementalBonus', prefix: 'char.elemental', label: 'DMG %' },
-  { key: 'echoBonus', label: 'Echo Bonus %', visible: c => c.isEchoMode },
+  { key: 'echoBonus', label: 'Echo Bonus %', visible: c => c.usesEcho },
   { key: 'healingBonus', label: 'Healing Bonus %', visible: c => c.data.hasHealing },
 ];
 

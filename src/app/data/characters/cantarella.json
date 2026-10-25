@@ -1,0 +1,268 @@
+{
+  "id": "cantarella",
+  "name": "Cantarella",
+  "icon": "cantarella",
+  "type": "havoc",
+  "weapon": "rectifier",
+  "lastUpdate": "2026-10-25T01:18:04.073Z",
+  "hasHealing": true,
+  "healsAllies": true,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Illusion Collapse",
+    "hits": [
+      {
+        "name": "Illusion Collapse DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [40, 43.28, 46.56, 51.16, 54.44, 58.21, 63.46, 68.7, 73.95, 79.53] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Illusion Collapse DMG 2",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [18.33, 19.83, 21.34, 23.44, 24.94, 26.67, 29.07, 31.48, 33.88, 36.44],
+            "times": 4
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Illusion Collapse DMG 3",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [36.5, 39.5, 42.49, 46.68, 49.67, 53.12, 57.9, 62.69, 67.48, 72.57],
+            "times": 2
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [28.76, 31.12, 33.48, 36.78, 39.14, 41.85, 45.63, 49.4, 53.17, 57.18],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Delusive Dive DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [26.68, 28.87, 31.06, 34.12, 36.31, 38.83, 42.33, 45.83, 49.33, 53.05],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [21.12, 22.86, 24.59, 27.01, 28.75, 30.74, 33.51, 36.28, 39.05, 41.99] },
+          { "stat": "atk", "values": [31.68, 34.28, 36.88, 40.52, 43.12, 46.1, 50.26, 54.42, 58.57, 62.99] }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [26.66, 28.85, 31.04, 34.1, 36.28, 38.8, 42.3, 45.79, 49.29, 53.01],
+            "times": 4
+          }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Dance with Shadows",
+    "hits": [
+      {
+        "name": "Graceful Step DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [37.02, 40.06, 43.1, 47.35, 50.38, 53.87, 58.73, 63.59, 68.44, 73.6],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Flickering Reverie DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [98.7, 106.8, 114.89, 126.22, 134.32, 143.62, 156.57, 169.52, 182.47, 196.23] }
+        ]
+      },
+      {
+        "name": "Jolt DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Beneath the Sea",
+    "hits": [
+      {
+        "name": "Flowing Suffocation DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [189.13, 204.64, 220.15, 241.86, 257.37, 275.2, 300.01, 324.83, 349.64, 376] }
+        ]
+      },
+      {
+        "name": "Diffusion DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [7.31, 7.91, 8.51, 9.35, 9.95, 10.64, 11.6, 12.56, 13.52, 14.54],
+            "times": 21
+          }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Cruise",
+    "hits": [
+      {
+        "name": "Ripple DMG",
+        "kind": "intro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [21.25, 23, 24.74, 27.18, 28.92, 30.93, 33.71, 36.5, 39.29, 42.25],
+            "times": 4
+          }
+        ]
+      },
+      {
+        "name": "Tidal Surge DMG",
+        "kind": "intro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [8.5, 9.2, 9.9, 10.87, 11.57, 12.37, 13.49, 14.6, 15.72, 16.9],
+            "times": 3
+          },
+          { "stat": "atk", "values": [59.5, 64.38, 69.26, 76.09, 80.97, 86.58, 94.39, 102.2, 110, 118.3] }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "",
+    "hits": []
+  },
+  "forte": {
+    "name": "Between Illusion and Reality",
+    "hits": [
+      {
+        "name": "Phantom Sting Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [17.77, 19.23, 20.69, 22.73, 24.18, 25.86, 28.19, 30.52, 32.85, 35.33],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Phantom Sting Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [31.65, 34.25, 36.85, 40.48, 43.07, 46.06, 50.21, 54.36, 58.52, 62.93],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Phantom Sting Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [32.5, 35.17, 37.83, 41.57, 44.23, 47.3, 51.56, 55.82, 60.09, 64.62],
+            "times": 4
+          }
+        ]
+      },
+      {
+        "name": "Abysmal Vortex DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [21.12, 22.86, 24.59, 27.01, 28.75, 30.74, 33.51, 36.28, 39.05, 41.99] },
+          { "stat": "atk", "values": [31.68, 34.28, 36.88, 40.52, 43.12, 46.1, 50.26, 54.42, 58.57, 62.99] }
+        ]
+      },
+      {
+        "name": "Perception Drain DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [336, 363.55, 391.1, 429.67, 457.22, 488.91, 532.99, 577.07, 621.15, 667.99],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Shadowy Sweep DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [37.77, 40.87, 43.97, 48.3, 51.4, 54.96, 59.91, 64.87, 69.82, 75.09],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Healing by Consuming Trance",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [90, 100, 112, 126, 142, 157, 160, 163, 166, 171] },
+          { "stat": "atk", "values": [21.6, 22.46, 23.33, 24.62, 26.35, 28.08, 31.32, 34.99, 38.88, 45.36] }
+        ]
+      },
+      {
+        "name": "Perception Drain Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [375, 420, 468, 525, 592, 656, 667, 682, 693, 712] },
+          { "stat": "atk", "values": [90, 93.6, 97.2, 102.6, 109.8, 117, 130.5, 145.8, 162, 189] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

@@ -99,7 +99,7 @@ function statOf(stats: Stats, stat: Exclude<PartStat, 'flat'>): number {
   return stat === 'hp' ? stats.hp : stat === 'def' ? stats.def : stats.dmg;
 }
 
-/** Damage bonus (in %) that applies to a kind of hit; intro, outro and shield have none */
+/** Damage bonus (in %) that applies to a kind of hit; intro, outro, shield and tune (a fixed multiplier) have none */
 function bonusOf(stats: Stats, kind: HitKind): number {
   switch (kind) {
     case 'basic': return stats.basicBonus;

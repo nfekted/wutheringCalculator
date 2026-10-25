@@ -67,6 +67,12 @@ export class Character implements Stats {
         return this.data.modes?.[this.mode] === 'echo';
     }
 
+    /** Whether Echo damage can happen: the Echo mode is active, or some hit is always Echo damage */
+    get usesEcho(): boolean {
+        return this.isEchoMode || (['basic', 'skill', 'liberation', 'intro', 'outro', 'forte'] as const)
+            .some(section => this.data[section].hits.some(hit => hit.kind === 'echo'));
+    }
+
     /** Total damage (or healing) of a rotation step; steps without valid data count as 0 */
     rotationValue(step: RotationStep): number {
         const value = this.results[step.section][step.index]?.sum;

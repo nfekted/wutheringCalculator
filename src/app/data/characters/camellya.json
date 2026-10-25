@@ -2,144 +2,252 @@
   "id": "camellya",
   "name": "Camellya",
   "icon": "camellya",
-  "wiki": "https://wutheringwaves.fandom.com/wiki/Camellya",
   "type": "havoc",
   "weapon": "sword",
-  "lastUpdate": "2024-11-14T23:00:00.000Z",
-  "damageHealer": false,
-  "healType": false,
-  "canHeal": false,
+  "lastUpdate": "2026-10-25T01:10:37.641Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
   "hpScale": false,
   "defScale": false,
   "basic": {
     "name": "Burgeoning",
-    "names": ["Burgeoning: DMG 1", "Burgeoning: DMG 2", "Burgeoning: DMG 3", "Burgeoning: DMG 4", "Burgeoning: DMG 5", "Plunging Attack", "Dodge Damage", "Heavy Attack"],
-    "bonusType": ["b", "b", "b", "b", "b", "b", "b", "h"],
-    "scaling": [
-      [31.45, 34.03, 36.61, 40.22, 42.8, 45.77, 49.89, 54.02, 58.15, 62.53],
-      [23.38, 25.3, 27.21, 29.9, 31.81, 34.02, 37.08, 40.15, 43.22, 46.48],
-      [25.5, 27.59, 29.68, 32.61, 34.7, 37.11, 40.45, 43.8, 47.14, 50.7],
-      [12.42, 13.44, 14.46, 15.89, 16.91, 18.08, 19.71, 21.34, 22.97, 24.7],
-      [24.23, 26.22, 28.2, 30.98, 32.97, 35.25, 38.43, 41.61, 44.79, 48.17],
-      [33, 35.71, 38.42, 42.21, 44.91, 48.02, 52.35, 56.68, 61.01, 65.61],
-      [50, 54.1, 58.2, 63.94, 68.04, 72.75, 79.31, 85.87, 92.43, 99.4],
-      [44.33, 47.97, 51.6, 56.69, 60.33, 64.51, 70.32, 76.14, 81.96, 88.14]
-    ],
-    "multiplier": [1, 2, 3, 20, 4, 2, 3, 3],
-    "second": [],
-    "secondMultiplier": [],
-    "third": [],
-    "thirdMultiplier": [],
-    "ends": 4
+    "hits": [
+      {
+        "name": "Burgeoning DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [31.45, 34.03, 36.61, 40.22, 42.8, 45.77, 49.89, 54.02, 58.15, 62.53] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Burgeoning DMG 2",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [23.38, 25.3, 27.21, 29.9, 31.81, 34.02, 37.08, 40.15, 43.22, 46.48],
+            "times": 2
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Burgeoning DMG 3",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [25.5, 27.59, 29.68, 32.61, 34.7, 37.11, 40.45, 43.8, 47.14, 50.7],
+            "times": 3
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Burgeoning DMG 4",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [12.42, 13.44, 14.46, 15.89, 16.91, 18.08, 19.71, 21.34, 22.97, 24.7],
+            "times": 20
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Burgeoning DMG 5",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [24.23, 26.22, 28.2, 30.98, 32.97, 35.25, 38.43, 41.61, 44.79, 48.17],
+            "times": 4
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [44.33, 47.97, 51.6, 56.69, 60.33, 64.51, 70.32, 76.14, 81.96, 88.14],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [33, 35.71, 38.42, 42.21, 44.91, 48.02, 52.35, 56.68, 61.01, 65.61],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [50, 54.1, 58.2, 63.94, 68.04, 72.75, 79.31, 85.87, 92.43, 99.4],
+            "times": 3
+          }
+        ]
+      }
+    ]
   },
   "skill": {
     "name": "Valse of Bloom and Blight",
-    "names": ["Crimson Blossom", "Vining Waltz DMG 1", "Vining Waltz DMG 2", "Vining Waltz DMG 3", "Vining Waltz DMG 4", "Blazing Waltz", "Floral Ravage", "Vining Ronde", "Atonement"],
-    "bonusType": ["b", "b", "b", "b", "b", "b", "b", "b", "b"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [57.15, 61.84, 66.53, 73.09, 77.77, 83.16, 90.66, 98.16, 105.66, 113.62],
-      [48.45, 52.43, 56.4, 61.96, 65.94, 70.5, 76.86, 83.22, 89.57, 96.33],
-      [22.95, 24.84, 26.72, 29.35, 31.24, 33.4, 36.41, 39.42, 42.43, 45.63],
-      [11.04, 11.95, 12.86, 14.12, 15.03, 16.07, 17.52, 18.97, 20.41, 21.95],
-      [34, 36.79, 39.58, 43.48, 46.27, 49.47, 53.93, 58.39, 62.85, 67.59],
-      [11.04, 11.95, 12.86, 14.12, 15.03, 16.07, 17.52, 18.97, 20.41, 21.95],
-      [26.46, 28.63, 30.8, 33.84, 36.01, 38.51, 41.98, 45.45, 48.92, 52.61],
-      [26.64, 28.82, 31, 34.06, 36.24, 38.76, 42.25, 45.74, 49.24, 52.95],
-      [57, 61.68, 66.35, 72.9, 77.57, 82.95, 90.42, 97.9, 105.38, 113.33]
-    ],
-    "multiplier": [2, 1, 2, 6, 3, 19, 5, 3, 2],
-    "second": [],
-    "secondMultiplier": [],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Crimson Blossom DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [57.15, 61.84, 66.53, 73.09, 77.77, 83.16, 90.66, 98.16, 105.66, 113.62],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Vining Waltz 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [48.45, 52.43, 56.4, 61.96, 65.94, 70.5, 76.86, 83.22, 89.57, 96.33] }
+        ]
+      },
+      {
+        "name": "Vining Waltz 2 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [22.95, 24.84, 26.72, 29.35, 31.24, 33.4, 36.41, 39.42, 42.43, 45.63],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Vining Waltz 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [11.04, 11.95, 12.86, 14.12, 15.03, 16.07, 17.52, 18.97, 20.41, 21.95],
+            "times": 6
+          }
+        ]
+      },
+      {
+        "name": "Vining Waltz 4 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [34, 36.79, 39.58, 43.48, 46.27, 49.47, 53.93, 58.39, 62.85, 67.59],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Blazing Waltz DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [11.04, 11.95, 12.86, 14.12, 15.03, 16.07, 17.52, 18.97, 20.41, 21.95],
+            "times": 19
+          }
+        ]
+      },
+      {
+        "name": "Floral Ravage DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [26.46, 28.63, 30.8, 33.84, 36.01, 38.51, 41.98, 45.45, 48.92, 52.61],
+            "times": 5
+          }
+        ]
+      },
+      {
+        "name": "Vining Ronde DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [26.64, 28.82, 31, 34.06, 36.24, 38.76, 42.25, 45.74, 49.24, 52.95],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Atonement DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [57, 61.68, 66.35, 72.9, 77.57, 82.95, 90.42, 97.9, 105.38, 113.33],
+            "times": 2
+          }
+        ]
+      }
+    ]
   },
   "liberation": {
-    "name": "Embers of Corolla",
-    "names": ["Embers of Corolla"],
-    "bonusType": ["l"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [605, 654.61, 704.22, 773.68, 823.29, 880.34, 959.72, 1039.09, 1118.47, 1202.81]
-    ],
-    "multiplier": [1],
-    "second": [],
-    "secondMultiplier": [0],
-    "third": [],
-    "thirdMultiplier": [0]
+    "name": "Fervor Efflorescent",
+    "hits": [
+      {
+        "name": "Fervor Efflorescent DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [605, 654.61, 704.22, 773.68, 823.29, 880.34, 959.72, 1039.09, 1118.47, 1202.81] }
+        ]
+      }
+    ]
   },
   "intro": {
-    "name": "Everblooming Flower",
-    "names": ["Everblooming Flower"],
-    "bonusType": ["i"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81]
-    ],
-    "multiplier": [1],
-    "second": [],
-    "secondMultiplier": [0],
-    "third": [],
-    "thirdMultiplier": [0]
+    "name": "Everblooming",
+    "hits": [
+      {
+        "name": "Everblooming DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81] }
+        ]
+      }
+    ]
   },
   "outro": {
-    "name": "Twining",
-    "names": ["Twining", "Twining Extra"],
-    "bonusType": ["o"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [329],
-      [459]
-    ],
-    "multiplier": [1, 1],
-    "second": [],
-    "secondMultiplier": [],
-    "third": [],
-    "thirdMultiplier": []
+    "name": "",
+    "hits": []
   },
   "forte": {
     "name": "Vegetative Universe",
-    "names": ["Ephemeral "],
-    "bonusType": ["b"],
-    "heal": [],
-    "dmgType": [],
-    "shield": [],
-    "scaling": [
-      [635, 687.07, 739.14, 812.04, 864.11, 923.99, 1007.31, 1090.62, 1173.93, 1262.45]
-    ],
-    "multiplier": [1],
-    "second": [],
-    "secondMultiplier": [],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Ephemeral DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [635, 687.07, 739.14, 812.04, 864.11, 923.99, 1007.31, 1090.62, 1173.93, 1262.45] }
+        ]
+      }
+    ]
   },
-  "rotation": [
-    { "section": "basic", "index": 7 },
-    { "section": "basic", "index": 3 },
-    { "section": "basic", "index": 4 },
-    { "section": "skill", "index": 0 },
-    { "section": "outro", "index": 0 },
-    { "section": "intro", "index": 0 },
-    { "section": "skill", "index": 6 },
-    { "section": "basic", "index": 7 },
-    { "section": "basic", "index": 3 },
-    { "section": "basic", "index": 4 },
-    { "section": "skill", "index": 0 },
-    { "section": "forte", "index": 0 },
-    { "section": "liberation", "index": 0 },
-    { "section": "basic", "index": 7 },
-    { "section": "basic", "index": 3 },
-    { "section": "basic", "index": 4 },
-    { "section": "skill", "index": 0 },
-    { "section": "outro", "index": 1 }
-  ],
-  "rotationDesc": ["Heavy Attack", "Basic Attack 4", "Basic Attack 5", "Resonance Skill Crimson Blossom", "Outro", "Intro", "Resonance Skill Floral Ravage", "Heavy Attack", "Basic Attack 4", "Basic Attack 5", "Resonance Skill Crimson Blossom", "Resonance Skill Ephemeral", "Resonance Liberation", "Heavy Attack", "Basic Attack 4", "Basic Attack 5", "Resonance Skill Crimson Blossom", "Outro"],
-  "rotationColor": ["basic", "basic", "basic", "skill", "outro", "intro", "skill", "basic", "basic", "basic", "skill", "skill", "liberation", "basic", "basic", "basic", "skill", "outro"],
-  "rotationCommands": ["mbh", "cv", "mb", "cv", "mb", "cv", "e", "cv", "outro", "cv", "intro", "cv", "e", "cv", "mbh", "cv", "mb", "cv", "mb", "cv", "e", "cv", "e", "cv", "r", "cv", "mbh", "cv", "mb", "cv", "mb"],
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["HAVOC DMG %", "ATK %"],
   "echo1": ["ATK %"],
