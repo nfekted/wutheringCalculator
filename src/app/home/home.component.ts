@@ -54,6 +54,8 @@ export class HomeComponent {
 
   async load() {
     for (const c of await this.storage.loadCharacters()) {
+      // Characters not migrated to the new data yet are skipped
+      if (!getCharacterData(c.icon)) continue;
       this.createNew(c.icon, c);
     }
     this.selected.set(this.characters()[0] ?? null);

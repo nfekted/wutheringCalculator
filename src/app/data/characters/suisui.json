@@ -1,0 +1,253 @@
+{
+  "id": "suisui",
+  "name": "Suisui",
+  "icon": "suisui",
+  "type": "glacio",
+  "weapon": "rectifier",
+  "lastUpdate": "2026-10-23T01:49:55.554Z",
+  "hasHealing": true,
+  "healsAllies": true,
+  "primaryDamage": false,
+  "hpScale": true,
+  "defScale": false,
+  "basic": {
+    "name": "Unraveled Spring",
+    "hits": [
+      {
+        "name": "Basic Attack - Zephyr Stance Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [31.76, 34.37, 36.97, 40.62, 43.22, 46.22, 50.39, 54.55, 58.72, 63.15] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Zephyr Stance Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [30.68, 33.2, 35.72, 39.24, 41.75, 44.65, 48.67, 52.7, 56.72, 61] },
+          { "stat": "atk", "values": [30.68, 33.2, 35.72, 39.24, 41.75, 44.65, 48.67, 52.7, 56.72, 61] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Zephyr Stance Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [21.03, 22.75, 24.48, 26.89, 28.61, 30.6, 33.36, 36.11, 38.87, 41.8] },
+          { "stat": "atk", "values": [21.03, 22.75, 24.48, 26.89, 28.61, 30.6, 33.36, 36.11, 38.87, 41.8] },
+          { "stat": "atk", "values": [28.04, 30.34, 32.63, 35.85, 38.15, 40.79, 44.47, 48.15, 51.83, 55.74] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Zephyr Stance Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [40, 43.28, 46.56, 51.16, 54.44, 58.21, 63.46, 68.7, 73.95, 79.53] },
+          {
+            "stat": "atk",
+            "values": [8, 8.66, 9.32, 10.24, 10.89, 11.65, 12.7, 13.74, 14.79, 15.91],
+            "times": 5
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Mid-air Attack - Zephyr Stance DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [35.57, 38.49, 41.41, 45.49, 48.41, 51.76, 56.43, 61.09, 65.76, 70.72] }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Zephyr Stance DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [25.76, 27.87, 29.98, 32.94, 35.05, 37.48, 40.86, 44.23, 47.61, 51.2] },
+          { "stat": "atk", "values": [25.76, 27.87, 29.98, 32.94, 35.05, 37.48, 40.86, 44.23, 47.61, 51.2] },
+          { "stat": "atk", "values": [34.34, 37.16, 39.97, 43.91, 46.73, 49.97, 54.47, 58.98, 63.48, 68.27] }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Vernal Screen",
+    "hits": [
+      {
+        "name": "Resonance Skill - Zephyr Stance DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [12, 12.99, 13.97, 15.35, 16.33, 17.47, 19.04, 20.61, 22.19, 23.86],
+            "times": 6
+          }
+        ]
+      },
+      {
+        "name": "Awakening Spring DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [14.4, 15.59, 16.77, 18.42, 19.6, 20.96, 22.85, 24.74, 26.63, 28.63] }
+        ]
+      },
+      {
+        "name": "Resonance Skill - Drizzle Stance DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [6, 6.5, 6.99, 7.68, 8.17, 8.74, 9.52, 10.31, 11.1, 11.93],
+            "times": 6
+          },
+          { "stat": "atk", "values": [36, 38.96, 41.91, 46.04, 48.99, 52.39, 57.11, 61.83, 66.56, 71.58] }
+        ]
+      },
+      {
+        "name": "Enrichment Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [330, 369, 412, 462, 521, 577, 587, 600, 610, 627] },
+          { "stat": "hp", "values": [1.62, 1.69, 1.75, 1.85, 1.98, 2.11, 2.36, 2.63, 2.93, 3.42] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Song of Thoroughfare",
+    "hits": [
+      {
+        "name": "Healing per Plume Step",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [550, 616, 687, 770, 869, 962, 979, 1001, 1017, 1045] },
+          { "stat": "hp", "values": [2.71, 2.82, 2.93, 3.09, 3.31, 3.53, 3.93, 4.39, 4.88, 5.7] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Tinkling Jade",
+    "hits": [
+      {
+        "name": "Tinkling Jade DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [14.4, 15.59, 16.77, 18.42, 19.6, 20.96, 22.85, 24.74, 26.63, 28.63] }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "",
+    "hits": []
+  },
+  "forte": {
+    "name": "Lambent Gold",
+    "hits": [
+      {
+        "name": "Basic Attack - Drizzle Stance Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [9.84, 10.65, 11.46, 12.59, 13.4, 14.32, 15.61, 16.91, 18.2, 19.57],
+            "times": 2
+          },
+          {
+            "stat": "atk",
+            "values": [9.84, 10.65, 11.46, 12.59, 13.4, 14.32, 15.61, 16.91, 18.2, 19.57],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Drizzle Stance Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [16, 17.32, 18.63, 20.47, 21.78, 23.29, 25.39, 27.48, 29.58, 31.81] },
+          {
+            "stat": "atk",
+            "values": [8, 8.66, 9.32, 10.24, 10.89, 11.65, 12.7, 13.74, 14.79, 15.91],
+            "times": 2
+          },
+          {
+            "stat": "atk",
+            "values": [8, 8.66, 9.32, 10.24, 10.89, 11.65, 12.7, 13.74, 14.79, 15.91],
+            "times": 2
+          },
+          { "stat": "atk", "values": [16, 17.32, 18.63, 20.47, 21.78, 23.29, 25.39, 27.48, 29.58, 31.81] },
+          { "stat": "atk", "values": [16, 17.32, 18.63, 20.47, 21.78, 23.29, 25.39, 27.48, 29.58, 31.81] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Drizzle Stance Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [6.92, 7.49, 8.06, 8.85, 9.42, 10.07, 10.98, 11.89, 12.8, 13.76],
+            "times": 3
+          },
+          {
+            "stat": "atk",
+            "values": [6.92, 7.49, 8.06, 8.85, 9.42, 10.07, 10.98, 11.89, 12.8, 13.76],
+            "times": 3
+          },
+          {
+            "stat": "atk",
+            "values": [6.92, 7.49, 8.06, 8.85, 9.42, 10.07, 10.98, 11.89, 12.8, 13.76],
+            "times": 3
+          },
+          {
+            "stat": "atk",
+            "values": [6.92, 7.49, 8.06, 8.85, 9.42, 10.07, 10.98, 11.89, 12.8, 13.76],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Drizzle Stance Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [80, 86.56, 93.12, 102.31, 108.87, 116.41, 126.91, 137.4, 147.9, 159.05] }
+        ]
+      },
+      {
+        "name": "Heavy Attack - Drizzle Stance",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [6, 6.5, 6.99, 7.68, 8.17, 8.74, 9.52, 10.31, 11.1, 11.93],
+            "times": 10
+          },
+          { "stat": "atk", "values": [60, 64.92, 69.84, 76.73, 81.65, 87.31, 95.18, 103.05, 110.93, 119.29] }
+        ]
+      },
+      {
+        "name": "Illuminating Dew DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [52.8, 57.13, 61.46, 67.53, 71.86, 76.83, 83.76, 90.69, 97.62, 104.98] }
+        ]
+      },
+      {
+        "name": "Swallow's Cut DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [54.15, 58.59, 63.03, 69.24, 73.68, 78.79, 85.89, 93, 100.1, 107.65] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

@@ -27,7 +27,17 @@
           <img [src]="'assets/img/icons/' + character().data.weapon + '.webp'" alt="" class="ui-glyph h-5 w-5" />
           {{ character().data.weapon }}
         </span>
-        <a [href]="character().data.wiki" target="_blank" rel="noopener" class="text-accent underline">Wiki</a>
+        @if (character().data.modes; as modes) {
+          <div role="group" [attr.aria-label]="'char.mode' | transloco" class="flex gap-1">
+            @for (mode of modes; track mode; let i = $index) {
+              <button type="button" class="ui-icon-btn h-8 w-8 capitalize" [attr.aria-pressed]="character().mode === i"
+                [class.bg-surface-2]="character().mode === i" [class.ring-1]="character().mode === i" [attr.aria-label]="mode" [title]="mode"
+                (click)="setMode(i)">
+                <img [src]="'assets/img/icons/' + mode + '.webp'" alt="" class="ui-glyph h-5 w-5" />
+              </button>
+            }
+          </div>
+        }
         <span>{{ 'char.update' | transloco }}
           {{ character().data.lastUpdate | date: (lang === 'pt' ? 'dd/MM/yyyy HH:mm' : 'MM/dd/yyyy HH:mm') }}</span>
       </div>
@@ -38,10 +48,12 @@
         <img src="assets/img/icons/resonator.webp" alt="" class="ui-glyph h-5 w-5" />
         {{ 'char.enhancer.enhancer' | transloco }}
       </button>
-      <button type="button" class="ui-btn ui-btn-secondary" (click)="openEchoComparator()">
-        <img src="assets/img/icons/echo.webp" alt="" class="ui-glyph h-5 w-5" />
-        {{ 'char.echo.echo' | transloco }}
-      </button>
+      @if (character().data.rotation.length) {
+        <button type="button" class="ui-btn ui-btn-secondary" (click)="openEchoComparator()">
+          <img src="assets/img/icons/echo.webp" alt="" class="ui-glyph h-5 w-5" />
+          {{ 'char.echo.echo' | transloco }}
+        </button>
+      }
       <button type="button" class="ui-btn ui-btn-danger" (click)="delete()">
         <span class="material-symbols-outlined" aria-hidden="true">delete</span>
         {{ 'deleteTab' | transloco }}
@@ -118,6 +130,7 @@
       }
 
       @for (s of sections; track s.key) {
+        @if (character().data[s.key].hits.length) {
         <details class="ui-card" [open]="s.open">
           <summary class="flex cursor-pointer items-center gap-2 bg-surface-2 px-4 py-3">
             <span class="h-2.5 w-2.5 shrink-0 rounded-full" [class]="s.dot" aria-hidden="true"></span>
@@ -132,6 +145,7 @@
           </summary>
           <app-damage-table [character]="character()" [section]="s.key" [total]="total()" />
         </details>
+        }
       }
     </div>
   </div>

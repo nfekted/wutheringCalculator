@@ -21,7 +21,8 @@ const STAT_ROWS: Array<{ key: StatKey; prefix?: string; label: string; visible?:
   { key: 'heavyBonus', prefix: 'char.heavy', label: 'Bonus %' },
   { key: 'liberationBonus', label: 'Lib. Bonus %' },
   { key: 'elementalBonus', prefix: 'char.elemental', label: 'DMG %' },
-  { key: 'healingBonus', label: 'Healing Bonus %', visible: c => c.canHeal || c.healType },
+  { key: 'echoBonus', label: 'Echo Bonus %', visible: c => c.isEchoMode },
+  { key: 'healingBonus', label: 'Healing Bonus %', visible: c => c.data.hasHealing },
 ];
 
 const KIND_COLORS: Record<string, string> = {
@@ -41,11 +42,13 @@ export class AttributeModalComponent {
   character = signal(inject<Character>(DIALOG_DATA)).asReadonly();
 
   /** Values typed in the "new" column (0 means "not filled yet": starts from the current value) */
-  draft: Stats = { dmg: 0, hp: 0, def: 0, cChance: 0, cDmg: 0, elementalBonus: 0, basicBonus: 0, heavyBonus: 0, skillBonus: 0, liberationBonus: 0, healingBonus: 0 };
+  draft: Stats = { dmg: 0, hp: 0, def: 0, cChance: 0, cDmg: 0, elementalBonus: 0, basicBonus: 0, heavyBonus: 0, skillBonus: 0, liberationBonus: 0, echoBonus: 0, healingBonus: 0 };
   newQtdCrit: number = 0;
 
-  enhancerBasic: boolean = false;
-  enhancerSkill: boolean = true;
+  /** The rotation is not available for every character yet */
+  hasRotation = this.character().data.rotation.length > 0;
+  enhancerBasic: boolean = !this.hasRotation;
+  enhancerSkill: boolean = this.hasRotation;
   randomCrit: boolean = false;
 
   critSimFixed: Array<Array<number | boolean>> = [];
@@ -70,12 +73,12 @@ export class AttributeModalComponent {
 
   /** Unit shown next to the difference between scenarios */
   protected unit(): string {
-    return this.character().healType && this.enhancerSkill ? 'char.heal' : 'dmg';
+    return this.character().showHealing && this.enhancerSkill ? 'char.heal' : 'dmg';
   }
 
   /** Unit shown next to a scenario total */
   protected totalUnit(): string {
-    return this.character().healType && this.character().canHeal && this.enhancerSkill ? 'char.heal' : 'dmg';
+    return this.character().showHealing && this.enhancerSkill ? 'char.heal' : 'dmg';
   }
 
   protected kindColor(kind: string): string {
@@ -106,11 +109,12 @@ export class AttributeModalComponent {
       this.qtdCrit = +(this.character().cChance / 5).toFixed(0);
     }
 
-    let currentAttack = 0;
+    const chain = this.character().data.basic.hits.flatMap((hit, i) => hit.combo ? [i] : []);
     const list: Array<Array<number | boolean>> = [];
     if (this.enhancerBasic) {
       for (let i = 0; i < 20; i++) {
-        const dmg: number = simulation ? copy.results.basic.sum[currentAttack] : this.character().results.basic.sum[currentAttack];
+        const attack = chain[i % chain.length];
+        const dmg: number = (simulation ? copy : this.character()).results.basic[attack]?.sum ?? 0;
         if ((!this.randomCrit && currentChance >= 5) || (this.randomCrit && (Math.floor(Math.random() * 100) + 1) < currentChance)) {
           list[i] = [+(dmg * (critMult / 100)).toFixed(0), true, false];
           currentChance -= (this.randomCrit ? 0 : 5);
@@ -119,7 +123,6 @@ export class AttributeModalComponent {
         }
         this.fixedTotal += simulation ? 0 : +list[i][0];
         this.fixedSimTotal += simulation ? +list[i][0] : 0;
-        currentAttack = currentAttack == this.character().data.basic.ends ? 0 : currentAttack + 1;
       }
     }
 
@@ -150,7 +153,7 @@ export class AttributeModalComponent {
     if (!this.randomCrit) currentChance = (!simulation ? this.qtdCrit : this.newQtdCrit);
     let heal: boolean = false;
     for (let i = 0; i < rotation.length; i++) {
-      if (this.character().canHeal) heal = !!rotation[i].healing;
+      if (this.character().data.hasHealing) heal = this.character().isHealStep(rotation[i]);
 
       const dmg = simulation ? copy.rotationValue(rotation[i]) : this.character().rotationValue(rotation[i]);
       if ((!this.randomCrit && currentChance > 0) || (this.randomCrit && (Math.floor(Math.random() * 100) + 1) < currentChance)) {
@@ -160,8 +163,8 @@ export class AttributeModalComponent {
         list[i] = [dmg, false, heal];
       }
 
-      this.fixedTotal += simulation || (this.character().healType && !heal && this.character().canHeal) || (!this.character().healType && heal) ? 0 : +list[i][0];
-      this.fixedSimTotal += !simulation || (this.character().healType && !heal && this.character().canHeal) || (!this.character().healType && heal) ? 0 : +list[i][0]
+      this.fixedTotal += simulation || (this.character().showHealing && !heal) || (!this.character().showHealing && heal) ? 0 : +list[i][0];
+      this.fixedSimTotal += !simulation || (this.character().showHealing && !heal) || (!this.character().showHealing && heal) ? 0 : +list[i][0]
     }
 
     if (simulation) {

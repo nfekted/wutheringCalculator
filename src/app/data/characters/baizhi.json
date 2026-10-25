@@ -2,148 +2,169 @@
   "id": "baizhi",
   "name": "Baizhi",
   "icon": "baizhi",
-  "wiki": "https://wutheringwaves.fandom.com/wiki/Baizhi",
   "type": "glacio",
   "weapon": "rectifier",
-  "lastUpdate": "2024-11-09T03:00:00.000Z",
-  "damageHealer": false,
-  "healType": true,
-  "canHeal": true,
+  "lastUpdate": "2026-10-22T01:21:01.649Z",
+  "hasHealing": true,
+  "healsAllies": true,
+  "primaryDamage": false,
   "hpScale": true,
   "defScale": false,
   "basic": {
     "name": "Destined Promise",
-    "names": ["Destined Promise: DMG 1", "Destined Promise: DMG 2  ", "Destined Promise: DMG 3 ", "Destined Promise: DMG 4", "Mid Air", "Dodge Dmg", "Heavy Attack"],
-    "bonusType": ["b", "b", "b", "b", "b", "b", "h"],
-    "scaling": [
-      [32.94, 35.64, 38.34, 42.12, 44.82, 47.93, 52.25, 56.57, 60.89, 65.48],
-      [39.52, 42.76, 46.01, 50.354, 53.78, 57.51, 62.69, 67.88, 73.06, 78.57],
-      [6.59, 7.13, 7.67, 8.43, 8.97, 9.59, 10.45, 11.32, 12.18, 13.1],
-      [39.52, 42.76, 46.01, 50.54, 53.78, 57.51, 62.69, 67.88, 73.06, 78.57],
-      [39.68, 42.94, 46.19, 50.75, 54, 57.74, 62.95, 68.16, 73.36, 78.89],
-      [89.86, 97.23, 104.6, 114.91, 122.28, 130.75, 142.54, 154.33, 166.12, 178.65],
-      [24.58, 26.6, 28.61, 31.43, 33.45, 35.77, 38.99, 42.21, 45.44, 48.86]
-    ],
-    "multiplier": [1, 1, 7, 1, 1, 1, 1],
-    "second": [],
-    "secondMultiplier": [],
-    "third": [],
-    "thirdMultiplier": [],
-    "ends": 3
+    "hits": [
+      {
+        "name": "Destined Promise DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [32.94, 35.64, 38.34, 42.12, 44.82, 47.93, 52.25, 56.57, 60.89, 65.48] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Destined Promise DMG 2",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [39.52, 42.76, 46.01, 50.54, 53.78, 57.51, 62.69, 67.88, 73.06, 78.57] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Destined Promise DMG 3",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [6.59, 7.13, 7.67, 8.43, 8.97, 9.59, 10.45, 11.32, 12.18, 13.1], "times": 7 }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Destined Promise DMG 4",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [39.52, 42.76, 46.01, 50.54, 53.78, 57.51, 62.69, 67.88, 73.06, 78.57] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [24.58, 26.6, 28.61, 31.43, 33.45, 35.77, 38.99, 42.21, 45.44, 48.86] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [39.68, 42.94, 46.19, 50.75, 54, 57.74, 62.95, 68.16, 73.36, 78.89] }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [89.86, 97.23, 104.6, 114.91, 122.28, 130.75, 142.54, 154.33, 166.12, 178.65] }
+        ]
+      }
+    ]
   },
   "skill": {
     "name": "Emergency Plan",
-    "names": ["Emergency Plan DMG", "Emergency Plan"],
-    "bonusType": ["s", "c"],
-    "heal": [false, true],
-    "dmgType": ["atk", "hp"],
-    "scaling": [
-      [8.02, 8.68, 8.34, 10.26, 10.91, 11.67, 12.72, 13.77, 14.82, 15.94],
-      [-575, -623, -670, -736, -783, -837, -913, -988, -1064, -1144]
-    ],
-    "multiplier": [1, 1],
-    "second": [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [2.9, 3.14, 3.37, 3.71, 3.94, 4.22, 4.6, 4.98, 5.36, 5.76]
-    ],
-    "secondMultiplier": [0, 1],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Emergency Plan DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [8.02, 8.68, 9.34, 10.26, 10.91, 11.67, 12.72, 13.77, 14.82, 15.94] }
+        ]
+      },
+      {
+        "name": "Emergency Plan Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [575, 623, 670, 736, 783, 837, 913, 988, 1064, 1144] },
+          { "stat": "hp", "values": [2.9, 3.14, 3.37, 3.71, 3.94, 4.22, 4.6, 4.98, 5.36, 5.76] }
+        ]
+      }
+    ]
   },
   "liberation": {
-    "name": "Remnant Entities",
-    "names": ["Remnant Entities (DMG)", "Remnant Entities", "Momentary Union"],
-    "bonusType": ["l", "c", "c"],
-    "heal": [false, true, true],
-    "dmgType": ["hp", "hp", "hp"],
-    "scaling": [
-      [2.05, 2.22, 2.39, 2.62, 2.79, 2.98, 3.25, 3.52, 3.79, 4.07],
-      [-349, -378, -406, -446, -475, -508, -554, -599, -645, -694],
-      [-310, -336, -361, -397, -422, -452, -492, -533, -574, -617]
-    ],
-    "multiplier": [1, 4, 1],
-    "second": [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [1.42, 1.53, 1.65, 1.81, 1.93, 2.06, 2.25, 2.43, 2.62, 2.82],
-      [1.26, 1.36, 1.47, 1.61, 1.71, 1.83, 2, 2.16, 2.33, 2.51]
-    ],
-    "secondMultiplier": [0, 4, 1],
-    "third": [],
-    "thirdMultiplier": [0]
+    "name": "Momentary Union",
+    "hits": [
+      {
+        "name": "Remnant Entities Damage",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "hp", "values": [2.05,2.22, 2.39, 2.62, 2.79, 2.98, 3.25, 3.52, 3.79, 4.07] }
+        ]
+      },
+      {
+        "name": "Remnant Entities Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [349, 378, 406, 446, 475, 508, 554, 599, 645, 694] },
+          { "stat": "hp", "values": [1.42, 1.53, 1.65, 1.81, 1.93, 2.06, 2.25, 2.43, 2.62, 2.82] }
+        ]
+      },
+      {
+        "name": "Momentary Union Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [310, 336, 361, 397, 422, 452, 492, 533, 574, 617] },
+          { "stat": "hp", "values": [1.26, 1.36, 1.47, 1.61, 1.71, 1.83, 2, 2.16, 2.33, 2.51] }
+        ]
+      }
+    ]
   },
   "intro": {
     "name": "Overflowing Frost",
-    "names": ["Overflowing Frost (DMG)", "Overflowing Frost"],
-    "bonusType": ["i"],
-    "heal": [false, true],
-    "dmgType": ["atk", "hp"],
-    "scaling": [
-      [40, 43.28, 46.56, 51.16, 54.44, 58.21, 63.46, 68.7, 73.95, 79.53],
-      [-75, -82, -88, -96, -103, -110, -119, -129, -139, -150]
-    ],
-    "multiplier": [1, 1],
-    "second": [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0.38, 0.41, 0.44, 0.48, 0.51, 0.55, 0.6, 0.65, 0.7, 0.75]
-    ],
-    "secondMultiplier": [0, 1],
-    "third": [],
-    "thirdMultiplier": [0]
+    "hits": [
+      {
+        "name": "Overflowing Frost DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [40, 43.28, 46.56, 51.16, 54.44, 58.21, 63.46, 68.7, 73.95, 79.53] }
+        ]
+      },
+      {
+        "name": "Overflowing Frost Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [75, 82, 88, 96, 103, 110, 119, 129, 139, 150] },
+          { "stat": "hp", "values": [0.38, 0.41, 0.44, 0.48, 0.51, 0.55, 0.6, 0.65, 0.7, 0.75] }
+        ]
+      }
+    ]
   },
   "outro": {
     "name": "Rejuvinating Flow",
-    "names": ["Rejuvinating Flow"],
-    "bonusType": ["c"],
-    "heal": [true],
-    "dmgType": ["hp"],
-    "scaling": [
-      [1.54]
-    ],
-    "multiplier": [10],
-    "second": [],
-    "secondMultiplier": [],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Rejuvinating Flow Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "hp", "values": [1.54], "times": 10 }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Cycle of Life",
-    "names": ["Concentration Healing", "Inherent Skill: Stimulus Feedback"],
-    "bonusType": ["c", "c"],
-    "heal": [true, true],
-    "dmgType": ["hp", "hp"],
-    "shield": [],
-    "scaling": [
-      [-32, -34, -37, -40, -43, -46, -50, -54, -58, -63],
-      [0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]
-    ],
-    "multiplier": [1, 1],
-    "second": [
-      [0.16, 0.17, 0.18, 0.2, 0.21, 0.23, 0.25, 0.27, 0.29, 0.31],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    ],
-    "secondMultiplier": [1, 0],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Concentration Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [32, 34, 37, 40, 43, 46, 50, 54, 58, 63] },
+          { "stat": "hp", "values": [0.16, 0.17, 0.18, 0.2, 0.21, 0.23, 0.25, 0.27, 0.29, 0.31] }
+        ]
+      }
+    ]
   },
-  "rotation": [
-    { "section": "intro", "index": 0 },
-    { "section": "intro", "index": 1, "healing": true },
-    { "section": "basic", "index": 0 },
-    { "section": "basic", "index": 1 },
-    { "section": "basic", "index": 2 },
-    { "section": "basic", "index": 3 },
-    { "section": "skill", "index": 0 },
-    { "section": "skill", "index": 1, "healing": true },
-    { "section": "basic", "index": 0 },
-    { "section": "basic", "index": 1 },
-    { "section": "liberation", "index": 0 },
-    { "section": "liberation", "index": 1, "healing": true },
-    { "section": "liberation", "index": 2, "healing": true },
-    { "section": "outro", "index": 0, "healing": true }
-  ],
-  "rotationDesc": ["Intro: Overflowing Frost", "4x Basic Attack: Destined Promise", "Resonance Skill: Emergency Plan", "2x Basic Attack: Destined Promise", "Liberation: Remnant Entities", "Outro Skill: Rejuvinating Flow"],
-  "rotationColor": ["intro", "basic", "skill", "basic", "liberation", "outro"],
-  "rotationCommands": ["mb", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "e", "cv", "mb", "cv", "mb", "cv", "r"],
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
   "echo4": ["Healing %"],
   "echo3": ["Energy Regen %"],
   "echo1": ["HP %"],

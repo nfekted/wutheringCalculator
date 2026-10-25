@@ -1,18 +1,14 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
-import { DecimalPipe } from '@angular/common';
+import { DecimalPipe, NgTemplateOutlet } from '@angular/common';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { PartResult } from '../core/damage-engine';
 import { SectionKey } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
-
-interface Hit {
-  value: number;
-  multiplier: number;
-}
 
 /** Damage (or healing) of every hit of one skill section. */
 @Component({
   selector: 'app-damage-table',
-  imports: [DecimalPipe, TranslocoPipe],
+  imports: [DecimalPipe, NgTemplateOutlet, TranslocoPipe],
   changeDetection: ChangeDetectionStrategy.Eager,
   host: { class: 'block overflow-x-auto' },
   template: `
@@ -26,52 +22,72 @@ interface Hit {
         </tr>
       </thead>
       <tbody>
-        @for (i of rows(); track i) {
+        @for (hit of hits(); track $index; let i = $index) {
           <tr>
-            <th scope="row" class="font-medium text-ink">{{ skill().names[i] }}</th>
+            <th scope="row" class="font-medium text-ink">{{ hit.name }}</th>
             <td [class.text-ink]="!isHeal(i) && !isShield(i)" [class.text-heal]="isHeal(i)" [class.text-shield]="isShield(i)">
-              @for (hit of hits(i); track $index) {
+              @for (line of lines(i); track $index) {
                 <div>
-                  @if (!$first) { <span class="text-mute">+ </span> }
-                  @if (hit.multiplier > 1) { <small class="text-mute">{{ hit.multiplier }}x </small> }
-                  {{ isValid(hit.value) ? hit.value : '–' }}
-                  @if (!isHeal(i) && isValid(hit.value)) {
-                    <span class="text-mute">({{ crit(hit.value) | number: '1.0-0' }})</span>
-                  }
+                  <ng-container *ngTemplateOutlet="prefix; context: { line: line, first: $first }" />
+                  @if (isValid(line.value)) {
+                    {{ line.value }}
+                    @if (!isHeal(i)) { <span class="text-mute">({{ crit(line.value) | number: '1.0-0' }})</span> }
+                  } @else { – }
                 </div>
+              } @empty { – }
+            </td>
+            <td>
+              @if (!isHeal(i)) {
+                @for (line of lines(i); track $index) {
+                  <div>
+                    <ng-container *ngTemplateOutlet="prefix; context: { line: line, first: $first }" />
+                    <ng-container *ngTemplateOutlet="range; context: { range: line.common }" />
+                  </div>
+                } @empty { – }
               }
             </td>
             <td>
-              @if (!isHeal(i)) { <div [innerHtml]="range(i, false)"></div> }
-            </td>
-            <td>
-              @if (!isHeal(i)) { <div [innerHtml]="range(i, true)"></div> }
+              @if (!isHeal(i)) {
+                @for (line of lines(i); track $index) {
+                  <div>
+                    <ng-container *ngTemplateOutlet="prefix; context: { line: line, first: $first }" />
+                    <ng-container *ngTemplateOutlet="range; context: { range: line.resistant }" />
+                  </div>
+                } @empty { – }
+              }
             </td>
           </tr>
         }
       </tbody>
     </table>
+
+    <!-- "+ " between the lines of a hit and the "4x " of a repeated one -->
+    <ng-template #prefix let-line="line" let-first="first">
+      @if (!first) { <span class="text-mute">+ </span> }
+      @if (line.times > 1) { <small class="text-mute">{{ line.times }}x </small> }
+    </ng-template>
+
+    <ng-template #range let-range="range">
+      @if (isValid(range.min)) {
+        {{ range.min }} ~ {{ range.max }} (<b>{{ range.critMin }} ~ {{ range.critMax }}</b>)
+      } @else { – }
+    </ng-template>
   `
 })
 export class DamageTableComponent {
   character = input.required<Character>();
   section = input.required<SectionKey>();
-  /** Sum every hit of a row instead of listing them one by one */
+  /** Sum every part of a hit instead of listing them one by one */
   total = input(false);
 
-  protected skill = computed(() => this.character().data[this.section()]);
-  /** Hits with every level at zero are placeholders (e.g. skills a character does not have) */
-  protected rows = computed(() => {
-    const scaling = this.skill().scaling;
-    return scaling.map((levels, i) => i).filter(i => scaling[i].some(v => v !== 0));
-  });
+  protected hits = computed(() => this.character().data[this.section()].hits);
 
   protected isHeal(i: number): boolean {
-    return !!this.skill().heal?.[i];
+    return this.hits()[i].kind === 'heal';
   }
 
   protected isShield(i: number): boolean {
-    return !this.isHeal(i) && !!this.skill().shield?.[i];
+    return this.hits()[i].kind === 'shield';
   }
 
   /** Hits built from incomplete character data come out as NaN or undefined */
@@ -83,22 +99,10 @@ export class DamageTableComponent {
     return value * (this.character().cDmg / 100);
   }
 
-  protected hits(i: number): Hit[] {
-    const skill = this.skill();
-    const result = this.character().results[this.section()];
-    if (this.total()) return [{ value: result.sum[i], multiplier: 1 }];
-
-    const hits: Hit[] = [{ value: result.dmg[i], multiplier: skill.multiplier[i] }];
-    if (result.second[i] > 0) hits.push({ value: result.second[i], multiplier: skill.secondMultiplier[i] });
-    if (result.third[i] > 0) hits.push({ value: result.third[i], multiplier: skill.thirdMultiplier[i] });
-    return hits;
-  }
-
-  protected range(i: number, resistant: boolean): string {
-    const result = this.character().results[this.section()];
-    const text = this.total()
-      ? (resistant ? result.sumRes[i] : result.sumCommon[i])
-      : (resistant ? result.res[i] : result.common[i]);
-    return text && !text.includes('NaN') ? text : '–';
+  /** What is listed for a hit: each part, or only their total. Not computed: the character is mutated in place. */
+  protected lines(i: number): PartResult[] {
+    const result = this.character().results[this.section()][i];
+    if (!result) return [];
+    return this.total() ? [{ value: result.sum, times: 1, common: result.commonSum, resistant: result.resistantSum }] : result.parts;
   }
 }

@@ -1,4 +1,4 @@
-import { CharacterData, SectionKey, SkillData } from '../data/character-data.model';
+import { CharacterData, Hit, HitKind, PartStat, SectionKey } from '../data/character-data.model';
 
 export interface Stats {
   dmg: number;
@@ -11,6 +11,7 @@ export interface Stats {
   heavyBonus: number;
   skillBonus: number;
   liberationBonus: number;
+  echoBonus: number;
   healingBonus: number;
 }
 
@@ -22,140 +23,93 @@ export interface Levels {
   forte: number;
 }
 
-export interface SectionResult {
-  /** Expected damage of the first hit */
-  dmg: number[];
-  second: number[];
-  third: number[];
-  /** Damage range text (vs. common enemy / vs. resistant enemy) */
-  common: string[];
-  res: string[];
-  /** Total of all hits, multipliers included */
-  sum: number[];
-  sumCommon: string[];
-  sumRes: string[];
-  healing: number[];
+/** Damage range of a hit: without and with a crit */
+export interface DamageRange {
+  min: number;
+  max: number;
+  critMin: number;
+  critMax: number;
 }
 
-export type CharacterResults = Record<SectionKey, SectionResult>;
-
-interface SectionRules {
-  /** Skill level used by the first hit, second and third hits */
-  level: (levels: Levels) => number;
-  secondLevel: (levels: Levels) => number;
-  hasThird: boolean;
-  /** Bonus comes from the bonus type (true) or only from healing (false) */
-  bonusByType: boolean;
-  /** Hits can scale from HP/DEF and be healing */
-  scalesByType: boolean;
+/** One part of a hit (e.g. the flat part of a "575 + 2.90%" heal) */
+export interface PartResult {
+  /** Expected value of one landing */
+  value: number;
+  times: number;
+  /** One landing against a common enemy / a resistant one */
+  common: DamageRange;
+  resistant: DamageRange;
 }
 
-// The outro skill has a single value and no level, so both of its hits use level 1.
-const RULES: Record<SectionKey, SectionRules> = {
-  basic: { level: l => l.basic, secondLevel: l => l.basic, hasThird: true, bonusByType: true, scalesByType: false },
-  skill: { level: l => l.skill, secondLevel: l => l.skill, hasThird: true, bonusByType: true, scalesByType: true },
-  liberation: { level: l => l.liberation, secondLevel: l => l.liberation, hasThird: false, bonusByType: true, scalesByType: true },
-  intro: { level: l => l.intro, secondLevel: l => l.intro, hasThird: false, bonusByType: false, scalesByType: true },
-  outro: { level: () => 1, secondLevel: () => 1, hasThird: false, bonusByType: false, scalesByType: true },
-  forte: { level: l => l.forte, secondLevel: l => l.forte, hasThird: true, bonusByType: true, scalesByType: true },
-};
-
-const SECTIONS = Object.keys(RULES) as SectionKey[];
-
-function emptySection(): SectionResult {
-  return { dmg: [], second: [], third: [], common: [], res: [], sum: [], sumCommon: [], sumRes: [], healing: [] };
+export interface HitResult {
+  parts: PartResult[];
+  /** Total of every part, times included */
+  sum: number;
+  /** Totals against a common enemy / a resistant one */
+  commonSum: DamageRange;
+  resistantSum: DamageRange;
 }
+
+export type CharacterResults = Record<SectionKey, HitResult[]>;
+
+const SECTIONS: SectionKey[] = ['basic', 'skill', 'liberation', 'intro', 'outro', 'forte'];
 
 export function emptyResults(): CharacterResults {
   const results = {} as CharacterResults;
-  for (const key of SECTIONS) results[key] = emptySection();
+  for (const key of SECTIONS) results[key] = [];
   return results;
 }
 
-export function calculateResults(data: CharacterData, stats: Stats, levels: Levels): CharacterResults {
+/** `mode` is the index in `data.modes`: the second mode uses the `altKind` of the hits that have one */
+export function calculateResults(data: CharacterData, stats: Stats, levels: Levels, mode = 0): CharacterResults {
   const results = {} as CharacterResults;
   for (const key of SECTIONS) {
-    results[key] = calculateSection(data[key], RULES[key], stats, levels);
+    // The outro skill has no level
+    const level = key === 'outro' ? 1 : levels[key];
+    results[key] = data[key].hits.map(hit => calculateHit(hit, mode > 0 && hit.altKind ? hit.altKind : hit.kind, stats, level));
   }
   return results;
 }
 
-function calculateSection(skill: SkillData, rules: SectionRules, stats: Stats, levels: Levels): SectionResult {
-  const result = emptySection();
-  const crit = stats.cDmg;
-  const level = rules.level(levels) - 1;
-  const secondLevel = rules.secondLevel(levels) - 1;
+function calculateHit(hit: Hit, kind: HitKind, stats: Stats, level: number): HitResult {
+  const elemental = kind === 'heal' || kind === 'shield' ? 0 : stats.elementalBonus;
+  const bonus = 100 + elemental + bonusOf(stats, kind);
 
-  for (let i = 0; i < skill.scaling.length; i++) {
-    const heal = !!skill.heal?.[i];
-    const base = rules.scalesByType ? scalingStat(stats, skill.dmgType?.[i]) : stats.dmg;
-    const bonus = rules.bonusByType ? bonusOf(stats, skill.bonusType[i]) : (heal ? stats.healingBonus : 1);
-    const elemental = heal ? 0 : stats.elementalBonus;
+  const parts = hit.parts.map(part => {
+    // A skill without levels has a single value
+    const raw = part.values.length === 1 ? part.values[0] : part.values[level - 1];
+    const expected = (part.stat === 'flat' ? raw : statOf(stats, part.stat) * (raw / 100)) * (bonus / 100);
+    return {
+      value: +expected.toFixed(0),
+      times: part.times ?? 1,
+      common: getRangeDamage(expected, false, stats.cDmg),
+      resistant: getRangeDamage(expected, true, stats.cDmg),
+    };
+  });
 
-    const ex = getExpected(base, skill.scaling[i], level, elemental, bonus);
-    result.dmg[i] = +ex.toFixed(0);
-    let multiplier = skill.multiplier[i];
-    result.sum[i] = result.dmg[i] * multiplier;
-    if (heal) result.healing[i] = result.sum[i];
+  return {
+    parts,
+    sum: parts.reduce((total, p) => total + p.value * p.times, 0),
+    commonSum: sumRanges(parts.map(p => multRange(p.common, p.times))),
+    resistantSum: sumRanges(parts.map(p => multRange(p.resistant, p.times))),
+  };
+}
 
-    let commonSum = getRangeDamage(ex, false, crit);
-    let resSum = getRangeDamage(ex, true, crit);
-    result.common[i] = multiplierTag(multiplier) + getRangeString(commonSum);
-    result.res[i] = multiplierTag(multiplier) + getRangeString(resSum);
-    commonSum = multArray(commonSum, multiplier);
-    resSum = multArray(resSum, multiplier);
+function statOf(stats: Stats, stat: Exclude<PartStat, 'flat'>): number {
+  return stat === 'hp' ? stats.hp : stat === 'def' ? stats.def : stats.dmg;
+}
 
-    const extras = [{ table: skill.second, store: result.second, multipliers: skill.secondMultiplier }];
-    if (rules.hasThird) extras.push({ table: skill.third, store: result.third, multipliers: skill.thirdMultiplier });
-
-    for (const { table, store, multipliers } of extras) {
-      if (table.length === 0) continue;
-      const hit = store[i] = +getExpected(base, table[i], secondLevel, elemental, bonus).toFixed(0);
-      if (hit > 0) {
-        multiplier = multipliers[i];
-        result.sum[i] += hit * multiplier;
-        if (heal) result.healing[i] += hit * multiplier;
-
-        let range = getRangeDamage(hit, false, crit);
-        result.common[i] += `<br/>+<br/>${multiplierTag(multiplier)}${getRangeString(range)}`;
-        commonSum = sumArray(commonSum, multArray(range, multiplier));
-
-        range = getRangeDamage(hit, true, crit);
-        result.res[i] += `<br/>+<br/>${multiplierTag(multiplier)}${getRangeString(range)}`;
-        resSum = sumArray(resSum, multArray(range, multiplier));
-      }
-    }
-
-    result.sumCommon[i] = getRangeString(commonSum);
-    result.sumRes[i] = getRangeString(resSum);
+/** Damage bonus (in %) that applies to a kind of hit; intro, outro and shield have none */
+function bonusOf(stats: Stats, kind: HitKind): number {
+  switch (kind) {
+    case 'basic': return stats.basicBonus;
+    case 'heavy': return stats.heavyBonus;
+    case 'skill': return stats.skillBonus;
+    case 'liberation': return stats.liberationBonus;
+    case 'echo': return stats.echoBonus;
+    case 'heal': return stats.healingBonus;
+    default: return 0;
   }
-
-  return result;
-}
-
-function scalingStat(stats: Stats, type?: string): number {
-  return type === 'hp' ? stats.hp : type === 'def' ? stats.def : stats.dmg;
-}
-
-function bonusOf(stats: Stats, type: string): number {
-  switch (type) {
-    case 'b': return stats.basicBonus;
-    case 'h': return stats.heavyBonus;
-    case 's': return stats.skillBonus;
-    case 'l': return stats.liberationBonus;
-    case 'c': return stats.healingBonus;
-    default: return 1;
-  }
-}
-
-function multiplierTag(multiplier: number): string {
-  return multiplier > 1 ? `<small>${multiplier}x </small>` : '';
-}
-
-function getExpected(dmg: number, multiplierRange: number[], upgradeLevel: number, elementalBonus: number, damageBonus: number): number {
-  const bonus = 100 + elementalBonus + damageBonus;
-  const value = multiplierRange[upgradeLevel];
-  return (value < 0 ? value * -1 : dmg * (value / 100)) * (bonus / 100);
 }
 
 /*
@@ -168,23 +122,28 @@ const DAMAGE_SPREAD_MAX = 1.065;
 const ENEMY_MITIGATION_COMMON = 0.49;
 const ENEMY_MITIGATION_RESISTANT = 0.33;
 
-/** @returns [min, max, min Crit, max Crit] */
-function getRangeDamage(ex: number, resistance: boolean, critDmg: number): number[] {
-  const res = resistance ? ENEMY_MITIGATION_RESISTANT : ENEMY_MITIGATION_COMMON;
-  const minValue = +(ex * DAMAGE_SPREAD_MIN * res).toFixed(0);
-  const maxValue = +(ex * DAMAGE_SPREAD_MAX * res).toFixed(0);
+function getRangeDamage(expected: number, resistance: boolean, critDmg: number): DamageRange {
+  const mitigation = resistance ? ENEMY_MITIGATION_RESISTANT : ENEMY_MITIGATION_COMMON;
+  const min = +(expected * DAMAGE_SPREAD_MIN * mitigation).toFixed(0);
+  const max = +(expected * DAMAGE_SPREAD_MAX * mitigation).toFixed(0);
   const crit = critDmg / 100;
-  return [minValue, maxValue, +(minValue * crit).toFixed(0), +(maxValue * crit).toFixed(0)];
+  return { min, max, critMin: +(min * crit).toFixed(0), critMax: +(max * crit).toFixed(0) };
 }
 
-function getRangeString(damages: number[]): string {
-  return `${damages[0]} ~ ${damages[1]} (<b>${damages[2]} ~ ${damages[3]}</b>)`;
+function multRange(range: DamageRange, value: number): DamageRange {
+  return {
+    min: +(range.min * value).toFixed(0),
+    max: +(range.max * value).toFixed(0),
+    critMin: +(range.critMin * value).toFixed(0),
+    critMax: +(range.critMax * value).toFixed(0),
+  };
 }
 
-function sumArray(a: number[], b: number[]): number[] {
-  return a.map((num, index) => num + b[index]);
-}
-
-function multArray(a: number[], value: number): number[] {
-  return a.map(num => +(num * value).toFixed(0));
+function sumRanges(ranges: DamageRange[]): DamageRange {
+  return ranges.reduce((total, r) => ({
+    min: total.min + r.min,
+    max: total.max + r.max,
+    critMin: total.critMin + r.critMin,
+    critMax: total.critMax + r.critMax,
+  }));
 }

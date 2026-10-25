@@ -7,10 +7,12 @@
         <input type="radio" name="mode" class="sr-only" [checked]="enhancerBasic" (change)="setMode(true)" />
         {{ 'char.enhancer.enhancerBasic' | transloco }}
       </label>
-      <label class="ui-option">
-        <input type="radio" name="mode" class="sr-only" [checked]="enhancerSkill" (change)="setMode(false)" />
-        {{ 'char.enhancer.enhancerSkill' | transloco }}
-      </label>
+      @if (hasRotation) {
+        <label class="ui-option">
+          <input type="radio" name="mode" class="sr-only" [checked]="enhancerSkill" (change)="setMode(false)" />
+          {{ 'char.enhancer.enhancerSkill' | transloco }}
+        </label>
+      }
       <label class="ui-option">
         <input type="checkbox" class="sr-only" [(ngModel)]="randomCrit" (change)="recalculateAll()" />
         {{ 'char.enhancer.enhancerCrit' | transloco }}
@@ -49,9 +51,9 @@
     <div class="flex flex-wrap items-center justify-between gap-2">
       <h3 class="text-sm font-bold text-ink">{{ 'char.enhancer.compareWith' | transloco }}</h3>
       <div class="flex gap-2">
-        @if (character().canHeal) {
-          <button type="button" class="ui-btn ui-btn-secondary" (click)="character().healType = !character().healType; recalculateAll()">
-            {{ (character().healType ? 'char.enhancer.canHealDMG' : 'char.enhancer.canHealHeal') | transloco }}
+        @if (character().data.hasHealing) {
+          <button type="button" class="ui-btn ui-btn-secondary" (click)="character().showHealing = !character().showHealing; recalculateAll()">
+            {{ (character().showHealing ? 'char.enhancer.canHealDMG' : 'char.enhancer.canHealHeal') | transloco }}
           </button>
         }
         <button type="button" class="ui-btn ui-btn-primary" (click)="recalculateAll()">{{ 'char.enhancer.calculate' | transloco }}</button>
@@ -99,10 +101,10 @@
         @if (!randomCrit && !enhancerSkill) {
           <div [innerHTML]="'char.enhancer.fixedCritInfo' | transloco: { chance: chance, qtd: qtd, normal: 20 - qtd }"></div>
         }
-        @if (enhancerSkill && !randomCrit && (!character().healType || character().damageHealer)) {
+        @if (enhancerSkill && !randomCrit && (!character().showHealing || character().data.primaryDamage)) {
           <div [innerHTML]="'char.enhancer.rotationCritInfo' | transloco: { atkNum: character().data.rotation.length, chance: chance, qtd: qtd, normal: character().data.rotation.length - qtd }"></div>
         }
-        @if (enhancerSkill && character().healType && !character().damageHealer) {
+        @if (enhancerSkill && character().showHealing && !character().data.primaryDamage) {
           <div>{{ 'char.enhancer.healingInfo' | transloco }}</div>
         }
         @if (randomCrit) {

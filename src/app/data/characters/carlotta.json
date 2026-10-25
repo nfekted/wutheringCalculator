@@ -2,176 +2,219 @@
   "id": "carlotta",
   "name": "Carlotta",
   "icon": "carlotta",
-  "wiki": "https://wutheringwaves.fandom.com/wiki/Carlotta",
   "type": "glacio",
   "weapon": "pistols",
-  "lastUpdate": "2025-02-25T21:50:00.000Z",
-  "damageHealer": false,
-  "healType": false,
-  "canHeal": false,
+  "lastUpdate": "2026-10-22T10:02:12.382Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
   "hpScale": false,
   "defScale": false,
   "basic": {
     "name": "Silent Execution",
-    "names": ["Silent Execution: DMG 1", "Silent Execution: DMG 2", "Necessary Measures: DMG 1", "Necessary Measures: DMG 2", "Necessary Measures: DMG 3", "Containment Tactics", "Customary Greetings", "Mid-Air Attack", "Dodge Damage", "Heavy Attack"],
-    "bonusType": ["b", "b", "b", "b", "b", "h", "b", "b", "b", "h"],
-    "scaling": [
-      [27.2, 29.44, 31.67, 34.79, 37.02, 39.58, 43.15, 46.72, 50.29, 54.08],
-      [19.89, 21.53, 23.16, 25.44, 27.07, 28.95, 31.56, 34.17, 36.78],
-      [33.15, 35.87, 38.59, 42.4, 45.12, 48.24, 52.59, 56.94, 61.29, 65.91],
-      [30.22, 32.7, 35.18, 38.65, 41.12, 43.97, 47.94, 51.9, 55.87, 60.08],
-      [70.38, 76.16, 81.93, 90.01, 95.78, 102.41, 111.65, 120.88, 130.12, 139.93],
-      [17.22, 18.63, 20.04, 22.02, 23.43, 25.05, 27.31, 29.57, 31.83, 34.23],
-      [54.32, 58.77, 63.23, 69.46, 73.92, 79.04, 86.16, 93.29, 100.42, 107.99],
-      [52.7, 57.03, 61.35, 67.4, 71.72, 76.69, 83.6, 90.52, 97.43, 104.78],
-      [52.2, 56.48, 60.76, 66.75, 71.03, 75.95, 82.8, 89.65, 96.49, 103.77],
-      [11.48, 12.42, 13.36, 14.68, 15.62, 16.7, 18.21, 19.71, 21.22, 22.82]
-    ],
-    "multiplier": [1, 1, 1, 1, 1, 2, 1, 1, 1, 2],
-    "second": [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [19.89, 21.53, 23.16, 25.44, 27.07, 28.95, 31.56, 34.17, 36.78],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [36.94, 39.97, 42.99, 47.23, 50.26, 53.75, 58.59, 63.44, 68.28, 73.43],
-      [11.73, 12.7, 13.66, 15.01, 15.97, 17.07, 18.61, 20.15, 21.69, 23.33],
-      [17.22, 18.63, 20.04, 22.02, 23.43, 25.05, 27.31, 29.57, 31.83, 34.23],
-      [66.39, 71.83, 77.28, 84.9, 90.34, 96.6, 105.31, 114.02, 122.73, 131.99],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [69.19, 74.86, 80.54, 88.48, 94.15, 100.68, 109.76, 118.83, 127.91, 137.55],
-      [11.48, 12.42, 13.36, 14.68, 15.62, 16.7, 18.21, 19.71, 21.22, 22.82]
-    ],
-    "secondMultiplier": [0, 1, 0, 1, 4, 2, 1, 0, 1, 2],
-    "third": [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [26.52, 28.7, 30.87, 33.92, 36.09, 38.59, 42.07, 45.55, 49.03, 52.73],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [45.9, 49.67, 53.43, 58.7, 62.47, 66.79, 72.82, 78.84, 84.86, 91.26],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [30.6, 33.11, 35.62, 39.14, 41.65, 44.53, 48.55, 52.56, 56.58, 60.84]
-    ],
-    "thirdMultiplier": [0, 1, 0, 0, 0, 1, 0, 0, 0, 1],
-    "ends": 5
+    "hits": [
+      {
+        "name": "Silent Execution DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [27.2, 29.44, 31.67, 34.79, 37.02, 39.58, 43.15, 46.72, 50.29, 54.08] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Silent Execution DMG 2",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [19.89, 21.53, 23.16, 25.44, 27.07, 28.95, 31.56, 34.17, 36.78, 39.55] },
+          { "stat": "atk", "values": [19.89, 21.53, 23.16, 25.44, 27.07, 28.95, 31.56, 34.17, 36.78, 39.55] },
+          { "stat": "atk", "values": [26.52, 28.7, 30.87, 33.92, 36.09, 38.59, 42.07, 45.55, 49.03, 52.73] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Necessary Measures Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [33.15, 35.87, 38.59, 42.4, 45.12, 48.24, 52.59, 56.94, 61.29, 65.91] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Necessary Measures Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [30.22, 32.7, 35.18, 38.65, 41.12, 43.97, 47.94, 51.9, 55.87, 60.08] },
+          { "stat": "atk", "values": [36.94, 39.97, 42.99, 47.23, 50.26, 53.75, 58.59, 63.44, 68.28, 73.43] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Necessary Measures Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [70.38, 76.16, 81.93, 90.01, 95.78, 102.41, 111.65, 120.88, 130.12, 139.93] },
+          {
+            "stat": "atk",
+            "values": [11.73, 12.7, 13.66, 15.01, 15.97, 17.07, 18.61, 20.15, 21.69, 23.33],
+            "times": 4
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [11.48, 12.42, 13.36, 14.68, 15.62, 16.7, 18.21, 19.71, 21.22, 22.82],
+            "times": 2
+          },
+          {
+            "stat": "atk",
+            "values": [11.48, 12.42, 13.36, 14.68, 15.62, 16.7, 18.21, 19.71, 21.22, 22.82],
+            "times": 2
+          },
+          { "stat": "atk", "values": [30.6, 33.11, 35.62, 39.14, 41.65, 44.53, 48.55, 52.56, 56.58, 60.84] }
+        ]
+      },
+      {
+        "name": "Containment Tactics DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [17.22, 18.63, 20.04, 22.02, 23.43, 25.05, 27.31, 29.57, 31.83, 34.23],
+            "times": 2
+          },
+          {
+            "stat": "atk",
+            "values": [17.22, 18.63, 20.04, 22.02, 23.43, 25.05, 27.31, 29.57, 31.83, 34.23],
+            "times": 2
+          },
+          { "stat": "atk", "values": [45.9, 49.67, 53.43, 58.7, 62.47, 66.79, 72.82, 78.84, 84.86, 91.26] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [52.7, 57.03, 61.35, 67.4, 71.72, 76.69, 83.6, 90.52, 97.43, 104.78] }
+        ]
+      },
+      {
+        "name": "Customary Greetings DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [54.32, 58.77, 63.23, 69.46, 73.92, 79.04, 86.16, 93.29, 100.42, 107.99] },
+          { "stat": "atk", "values": [66.39, 71.83, 77.28, 84.9, 90.34, 96.6, 105.31, 114.02, 122.73, 131.99] }
+        ]
+      }
+    ]
   },
   "skill": {
     "name": "Art of Violence",
-    "names": ["Mist Bullets", "Chromatic Splendor"],
-    "bonusType": ["s", "s"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [72.49, 78.43, 84.37, 92.69, 98.64, 105.47, 114.98, 124.49, 134, 144.11],
-      [56.7, 61.35, 66, 72.51, 77.16, 82.51, 89.95, 97.39, 104.83, 112.73]
-    ],
-    "multiplier": [1],
-    "second": [
-      [72.49, 78.43, 84.37, 92.69, 98.64, 105.47, 114.98, 124.49, 134, 144.11],
-      [56.7, 61.35, 66, 72.51, 77.16, 82.51, 89.95, 97.39, 104.83, 112.73]
-    ],
-    "secondMultiplier": [],
-    "third": [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [170.1, 184.05, 198, 217.53, 231.48, 247.52, 269.83, 292.15, 314.47, 338.18]
-    ],
-    "thirdMultiplier": [0, 1]
+    "hits": [
+      {
+        "name": "Art of Violence DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [72.49, 78.43, 84.37, 92.69, 98.64, 105.47, 114.98, 124.49, 134, 144.11] },
+          { "stat": "atk", "values": [72.49, 78.43, 84.37, 92.69, 98.64, 105.47, 114.98, 124.49, 134, 144.11] }
+        ]
+      },
+      {
+        "name": "Chromatic Splendor DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [56.7, 61.35, 66, 72.51, 77.16, 82.51, 89.95, 97.39, 104.83, 112.73] },
+          { "stat": "atk", "values": [56.7, 61.35, 66, 72.51, 77.16, 82.51, 89.95, 97.39, 104.83, 112.73] },
+          { "stat": "atk", "values": [170.1, 184.05, 198, 217.53, 231.48, 247.52, 269.83, 292.15, 314.47, 338.18] }
+        ]
+      }
+    ]
   },
   "liberation": {
     "name": "Era of New Wave",
-    "names": ["Era of New Wave", "Death Knell", "Fatal Finale"],
-    "bonusType": ["s", "s", "s"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [202.56, 219.17, 235.78, 259.03, 275.64, 294.74, 321.32, 347.89, 374.47, 402.71],
-      [92.37, 99.94, 107.52, 118.12, 125.7, 134.41, 146.52, 158.64, 170.76, 183.64],
-      [324.09, 350.67, 377.24, 414.45, 441.03, 471.59, 514.11, 556.63, 599.15, 644.33]
-    ],
-    "multiplier": [1, 1, 1],
-    "second": [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [7.3, 7.89, 8.49, 9.33, 9.93, 10.62, 11.57, 12.53, 13.49, 14.5],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    ],
-    "secondMultiplier": [0, 4, 0],
-    "third": [],
-    "thirdMultiplier": [0]
+    "hits": [
+      {
+        "name": "Era of New Wave DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [202.56, 219.17, 235.78, 259.03, 275.64, 294.74, 321.32, 347.89, 374.47, 402.71] }
+        ]
+      },
+      {
+        "name": "Death Knell DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [92.37, 99.94, 107.52, 118.12, 125.7, 134.41, 146.52, 158.64, 170.76, 183.64] },
+          {
+            "stat": "atk",
+            "values": [7.3, 7.89, 8.49, 9.33, 9.93, 10.62, 11.57, 12.53, 13.49, 14.5],
+            "times": 4
+          }
+        ]
+      },
+      {
+        "name": "Fatal Finale DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [324.09, 350.67, 377.24, 414.45, 441.03, 471.59, 514.11, 556.63, 599.15, 644.33] }
+        ]
+      }
+    ]
   },
   "intro": {
     "name": "Wintertime Aria",
-    "names": ["Wintertime Aria"],
-    "bonusType": ["i"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [90, 97.38, 104.76, 115.1, 122.48, 130.96, 142.77, 154.58, 166.39, 178.93]
-    ],
-    "multiplier": [1],
-    "second": [
-      [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65]
-    ],
-    "secondMultiplier": [2],
-    "third": [],
-    "thirdMultiplier": [0]
+    "hits": [
+      {
+        "name": "Wintertime Aria DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [90, 97.38, 104.76, 115.1, 122.48, 130.96, 142.77, 154.58, 166.39, 178.93] },
+          {
+            "stat": "atk",
+            "values": [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65],
+            "times": 2
+          }
+        ]
+      }
+    ]
   },
   "outro": {
     "name": "Closing Remark",
-    "names": ["Closing Remark"],
-    "bonusType": ["o"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [794.2]
-    ],
-    "multiplier": [1],
-    "second": [],
-    "secondMultiplier": [],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Closing Remark DMG",
+        "kind": "outro",
+        "parts": [
+          { "stat": "atk", "values": [794.2] }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Lethal Repertoire",
-    "names": ["Imminent Oblivion"],
-    "bonusType": ["s"],
-    "heal": [],
-    "dmgType": [],
-    "shield": [],
-    "scaling": [
-      [33.62, 36.38, 39.13, 42.99, 45.75, 48.92, 53.33, 57.74, 62.15, 66.83]
-    ],
-    "multiplier": [5],
-    "second": [
-      [252.11, 272.78, 293.45, 322.39, 343.07, 366.84, 399.92, 432.99, 466.07, 501.21]
-    ],
-    "secondMultiplier": [1],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Imminent Oblivion DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [33.62, 36.38, 39.13, 42.99, 45.75, 48.92, 53.33, 57.74, 62.15, 66.83],
+            "times": 5
+          },
+          { "stat": "atk", "values": [252.11, 272.78, 293.45, 322.39, 343.07, 366.84, 399.92, 432.99, 466.07, 501.21] }
+        ]
+      }
+    ]
   },
-  "rotation": [
-    { "section": "intro", "index": 0 },
-    { "section": "basic", "index": 9 },
-    { "section": "basic", "index": 2 },
-    { "section": "basic", "index": 3 },
-    { "section": "basic", "index": 4 },
-    { "section": "skill", "index": 0 },
-    { "section": "skill", "index": 1 },
-    { "section": "basic", "index": 7 },
-    { "section": "basic", "index": 5 },
-    { "section": "liberation", "index": 0 },
-    { "section": "liberation", "index": 1 },
-    { "section": "liberation", "index": 1 },
-    { "section": "liberation", "index": 1 },
-    { "section": "liberation", "index": 1 },
-    { "section": "liberation", "index": 2 },
-    { "section": "skill", "index": 0 },
-    { "section": "skill", "index": 1 },
-    { "section": "outro", "index": 0 }
-  ],
-  "rotationDesc": ["Intro:Wintertime Aria", "Heavy Attack", "3x Basic Attack: Necessary Measures", "Resonance Skill: Art of Violence", "Resonance Skill: Chromatic Splendor", "Mid-Air Attack", "Heavy Attack: Containment Tactics", "Resonance Liberation", "4x Basic Attack Liberation", "Basic Attack Liberation: Fatal Finalle", "Resonance Skill: Art of Violence", "Resonance Skill: Chromatic Splendor", "Outro Skill"],
-  "rotationColor": ["intro", "heavy", "basic", "skill", "skill", "basic", "heavy", "liberation", "liberation", "liberation", "skill", "skill", "outro"],
-  "rotationCommands": ["mbh", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "e", "cv", "e", "cv", "mb", "cv", "mbh", "cv", "r", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "e", "cv", "e"],
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["GLACIO DMG %", "ATK %"],
   "echo1": ["ATK %"],

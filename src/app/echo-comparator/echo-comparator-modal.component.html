@@ -78,9 +78,9 @@
         {{ 'char.echo.results' | transloco }}
       </h3>
 
-      @if (character().canHeal) {
-        <button type="button" class="ui-btn ui-btn-secondary" (click)="healType = !healType; calculate()">
-          {{ (healType ? 'char.enhancer.canHealDMG' : 'char.enhancer.canHealHeal') | transloco }}
+      @if (character().data.hasHealing) {
+        <button type="button" class="ui-btn ui-btn-secondary" (click)="showHealing = !showHealing; calculate()">
+          {{ (showHealing ? 'char.enhancer.canHealDMG' : 'char.enhancer.canHealHeal') | transloco }}
         </button>
       }
 

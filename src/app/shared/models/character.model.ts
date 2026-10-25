@@ -7,9 +7,8 @@ export class Character implements Stats {
     data: CharacterData;
     name: string;
 
-    damageHealer: boolean;
-    healType: boolean;
-    canHeal: boolean;
+    /** Healing or damage view of the enhancer and the echo comparator */
+    showHealing: boolean;
     hpScale: boolean;
     defScale: boolean;
 
@@ -23,7 +22,11 @@ export class Character implements Stats {
     heavyBonus: number = 0;
     skillBonus: number = 0;
     liberationBonus: number = 0;
+    echoBonus: number = 0;
     healingBonus: number = 0;
+
+    /** Active way of playing, as an index in `data.modes` */
+    mode: number = 0;
 
     levels: Levels = { basic: 1, skill: 1, liberation: 1, intro: 1, forte: 1 };
     results: CharacterResults = emptyResults();
@@ -32,9 +35,7 @@ export class Character implements Stats {
         this.index = index;
         this.data = data;
         this.name = data.name;
-        this.damageHealer = data.damageHealer;
-        this.healType = data.healType;
-        this.canHeal = data.canHeal;
+        this.showHealing = data.hasHealing && !data.primaryDamage;
         this.hpScale = data.hpScale;
         this.defScale = data.defScale;
 
@@ -50,20 +51,31 @@ export class Character implements Stats {
             this.liberationBonus = load.liberationBonus;
             this.elementalBonus = load.elementalBonus;
             this.healingBonus = load.healingBonus;
+            this.echoBonus = load.echoBonus ?? 0;
+            this.mode = load.mode ?? 0;
             this.name = load.name;
             this.calculate();
         }
     }
 
     calculate() {
-        this.results = calculateResults(this.data, this, this.levels);
+        this.results = calculateResults(this.data, this, this.levels, this.mode);
+    }
+
+    /** Whether the active mode is the one with Echo damage */
+    get isEchoMode(): boolean {
+        return this.data.modes?.[this.mode] === 'echo';
     }
 
     /** Total damage (or healing) of a rotation step; steps without valid data count as 0 */
     rotationValue(step: RotationStep): number {
-        const result = this.results[step.section];
-        const value = (step.healing ? result.healing : result.sum)[step.index];
+        const value = this.results[step.section][step.index]?.sum;
         return Number.isFinite(value) ? value : 0;
+    }
+
+    /** Whether a rotation step is a healing hit */
+    isHealStep(step: RotationStep): boolean {
+        return this.data[step.section].hits[step.index]?.kind === 'heal';
     }
 
     clone(): Character {

@@ -25,7 +25,7 @@ export class EchoComparatorModalComponent {
 
   text: string = '';
   /** Heal or damage rotation; local so the real character is not changed */
-  healType = this.character().healType;
+  showHealing = this.character().showHealing;
 
   constructor() {
     this.calculate();
@@ -46,7 +46,7 @@ export class EchoComparatorModalComponent {
 
     // Simulation character: the real attributes, with 1000 standing in for empty ATK/HP/DEF
     const char1 = this.character().clone();
-    char1.healType = this.healType;
+    char1.showHealing = this.showHealing;
     char1.dmg ||= 1000;
     char1.def ||= 1000;
     char1.hp ||= 1000;
@@ -65,7 +65,7 @@ export class EchoComparatorModalComponent {
     // Difference relative to the weaker echo, so it reads the same whichever echo wins
     const weaker = Math.min(total1, total2);
     const diff = weaker > 0 ? (Math.abs(total2 - total1) / weaker * 100).toFixed(2) : '–';
-    const type = (this.healType && this.character().canHeal) ? this.transloco.translate('char.heal') : 'DMG';
+    const type = this.showHealing ? this.transloco.translate('char.heal') : 'DMG';
 
     this.echoScore(this.echo1);
     this.echoScore(this.echo2);
@@ -182,10 +182,10 @@ export class EchoComparatorModalComponent {
     const rate = Math.min(Math.max(char.cChance, 0), 100) / 100;
     const expected = 1 + rate * (char.cDmg / 100 - 1);
     for (let i = 0; i < rotation.length; i++) {
-      if (this.healType) heal = !!rotation[i].healing;
+      if (this.showHealing) heal = char.isHealStep(rotation[i]);
 
       const value = +(char.rotationValue(rotation[i]) * expected).toFixed(0);
-      total += (this.healType && !heal && this.character().canHeal) ? 0 : value;
+      total += (this.showHealing && !heal) ? 0 : value;
     }
 
     return total;

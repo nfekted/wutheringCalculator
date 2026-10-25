@@ -2,171 +2,240 @@
   "id": "lingyang",
   "name": "Lingyang",
   "icon": "lingyang",
-  "wiki": "https://wutheringwaves.fandom.com/wiki/Lingyang",
   "type": "glacio",
   "weapon": "gauntlets",
-  "lastUpdate": "2024-11-09T03:00:00.000Z",
-  "damageHealer": false,
-  "healType": false,
-  "canHeal": false,
+  "lastUpdate": "2026-10-22T10:02:12.427Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
   "hpScale": false,
   "defScale": false,
   "basic": {
     "name": "Majestic Fists",
-    "names": ["Majestic Fists: DMG 1", "Majestic Fists: DMG 2", "Majestic Fists: DMG 3", "Majestic Fists: DMG 4", "Majestic Fists: DMG 5", "Feral Roars", "Mid-Air DMG", "Dodge DMG", "Heavy Attack"],
-    "bonusType": ["b", "b", "b", "b", "b", "b", "b", "b", "h"],
-    "scaling": [
-      [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65],
-      [40, 43.28, 46.56, 51.16, 54.44, 58.21, 63.46, 68.7, 73.95, 79.53],
-      [36.65, 39.66, 42.67, 46.87, 49.88, 53.33, 58.14, 62.95, 67.76, 72.87],
-      [10.27, 11.11, 11.95, 13.13, 13.97, 14.94, 16.28, 17.63, 18.98, 20.41],
-      [76.7, 82.99, 89.28, 98.09, 104.38, 111.61, 121.67, 131.74, 141.8, 152.49],
-      [40, 43.28, 46.56, 51.16, 54.44, 58.21, 63.46, 68.7, 73.95, 79.53],
-      [62, 67.09, 72.17, 79.29, 84.37, 90.22, 98.36, 106.49, 114.62, 123.27],
-      [63.4, 68.6, 73.8, 81.08, 86.28, 92.26, 100.58, 108.89, 117.21, 126.05],
-      [73.3, 79.32, 85.33, 93.74, 99.75, 106.66, 116.28, 125.9, 135.51, 145.73]
-    ],
-    "multiplier": [1, 1, 2, 5, 1, 2, 1, 2, 1],
-    "second": [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [21.99, 23.8, 25.6, 28.13, 29.93, 32, 34.89, 37.77, 40.66, 43.72],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    ],
-    "secondMultiplier": [0, 0, 0, 1, 0, 0, 0, 0, 0],
-    "third": [],
-    "thirdMultiplier": [],
-    "ends": 4
+    "hits": [
+      {
+        "name": "Majestic Fists DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Majestic Fists DMG 2",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [40, 43.28, 46.56, 51.16, 54.44, 58.21, 63.46, 68.7, 73.95, 79.53] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Majestic Fists DMG 3",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [36.65, 39.66, 42.67, 46.87, 49.88, 53.33, 58.14, 62.95, 67.76, 72.87],
+            "times": 2
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Majestic Fists DMG 4",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [10.27, 11.11, 11.95, 13.13, 13.97, 14.94, 16.28, 17.63, 18.98, 20.41],
+            "times": 5
+          },
+          { "stat": "atk", "values": [21.99, 23.8, 25.6, 28.13, 29.93, 32, 34.89, 37.77, 40.66, 43.72] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Majestic Fists DMG 5",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [76.7, 82.99, 89.28, 98.09, 104.38, 111.61, 121.67, 131.74, 141.8, 152.49] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Feral Roars Damage",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [40, 43.28, 46.56, 51.16, 54.44, 58.21, 63.46, 68.7, 73.95, 79.53],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [73.3, 79.32, 85.33, 93.74, 99.75, 106.66, 116.28, 125.9, 135.51, 145.73] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [62, 67.09, 72.17, 79.29, 84.37, 90.22, 98.36, 106.49, 114.62, 123.27] }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [63.4, 68.6, 73.8, 81.08, 86.28, 92.26, 100.58, 108.89, 117.21, 126.05],
+            "times": 2
+          }
+        ]
+      }
+    ]
   },
   "skill": {
     "name": "Ancient Arts",
-    "names": ["Ancient Arts", "Furious Punches"],
-    "bonusType": ["s", "s"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [66.7, 72.17, 77.64, 85.3, 90.77, 97.06, 105.81, 114.56, 123.31, 132.61],
-      [38.35, 41.5, 44.64, 49.05, 52.19, 55.81, 60.84, 65.78, 70.9, 76.25]
-    ],
-    "multiplier": [1, 2],
-    "second": [],
-    "secondMultiplier": [],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Ancient Arts Damage",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [66.7, 72.17, 77.64, 85.3, 90.77, 97.06, 105.81, 114.56, 123.31, 132.61] }
+        ]
+      },
+      {
+        "name": "Furious Punches Damage",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [38.35, 41.5, 44.64, 49.05, 52.19, 55.81, 60.84, 65.87, 70.9, 76.25],
+            "times": 2
+          }
+        ]
+      }
+    ]
   },
   "liberation": {
     "name": "Strive: Lion's Vigor",
-    "names": ["Strive: Lion's Vigor"],
-    "bonusType": ["l"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [200, 216.4, 232.8, 255.76, 272.16, 291.02, 317.26, 343.5, 369.74, 397.62]
-    ],
-    "multiplier": [1],
-    "second": [],
-    "secondMultiplier": [0],
-    "third": [],
-    "thirdMultiplier": [0]
+    "hits": [
+      {
+        "name": "Strive: Lion's Vigor DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [200, 216.4, 232.8, 255.76, 272.16, 291.02, 317.26, 343.5, 369.74, 397.62] }
+        ]
+      }
+    ]
   },
   "intro": {
     "name": "Lion Awakens",
-    "names": ["Lion Awakens"],
-    "bonusType": ["i"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [50, 54.1, 58.2, 63.94, 68.04, 72.76, 79.32, 85.88, 92.44, 99.41]
-    ],
-    "multiplier": [2],
-    "second": [],
-    "secondMultiplier": [0],
-    "third": [],
-    "thirdMultiplier": [0]
+    "hits": [
+      {
+        "name": "Lion Awakens DMG",
+        "kind": "intro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [50, 54.1, 58.2, 63.94, 68.04, 72.76, 79.32, 85.88, 92.44, 99.41],
+            "times": 2
+          }
+        ]
+      }
+    ]
   },
   "outro": {
     "name": "Frosty Marks",
-    "names": ["Frosty Marks"],
-    "bonusType": ["o"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [587.94]
-    ],
-    "multiplier": [1],
-    "second": [],
-    "secondMultiplier": [],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Frosty Marks DMG",
+        "kind": "outro",
+        "parts": [
+          { "stat": "atk", "values": [587.94] }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Unification of Spirits",
-    "names": ["Glorious Plunge", "Tail Strike", "Striding Lion: Feral Gyrate 1", "Striding Lion: Feral Gyrate 2", "Striding Lion: Stormy Kicks", "Striding Lion: Mountain Roamer"],
-    "bonusType": ["h", "b", "b", "b", "b", "s"],
-    "heal": [],
-    "dmgType": [],
-    "shield": [],
-    "scaling": [
-      [86.7, 93.81, 100.92, 110.88, 117.99, 126.16, 137.54, 148.91, 160.29, 172.37],
-      [88, 95.22, 102.44, 112.54, 119.76, 128.05, 139.6, 151.14, 162.69, 174.96],
-      [43.8, 47.4, 50.99, 56.02, 59.61, 63.74, 69.48, 75.23, 80.98, 87.08],
-      [15.98, 17.29, 18.6, 20.44, 21.75, 23.26, 25.35, 27.45, 29.55, 31.77],
-      [18.13, 19.61, 21.1, 23.18, 24.67, 26.37, 28.75, 31.13, 33.51, 36.03],
-      [41.69, 45.11, 48.53, 53.31, 56.73, 60.66, 66.13, 71.6, 77.07, 82.88]
-    ],
-    "multiplier": [1, 2, 1, 6, 8, 2],
-    "second": [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [58.4, 63.19, 67.98, 74.69, 79.48, 84.98, 92.64, 100.31, 107.97, 116.11],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [96.65, 104.58, 112.51, 123.6, 131.53, 140.64, 153.32, 166, 178.68, 192.15],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    ],
-    "secondMultiplier": [0, 0, 1, 0, 1, 0],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Glorious Plunge Damage",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [86.7, 93.81, 100.92, 110.88, 117.99, 126.16, 137.54, 148.91, 160.29, 172.37] }
+        ]
+      },
+      {
+        "name": "Feral Gyrate Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [43.8, 47.4, 50.99, 56.02, 59.61, 63.74, 69.48, 75.23, 80.98, 87.08],
+            "times": 2
+          },
+          { "stat": "atk", "values": [58.4, 63.19, 67.98, 74.69, 79.48, 84.98, 92.64, 100.31, 107.97, 116.11] }
+        ]
+      },
+      {
+        "name": "Feral Gyrate Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [15.98, 17.29, 18.6, 20.44, 21.75, 23.26, 25.35, 27.45, 29.55, 31.77],
+            "times": 6
+          }
+        ]
+      },
+      {
+        "name": "Mountain Roamer Damage",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [41.69, 45.11, 48.53, 53.31, 56.73, 60.66, 66.13, 71.6, 77.07, 82.88],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Stormy Kicks Damage",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [18.13, 19.61, 21.1, 23.18, 24.67, 26.37, 28.75, 31.13, 33.51, 36.03],
+            "times": 8
+          },
+          { "stat": "atk", "values": [96.65, 104.58, 112.51, 123.6, 131.53, 140.64, 153.32, 166, 178.68, 192.15] }
+        ]
+      },
+      {
+        "name": "Tail Strike Damage",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [88, 95.22, 102.44, 112.54, 119.76, 128.05, 139.6, 151.14, 162.69, 174.96],
+            "times": 2
+          }
+        ]
+      }
+    ]
   },
-  "rotation": [
-    { "section": "intro", "index": 0 },
-    { "section": "basic", "index": 0 },
-    { "section": "basic", "index": 1 },
-    { "section": "basic", "index": 2 },
-    { "section": "skill", "index": 1 },
-    { "section": "basic", "index": 3 },
-    { "section": "skill", "index": 1 },
-    { "section": "basic", "index": 4 },
-    { "section": "skill", "index": 1 },
-    { "section": "basic", "index": 0 },
-    { "section": "basic", "index": 1 },
-    { "section": "basic", "index": 2 },
-    { "section": "skill", "index": 1 },
-    { "section": "basic", "index": 3 },
-    { "section": "skill", "index": 1 },
-    { "section": "basic", "index": 4 },
-    { "section": "skill", "index": 1 },
-    { "section": "liberation", "index": 0 },
-    { "section": "forte", "index": 0 },
-    { "section": "forte", "index": 2 },
-    { "section": "forte", "index": 3 },
-    { "section": "forte", "index": 5 },
-    { "section": "forte", "index": 2 },
-    { "section": "forte", "index": 3 },
-    { "section": "forte", "index": 5 },
-    { "section": "forte", "index": 2 },
-    { "section": "forte", "index": 3 },
-    { "section": "forte", "index": 4 },
-    { "section": "forte", "index": 2 },
-    { "section": "outro", "index": 0 }
-  ],
-  "rotationDesc": ["Intro", "3x Basic Attack", "Resonance Skill", "Basic Attack", "Resonance Skill", "Basic Attack", "Resonance Skill", "3x Basic Attack", "Resonance Skill", "Basic Attack", "Resonance Skill", "Basic Attack", "Resonance Skill", "Resonance Liberation", " Heavy Attack", "2x Feral Gyrate", "Resonance Skill Mountain Roamer", "2x Feral Gyrate", "Resonance Skill Mountain Roamer", "2x Feral Gyrate", "Basic Attack: Stormy Kicks", "Basic Attack: Tail Strike", "Outro"],
-  "rotationColor": ["intro", "basic", "skill", "basic", "skill", "basic", "skill", "basic", "skill", "basic", "skill", "basic", "skill", "liberation", "basic", "basic", "skill", "basic", "skill", "basic", "basic", "basic", "outro"],
-  "rotationCommands": ["mb", "cv", "mb", "cv", "mb", "cv", "e", "cv", "mb", "cv", "e", "cv", "mb", "cv", "e", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "e", "cv", "mb", "cv", "e", "cv", "mb", "cv", "e", "cv", "r", "cv", "mbh", "cv", "mb", "cv", "mb", "cv", "e", "cv", "mb", "cv", "mb", "cv", "e", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "mb"],
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["GLACIO DMG %", "ATK %"],
   "echo1": ["ATK %"],

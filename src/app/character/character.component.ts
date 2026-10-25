@@ -30,7 +30,8 @@ const STAT_FIELDS: StatField[] = [
   { key: 'heavyBonus', prefix: 'char.heavy', label: 'Bonus %' },
   { key: 'liberationBonus', label: 'Lib. Bonus %' },
   { key: 'elementalBonus', prefix: 'char.elemental', label: 'DMG %' },
-  { key: 'healingBonus', label: 'Healing Bonus %', visible: c => c.canHeal || c.healType },
+  { key: 'echoBonus', label: 'Echo Bonus %', visible: c => c.isEchoMode },
+  { key: 'healingBonus', label: 'Healing Bonus %', visible: c => c.data.hasHealing },
 ];
 
 @Component({
@@ -76,10 +77,10 @@ export class CharacterComponent {
 
   /** Highest damage total of a section, shown on its closed header (healing rows are skipped) */
   protected peak(key: SectionKey): number {
-    const heal = this.character().data[key].heal;
-    return this.character().results[key].sum
-      .filter((v, i) => Number.isFinite(v) && !heal?.[i])
-      .reduce((max, v) => Math.max(max, v), 0);
+    const hits = this.character().data[key].hits;
+    return this.character().results[key]
+      .filter((r, i) => Number.isFinite(r.sum) && hits[i].kind !== 'heal')
+      .reduce((max, r) => Math.max(max, r.sum), 0);
   }
 
   protected fields(): StatField[] {
@@ -95,6 +96,11 @@ export class CharacterComponent {
   calculate() {
     this.character().calculate();
     this.changed.emit();
+  }
+
+  protected setMode(mode: number) {
+    this.character().mode = mode;
+    this.calculate();
   }
 
   protected finishNameEdit() {
