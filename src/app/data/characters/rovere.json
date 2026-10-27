@@ -1,0 +1,336 @@
+{
+  "id": "rovere",
+  "name": "Rover (Electro)",
+  "icon": "rovere",
+  "type": "electro",
+  "weapon": "sword",
+  "lastUpdate": "2026-10-27T00:38:57.345Z",
+  "hasHealing": true,
+  "healsAllies": false,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Deterrence",
+    "hits": [
+      {
+        "name": "Deterrence DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [25.69, 27.8, 29.91, 32.86, 34.96, 37.39, 40.76, 44.13, 47.5, 51.08] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Deterrence DMG 2",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [13.08, 14.15, 15.23, 16.73, 17.8, 19.03, 20.75, 22.46, 24.18, 26] },
+          { "stat": "atk", "values": [19.62, 21.23, 22.84, 25.09, 26.7, 28.55, 31.12, 33.69, 36.27, 39] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Deterrence DMG 3",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [6.67, 7.22, 7.77, 8.53, 9.08, 9.71, 10.59, 11.46, 12.34, 13.27],
+            "times": 7
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Deterrence DMG 4",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [36.63, 39.63, 42.64, 46.84, 49.84, 53.3, 58.1, 62.91, 67.71, 72.82] },
+          { "stat": "atk", "values": [54.94, 59.45, 63.95, 70.26, 74.76, 79.94, 87.15, 94.36, 101.57, 109.22] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Riposte Strike DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [28.14, 30.45, 32.76, 35.99, 38.3, 40.95, 44.64, 48.34, 52.03, 55.95] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Riposte Strike: Crumble DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [29.89, 32.35, 34.8, 38.23, 40.68, 43.5, 47.42, 51.34, 55.26, 59.43] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Havoc Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [16.31, 17.65, 18.99, 20.86, 22.2, 23.74, 25.88, 28.02, 30.16, 32.43] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Havoc Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [18.69, 20.23, 21.76, 23.91, 25.44, 27.2, 29.65, 32.11, 34.56, 37.16] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Havoc Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [18.88, 20.43, 21.98, 24.15, 25.7, 27.48, 29.95, 32.43, 34.91, 37.54] },
+          { "stat": "atk", "values": [18.88, 20.43, 21.98, 24.15, 25.7, 27.48, 29.95, 32.43, 34.91, 37.54] },
+          { "stat": "atk", "values": [19.46, 21.05, 22.65, 24.88, 26.47, 28.31, 30.86, 33.41, 35.97, 38.68] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [52.78, 57.11, 61.44, 67.5, 71.83, 76.81, 83.73, 90.65, 97.58, 104.94] }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [37.35, 40.41, 43.47, 47.76, 50.82, 54.35, 59.25, 64.15, 69.04, 74.25] },
+          { "stat": "atk", "values": [37.35, 40.41, 43.47, 47.76, 50.82, 54.35, 59.25, 64.15, 69.04, 74.25] }
+        ]
+      },
+      {
+        "name": "Mid-air Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [94.78, 102.56, 110.33, 121.21, 128.98, 137.92, 150.35, 162.79, 175.22, 188.44] }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Thunderclap",
+    "hits": [
+      {
+        "name": "Thunderclap DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [50.4, 54.53, 58.67, 64.45, 68.59, 73.34, 79.95, 86.56, 93.17, 100.2],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Repel DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [28.23, 30.54, 32.86, 36.1, 38.41, 41.07, 44.78, 48.48, 52.18, 56.12] },
+          { "stat": "atk", "values": [42.34, 45.81, 49.28, 54.14, 57.62, 61.61, 67.16, 72.72, 78.27, 84.17] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Ultimate Tactics",
+    "hits": [
+      {
+        "name": "Ultimate Tactics DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [600, 649.2, 698.4, 767.28, 816.48, 873.06, 951.78, 1030.5, 1109.22, 1192.86] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Thunderous Fury",
+    "hits": [
+      {
+        "name": "Thunderous Fury DMG",
+        "kind": "intro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [16.8, 18.18, 19.56, 21.49, 22.87, 24.45, 26.65, 28.86, 31.06, 33.41],
+            "times": 2
+          },
+          { "stat": "atk", "values": [50.4, 54.54, 58.67, 64.46, 68.59, 73.34, 79.95, 86.57, 93.18, 100.21] }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "Rumbling Thunders",
+    "hits": []
+  },
+  "forte": {
+    "name": "Myriad Omens' Mandate",
+    "hits": [
+      {
+        "name": "Overshock DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [40.6, 43.93, 47.26, 51.92, 55.25, 59.08, 64.41, 69.74, 75.06, 80.72],
+            "times": 7
+          },
+          { "stat": "atk", "values": [213.15, 230.63, 248.11, 272.58, 290.06, 310.16, 338.12, 366.09, 394.06, 423.77] },
+          { "stat": "atk", "values": [213.15, 230.63, 248.11, 272.58, 290.06, 310.16, 338.12, 366.09, 394.06, 423.77] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Spectro Stage 1 DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [49.86, 53.95, 58.04, 63.76, 67.85, 72.55, 79.09, 85.63, 92.17, 99.12] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Spectro Stage 2 DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [24.68, 26.7, 28.73, 31.56, 33.58, 35.91, 39.15, 42.38, 45.62, 49.06] },
+          { "stat": "atk", "values": [24.68, 26.7, 28.73, 31.56, 33.58, 35.91, 39.15, 42.38, 45.62, 49.06] },
+          { "stat": "atk", "values": [32.9, 35.6, 38.3, 42.08, 44.77, 47.88, 52.19, 56.51, 60.82, 65.41] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Spectro Stage 3 DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [51.34, 55.54, 59.75, 65.65, 69.86, 74.7, 81.43, 88.17, 94.9, 102.06] },
+          { "stat": "atk", "values": [77, 83.31, 89.63, 98.47, 104.78, 112.04, 122.14, 132.25, 142.35, 153.08] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Havoc Stage 1 DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [7.54, 8.15, 8.77, 9.64, 10.25, 10.96, 11.95, 12.94, 13.93, 14.98],
+            "times": 3
+          },
+          { "stat": "atk", "values": [52.73, 57.05, 61.38, 67.43, 71.75, 76.72, 83.64, 90.56, 97.48, 104.82] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Havoc Stage 2 DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [6.96, 7.53, 8.1, 8.9, 9.47, 10.13, 11.04, 11.95, 12.87, 13.83],
+            "times": 4
+          },
+          { "stat": "atk", "values": [41.74, 45.17, 48.59, 53.38, 56.8, 60.74, 66.21, 71.69, 77.17, 82.98] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Havoc Stage 3 DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [31.45, 34.02, 36.6, 40.21, 42.79, 45.75, 49.88, 54.01, 58.13, 62.51] },
+          { "stat": "atk", "values": [31.45, 34.02, 36.6, 40.21, 42.79, 45.75, 49.88, 54.01, 58.13, 62.51] },
+          { "stat": "atk", "values": [10.49, 11.34, 12.2, 13.41, 14.27, 15.25, 16.63, 18.01, 19.38, 20.84] },
+          { "stat": "atk", "values": [10.49, 11.34, 12.2, 13.41, 14.27, 15.25, 16.63, 18.01, 19.38, 20.84] },
+          { "stat": "atk", "values": [10.49, 11.34, 12.2, 13.41, 14.27, 15.25, 16.63, 18.01, 19.38, 20.84] },
+          { "stat": "atk", "values": [10.49, 11.34, 12.2, 13.41, 14.27, 15.25, 16.63, 18.01, 19.38, 20.84] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Silencing Blade DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [23.68, 25.62, 27.56, 30.28, 32.22, 34.45, 37.56, 40.66, 43.77, 47.07],
+            "times": 5
+          },
+          { "stat": "atk", "values": [118.37, 128.08, 137.79, 151.37, 161.08, 172.24, 187.77, 203.3, 218.83, 235.33] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Aero DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [79.52, 86.04, 92.56, 101.69, 108.21, 115.71, 126.14, 136.57, 147, 158.09] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Havoc Mid-air Attack Stage 1 DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [25.47, 27.56, 29.65, 32.57, 34.66, 37.06, 40.4, 43.74, 47.08, 50.63] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Havoc Mid-air Attack Stage 2 DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [32.1, 34.74, 37.37, 41.05, 43.68, 46.71, 50.92, 55.13, 59.35, 63.82] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Havoc Mid-air Attack Stage 3 DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [46.03, 49.81, 53.58, 58.86, 62.64, 66.98, 73.02, 79.06, 85.1, 91.51] },
+          { "stat": "atk", "values": [46.03, 49.81, 53.58, 58.86, 62.64, 66.98, 73.02, 79.06, 85.1, 91.51] },
+          { "stat": "atk", "values": [47.43, 51.32, 55.2, 60.65, 64.54, 69.01, 75.23, 81.45, 87.67, 94.28] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Aero Mid-air Attack Stage 1 DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [42.56, 46.05, 49.54, 54.43, 57.92, 61.93, 67.51, 73.1, 78.68, 84.61] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Aero Mid-air Attack Stage 2 DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [49, 53.02, 57.04, 62.66, 66.68, 71.3, 77.73, 84.16, 90.58, 97.41] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Aero Mid-air Attack Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [330, 369, 412, 462, 521, 577, 587, 600, 610, 627] },
+          { "stat": "atk", "values": [11, 11.44, 11.88, 12.54, 13.42, 14.3, 15.95, 17.82, 19.8, 23.1] }
+        ]
+      },
+      {
+        "name": "Thrum of All Sounds: Aero Plunging Attack DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [142.09, 153.74, 165.39, 181.7, 193.35, 206.75, 225.39, 244.03, 262.67, 282.48] }
+        ]
+      },
+      {
+        "name": "Thunder Bane DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [20, 21.64, 23.28, 25.58, 27.22, 29.11, 31.73, 34.35, 36.98, 39.77] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

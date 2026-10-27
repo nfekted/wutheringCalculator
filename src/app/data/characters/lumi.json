@@ -1,0 +1,237 @@
+{
+  "id": "lumi",
+  "name": "Lumi",
+  "icon": "lumi",
+  "type": "electro",
+  "weapon": "broadblade",
+  "lastUpdate": "2026-10-27T00:31:54.307Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Navigation Support",
+    "hits": [
+      {
+        "name": "Yellow Light: Basic Attack",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [16, 17.32, 18.63, 20.47, 21.78, 23.29, 25.39, 27.48, 29.58, 31.81],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Glitter",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [32, 34.63, 37.25, 40.93, 43.55, 46.57, 50.77, 54.96, 59.16, 63.62] }
+        ]
+      },
+      {
+        "name": "Yellow Light: Plunging Attack",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [48, 51.94, 55.88, 61.39, 65.32, 69.85, 76.15, 82.44, 88.74, 95.43] }
+        ]
+      },
+      {
+        "name": "Red Light: Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [45.6, 49.34, 53.08, 58.32, 62.06, 66.36, 72.34, 78.32, 84.31, 90.66] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Red Light: Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [54.15, 58.6, 63.04, 69.25, 73.69, 78.8, 85.9, 93.01, 100.11, 107.66] },
+          {
+            "stat": "atk",
+            "values": [10.83, 11.72, 12.61, 13.85, 14.74, 15.76, 17.18, 18.61, 20.03, 21.54],
+            "times": 5
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Red Light: Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [32.49, 35.16, 37.82, 41.55, 44.22, 47.28, 51.54, 55.81, 60.07, 64.6] },
+          { "stat": "atk", "values": [75.81, 82.03, 88.25, 96.95, 103.17, 110.32, 120.26, 130.21, 140.15, 150.72] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Red Light: Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [33.25, 35.98, 38.71, 42.53, 45.25, 48.39, 52.75, 57.11, 61.47, 66.11],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Red Light: Plunging Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [57, 61.68, 66.35, 72.9, 77.57, 82.95, 90.42, 97.9, 105.38, 113.33] }
+        ]
+      },
+      {
+        "name": "Red Light: Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [84.15, 91.06, 97.96, 107.62, 114.52, 122.45, 133.49, 144.53, 155.57, 167.3] },
+          {
+            "stat": "atk",
+            "values": [16.83, 18.22, 19.6, 21.53, 22.91, 24.49, 26.7, 28.91, 31.12, 33.46],
+            "times": 5
+          }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Searchlight Service",
+    "hits": [
+      {
+        "name": "Pounce DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [91.2, 98.68, 106.16, 116.63, 124.11, 132.71, 144.68, 156.64, 168.61, 181.32] }
+        ]
+      },
+      {
+        "name": "Rebound DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [87.4, 94.57, 101.74, 111.77, 118.94, 127.18, 138.65, 150.11, 161.58, 173.76] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Squeakie Express",
+    "hits": [
+      {
+        "name": "Squeakie Express DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [480, 519.36, 558.72, 613.83, 653.19, 698.45, 761.43, 824.4, 887.38, 954.29] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Special Delivery",
+    "hits": [
+      {
+        "name": "Special Delivery DMG",
+        "kind": "intro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [28.34, 30.66, 32.98, 36.24, 38.56, 41.23, 44.95, 48.67, 52.38, 56.33],
+            "times": 3
+          }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "",
+    "hits": []
+  },
+  "forte": {
+    "name": "Signal Light",
+    "hits": [
+      {
+        "name": "Glare DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [41, 44.37, 47.73, 52.44, 55.8, 59.66, 65.04, 70.42, 75.8, 81.52] }
+        ]
+      },
+      {
+        "name": "Red Spotlight: Basic Attack 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [60.48, 65.44, 70.4, 77.35, 82.31, 88.01, 95.94, 103.88, 111.81, 120.25] }
+        ]
+      },
+      {
+        "name": "Red Spotlight: Basic Attack 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [69.57, 75.28, 80.98, 88.97, 94.68, 101.24, 110.36, 119.49, 128.62, 138.32] },
+          {
+            "stat": "atk",
+            "values": [13.92, 15.06, 16.2, 17.8, 18.94, 20.25, 22.08, 23.9, 25.73, 27.67],
+            "times": 5
+          }
+        ]
+      },
+      {
+        "name": "Red Spotlight: Basic Attack 3 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [47.15, 51.01, 54.88, 60.29, 64.16, 68.6, 74.79, 80.97, 87.16, 93.73] },
+          { "stat": "atk", "values": [110, 119.02, 128.04, 140.67, 149.69, 160.06, 174.49, 188.93, 203.36, 218.69] }
+        ]
+      },
+      {
+        "name": "Red Spotlight: Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [44.35, 47.99, 51.63, 56.72, 60.36, 64.54, 70.36, 76.18, 81.99, 88.18],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Energized Pounce DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [92.2, 99.77, 107.33, 117.91, 125.47, 134.17, 146.26, 158.36, 170.46, 183.31],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Energized Rebound DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [126.6, 136.99, 147.37, 161.9, 172.28, 184.22, 200.83, 217.44, 234.05, 251.7] }
+        ]
+      },
+      {
+        "name": "Single Laser Beam DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [37.5, 40.58, 43.65, 47.96, 51.03, 54.57, 59.49, 64.41, 69.33, 74.56] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

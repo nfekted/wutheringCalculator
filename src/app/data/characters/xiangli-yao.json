@@ -1,0 +1,245 @@
+{
+  "id": "xiangli-yao",
+  "name": "Xiangli Yao",
+  "icon": "xiangli-yao",
+  "type": "electro",
+  "weapon": "gauntlets",
+  "lastUpdate": "2026-10-27T00:30:40.080Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Probe",
+    "hits": [
+      {
+        "name": "Probe DMG 1",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [16.65, 18.02, 19.39, 21.3, 22.66, 24.23, 26.42, 28.6, 30.79, 33.11],
+            "times": 2
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Probe DMG 2",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [50.1, 54.21, 58.32, 64.07, 68.18, 72.91, 79.48, 86.05, 92.62, 99.61] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Probe DMG 3",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [20, 21.64, 23.28, 25.58, 27.22, 29.1, 31.73, 34.35, 36.98, 39.76],
+            "times": 3
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Probe DMG 4",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [26.68, 28.87, 31.06, 34.12, 36.31, 38.83, 42.33, 45.83, 49.33, 53.05],
+            "times": 2
+          },
+          { "stat": "atk", "values": [13.34, 14.44, 15.53, 17.06, 18.16, 19.42, 21.17, 22.92, 24.67, 26.53] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Probe DMG 5",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [41.65, 45.07, 48.49, 53.27, 56.68, 60.61, 66.07, 71.54, 77, 82.81],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [62, 67.09, 72.17, 79.29, 84.37, 90.22, 98.36, 106.49, 114.62, 123.27] }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [120, 129.84, 139.68, 153.46, 163.3, 174.62, 190.36, 206.1, 221.85, 238.58] }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Deduction",
+    "hits": [
+      {
+        "name": "Deduction DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Cogitation Model",
+    "hits": [
+      {
+        "name": "Cogitation Model DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [737.42, 797.89, 858.35, 943.01, 1003.48, 1073.02, 1169.76, 1266.51, 1363.26, 1466.06] }
+        ]
+      },
+      {
+        "name": "Pivot - Impale Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [60.19, 65.13, 70.06, 76.97, 81.91, 87.59, 95.48, 103.38, 111.28, 119.67] }
+        ]
+      },
+      {
+        "name": "Pivot - Impale Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [30.65, 33.16, 35.67, 39.19, 41.7, 44.59, 48.61, 52.63, 56.65, 60.92],
+            "times": 4
+          }
+        ]
+      },
+      {
+        "name": "Pivot - Impale Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [67.03, 72.52, 78.02, 85.71, 91.21, 97.53, 106.32, 115.12, 123.91, 133.25],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Divergence DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [24.94, 26.99, 29.04, 31.9, 33.94, 36.3, 39.57, 42.84, 46.11, 49.59],
+            "times": 3
+          },
+          {
+            "stat": "atk",
+            "values": [87.29, 94.45, 101.61, 111.63, 118.79, 127.02, 138.47, 149.93, 161.38, 173.55],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Unfathomed DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [19.53, 21.13, 22.73, 24.98, 26.58, 28.42, 30.98, 33.54, 36.1, 38.83],
+            "times": 2
+          },
+          { "stat": "atk", "values": [156.22, 169.03, 181.84, 199.77, 212.58, 227.31, 247.81, 268.3, 288.8, 310.58] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Principle",
+    "hits": [
+      {
+        "name": "Principle DMG",
+        "kind": "intro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [50, 54.1, 58.2, 63.94, 68.04, 72.76, 79.32, 85.88, 92.44, 99.41],
+            "times": 2
+          }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "",
+    "hits": []
+  },
+  "forte": {
+    "name": "Forever Seeking",
+    "hits": [
+      {
+        "name": "Decipher DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [200.1, 216.51, 232.92, 255.89, 272.3, 291.17, 317.42, 343.68, 369.93, 397.82] }
+        ]
+      },
+      {
+        "name": "Law of Reigns DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [48.15, 52.1, 56.05, 61.58, 65.53, 70.07, 76.39, 82.7, 89.02, 95.73],
+            "times": 4
+          },
+          { "stat": "atk", "values": [128.4, 138.93, 149.46, 164.2, 174.73, 186.84, 203.69, 220.53, 237.38, 255.28] }
+        ]
+      },
+      {
+        "name": "Revamp DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [11, 11.91, 12.81, 14.07, 14.97, 16.01, 17.45, 18.9, 20.34, 21.87],
+            "times": 4
+          },
+          {
+            "stat": "atk",
+            "values": [33, 35.71, 38.42, 42.21, 44.91, 48.02, 52.35, 56.68, 61.01, 65.61],
+            "times": 2
+          }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

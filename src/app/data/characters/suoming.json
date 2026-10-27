@@ -1,0 +1,335 @@
+{
+  "id": "suoming",
+  "name": "Suoming",
+  "icon": "suoming",
+  "type": "electro",
+  "weapon": "sword",
+  "lastUpdate": "2026-10-27T01:37:13.973Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Furled Canopy",
+    "hits": [
+      {
+        "name": "Furled Canopy DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [15.87, 17.17, 18.48, 20.3, 21.6, 23.09, 25.18, 27.26, 29.34, 31.55] }
+        ]
+      },
+      {
+        "name": "Furled Canopy DMG 2",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [7.92, 8.56, 9.21, 10.12, 10.77, 11.52, 12.55, 13.59, 14.63, 15.73],
+            "times": 2
+          },
+          { "stat": "atk", "values": [15.83, 17.12, 18.42, 20.24, 21.54, 23.03, 25.1, 27.18, 29.26, 31.46] }
+        ]
+      },
+      {
+        "name": "Furled Canopy DMG 3",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [11.07, 11.98, 12.89, 14.16, 15.07, 16.11, 17.56, 19.02, 20.47, 22.01],
+            "times": 3
+          },
+          { "stat": "atk", "values": [22.14, 23.96, 25.77, 28.32, 30.13, 32.22, 35.12, 38.03, 40.93, 44.02] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Unfurled Canopy Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [32.91, 35.61, 38.31, 42.08, 44.78, 47.89, 52.2, 56.52, 60.84, 65.42] },
+          {
+            "stat": "atk",
+            "values": [16.46, 17.81, 19.16, 21.04, 22.39, 23.95, 26.1, 28.26, 30.42, 32.71],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Unfurled Canopy Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [57.54, 62.26, 66.98, 73.59, 78.31, 83.73, 91.28, 98.83, 106.38, 114.4] },
+          {
+            "stat": "atk",
+            "values": [19.18, 20.76, 22.33, 24.53, 26.11, 27.91, 30.43, 32.95, 35.46, 38.14],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Unfurled Canopy Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [29.5, 31.92, 34.34, 37.72, 40.14, 42.92, 46.79, 50.66, 54.53, 58.64],
+            "times": 2
+          },
+          {
+            "stat": "atk",
+            "values": [29.5, 31.92, 34.34, 37.72, 40.14, 42.92, 46.79, 50.66, 54.53, 58.64],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Unfurled Canopy Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [53.95, 58.37, 62.8, 68.99, 73.41, 78.5, 85.58, 92.65, 99.73, 107.25] },
+          { "stat": "atk", "values": [53.95, 58.37, 62.8, 68.99, 73.41, 78.5, 85.58, 92.65, 99.73, 107.25] },
+          {
+            "stat": "atk",
+            "values": [23.98, 25.95, 27.91, 30.66, 32.63, 34.89, 38.04, 41.18, 44.33, 47.67],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [13.92, 15.06, 16.2, 17.79, 18.94, 20.25, 22.07, 23.9, 25.72, 27.66],
+            "times": 2
+          },
+          { "stat": "atk", "values": [27.83, 30.11, 32.39, 35.58, 37.87, 40.49, 44.14, 47.79, 51.44, 55.32] }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Unfurled Canopy DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [87.54, 94.72, 101.9, 111.95, 119.13, 127.38, 138.87, 150.35, 161.84, 174.04] },
+          {
+            "stat": "atk",
+            "values": [29.18, 31.58, 33.97, 37.32, 39.71, 42.46, 46.29, 50.12, 53.95, 58.02],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Plunging Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [42.35, 45.83, 49.3, 54.16, 57.63, 61.63, 67.18, 72.74, 78.29, 84.2] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Unfurled Canopy: Whirling Thunder Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [36.88, 39.9, 42.93, 47.16, 50.18, 53.66, 58.5, 63.34, 68.18, 73.32] },
+          {
+            "stat": "atk",
+            "values": [18.44, 19.95, 21.47, 23.58, 25.09, 26.83, 29.25, 31.67, 34.09, 36.66],
+            "times": 2
+          },
+          { "stat": "atk", "values": [36.88, 39.9, 42.93, 47.16, 50.18, 53.66, 58.5, 63.34, 68.18, 73.32] },
+          { "stat": "atk", "values": [36.88, 39.9, 42.93, 47.16, 50.18, 53.66, 58.5, 63.34, 68.18, 73.32] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Unfurled Canopy: Whirling Thunder Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [28.51, 30.85, 33.19, 36.46, 38.8, 41.49, 45.23, 48.97, 52.71, 56.69],
+            "times": 5
+          }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Furled Canopy: Rift Cleaver",
+    "hits": [
+      {
+        "name": "Resonance Skill - Furled Canopy: Rift Cleaver DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [53.62, 58.02, 62.42, 68.57, 72.97, 78.03, 85.06, 92.1, 99.13, 106.61] }
+        ]
+      },
+      {
+        "name": "Resonance Skill - Unfurled Canopy: Crimson Gleam DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [23.77, 25.72, 27.67, 30.4, 32.34, 34.59, 37.7, 40.82, 43.94, 47.25] },
+          {
+            "stat": "atk",
+            "values": [11.89, 12.86, 13.84, 15.2, 16.17, 17.3, 18.85, 20.41, 21.97, 23.63],
+            "times": 2
+          },
+          { "stat": "atk", "values": [31.69, 34.29, 36.89, 40.53, 43.12, 46.11, 50.27, 54.43, 58.58, 63] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Umbral Canopy: Miasma Lock",
+    "hits": [
+      {
+        "name": "Resonance Liberation - Umbral Canopy: Miasma Lock DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [30.63, 33.14, 35.65, 39.17, 41.68, 44.57, 48.59, 52.6, 56.62, 60.89],
+            "times": 8
+          },
+          { "stat": "atk", "values": [105, 113.61, 122.22, 134.28, 142.89, 152.79, 166.57, 180.34, 194.12, 208.76] }
+        ]
+      },
+      {
+        "name": "Resonance Liberation - Blight Rain, Miasmic Thunder DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Furled Canopy: Flash Rift",
+    "hits": [
+      {
+        "name": "Intro Skill - Furled Canopy: Flash Rift DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [55.78, 60.35, 64.92, 71.33, 75.9, 81.16, 88.48, 95.8, 103.11, 110.89],
+            "times": 2
+          },
+          {
+            "stat": "atk",
+            "values": [18.6, 20.12, 21.64, 23.78, 25.3, 27.06, 29.5, 31.94, 34.37, 36.97],
+            "times": 4
+          }
+        ]
+      },
+      {
+        "name": "Intro Skill - Unfurled Canopy: Thunder Rending DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [66.11, 71.53, 76.95, 84.54, 89.96, 96.19, 104.87, 113.54, 122.21, 131.43] },
+          {
+            "stat": "atk",
+            "values": [33.06, 35.77, 38.48, 42.27, 44.98, 48.1, 52.44, 56.77, 61.11, 65.72],
+            "times": 2
+          },
+          { "stat": "atk", "values": [66.11, 71.53, 76.95, 84.54, 89.96, 96.19, 104.87, 113.54, 122.21, 131.43] },
+          { "stat": "atk", "values": [66.11, 71.53, 76.95, 84.54, 89.96, 96.19, 104.87, 113.54, 122.21, 131.43] }
+        ]
+      },
+      {
+        "name": "Intro Skill - Furled Canopy: Sealed Delusion (Unison) DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [55.78, 60.35, 64.92, 71.33, 75.9, 81.16, 88.48, 95.8, 103.11, 110.89],
+            "times": 2
+          },
+          {
+            "stat": "atk",
+            "values": [18.6, 20.12, 21.64, 23.78, 25.3, 27.06, 29.5, 31.94, 34.37, 36.97],
+            "times": 4
+          }
+        ]
+      },
+      {
+        "name": "Intro Skill - Unfurled Canopy: Whirling Thunder (Unison) DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [66.11, 71.53, 76.95, 84.54, 89.96, 96.19, 104.87, 113.54, 122.21, 131.43] },
+          {
+            "stat": "atk",
+            "values": [33.06, 35.77, 38.48, 42.27, 44.98, 48.1, 52.44, 56.77, 61.11, 65.72],
+            "times": 2
+          },
+          { "stat": "atk", "values": [66.11, 71.53, 76.95, 84.54, 89.96, 96.19, 104.87, 113.54, 122.21, 131.43] },
+          { "stat": "atk", "values": [66.11, 71.53, 76.95, 84.54, 89.96, 96.19, 104.87, 113.54, 122.21, 131.43] }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "",
+    "hits": []
+  },
+  "forte": {
+    "name": "Bound Obsession, Forged Mind",
+    "hits": [
+      {
+        "name": "Resonance Skill - Furled Canopy: Sealed Delusion DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [31.58, 34.17, 36.76, 40.39, 42.97, 45.95, 50.1, 54.24, 58.38, 62.78],
+            "times": 2
+          },
+          {
+            "stat": "atk",
+            "values": [15.79, 17.09, 18.38, 20.2, 21.49, 22.98, 25.05, 27.12, 29.19, 31.39],
+            "times": 4
+          }
+        ]
+      },
+      {
+        "name": "Resonance Skill - Unfurled Canopy: Unforsaken Mind DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [76.79, 83.09, 89.39, 98.2, 104.5, 111.74, 121.82, 131.89, 141.97, 152.67] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Umbral Canopy: Engraved Heart DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [780.37, 844.37, 908.33, 997.93, 1061.92, 1135.51, 1237.9, 1340.3, 1442.62, 1551.41] }
+        ]
+      },
+      {
+        "name": "Basic Attack - Umbral Canopy: Engraved Heart DMG (Hold)",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [9.76, 10.56, 11.36, 12.48, 13.28, 14.2, 15.48, 16.76, 18.04, 19.4],
+            "times": 10
+          },
+          {
+            "stat": "atk",
+            "values": [12.2, 13.2, 14.2, 15.6, 16.6, 17.75, 19.35, 20.95, 22.55, 24.24],
+            "times": 8
+          }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}
