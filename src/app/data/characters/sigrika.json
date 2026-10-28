@@ -1,0 +1,247 @@
+{
+  "id": "sigrika",
+  "name": "Sigrika",
+  "icon": "sigrika",
+  "type": "aero",
+  "weapon": "gauntlets",
+  "lastUpdate": "2026-10-28T00:28:41.106Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "One, Two, Three",
+    "hits": [
+      {
+        "name": "One, Two, Three DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [26.64, 28.83, 31.01, 34.07, 36.26, 38.77, 42.26, 45.76, 49.25, 52.97] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "One, Two, Three DMG 2",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [25.32, 27.4, 29.48, 32.38, 34.46, 36.85, 40.17, 43.49, 46.81, 50.34] },
+          { "stat": "atk", "values": [25.32, 27.4, 29.48, 32.38, 34.46, 36.85, 40.17, 43.49, 46.81, 50.34] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "One, Two, Three DMG 3",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [16.8, 18.18, 19.56, 21.49, 22.87, 24.45, 26.65, 28.86, 31.06, 33.41] },
+          { "stat": "atk", "values": [16.8, 18.18, 19.56, 21.49, 22.87, 24.45, 26.65, 28.86, 31.06, 33.41] },
+          { "stat": "atk", "values": [22.4, 24.24, 26.08, 28.65, 30.49, 32.6, 35.54, 38.48, 41.42, 44.54] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "One, Two, Three DMG 4",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [20.8, 22.51, 24.22, 26.6, 28.31, 30.27, 33, 35.73, 38.46, 41.36] },
+          { "stat": "atk", "values": [26, 28.14, 30.27, 33.25, 35.39, 37.84, 41.25, 44.66, 48.07, 51.7] },
+          { "stat": "atk", "values": [26, 28.14, 30.27, 33.25, 35.39, 37.84, 41.25, 44.66, 48.07, 51.7] },
+          { "stat": "atk", "values": [31.2, 33.76, 36.32, 39.9, 42.46, 45.4, 49.5, 53.59, 57.68, 62.03] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Elucidated DMG",
+        "kind": "echo",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [30.96, 33.5, 36.04, 39.6, 42.14, 45.05, 49.12, 53.18, 57.24, 61.56],
+            "times": 3
+          },
+          { "stat": "atk", "values": [61.92, 67, 72.08, 79.19, 84.27, 90.1, 98.23, 106.35, 114.48, 123.11] }
+        ]
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [29.24, 31.64, 34.04, 37.4, 39.79, 42.55, 46.39, 50.22, 54.06, 58.14],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [52.7, 57.03, 61.35, 67.4, 71.72, 76.69, 83.6, 90.52, 97.43, 104.78] }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [33.15, 35.87, 38.59, 42.4, 45.12, 48.24, 52.59, 56.94, 61.29, 65.91] },
+          { "stat": "atk", "values": [33.15, 35.87, 38.59, 42.4, 45.12, 48.24, 52.59, 56.94, 61.29, 65.91] },
+          { "stat": "atk", "values": [44.2, 47.83, 51.45, 56.53, 60.15, 64.32, 70.12, 75.92, 81.72, 87.88] }
+        ]
+      },
+      {
+        "name": "Mid-air Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [103.7, 112.21, 120.71, 132.62, 141.12, 150.9, 164.5, 178.11, 191.72, 206.17] }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Decipher DMG",
+        "kind": "echo",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [30.96, 33.5, 36.04, 39.6, 42.14, 45.05, 49.12, 53.18, 57.24, 61.56],
+            "times": 3
+          },
+          { "stat": "atk", "values": [61.92, 67, 72.08, 79.19, 84.27, 90.1, 98.23, 106.35, 114.48, 123.11] }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Royan Close Quarters Combat",
+    "hits": [
+      {
+        "name": "BOOMY BOOM! DMG",
+        "kind": "echo",
+        "parts": [
+          { "stat": "atk", "values": [14.4, 15.59, 16.77, 18.42, 19.6, 20.96, 22.85, 24.74, 26.63, 28.63] },
+          { "stat": "atk", "values": [14.4, 15.59, 16.77, 18.42, 19.6, 20.96, 22.85, 24.74, 26.63, 28.63] },
+          { "stat": "atk", "values": [14.4, 15.59, 16.77, 18.42, 19.6, 20.96, 22.85, 24.74, 26.63, 28.63] },
+          { "stat": "atk", "values": [28.8, 31.17, 33.53, 36.83, 39.2, 41.91, 45.69, 49.47, 53.25, 57.26] }
+        ]
+      },
+      {
+        "name": "BIG BOOMY BOOM! DMG",
+        "kind": "echo",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [14.49, 15.68, 16.87, 18.53, 19.72, 21.09, 22.99, 24.89, 26.79, 28.81],
+            "times": 4
+          },
+          { "stat": "atk", "values": [86.94, 94.07, 101.2, 111.18, 118.31, 126.51, 137.92, 149.32, 160.73, 172.85] }
+        ]
+      },
+      {
+        "name": "Soliskin to the Aid DMG",
+        "kind": "echo",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [14, 15.15, 16.3, 17.9, 19.05, 20.37, 22.21, 24.04, 25.88, 27.83],
+            "times": 3
+          },
+          { "stat": "atk", "values": [97.97, 106, 114.04, 125.28, 133.32, 142.55, 155.41, 168.26, 181.11, 194.77] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Where Trust Leads Me!",
+    "hits": [
+      {
+        "name": "Where Trust Leads Me! DMG",
+        "kind": "echo",
+        "parts": [
+          { "stat": "atk", "values": [433.29, 468.82, 504.35, 554.1, 589.63, 630.49, 687.33, 744.18, 801.03, 861.43] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Solsworn Etymology",
+    "hits": [
+      {
+        "name": "Solsworn Etymology DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [82.2, 88.94, 95.68, 105.12, 111.86, 119.61, 130.39, 141.17, 151.96, 163.42] }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "In This Very Moment",
+    "hits": []
+  },
+  "forte": {
+    "name": "Within Infinity's Embrace",
+    "hits": [
+      {
+        "name": "Heavy Attack - Schemata of Runes DMG",
+        "kind": "echo",
+        "parts": [
+          { "stat": "atk", "values": [66.65, 72.12, 77.59, 85.24, 90.7, 96.99, 105.73, 114.48, 123.22, 132.51] }
+        ]
+      },
+      {
+        "name": "Runic Outburst DMG",
+        "kind": "echo",
+        "parts": [
+          { "stat": "atk", "values": [59.19, 64.04, 68.9, 75.69, 80.54, 86.13, 93.89, 101.66, 109.42, 117.67] },
+          { "stat": "atk", "values": [103.58, 112.07, 120.57, 132.46, 140.95, 150.72, 164.3, 177.89, 191.48, 205.92] },
+          { "stat": "atk", "values": [133.17, 144.09, 155.01, 170.3, 181.22, 193.78, 211.25, 228.72, 246.19, 264.75] }
+        ]
+      },
+      {
+        "name": "Runic Chain Whip DMG",
+        "kind": "echo",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [25, 27.05, 29.1, 31.97, 34.02, 36.37, 39.65, 42.93, 46.21, 49.7],
+            "times": 4
+          },
+          {
+            "stat": "atk",
+            "values": [33.33, 36.06, 38.8, 42.62, 45.35, 48.5, 52.87, 57.24, 61.61, 66.26],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Runic Soliskin DMG",
+        "kind": "echo",
+        "parts": [
+          { "stat": "atk", "values": [20, 21.64, 23.28, 25.57, 27.21, 29.1, 31.72, 34.35, 36.97, 39.76] },
+          {
+            "stat": "atk",
+            "values": [30, 32.46, 34.92, 38.36, 40.82, 43.65, 47.58, 51.52, 55.45, 59.63],
+            "times": 4
+          },
+          { "stat": "atk", "values": [59.99, 64.91, 69.83, 76.71, 81.63, 87.29, 95.16, 103.03, 110.9, 119.26] }
+        ]
+      },
+      {
+        "name": "Forte Circuit - Learn My True Name DMG",
+        "kind": "echo",
+        "parts": [
+          { "stat": "atk", "values": [152.35, 164.84, 177.33, 194.82, 207.31, 221.68, 241.66, 261.65, 281.64, 302.87] },
+          { "stat": "atk", "values": [457.03, 494.5, 531.98, 584.44, 621.92, 665.02, 724.98, 784.94, 844.9, 908.61] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

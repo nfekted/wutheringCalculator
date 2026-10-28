@@ -1,0 +1,212 @@
+{
+  "id": "rovera",
+  "name": "Rover (Aero)",
+  "icon": "rovera",
+  "type": "aero",
+  "weapon": "sword",
+  "lastUpdate": "2026-10-27T02:08:24.718Z",
+  "hasHealing": true,
+  "healsAllies": true,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Wind Cutter",
+    "hits": [
+      {
+        "name": "Wind Cutter DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [17.76, 19.22, 20.68, 22.72, 24.17, 25.85, 28.18, 30.51, 32.84, 35.31] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Wind Cutter DMG 2",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [21.66, 23.43, 25.21, 27.69, 29.47, 31.51, 34.35, 37.19, 40.03, 43.05],
+            "times": 2
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Wind Cutter DMG 3",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [27.69, 29.96, 32.23, 35.41, 37.68, 40.29, 43.92, 47.56, 51.19, 55.05] },
+          {
+            "stat": "atk",
+            "values": [1, 1.09, 1.17, 1.28, 1.37, 1.46, 1.59, 1.72, 1.85, 1.99],
+            "times": 25
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Wind Cutter DMG 4",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [38.59, 41.76, 44.92, 49.35, 52.51, 56.15, 61.21, 66.28, 71.34, 76.72] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [9.01, 9.75, 10.49, 11.52, 12.26, 13.11, 14.29, 15.48, 16.66, 17.91],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Razor Wind DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [18.3, 19.8, 21.3, 23.4, 24.9, 26.62, 29.02, 31.42, 33.82, 36.37] },
+          { "stat": "atk", "values": [22.36, 24.2, 26.03, 28.6, 30.43, 32.54, 35.47, 38.4, 41.34, 44.46] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [70.8, 76.61, 82.42, 90.54, 96.35, 103.03, 112.32, 121.6, 130.89, 140.76] }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [63.09, 68.27, 73.44, 80.68, 85.85, 91.8, 100.08, 108.36, 116.63, 125.43] },
+          {
+            "stat": "atk",
+            "values": [1, 1.09, 1.17, 1.28, 1.37, 1.46, 1.59, 1.72, 1.85, 1.99],
+            "times": 25
+          }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Illusion Breaker",
+    "hits": [
+      {
+        "name": "Awakening Gale DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [33.42, 36.16, 38.9, 42.74, 45.48, 48.63, 53.02, 57.4, 61.78, 66.44] },
+          { "stat": "atk", "values": [50.13, 54.24, 58.35, 64.11, 68.22, 72.94, 79.52, 86.1, 92.67, 99.66] }
+        ]
+      },
+      {
+        "name": "Skyfall Severance DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [11.76, 12.72, 13.69, 15.03, 16, 17.11, 18.65, 20.19, 21.73, 23.37],
+            "times": 3
+          },
+          { "stat": "atk", "values": [52.89, 57.23, 61.57, 67.64, 71.97, 76.96, 83.9, 90.84, 97.78, 105.15] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Omega Storm",
+    "hits": [
+      {
+        "name": "Omega Storm DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [270, 292.14, 314.28, 345.28, 367.42, 392.88, 428.31, 463.73, 499.15, 536.79] }
+        ]
+      },
+      {
+        "name": "Omega Storm Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [1100, 1232, 1375, 1540, 1738, 1925, 1958, 2002, 2035, 2090] },
+          { "stat": "atk", "values": [36.67, 38.13, 39.6, 41.8, 44.73, 47.67, 53.17, 59.4, 66, 77] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Relentless Squall",
+    "hits": [
+      {
+        "name": "Relentless Squall DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [40, 43.28, 46.56, 51.16, 54.44, 58.21, 63.46, 68.7, 73.95, 79.53] },
+          { "stat": "atk", "values": [60, 64.92, 69.84, 76.73, 81.65, 87.31, 95.18, 103.05, 110.93, 119.29] }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "Storm's Echo",
+    "hits": []
+  },
+  "forte": {
+    "name": "Cycle of Wind",
+    "hits": [
+      {
+        "name": "Cloudburst Dance Stage 1 DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [64.79, 70.1, 75.41, 82.85, 88.16, 94.27, 102.77, 111.27, 119.77, 128.8] }
+        ]
+      },
+      {
+        "name": "Cloudburst Dance Stage 2 DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [71.16, 76.99, 82.83, 91, 96.83, 103.54, 112.88, 122.21, 131.55, 141.47] }
+        ]
+      },
+      {
+        "name": "Cloudburst Dance Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [330, 369, 412, 462, 521, 577, 587, 600, 610, 627] },
+          { "stat": "atk", "values": [11, 11.44, 11.88, 12.54, 13.42, 14.3, 15.95, 17.82, 19.8, 23.1] }
+        ]
+      },
+      {
+        "name": "Unbound Flow Stage 1 DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [17.26, 18.67, 20.09, 22.07, 23.48, 25.11, 27.37, 29.63, 31.9, 34.3],
+            "times": 5
+          }
+        ]
+      },
+      {
+        "name": "Unbound Flow Stage 2 DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [363.68, 393.5, 423.32, 465.07, 494.9, 529.19, 576.9, 624.62, 672.33, 723.03] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

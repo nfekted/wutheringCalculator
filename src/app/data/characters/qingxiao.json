@@ -1,0 +1,293 @@
+{
+  "id": "qingxiao",
+  "name": "Qingxiao",
+  "icon": "qingxiao",
+  "type": "aero",
+  "weapon": "sword",
+  "lastUpdate": "2026-10-28T00:30:39.367Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Strings to Steel",
+    "hits": [
+      {
+        "name": "Basic Attack - Stringblade Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [15.16, 16.4, 17.65, 19.39, 20.63, 22.06, 24.05, 26.03, 28.02, 30.13],
+            "times": 2
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Stringblade Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [18.66, 20.19, 21.72, 23.86, 25.39, 27.15, 29.6, 32.04, 34.49, 37.09],
+            "times": 2
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Stringblade Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [12.25, 13.26, 14.26, 15.67, 16.67, 17.83, 19.44, 21.04, 22.65, 24.36],
+            "times": 4
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Basic Attack - Stringblade Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [43.63, 47.21, 50.78, 55.79, 59.37, 63.48, 69.21, 74.93, 80.65, 86.73] },
+          {
+            "stat": "atk",
+            "values": [2.73, 2.96, 3.18, 3.49, 3.72, 3.97, 4.33, 4.69, 5.05, 5.43],
+            "times": 4
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack - Stringblade DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [7.35, 7.96, 8.56, 9.4, 10.01, 10.7, 11.66, 12.63, 13.59, 14.62],
+            "times": 3
+          },
+          {
+            "stat": "atk",
+            "values": [11.03, 11.93, 12.84, 14.1, 15.01, 16.05, 17.49, 18.94, 20.39, 21.92],
+            "times": 6
+          },
+          { "stat": "atk", "values": [132.3, 143.15, 154, 169.19, 180.04, 192.51, 209.87, 227.23, 244.59, 263.03] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Stringblade Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [3.64, 3.94, 4.24, 4.66, 4.96, 5.3, 5.78, 6.26, 6.73, 7.24],
+            "times": 5
+          },
+          { "stat": "atk", "values": [27.3, 29.54, 31.78, 34.92, 37.15, 39.73, 43.31, 46.89, 50.47, 54.28] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Stringblade Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [22.58, 24.43, 26.28, 28.87, 30.73, 32.85, 35.82, 38.78, 41.74, 44.89] },
+          {
+            "stat": "atk",
+            "values": [11.29, 12.22, 13.14, 14.44, 15.37, 16.43, 17.91, 19.39, 20.87, 22.45],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Mid-air Attack - Stringblade Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [5.6, 6.06, 6.52, 7.17, 7.63, 8.15, 8.89, 9.62, 10.36, 11.14],
+            "times": 5
+          },
+          { "stat": "atk", "values": [42, 45.45, 48.89, 53.71, 57.16, 61.12, 66.63, 72.14, 77.65, 83.51] }
+        ]
+      },
+      {
+        "name": "Plunging Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [43.4, 46.96, 50.52, 55.5, 59.06, 63.16, 68.85, 74.54, 80.24, 86.29] }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Stringblade DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [22.75, 24.62, 26.49, 29.1, 30.96, 33.11, 36.09, 39.08, 42.06, 45.23],
+            "times": 4
+          }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Severing Note",
+    "hits": [
+      {
+        "name": "Severing Note: Judgement DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [10.5, 11.37, 12.23, 13.43, 14.29, 15.28, 16.66, 18.04, 19.42, 20.88],
+            "times": 2
+          },
+          { "stat": "atk", "values": [49, 53.02, 57.04, 62.67, 66.68, 71.3, 77.73, 84.16, 90.59, 97.42] }
+        ]
+      },
+      {
+        "name": "Severing Note: Ascendant DMG",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [14.28, 15.46, 16.63, 18.27, 19.44, 20.78, 22.66, 24.53, 26.4, 28.4] },
+          {
+            "stat": "atk",
+            "values": [16.66, 18.03, 19.4, 21.31, 22.68, 24.25, 26.43, 28.62, 30.8, 33.13],
+            "times": 2
+          }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Billows Beneath Heaven",
+    "hits": [
+      {
+        "name": "Billows Beneath Heaven DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [16.8, 18.18, 19.56, 21.49, 22.87, 24.45, 26.65, 28.86, 31.06, 33.41],
+            "times": 10
+          },
+          { "stat": "atk", "values": [672, 727.11, 782.21, 859.36, 914.46, 977.83, 1066, 1154.16, 1242.33, 1336.01] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Tonality Shift",
+    "hits": [
+      {
+        "name": "Tonality Shift DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [20.02, 21.66, 23.3, 25.6, 27.24, 29.13, 31.75, 34.38, 37, 39.79] },
+          {
+            "stat": "atk",
+            "values": [23.35, 25.27, 27.18, 29.86, 31.78, 33.98, 37.04, 40.11, 43.17, 46.42],
+            "times": 2
+          }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "Lingering Song",
+    "hits": []
+  },
+  "forte": {
+    "name": "Formless Heart Sword",
+    "hits": [
+      {
+        "name": "Basic Attack - Ephemeral Transcendence Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [22.58, 24.43, 26.28, 28.87, 30.73, 32.85, 35.82, 38.78, 41.74, 44.89] },
+          {
+            "stat": "atk",
+            "values": [11.29, 12.22, 13.14, 14.44, 15.37, 16.43, 17.91, 19.39, 20.87, 22.45],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Ephemeral Transcendence Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [11.62, 12.58, 13.53, 14.86, 15.82, 16.91, 18.44, 19.96, 21.49, 23.11],
+            "times": 5
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Ephemeral Transcendence Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [10.5, 11.37, 12.23, 13.43, 14.29, 15.28, 16.66, 18.04, 19.42, 20.88],
+            "times": 3
+          },
+          {
+            "stat": "atk",
+            "values": [15.75, 17.05, 18.34, 20.15, 21.44, 22.92, 24.99, 27.06, 29.12, 31.32],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Basic Attack - Ephemeral Transcendence Stage 4 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [9.1, 9.85, 10.6, 11.64, 12.39, 13.25, 14.44, 15.63, 16.83, 18.1],
+            "times": 4
+          },
+          { "stat": "atk", "values": [54.6, 59.08, 63.56, 69.83, 74.3, 79.45, 86.62, 93.78, 100.94, 108.56] }
+        ]
+      },
+      {
+        "name": "Dodge Counter - Ephemeral Transcendence DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [13.3, 14.4, 15.49, 17.01, 18.1, 19.36, 21.1, 22.85, 24.59, 26.45],
+            "times": 4
+          },
+          { "stat": "atk", "values": [79.8, 86.35, 92.89, 102.05, 108.6, 116.12, 126.59, 137.06, 147.53, 158.66] }
+        ]
+      },
+      {
+        "name": "Heaven's Reckoning: Ephemeral Transcendence DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [14, 15.15, 16.3, 17.91, 19.06, 20.38, 22.21, 24.05, 25.89, 27.84],
+            "times": 9
+          },
+          { "stat": "atk", "values": [224, 242.37, 260.74, 286.46, 304.82, 325.95, 355.34, 384.72, 414.11, 445.34] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

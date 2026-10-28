@@ -1,0 +1,338 @@
+{
+  "id": "iuno",
+  "name": "Iuno",
+  "icon": "iuno",
+  "type": "aero",
+  "weapon": "gauntlets",
+  "lastUpdate": "2026-10-27T02:35:59.928Z",
+  "hasHealing": true,
+  "healsAllies": true,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Moon Steps",
+    "hits": [
+      {
+        "name": "Moonring - Stage 1 DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [44.1, 47.72, 51.34, 56.4, 60.02, 64.17, 69.96, 75.75, 81.53, 87.68] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Moonring - Stage 2 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [23.17, 25.07, 26.97, 29.63, 31.53, 33.71, 36.75, 39.79, 42.83, 46.06],
+            "times": 2
+          },
+          { "stat": "atk", "values": [23.87, 25.83, 27.79, 30.53, 32.48, 34.74, 37.87, 41, 44.13, 47.46] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Moonring - Stage 3 DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [44.26, 47.89, 51.52, 56.6, 60.22, 64.4, 70.2, 76.01, 81.82, 87.98],
+            "times": 2
+          },
+          { "stat": "atk", "values": [45.6, 49.34, 53.08, 58.31, 62.05, 66.35, 72.33, 78.31, 84.29, 90.65] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Mid-air Attack",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [27, 29.22, 31.43, 34.53, 36.75, 39.29, 42.84, 46.38, 49.92, 53.68],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Moonring - Dodge Counter",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [41.29, 44.67, 48.06, 52.8, 56.18, 60.08, 65.49, 70.91, 76.32, 82.08],
+            "times": 2
+          },
+          { "stat": "atk", "values": [42.54, 46.03, 49.51, 54.4, 57.89, 61.9, 67.48, 73.06, 78.64, 84.57] }
+        ]
+      },
+      {
+        "name": "Moonbow - Basic Attack 1 DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [63.6, 68.82, 74.04, 81.34, 86.55, 92.55, 100.89, 109.24, 117.58, 126.45] }
+        ]
+      },
+      {
+        "name": "Moonbow - Basic Attack 2 DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [28, 30.3, 32.6, 35.81, 38.11, 40.75, 44.42, 48.09, 51.77, 55.67],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Moonbow - Basic Attack 3 DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [84, 90.89, 97.78, 107.42, 114.31, 122.23, 133.25, 144.27, 155.3, 167.01],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Moonbow - Dodge Counter DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [52, 56.27, 60.53, 66.5, 70.77, 75.67, 82.49, 89.31, 96.14, 103.39],
+            "times": 3
+          }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Foresight Fugue",
+    "hits": [
+      {
+        "name": "Pulse of Origins DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [9.38, 10.15, 10.92, 12, 12.77, 13.65, 14.88, 16.11, 17.34, 18.65],
+            "times": 7
+          },
+          { "stat": "atk", "values": [65.65, 71.04, 76.42, 83.96, 89.34, 95.53, 104.15, 112.76, 121.37, 130.52] }
+        ]
+      },
+      {
+        "name": "Closing Refrain DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [70.79, 76.59, 82.4, 90.52, 96.33, 103, 112.29, 121.58, 130.87, 140.73],
+            "times": 2
+          },
+          { "stat": "atk", "values": [72.93, 78.92, 84.9, 93.27, 99.25, 106.13, 115.69, 125.26, 134.83, 145] }
+        ]
+      },
+      {
+        "name": "Arc Beyond the Edge DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [110.55, 119.62, 128.69, 141.38, 150.44, 160.87, 175.37, 189.87, 204.38, 219.79],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Unfinished Refrain DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [70.79, 76.59, 82.4, 90.52, 96.33, 103, 112.29, 121.58, 130.87, 140.73],
+            "times": 2
+          },
+          { "stat": "atk", "values": [72.93, 78.92, 84.9, 93.27, 99.25, 106.13, 115.69, 125.26, 134.83, 145] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Beneath Lunar Tides",
+    "hits": [
+      {
+        "name": "Beneath Lunar Tides DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [550, 595.1, 640.2, 703.34, 748.44, 800.31, 872.47, 944.63, 1016.79, 1093.46] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Illuminated Manifestation",
+    "hits": [
+      {
+        "name": "Illuminated Manifestation DMG",
+        "kind": "intro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [8, 8.66, 9.32, 10.24, 10.89, 11.65, 12.7, 13.74, 14.79, 15.91],
+            "times": 7
+          },
+          { "stat": "atk", "values": [24, 25.97, 27.94, 30.7, 32.66, 34.93, 38.08, 41.22, 44.37, 47.72] }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "From Gloom to Gleam",
+    "hits": []
+  },
+  "forte": {
+    "name": "Ebb and Flow",
+    "hits": [
+      {
+        "name": "Flux - Moonbow DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [126, 136.34, 146.67, 161.13, 171.47, 183.35, 199.88, 216.41, 232.94, 250.51] }
+        ]
+      },
+      {
+        "name": "Flux - Moonring DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [39.83, 43.1, 46.36, 50.93, 54.2, 57.95, 63.18, 68.4, 73.63, 79.18],
+            "times": 4
+          }
+        ]
+      },
+      {
+        "name": "Enhanced Moonbow - Basic Attack 1 DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [103.6, 112.1, 120.6, 132.49, 140.98, 150.75, 164.35, 177.94, 191.53, 205.97] }
+        ]
+      },
+      {
+        "name": "Enhanced Moonbow - Basic Attack 2 DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [48, 51.94, 55.88, 61.39, 65.32, 69.85, 76.15, 82.44, 88.74, 95.43],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Enhanced Moonbow - Basic Attack 3 DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [134, 144.99, 155.98, 171.36, 182.35, 194.99, 212.57, 230.15, 247.73, 266.41],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Enhanced Moonbow - Dodge Counter DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [78.67, 85.12, 91.57, 100.6, 107.05, 114.47, 124.79, 135.11, 145.44, 156.4],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Enhanced Arc Beyond the Edge DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [160.55, 173.72, 186.89, 205.32, 218.48, 233.62, 254.69, 275.75, 296.81, 319.19],
+            "times": 2
+          }
+        ]
+      },
+      {
+        "name": "Moonbow - Basic Attack 1 Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "atk", "values": [13.03, 14.1, 15.17, 16.67, 17.73, 18.96, 20.67, 22.38, 24.09, 25.91] }
+        ]
+      },
+      {
+        "name": "Moonbow - Basic Attack 2 Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "atk", "values": [13.03, 14.1, 15.17, 16.67, 17.73, 18.96, 20.67, 22.38, 24.09, 25.91] }
+        ]
+      },
+      {
+        "name": "Moonbow - Basic Attack 3 Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "atk", "values": [24.43, 26.44, 28.44, 31.24, 33.25, 35.55, 38.75, 41.96, 45.16, 48.57] }
+        ]
+      },
+      {
+        "name": "Moonbow - Dodge Counter Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "atk", "values": [16.29, 17.63, 18.96, 20.83, 22.17, 23.7, 25.84, 27.97, 30.11, 32.38] }
+        ]
+      },
+      {
+        "name": "Arc Beyond the Edge Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "atk", "values": [24.43, 26.44, 28.44, 31.24, 33.25, 35.55, 38.75, 41.96, 45.16, 48.57] }
+        ]
+      },
+      {
+        "name": "Absolute Fullness DMG",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [80, 86.56, 93.12, 102.31, 108.87, 116.41, 126.91, 137.4, 147.9, 159.05] }
+        ]
+      },
+      {
+        "name": "Absolute Fullness Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "atk", "values": [97.71, 105.73, 113.74, 124.96, 132.97, 142.18, 155, 167.82, 180.64, 194.26] }
+        ]
+      },
+      {
+        "name": "Full Moon Domain Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "atk", "values": [16.29, 17.63, 18.96, 20.83, 22.17, 23.7, 25.84, 27.97, 30.11, 32.38] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

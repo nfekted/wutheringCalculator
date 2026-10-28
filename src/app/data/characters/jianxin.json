@@ -2,161 +2,236 @@
   "id": "jianxin",
   "name": "Jianxin",
   "icon": "jianxin",
-  "wiki": "https://wutheringwaves.fandom.com/wiki/Jianxin",
   "type": "aero",
   "weapon": "gauntlets",
-  "lastUpdate": "2024-11-09T03:00:00.000Z",
-  "damageHealer": true,
-  "healType": true,
-  "canHeal": false,
+  "lastUpdate": "2026-10-27T02:08:24.657Z",
+  "hasHealing": true,
+  "healsAllies": true,
+  "primaryDamage": true,
   "hpScale": false,
   "defScale": false,
   "basic": {
     "name": "Fengyiquan",
-    "names": ["Fengyiquan DMG 1", "Fengyiquan DMG 2", "Fengyiquan DMG 3", "Fengyiquan DMG 4", "Mid-Air DMG", "Dodge DMG", "Heavy Attack"],
-    "bonusType": ["b", "b", "b", "b", "b", "b", "h"],
-    "scaling": [
-      [34.94, 37.8, 40.67, 44.68, 47.54, 50.84, 55.42, 60.01, 64.59, 69.46],
-      [13.4, 14.5, 15.6, 17.14, 18.23, 19.5, 21.26, 23.01, 24.77, 26.64],
-      [21, 22.72, 24.44, 26.85, 28.57, 30.55, 33.31, 36.06, 38.82, 41.75],
-      [57.04, 61.72, 66.39, 72.94, 77.62, 83, 90.48, 97.96, 105.45, 113.4],
-      [62, 67.09, 72.17, 79.29, 84.37, 90.22, 98.36, 106.49, 114.62, 123.27],
-      [20.54, 22.22, 23.91, 26.26, 27.95, 29.88, 32.58, 35.27, 37.96, 40.83],
-      [63.41, 68.61, 73.81, 81.09, 86.29, 92.27, 100.59, 108.91, 117.23, 126.07]
-    ],
-    "multiplier": [1, 2, 4, 1, 1, 2, 1],
-    "second": [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [40.19, 43.49, 46.78, 51.4, 54.69, 58.48, 63.76, 69.03, 74.3, 79.9],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [82.14, 88.87, 95.61, 105.04, 111.77, 119.52, 130.29, 141.07, 151.84, 163.29],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    ],
-    "secondMultiplier": [0, 1, 0, 0, 0, 1, 0],
-    "third": [],
-    "thirdMultiplier": [],
-    "ends": 3
+    "hits": [
+      {
+        "name": "Fengyiquan DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [34.94, 37.8, 40.67, 44.68, 47.54, 50.84, 55.42, 60.01, 64.59, 69.46] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Fengyiquan DMG 2",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [13.4, 14.5, 15.6, 17.14, 18.23, 19.5, 21.26, 23.01, 24.77, 26.64],
+            "times": 2
+          },
+          { "stat": "atk", "values": [40.19, 43.49, 46.78, 51.4, 54.69, 58.48, 63.76, 69.03, 74.3, 79.9] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Fengyiquan DMG 3",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [21, 22.72, 24.44, 26.85, 28.57, 30.55, 33.31, 36.06, 38.82, 41.75],
+            "times": 4
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Fengyiquan DMG 4",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [57.04, 61.72, 66.39, 72.94, 77.62, 83, 90.48, 97.96, 105.45, 113.4] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [63.41, 68.61, 73.81, 81.09, 86.29, 92.27, 100.59, 108.91, 117.23, 126.07] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [62, 67.09, 72.17, 79.29, 84.37, 90.22, 98.36, 106.49, 114.62, 123.27] }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [20.54, 22.22, 23.91, 26.26, 27.95, 29.88, 32.58, 35.27, 37.96, 40.83],
+            "times": 2
+          },
+          { "stat": "atk", "values": [82.14, 88.87, 95.61, 105.04, 111.77, 119.52, 130.29, 141.07, 151.84, 163.29] }
+        ]
+      }
+    ]
   },
   "skill": {
     "name": "Calming Air",
-    "names": ["Chi Counter", "Chi Parry"],
-    "bonusType": ["s", "s"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [168.3, 182.11, 195.91, 215.23, 229.03, 244.9, 266.98, 289.06, 311.14, 334.6],
-      [130.14, 140.81, 151.48, 166.42, 177.09, 189.36, 206.44, 223.51, 240.59, 258.73]
-    ],
-    "multiplier": [1, 1],
-    "second": [],
-    "secondMultiplier": [],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Chi Counter Damage",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [168.3, 182.11, 195.91, 215.23, 229.03, 244.9, 266.98, 289.06, 311.14, 334.6] }
+        ]
+      },
+      {
+        "name": "Chi Parry Damage",
+        "kind": "skill",
+        "parts": [
+          { "stat": "atk", "values": [130.14, 140.81, 151.48, 166.42, 177.09, 189.36, 206.44, 223.51, 240.59, 258.73] }
+        ]
+      }
+    ]
   },
   "liberation": {
     "name": "Purification Force Field",
-    "names": ["Purification Force Field: Single Hit", "Purification Force Field: Continuous (12hit)", "Purification Force Field: Explosion"],
-    "bonusType": ["l", "l", "l"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [15, 16.23, 17.46, 19.19, 20.42, 21.83, 23.8, 25.77, 27.74, 29.83],
-      [15, 16.23, 17.46, 19.19, 20.42, 21.83, 23.8, 25.77, 27.74, 29.83],
-      [320, 346.24, 372.48, 409.22, 435.46, 465.64, 507.62, 549.6, 591.59, 636.2]
-    ],
-    "multiplier": [1, 12, 1],
-    "second": [],
-    "secondMultiplier": [0],
-    "third": [],
-    "thirdMultiplier": [0]
+    "hits": [
+      {
+        "name": "Resonance Liberation Continuous Damage",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [15, 16.23, 17.46, 19.19, 20.42, 21.83, 23.8, 25.77, 27.74, 29.83] }
+        ]
+      },
+      {
+        "name": "Resonance Liberation Explosion Damage",
+        "kind": "liberation",
+        "parts": [
+          { "stat": "atk", "values": [320, 346.24, 372.48, 409.22, 435.46, 465.64, 507.62, 549.6, 591.59, 636.2] }
+        ]
+      }
+    ]
   },
   "intro": {
     "name": "Essence of Tao",
-    "names": ["Essence of Tao"],
-    "bonusType": ["i"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [17, 18.4, 19.79, 21.74, 23.14, 24.74, 26.97, 29.2, 31.43, 33.8]
-    ],
-    "multiplier": [3],
-    "second": [
-      [34, 36.79, 39.58, 43.48, 46.27, 49.48, 53.94, 58.4, 62.86, 67.6]
-    ],
-    "secondMultiplier": [1],
-    "third": [],
-    "thirdMultiplier": [0]
+    "hits": [
+      {
+        "name": "Essence of Tao DMG",
+        "kind": "intro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [17, 18.4, 19.79, 21.74, 23.14, 24.74, 26.97, 29.2, 31.43, 33.8],
+            "times": 3
+          },
+          { "stat": "atk", "values": [34, 36.79, 39.58, 43.48, 46.27, 49.48, 53.94, 58.4, 62.86, 67.6] }
+        ]
+      }
+    ]
   },
   "outro": {
     "name": "Transcendence",
-    "names": ["Transcendence"],
-    "bonusType": ["o"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [0]
-    ],
-    "multiplier": [0],
-    "second": [],
-    "secondMultiplier": [],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": []
   },
   "forte": {
     "name": "Primordial Chi Spiral",
-    "names": ["Primordial Chi Spiral: Pushin Punch", "1x Zhoutian Damage", "20x Zhoutian Damage", "Minor Zhoutian Shock", "Major Zhoutian: Inner Shock", "Major Zhoutian: Outer Shock", "Yielding Pull", "Incomplete Minor Zhoutian Shield", "Major Zhoutian: Inner Shield", "Major Zhoutian: Outer Shield", "Shield Healing"],
-    "bonusType": ["h", "h", "h", "h", "h", "h", "h", "sh", "sh", "sh", "c"],
-    "heal": [false, false, false, false, false, false, false, false, false, false, true],
-    "dmgType": [],
-    "shield": [false, false, false, false, false, false, false, true, true, true, false],
-    "scaling": [
-      [125, 135.25, 145.5, 159.85, 170.1, 181.89, 198.29, 214.69, 231.09, 248.52],
-      [12.5, 13.53, 14.55, 15.99, 17.01, 18.19, 19.83, 21.47, 23.11, 24.86],
-      [12.5, 13.53, 14.55, 15.99, 17.01, 18.19, 19.83, 21.47, 23.11, 24.86],
-      [70, 75.74, 81.48, 89.52, 95.26, 101.86, 111.05, 120.23, 129.41, 139.17],
-      [190, 205.58, 221.16, 242.98, 258.56, 276.47, 301.4, 326.33, 351.26, 377.74],
-      [260, 281.32, 302.64, 332.49, 353.81, 378.33, 412.44, 446.55, 480.67, 516.71],
-      [110, 119.02, 128.04, 140.67, 149.69, 160.07, 174.5, 188.93, 203.36, 218.7],
-      [-437, -490, -546, -612, -691, -765, -778, -796, -809, -831],
-      [-875, -980, -1093, -1225, -1382, -1531, -1557, -1592, -1618, -1662],
-      [-1750, -1960, -2187, -2450, -2765, -3062, -3115, -3185, -3237, -3325],
-      [-2915, -3265, -3644, -4081, -4606, -5102, -5189, -5306, -5393, -5539],
-      [-700, -784, -875, -980, -1106, -1225, -1246, -1274, -1295, -1330]
-    ],
-    "multiplier": [1, 1, 20, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    "second": [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [17.06, 17.75, 18.43, 19.45, 20.82, 22.18, 24.74, 27.64, 30.71, 35.83],
-      [34.13, 35.49, 36.86, 38.9, 41.63, 44.36, 49.48, 55.28, 61.43, 71.66],
-      [68.25, 70.98, 73.71, 77.81, 83327, 88.73, 98.96, 110.57, 122.85, 143.33],
-      [113.7, 118.25, 122.8, 129.62, 138.72, 147.82, 164.87, 184.2, 204.67, 238.78],
-      [27.3, 28.39, 29.48, 31.12, 33.31, 35.49, 39.59, 44.23, 49.14, 57.33]
-    ],
-    "secondMultiplier": [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Pushing Punch Damage",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [125, 135.25, 145.5, 159.85, 170.1, 181.89, 198.29, 214.69, 231.09, 248.52] }
+        ]
+      },
+      {
+        "name": "Zhoutian Progress Continuous Damage",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [12.5, 13.53, 14.55, 15.99, 17.01, 18.19, 19.83, 21.47, 23.11, 24.86] }
+        ]
+      },
+      {
+        "name": "Minor Zhoutian Shock Damage",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [70, 75.74, 81.48, 89.52, 95.26, 101.86, 111.05, 120.23, 129.41, 139.17] }
+        ]
+      },
+      {
+        "name": "Major Zhoutian: Inner Shock Damage",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [190, 205.58, 221.16, 242.98, 258.56, 276.47, 301.4, 326.33, 351.26, 377.74] }
+        ]
+      },
+      {
+        "name": "Major Zhoutian: Outer Shock Damage",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [260, 281.32, 302.64, 332.49, 353.81, 378.33, 412.44, 446.55, 480.67, 516.91] }
+        ]
+      },
+      {
+        "name": "Yielding Pull Damage",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [110, 119.02, 128.04, 140.67, 149.69, 160.07, 174.5, 188.93, 203.36, 218.7] }
+        ]
+      },
+      {
+        "name": "Incomplete Minor Zhoutian Final Shield",
+        "kind": "shield",
+        "parts": [
+          { "stat": "flat", "values": [437, 490, 546, 612, 691, 765, 778, 796, 809, 831] },
+          { "stat": "atk", "values": [17.06, 17.75, 18.43, 19.45, 20.82, 22.18, 24.74, 27.64, 30.71, 35.83] }
+        ]
+      },
+      {
+        "name": "Minor Zhoutian Final Shield",
+        "kind": "shield",
+        "parts": [
+          { "stat": "flat", "values": [875, 980, 1093, 1225, 1382, 1531, 1557, 1592, 1618, 1662] },
+          { "stat": "atk", "values": [34.13, 35.49, 36.86, 38.9, 41.63, 44.36, 49.48, 55.28, 61.43, 71.66] }
+        ]
+      },
+      {
+        "name": "Major Zhoutian: Inner Final Shield",
+        "kind": "shield",
+        "parts": [
+          { "stat": "flat", "values": [1750, 1960, 2187, 2450, 2765, 3062, 3115, 3185, 3237, 3325] },
+          { "stat": "atk", "values": [68.25, 70.98, 73.71, 77.81, 83.27, 88.73, 98.96, 110.57, 122.85, 143.33] }
+        ]
+      },
+      {
+        "name": "Major Zhoutian: Outer Final Shield",
+        "kind": "shield",
+        "parts": [
+          { "stat": "flat", "values": [2915, 3265, 3644, 4081, 4606, 5102, 5189, 5306, 5393, 5539] },
+          { "stat": "atk", "values": [113.7, 118.25, 122.8, 129.62, 138.72, 147.82, 164.87, 184.2, 204.67, 238.78] }
+        ]
+      },
+      {
+        "name": "Shield Healing",
+        "kind": "heal",
+        "parts": [
+          { "stat": "flat", "values": [700, 784, 875, 980, 1106, 1225, 1246, 1274, 1295, 1330] },
+          { "stat": "atk", "values": [27.3, 28.39, 29.48, 31.12, 33.31, 35.49, 39.59, 44.23, 49.14, 57.33] }
+        ]
+      }
+    ]
   },
-  "rotation": [
-    { "section": "intro", "index": 0 },
-    { "section": "skill", "index": 0 },
-    { "section": "basic", "index": 0 },
-    { "section": "basic", "index": 1 },
-    { "section": "basic", "index": 2 },
-    { "section": "basic", "index": 3 },
-    { "section": "basic", "index": 6 },
-    { "section": "liberation", "index": 0 }
-  ],
-  "rotationDesc": ["Intro", "Resonance Skill", "4x Basic Attack", "Heavy Attack", "Resonance Liberation", "Outro Skill"],
-  "rotationColor": ["intro", "basic", "skill", "liberation", "basic", "outro"],
-  "rotationCommands": ["mb", "cv", "mb", "cv", "e", "cv", "r", "cv", "mb", "cv", "mb", "cv", "mb"],
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["AERO DMG %", "ATK %"],
   "echo1": ["ATK %"],

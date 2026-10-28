@@ -1,0 +1,218 @@
+{
+  "id": "qiuyuan",
+  "name": "Qiuyuan",
+  "icon": "qiuyuan",
+  "type": "aero",
+  "weapon": "sword",
+  "lastUpdate": "2026-10-27T02:09:42.520Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
+  "hpScale": false,
+  "defScale": false,
+  "basic": {
+    "name": "Inkwash",
+    "hits": [
+      {
+        "name": "Inkwash DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [21, 22.73, 24.45, 26.86, 28.58, 30.56, 33.32, 36.07, 38.83, 41.76] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Inkwash DMG 2",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [17.5, 18.94, 20.37, 22.38, 23.82, 25.47, 27.77, 30.06, 32.36, 34.8] },
+          { "stat": "atk", "values": [17.5, 18.94, 20.37, 22.38, 23.82, 25.47, 27.77, 30.06, 32.36, 34.8] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Inkwash DMG 3",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [12.39, 13.41, 14.43, 15.85, 16.87, 18.03, 19.66, 21.28, 22.91, 24.64] },
+          { "stat": "atk", "values": [12.39, 13.41, 14.43, 15.85, 16.87, 18.03, 19.66, 21.28, 22.91, 24.64] },
+          { "stat": "atk", "values": [12.39, 13.41, 14.43, 15.85, 16.87, 18.03, 19.66, 21.28, 22.91, 24.64] },
+          { "stat": "atk", "values": [12.39, 13.41, 14.43, 15.85, 16.87, 18.03, 19.66, 21.28, 22.91, 24.64] },
+          { "stat": "atk", "values": [33.04, 35.75, 38.46, 42.26, 44.97, 48.08, 52.42, 56.75, 61.09, 65.69] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [58.8, 63.63, 68.45, 75.2, 80.02, 85.56, 93.28, 100.99, 108.71, 116.91] }
+        ]
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [83.3, 90.14, 96.97, 106.53, 113.36, 121.21, 132.14, 143.07, 154, 165.61] }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [98, 106.04, 114.08, 125.33, 133.36, 142.6, 155.46, 168.32, 181.18, 194.84] },
+          {
+            "stat": "atk",
+            "values": [14, 15.15, 16.3, 17.91, 19.06, 20.38, 22.21, 24.05, 25.89, 27.84],
+            "times": 3
+          }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Through the Groves",
+    "hits": [
+      {
+        "name": "Through the Groves DMG",
+        "kind": "echo",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [36.14, 39.1, 42.06, 46.21, 49.18, 52.58, 57.32, 62.06, 66.8, 71.84],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Undaunted Wayfarer DMG",
+        "kind": "echo",
+        "parts": [
+          { "stat": "atk", "values": [16.26, 17.6, 18.93, 20.8, 22.13, 23.66, 25.8, 27.93, 30.06, 32.33] },
+          {
+            "stat": "atk",
+            "values": [16.26, 17.6, 18.93, 20.8, 22.13, 23.66, 25.8, 27.93, 30.06, 32.33],
+            "times": 3
+          },
+          { "stat": "atk", "values": [43.36, 46.92, 50.48, 55.45, 59.01, 63.1, 68.79, 74.48, 80.16, 86.21] }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Sundering Strike",
+    "hits": [
+      {
+        "name": "Sundering Strike DMG",
+        "kind": "echo",
+        "parts": [
+          { "stat": "atk", "values": [400, 432.8, 465.6, 511.52, 544.32, 582.04, 634.52, 687, 739.48, 795.24] }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Attack the Must-Defend",
+    "hits": [
+      {
+        "name": "Attack the Must-Defend DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [4.8, 5.2, 5.59, 6.14, 6.54, 6.99, 7.62, 8.25, 8.88, 9.55],
+            "times": 5
+          },
+          { "stat": "atk", "values": [24, 25.97, 27.94, 30.7, 32.66, 34.93, 38.08, 41.22, 44.37, 47.72] },
+          { "stat": "atk", "values": [72, 77.91, 83.81, 92.08, 97.98, 104.77, 114.22, 123.66, 133.11, 143.15] }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "",
+    "hits": []
+  },
+  "forte": {
+    "name": "Verdant Edge",
+    "hits": [
+      {
+        "name": "Thus Spoke the Blade: Inkwash Stage 1 DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65] },
+          { "stat": "atk", "values": [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65] }
+        ]
+      },
+      {
+        "name": "Thus Spoke the Blade: Inkwash Stage 2 DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [27.99, 30.29, 32.59, 35.8, 38.09, 40.73, 44.41, 48.08, 51.75, 55.65] },
+          { "stat": "atk", "values": [27.99, 30.29, 32.59, 35.8, 38.09, 40.73, 44.41, 48.08, 51.75, 55.65] },
+          { "stat": "atk", "values": [37.32, 40.39, 43.45, 47.73, 50.79, 54.31, 59.21, 64.1, 69, 74.2] }
+        ]
+      },
+      {
+        "name": "Thus Spoke the Blade: Inkwash Stage 3 DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [7.33, 7.94, 8.54, 9.38, 9.98, 10.67, 11.63, 12.59, 13.56, 14.58] },
+          {
+            "stat": "atk",
+            "values": [7.33, 7.94, 8.54, 9.38, 9.98, 10.67, 11.63, 12.59, 13.56, 14.58],
+            "times": 4
+          },
+          { "stat": "atk", "values": [36.65, 39.66, 42.67, 46.87, 49.88, 53.33, 58.14, 62.95, 67.76, 72.87] }
+        ]
+      },
+      {
+        "name": "Thus Spoke the Blade: Inkwash Stage 4 DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [86.7, 93.81, 100.92, 110.88, 117.99, 126.16, 137.54, 148.91, 160.29, 172.37] }
+        ]
+      },
+      {
+        "name": "Thus Spoke the Blade: To Teach DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [45.99, 49.77, 53.54, 58.82, 62.59, 66.93, 72.96, 78.99, 85.03, 91.44] },
+          { "stat": "atk", "values": [45.99, 49.77, 53.54, 58.82, 62.59, 66.93, 72.96, 78.99, 85.03, 91.44] },
+          { "stat": "atk", "values": [45.99, 49.77, 53.54, 58.82, 62.59, 66.93, 72.96, 78.99, 85.03, 91.44] },
+          { "stat": "atk", "values": [45.99, 49.77, 53.54, 58.82, 62.59, 66.93, 72.96, 78.99, 85.03, 91.44] },
+          { "stat": "atk", "values": [45.99, 49.77, 53.54, 58.82, 62.59, 66.93, 72.96, 78.99, 85.03, 91.44] }
+        ]
+      },
+      {
+        "name": "Thus Spoke the Blade: To Save DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [19.34, 20.92, 22.51, 24.73, 26.31, 28.14, 30.67, 33.21, 35.74, 38.44],
+            "times": 3
+          },
+          { "stat": "atk", "values": [15.82, 17.12, 18.42, 20.23, 21.53, 23.02, 25.1, 27.17, 29.25, 31.45] },
+          { "stat": "atk", "values": [15.82, 17.12, 18.42, 20.23, 21.53, 23.02, 25.1, 27.17, 29.25, 31.45] },
+          { "stat": "atk", "values": [15.82, 17.12, 18.42, 20.23, 21.53, 23.02, 25.1, 27.17, 29.25, 31.45] }
+        ]
+      },
+      {
+        "name": "Thus Spoke the Blade: To Sacrifice DMG",
+        "kind": "heavy",
+        "parts": [
+          { "stat": "atk", "values": [109.5, 118.48, 127.46, 140.03, 149.01, 159.34, 173.7, 188.07, 202.44, 217.7] }
+        ]
+      }
+    ]
+  },
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
+  "echo4": [],
+  "echo3": [],
+  "echo1": [],
+  "echoSub": []
+}

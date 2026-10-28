@@ -2,148 +2,224 @@
   "id": "jiyan",
   "name": "Jiyan",
   "icon": "jiyan",
-  "wiki": "https://wutheringwaves.fandom.com/wiki/Jiyan",
   "type": "aero",
   "weapon": "broadblade",
-  "lastUpdate": "2024-11-09T03:00:00.000Z",
-  "damageHealer": false,
-  "healType": false,
-  "canHeal": false,
+  "lastUpdate": "2026-10-27T01:31:36.156Z",
+  "hasHealing": false,
+  "healsAllies": false,
+  "primaryDamage": true,
   "hpScale": false,
   "defScale": false,
   "basic": {
     "name": "Lone Lance",
-    "names": ["Lone Lance DMG 1", "Lone Lance DMG 2", "Lone Lance DMG 3", "Lone Lance DMG 4", "Lone Lance DMG 5", "Mid-Air DMG", "Mid-Air: Banner of Triumph", "Mid-Air DMG", "Dodge DMG", "Heavy Attack", "Heavy Attack: Windborne Strike", "Heavy Attack: Abyssal Slash"],
-    "bonusType": ["b", "b", "b", "b", "b", "b", "b", "b", "b", "h", "h", "h"],
-    "scaling": [
-      [36.8, 39.81, 42.83, 47.05, 50.07, 53.54, 58.37, 63.2, 68.03, 73.16],
-      [22, 23.8, 25.6, 28.13, 29.93, 32.01, 34.89, 37.78, 40.67, 43.73],
-      [18.3, 19.8, 21.3, 23.4, 24.9, 26.62, 29.02, 31.43, 33.83, 36.38],
-      [33.3, 36.03, 38.76, 42.58, 45.31, 48.45, 52.82, 57.19, 61.56, 66.2],
-      [11.87, 12.84, 13.82, 15.18, 16.15, 17.27, 18.83, 20.39, 21.95, 23.6],
-      [62, 67.08, 72.16, 79.28, 84.36, 90.21, 98.35, 106.48, 114.61, 123.26],
-      [40, 43.28, 46.56, 51.15, 54.43, 58.2, 63.45, 68.7, 73.94, 79.52],
-      [78.3, 84.72, 91.14, 100.13, 106.5, 113.93, 124.2, 134.48, 144.75, 155.66],
-      [63.3, 68.349, 73.68, 80.94, 86.13, 92.1, 100.41, 108.71, 117.02, 125.84],
-      [11.16, 12.08, 12.99, 14.27, 15.19, 16.24, 17.71, 19.17, 20.64, 22.2],
-      [41.1, 44.47, 47.84, 52.55, 55.92, 59.8, 65.19, 70.58, 75.98, 81.71],
-      [53.3, 57.67, 62.04, 68.16, 72.53, 77.55, 84.54, 91.54, 98.53, 105.96]
-    ],
-    "multiplier": [1, 1, 5, 2, 1, 1, 1, 1, 2, 6, 1, 1],
-    "second": [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [78.18, 83.51, 89.84, 98.7, 105.03, 112.31, 122.44, 132.56, 142.69, 153.45],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    ],
-    "secondMultiplier": [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0],
-    "third": [],
-    "thirdMultiplier": [],
-    "ends": 4
+    "hits": [
+      {
+        "name": "Lone Lance DMG 1",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [36.8, 39.81, 42.83, 47.05, 50.07, 53.54, 58.37, 63.2, 68.03, 73.16] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Lone Lance DMG 2",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [22, 23.8, 25.6, 28.13, 29.93, 32.01, 34.89, 37.78, 40.67, 43.73] }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Lone Lance DMG 3",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [18.3, 19.8, 21.3, 23.4, 24.9, 26.62, 29.02, 31.43, 33.83, 36.38],
+            "times": 5
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Lone Lance DMG 4",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [33.3, 36.03, 38.76, 42.58, 45.31, 48.45, 52.82, 57.19, 61.56, 66.2],
+            "times": 2
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Lone Lance DMG 5",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [11.87, 12.84, 13.82, 15.18, 16.15, 17.27, 18.83, 20.39, 21.95, 23.6],
+            "times": 7
+          },
+          {
+            "stat": "atk",
+            "values": [77.18, 83.51, 89.84, 98.7, 105.03, 112.31, 122.44, 132.56, 142.69, 153.45],
+            "times": 2
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Heavy Attack DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [11.16, 12.08, 12.99, 14.27, 15.19, 16.24, 17.71, 19.17, 20.64, 22.2],
+            "times": 6
+          }
+        ]
+      },
+      {
+        "name": "Windborne Strike Damage",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [53.3, 57.67, 62.04, 68.16, 72.53, 77.55, 84.54, 91.54, 98.53, 105.96] }
+        ]
+      },
+      {
+        "name": "Abyssal Slash Damage",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [41.1, 44.47, 47.84, 52.55, 55.92, 59.8, 65.19, 70.58, 75.98, 81.71] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [62, 67.08, 72.16, 79.28, 84.36, 90.21, 98.35, 106.48, 114.61, 123.26] }
+        ]
+      },
+      {
+        "name": "Banner Of Triumph Damage",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [40, 43.28, 46.56, 51.15, 54.43, 58.2, 63.45, 68.7, 73.94, 79.52] }
+        ]
+      },
+      {
+        "name": "Mid-air Attack Follow-Up DMG",
+        "kind": "basic",
+        "parts": [
+          { "stat": "atk", "values": [78.3, 84.72, 91.14, 100.13, 106.55, 113.93, 124.2, 134.48, 144.75, 155.66] }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [63.3, 68.49, 73.68, 80.94, 86.13, 92.1, 100.41, 108.71, 117.02, 125.84],
+            "times": 2
+          }
+        ]
+      }
+    ]
   },
   "skill": {
     "name": "Windqueller",
-    "names": ["Windqueller"],
-    "bonusType": ["s"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [53.5, 57.88, 62.27, 68.41, 72.8, 77.84, 84.86, 91.88, 98.9, 106.36]
-    ],
-    "multiplier": [4],
-    "second": [],
-    "secondMultiplier": [],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Windqueller DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [53.5, 57.88, 62.27, 68.41, 72.8, 77.84, 84.86, 91.88, 98.9, 106.36],
+            "times": 4
+          }
+        ]
+      }
+    ]
   },
   "liberation": {
-    "name": "Emerald Storm: Prelude",
-    "names": ["Lance of Qingloong DMG 1", "Lance of Qingloong DMG 2", "Lance of Qingloong DMG 3"],
-    "bonusType": ["h", "h", "h"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [32.95, 35.66, 38.36, 42.14, 44.84, 47.95, 52.28, 56.6, 60.93, 65.52],
-      [30.96, 33.49, 36.03, 39.59, 42.13, 45.05, 49.11, 53.17, 57.23, 61.55],
-      [33.58, 36.33, 39.08, 42.94, 45.69, 48.86, 53.27, 57.67, 62.08, 66.76]
-    ],
-    "multiplier": [8, 8, 8],
-    "second": [],
-    "secondMultiplier": [0],
-    "third": [],
-    "thirdMultiplier": [0]
+    "name": "Emerald Storm - Prelude",
+    "hits": [
+      {
+        "name": "Lance of Qingloong Stage 1 DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [32.95, 35.66, 38.36, 42.14, 44.84, 47.95, 52.28, 56.6, 60.93, 65.52],
+            "times": 8
+          }
+        ]
+      },
+      {
+        "name": "Lance Of Qingloong Stage 2 DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [30.96, 33.49, 36.03, 39.59, 42.13, 45.05, 49.11, 53.17, 57.23, 61.55],
+            "times": 8
+          }
+        ]
+      },
+      {
+        "name": "Lance Of Qingloong Stage 3 DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [33.58, 36.33, 39.08, 42.94, 45.69, 48.86, 53.27, 57.67, 62.08, 66.76],
+            "times": 8
+          }
+        ]
+      }
+    ]
   },
   "intro": {
     "name": "Tactical Strike",
-    "names": ["Tactical Strike"],
-    "bonusType": ["i"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81]
-    ],
-    "multiplier": [1],
-    "second": [],
-    "secondMultiplier": [0],
-    "third": [],
-    "thirdMultiplier": [0]
+    "hits": [
+      {
+        "name": "Tactical Strike DMG",
+        "kind": "intro",
+        "parts": [
+          { "stat": "atk", "values": [100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81] }
+        ]
+      }
+    ]
   },
   "outro": {
-    "name": "Discipline",
-    "names": ["Discipline"],
-    "bonusType": ["o"],
-    "heal": [],
-    "dmgType": [],
-    "scaling": [
-      [313.4]
-    ],
-    "multiplier": [1],
-    "second": [],
-    "secondMultiplier": [],
-    "third": [],
-    "thirdMultiplier": []
+    "name": "",
+    "hits": []
   },
   "forte": {
     "name": "Qingloong at War",
-    "names": ["Qingloong at War"],
-    "bonusType": ["h"],
-    "heal": [],
-    "dmgType": [],
-    "shield": [],
-    "scaling": [
-      [81.88, 77.77, 83.67, 91.92, 97.81, 104.59, 114.02, 123.45, 132.88, 142.91]
-    ],
-    "multiplier": [2],
-    "second": [
-      [215.64, 233.33, 251.01, 275.77, 293.45, 313.78, 342.08, 370.37, 298.66, 428.73]
-    ],
-    "secondMultiplier": [1],
-    "third": [],
-    "thirdMultiplier": []
+    "hits": [
+      {
+        "name": "Emerald Storm: Finale Damage",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [71.88, 77.77, 83.67, 91.92, 97.81, 104.59, 114.02, 123.45, 132.88, 142.91],
+            "times": 2
+          },
+          { "stat": "atk", "values": [215.64, 233.33, 251.01, 275.77, 293.45, 313.78, 342.08, 370.37, 398.66, 428.73] }
+        ]
+      }
+    ]
   },
-  "rotation": [
-    { "section": "intro", "index": 0 },
-    { "section": "skill", "index": 0 },
-    { "section": "liberation", "index": 0 },
-    { "section": "liberation", "index": 1 },
-    { "section": "liberation", "index": 2 },
-    { "section": "liberation", "index": 0 },
-    { "section": "liberation", "index": 1 },
-    { "section": "liberation", "index": 2 },
-    { "section": "liberation", "index": 0 },
-    { "section": "outro", "index": 0 }
-  ],
-  "rotationDesc": ["Intro", "Resonance Skill", "Resonance Liberation", "7x Basic Attack", "Outro"],
-  "rotationColor": ["intro", "skill", "liberation", "basic", "outro"],
-  "rotationCommands": ["e", "cv", "r", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "mb", "cv", "mb"],
+  "rotation": [],
+  "rotationDesc": [],
+  "rotationColor": [],
+  "rotationCommands": [],
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["AERO DMG %", "ATK %"],
   "echo1": ["ATK %"],
