@@ -62,6 +62,8 @@ export interface CharacterData {
   outro: SkillData;
   forte: SkillData;
   rotation: RotationStep[];
+  /** Default hits of the Rotation build between the intro and the outro; without it, the build starts empty */
+  rotationBuild?: RotationStep[];
   rotationDesc: string[];
   rotationColor: string[];
   rotationCommands: string[];

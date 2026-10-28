@@ -18,8 +18,4 @@ export class NavbarComponent {
   openSettings() {
     this.dialog.open(SettingsDialogComponent, { backdropClass: 'app-backdrop', ariaLabelledBy: 'settings-title' });
   }
-
-  openNews() {
-    this.dialog.open(NewsDialogComponent, { backdropClass: 'app-backdrop', ariaLabelledBy: 'news-title' });
-  }
 }

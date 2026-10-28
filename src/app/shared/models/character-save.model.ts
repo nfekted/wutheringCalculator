@@ -1,3 +1,4 @@
+import { RotationStep } from "../../data/character-data.model";
 import { Character } from "./character.model";
 
 export class CharacterSave {
@@ -19,6 +20,7 @@ export class CharacterSave {
     echoBonus: number = 0;
     energyRegen: number = 100;
     mode: number = 0;
+    rotationBuild: RotationStep[] | null = null;
 
     constructor(char: Character) {
         this.index = char.index;
@@ -38,5 +40,6 @@ export class CharacterSave {
         this.echoBonus = char.echoBonus;
         this.energyRegen = char.energyRegen;
         this.mode = char.mode;
+        this.rotationBuild = char.rotationBuild;
     }
 }

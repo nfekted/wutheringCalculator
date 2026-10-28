@@ -1,0 +1,79 @@
+<app-dialog-panel [title]="'char.rotationBuild.title' | transloco" titleId="rotation-title">
+  <p class="text-sm text-mute">{{ 'char.rotationBuild.info' | transloco }}</p>
+
+  <!-- Add a hit -->
+  <div class="mt-4 flex flex-wrap items-end gap-2">
+    <label class="block min-w-0 flex-1 text-xs text-mute">
+      <span class="mb-1 block">{{ 'char.rotationBuild.add' | transloco }}</span>
+      <select class="ui-input text-sm" [(ngModel)]="picked">
+        <option value="">{{ 'char.rotationBuild.choose' | transloco }}</option>
+        @for (group of groups; track group.section) {
+          <optgroup [label]="('char.' + group.section | transloco) + ' · ' + group.name">
+            @for (hit of group.hits; track hit.index) {
+              <option [value]="group.section + ':' + hit.index">{{ hit.name }}</option>
+            }
+          </optgroup>
+        }
+      </select>
+    </label>
+    <button type="button" class="ui-btn ui-btn-primary" [disabled]="!picked" (click)="add()">
+      <span class="material-symbols-outlined" aria-hidden="true">add</span>
+      {{ 'char.rotationBuild.add' | transloco }}
+    </button>
+    <button type="button" class="ui-btn ui-btn-secondary" [disabled]="!hasDefault" (click)="importDefault()">
+      {{ 'char.rotationBuild.importDefault' | transloco }}
+    </button>
+    <button type="button" class="ui-btn ui-btn-secondary" [disabled]="!middle().length" (click)="clear()">
+      {{ 'char.rotationBuild.clear' | transloco }}
+    </button>
+  </div>
+
+  <!-- Rotation -->
+  <table class="ui-table mt-4 w-full text-sm">
+    <tbody>
+      @for (row of rows(); track $index; let i = $index) {
+        <tr>
+          <td class="w-8 text-mute">{{ i + 1 }}</td>
+          <td class="w-28 text-xs text-mute">{{ 'char.' + row.step.section | transloco }}</td>
+          <td [class]="'font-medium ' + row.color">{{ row.name }}</td>
+          <td class="text-right tabular-nums" [class.text-heal]="!row.damage">{{ row.value | number: '1.0-0' }}</td>
+          <td class="w-28 text-right">
+            @if (row.position >= 0) {
+              <button type="button" class="ui-icon-btn" [attr.aria-label]="'char.rotationBuild.moveUp' | transloco"
+                [disabled]="row.position === 0" (click)="move(row.position, -1)">
+                <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+              </button>
+              <button type="button" class="ui-icon-btn" [attr.aria-label]="'char.rotationBuild.moveDown' | transloco"
+                [disabled]="row.position === middle().length - 1" (click)="move(row.position, 1)">
+                <span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span>
+              </button>
+              <button type="button" class="ui-icon-btn" [attr.aria-label]="'char.rotationBuild.remove' | transloco"
+                (click)="remove(row.position)">
+                <span class="material-symbols-outlined" aria-hidden="true">close</span>
+              </button>
+            }
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  @if (!middle().length) {
+    <p class="mt-2 text-sm text-mute">{{ 'char.rotationBuild.empty' | transloco }}</p>
+  }
+
+  <!-- Result -->
+  <div class="ui-card mt-4 grid gap-4 p-4 sm:grid-cols-3">
+    <div>
+      <p class="text-xs text-mute">{{ 'char.rotationBuild.hits' | transloco }}</p>
+      <p class="text-lg font-bold text-ink">{{ damageHits() }}</p>
+    </div>
+    <div>
+      <p class="text-xs text-mute">{{ 'char.rotationBuild.total' | transloco }}</p>
+      <p class="text-lg font-bold text-ink">{{ total() | number: '1.0-0' }}</p>
+    </div>
+    <div>
+      <p class="text-xs text-mute">{{ 'char.rotationBuild.average' | transloco }}</p>
+      <p class="text-lg font-bold text-ink">{{ (damageHits() ? total() / damageHits() : 0) | number: '1.0-0' }}</p>
+    </div>
+  </div>
+</app-dialog-panel>

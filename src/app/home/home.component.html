@@ -21,7 +21,7 @@
             [attr.aria-controls]="'panel-' + c.index" [tabindex]="c === selected() ? 0 : -1"
             class="flex shrink-0 items-center gap-2 rounded-sm border px-3 py-2 text-sm hover:text-ink"
             [class.bg-surface]="c === selected()" [class.border-hairline]="c === selected()"
-            [class.shadow-[inset_0_-2px_0_var(--accent)]]="c === selected()" [class.text-ink]="c === selected()"
+            [style.box-shadow]="c === selected() ? 'inset 0 -2px 0 var(--' + c.data.type + ')' : null" [class.text-ink]="c === selected()"
             [class.border-transparent]="c !== selected()" [class.text-mute]="c !== selected()"
             (click)="select(c)">
             <img [src]="'assets/img/characters/' + c.data.icon + '.png'" alt=""

@@ -82,6 +82,21 @@
         "canHealDMG": "Check DMG data",
         "canHealHeal": "Check HEALING data"
     },
+    "rotationBuild": {
+        "title": "Rotation build",
+        "info": "Intro and Outro are always part of the rotation. Add the hits in between in the order you play them. Damage is the expected value against a common enemy, with your crit rate and crit damage. Healing and shield hits are listed but not added to the damage.",
+        "add": "Add hit",
+        "choose": "Choose a hit...",
+        "importDefault": "Import default rotation",
+        "clear": "Clear",
+        "empty": "No hits between Intro and Outro yet.",
+        "moveUp": "Move up",
+        "moveDown": "Move down",
+        "remove": "Remove",
+        "total": "Total damage",
+        "average": "Average per hit",
+        "hits": "Damage hits"
+    },
     "echo": {
         "echo": "Echo Comparator",
         "disclaimer": "All Echos are considered 5* and Level 25. The simulation uses your character's attributes, with 1000 standing in for empty ATK, HP and DEF",

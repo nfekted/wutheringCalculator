@@ -7,6 +7,7 @@ import { SectionKey } from '../data/character-data.model';
 import { Levels, Stats } from '../core/damage-engine';
 import { AttributeModalComponent } from '../attribute-modal/attribute-modal.component';
 import { EchoComparatorModalComponent } from '../echo-comparator/echo-comparator-modal.component';
+import { RotationBuilderModalComponent } from '../rotation-builder/rotation-builder-modal.component';
 import { Character } from '../shared/models/character.model';
 import { ConfirmService } from '../shared/ui/confirm.service';
 import { DamageTableComponent } from './damage-table.component';
@@ -115,6 +116,11 @@ export class CharacterComponent {
 
   protected openEchoComparator() {
     this.dialog.open(EchoComparatorModalComponent, { data: this.character(), backdropClass: 'app-backdrop', ariaLabelledBy: 'echo-title' });
+  }
+
+  protected openRotationBuilder() {
+    const ref = this.dialog.open(RotationBuilderModalComponent, { data: this.character(), backdropClass: 'app-backdrop', ariaLabelledBy: 'rotation-title' });
+    ref.closed.subscribe(() => this.changed.emit());
   }
 
   protected async delete() {

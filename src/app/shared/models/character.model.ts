@@ -30,6 +30,9 @@ export class Character implements Stats {
     /** Active way of playing, as an index in `data.modes` */
     mode: number = 0;
 
+    /** Hits chosen for the Rotation build between the intro and the outro; null until edited (the default of `data.rotationBuild` applies) */
+    rotationBuild: RotationStep[] | null = null;
+
     levels: Levels = { basic: 1, skill: 1, liberation: 1, intro: 1, forte: 1 };
     results: CharacterResults = emptyResults();
 
@@ -57,6 +60,7 @@ export class Character implements Stats {
             this.echoBonus = load.echoBonus ?? 0;
             this.energyRegen = load.energyRegen ?? 100;
             this.mode = load.mode ?? 0;
+            this.rotationBuild = load.rotationBuild ?? null;
             this.name = load.name;
             this.calculate();
         }
