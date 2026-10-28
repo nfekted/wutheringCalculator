@@ -26,11 +26,6 @@ const STAT_ROWS: Array<{ key: StatKey; prefix?: string; label: string; visible?:
   { key: 'energyRegen', label: 'Energy Regen %', visible: c => c.erScale },
 ];
 
-const KIND_COLORS: Record<string, string> = {
-  basic: 'text-kind-basic', skill: 'text-kind-skill', liberation: 'text-kind-liberation',
-  intro: 'text-kind-intro', outro: 'text-kind-outro', heavy: 'text-kind-heavy',
-};
-
 @Component({
     selector: 'app-attribute-modal',
     templateUrl: './attribute-modal.component.html',
@@ -46,10 +41,8 @@ export class AttributeModalComponent {
   draft: Stats = { dmg: 0, hp: 0, def: 0, cChance: 0, cDmg: 0, elementalBonus: 0, basicBonus: 0, heavyBonus: 0, skillBonus: 0, liberationBonus: 0, echoBonus: 0, healingBonus: 0, energyRegen: 0 };
   newQtdCrit: number = 0;
 
-  /** The rotation is not available for every character yet */
-  hasRotation = this.character().data.rotation.length > 0;
-  enhancerBasic: boolean = !this.hasRotation;
-  enhancerSkill: boolean = this.hasRotation;
+  /** Intro, chosen hits and outro of the Rotation build: what both scenarios simulate */
+  steps = this.character().rotationSteps();
   randomCrit: boolean = false;
 
   critSimFixed: Array<Array<number | boolean>> = [];
@@ -66,24 +59,20 @@ export class AttributeModalComponent {
     return STAT_ROWS.filter(r => !r.visible || r.visible(this.character()));
   }
 
-  protected setMode(basic: boolean) {
-    this.enhancerBasic = basic;
-    this.enhancerSkill = !basic;
-    this.recalculateAll();
-  }
-
   /** Unit shown next to the difference between scenarios */
   protected unit(): string {
-    return this.character().showHealing && this.enhancerSkill ? 'char.heal' : 'dmg';
+    return this.character().showHealing ? 'char.heal' : 'dmg';
   }
 
   /** Unit shown next to a scenario total */
   protected totalUnit(): string {
-    return this.character().showHealing && this.enhancerSkill ? 'char.heal' : 'dmg';
+    return this.character().showHealing ? 'char.heal' : 'dmg';
   }
 
-  protected kindColor(kind: string): string {
-    return KIND_COLORS[kind] ?? '';
+  /** Name of the hit executed at a position of the rotation */
+  protected hitName(position: number): string {
+    const step = this.steps[position];
+    return this.character().data[step.section].hits[step.index]?.name ?? '';
   }
 
   critCalc(simulation: boolean) {
@@ -91,47 +80,7 @@ export class AttributeModalComponent {
       if (this.draft[row.key] == 0) this.draft[row.key] = this.character()[row.key];
     }
 
-    if (this.enhancerBasic) this.simulationBasic(simulation);
-    if (this.enhancerSkill) this.simulationRotation(simulation);
-  }
-
-  simulationBasic(simulation: boolean) {
-    let currentChance = this.character().cChance;
-    let critMult = this.character().cDmg;
-    let copy: Character;
-    if (simulation) {
-      currentChance = this.draft.cChance;
-      critMult = this.draft.cDmg;
-      this.fixedSimTotal = 0;
-      this.newQtdCrit = +(this.draft.cChance / 5).toFixed(0);
-      copy = this.characterCopy();
-    } else {
-      this.fixedTotal = 0;
-      this.qtdCrit = +(this.character().cChance / 5).toFixed(0);
-    }
-
-    const chain = this.character().data.basic.hits.flatMap((hit, i) => hit.combo ? [i] : []);
-    const list: Array<Array<number | boolean>> = [];
-    if (this.enhancerBasic) {
-      for (let i = 0; i < 20; i++) {
-        const attack = chain[i % chain.length];
-        const dmg: number = (simulation ? copy : this.character()).results.basic[attack]?.sum ?? 0;
-        if ((!this.randomCrit && currentChance >= 5) || (this.randomCrit && (Math.floor(Math.random() * 100) + 1) < currentChance)) {
-          list[i] = [+(dmg * (critMult / 100)).toFixed(0), true, false];
-          currentChance -= (this.randomCrit ? 0 : 5);
-        } else {
-          list[i] = [dmg, false, false];
-        }
-        this.fixedTotal += simulation ? 0 : +list[i][0];
-        this.fixedSimTotal += simulation ? +list[i][0] : 0;
-      }
-    }
-
-    if (simulation) {
-      this.critSimFixedSim = list;
-    } else {
-      this.critSimFixed = list;
-    }
+    this.simulationRotation(simulation);
   }
 
   simulationRotation(simulation: boolean) {
@@ -142,15 +91,15 @@ export class AttributeModalComponent {
       currentChance = this.draft.cChance;
       critMult = this.draft.cDmg;
       this.fixedSimTotal = 0;
-      this.newQtdCrit = +(this.character().data.rotation.length * (this.draft.cChance / 100)).toFixed(0);
+      this.newQtdCrit = +(this.steps.length * (this.draft.cChance / 100)).toFixed(0);
       copy = this.characterCopy();
     } else {
       this.fixedTotal = 0;
-      this.qtdCrit = +(this.character().data.rotation.length * (currentChance / 100)).toFixed(0);
+      this.qtdCrit = +(this.steps.length * (currentChance / 100)).toFixed(0);
     }
 
     const list: Array<Array<number | boolean>> = [];
-    const rotation = this.character().data.rotation;
+    const rotation = this.steps;
     if (!this.randomCrit) currentChance = (!simulation ? this.qtdCrit : this.newQtdCrit);
     let heal: boolean = false;
     for (let i = 0; i < rotation.length; i++) {

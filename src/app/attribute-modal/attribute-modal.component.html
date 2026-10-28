@@ -4,47 +4,11 @@
     <legend class="mb-2 text-sm font-bold text-ink">{{ 'options' | transloco }}</legend>
     <div class="grid gap-2 sm:grid-cols-3">
       <label class="ui-option">
-        <input type="radio" name="mode" class="sr-only" [checked]="enhancerBasic" (change)="setMode(true)" />
-        {{ 'char.enhancer.enhancerBasic' | transloco }}
-      </label>
-      @if (hasRotation) {
-        <label class="ui-option">
-          <input type="radio" name="mode" class="sr-only" [checked]="enhancerSkill" (change)="setMode(false)" />
-          {{ 'char.enhancer.enhancerSkill' | transloco }}
-        </label>
-      }
-      <label class="ui-option">
         <input type="checkbox" class="sr-only" [(ngModel)]="randomCrit" (change)="recalculateAll()" />
         {{ 'char.enhancer.enhancerCrit' | transloco }}
       </label>
     </div>
   </fieldset>
-
-  <!-- Rotation used by the simulation -->
-  @if (enhancerSkill) {
-    <section class="ui-card mt-4 grid gap-4 p-4 text-sm lg:grid-cols-2">
-      <div>
-        <div class="text-mute" [innerHTML]="'char.enhancer.rotationInfo' | transloco"></div>
-        <ol class="mt-3 list-decimal space-y-1 pl-5">
-          @for (item of character().data.rotationDesc; track $index; let i = $index) {
-            <li><b class="font-medium" [class]="kindColor(character().data.rotationColor[i])">{{ item }}</b></li>
-          }
-        </ol>
-      </div>
-      <div>
-        <div class="text-mute" [innerHTML]="'char.enhancer.rotationHelp' | transloco"></div>
-        <div class="mt-3 flex flex-wrap items-center gap-1">
-          @for (item of character().data.rotationCommands; track $index) {
-            @if (item.length < 4) {
-              <img [src]="'assets/img/icons/' + item + '.svg'" alt="" class="h-6 w-6" />
-            } @else {
-              <span class="text-xs text-mute">{{ item }}</span>
-            }
-          }
-        </div>
-      </div>
-    </section>
-  }
 
   <!-- Current vs new stats -->
   <section class="ui-card mt-4 p-4">
@@ -98,13 +62,10 @@
       </div>
 
       <div class="mt-2 text-xs text-mute">
-        @if (!randomCrit && !enhancerSkill) {
-          <div [innerHTML]="'char.enhancer.fixedCritInfo' | transloco: { chance: chance, qtd: qtd, normal: 20 - qtd }"></div>
+        @if (!randomCrit && (!character().showHealing || character().data.primaryDamage)) {
+          <div [innerHTML]="'char.enhancer.rotationCritInfo' | transloco: { atkNum: steps.length, chance: chance, qtd: qtd, normal: steps.length - qtd }"></div>
         }
-        @if (enhancerSkill && !randomCrit && (!character().showHealing || character().data.primaryDamage)) {
-          <div [innerHTML]="'char.enhancer.rotationCritInfo' | transloco: { atkNum: character().data.rotation.length, chance: chance, qtd: qtd, normal: character().data.rotation.length - qtd }"></div>
-        }
-        @if (enhancerSkill && character().showHealing && !character().data.primaryDamage) {
+        @if (character().showHealing && !character().data.primaryDamage) {
           <div>{{ 'char.enhancer.healingInfo' | transloco }}</div>
         }
         @if (randomCrit) {
@@ -116,6 +77,7 @@
         <thead>
           <tr>
             <th scope="col">Atk nº</th>
+            <th scope="col">{{ 'char.enhancer.hit' | transloco }}</th>
             <th scope="col">DMG</th>
             <th scope="col"><span class="sr-only">Crit</span></th>
           </tr>
@@ -124,6 +86,7 @@
           @for (a of list; track $index; let i = $index) {
             <tr>
               <th scope="row" class="font-medium text-ink">{{ i + 1 }}</th>
+              <td>{{ hitName(i) }}</td>
               <td>{{ +a[0] | number: '1.0-0' }}</td>
               <td class="font-medium">
                 @if (a[2]) {
@@ -136,7 +99,7 @@
           }
           <tr>
             <th scope="row" class="font-bold text-ink">Total</th>
-            <td colspan="2">~{{ total | number: '1.0-0' }} {{ totalUnit() | transloco }}</td>
+            <td colspan="3">~{{ total | number: '1.0-0' }} {{ totalUnit() | transloco }}</td>
           </tr>
         </tbody>
       </table>

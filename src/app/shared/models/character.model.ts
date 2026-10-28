@@ -81,6 +81,12 @@ export class Character implements Stats {
             .some(section => this.data[section].hits.some(hit => hit.kind === 'echo'));
     }
 
+    /** Steps of the Rotation build: the intro, the chosen hits (or the default ones) and the outro */
+    rotationSteps(): RotationStep[] {
+        const all = (section: 'intro' | 'outro') => this.data[section].hits.map((_, index): RotationStep => ({ section, index }));
+        return [...all('intro'), ...(this.rotationBuild ?? this.data.rotationBuild ?? []), ...all('outro')];
+    }
+
     /** Total damage (or healing) of a rotation step; steps without valid data count as 0 */
     rotationValue(step: RotationStep): number {
         const value = this.results[step.section][step.index]?.sum;
