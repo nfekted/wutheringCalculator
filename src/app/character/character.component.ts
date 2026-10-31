@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { TranslocoPipe, TranslocoService, provideTranslocoScope } from '@jsverse/transloco';
 import { SectionKey } from '../data/character-data.model';
 import { Levels, Stats } from '../core/damage-engine';
-import { AttributeModalComponent } from '../attribute-modal/attribute-modal.component';
 import { EchoComparatorModalComponent } from '../echo-comparator/echo-comparator-modal.component';
 import { RotationBuilderModalComponent } from '../rotation-builder/rotation-builder-modal.component';
 import { Character } from '../shared/models/character.model';
@@ -108,10 +107,6 @@ export class CharacterComponent {
   protected finishNameEdit() {
     this.nameEdit.set(false);
     this.changed.emit();
-  }
-
-  protected openEnhancer() {
-    this.dialog.open(AttributeModalComponent, { data: this.character(), backdropClass: 'app-backdrop', ariaLabelledBy: 'enhancer-title' });
   }
 
   protected openEchoComparator() {

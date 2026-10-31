@@ -60,24 +60,10 @@
         "yuanwu": "<b>Yuanwu</b> é um personagem com bônus elemental<b class=\"electro\">ELECTRO</b>, Yuanwu pode até causar algum dano com a <b>rotação de Forte</b>, mas seu destaque é a skill <b>Outro: Lightning Manipulation</b>, que resulta em <b>Redução de Vibration</b> (barra de stun) e <b>Amplificação na Interrupção</b>.",
         "zhezhi": "<b>Zhezhi</b> é uma personagem com bônus elemental<b class=\"glacio\">GLACIO</b>, seu dano é baseado em <b>Ataques básicos</b> mas seu destaque é <b>Amplificar dano GLACIO</b> em 20% e <b>Amplificar dano de Resonance Skill<b> em 25% com sua <b>Outro: Radiant Ruin</b>."
     },
-    "enhancer": {
-        "enhancer": "Comparador de Atributos.",
-        "compareWith": "Comparar com novos atributos:",
-        "simulated": "Valores simulados: ",
-        "calculate": "Recalcular!",
-        "rotationCritInfo": "Um total de <b>{{atkNum}} ataques</b> acontecerão, com <b>{{chance}}% chance crítica</b>, <b>{{qtd}} ataques</b> serão criticos e <b>{{normal}} não serão</b>, fixando o dano teremos a simulação representada pela seguinte tabela:",
-        "randomCritInfo": "Deixando os <b>críticos aleatórios</b>, temos a simulação representada pela seguinte tabela:",
-        "healingInfo": "Como uma personagem de cura, dano e chance critica, assim como dano no geral não é tão relevante, por isso o foco será em quanto está sendo curado na rotação",
-        "bestScenario": "MELHOR CENÁRIO",
-        "worstScenario": "PIOR CENÁRIO",
-        "enhancerCrit": "Randomizar CRITICOS",
-        "current": "Com atributos atuais",
-        "new": "Com novos atributos",
-        "canHealDMG": "Ver dados de Dano",
-        "canHealHeal": "Ver dados de CURA"
-    },
     "echo": {
         "echo": "Comparador de Echos",
+        "canHealDMG": "Ver dados de Dano",
+        "canHealHeal": "Ver dados de CURA",
         "disclaimer": "Todos Echos são considerados 5* e Level 25. A simulação usa os atributos do seu personagem, com 1000 no lugar de ATK, HP e DEF vazios.",
         "recommended": "Atributos recomendados para {{name}} são:",
         "attributes": "atributos recomendados",

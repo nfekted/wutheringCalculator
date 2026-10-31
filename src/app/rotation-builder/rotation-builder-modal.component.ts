@@ -63,19 +63,8 @@ export class RotationBuilderModalComponent {
     const character = this.character();
     const hit = character.data[step.section].hits[step.index];
     const kind = character.mode > 0 && hit.altKind ? hit.altKind : hit.kind;
-    const result = character.results[step.section][step.index];
-    const damage = kind !== 'heal' && kind !== 'shield';
-
-    let value = 0;
-    if (result && !damage) {
-      value = result.sum;
-    } else if (result) {
-      // Average of the damage spread, mixing the hits without and with a crit by the crit rate
-      const range = result.commonSum;
-      const chance = Math.min(character.cChance, 100) / 100;
-      value = (range.min + range.max) / 2 * (1 - chance) + (range.critMin + range.critMax) / 2 * chance;
-    }
-    return { step, position, name: hit.name, color: KIND_COLORS[kind] ?? '', damage, value: Number.isFinite(value) ? value : 0 };
+    const { value, type } = character.rotationHit(step);
+    return { step, position, name: hit.name, color: KIND_COLORS[kind] ?? '', damage: type === 'damage', value };
   }
 
   protected add() {

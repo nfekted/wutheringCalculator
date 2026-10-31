@@ -7,7 +7,7 @@ export class Character implements Stats {
     data: CharacterData;
     name: string;
 
-    /** Healing or damage view of the enhancer and the echo comparator */
+    /** Healing or damage view of the echo comparator */
     showHealing: boolean;
     hpScale: boolean;
     defScale: boolean;
@@ -87,15 +87,24 @@ export class Character implements Stats {
         return [...all('intro'), ...(this.rotationBuild ?? this.data.rotationBuild ?? []), ...all('outro')];
     }
 
-    /** Total damage (or healing) of a rotation step; steps without valid data count as 0 */
-    rotationValue(step: RotationStep): number {
-        const value = this.results[step.section][step.index]?.sum;
-        return Number.isFinite(value) ? value : 0;
-    }
+    /**
+     * What a rotation step is worth: the expected value against a common enemy, mixing the hits without and with a crit by the crit rate.
+     * Healing and shield hits are not mitigated and never crit. Steps without valid data count as 0
+     */
+    rotationHit(step: RotationStep): { value: number; type: 'damage' | 'heal' | 'shield' } {
+        const hit = this.data[step.section].hits[step.index];
+        const result = this.results[step.section][step.index];
+        const kind = this.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
+        const type = kind === 'heal' || kind === 'shield' ? kind : 'damage';
+        if (!result) return { value: 0, type };
 
-    /** Whether a rotation step is a healing hit */
-    isHealStep(step: RotationStep): boolean {
-        return this.data[step.section].hits[step.index]?.kind === 'heal';
+        let value = result.sum;
+        if (type === 'damage') {
+            const range = result.commonSum;
+            const chance = Math.min(this.cChance, 100) / 100;
+            value = (range.min + range.max) / 2 * (1 - chance) + (range.critMin + range.critMax) / 2 * chance;
+        }
+        return { value: Number.isFinite(value) ? value : 0, type };
     }
 
     clone(): Character {

@@ -1,17 +1,59 @@
 import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
+import { DecimalPipe, NgTemplateOutlet } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
+import { Stats } from '../core/damage-engine';
 import { Character } from '../shared/models/character.model';
 import { Echo } from '../shared/models/echo.model';
 import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
+
+/** What an Echo adds to the attributes */
+interface EchoEffect {
+  /** Fixed ATK, HP and DEF */
+  flat: { hp: number; dmg: number; def: number };
+  /** ATK %, HP % and DEF %, applied over the attribute with the fixed values */
+  pct: { hp: number; dmg: number; def: number };
+  /** Attributes that just add up */
+  add: Partial<Record<keyof Stats, number>>;
+}
+
+/** Attributes of the summary, in display order */
+const STAT_ROWS: Array<{ key: keyof Stats; prefix?: string; label: string; visible?: (c: Character) => boolean }> = [
+  { key: 'hp', label: 'HP', visible: c => c.hpScale },
+  { key: 'dmg', label: 'ATK' },
+  { key: 'def', label: 'DEF', visible: c => c.defScale },
+  { key: 'cChance', label: 'Crit. Rate %' },
+  { key: 'cDmg', label: 'Crit. DMG %' },
+  { key: 'skillBonus', prefix: 'char.skill', label: 'Bonus %' },
+  { key: 'basicBonus', prefix: 'char.basic', label: 'Bonus %' },
+  { key: 'heavyBonus', prefix: 'char.heavy', label: 'Bonus %' },
+  { key: 'liberationBonus', label: 'Lib. Bonus %' },
+  { key: 'elementalBonus', prefix: 'char.elemental', label: 'DMG %' },
+  { key: 'healingBonus', label: 'Healing Bonus %', visible: c => c.data.hasHealing },
+  { key: 'energyRegen', label: 'Energy Regen %', visible: c => c.erScale },
+];
+
+/** Sub attributes that add up straight to an attribute of the character */
+const SUB_ADDS: Record<string, keyof Stats> = {
+  'Crit Rate %': 'cChance', 'Crit DMG %': 'cDmg', 'Basic %': 'basicBonus', 'Heavy %': 'heavyBonus',
+  'Skill %': 'skillBonus', 'Liberation %': 'liberationBonus', 'Energy Regen %': 'energyRegen',
+};
+
+interface HitLine {
+  name: string;
+  current: number;
+  next: number;
+  /** Counts in the totals (damage hits in the damage view, healing hits in the healing view) */
+  counted: boolean;
+}
 
 @Component({
     selector: 'app-echo-comparator-modal',
     templateUrl: './echo-comparator-modal.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
     host: { class: 'block w-[min(90rem,calc(100vw-2rem))]' },
-    imports: [FormsModule, TranslocoPipe, DialogPanelComponent]
+    imports: [FormsModule, DecimalPipe, NgTemplateOutlet, TranslocoPipe, DialogPanelComponent]
 })
 export class EchoComparatorModalComponent {
 
@@ -19,13 +61,20 @@ export class EchoComparatorModalComponent {
 
   character = signal(inject<Character>(DIALOG_DATA)).asReadonly();
 
-  echo1: Echo = new Echo();
-  echo2: Echo = new Echo();
-  echoes = [this.echo1, this.echo2];
+  /** Echo the character uses now (already counted in the typed attributes) and the one to try instead */
+  current: Echo = new Echo();
+  next: Echo = new Echo();
 
   text: string = '';
   /** Heal or damage rotation; local so the real character is not changed */
   showHealing = this.character().showHealing;
+
+  rows = STAT_ROWS.filter(r => !r.visible || r.visible(this.character()));
+  before: Character = this.character();
+  after: Character = this.character();
+  lines: HitLine[] = [];
+  totalCurrent = 0;
+  totalNext = 0;
 
   constructor() {
     this.calculate();
@@ -42,130 +91,106 @@ export class EchoComparatorModalComponent {
   }
 
   calculate() {
-    this.echo2.type = this.echo1.type;
+    // The typed attributes, with 1000 standing in for empty ATK/HP/DEF
+    const before = this.character().clone();
+    before.dmg ||= 1000;
+    before.def ||= 1000;
+    before.hp ||= 1000;
+    before.calculate();
 
-    // Simulation character: the real attributes, with 1000 standing in for empty ATK/HP/DEF
-    const char1 = this.character().clone();
-    char1.showHealing = this.showHealing;
-    char1.dmg ||= 1000;
-    char1.def ||= 1000;
-    char1.hp ||= 1000;
+    // The same character with the current Echo taken out and the new one put in
+    const after = before.clone();
+    this.applyEffect(after, this.effectOf(this.current, after), -1);
+    this.applyEffect(after, this.effectOf(this.next, after), 1);
+    after.calculate();
 
-    const char2 = char1.clone();
+    this.before = before;
+    this.after = after;
+    this.simulate();
 
-    this.echoUpgrade(char1, this.echo1);
-    this.echoUpgrade(char2, this.echo2);
+    this.echoScore(this.current);
+    this.echoScore(this.next);
 
-    char1.calculate();
-    char2.calculate();
-
-    const total1: number = this.simulate(char1);
-    const total2: number = this.simulate(char2);
-
-    // Difference relative to the weaker echo, so it reads the same whichever echo wins
-    const weaker = Math.min(total1, total2);
-    const diff = weaker > 0 ? (Math.abs(total2 - total1) / weaker * 100).toFixed(2) : '–';
     const type = this.showHealing ? this.transloco.translate('char.heal') : 'DMG';
+    const char = this.character().name;
+    const attr = this.next.commonAttr.length;
+    const attr2 = this.current.commonAttr.length;
 
-    this.echoScore(this.echo1);
-    this.echoScore(this.echo2);
-
-    if (total1 == total2) {
+    if (this.totalNext == this.totalCurrent) {
       this.text = this.transloco.translate('char.echo.same', { type });
     } else {
-      this.text = this.transloco.translate('char.echo.text', { echo: (total1 > total2 ? 1 : 2), perc: diff, type, value: total1, value2: total2, char: this.character().name });
+      const perc = this.totalCurrent > 0 ? (Math.abs(this.totalNext - this.totalCurrent) / this.totalCurrent * 100).toFixed(2) : '–';
+      this.text = this.transloco.translate(this.totalNext > this.totalCurrent ? 'char.echo.better' : 'char.echo.worse',
+        { perc, type, value: Math.round(this.totalNext), value2: Math.round(this.totalCurrent), char });
     }
 
-    if ((total1 > total2 && this.echo1.commonAttr.length < this.echo2.commonAttr.length) ||
-      (total2 > total1 && this.echo2.commonAttr.length < this.echo1.commonAttr.length) ||
-      (total1 == total2 && this.echo1.commonAttr.length != this.echo2.commonAttr.length)) {
-      this.text += this.transloco.translate('char.echo.however', { attr: this.echo1.commonAttr.length, attr2: this.echo2.commonAttr.length, type });
+    // The Echo with more damage has fewer recommended attributes (or the damage is the same and they differ)
+    const winnerAttr = this.totalNext >= this.totalCurrent ? attr : attr2;
+    const loserAttr = this.totalNext >= this.totalCurrent ? attr2 : attr;
+    if (this.totalNext == this.totalCurrent ? attr != attr2 : winnerAttr < loserAttr) {
+      this.text += this.transloco.translate('char.echo.however', { attr, attr2, type });
     } else {
-      this.text += total1 == total2 ? '' : this.transloco.translate('char.echo.because', { attr: this.echo1.commonAttr.length, attr2: this.echo2.commonAttr.length, char: this.character().name });
+      this.text += this.totalNext == this.totalCurrent ? '' : this.transloco.translate('char.echo.because', { attr, attr2, char });
     }
   }
 
-  echoUpgrade(char: Character, echo: Echo): Character {
-    //Test echo mains fixed value
-    if (echo.main1Index == 0) {
-      if (echo.type == 0) char.hp += echo.mainValues[0][0];
-      if (echo.type != 0) char.dmg += echo.mainValues[echo.type][0];
-    }
-    if (echo.main2Index == 0) {
-      if (echo.type == 0) char.hp += echo.mainValues[0][0];
-      if (echo.type != 0) char.dmg += echo.mainValues[echo.type][0];
-    }
+  /** What an Echo adds. The percentages of the main attributes take the elemental DMG of the character into account */
+  private effectOf(echo: Echo, char: Character): EchoEffect {
+    const effect: EchoEffect = { flat: { hp: 0, dmg: 0, def: 0 }, pct: { hp: 0, dmg: 0, def: 0 }, add: {} };
+    const add = (key: keyof Stats, value: number) => effect.add[key] = (effect.add[key] ?? 0) + value;
 
-    //Test echo substats fixed values
-    for (let i = 0; i < 5; i++) {
-      if (echo.currentSubs[i] == 'HP') char.hp += echo.currentSubsValue[i];
-      if (echo.currentSubs[i] == 'DEF') char.def += echo.currentSubsValue[i];
-      if (echo.currentSubs[i] == 'ATK') char.dmg += echo.currentSubsValue[i];
-    }
-
-    //Final base status
-    const baseHp: number = char.hp;
-    const baseAtk: number = char.dmg;
-    const baseDef: number = char.def;
-
-    const indexes: [number, number] = [echo.main1Index, echo.main2Index];
-
-    //Test echo main % value primary
-    for (const index of indexes) {
-      if (index > 0) {
-        const value: number = echo.mainValues[echo.type][index];
-        const attr: string = echo.mainStats[echo.type][index].replace(' %', '');
-        char.hp += index == 1 ? +(baseHp * (value / 100)).toFixed(0) : 0;//HP
-        char.dmg += index == 2 ? +(baseAtk * (value / 100)).toFixed(0) : 0;//ATK
-        char.def += index == 3 ? +(baseDef * (value / 100)).toFixed(0) : 0;//DEF
-        //4 - Energy regen
-        if (echo.type == 1) {
-          char.elementalBonus += index > 4 && (attr.toLowerCase().replace(' dmg', '') == char.data.type) ? value : 0;//ELEMENTAL
-        } else if (echo.type == 2) {
-          char.cChance += index == 5 ? value : 0;//Critical chance
-          char.cDmg += index == 6 ? value : 0;//Critical damage
-          char.healingBonus += index == 7 ? value : 0;//Healing
-        }
+    for (const index of [echo.main1Index, echo.main2Index]) {
+      const value = echo.mainValues[echo.type][index];
+      const attr = echo.mainStats[echo.type][index];
+      if (index == 0) {
+        if (echo.type == 0) effect.flat.hp += value;
+        else effect.flat.dmg += value;
+      } else if (index == 1) effect.pct.hp += value;
+      else if (index == 2) effect.pct.dmg += value;
+      else if (index == 3) effect.pct.def += value;
+      else if (index == 4) add('energyRegen', value);
+      else if (echo.type == 1) {
+        if (attr.replace(' DMG %', '').toLowerCase() == char.data.type) add('elementalBonus', value);
+      } else if (echo.type == 2) {
+        if (index == 5) add('cChance', value);
+        if (index == 6) add('cDmg', value);
+        if (index == 7) add('healingBonus', value);
       }
     }
 
-    //Test echo substats % values
-    for (let i = 0; i < 5; i++) {
-      const value: number = echo.currentSubsValue[i];
-      const attr: string = (echo.currentSubs[i]);
-      char.hp += attr == 'HP %' ? +(baseHp * (value / 100)).toFixed(0) : 0;
-      char.dmg += attr == 'ATK %' ? +(baseAtk * (value / 100)).toFixed(0) : 0;
-      char.def += attr == 'DEF %' ? +(baseDef * (value / 100)).toFixed(0) : 0;
-      char.cChance += attr == 'Crit Rate %' ? value : 0;
-      char.cDmg += attr == 'Crit DMG %' ? value : 0;
-      char.basicBonus += attr == 'Basic %' ? value : 0;
-      char.heavyBonus += attr == 'Heavy %' ? value : 0;
-      char.skillBonus += attr == 'Skill %' ? value : 0;
-      char.liberationBonus += attr == 'Liberation %' ? value : 0;
-    }
+    echo.currentSubs.forEach((attr, i) => {
+      const value = +echo.currentSubsValue[i] || 0;
+      if (attr == 'HP') effect.flat.hp += value;
+      else if (attr == 'DEF') effect.flat.def += value;
+      else if (attr == 'ATK') effect.flat.dmg += value;
+      else if (attr == 'HP %') effect.pct.hp += value;
+      else if (attr == 'DEF %') effect.pct.def += value;
+      else if (attr == 'ATK %') effect.pct.dmg += value;
+      else if (attr && SUB_ADDS[attr]) add(SUB_ADDS[attr], value);
+    });
 
-    return char;
+    return effect;
   }
 
-  echoScore(echo: Echo): Echo {
+  /** Puts the effect of an Echo in (1) or takes it out (-1): HP, ATK and DEF are (value + fixed) * (1 + %), so taking out is the inverse of it */
+  private applyEffect(char: Character, effect: EchoEffect, sign: 1 | -1) {
+    for (const key of ['hp', 'dmg', 'def'] as const) {
+      const factor = 1 + effect.pct[key] / 100;
+      char[key] = Math.max(0, Math.round(sign == 1 ? (char[key] + effect.flat[key]) * factor : char[key] / factor - effect.flat[key]));
+    }
+    for (const [key, value] of Object.entries(effect.add) as Array<[keyof Stats, number]>) {
+      char[key] = Math.max(0, +(char[key] + sign * value).toFixed(2));
+    }
+  }
+
+  private echoScore(echo: Echo): Echo {
     echo.commonAttr = [];
 
     const attr1 = echo.mainStats[echo.type][echo.main1Index];
     const attr2 = echo.mainStats[echo.type][echo.main2Index];
-    if (echo.type == 0) {
-      if (this.character().data.echo1.indexOf(attr1) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr1}`);
-      if (this.character().data.echo1.indexOf(attr2) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr2}`);
-    }
-
-    if (echo.type == 1) {
-      if (this.character().data.echo3.indexOf(attr1) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr1}`);
-      if (this.character().data.echo3.indexOf(attr2) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr2}`);
-    }
-
-    if (echo.type == 2) {
-      if (this.character().data.echo4.indexOf(attr1) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr1}`);
-      if (this.character().data.echo4.indexOf(attr2) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr2}`);
-    }
+    const recommended = [this.character().data.echo1, this.character().data.echo3, this.character().data.echo4][echo.type];
+    if (recommended.indexOf(attr1) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr1}`);
+    if (recommended.indexOf(attr2) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr2}`);
 
     for (const attr of echo.currentSubs) {
       if (this.character().data.echoSub.indexOf(attr) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.sub')}: ${attr}`);
@@ -174,22 +199,19 @@ export class EchoComparatorModalComponent {
     return echo;
   }
 
-  simulate(char: Character): number {
-    let total: number = 0;
-    const rotation = char.data.rotation;
-    let heal: boolean = false;
-    // Every step counts at its expected value: dmg * (1 + rate * (critDmg - 1)), rate capped at 100%
-    const rate = Math.min(Math.max(char.cChance, 0), 100) / 100;
-    const expected = 1 + rate * (char.cDmg / 100 - 1);
-    for (let i = 0; i < rotation.length; i++) {
-      if (this.showHealing) heal = char.isHealStep(rotation[i]);
-
-      const value = +(char.rotationValue(rotation[i]) * expected).toFixed(0);
-      total += (this.showHealing && !heal) ? 0 : value;
-    }
-
-    return total;
+  /** Value of every step of the Rotation build with the attributes before and after the swap */
+  private simulate() {
+    const wanted = this.showHealing ? 'heal' : 'damage';
+    this.lines = this.before.rotationSteps().map(step => {
+      const current = this.before.rotationHit(step);
+      return {
+        name: this.before.data[step.section].hits[step.index]?.name ?? '',
+        current: current.value,
+        next: this.after.rotationHit(step).value,
+        counted: current.type == wanted,
+      };
+    });
+    this.totalCurrent = this.lines.reduce((sum, line) => sum + (line.counted ? line.current : 0), 0);
+    this.totalNext = this.lines.reduce((sum, line) => sum + (line.counted ? line.next : 0), 0);
   }
-
-
 }

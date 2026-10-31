@@ -44,20 +44,14 @@
     </div>
 
     <div class="flex flex-wrap gap-2">
-      <button type="button" class="ui-btn ui-btn-secondary" (click)="openEnhancer()">
-        <img src="assets/img/icons/resonator.webp" alt="" class="ui-glyph h-5 w-5" />
-        {{ 'char.enhancer.enhancer' | transloco }}
-      </button>
       <button type="button" class="ui-btn ui-btn-secondary" (click)="openRotationBuilder()">
         <span class="material-symbols-outlined" aria-hidden="true">format_list_numbered</span>
         {{ 'char.rotationBuild.title' | transloco }}
       </button>
-      @if (character().data.rotation.length) {
-        <button type="button" class="ui-btn ui-btn-secondary" (click)="openEchoComparator()">
-          <img src="assets/img/icons/echo.webp" alt="" class="ui-glyph h-5 w-5" />
-          {{ 'char.echo.echo' | transloco }}
-        </button>
-      }
+      <button type="button" class="ui-btn ui-btn-secondary" (click)="openEchoComparator()">
+        <img src="assets/img/icons/echo.webp" alt="" class="ui-glyph h-5 w-5" />
+        {{ 'char.echo.echo' | transloco }}
+      </button>
       <button type="button" class="ui-btn ui-btn-danger" (click)="delete()">
         <span class="material-symbols-outlined" aria-hidden="true">delete</span>
         {{ 'deleteTab' | transloco }}

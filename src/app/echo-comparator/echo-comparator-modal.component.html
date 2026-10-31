@@ -1,5 +1,6 @@
 <app-dialog-panel [title]="'char.echo.echo' | transloco" titleId="echo-title">
   <p class="text-sm font-medium text-ink">{{ 'char.echo.disclaimer' | transloco }}</p>
+  <p class="mt-1 text-sm text-mute">{{ 'char.echo.swapInfo' | transloco }}</p>
 
   <!-- Recommended echoes -->
   <section class="ui-card mt-4 p-4">
@@ -19,85 +20,162 @@
     <div class="mt-3 text-sm text-mute" [innerHTML]="'char.echo.' + character().data.icon | transloco: { name: character().name }"></div>
   </section>
 
-  <div class="mt-6 grid gap-4 lg:grid-cols-3">
-    @for (echo of echoes; track $index; let n = $index) {
-      <section class="ui-card space-y-3 p-4">
-        <h3 class="flex items-center gap-2 font-bold text-ink">
-          <img src="assets/img/icons/echo.webp" alt="" class="ui-glyph h-6 w-6" />
-          Echo {{ n + 1 }}
-        </h3>
+  <!-- Echos -->
+  <div class="mt-6 grid gap-4 lg:grid-cols-2">
+    <section>
+      <ng-container *ngTemplateOutlet="echoForm; context: { echo: current, title: 'char.echo.currentEcho' }" />
+    </section>
+    <section>
+      <ng-container *ngTemplateOutlet="echoForm; context: { echo: next, title: 'char.echo.newEcho' }" />
+    </section>
+  </div>
 
-        <label class="block text-xs text-mute">
-          <span class="mb-1 block">{{ 'char.echo.echoType' | transloco }}</span>
-          <select class="ui-input text-sm" [(ngModel)]="echo.type" [disabled]="n === 1" (change)="calculate()">
-            <option value="0">{{ 'char.echo.echo1' | transloco }}</option>
-            <option value="1">{{ 'char.echo.echo3' | transloco }}</option>
-            <option value="2">{{ 'char.echo.echo4' | transloco }}</option>
-          </select>
-        </label>
+  <ng-template #echoForm let-echo="echo" let-title="title">
+    <div class="ui-card space-y-3 p-4">
+      <h3 class="flex items-center gap-2 font-bold text-ink">
+        <img src="assets/img/icons/echo.webp" alt="" class="ui-glyph h-6 w-6" />
+        {{ title | transloco }}
+      </h3>
 
-        <label class="block text-xs text-mute">
-          <span class="mb-1 block">Main 1</span>
-          <select class="ui-input text-sm" [(ngModel)]="echo.main1Index" (change)="calculate()">
-            @for (item of echo.mainStats[echo.type]; track item; let i = $index) {
-              <option [value]="i">{{ item }} - {{ echo.mainValues[echo.type][i] }} {{ i == 0 ? '' : '%' }}</option>
-            }
-          </select>
-        </label>
+      <label class="block text-xs text-mute">
+        <span class="mb-1 block">{{ 'char.echo.echoType' | transloco }}</span>
+        <select class="ui-input text-sm" [(ngModel)]="echo.type" (change)="echo.main1Index = 0; echo.main2Index = 0; calculate()">
+          <option value="0">{{ 'char.echo.echo1' | transloco }}</option>
+          <option value="1">{{ 'char.echo.echo3' | transloco }}</option>
+          <option value="2">{{ 'char.echo.echo4' | transloco }}</option>
+        </select>
+      </label>
 
-        <label class="block text-xs text-mute">
-          <span class="mb-1 block">Main 2</span>
-          <select class="ui-input text-sm" [(ngModel)]="echo.main2Index" (change)="calculate()">
-            @for (item of echo.mainStats[echo.type]; track item; let i = $index) {
-              <option [value]="i">{{ item }} - {{ echo.mainValues[echo.type][i] }} {{ i == 0 ? '' : '%' }}</option>
-            }
-          </select>
-        </label>
-
-        <div class="space-y-2 border-t border-hairline pt-3">
-          @for (sub of echo.currentSubs; track $index; let i = $index) {
-            <div class="grid grid-cols-[1fr_5.5rem] gap-2">
-              <select class="ui-input text-sm" [attr.aria-label]="'Substat ' + (i + 1)" [(ngModel)]="echo.currentSubs[i]" (change)="calculate()">
-                <option [ngValue]="null">Substat {{ i + 1 }}</option>
-                @for (attr of echo.secondaryStats; track attr) {
-                  <option [ngValue]="attr">{{ attr }}</option>
-                }
-              </select>
-              <input type="number" min="0" placeholder="0" class="ui-input text-sm" [attr.aria-label]="'Substat ' + (i + 1)"
-                [(ngModel)]="echo.currentSubsValue[i]" (change)="calculate()" />
-            </div>
+      <label class="block text-xs text-mute">
+        <span class="mb-1 block">Main 1</span>
+        <select class="ui-input text-sm" [(ngModel)]="echo.main1Index" (change)="calculate()">
+          @for (item of echo.mainStats[echo.type]; track item; let i = $index) {
+            <option [value]="i">{{ item }} - {{ echo.mainValues[echo.type][i] }} {{ i == 0 ? '' : '%' }}</option>
           }
-        </div>
-      </section>
-    }
+        </select>
+      </label>
 
-    <!-- Results -->
-    <section class="ui-card space-y-3 bg-surface-2 p-4">
+      <label class="block text-xs text-mute">
+        <span class="mb-1 block">Main 2</span>
+        <select class="ui-input text-sm" [(ngModel)]="echo.main2Index" (change)="calculate()">
+          @for (item of echo.mainStats[echo.type]; track item; let i = $index) {
+            <option [value]="i">{{ item }} - {{ echo.mainValues[echo.type][i] }} {{ i == 0 ? '' : '%' }}</option>
+          }
+        </select>
+      </label>
+
+      <div class="space-y-2 border-t border-hairline pt-3">
+        @for (sub of echo.currentSubs; track $index; let i = $index) {
+          <div class="grid grid-cols-[1fr_5.5rem] gap-2">
+            <select class="ui-input text-sm" [attr.aria-label]="'Substat ' + (i + 1)" [(ngModel)]="echo.currentSubs[i]" (change)="calculate()">
+              <option [ngValue]="null">Substat {{ i + 1 }}</option>
+              @for (attr of echo.secondaryStats; track attr) {
+                <option [ngValue]="attr">{{ attr }}</option>
+              }
+            </select>
+            <input type="number" min="0" placeholder="0" class="ui-input text-sm" [attr.aria-label]="'Substat ' + (i + 1)"
+              [(ngModel)]="echo.currentSubsValue[i]" (change)="calculate()" />
+          </div>
+        }
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- Results -->
+  <section class="ui-card mt-6 space-y-3 bg-surface-2 p-4">
+    <div class="flex flex-wrap items-center justify-between gap-2">
       <h3 class="flex items-center gap-2 font-bold text-ink">
         <img src="assets/img/icons/echo.webp" alt="" class="ui-glyph h-6 w-6" />
         {{ 'char.echo.results' | transloco }}
       </h3>
-
       @if (character().data.hasHealing) {
         <button type="button" class="ui-btn ui-btn-secondary" (click)="showHealing = !showHealing; calculate()">
-          {{ (showHealing ? 'char.enhancer.canHealDMG' : 'char.enhancer.canHealHeal') | transloco }}
+          {{ (showHealing ? 'char.echo.canHealDMG' : 'char.echo.canHealHeal') | transloco }}
         </button>
       }
+    </div>
 
-      <div class="text-sm leading-relaxed text-body" [innerHTML]="text"></div>
+    <div class="text-sm leading-relaxed text-body" [innerHTML]="text"></div>
 
-      <div class="grid gap-3 border-t border-hairline pt-3 text-xs text-mute">
-        @for (echo of echoes; track $index; let n = $index) {
-          <div>
-            <p class="font-medium text-body">Echo {{ n + 1 }} - {{ 'char.echo.attributes' | transloco }}</p>
-            <ul class="mt-1 list-disc pl-5">
-              @for (attr of echo.commonAttr; track attr) {
-                <li>{{ attr }}</li>
-              }
-            </ul>
-          </div>
-        }
+    <div class="grid gap-3 border-t border-hairline pt-3 text-xs text-mute sm:grid-cols-2">
+      <div>
+        <p class="font-medium text-body">{{ 'char.echo.currentEcho' | transloco }} - {{ 'char.echo.attributes' | transloco }}</p>
+        <ul class="mt-1 list-disc pl-5">
+          @for (attr of current.commonAttr; track attr) {
+            <li>{{ attr }}</li>
+          }
+        </ul>
       </div>
+      <div>
+        <p class="font-medium text-body">{{ 'char.echo.newEcho' | transloco }} - {{ 'char.echo.attributes' | transloco }}</p>
+        <ul class="mt-1 list-disc pl-5">
+          @for (attr of next.commonAttr; track attr) {
+            <li>{{ attr }}</li>
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Attributes before and after the swap -->
+  <div class="mt-4 grid gap-4 lg:grid-cols-2">
+    <section class="ui-card p-4">
+      <h3 class="text-sm font-bold text-ink">{{ 'char.echo.summary' | transloco }}</h3>
+      <p class="mt-1 text-xs text-mute">{{ 'char.echo.estimated' | transloco }}</p>
+      <table class="ui-table mt-3">
+        <thead>
+          <tr>
+            <th scope="col">{{ 'char.echo.attribute' | transloco }}</th>
+            <th scope="col">{{ 'current' | transloco }}</th>
+            <th scope="col">{{ 'new' | transloco }}</th>
+            <th scope="col">Δ</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of rows; track row.key) {
+            <tr>
+              <th scope="row" class="font-medium text-ink">{{ row.prefix ? (row.prefix | transloco) + ' ' : '' }}{{ row.label }}</th>
+              <td>{{ before[row.key] | number: '1.0-1' }}</td>
+              <td>{{ after[row.key] | number: '1.0-1' }}</td>
+              <td class="font-medium" [class.text-success]="after[row.key] > before[row.key]" [class.text-danger]="after[row.key] < before[row.key]">
+                @if (after[row.key] != before[row.key]) {
+                  {{ after[row.key] > before[row.key] ? '+' : '' }}{{ after[row.key] - before[row.key] | number: '1.0-1' }}
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Rotation, hit by hit -->
+    <section class="ui-card p-4">
+      <h3 class="text-sm font-bold text-ink">{{ 'char.rotationBuild.title' | transloco }}</h3>
+      <table class="ui-table mt-3">
+        <thead>
+          <tr>
+            <th scope="col">Atk nº</th>
+            <th scope="col">{{ 'char.echo.hit' | transloco }}</th>
+            <th scope="col">{{ 'current' | transloco }}</th>
+            <th scope="col">{{ 'new' | transloco }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (line of lines; track $index; let i = $index) {
+            <tr [class.opacity-50]="!line.counted">
+              <th scope="row" class="font-medium text-ink">{{ i + 1 }}</th>
+              <td>{{ line.name }}</td>
+              <td>{{ line.current | number: '1.0-0' }}</td>
+              <td>{{ line.next | number: '1.0-0' }}</td>
+            </tr>
+          }
+          <tr>
+            <th scope="row" class="font-bold text-ink" colspan="2">Total</th>
+            <td>~{{ totalCurrent | number: '1.0-0' }}</td>
+            <td [class.text-success]="totalNext > totalCurrent" [class.text-danger]="totalNext < totalCurrent">~{{ totalNext | number: '1.0-0' }}</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </div>
 </app-dialog-panel>
