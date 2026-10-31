@@ -1,0 +1,53 @@
+{
+  "main": {
+    "1": {
+      "fixed": { "stat": "hp", "flat": true, "value": 2280 },
+      "options": [
+        { "stat": "hp", "value": 22.8 },
+        { "stat": "dmg", "value": 18 },
+        { "stat": "def", "value": 18 }
+      ]
+    },
+    "3": {
+      "fixed": { "stat": "dmg", "flat": true, "value": 100 },
+      "options": [
+        { "stat": "hp", "value": 30 },
+        { "stat": "dmg", "value": 30 },
+        { "stat": "def", "value": 38 },
+        { "stat": "elementalBonus", "element": "aero", "value": 30 },
+        { "stat": "elementalBonus", "element": "glacio", "value": 30 },
+        { "stat": "elementalBonus", "element": "fusion", "value": 30 },
+        { "stat": "elementalBonus", "element": "electro", "value": 30 },
+        { "stat": "elementalBonus", "element": "havoc", "value": 30 },
+        { "stat": "elementalBonus", "element": "spectro", "value": 30 },
+        { "stat": "energyRegen", "value": 32 }
+      ]
+    },
+    "4": {
+      "fixed": { "stat": "dmg", "flat": true, "value": 150 },
+      "options": [
+        { "stat": "hp", "value": 33 },
+        { "stat": "dmg", "value": 33 },
+        { "stat": "def", "value": 41.5 },
+        { "stat": "cChance", "value": 22 },
+        { "stat": "cDmg", "value": 44 },
+        { "stat": "healingBonus", "value": 26 }
+      ]
+    }
+  },
+  "subs": [
+    { "stat": "dmg", "flat": true, "values": [30, 40, 50, 60] },
+    { "stat": "def", "flat": true, "values": [40, 50, 60, 70] },
+    { "stat": "hp", "flat": true, "values": [320, 360, 390, 430, 470, 510, 540, 580] },
+    { "stat": "cChance", "values": [6.3, 6.9, 7.5, 8.1, 8.7, 9.3, 9.9, 10.5] },
+    { "stat": "cDmg", "values": [12.6, 13.8, 15.0, 16.2, 17.4, 18.6, 19.8, 21.0] },
+    { "stat": "dmg", "values": [6.4, 7.1, 7.9, 8.6, 9.4, 10.1, 10.9, 11.6] },
+    { "stat": "hp", "values": [6.4, 7.1, 7.9, 8.6, 9.4, 10.1, 10.9, 11.6] },
+    { "stat": "def", "values": [8.1, 9.0, 10.0, 10.9, 11.8, 12.8, 13.8, 14.7] },
+    { "stat": "energyRegen", "values": [6.8, 7.6, 8.4, 9.2, 10.0, 10.8, 11.6, 12.4] },
+    { "stat": "basicBonus", "values": [6.4, 7.1, 7.9, 8.6, 9.4, 10.1, 10.9, 11.6] },
+    { "stat": "heavyBonus", "values": [6.4, 7.1, 7.9, 8.6, 9.4, 10.1, 10.9, 11.6] },
+    { "stat": "skillBonus", "values": [6.4, 7.1, 7.9, 8.6, 9.4, 10.1, 10.9, 11.6] },
+    { "stat": "liberationBonus", "values": [6.4, 7.1, 7.9, 8.6, 9.4, 10.1, 10.9, 11.6] }
+  ]
+}

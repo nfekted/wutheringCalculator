@@ -1,0 +1,1832 @@
+[
+  {
+    "id": 1,
+    "name": "Lampylumen Myriad",
+    "cost": 4,
+    "sonatas": [
+      11
+    ],
+    "skill": {
+      "text": "Unleash a freezing shock by performing consecutive forward strikes, with the initial two strikes inflicting 220.16% and 200.16% Glacio DMG respectively, and the final strike dealing 266.88% Glacio DMG. Enemies will be frozen on hit.",
+      "hits": [
+        {
+          "name": "Lampylumen Myriad",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                220.16
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                200.16
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                266.88
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "Each shock increases the current character's Glacio DMG by 4.00% and Resonance Skill DMG dealt by 4.00%"
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 2,
+    "name": "Autopuppet Scout",
+    "cost": 3,
+    "sonatas": [
+      11,
+      1
+    ],
+    "skill": {
+      "text": "Transform into Autopuppet Scout, dealing 272.00% Glacio DMG",
+      "hits": [
+        {
+          "name": "Autopuppet Scout",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                272
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 3,
+    "name": "Roseshroom",
+    "cost": 3,
+    "sonatas": [
+      11,
+      15
+    ],
+    "skill": {
+      "text": "Summon a Roseshroom that fires a laser, dealing 57.07% Havoc DMG up to 3 times.",
+      "hits": [
+        {
+          "name": "Roseshroom",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                57.07
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 4,
+    "name": "Tambourinist",
+    "cost": 3,
+    "sonatas": [
+      11,
+      15
+    ],
+    "skill": {
+      "text": "Summon a Tambourinist that periodically emits Melodies of Annihilation. Friendly units hit with Melodies of Annihilation deal an extra Havoc DMG of 14.40% with their attacks, up to 10 times.",
+      "hits": []
+    },
+    "buffs": [
+      "Friendly units hit with Melodies of Annihilation deal an extra Havoc DMG of 14.40% with their attacks, up to 10 times."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 5,
+    "name": "Lumiscale Construct",
+    "cost": 3,
+    "sonatas": [
+      11,
+      35
+    ],
+    "skill": {
+      "text": "Transform into a Lumiscale Construct and enter a Parry Stance. If you are not attacked during the Parry Stance, slash to deal 553.60% Glacio DMG when the stance finishes. If attacked, counterattack instantly, dealing 553.60%+276.80% Glacio DMG. When hit with a Special Skill attack while in the Parry Stance, break the Special Skill and counterattack, dealing 553.60%+276.80% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Parry Stance",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                553.6
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Counterattack",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                553.6
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                276.8
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 6,
+    "name": "Glacio Dreadmane",
+    "cost": 3,
+    "sonatas": [
+      11
+    ],
+    "skill": {
+      "text": "Lacerate enemies as a Glacio Dreadmane, dealing 214.40% Glacio DMG on each hit. Equipped with 2 charges and can be cast mid-air. Glacio Dreadmane deals 20.00% more DMG while in mid-air and generates 6 Icicles upon landing, each dealing 32.00% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Ground",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                214.4
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Mid-air",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                257.28
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                32
+              ],
+              "times": 6
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 7,
+    "name": "Excarat",
+    "cost": 1,
+    "sonatas": [
+      11,
+      15
+    ],
+    "skill": {
+      "text": "Transform into an Excarat and tunnel underground to advance. In this state, you have the ability to change your direction and are immune to damage.",
+      "hits": []
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 8,
+    "name": "Fusion Prism",
+    "cost": 1,
+    "sonatas": [
+      11,
+      22
+    ],
+    "skill": {
+      "text": "Summon a Fusion Prism to fire a crystal shard, dealing 32.00%+64 Fusion DMG.",
+      "hits": [
+        {
+          "name": "Fusion Prism",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                32
+              ]
+            },
+            {
+              "stat": "flat",
+              "values": [
+                64
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 9,
+    "name": "Glacio Predator",
+    "cost": 1,
+    "sonatas": [
+      11,
+      1
+    ],
+    "skill": {
+      "text": "Summon a Glacio Predator that throws an ice spear, dealing 46.08% Glacio DMG on hit. Deal 4.61% Glacio DMG up to 10 times during the charging time, and 23.04% Glacio DMG when the spear- explodes.",
+      "hits": [
+        {
+          "name": "Glacio Predator",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                46.08
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                4.61
+              ],
+              "times": 10
+            },
+            {
+              "stat": "atk",
+              "values": [
+                23.04
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 10,
+    "name": "Glacio Prism",
+    "cost": 1,
+    "sonatas": [
+      11,
+      15
+    ],
+    "skill": {
+      "text": "Summon a Glacio Prism that continuously fires three crystal shards, each dealing 38.40% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Glacio Prism",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                38.4
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 11,
+    "name": "Gulpuff",
+    "cost": 1,
+    "sonatas": [
+      11,
+      1
+    ],
+    "skill": {
+      "text": "Summon a Gulpuff that blows bubbles 5 times, each time dealing 23.04% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Gulpuff",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                23.04
+              ],
+              "times": 5
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 12,
+    "name": "Hoartoise",
+    "cost": 1,
+    "sonatas": [
+      11,
+      1
+    ],
+    "skill": {
+      "text": "Transform into Hoartoise and slowly restore HP. Use the Echo skill again to exit the transformation state.",
+      "hits": []
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 13,
+    "name": "Sabyr Boar",
+    "cost": 1,
+    "sonatas": [
+      11,
+      29
+    ],
+    "skill": {
+      "text": "Summon a Sabyr Boar to headbutt the enemy into the air, dealing 32.00%+64 Physical DMG.",
+      "hits": [
+        {
+          "name": "Sabyr Boar",
+          "kind": "echo",
+          "element": "physical",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                32
+              ]
+            },
+            {
+              "stat": "flat",
+              "values": [
+                64
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 14,
+    "name": "Clang Bang",
+    "cost": 1,
+    "sonatas": [
+      11,
+      1
+    ],
+    "skill": {
+      "text": "Summon a Clang Bang that follows the enemy and eventually self-combusts dealing 32.00%+64 Glacio DMG.",
+      "hits": [
+        {
+          "name": "Clang Bang",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                32
+              ]
+            },
+            {
+              "stat": "flat",
+              "values": [
+                64
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 15,
+    "name": "Inferno Rider",
+    "cost": 4,
+    "sonatas": [
+      22
+    ],
+    "skill": {
+      "text": "Launch up to 3 consecutive slashes in a row, each slash dealing 242.40%, 282.80%, and 282.80% Fusion DMG respectively.",
+      "hits": [
+        {
+          "name": "Inferno Rider",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                242.4
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                282.8
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                282.8
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "After the final hit, increase the current character's Fusion DMG by 12.00% and Basic Attack DMG by 12.00%"
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 16,
+    "name": "Nightmare: Inferno Rider",
+    "cost": 4,
+    "sonatas": [
+      22
+    ],
+    "skill": {
+      "text": "Jump to attack enemies in front, dealing 405.00% Fusion DMG.",
+      "hits": [
+        {
+          "name": "Nightmare: Inferno Rider",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                405
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Fusion DMG Bonus and 12.00% Resonance Skill DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Havoc Dreadmane",
+    "cost": 3,
+    "sonatas": [
+      22,
+      15
+    ],
+    "skill": {
+      "text": "Perform tail strikes up to 2 times. Each strike deals 116.64% Havoc DMG. An additional strike will be performed on hit, dealing 77.76% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Havoc Dreadmane",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                116.64
+              ],
+              "times": 2
+            },
+            {
+              "stat": "atk",
+              "values": [
+                77.76
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 18,
+    "name": "Violet-Feathered Heron",
+    "cost": 3,
+    "sonatas": [
+      22,
+      35
+    ],
+    "skill": {
+      "text": "Deal 288.00% Electro DMG",
+      "hits": [
+        {
+          "name": "Violet-Feathered Heron",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                288
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 19,
+    "name": "Viridblaze Saurian",
+    "cost": 3,
+    "sonatas": [
+      22
+    ],
+    "skill": {
+      "text": "Deal 17.12% Fusion DMG 10 times.",
+      "hits": [
+        {
+          "name": "Viridblaze Saurian",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                17.12
+              ],
+              "times": 10
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 20,
+    "name": "Baby Viridblaze Saurian",
+    "cost": 1,
+    "sonatas": [
+      22,
+      35
+    ],
+    "skill": {
+      "text": "Transform into Baby Viridblaze Saurian to rest in place, and slowly restore HP.",
+      "hits": []
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 21,
+    "name": "Electro Predator",
+    "cost": 1,
+    "sonatas": [
+      22,
+      35
+    ],
+    "skill": {
+      "text": "Summon an Electro Predator to shoot the enemy 5 times. The first 4 shots deals 17.28% Electro DMG, and the last deals 46.08% Electro DMG.",
+      "hits": [
+        {
+          "name": "Electro Predator",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                17.28
+              ],
+              "times": 4
+            },
+            {
+              "stat": "atk",
+              "values": [
+                46.08
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 22,
+    "name": "Fusion Dreadmane",
+    "cost": 1,
+    "sonatas": [
+      22
+    ],
+    "skill": {
+      "text": "Summon a Fusion Dreadmane that fiercely strike's the enemy, dealing 32.00%+64 Fusion DMG.",
+      "hits": [
+        {
+          "name": "Fusion Dreadmane",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                32
+              ]
+            },
+            {
+              "stat": "flat",
+              "values": [
+                64
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 23,
+    "name": "Fusion Warrior",
+    "cost": 1,
+    "sonatas": [
+      22,
+      35,
+      29
+    ],
+    "skill": {
+      "text": "288.00% Fusion DMG will be dealt",
+      "hits": [
+        {
+          "name": "Fusion Warrior",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                288
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 24,
+    "name": "Snip Snap",
+    "cost": 1,
+    "sonatas": [
+      22
+    ],
+    "skill": {
+      "text": "Summon a Snip Snap that throws fireballs at the enemy, dealing 32.00%+64 Fusion DMG on-hit.",
+      "hits": [
+        {
+          "name": "Snip Snap",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                32
+              ]
+            },
+            {
+              "stat": "flat",
+              "values": [
+                64
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 25,
+    "name": "Spectro Prism",
+    "cost": 1,
+    "sonatas": [
+      22,
+      35,
+      1
+    ],
+    "skill": {
+      "text": "Summon a Spectro Prism to emit a laser that hits the enemy up to 8 times, dealing 14.40% Spectro DMG each time.",
+      "hits": [
+        {
+          "name": "Spectro Prism",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                14.4
+              ],
+              "times": 8
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 26,
+    "name": "Traffic Illuminator",
+    "cost": 1,
+    "sonatas": [
+      22,
+      35,
+      29
+    ],
+    "skill": {
+      "text": "Summon a Traffic Illuminator, immobilizing enemies for up to 1s. The immobilization will be lifted once the enemy is hit.",
+      "hits": []
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 27,
+    "name": "Lava Larva",
+    "cost": 1,
+    "sonatas": [
+      22
+    ],
+    "skill": {
+      "text": "Summon a Lava Larva that deal 38.40% Fusion DMG with each hit.",
+      "hits": [
+        {
+          "name": "Lava Larva",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                38.4
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 28,
+    "name": "Tempest Mephis",
+    "cost": 4,
+    "sonatas": [
+      35
+    ],
+    "skill": {
+      "text": "Transform into Tempest Mephis to perform tail swing attacks followed by a claw attack. The lightning strike summoned by the tail swing deals 102.48% Electro DMG each time, while the claw attack deals 175.68% Electro DMG.",
+      "hits": [
+        {
+          "name": "Tempest Mephis",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                102.48
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                175.68
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "After the claw hit, increase the current character's Electro DMG by 12.00% and Heavy Attack DMG by 12.00%"
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 29,
+    "name": "Thundering Mephis",
+    "cost": 4,
+    "sonatas": [
+      35
+    ],
+    "skill": {
+      "text": "Transform into Thundering Mephis, engaging in a rapid assault of up to 6 strikes. The first 5 strikes deal 132.61% Electro DMG each, while the final strike inflicts 189.44% Electro DMG, with an additional 31.57% Electro DMG from the thunder.",
+      "hits": [
+        {
+          "name": "Thundering Mephis",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                132.61
+              ],
+              "times": 5
+            },
+            {
+              "stat": "atk",
+              "values": [
+                189.44
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                31.57
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "After the final hit, increase the current character's Electro DMG by 12.00% and Resonance Liberation DMG by 12.00%"
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 30,
+    "name": "Nightmare: Tempest Mephis",
+    "cost": 4,
+    "sonatas": [
+      35
+    ],
+    "skill": {
+      "text": "Transform into Nightmare: Tempest Mephis and attack surrounding enemies, dealing 264.60% Electro DMG.",
+      "hits": [
+        {
+          "name": "Nightmare: Tempest Mephis",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                264.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Electro DMG Bonus and 12.00% Resonance Skill DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Nightmare: Thundering Mephis",
+    "cost": 4,
+    "sonatas": [
+      35
+    ],
+    "skill": {
+      "text": "Transform into Nightmare: Thundering Mephis and attack enemies in front, dealing 405.00% Electro DMG.",
+      "hits": [
+        {
+          "name": "Nightmare: Thundering Mephis",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                405
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Electro DMG Bonus and 12.00% Resonance Liberation DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Flautist",
+    "cost": 3,
+    "sonatas": [
+      35
+    ],
+    "skill": {
+      "text": "Transform into Flautist, continuously emitting Electro lasers, dealing 53.28% Electro DMG for a total of 10 times.",
+      "hits": [
+        {
+          "name": "Flautist",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                53.28
+              ],
+              "times": 10
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 33,
+    "name": "Aero Predator",
+    "cost": 1,
+    "sonatas": [
+      35,
+      29
+    ],
+    "skill": {
+      "text": "Summon an Aero Predator that throws a dart forward. The dart will bounce between enemies up to three times, dealing 28.80% Aero DMG each time it hits.",
+      "hits": [
+        {
+          "name": "Aero Predator",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                28.8
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 34,
+    "name": "Fission Junrock",
+    "cost": 1,
+    "sonatas": [
+      35
+    ],
+    "skill": {
+      "text": "Summon a Fission Junrock. Generate a Resonance Effect",
+      "hits": []
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 35,
+    "name": "Havoc Prism",
+    "cost": 1,
+    "sonatas": [
+      35,
+      1,
+      15
+    ],
+    "skill": {
+      "text": "Summon a Havoc Prism to fire five crystal shards, each dealing 23.04% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Havoc Prism",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                23.04
+              ],
+              "times": 5
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 36,
+    "name": "Vanguard Junrock",
+    "cost": 1,
+    "sonatas": [
+      35
+    ],
+    "skill": {
+      "text": "Summon a Vanguard Junrock that charges forward, dealing 32.00%+64 Physical DMG to enemies in its path.",
+      "hits": [
+        {
+          "name": "Vanguard Junrock",
+          "kind": "echo",
+          "element": "physical",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                32
+              ]
+            },
+            {
+              "stat": "flat",
+              "values": [
+                64
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 37,
+    "name": "Feilian Beringal",
+    "cost": 4,
+    "sonatas": [
+      29
+    ],
+    "skill": {
+      "text": "Transform into Feilian Beringal to perform a powerful kick. If the kick lands on an enemy, immediately perform a follow up strike. The kick deals 231.84% Aero DMG, and the follow-up strike deals 283.36% Aero DMG.",
+      "hits": [
+        {
+          "name": "Feilian Beringal",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                231.84
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                283.36
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "After the follow-up strike hits, the current character's Aero DMG increases by 12.00%, and the Heavy Attack DMG increases by 12.00%"
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 38,
+    "name": "Nightmare: Feilian Beringal",
+    "cost": 4,
+    "sonatas": [
+      29
+    ],
+    "skill": {
+      "text": "Summon a Nightmare: Feilian Beringal to attack enemies, dealing 164.16% Aero DMG. The remaining Whirlwind Beam will continuously attack surrounding enemies up to 5 times, each dealing 21.89% Aero DMG.",
+      "hits": [
+        {
+          "name": "Nightmare: Feilian Beringal",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                164.16
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                21.89
+              ],
+              "times": 5
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Aero DMG Bonus and 12.00% Heavy Attack DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Carapace",
+    "cost": 3,
+    "sonatas": [
+      29
+    ],
+    "skill": {
+      "text": "Transform into Carapace to perform a spinning attack that deals 112.00% Aero DMG, followed by a slash that deals 168.00% Aero DMG.",
+      "hits": [
+        {
+          "name": "Carapace",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                112
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                168
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 40,
+    "name": "Cyan-Feathered Heron",
+    "cost": 3,
+    "sonatas": [
+      29,
+      1
+    ],
+    "skill": {
+      "text": "Transform into Cyan-Feathered Heron and charge at the enemies, dealing 236.80% Aero DMG",
+      "hits": [
+        {
+          "name": "Cyan-Feathered Heron",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                236.8
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 41,
+    "name": "Hoochief",
+    "cost": 3,
+    "sonatas": [
+      29
+    ],
+    "skill": {
+      "text": "Transform into Hoochief Cyclone and smack the enemies, dealing 268.20% Aero DMG.",
+      "hits": [
+        {
+          "name": "Hoochief",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 42,
+    "name": "Young Roseshroom",
+    "cost": 1,
+    "sonatas": [
+      29,
+      15
+    ],
+    "skill": {
+      "text": "Summon a Baby Roseshroom that fires a laser, dealing 32.00%+64 Havoc DMG.",
+      "hits": [
+        {
+          "name": "Young Roseshroom",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                32
+              ]
+            },
+            {
+              "stat": "flat",
+              "values": [
+                64
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 43,
+    "name": "Chirpuff",
+    "cost": 1,
+    "sonatas": [
+      29,
+      15
+    ],
+    "skill": {
+      "text": "Summon a Chirpuff that self-inflates and blasts a powerful gust of wind forward 3 times. Each blast inflicts 38.40% Aero DMG and pushes enemies backwards.",
+      "hits": [
+        {
+          "name": "Chirpuff",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                38.4
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 44,
+    "name": "Hooscamp",
+    "cost": 1,
+    "sonatas": [
+      29
+    ],
+    "skill": {
+      "text": "Transform into Hooscamp Flinger and pounce at the enemies, dealing 48.00%+96 Aero DMG.",
+      "hits": [
+        {
+          "name": "Hooscamp",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                48
+              ]
+            },
+            {
+              "stat": "flat",
+              "values": [
+                96
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 45,
+    "name": "Whiff Whaff",
+    "cost": 1,
+    "sonatas": [
+      29
+    ],
+    "skill": {
+      "text": "Summon a Whiff Whaff that triggers an air explosion, dealing 51.36% Aero DMG and produce a Low-pressure Zone. The Low-pressure Zone continuously pulls enemies nearby towards the center for 2s, dealing 19.97% Aero DMG up to 6 times.",
+      "hits": [
+        {
+          "name": "Whiff Whaff",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                51.36
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                19.97
+              ],
+              "times": 6
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 46,
+    "name": "Dwarf Cassowary",
+    "cost": 1,
+    "sonatas": [
+      29
+    ],
+    "skill": {
+      "text": "Summon a Dwarf Cassowary that tracks and attacks the enemy, dealing 38.40% Physical DMG 3 times(s).",
+      "hits": [
+        {
+          "name": "Dwarf Cassowary",
+          "kind": "echo",
+          "element": "physical",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                38.4
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 47,
+    "name": "Mourning Aix",
+    "cost": 4,
+    "sonatas": [
+      1
+    ],
+    "skill": {
+      "text": "Transform into Mourning Aix and perform 2 consecutive claw attacks, each attack dealing 157.44% and 236.16% Spectro DMG respectively.",
+      "hits": [
+        {
+          "name": "Mourning Aix",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                157.44
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                236.16
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "After the transformation, increase current character's Spectro DMG by 12.00% and Resonance Liberation DMG by 12.00%"
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 48,
+    "name": "Jué",
+    "cost": 4,
+    "sonatas": [
+      1
+    ],
+    "skill": {
+      "text": "Summon Jué to the aid. Jué soars through the air, dealing 48.64% Spectro DMG, and summons thunderbolts that strike nearby enemies up to 5 times, each hit dealing 19.46% Spectro DMG. Jué then spirals downward, attacking surrounding enemies twice, each hit dealing 48.64% Spectro DMG.",
+      "hits": [
+        {
+          "name": "Jué",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                48.64
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                19.46
+              ],
+              "times": 5
+            },
+            {
+              "stat": "atk",
+              "values": [
+                48.64
+              ],
+              "times": 2
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "Casting this Echo Skill grants the Resonator a Blessing of Time effect that lasts 15s, during when:\n- The Resonator gains 16.00% Resonance Skill DMG Bonus.\n- When the Resonator's Resonance Skill hits the target, inflict 16.00% Spectro DMG 1 time per second for 15s, considered as the Resonator's Resonance Skill DMG."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 49,
+    "name": "Rocksteady Guardian",
+    "cost": 3,
+    "sonatas": [
+      1
+    ],
+    "skill": {
+      "text": "Transform into Rocksteady Guardian and enter a Parry State. Upon being attacked, deal Spectro DMG equal to 8.29% of the current character's Max HP, and perform a follow-up attack that deals Spectro DMG equal to 8.29% of the current character's Max HP.",
+      "hits": [
+        {
+          "name": "Rocksteady Guardian",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "hp",
+              "values": [
+                8.29
+              ]
+            },
+            {
+              "stat": "hp",
+              "values": [
+                8.29
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 50,
+    "name": "Lightcrusher",
+    "cost": 3,
+    "sonatas": [
+      1
+    ],
+    "skill": {
+      "text": "Lunge forward as a Lightcrusher, dealing 135.36% Spectro DMG. Generate 6 Ablucence on hit. Each Ablucence explosion deals 15.04% Spectro DMG. Hold the Echo Skill to stay in the Lightcrusher form, which allows you to leap up and pounce forward in the air for a short distance.",
+      "hits": [
+        {
+          "name": "Lightcrusher",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                135.36
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                15.04
+              ],
+              "times": 6
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 51,
+    "name": "Cruisewing",
+    "cost": 1,
+    "sonatas": [
+      1
+    ],
+    "skill": {
+      "text": "Heal characters",
+      "hits": []
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 52,
+    "name": "Havoc Warrior",
+    "cost": 1,
+    "sonatas": [
+      1,
+      15
+    ],
+    "skill": {
+      "text": "Transform into Havoc Warrior to attack up to 3 times, dealing 171.73% Havoc DMG each time.",
+      "hits": [
+        {
+          "name": "Havoc Warrior",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                171.73
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 53,
+    "name": "Zig Zag",
+    "cost": 1,
+    "sonatas": [
+      1
+    ],
+    "skill": {
+      "text": "Summon a Zig Zag that denotates Spectro energy, dealing 48.00%+96 Spectro DMG and creating a Stagnation Zone.",
+      "hits": [
+        {
+          "name": "Zig Zag",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                48
+              ]
+            },
+            {
+              "stat": "flat",
+              "values": [
+                96
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 54,
+    "name": "Crownless",
+    "cost": 4,
+    "sonatas": [
+      15
+    ],
+    "skill": {
+      "text": "Transform into Crownless and perform up to 4 consecutive attacks. The first 2 attacks deal 134.08% Havoc DMG each, the 3rd attack deals 100.56% Havoc DMG 2 times, and the 4th attack deals 67.04% Havoc DMG 3 times.",
+      "hits": [
+        {
+          "name": "Crownless",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                134.08
+              ],
+              "times": 2
+            },
+            {
+              "stat": "atk",
+              "values": [
+                100.56
+              ],
+              "times": 2
+            },
+            {
+              "stat": "atk",
+              "values": [
+                67.04
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "After the transformation, increase current character's Havoc DMG by 12.00% and Resonance Skill DMG by 12.00%"
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 55,
+    "name": "Dreamless",
+    "cost": 4,
+    "sonatas": [
+      15
+    ],
+    "skill": {
+      "text": "Transform into Dreamless and perform 6 consecutive attacks. The first 5 attacks deal 54.08% Havoc DMG each, and the last attack deal 270.40% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Dreamless",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                54.08
+              ],
+              "times": 5
+            },
+            {
+              "stat": "atk",
+              "values": [
+                270.4
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "The DMG of this Echo Skill is increased by 50.00% during the first 5s after Rover: Havoc casts Resonance Liberation: Deadening Abyss."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 56,
+    "name": "Nightmare: Crownless",
+    "cost": 4,
+    "sonatas": [
+      15
+    ],
+    "skill": {
+      "text": "Transform into Nightmare: Crownless and attack enemies in front, dealing 405.00% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Nightmare: Crownless",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                405
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "This skill has 3 initial charges, replenished once every 12s, max 3 charges. When Nightmare: Crownless hits a target, DMG dealt by this skill is increased by 20.00%. This effect lasts for 2s and does not stack."
+    ],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Basic Attack DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "name": "Tick Tack",
+    "cost": 1,
+    "sonatas": [
+      15
+    ],
+    "skill": {
+      "text": "Summon a Tick Tack that charges and bites the enemy. The charge from Tick Tack will deal 68.48% Havoc DMG to the enemy, and the bite will deal 102.72% Havoc DMG to the enemy.",
+      "hits": [
+        {
+          "name": "Tick Tack",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                68.48
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                102.72
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  }
+]

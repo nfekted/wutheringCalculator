@@ -23,6 +23,8 @@ export interface Hit {
   parts: HitPart[];
   /** Basic attack that belongs to the combo chain (Stage 1, Stage 2...) */
   combo?: boolean;
+  /** Element of the damage (Echo hits: aero, glacio... or physical); without it, the element of the character */
+  element?: string;
 }
 
 export interface SkillData {
