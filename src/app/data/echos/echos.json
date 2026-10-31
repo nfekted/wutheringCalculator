@@ -170,7 +170,8 @@
     "name": "Glacio Dreadmane",
     "cost": 3,
     "sonatas": [
-      11
+      11,
+      23
     ],
     "skill": {
       "text": "Lacerate enemies as a Glacio Dreadmane, dealing 214.40% Glacio DMG on each hit. Equipped with 2 charges and can be cast mid-air. Glacio Dreadmane deals 20.00% more DMG while in mid-air and generates 6 Icicles upon landing, each dealing 32.00% Glacio DMG.",
@@ -234,7 +235,8 @@
     "cost": 1,
     "sonatas": [
       11,
-      22
+      22,
+      20
     ],
     "skill": {
       "text": "Summon a Fusion Prism to fire a crystal shard, dealing 32.00%+64 Fusion DMG.",
@@ -311,7 +313,8 @@
     "cost": 1,
     "sonatas": [
       11,
-      15
+      15,
+      23
     ],
     "skill": {
       "text": "Summon a Glacio Prism that continuously fires three crystal shards, each dealing 38.40% Glacio DMG.",
@@ -386,7 +389,8 @@
     "cost": 1,
     "sonatas": [
       11,
-      29
+      29,
+      23
     ],
     "skill": {
       "text": "Summon a Sabyr Boar to headbutt the enemy into the air, dealing 32.00%+64 Physical DMG.",
@@ -594,7 +598,8 @@
     "name": "Viridblaze Saurian",
     "cost": 3,
     "sonatas": [
-      22
+      22,
+      23
     ],
     "skill": {
       "text": "Deal 17.12% Fusion DMG 10 times.",
@@ -624,7 +629,8 @@
     "cost": 1,
     "sonatas": [
       22,
-      35
+      35,
+      20
     ],
     "skill": {
       "text": "Transform into Baby Viridblaze Saurian to rest in place, and slowly restore HP.",
@@ -674,7 +680,8 @@
     "name": "Fusion Dreadmane",
     "cost": 1,
     "sonatas": [
-      22
+      22,
+      26
     ],
     "skill": {
       "text": "Summon a Fusion Dreadmane that fiercely strike's the enemy, dealing 32.00%+64 Fusion DMG.",
@@ -738,7 +745,9 @@
     "name": "Snip Snap",
     "cost": 1,
     "sonatas": [
-      22
+      22,
+      26,
+      20
     ],
     "skill": {
       "text": "Summon a Snip Snap that throws fireballs at the enemy, dealing 32.00%+64 Fusion DMG on-hit.",
@@ -819,7 +828,8 @@
     "name": "Lava Larva",
     "cost": 1,
     "sonatas": [
-      22
+      22,
+      20
     ],
     "skill": {
       "text": "Summon a Lava Larva that deal 38.40% Fusion DMG with each hit.",
@@ -990,7 +1000,8 @@
     "name": "Flautist",
     "cost": 3,
     "sonatas": [
-      35
+      35,
+      20
     ],
     "skill": {
       "text": "Transform into Flautist, continuously emitting Electro lasers, dealing 53.28% Electro DMG for a total of 10 times.",
@@ -1049,7 +1060,9 @@
     "name": "Fission Junrock",
     "cost": 1,
     "sonatas": [
-      35
+      35,
+      26,
+      23
     ],
     "skill": {
       "text": "Summon a Fission Junrock. Generate a Resonance Effect",
@@ -1094,7 +1107,9 @@
     "name": "Vanguard Junrock",
     "cost": 1,
     "sonatas": [
-      35
+      35,
+      26,
+      20
     ],
     "skill": {
       "text": "Summon a Vanguard Junrock that charges forward, dealing 32.00%+64 Physical DMG to enemies in its path.",
@@ -1203,7 +1218,8 @@
     "name": "Carapace",
     "cost": 3,
     "sonatas": [
-      29
+      29,
+      23
     ],
     "skill": {
       "text": "Transform into Carapace to perform a spinning attack that deals 112.00% Aero DMG, followed by a slash that deals 168.00% Aero DMG.",
@@ -1266,7 +1282,8 @@
     "name": "Hoochief",
     "cost": 3,
     "sonatas": [
-      29
+      29,
+      26
     ],
     "skill": {
       "text": "Transform into Hoochief Cyclone and smack the enemies, dealing 268.20% Aero DMG.",
@@ -1359,7 +1376,8 @@
     "name": "Hooscamp",
     "cost": 1,
     "sonatas": [
-      29
+      29,
+      20
     ],
     "skill": {
       "text": "Transform into Hooscamp Flinger and pounce at the enemies, dealing 48.00%+96 Aero DMG.",
@@ -1393,7 +1411,9 @@
     "name": "Whiff Whaff",
     "cost": 1,
     "sonatas": [
-      29
+      29,
+      26,
+      23
     ],
     "skill": {
       "text": "Summon a Whiff Whaff that triggers an air explosion, dealing 51.36% Aero DMG and produce a Low-pressure Zone. The Low-pressure Zone continuously pulls enemies nearby towards the center for 2s, dealing 19.97% Aero DMG up to 6 times.",
@@ -1428,7 +1448,8 @@
     "name": "Dwarf Cassowary",
     "cost": 1,
     "sonatas": [
-      29
+      29,
+      26
     ],
     "skill": {
       "text": "Summon a Dwarf Cassowary that tracks and attacks the enemy, dealing 38.40% Physical DMG 3 times(s).",
@@ -1537,7 +1558,8 @@
     "name": "Rocksteady Guardian",
     "cost": 3,
     "sonatas": [
-      1
+      1,
+      26
     ],
     "skill": {
       "text": "Transform into Rocksteady Guardian and enter a Parry State. Upon being attacked, deal Spectro DMG equal to 8.29% of the current character's Max HP, and perform a follow-up attack that deals Spectro DMG equal to 8.29% of the current character's Max HP.",
@@ -1606,7 +1628,9 @@
     "name": "Cruisewing",
     "cost": 1,
     "sonatas": [
-      1
+      1,
+      26,
+      23
     ],
     "skill": {
       "text": "Heal characters",
@@ -1650,7 +1674,9 @@
     "name": "Zig Zag",
     "cost": 1,
     "sonatas": [
-      1
+      1,
+      23,
+      20
     ],
     "skill": {
       "text": "Summon a Zig Zag that denotates Spectro energy, dealing 48.00%+96 Spectro DMG and creating a Stagnation Zone.",
@@ -1800,7 +1826,9 @@
     "name": "Tick Tack",
     "cost": 1,
     "sonatas": [
-      15
+      15,
+      26,
+      20
     ],
     "skill": {
       "text": "Summon a Tick Tack that charges and bites the enemy. The charge from Tick Tack will deal 68.48% Havoc DMG to the enemy, and the bite will deal 102.72% Havoc DMG to the enemy.",
@@ -1827,6 +1855,274 @@
       ]
     },
     "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 58,
+    "name": "Bell-Borne Geochelone",
+    "cost": 4,
+    "sonatas": [
+      26,
+      23
+    ],
+    "skill": {
+      "text": "Activate the protection of Bell-Borne Geochelone. Deal Glacio DMG based on 145.92% of the current character's DEF to nearby enemies, and obtain a Bell-Borne Shield that lasts for 15s.",
+      "hits": [
+        {
+          "name": "Bell-Borne Geochelone",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "def",
+              "values": [
+                145.92
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "The Bell-Borne Shield provides 50.00% DMG Reduction and 10.0% DMG Boost for the current team members, and disappears after the current character is hit for 3 times."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 59,
+    "name": "Fallacy of No Return",
+    "cost": 4,
+    "sonatas": [
+      26
+    ],
+    "skill": {
+      "text": "Activate the Echo Skill to summon a fraction of the Fallacy of No Return's power and deal a blast to the surrounding area, inflicting Spectro DMG equal to 15.86% of max HP. Hold Echo Skill to unleash a series of flurry assaults at the cost of STA, each dealing Spectro DMG equal to 1.58% of max HP\nRelease to end the assail in a powerful blow, dealing Spectro DMG equal to 19.82% of max HP.",
+      "hits": [
+        {
+          "name": "Fallacy of No Return",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "hp",
+              "values": [
+                15.86
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "After the blast, the Resonator gains 10% bonus Energy Regen and all team members 10% bonus ATK for 20s."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 60,
+    "name": "Chasm Guardian",
+    "cost": 3,
+    "sonatas": [
+      26,
+      20
+    ],
+    "skill": {
+      "text": "Transform into Chasm Guardian to perform a Leap Strike that deals 273.60% Havoc DMG on hit. Current character loses 10.00% HP after the hit lands. Periodically restore current character's HP after 5s for up to 10.00% of their Max HP.",
+      "hits": [
+        {
+          "name": "Chasm Guardian",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                273.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 61,
+    "name": "Stonewall Bracer",
+    "cost": 3,
+    "sonatas": [
+      26,
+      23
+    ],
+    "skill": {
+      "text": "Transform into Stonewall Bracer and charge forward, dealing 112.64% Physical DMG on-hit, then smash to deal 168.96% Physical DMG, and gain a shield of 10.00% of current character's Max HP. Use the Echo skill again to exit the transformation state.",
+      "hits": [
+        {
+          "name": "Stonewall Bracer",
+          "kind": "echo",
+          "element": "physical",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                112.64
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                168.96
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 62,
+    "name": "Impermanence Heron",
+    "cost": 4,
+    "sonatas": [
+      23
+    ],
+    "skill": {
+      "text": "Transform into Impermanence Heron to fly up and smack down, dealing 310.56% Havoc DMG.\nLong press to stay as Impermanence Heron and continuously spit flames, each attack dealing 55.73% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Impermanence Heron",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                310.56
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "Once the initial attack lands on any enemy, the current character regains 10 Resonance Energy. If the current character uses their Outro Skill within the next 15s, the next character's damage dealt will be boosted by 12% for 15s."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 63,
+    "name": "Spearback",
+    "cost": 3,
+    "sonatas": [
+      23,
+      20
+    ],
+    "skill": {
+      "text": "Summon a Spearback to perform 5 consecutive attacks. The first 4 attacks deal 29.96% Physical DMG, and the last deals 51.36% Physical DMG.",
+      "hits": [
+        {
+          "name": "Spearback",
+          "kind": "echo",
+          "element": "physical",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                29.96
+              ],
+              "times": 4
+            },
+            {
+              "stat": "atk",
+              "values": [
+                51.36
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 64,
+    "name": "Diamondclaw",
+    "cost": 1,
+    "sonatas": [
+      23,
+      20
+    ],
+    "skill": {
+      "text": "Transform into Crystal Scorpion and enter a Parry State. Counterattack when the Parry State is over, dealing 48.00%+96 Physical DMG.",
+      "hits": [
+        {
+          "name": "Diamondclaw",
+          "kind": "echo",
+          "element": "physical",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                48
+              ]
+            },
+            {
+              "stat": "flat",
+              "values": [
+                96
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 65,
+    "name": "Mech Abomination",
+    "cost": 4,
+    "sonatas": [
+      20
+    ],
+    "skill": {
+      "text": "Strike the enemies in front, dealing 48.64% Electro DMG. Summon Mech Waste to attack enemies. Mech Waste deals 320.00% Electro DMG on-hit and explode after a while to deal 160.00% Electro DMG.",
+      "hits": [
+        {
+          "name": "Mech Abomination",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                48.64
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                320
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                160
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "After casting this Echo Skill, increase current character's ATK by 12.00% for 15s. Damage dealt by Mech Waste is considered Outro Skill DMG."
+    ],
     "mainSlotBonus": []
   }
 ]

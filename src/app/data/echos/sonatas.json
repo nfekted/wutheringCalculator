@@ -323,6 +323,20 @@
         "pieces": 5,
         "text": "After using Outro Skill, increases the ATK of the next Resonator by 22.5% for 15s."
       }
+    ],
+    "characters": [
+      "jianxin",
+      "rover",
+      "yinlin",
+      "lucilla",
+      "rovere",
+      "aalto",
+      "yangyang",
+      "yuanwu",
+      "mortefi",
+      "sanhua",
+      "taoqi",
+      "lumi"
     ]
   },
   {
@@ -365,6 +379,15 @@
         "pieces": 5,
         "text": "Increases the ATK of all party members by 15% for 30s upon healing allies."
       }
+    ],
+    "characters": [
+      "verina",
+      "shorekeeper",
+      "rovera",
+      "chisa",
+      "baizhi",
+      "youhu",
+      "buling"
     ]
   },
   {
