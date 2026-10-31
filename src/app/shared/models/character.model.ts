@@ -61,6 +61,11 @@ export class Character implements Stats {
             this.energyRegen = load.energyRegen ?? 100;
             this.mode = load.mode ?? 0;
             this.rotationBuild = load.rotationBuild ?? null;
+            // Saves from before the levels were stored keep every level at 1; invalid values are clamped to 1-10
+            for (const key of Object.keys(this.levels) as (keyof Levels)[]) {
+                const level = Math.round(Number(load.levels?.[key]));
+                this.levels[key] = Number.isFinite(level) ? Math.min(Math.max(level, 1), 10) : 1;
+            }
             this.name = load.name;
             this.calculate();
         }

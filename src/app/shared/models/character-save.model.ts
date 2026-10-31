@@ -1,3 +1,4 @@
+import { Levels } from "../../core/damage-engine";
 import { RotationStep } from "../../data/character-data.model";
 import { Character } from "./character.model";
 
@@ -21,6 +22,7 @@ export class CharacterSave {
     energyRegen: number = 100;
     mode: number = 0;
     rotationBuild: RotationStep[] | null = null;
+    levels?: Levels;
 
     constructor(char: Character) {
         this.index = char.index;
@@ -41,5 +43,6 @@ export class CharacterSave {
         this.energyRegen = char.energyRegen;
         this.mode = char.mode;
         this.rotationBuild = char.rotationBuild;
+        this.levels = { ...char.levels };
     }
 }
