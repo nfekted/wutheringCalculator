@@ -936,7 +936,8 @@
     "name": "Nightmare: Tempest Mephis",
     "cost": 4,
     "sonatas": [
-      35
+      35,
+      5
     ],
     "skill": {
       "text": "Transform into Nightmare: Tempest Mephis and attack surrounding enemies, dealing 264.60% Electro DMG.",
@@ -2123,6 +2124,2238 @@
     "buffs": [
       "After casting this Echo Skill, increase current character's ATK by 12.00% for 15s. Damage dealt by Mech Waste is considered Outro Skill DMG."
     ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 66,
+    "name": "Nightmare: Mourning Aix",
+    "cost": 4,
+    "sonatas": [
+      6
+    ],
+    "skill": {
+      "text": "Summon a Nightmare: Mourning Aix to attack surrounding enemies, dealing 273.60% Spectro DMG.",
+      "hits": [
+        {
+          "name": "Nightmare: Mourning Aix",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                273.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "DMG dealt to enemies inflicted by Spectro Frazzle is increased by 100.00%."
+    ],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Spectro DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "name": "Diurnus Knight",
+    "cost": 3,
+    "sonatas": [
+      6,
+      33
+    ],
+    "skill": {
+      "text": "Transform into Diurnus Knight and charge forward to attack enemies with the sword, dealing 268.20% Spectro DMG.",
+      "hits": [
+        {
+          "name": "Diurnus Knight",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "DMG dealt to enemies inflicted by Spectro Frazzle is increased by 100.00%."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 68,
+    "name": "Abyssal Mercator",
+    "cost": 3,
+    "sonatas": [
+      6,
+      12
+    ],
+    "skill": {
+      "text": "Transform into Abyssal Mercator and summon 3 Ice Spikes to attack enemies, each dealing 89.39% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Abyssal Mercator",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                89.39
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 69,
+    "name": "Vitreum Dancer",
+    "cost": 3,
+    "sonatas": [
+      6,
+      5
+    ],
+    "skill": {
+      "text": "Transform into Vitreum Dancer and attack surrounding enemies, dealing 313.20% Electro DMG.",
+      "hits": [
+        {
+          "name": "Vitreum Dancer",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                313.2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Electro DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "name": "Rage Against the Statue",
+    "cost": 3,
+    "sonatas": [
+      6,
+      19,
+      13
+    ],
+    "skill": {
+      "text": "Transform into Rage Against the Statue to attack enemies, dealing 313.20% Spectro DMG. Hold the Echo Skill to maintain the Echo form and charge towards enemies, dealing 469.80% Spectro DMG.",
+      "hits": [
+        {
+          "name": "Tap",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                313.2
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Hold",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                469.8
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 71,
+    "name": "Capitaneus",
+    "cost": 3,
+    "sonatas": [
+      6,
+      36,
+      13
+    ],
+    "skill": {
+      "text": "Summon a Capitaneus to jump up and smash enemies, dealing 118.80% Spectro DMG. This attack generates 4 extra Merciless Judgements, each dealing 59.40% Spectro DMG.",
+      "hits": [
+        {
+          "name": "Capitaneus",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                118.8
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                59.4
+              ],
+              "times": 4
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Spectro DMG Bonus and 12.00% Heavy Attack DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "name": "Chop Chop: Headless",
+    "cost": 1,
+    "sonatas": [
+      6,
+      33
+    ],
+    "skill": {
+      "text": "Summon a Chop Chop: Headless to attack enemies, dealing 129.60% Fusion DMG.",
+      "hits": [
+        {
+          "name": "Chop Chop: Headless",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 73,
+    "name": "Fae Ignis",
+    "cost": 1,
+    "sonatas": [
+      6,
+      4,
+      21
+    ],
+    "skill": {
+      "text": "Summon a Fae Ignis to attack enemies, dealing 129.60% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Fae Ignis",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 74,
+    "name": "Diggy Duggy",
+    "cost": 1,
+    "sonatas": [
+      6,
+      33
+    ],
+    "skill": {
+      "text": "Transform into Diggy Duggy and jump up into the air to smash onto enemies, dealing 268.20% Physical DMG.",
+      "hits": [
+        {
+          "name": "Diggy Duggy",
+          "kind": "echo",
+          "element": "physical",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 75,
+    "name": "Aero Prism",
+    "cost": 1,
+    "sonatas": [
+      6,
+      33
+    ],
+    "skill": {
+      "text": "Summon an Aero Prism to attack enemies, dealing 19.26% Aero DMG.",
+      "hits": [
+        {
+          "name": "Aero Prism",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                19.26
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 76,
+    "name": "Golden Junrock",
+    "cost": 1,
+    "sonatas": [
+      6,
+      19,
+      12
+    ],
+    "skill": {
+      "text": "Summon a Golden Junrock that charges forward, dealing 129.60% Spectro DMG to enemies in its path.",
+      "hits": [
+        {
+          "name": "Golden Junrock",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 77,
+    "name": "Sagittario",
+    "cost": 1,
+    "sonatas": [
+      6,
+      8
+    ],
+    "skill": {
+      "text": "Transform into Sagittario to move a certain distance and perform a ranged attack, dealing 268.20% Spectro DMG.\nGetting attacked while moving in the Sagittario form triggers a damage avoiding enhanced Dodge Counter, dealing 268.20% Spectro DMG once and 53.64% Spectro DMG 5 times.",
+      "hits": [
+        {
+          "name": "Ranged",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Dodge Counter",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                53.64
+              ],
+              "times": 5
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 78,
+    "name": "Frostscourge Stalker",
+    "cost": 1,
+    "sonatas": [
+      6,
+      21
+    ],
+    "skill": {
+      "text": "Summon a Frostscourge Stalker to attack enemies, dealing 129.60% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Frostscourge Stalker",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 79,
+    "name": "Reminiscence: Threnodian - Leviathan",
+    "cost": 4,
+    "sonatas": [
+      32,
+      7
+    ],
+    "skill": {
+      "text": "Summon a Collapsing Horizon, dealing two instances of 131.94% Havoc DMG to the nearby enemies and obtaining the Core of Collapse for 15s.",
+      "hits": [
+        {
+          "name": "Reminiscence: Threnodian - Leviathan",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                131.94
+              ],
+              "times": 2
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "While it lasts, Core of Collapse deals 24.57% Havoc DMG when the active Resonator in the team deals damage. This effect can be triggered once every 0.5s, up to 8 times. Enemies with Havoc Bane take 100% more DMG from this effect."
+    ],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Havoc DMG Bonus and 12.00% Resonance Liberation DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "name": "Abyssal Gladius",
+    "cost": 3,
+    "sonatas": [
+      32,
+      33,
+      21
+    ],
+    "skill": {
+      "text": "Transform into Abyssal Gladius and attack enemies in front of you with the sword, dealing 268.20% Glacio DMG. Hold the Echo Skill to maintain the Echo form for a while to slash enemies and cast a ranged attack forward, dealing 268.20% and 670.50% Glacio DMG respectively.",
+      "hits": [
+        {
+          "name": "Tap",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Hold",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                670.5
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 81,
+    "name": "Nightmare: Roseshroom",
+    "cost": 3,
+    "sonatas": [
+      32
+    ],
+    "skill": {
+      "text": "Summon a Roseshroom that fires a laser, dealing 57.07% Havoc DMG up to 3 times.",
+      "hits": [
+        {
+          "name": "Nightmare: Roseshroom",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                57.07
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 82,
+    "name": "Havoc Drake",
+    "cost": 1,
+    "sonatas": [
+      32,
+      8,
+      36
+    ],
+    "skill": {
+      "text": "Summon a Havoc Drake to attack enemies, dealing 129.60% Havoc DMG 3 times.",
+      "hits": [
+        {
+          "name": "Havoc Drake",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 83,
+    "name": "Nightmare: Dwarf Cassowary",
+    "cost": 1,
+    "sonatas": [
+      32
+    ],
+    "skill": {
+      "text": "Summon a Dwarf Cassowary that tracks and attacks the enemy, dealing 38.40% Physical DMG 3 time(s).",
+      "hits": [
+        {
+          "name": "Nightmare: Dwarf Cassowary",
+          "kind": "echo",
+          "element": "physical",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                38.4
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 84,
+    "name": "Nightmare: Tick Tack",
+    "cost": 1,
+    "sonatas": [
+      32
+    ],
+    "skill": {
+      "text": "Summon a Tick Tack that charges and bites the enemy. The charge from Tick Tack will deal 68.48% Havoc DMG to the enemy, and the bite will deal 102.72% Havoc DMG to the enemy.",
+      "hits": [
+        {
+          "name": "Nightmare: Tick Tack",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                68.48
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                102.72
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "Reduces enemy Vibration Strength by up to 5.00% during 5s."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 85,
+    "name": "Kerasaur",
+    "cost": 3,
+    "sonatas": [
+      7,
+      8,
+      36
+    ],
+    "skill": {
+      "text": "Transform into Kerasaur to leap into the air and slam down, dealing 268.20% Aero DMG. Shortly after hitting the target, cast Echo Skill again to charge at the target, dealing 268.20% Aero DMG.",
+      "hits": [
+        {
+          "name": "Slam",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Slam + Charge",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ],
+              "times": 2
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Aero DMG Bonus and 12.00% Resonance Liberation DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "name": "Corrosaurus",
+    "cost": 3,
+    "sonatas": [
+      7,
+      8
+    ],
+    "skill": {
+      "text": "Summon a Corrosaurus to attack enemies, dealing 273.60% Fusion DMG.",
+      "hits": [
+        {
+          "name": "Corrosaurus",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                273.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Fusion DMG Bonus and 20.00% Echo Skill DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "name": "Nightmare: Viridblaze Saurian",
+    "cost": 3,
+    "sonatas": [
+      7
+    ],
+    "skill": {
+      "text": "Summon a Viridblaze Saurian to continuously spit fire, dealing 17.12% Fusion DMG 10 times.",
+      "hits": [
+        {
+          "name": "Nightmare: Viridblaze Saurian",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                17.12
+              ],
+              "times": 10
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 88,
+    "name": "Nimbus Wraith",
+    "cost": 1,
+    "sonatas": [
+      7,
+      5,
+      21
+    ],
+    "skill": {
+      "text": "Summon a Nimbus Wraith that restores the active Resonator's HP by 2.70% of their Max HP, up to 4 times.",
+      "hits": []
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 89,
+    "name": "Nightmare: Baby Viridblaze Saurian",
+    "cost": 1,
+    "sonatas": [
+      7
+    ],
+    "skill": {
+      "text": "Transform into Baby Viridblaze Saurian to rest in place, and slowly restore HP.",
+      "hits": []
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 90,
+    "name": "Nightmare: Baby Roseshroom",
+    "cost": 1,
+    "sonatas": [
+      7
+    ],
+    "skill": {
+      "text": "Summon a Baby Roseshroom that fires a laser, dealing 32.00%+64 Havoc DMG.",
+      "hits": [
+        {
+          "name": "Nightmare: Baby Roseshroom",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                32
+              ]
+            },
+            {
+              "stat": "flat",
+              "values": [
+                64
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 91,
+    "name": "Reminiscence: Fenrico",
+    "cost": 4,
+    "sonatas": [
+      19,
+      4
+    ],
+    "skill": {
+      "text": "Summon the Talons of Decree to attack nearby enemies, dealing 273.60% Aero DMG.",
+      "hits": [
+        {
+          "name": "Reminiscence: Fenrico",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                273.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Aero DMG Bonus and 12.00% Heavy Attack DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "name": "Nightmare: Cyan-Feathered Heron",
+    "cost": 3,
+    "sonatas": [
+      19
+    ],
+    "skill": {
+      "text": "Transform into Cyan-Feathered Heron and charge at enemies, dealing 236.80% Aero DMG; This Echo Skill interrupts enemy Special Skills upon dealing damage.",
+      "hits": [
+        {
+          "name": "Nightmare: Cyan-Feathered Heron",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                236.8
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 93,
+    "name": "Nightmare: Chirpuff",
+    "cost": 1,
+    "sonatas": [
+      19
+    ],
+    "skill": {
+      "text": "Summons a Chirpuff that self-inflates and blasts a powerful gust of wind forward 3 times. Each blast inflicts 38.40% Aero DMG and pushes enemies backwards.",
+      "hits": [
+        {
+          "name": "Nightmare: Chirpuff",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                38.4
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 94,
+    "name": "Nightmare: Gulpuff",
+    "cost": 1,
+    "sonatas": [
+      19
+    ],
+    "skill": {
+      "text": "Summons a Gulpuff that blows bubbles 5 times, each dealing 23.04% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Nightmare: Gulpuff",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                23.04
+              ],
+              "times": 5
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 95,
+    "name": "The False Sovereign",
+    "cost": 4,
+    "sonatas": [
+      3
+    ],
+    "skill": {
+      "text": "Transform into the False Sovereign and dash forward in a spinning attack, dealing 55.35% Electro DMG 4 times. Start with 2 Charges. Gain 1 charge every 8s, up to 2 charges.",
+      "hits": [
+        {
+          "name": "The False Sovereign",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                55.35
+              ],
+              "times": 4
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "Upon casting Intro Skill, the False Sovereign is also summoned to deal 405.00% Electro DMG."
+    ],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Electro DMG Bonus and 12.00% Heavy Attack DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "name": "Lady of the Sea",
+    "cost": 4,
+    "sonatas": [
+      3
+    ],
+    "skill": {
+      "text": "Summon a Tidestorm to deal 13.68% Aero DMG one time to enemies.",
+      "hits": [
+        {
+          "name": "Lady of the Sea",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                13.68
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Aero DMG Bonus and 12.00% Resonance Liberation DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "name": "Hurriclaw",
+    "cost": 3,
+    "sonatas": [
+      3,
+      13,
+      33
+    ],
+    "skill": {
+      "text": "Transform into Hurriclaw and charge forward, dealing 156.60% Aero DMG upon hit plus 156.60% Aero DMG with a sweep attack. Hold the Echo Skill to continue charging forward. Use Echo Skill again while charging to perform a sweep attack.",
+      "hits": [
+        {
+          "name": "Hurriclaw",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                156.6
+              ],
+              "times": 2
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 98,
+    "name": "Nightmare: Violet-Feathered Heron",
+    "cost": 3,
+    "sonatas": [
+      3
+    ],
+    "skill": {
+      "text": "Transform into Violet-Feathered Heron and enter a Parry Stance. Counterattack when the Parry Stance is over, dealing 288.00% Electro DMG. If attacked during the Parry Stance, you can counterattack in advance and additionally recover 5 Concerto Energy.",
+      "hits": [
+        {
+          "name": "Nightmare: Violet-Feathered Heron",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                288
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 99,
+    "name": "Calcified Junrock",
+    "cost": 1,
+    "sonatas": [
+      3,
+      33,
+      5
+    ],
+    "skill": {
+      "text": "No action.",
+      "hits": []
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 100,
+    "name": "Nightmare: Aero Predator",
+    "cost": 1,
+    "sonatas": [
+      3
+    ],
+    "skill": {
+      "text": "Summon an Aero Predator that throws a dart forward. The dart will bounce between enemies up to three times, dealing 28.80% Aero DMG each time it hits.",
+      "hits": [
+        {
+          "name": "Nightmare: Aero Predator",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                28.8
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 101,
+    "name": "Nightmare: Electro Predator",
+    "cost": 1,
+    "sonatas": [
+      3
+    ],
+    "skill": {
+      "text": "Summon an Electro Predator to shoot the enemy 5 times. The first 4 shots deals 17.28% Electro DMG, and the last deals 46.08% Electro DMG.",
+      "hits": [
+        {
+          "name": "Nightmare: Electro Predator",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                17.28
+              ],
+              "times": 4
+            },
+            {
+              "stat": "atk",
+              "values": [
+                46.08
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 102,
+    "name": "Nightmare: Hecate",
+    "cost": 4,
+    "sonatas": [
+      4
+    ],
+    "skill": {
+      "text": "Transform into Nightmare: Hecate. Leap up and smash down, dealing 3 stages of damage, each dealing Havoc DMG equal to 152.39% of her ATK.",
+      "hits": [
+        {
+          "name": "Nightmare: Hecate",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                152.39
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with the Echo equipped in the main slot gains 12.00% Havoc DMG Bonus and 20.00% Echo Skill DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "name": "Chop Chop",
+    "cost": 3,
+    "sonatas": [
+      4,
+      33,
+      5
+    ],
+    "skill": {
+      "text": "Summon a Chop Chop to perform a series of consecutive attacks. The first 6 strikes each deal 19.26% Fusion DMG and finishing strike deals 77.04% Fusion DMG.",
+      "hits": [
+        {
+          "name": "Chop Chop",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                19.26
+              ],
+              "times": 6
+            },
+            {
+              "stat": "atk",
+              "values": [
+                77.04
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 104,
+    "name": "Nightmare: Tambourinist",
+    "cost": 3,
+    "sonatas": [
+      4
+    ],
+    "skill": {
+      "text": "Summon a Tambourinist that plays out Melodies of Annihilation. Any Resonator on the team gains the following effect for 10s upon obtaining a Melody of Annihilation: When the Resonator hits a target, the Tambourinist deals 14.40% Havoc DMG to the target, up to 10 times.",
+      "hits": []
+    },
+    "buffs": [
+      "Any Resonator on the team gains the following effect for 10s upon obtaining a Melody of Annihilation: When the Resonator hits a target, the Tambourinist deals 14.40% Havoc DMG to the target, up to 10 times."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 105,
+    "name": "Nightmare: Havoc Warrior",
+    "cost": 1,
+    "sonatas": [
+      4
+    ],
+    "skill": {
+      "text": "Transform into Havoc Warrior to attack up to 3 times, dealing 171.73% Havoc DMG each time.",
+      "hits": [
+        {
+          "name": "Nightmare: Havoc Warrior",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                171.73
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 106,
+    "name": "Nightmare: Glacio Predator",
+    "cost": 1,
+    "sonatas": [
+      4
+    ],
+    "skill": {
+      "text": "Summon a Glacio Predator that throws an ice spear, dealing 46.08% Glacio DMG on hit. Deal 4.61% Glacio DMG up to 10 times during the charging time, and 23.04% Glacio DMG when the spear explodes.",
+      "hits": [
+        {
+          "name": "Nightmare: Glacio Predator",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                46.08
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                4.61
+              ],
+              "times": 10
+            },
+            {
+              "stat": "atk",
+              "values": [
+                23.04
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 107,
+    "name": "Lioness of Glory",
+    "cost": 4,
+    "sonatas": [
+      8
+    ],
+    "skill": {
+      "text": "Summon the Halberd of Glory to crush an area, dealing 82.08% Fusion DMG to nearby targets, and then blast off after a short delay, dealing 191.52% Fusion DMG.",
+      "hits": [
+        {
+          "name": "Lioness of Glory",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                82.08
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                191.52
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Fusion DMG Bonus and 12.00% Resonance Liberation DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 108,
+    "name": "Pilgrim's Shell",
+    "cost": 3,
+    "sonatas": [
+      8,
+      36
+    ],
+    "skill": {
+      "text": "Transform into a Pilgrim's Shell to attack nearby enemies, dealing 268.20% Aero DMG.",
+      "hits": [
+        {
+          "name": "Pilgrim's Shell",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 109,
+    "name": "La Guardia",
+    "cost": 1,
+    "sonatas": [
+      8,
+      13,
+      21
+    ],
+    "skill": {
+      "text": "Transform into La Guardia and attack nearby targets, dealing 268.20% Physical DMG. Hold the Echo skill to maintain the Echo form for a while to slash enemies and cast a ranged attack forward. The slash deals 268.20% Physical DMG, and the ranged attack deals 17.87% Physical DMG up to 15 times.",
+      "hits": [
+        {
+          "name": "Tap",
+          "kind": "echo",
+          "element": "physical",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Hold",
+          "kind": "echo",
+          "element": "physical",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                17.87
+              ],
+              "times": 15
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 110,
+    "name": "Aero Drake",
+    "cost": 1,
+    "sonatas": [
+      8,
+      13,
+      33
+    ],
+    "skill": {
+      "text": "Summon an Aero Drake to attack enemies, dealing 129.60% Aero DMG.",
+      "hits": [
+        {
+          "name": "Aero Drake",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 111,
+    "name": "Electro Drake",
+    "cost": 1,
+    "sonatas": [
+      8,
+      13,
+      21
+    ],
+    "skill": {
+      "text": "Summon an Electro Drake to attack enemies, dealing 43.20% Electro DMG 3 times.",
+      "hits": [
+        {
+          "name": "Electro Drake",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                43.2
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 112,
+    "name": "Spectro Drake",
+    "cost": 1,
+    "sonatas": [
+      8,
+      36
+    ],
+    "skill": {
+      "text": "Summon a Spectro Drake to attack enemies, dealing 43.20% Spectro DMG 3 times. CD: 8s",
+      "hits": [
+        {
+          "name": "Spectro Drake",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                43.2
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 113,
+    "name": "Fusion Drake",
+    "cost": 1,
+    "sonatas": [
+      8,
+      36
+    ],
+    "skill": {
+      "text": "Summon a Fusion Drake to attack enemies, dealing 25.92% Fusion DMG 3 times. CD: 8s",
+      "hits": [
+        {
+          "name": "Fusion Drake",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                25.92
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 114,
+    "name": "Devotee's Flesh",
+    "cost": 1,
+    "sonatas": [
+      8,
+      36,
+      13
+    ],
+    "skill": {
+      "text": "Summon a Devotee's Flesh to attack enemies, dealing 43.20% Aero DMG 3 times.",
+      "hits": [
+        {
+          "name": "Devotee's Flesh",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                43.2
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 115,
+    "name": "Reminiscence: Fleurdelys",
+    "cost": 4,
+    "sonatas": [
+      36,
+      13
+    ],
+    "skill": {
+      "text": "Summon Windcleaver and attack the target, dealing 27.36% Aero DMG 8 times and 136.80% Aero DMG once.",
+      "hits": [
+        {
+          "name": "Reminiscence: Fleurdelys",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                27.36
+              ],
+              "times": 8
+            },
+            {
+              "stat": "atk",
+              "values": [
+                136.8
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 10.00% Aero DMG Bonus."
+      },
+      {
+        "text": "When Rover: Aero equips this Echo, they gain 10.00% more Aero DMG Bonus.",
+        "character": "rovera"
+      },
+      {
+        "text": "When Cartethyia equips this Echo, they gain 10.00% more Aero DMG Bonus.",
+        "character": "cartethyia"
+      }
+    ]
+  },
+  {
+    "id": 116,
+    "name": "Nightmare: Kelpie",
+    "cost": 4,
+    "sonatas": [
+      36,
+      13
+    ],
+    "skill": {
+      "text": "Transform into Nightmare: Kelpie to attack nearby targets, dealing 405.00% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Nightmare: Kelpie",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                405
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "Switching out the Resonator with Outro Skill summons Nightmares: Kelpie to deal 405.00% Aero DMG."
+    ],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Glacio DMG Bonus and 12.00% Aero DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 117,
+    "name": "Sacerdos",
+    "cost": 1,
+    "sonatas": [
+      36,
+      13
+    ],
+    "skill": {
+      "text": "Summon a Sacerdos to attack enemies, dealing 64.80% Aero DMG 2 times.",
+      "hits": [
+        {
+          "name": "Sacerdos",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                64.8
+              ],
+              "times": 2
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 118,
+    "name": "Glacio Drake",
+    "cost": 1,
+    "sonatas": [
+      36,
+      13
+    ],
+    "skill": {
+      "text": "Summon a Glacio Drake to attack enemies, dealing 25.92% Glacio DMG 5 times.",
+      "hits": [
+        {
+          "name": "Glacio Drake",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                25.92
+              ],
+              "times": 5
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 119,
+    "name": "Dragon of Dirge",
+    "cost": 4,
+    "sonatas": [
+      33
+    ],
+    "skill": {
+      "text": "Transform into Dragon of Dirge and summon a Grief Rift lasting for 5s. Periodically deal 36.81% Fusion DMG to enemies within the area of effect.",
+      "hits": [
+        {
+          "name": "Dragon of Dirge",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                36.81
+              ],
+              "times": 5
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Fusion DMG Bonus and 12.00% Basic Attack DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 120,
+    "name": "Chop Chop: Leftless",
+    "cost": 1,
+    "sonatas": [
+      33,
+      12
+    ],
+    "skill": {
+      "text": "Summon a Chop Chop: Leftless to attack enemies, dealing 129.60% Spectro DMG.",
+      "hits": [
+        {
+          "name": "Chop Chop: Leftless",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 121,
+    "name": "Chop Chop: Rightless",
+    "cost": 1,
+    "sonatas": [
+      33,
+      12
+    ],
+    "skill": {
+      "text": "Summon a Chop Chop: Rightless to attack enemies, dealing 129.60% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Chop Chop: Rightless",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 122,
+    "name": "Lottie Lost",
+    "cost": 1,
+    "sonatas": [
+      33,
+      12
+    ],
+    "skill": {
+      "text": "Summon a Lottie Lost to attack enemies, dealing 129.60% Spectro DMG.",
+      "hits": [
+        {
+          "name": "Lottie Lost",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 123,
+    "name": "Hecate",
+    "cost": 4,
+    "sonatas": [
+      5
+    ],
+    "skill": {
+      "text": "Summon 3 twirling Crescent Servants around you. Crescent Servants attack enemies with their spinning blades, dealing 45.59% Havoc DMG. Triggering a Counterattack with the Echo attacks resets the Crescent Servants' duration.",
+      "hits": [
+        {
+          "name": "Hecate",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                45.59
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot has their Coordinated Attack DMG increased by 40.00%."
+      }
+    ]
+  },
+  {
+    "id": 124,
+    "name": "Nightmare: Lampylumen Myriad",
+    "cost": 4,
+    "sonatas": [
+      5,
+      12
+    ],
+    "skill": {
+      "text": "Transform into Nightmare: Lampylumen Myriad and attack surrounding enemies, dealing 273.60% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Nightmare: Lampylumen Myriad",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                273.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Glacio DMG Bonus and deals 30.00% more Coordinated Attack DMG"
+      }
+    ]
+  },
+  {
+    "id": 125,
+    "name": "Nocturnus Knight",
+    "cost": 3,
+    "sonatas": [
+      5,
+      21
+    ],
+    "skill": {
+      "text": "Transform into Nocturnus Knight and strike enemies in front of you from the air, dealing 268.20% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Nocturnus Knight",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 126,
+    "name": "Abyssal Patricius",
+    "cost": 3,
+    "sonatas": [
+      5,
+      12
+    ],
+    "skill": {
+      "text": "Transform into Abyssal Patricius and charge forward to attack enemies, dealing 268.20% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Abyssal Patricius",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Glacio DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 127,
+    "name": "Voltscourge Stalker",
+    "cost": 1,
+    "sonatas": [
+      5,
+      21
+    ],
+    "skill": {
+      "text": "Summon a Voltscourge Stalker to perform 3 stages of attacks on enemies, each dealing 43.20% Electro DMG.",
+      "hits": [
+        {
+          "name": "Voltscourge Stalker",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                43.2
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 128,
+    "name": "Hocus Pocus",
+    "cost": 1,
+    "sonatas": [
+      5,
+      12
+    ],
+    "skill": {
+      "text": "Summon a Hocus Pocus to attack enemies with 3 consecutive strikes, each dealing 43.20% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Hocus Pocus",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                43.2
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 129,
+    "name": "Chest Mimic",
+    "cost": 1,
+    "sonatas": [
+      5,
+      21,
+      12
+    ],
+    "skill": {
+      "text": "Summon a Chest Mimic to attack enemies with 3 consecutive strikes, each dealing 64.19% Spectro DMG.",
+      "hits": [
+        {
+          "name": "Chest Mimic",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                64.19
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 130,
+    "name": "Lorelei",
+    "cost": 4,
+    "sonatas": [
+      21
+    ],
+    "skill": {
+      "text": "Transform into Lorelei and attack surrounding enemies, dealing 405.00% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Lorelei",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                405
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Basic Attack DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 131,
+    "name": "Nightmare: Impermanence Heron",
+    "cost": 4,
+    "sonatas": [
+      21
+    ],
+    "skill": {
+      "text": "Transform into Nightmare: Impermanence Heron and deliver up to 10 consecutive strikes to enemies, each dealing 40.50% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Nightmare: Impermanence Heron",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                40.5
+              ],
+              "times": 10
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Heavy Attack DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 132,
+    "name": "Questless Knight",
+    "cost": 3,
+    "sonatas": [
+      21,
+      12
+    ],
+    "skill": {
+      "text": "Transform into Questless Knight and smash the surrounding enemies, dealing 313.20% Electro DMG.",
+      "hits": [
+        {
+          "name": "Questless Knight",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                313.2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 133,
+    "name": "Cuddle Wuddle",
+    "cost": 3,
+    "sonatas": [
+      21,
+      12
+    ],
+    "skill": {
+      "text": "Transform into Cuddle Wuddle and attack enemies with 4 strikes dealing 46.98% Physical DMG and 1 strike dealing 125.28% Physical DMG.",
+      "hits": [
+        {
+          "name": "Cuddle Wuddle",
+          "kind": "echo",
+          "element": "physical",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                46.98
+              ],
+              "times": 4
+            },
+            {
+              "stat": "atk",
+              "values": [
+                125.28
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 134,
+    "name": "Sentry Construct",
+    "cost": 4,
+    "sonatas": [
+      12
+    ],
+    "skill": {
+      "text": "Transform into Sentry Construct and attack enemies in front, dealing 405.00% Glacio DMG. Use Echo Skill to transform into Sentry Construct and dive into enemies from the air, dealing 405.00% Glacio DMG and freezing the target.",
+      "hits": [
+        {
+          "name": "Sentry Construct",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                405
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "Each time the Resonator with this Echo casts Resonance Liberation, it charges the Strike Capacitor. Once Strike Capacitor is at max level, the Echo Skill cooldown will be reset."
+    ],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Glacio DMG Bonus and 12.00% Resonance Skill DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 135,
+    "name": "Galescourge Stalker",
+    "cost": 1,
+    "sonatas": [
+      12,
+      5
+    ],
+    "skill": {
+      "text": "No action.",
+      "hits": []
+    },
+    "buffs": [],
     "mainSlotBonus": []
   }
 ]
