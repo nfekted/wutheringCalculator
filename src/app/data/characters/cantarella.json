@@ -4,6 +4,7 @@
   "icon": "cantarella",
   "type": "havoc",
   "weapon": "rectifier",
+  "base": { "hp": 11600, "atk": 400, "def": 1099 },
   "lastUpdate": "2026-10-25T01:18:04.073Z",
   "hasHealing": true,
   "healsAllies": true,

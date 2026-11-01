@@ -4,6 +4,7 @@
   "icon": "changli",
   "type": "fusion",
   "weapon": "sword",
+  "base": { "hp": 10387, "atk": 462, "def": 1099 },
   "lastUpdate": "2026-10-25T14:32:05.943Z",
   "hasHealing": false,
   "healsAllies": false,

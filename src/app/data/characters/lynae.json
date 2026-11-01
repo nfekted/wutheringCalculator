@@ -4,6 +4,7 @@
   "icon": "lynae",
   "type": "spectro",
   "weapon": "pistols",
+  "base": { "hp": 12237, "atk": 375, "def": 1197 },
   "lastUpdate": "2026-10-25T13:58:02.877Z",
   "hasHealing": false,
   "healsAllies": false,

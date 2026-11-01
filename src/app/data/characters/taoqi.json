@@ -4,6 +4,7 @@
   "icon": "taoqi",
   "type": "havoc",
   "weapon": "broadblade",
+  "base": { "hp": 8950, "atk": 225, "def": 1564 },
   "lastUpdate": "2026-10-25T00:55:39.944Z",
   "hasHealing": true,
   "healsAllies": false,

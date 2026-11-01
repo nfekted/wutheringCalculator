@@ -4,6 +4,7 @@
   "icon": "rovere",
   "type": "electro",
   "weapon": "sword",
+  "base": { "hp": 10775, "atk": 437, "def": 1136 },
   "lastUpdate": "2026-10-27T00:38:57.345Z",
   "hasHealing": true,
   "healsAllies": false,

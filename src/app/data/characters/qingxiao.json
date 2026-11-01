@@ -4,6 +4,7 @@
   "icon": "qingxiao",
   "type": "aero",
   "weapon": "sword",
+  "base": { "hp": 10300, "atk": 462, "def": 1112 },
   "lastUpdate": "2026-10-28T00:30:39.367Z",
   "hasHealing": false,
   "healsAllies": false,

@@ -4,6 +4,7 @@
   "icon": "jiyan",
   "type": "aero",
   "weapon": "broadblade",
+  "base": { "hp": 10487, "atk": 437, "def": 1185 },
   "lastUpdate": "2026-10-27T01:31:36.156Z",
   "hasHealing": false,
   "healsAllies": false,

@@ -4,6 +4,7 @@
   "icon": "chixia",
   "type": "fusion",
   "weapon": "pistols",
+  "base": { "hp": 9087, "atk": 300, "def": 953 },
   "lastUpdate": "2026-10-25T14:20:21.588Z",
   "hasHealing": false,
   "healsAllies": false,

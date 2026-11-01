@@ -4,6 +4,7 @@
   "icon": "carlotta",
   "type": "glacio",
   "weapon": "pistols",
+  "base": { "hp": 12450, "atk": 462, "def": 1197 },
   "lastUpdate": "2026-10-22T10:02:12.382Z",
   "hasHealing": false,
   "healsAllies": false,

@@ -4,6 +4,7 @@
   "icon": "mornye",
   "type": "fusion",
   "weapon": "broadblade",
+  "base": { "hp": 15375, "atk": 287, "def": 1356 },
   "lastUpdate": "2026-10-25T20:58:41.717Z",
   "hasHealing": true,
   "healsAllies": true,

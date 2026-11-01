@@ -4,6 +4,7 @@
   "icon": "jinhsi",
   "type": "spectro",
   "weapon": "broadblade",
+  "base": { "hp": 10825, "atk": 412, "def": 1258 },
   "lastUpdate": "2026-10-25T12:57:25.265Z",
   "hasHealing": false,
   "healsAllies": false,

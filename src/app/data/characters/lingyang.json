@@ -4,6 +4,7 @@
   "icon": "lingyang",
   "type": "glacio",
   "weapon": "gauntlets",
+  "base": { "hp": 10387, "atk": 437, "def": 1209 },
   "lastUpdate": "2026-10-22T10:02:12.427Z",
   "hasHealing": false,
   "healsAllies": false,

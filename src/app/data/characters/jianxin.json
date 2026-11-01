@@ -4,6 +4,7 @@
   "icon": "jianxin",
   "type": "aero",
   "weapon": "gauntlets",
+  "base": { "hp": 14112, "atk": 337, "def": 1224 },
   "lastUpdate": "2026-10-27T02:08:24.657Z",
   "hasHealing": true,
   "healsAllies": true,

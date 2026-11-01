@@ -4,6 +4,7 @@
   "icon": "hiyuki",
   "type": "glacio",
   "weapon": "sword",
+  "base": { "hp": 10300, "atk": 462, "def": 1112 },
   "lastUpdate": "2026-10-23T01:31:23.868Z",
   "hasHealing": false,
   "healsAllies": false,

@@ -6,6 +6,7 @@ import { TranslocoPipe, TranslocoService, provideTranslocoScope } from '@jsverse
 import { SectionKey } from '../data/character-data.model';
 import { Levels, Stats } from '../core/damage-engine';
 import { EchoComparatorModalComponent } from '../echo-comparator/echo-comparator-modal.component';
+import { EchoSetModalComponent } from '../echo-set/echo-set-modal.component';
 import { RotationBuilderModalComponent } from '../rotation-builder/rotation-builder-modal.component';
 import { Character } from '../shared/models/character.model';
 import { ConfirmService } from '../shared/ui/confirm.service';
@@ -88,6 +89,11 @@ export class CharacterComponent {
     return STAT_FIELDS.filter(f => !f.visible || f.visible(this.character()));
   }
 
+  /** With the base known, every attribute but `echoBonus` comes from the Echo Set */
+  protected locked(field: StatField): boolean {
+    return this.character().hasBase && field.key !== 'echoBonus';
+  }
+
   protected changeLevel(type: keyof Levels, delta: number) {
     const levels = this.character().levels;
     levels[type] = Math.min(10, Math.max(1, levels[type] + delta));
@@ -111,6 +117,11 @@ export class CharacterComponent {
 
   protected openEchoComparator() {
     this.dialog.open(EchoComparatorModalComponent, { data: this.character(), backdropClass: 'app-backdrop', ariaLabelledBy: 'echo-title' });
+  }
+
+  protected openEchoSet() {
+    const ref = this.dialog.open(EchoSetModalComponent, { data: this.character(), backdropClass: 'app-backdrop', ariaLabelledBy: 'echo-set-title' });
+    ref.closed.subscribe(() => this.changed.emit());
   }
 
   protected openRotationBuilder() {

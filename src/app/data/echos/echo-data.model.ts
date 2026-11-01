@@ -29,6 +29,15 @@ export interface EchoValues {
   subs: EchoSubValues[];
 }
 
+/** An Echo the user registered: the attributes are keys, not positions in the table, so a reordered table keeps working */
+export interface EchoSlot {
+  echo: number;
+  sonata: number;
+  /** The chosen main attribute; its value comes from the table of the cost */
+  main: EchoAttribute;
+  subs: (EchoAttribute & { value: number })[];
+}
+
 export interface SonataData {
   id: number;
   name: string;

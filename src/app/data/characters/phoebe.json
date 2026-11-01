@@ -4,6 +4,7 @@
   "icon": "phoebe",
   "type": "spectro",
   "weapon": "rectifier",
+  "base": { "hp": 10825, "atk": 412, "def": 1258 },
   "lastUpdate": "2026-10-25T13:00:55.970Z",
   "hasHealing": false,
   "healsAllies": false,

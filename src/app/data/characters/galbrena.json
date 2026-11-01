@@ -4,6 +4,7 @@
   "icon": "galbrena",
   "type": "fusion",
   "weapon": "pistols",
+  "base": { "hp": 10300, "atk": 462, "def": 1112 },
   "lastUpdate": "2026-10-25T20:55:02.470Z",
   "hasHealing": false,
   "healsAllies": false,

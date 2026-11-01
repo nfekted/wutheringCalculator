@@ -4,6 +4,7 @@
   "icon": "luuk",
   "type": "spectro",
   "weapon": "gauntlets",
+  "base": { "hp": 10300, "atk": 462, "def": 1122 },
   "lastUpdate": "2026-10-25T14:06:02.638Z",
   "hasHealing": false,
   "healsAllies": false,

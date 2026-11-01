@@ -4,6 +4,7 @@
   "icon": "zhezhi",
   "type": "glacio",
   "weapon": "rectifier",
+  "base": { "hp": 12250, "atk": 375, "def": 1197 },
   "lastUpdate": "2026-10-22T10:08:27.716Z",
   "hasHealing": false,
   "healsAllies": false,

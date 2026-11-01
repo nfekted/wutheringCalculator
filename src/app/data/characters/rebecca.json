@@ -4,6 +4,7 @@
   "icon": "rebecca",
   "type": "electro",
   "weapon": "pistols",
+  "base": { "hp": 11600, "atk": 400, "def": 1173 },
   "lastUpdate": "2026-10-27T00:33:46.414Z",
   "hasHealing": false,
   "healsAllies": false,

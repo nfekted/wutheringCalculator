@@ -4,6 +4,7 @@
   "icon": "aemeath",
   "type": "fusion",
   "weapon": "sword",
+  "base": { "hp": 11025, "atk": 425, "def": 1148 },
   "lastUpdate": "2026-10-25T21:29:24.723Z",
   "hasHealing": false,
   "healsAllies": false,

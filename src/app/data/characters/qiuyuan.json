@@ -4,6 +4,7 @@
   "icon": "qiuyuan",
   "type": "aero",
   "weapon": "sword",
+  "base": { "hp": 12237, "atk": 375, "def": 1197 },
   "lastUpdate": "2026-10-27T02:09:42.520Z",
   "hasHealing": false,
   "healsAllies": false,

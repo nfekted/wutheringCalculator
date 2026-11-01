@@ -4,6 +4,7 @@
   "icon": "roccia",
   "type": "havoc",
   "weapon": "gauntlets",
+  "base": { "hp": 12250, "atk": 375, "def": 1197 },
   "lastUpdate": "2026-10-25T01:12:54.773Z",
   "hasHealing": false,
   "healsAllies": false,

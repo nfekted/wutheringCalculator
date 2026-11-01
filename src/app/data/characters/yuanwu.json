@@ -4,6 +4,7 @@
   "icon": "yuanwu",
   "type": "electro",
   "weapon": "gauntlets",
+  "base": { "hp": 8525, "atk": 225, "def": 1637 },
   "lastUpdate": "2026-10-27T00:29:05.286Z",
   "hasHealing": false,
   "healsAllies": false,

@@ -4,6 +4,7 @@
   "icon": "baizhi",
   "type": "glacio",
   "weapon": "rectifier",
+  "base": { "hp": 12812, "atk": 212, "def": 1002 },
   "lastUpdate": "2026-10-22T01:21:01.649Z",
   "hasHealing": true,
   "healsAllies": true,

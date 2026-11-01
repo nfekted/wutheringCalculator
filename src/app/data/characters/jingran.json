@@ -4,6 +4,7 @@
   "icon": "jingran",
   "type": "fusion",
   "weapon": "broadblade",
+  "base": { "hp": 15375, "atk": 312, "def": 0 },
   "lastUpdate": "2026-10-25T21:52:36.295Z",
   "hasHealing": false,
   "healsAllies": false,

@@ -4,6 +4,7 @@
   "icon": "yangyang",
   "type": "aero",
   "weapon": "sword",
+  "base": { "hp": 10200, "atk": 250, "def": 1099 },
   "lastUpdate": "2026-10-27T01:31:36.096Z",
   "hasHealing": false,
   "healsAllies": false,

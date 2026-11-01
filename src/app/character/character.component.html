@@ -48,6 +48,10 @@
         <span class="material-symbols-outlined" aria-hidden="true">format_list_numbered</span>
         {{ 'char.rotationBuild.title' | transloco }}
       </button>
+      <button type="button" class="ui-btn ui-btn-secondary" (click)="openEchoSet()">
+        <span class="material-symbols-outlined" aria-hidden="true">grid_view</span>
+        {{ 'char.echoSet.title' | transloco }}
+      </button>
       <button type="button" class="ui-btn ui-btn-secondary" (click)="openEchoComparator()">
         <img src="assets/img/icons/echo.webp" alt="" class="ui-glyph h-5 w-5" />
         {{ 'char.echo.echo' | transloco }}
@@ -64,11 +68,19 @@
     <aside class="space-y-6 lg:sticky lg:top-20">
       <section class="ui-card p-5">
         <h3 class="text-sm font-bold text-ink">{{ 'char.attributes' | transloco }}</h3>
+        @if (character().hasBase) {
+          <p class="mt-1 text-xs text-mute">{{ 'char.echoSet.locked' | transloco }}</p>
+        }
         <div class="mt-4 grid grid-cols-2 gap-4">
           @for (f of fields(); track f.key) {
             <label class="block text-xs text-mute" [class.col-span-2]="f.key === 'dmg'">
               <span class="mb-1 block">{{ f.prefix ? (f.prefix | transloco) + ' ' : '' }}{{ f.label }}</span>
-              <input type="number" min="0" class="ui-input text-sm" [(ngModel)]="character()[f.key]" (blur)="calculate()" />
+              <!-- The attributes the Echos change are calculated: shown only, never written back by ngModel -->
+              @if (locked(f)) {
+                <input type="number" class="ui-input bg-surface-2 text-sm" readonly [value]="character()[f.key]" />
+              } @else {
+                <input type="number" min="0" class="ui-input text-sm" [(ngModel)]="character()[f.key]" (blur)="calculate()" />
+              }
             </label>
           }
         </div>

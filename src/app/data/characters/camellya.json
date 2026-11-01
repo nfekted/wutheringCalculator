@@ -4,6 +4,7 @@
   "icon": "camellya",
   "type": "havoc",
   "weapon": "sword",
+  "base": { "hp": 10325, "atk": 450, "def": 1161 },
   "lastUpdate": "2026-10-25T01:10:37.641Z",
   "hasHealing": false,
   "healsAllies": false,

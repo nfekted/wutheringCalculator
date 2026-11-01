@@ -4,6 +4,7 @@
   "icon": "cartethyia",
   "type": "aero",
   "weapon": "sword",
+  "base": { "hp": 14800, "atk": 312, "def": 611 },
   "lastUpdate": "2026-10-27T02:45:27.166Z",
   "hasHealing": false,
   "healsAllies": false,

@@ -4,6 +4,7 @@
   "icon": "verina",
   "type": "spectro",
   "weapon": "rectifier",
+  "base": { "hp": 14237, "atk": 337, "def": 1099 },
   "lastUpdate": "2026-10-25T12:56:42.707Z",
   "hasHealing": true,
   "healsAllies": true,

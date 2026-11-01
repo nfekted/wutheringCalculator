@@ -4,6 +4,7 @@
   "icon": "rovera",
   "type": "aero",
   "weapon": "sword",
+  "base": { "hp": 10775, "atk": 437, "def": 1136 },
   "lastUpdate": "2026-10-27T02:08:24.718Z",
   "hasHealing": true,
   "healsAllies": true,

@@ -4,6 +4,7 @@
   "icon": "yangyang-xuanling",
   "type": "havoc",
   "weapon": "sword",
+  "base": { "hp": 11025, "atk": 425, "def": 1148 },
   "lastUpdate": "2026-10-25T01:40:09.139Z",
   "hasHealing": false,
   "healsAllies": false,

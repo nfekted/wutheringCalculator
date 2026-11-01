@@ -4,6 +4,7 @@
   "icon": "youhu",
   "type": "glacio",
   "weapon": "gauntlets",
+  "base": { "hp": 9975, "atk": 262, "def": 1051 },
   "lastUpdate": "2026-10-22T10:08:27.659Z",
   "hasHealing": true,
   "healsAllies": true,

@@ -4,6 +4,7 @@
   "icon": "chisa",
   "type": "havoc",
   "weapon": "broadblade",
+  "base": { "hp": 10775, "atk": 437, "def": 1136 },
   "lastUpdate": "2026-10-25T01:34:18.862Z",
   "hasHealing": true,
   "healsAllies": true,

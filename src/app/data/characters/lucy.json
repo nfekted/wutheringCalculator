@@ -4,6 +4,7 @@
   "icon": "lucy",
   "type": "spectro",
   "weapon": "pistols",
+  "base": { "hp": 11025, "atk": 425, "def": 1148 },
   "lastUpdate": "2026-10-25T14:07:35.077Z",
   "hasHealing": false,
   "healsAllies": false,

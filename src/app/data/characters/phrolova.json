@@ -4,6 +4,7 @@
   "icon": "phrolova",
   "type": "havoc",
   "weapon": "rectifier",
+  "base": { "hp": 10775, "atk": 437, "def": 1136 },
   "lastUpdate": "2026-10-25T01:23:34.223Z",
   "hasHealing": false,
   "healsAllies": false,

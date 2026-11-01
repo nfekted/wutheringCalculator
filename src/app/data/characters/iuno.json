@@ -4,6 +4,7 @@
   "icon": "iuno",
   "type": "aero",
   "weapon": "gauntlets",
+  "base": { "hp": 10525, "atk": 450, "def": 1124 },
   "lastUpdate": "2026-10-27T02:35:59.928Z",
   "hasHealing": true,
   "healsAllies": true,

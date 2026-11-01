@@ -1,0 +1,123 @@
+<app-dialog-panel [title]="'char.echoSet.title' | transloco" titleId="echo-set-title">
+  <div class="flex flex-wrap items-center justify-between gap-2">
+    <p class="text-sm text-mute">{{ 'char.echoSet.info' | transloco }}</p>
+    <p class="text-sm font-bold tabular-nums text-ink">
+      {{ 'char.echoSet.totalCost' | transloco: { total: totalCost(), max: maxCost } }}
+    </p>
+  </div>
+  @if (!character().hasBase) {
+    <p class="ui-card mt-3 bg-surface-2 p-3 text-xs text-body">{{ 'char.echoSet.noBase' | transloco }}</p>
+  }
+
+  @if (view(); as v) {
+    <!-- Filling or editing one slot -->
+    <div class="ui-card mt-4 p-4">
+      <div class="mb-3 flex items-center gap-2">
+        @if (v.step !== 'edit') {
+          <button type="button" class="ui-icon-btn" [attr.aria-label]="'char.echoSet.back' | transloco" (click)="back()">
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+          </button>
+        }
+        <p class="text-sm font-bold text-ink">
+          {{ (v.slot === 0 ? 'char.echoSet.mainSlot' : 'char.echoSet.slot') | transloco: { n: v.slot + 1 } }}
+          · {{ (v.step === 'sonata' ? 'char.echoSet.chooseSonata' : v.step === 'echo' ? 'char.echoSet.chooseEcho' : 'char.echoSet.attributes') | transloco }}
+        </p>
+      </div>
+
+      @switch (v.step) {
+        @case ('sonata') {
+          @for (group of sonataGroups; track group.title) {
+            <p class="mb-2 mt-3 text-xs font-bold uppercase text-mute">{{ group.title | transloco }}</p>
+            <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              @for (sonata of group.sonatas; track sonata.id) {
+                <button type="button" class="ui-btn ui-btn-secondary justify-start" (click)="pickSonata(sonata.id)">{{ sonata.name }}</button>
+              }
+            </div>
+          }
+        }
+        @case ('echo') {
+          @for (group of echoGroups(); track group.cost) {
+            <p class="mb-2 mt-3 text-xs font-bold uppercase text-mute">{{ 'char.echoSet.cost' | transloco: { cost: group.cost } }}</p>
+            <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              @for (item of group.echos; track item.echo.id) {
+                <button type="button" class="ui-btn ui-btn-secondary justify-start" [disabled]="item.blocked"
+                  [title]="item.blocked ? ('char.echoSet.costLimit' | transloco: { max: maxCost }) : ''" (click)="pickEcho(item.echo)">
+                  {{ item.echo.name }}
+                </button>
+              }
+            </div>
+          }
+          @if (echoGroups().some(g => g.echos.some(e => e.blocked))) {
+            <p class="mt-3 text-xs text-mute">{{ 'char.echoSet.costLimit' | transloco: { max: maxCost } }}</p>
+          }
+        }
+        @case ('edit') {
+          <app-echo-editor [echo]="v.echo" [sonata]="v.sonata" [slot]="slots()[v.slot]" (saved)="save($event)" (cancelled)="back()" />
+        }
+      }
+    </div>
+  } @else {
+    <!-- The 5 slots -->
+    <ol class="mt-4 grid gap-3 md:grid-cols-2">
+      @for (slot of slots(); track $index; let i = $index) {
+        <li [class]="i === 0 ? 'ui-card p-4 md:col-span-2' : 'ui-card p-4'">
+          <div class="flex items-center justify-between gap-2">
+            <p class="text-xs font-bold uppercase text-mute">
+              {{ (i === 0 ? 'char.echoSet.mainSlot' : 'char.echoSet.slot') | transloco: { n: i + 1 } }}
+            </p>
+            @if (slot) {
+              <div class="flex gap-1">
+                <button type="button" class="ui-icon-btn" [attr.aria-label]="'char.echoSet.edit' | transloco" (click)="edit(i)">
+                  <span class="material-symbols-outlined" aria-hidden="true">edit</span>
+                </button>
+                <button type="button" class="ui-icon-btn" [attr.aria-label]="'char.echoSet.remove' | transloco" (click)="remove(i)">
+                  <span class="material-symbols-outlined" aria-hidden="true">close</span>
+                </button>
+              </div>
+            }
+          </div>
+
+          @if (slot && getEcho(slot.echo); as echo) {
+            <p class="mt-1 font-bold text-ink">{{ echo.name }}</p>
+            <p class="text-xs text-mute">{{ 'char.echoSet.cost' | transloco: { cost: echo.cost } }} · {{ getSonata(slot.sonata)?.name }}</p>
+            <ul class="mt-2 space-y-0.5 text-sm">
+              @if (mainValue(slot); as main) {
+                <li class="text-ink">{{ label(main) }} <span class="tabular-nums">{{ main.value }}</span></li>
+              }
+              @if (fixedValue(slot); as fixed) {
+                <li class="text-ink">{{ label(fixed) }} <span class="tabular-nums">{{ fixed.value }}</span></li>
+              }
+              @for (sub of slot.subs; track $index) {
+                <li class="text-body">{{ label(sub) }} <span class="tabular-nums">{{ sub.value }}</span></li>
+              }
+            </ul>
+
+            @if (i === 0 && mainInfo(); as info) {
+              <div class="mt-3 space-y-2 border-t border-hairline pt-3 text-xs leading-relaxed text-body">
+                <p class="font-bold text-ink">{{ 'char.echoSet.skill' | transloco }}</p>
+                @for (line of info.skill; track $index) {
+                  <p>{{ line }}</p>
+                }
+                @if (info.forms.length) {
+                  <p><span class="text-mute">{{ 'char.echoSet.forms' | transloco }}:</span> {{ info.forms.join(' / ') }}</p>
+                }
+                @if (info.bonuses.length) {
+                  <p class="font-bold text-ink">{{ 'char.echoSet.mainSlotBonus' | transloco }}</p>
+                  @for (bonus of info.bonuses; track $index) {
+                    <p>{{ bonus }}</p>
+                  }
+                }
+                <p class="text-mute">{{ 'char.echoSet.onlyInfo' | transloco }}</p>
+              </div>
+            }
+          } @else {
+            <button type="button" class="ui-btn ui-btn-secondary mt-2" (click)="open(i)">
+              <span class="material-symbols-outlined" aria-hidden="true">add</span>
+              {{ 'char.echoSet.add' | transloco }}
+            </button>
+          }
+        </li>
+      }
+    </ol>
+  }
+</app-dialog-panel>

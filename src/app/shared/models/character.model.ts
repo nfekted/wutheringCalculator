@@ -1,5 +1,8 @@
 import { CharacterResults, Levels, Stats, calculateResults, emptyResults } from "../../core/damage-engine";
 import { CharacterData, RotationStep } from "../../data/character-data.model";
+import { EchoSlot } from "../../data/echos/echo-data.model";
+import { getEcho } from "../../data/echos";
+import { echoModifier, finalStats, sumModifiers } from "../../core/stat-engine";
 import { CharacterSave } from "./character-save.model";
 
 export class Character implements Stats {
@@ -32,6 +35,9 @@ export class Character implements Stats {
 
     /** Hits chosen for the Rotation build between the intro and the outro; null until edited (the default of `data.rotationBuild` applies) */
     rotationBuild: RotationStep[] | null = null;
+
+    /** The 5 Echo slots, the first is the main one; null is an empty slot */
+    echoSet: (EchoSlot | null)[] = [null, null, null, null, null];
 
     levels: Levels = { basic: 1, skill: 1, liberation: 1, intro: 1, forte: 1 };
     results: CharacterResults = emptyResults();
@@ -66,9 +72,22 @@ export class Character implements Stats {
                 const level = Math.round(Number(load.levels?.[key]));
                 this.levels[key] = Number.isFinite(level) ? Math.min(Math.max(level, 1), 10) : 1;
             }
+            // A slot whose Echo, or whose Sonata on that Echo, no longer exists comes back empty
+            this.echoSet = this.echoSet.map((_, i) => {
+                const slot = load.echoSet?.[i];
+                return slot && getEcho(slot.echo)?.sonatas.includes(slot.sonata) ? slot : null;
+            });
             this.name = load.name;
-            this.calculate();
         }
+        this.applyEchoSet();
+        this.calculate();
+    }
+
+    /** With the base known, the attributes the Echos change come from the base and the Echo Set; the others keep the typed value */
+    applyEchoSet() {
+        if (!this.hasBase) return;
+        const modifiers = this.echoSet.filter(slot => !!slot).map(slot => echoModifier(slot, this.data.type));
+        Object.assign(this, finalStats(this.data.base, sumModifiers(modifiers), this));
     }
 
     calculate() {
@@ -84,6 +103,11 @@ export class Character implements Stats {
     get usesEcho(): boolean {
         return this.isEchoMode || (['basic', 'skill', 'liberation', 'intro', 'outro', 'forte'] as const)
             .some(section => this.data[section].hits.some(hit => hit.kind === 'echo'));
+    }
+
+    /** Whether the base attributes are known, so the attributes can come from the Echos; DEF is not checked, it can really be 0 */
+    get hasBase(): boolean {
+        return this.data.base.hp > 0 && this.data.base.atk > 0;
     }
 
     /** Steps of the Rotation build: the intro, the chosen hits (or the default ones) and the outro */
@@ -113,6 +137,8 @@ export class Character implements Stats {
     }
 
     clone(): Character {
-        return Object.assign(new Character(this.index, this.data), this);
+        const copy = Object.assign(new Character(this.index, this.data), this);
+        copy.echoSet = this.echoSet.map(slot => slot && structuredClone(slot));
+        return copy;
     }
 }

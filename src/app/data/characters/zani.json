@@ -4,6 +4,7 @@
   "icon": "zani",
   "type": "spectro",
   "weapon": "gauntlets",
+  "base": { "hp": 10775, "atk": 437, "def": 1136 },
   "lastUpdate": "2026-10-25T13:01:31.929Z",
   "hasHealing": false,
   "healsAllies": false,

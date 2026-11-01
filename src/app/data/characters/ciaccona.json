@@ -4,6 +4,7 @@
   "icon": "ciaccona",
   "type": "aero",
   "weapon": "pistols",
+  "base": { "hp": 12237, "atk": 375, "def": 1197 },
   "lastUpdate": "2026-10-27T02:08:24.794Z",
   "hasHealing": false,
   "healsAllies": false,

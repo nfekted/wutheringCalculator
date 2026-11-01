@@ -4,6 +4,7 @@
   "icon": "lucilla",
   "type": "glacio",
   "weapon": "rectifier",
+  "base": { "hp": 12237, "atk": 375, "def": 1197 },
   "lastUpdate": "2026-10-23T02:11:01.587Z",
   "hasHealing": false,
   "healsAllies": false,

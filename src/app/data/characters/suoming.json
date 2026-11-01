@@ -4,6 +4,7 @@
   "icon": "suoming",
   "type": "electro",
   "weapon": "sword",
+  "base": { "hp": 10300, "atk": 462, "def": 1112 },
   "lastUpdate": "2026-10-27T01:37:13.973Z",
   "hasHealing": false,
   "healsAllies": false,

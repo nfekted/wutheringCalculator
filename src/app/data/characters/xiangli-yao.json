@@ -4,6 +4,7 @@
   "icon": "xiangli-yao",
   "type": "electro",
   "weapon": "gauntlets",
+  "base": { "hp": 10625, "atk": 425, "def": 1222 },
   "lastUpdate": "2026-10-27T00:30:40.080Z",
   "hasHealing": false,
   "healsAllies": false,

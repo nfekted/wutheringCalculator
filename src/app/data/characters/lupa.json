@@ -4,6 +4,7 @@
   "icon": "lupa",
   "type": "fusion",
   "weapon": "broadblade",
+  "base": { "hp": 11912, "atk": 387, "def": 1185 },
   "lastUpdate": "2026-10-25T20:32:00.406Z",
   "hasHealing": false,
   "healsAllies": false,

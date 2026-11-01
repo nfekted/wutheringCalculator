@@ -4,6 +4,7 @@
   "icon": "lumi",
   "type": "electro",
   "weapon": "broadblade",
+  "base": { "hp": 8500, "atk": 337, "def": 879 },
   "lastUpdate": "2026-10-27T00:31:54.307Z",
   "hasHealing": false,
   "healsAllies": false,

@@ -4,6 +4,7 @@
   "icon": "augusta",
   "type": "electro",
   "weapon": "broadblade",
+  "base": { "hp": 10300, "atk": 462, "def": 1112 },
   "lastUpdate": "2026-10-27T00:32:35.391Z",
   "hasHealing": false,
   "healsAllies": false,

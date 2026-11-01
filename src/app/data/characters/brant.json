@@ -4,6 +4,7 @@
   "icon": "brant",
   "type": "fusion",
   "weapon": "sword",
+  "base": { "hp": 11675, "atk": 375, "def": 1307 },
   "lastUpdate": "2026-10-25T20:41:07.794Z",
   "hasHealing": true,
   "healsAllies": true,

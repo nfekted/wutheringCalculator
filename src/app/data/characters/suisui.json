@@ -4,6 +4,7 @@
   "icon": "suisui",
   "type": "glacio",
   "weapon": "rectifier",
+  "base": { "hp": 16712, "atk": 287, "def": 1099 },
   "lastUpdate": "2026-10-23T01:49:55.554Z",
   "hasHealing": true,
   "healsAllies": true,

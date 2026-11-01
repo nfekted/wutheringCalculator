@@ -44,6 +44,8 @@ export interface CharacterData {
   icon: string;
   type: string;
   weapon: string;
+  /** HP, ATK and DEF at level 90, without weapon and Echos; 0 while unknown (DEF can really be 0) */
+  base: { hp: number; atk: number; def: number };
   lastUpdate: string;
   /** Has at least one healing skill */
   hasHealing: boolean;

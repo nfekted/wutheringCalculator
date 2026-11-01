@@ -4,6 +4,7 @@
   "icon": "rover",
   "type": "spectro",
   "weapon": "sword",
+  "base": { "hp": 11400, "atk": 375, "def": 1368 },
   "lastUpdate": "2026-10-25T12:50:48.965Z",
   "hasHealing": false,
   "healsAllies": false,

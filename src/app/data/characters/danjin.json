@@ -4,6 +4,7 @@
   "icon": "danjin",
   "type": "havoc",
   "weapon": "sword",
+  "base": { "hp": 9437, "atk": 262, "def": 1148 },
   "lastUpdate": "2026-10-25T00:45:19.832Z",
   "hasHealing": false,
   "healsAllies": false,
