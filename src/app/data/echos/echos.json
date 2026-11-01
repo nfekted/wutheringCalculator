@@ -4357,5 +4357,1758 @@
     },
     "buffs": [],
     "mainSlotBonus": []
+  },
+  {
+    "id": 136,
+    "name": "Hyvatia",
+    "cost": 4,
+    "sonatas": [
+      24,
+      27
+    ],
+    "skill": {
+      "text": "Summon a Hyvatia to fire lasers at enemies from mid-air, dealing 27.36% Spectro DMG 10 times.",
+      "hits": [
+        {
+          "name": "Hyvatia",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                27.36
+              ],
+              "times": 10
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "Casting Outro Skill within 15s after summoning Hyvatia grants 10.00% All-Attribute DMG Bonus to the next Resonator using Intro Skill for 15s."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 137,
+    "name": "Mining Reindeer",
+    "cost": 3,
+    "sonatas": [
+      24,
+      25
+    ],
+    "skill": {
+      "text": "Summon a Mining Reindeer to launch a charged attack at enemies, dealing 237.6% Electro DMG.",
+      "hits": [
+        {
+          "name": "Mining Reindeer",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                237.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 138,
+    "name": "Ironhoof",
+    "cost": 3,
+    "sonatas": [
+      24,
+      37,
+      25
+    ],
+    "skill": {
+      "text": "Transform into an Ironhoof to charge at enemies, dealing 53.64% Fusion DMG. At the end of the charge, unleash a goring attack that deals 13.41% Fusion DMG 3 times and 174.33% Fusion DMG once.",
+      "hits": [
+        {
+          "name": "Ironhoof",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                53.64
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                13.41
+              ],
+              "times": 3
+            },
+            {
+              "stat": "atk",
+              "values": [
+                174.33
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 139,
+    "name": "Sabercat Reaver",
+    "cost": 3,
+    "sonatas": [
+      24,
+      27,
+      31
+    ],
+    "skill": {
+      "text": "Summon a Sabercat Reaver to attack enemies, dealing 192.6% Fusion DMG.",
+      "hits": [
+        {
+          "name": "Sabercat Reaver",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                192.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 140,
+    "name": "Sabercat Prowler",
+    "cost": 3,
+    "sonatas": [
+      24,
+      27,
+      31
+    ],
+    "skill": {
+      "text": "Summon a Sabercat Prowler to fire beams at enemies, dealing 192.6% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Sabercat Prowler",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                192.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 141,
+    "name": "Flora Drone",
+    "cost": 1,
+    "sonatas": [
+      24,
+      27,
+      31,
+      25
+    ],
+    "skill": {
+      "text": "Summon a Flora Drone, dealing 64.8% Aero DMG to enemies.",
+      "hits": [
+        {
+          "name": "Flora Drone",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                64.8
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 142,
+    "name": "Geospider S4",
+    "cost": 1,
+    "sonatas": [
+      24,
+      14,
+      34
+    ],
+    "skill": {
+      "text": "Summon a Geospider S4 to attack enemies, dealing 51.84% Spectro DMG once and 77.76% Spectro DMG once.",
+      "hits": [
+        {
+          "name": "Geospider S4",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                51.84
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                77.76
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 143,
+    "name": "Zip Zap",
+    "cost": 1,
+    "sonatas": [
+      24,
+      27,
+      2
+    ],
+    "skill": {
+      "text": "Summon a Zip Zap to launch spinning attacks at enemies, dealing 25.92% Electro DMG 5 times.",
+      "hits": [
+        {
+          "name": "Zip Zap",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                25.92
+              ],
+              "times": 5
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 144,
+    "name": "Reactor Husk",
+    "cost": 4,
+    "sonatas": [
+      14,
+      2
+    ],
+    "skill": {
+      "text": "Transform into a Reactor Husk, jumping into the air and unleashing a heavy slash that deals 351% Fusion DMG to enemies.",
+      "hits": [
+        {
+          "name": "Reactor Husk",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                351
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 10% Energy Regen."
+      }
+    ]
+  },
+  {
+    "id": 145,
+    "name": "Spacetrek Explorer",
+    "cost": 3,
+    "sonatas": [
+      14,
+      2,
+      31
+    ],
+    "skill": {
+      "text": "No action.",
+      "hits": []
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 146,
+    "name": "Frostbite Coleoid",
+    "cost": 3,
+    "sonatas": [
+      14,
+      37
+    ],
+    "skill": {
+      "text": "Summon a Frostbite Coleoid to punch enemies, dealing 192.6% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Frostbite Coleoid",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                192.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 147,
+    "name": "Mining Drone",
+    "cost": 1,
+    "sonatas": [
+      14,
+      27,
+      31,
+      25
+    ],
+    "skill": {
+      "text": "Transform into a Mining Drone to attack enemies, dealing 102.6% Havoc DMG twice.",
+      "hits": [
+        {
+          "name": "Mining Drone",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                102.6
+              ],
+              "times": 2
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 148,
+    "name": "Tremor Warrior",
+    "cost": 1,
+    "sonatas": [
+      14,
+      2,
+      31,
+      37
+    ],
+    "skill": {
+      "text": "Transform into a Tremor Warrior and viciously attack enemies in the front, dealing 205.2% Electro DMG.",
+      "hits": [
+        {
+          "name": "Tremor Warrior",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                205.2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 149,
+    "name": "Twin Nova - Nebulous Cannon",
+    "cost": 3,
+    "sonatas": [
+      27,
+      2
+    ],
+    "skill": {
+      "text": "Transform into a Twin Nova - Nebulous Cannon to slash enemies twice, with each attack dealing 80.51% Spectro DMG.",
+      "hits": [
+        {
+          "name": "Twin Nova - Nebulous Cannon",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                80.51
+              ],
+              "times": 2
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 12% Spectro DMG Bonus and 12% Basic Attack DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 150,
+    "name": "Twin Nova - Collapsar Blade",
+    "cost": 3,
+    "sonatas": [
+      27,
+      34,
+      31
+    ],
+    "skill": {
+      "text": "Transform into a Twin Nova - Collapsar Blade to rapidly fire at enemies for 5s, with each attack dealing 2.01% Electro DMG.",
+      "hits": [
+        {
+          "name": "Twin Nova - Collapsar Blade",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                2.01
+              ],
+              "times": 5
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 12% Electro DMG Bonus and 12% Basic Attack DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 151,
+    "name": "Flora Reindeer",
+    "cost": 3,
+    "sonatas": [
+      27,
+      25
+    ],
+    "skill": {
+      "text": "Summon a Flora Reindeer to attack enemies within a large range, dealing 192.6% Aero DMG.",
+      "hits": [
+        {
+          "name": "Flora Reindeer",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                192.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 152,
+    "name": "Windlash Coleoid",
+    "cost": 3,
+    "sonatas": [
+      27,
+      37
+    ],
+    "skill": {
+      "text": "Summon a Windlash Coleoid to kick enemies, dealing 268.2% Aero DMG.",
+      "hits": [
+        {
+          "name": "Windlash Coleoid",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 153,
+    "name": "Sigillum",
+    "cost": 4,
+    "sonatas": [
+      34
+    ],
+    "skill": {
+      "text": "Summon Sigillum to unleash two attacks, dealing 68.4% and 205.20% Fusion DMG respectively.",
+      "hits": [
+        {
+          "name": "Sigillum",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                68.4
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                205.2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "When equipped in the main slot by Aemeath, it grants 25% Resonance Liberation DMG Bonus.",
+        "character": "aemeath"
+      }
+    ]
+  },
+  {
+    "id": 154,
+    "name": "Reminiscence - Kronaclaw",
+    "cost": 3,
+    "sonatas": [
+      34,
+      2
+    ],
+    "skill": {
+      "text": "Transform into a Kronaclaw and soar into the air to deal 8.04% Aero DMG up to 8 times and 24.13% Aero DMG 2 times, then dive to deal 155.55% Aero DMG 1 time.",
+      "hits": [
+        {
+          "name": "Reminiscence - Kronaclaw",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                8.04
+              ],
+              "times": 8
+            },
+            {
+              "stat": "atk",
+              "values": [
+                24.13
+              ],
+              "times": 2
+            },
+            {
+              "stat": "atk",
+              "values": [
+                155.55
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 155,
+    "name": "Kronablight",
+    "cost": 3,
+    "sonatas": [
+      34,
+      2
+    ],
+    "skill": {
+      "text": "Transform into a Kronablight, soar into the air, and dive to deal 268.20% Electro DMG to enemies.",
+      "hits": [
+        {
+          "name": "Kronablight",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                268.2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 156,
+    "name": "Glommoth",
+    "cost": 3,
+    "sonatas": [
+      34,
+      37
+    ],
+    "skill": {
+      "text": "Summon a Glommoth to stomp enemies, dealing 273.60% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Glommoth",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                273.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "Casting Outro Skill within 15s after summoning Glommoth grants 12% Glacio DMG Bonus to the incoming Resonator for 15s."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 157,
+    "name": "Iceglint Dancer",
+    "cost": 1,
+    "sonatas": [
+      34,
+      37,
+      25
+    ],
+    "skill": {
+      "text": "Transform into an Iceglint Dancer to attack enemies, dealing 205.20% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Iceglint Dancer",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                205.2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 158,
+    "name": "Shadow Stepper",
+    "cost": 1,
+    "sonatas": [
+      34,
+      2,
+      37
+    ],
+    "skill": {
+      "text": "Summon a Shadow Stepper to attack enemies, dealing 129.60% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Shadow Stepper",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 159,
+    "name": "Reminiscence: Denia",
+    "cost": 4,
+    "sonatas": [
+      2
+    ],
+    "skill": {
+      "text": "Summon Trickster to deal 273.60% Fusion DMG to enemies.",
+      "hits": [
+        {
+          "name": "Reminiscence: Denia",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                273.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "Within the next 15s, casting Outro Skill grants the incoming Resonator 12.00% Fusion DMG Bonus for 15s."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 160,
+    "name": "Nameless Explorer",
+    "cost": 4,
+    "sonatas": [
+      31,
+      25
+    ],
+    "skill": {
+      "text": "Summon Nameless Explorer to attack enemies along its path, dealing 273.60% Aero DMG.",
+      "hits": [
+        {
+          "name": "Nameless Explorer",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                273.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 12% Aero DMG Bonus and 20% Echo Skill DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 161,
+    "name": "Reminiscence: Threnodian - Voidborne Construct",
+    "cost": 4,
+    "sonatas": [
+      37
+    ],
+    "skill": {
+      "text": "Summon Aleph-1's Creation to deal 21.88% Glacio DMG 5 times and 164.16% Glacio DMG 1 time to enemies.",
+      "hits": [
+        {
+          "name": "Reminiscence: Threnodian - Voidborne Construct",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                21.88
+              ],
+              "times": 5
+            },
+            {
+              "stat": "atk",
+              "values": [
+                164.16
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Glacio DMG Bonus and 12.00% Resonance Liberation DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 162,
+    "name": "Voidwing Moth",
+    "cost": 3,
+    "sonatas": [
+      25
+    ],
+    "skill": {
+      "text": "Transform into Voidwing Moth, dealing 405.00% Spectro DMG to nearby enemies. Hold Echo Skill to continuously attack, dealing up to 12 instances of 49.33% Spectro DMG.",
+      "hits": [
+        {
+          "name": "Tap",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                405
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Hold",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                49.33
+              ],
+              "times": 12
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "Within 15s after using this Echo skill, casting Outro Skill increases the incoming Resonator's ATK by 12.00%."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 163,
+    "name": "Reminiscence: Nightmare Adam Smasher",
+    "cost": 4,
+    "sonatas": [
+      28
+    ],
+    "skill": {
+      "text": "Cast Echo Skill to deal 16 instances of Physical DMG equal to 10.26% of ATK to enemies within range.\nIf equipped by Lucy:\n– Press the Echo Skill button to deal Spectro DMG equal to 273.60% of ATK to nearby enemies.\n– Hold the Echo Skill button to deal Spectro DMG equal to 273.60% of ATK to nearby enemies and enter a special moving state, increasing Lucy’s movement speed while slowing nearby enemies.\nIf equipped by Rebecca:\n– Cast Echo Skill to fire missiles, dealing 16 instances of Electro DMG equal to 17.10% of ATK to enemies.",
+      "hits": [
+        {
+          "name": "Default",
+          "kind": "echo",
+          "element": "physical",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                10.26
+              ],
+              "times": 16
+            }
+          ]
+        },
+        {
+          "name": "Lucy",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                273.6
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Rebecca",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                17.1
+              ],
+              "times": 16
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "When Lucy or Rebecca has this Echo equipped in the main slot, their Crit. Rate is increased by 15% and they unlock special Echo Skills.",
+        "character": "lucy"
+      },
+      {
+        "text": "When Lucy or Rebecca has this Echo equipped in the main slot, their Crit. Rate is increased by 15% and they unlock special Echo Skills.",
+        "character": "rebecca"
+      }
+    ]
+  },
+  {
+    "id": 164,
+    "name": "Thousand-Puppet Pavilion",
+    "cost": 4,
+    "sonatas": [
+      30,
+      10
+    ],
+    "skill": {
+      "text": "Use Echo Skill to attack nearby enemies, dealing 109.44% Havoc DMG and summoning 4 Blades of Thousand Memories that last 15s. While Blades of Thousand Memories last, when the Resonator inflicts Havoc Bane, consume 1 Blade of Thousand Memories to deal 41.04% Havoc DMG once to the target. This effect can be triggered once every 1s.",
+      "hits": [
+        {
+          "name": "Thousand-Puppet Pavilion",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                109.44
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                41.04
+              ],
+              "times": 4
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "Resonators with this Echo equipped in the main slot gain 12.00% Havoc DMG and 12.00% Heavy Attack DMG bonuses."
+      }
+    ]
+  },
+  {
+    "id": 165,
+    "name": "Fog Lionarch",
+    "cost": 3,
+    "sonatas": [
+      30,
+      16,
+      18
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon Fog Lionarch to spit fire toward enemies, dealing 7 stages of 33.93% Fusion DMG.",
+      "hits": [
+        {
+          "name": "Fog Lionarch",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                33.93
+              ],
+              "times": 7
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 166,
+    "name": "Forbidden Bastion",
+    "cost": 3,
+    "sonatas": [
+      30,
+      16,
+      18
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon Forbidden Bastion to bash over enemies, dealing 237.60% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Forbidden Bastion",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                237.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "Resonators with this Echo equipped in the main slot gain 10.00% Healing Bonus."
+      }
+    ]
+  },
+  {
+    "id": 167,
+    "name": "Smiter",
+    "cost": 1,
+    "sonatas": [
+      30
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon a Smiter to jab at enemies, dealing 7 instances of 19.26% Spectro DMG, and finish with an uppercut, dealing 57.78% Spectro DMG.",
+      "hits": [
+        {
+          "name": "Smiter",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                19.26
+              ],
+              "times": 7
+            },
+            {
+              "stat": "atk",
+              "values": [
+                57.78
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 168,
+    "name": "Kernel Puppet: Joy",
+    "cost": 1,
+    "sonatas": [
+      30
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon Kernel Puppet: Joy to attack enemies, dealing 129.60% Physical DMG.",
+      "hits": [
+        {
+          "name": "Kernel Puppet: Joy",
+          "kind": "echo",
+          "element": "physical",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 169,
+    "name": "Fog Lionarch: Body",
+    "cost": 1,
+    "sonatas": [
+      30,
+      17
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon Fog Lionarch: Body to ram into enemies, dealing 192.60% Fusion DMG.",
+      "hits": [
+        {
+          "name": "Fog Lionarch: Body",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                192.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 170,
+    "name": "Fog Lionarch: Head",
+    "cost": 1,
+    "sonatas": [
+      30,
+      17
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon Fog Lionarch: Head to dart toward enemies, dealing 129.60% Fusion DMG.",
+      "hits": [
+        {
+          "name": "Fog Lionarch: Head",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 171,
+    "name": "Smolder",
+    "cost": 1,
+    "sonatas": [
+      30
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon Smolder to hurl fireballs toward enemies, dealing 192.60% Fusion DMG. If the fireball hits the ground, it explodes to deal 192.60% Fusion DMG to all enemies within the range.",
+      "hits": [
+        {
+          "name": "Smolder",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                192.6
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                192.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 172,
+    "name": "Myriad Snare: Rustfire Chassis",
+    "cost": 4,
+    "sonatas": [
+      16,
+      18
+    ],
+    "skill": {
+      "text": "Summon Myriad Snare: Rustfire Chassis, dealing Fusion DMG equal to 10.20% of the Max HP on initial impact. During its duration, it repeatedly crushes enemies along its path up to 19 times, dealing Fusion DMG equal to 0.37% of the Max HP each time.",
+      "hits": [
+        {
+          "name": "Myriad Snare: Rustfire Chassis",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "hp",
+              "values": [
+                10.2
+              ]
+            },
+            {
+              "stat": "hp",
+              "values": [
+                0.37
+              ],
+              "times": 19
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "Resonators with this Echo equipped in the main slot gain 12.00% Fusion DMG Bonus and 12.00% Heavy Attack DMG Bonus."
+      }
+    ]
+  },
+  {
+    "id": 173,
+    "name": "Calamity Effigy",
+    "cost": 4,
+    "sonatas": [
+      16,
+      18
+    ],
+    "skill": {
+      "text": "Transform into Calamity Effigy to deal 405.00% Aero DMG.",
+      "hits": [
+        {
+          "name": "Calamity Effigy",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                405
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 10.00% Aero DMG Bonus, and additionally gains 10.00% Aero DMG Bonus for 15s when inflicting Tune Strain - Shifting on the target."
+      }
+    ]
+  },
+  {
+    "id": 174,
+    "name": "Aureate Picket",
+    "cost": 1,
+    "sonatas": [
+      16,
+      9
+    ],
+    "skill": {
+      "text": "Use Echo Skill to transform into an Aureate Picket, immediately recover 0.55% HP times plus an additional instance of 24 points of HP, then bash into enemies and deal 153.90% Aero DMG.",
+      "hits": [
+        {
+          "name": "Aureate Picket",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                153.9
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 175,
+    "name": "Kernel Puppet: Anger",
+    "cost": 1,
+    "sonatas": [
+      16,
+      10
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon Kernel Puppet: Anger to attack enemies, dealing 129.60% Fusion DMG.",
+      "hits": [
+        {
+          "name": "Kernel Puppet: Anger",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 176,
+    "name": "Kernel Puppet: Worry",
+    "cost": 1,
+    "sonatas": [
+      16,
+      9
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon Kernel Puppet: Worry to attack enemies, dealing 64.80% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Kernel Puppet: Worry",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                64.8
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 177,
+    "name": "Kernel Puppet: Reflection",
+    "cost": 1,
+    "sonatas": [
+      16,
+      10
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon Kernel Puppet: Reflection to attack enemies, dealing 64.80% Electro DMG.",
+      "hits": [
+        {
+          "name": "Kernel Puppet: Reflection",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                64.8
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 178,
+    "name": "Porcelain Picket",
+    "cost": 1,
+    "sonatas": [
+      18,
+      9
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon a Porcelain Picket to slash forward, dealing 2 instances of 19.44% Aero DMG and 7 instances of 12.96% Aero DMG to enemies along the path.",
+      "hits": [
+        {
+          "name": "Porcelain Picket",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                19.44
+              ],
+              "times": 2
+            },
+            {
+              "stat": "atk",
+              "values": [
+                12.96
+              ],
+              "times": 7
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 179,
+    "name": "Stone Picket",
+    "cost": 1,
+    "sonatas": [
+      18,
+      9
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon a Stone Picket, dealing 129.60% Aero DMG.",
+      "hits": [
+        {
+          "name": "Stone Picket",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 180,
+    "name": "Kernel Puppet: Grief",
+    "cost": 1,
+    "sonatas": [
+      18,
+      10
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon Kernel Puppet: Grief to attack enemies, dealing 129.60% Spectro DMG.",
+      "hits": [
+        {
+          "name": "Kernel Puppet: Grief",
+          "kind": "echo",
+          "element": "spectro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                129.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 181,
+    "name": "Kernel Puppet: Fright",
+    "cost": 1,
+    "sonatas": [
+      18,
+      10
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon Kernel Puppet: Fright to attack enemies, dealing an instance of 51.84% Havoc DMG and an instance of 77.76% Havoc DMG.",
+      "hits": [
+        {
+          "name": "Kernel Puppet: Fright",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                51.84
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                77.76
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 182,
+    "name": "Reminiscence: Suhsin the Inevitable",
+    "cost": 4,
+    "sonatas": [
+      17,
+      9
+    ],
+    "skill": {
+      "text": "Cast Echo Skill to deal 4 instances of 27.36% Electro DMG and 1 instance of 164.16% Electro DMG. When equipped by Hsin, the Echo Skill instead deals 5 instances of 8.20% Electro DMG and 1 instance of 232.56% Electro DMG to targets within a larger range.",
+      "hits": [
+        {
+          "name": "Default",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                27.36
+              ],
+              "times": 4
+            },
+            {
+              "stat": "atk",
+              "values": [
+                164.16
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Hsin",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                8.2
+              ],
+              "times": 5
+            },
+            {
+              "stat": "atk",
+              "values": [
+                232.56
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in their main slot gains 10.00% Electro DMG Bonus. Inflicting Electro Flare, gaining Unison, or triggering Unison Response grants the Resonator an extra 10.00% Electro DMG Bonus for 30s."
+      }
+    ]
+  },
+  {
+    "id": 183,
+    "name": "Formrender",
+    "cost": 3,
+    "sonatas": [
+      17,
+      10
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon a Formrender, dealing 273.60% Fusion DMG.",
+      "hits": [
+        {
+          "name": "Formrender",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                273.6
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": [
+      {
+        "text": "The Resonator with this Echo equipped in the main slot gains 10.00% Energy Regen."
+      }
+    ]
+  },
+  {
+    "id": 184,
+    "name": "Soulfrayer",
+    "cost": 3,
+    "sonatas": [
+      17,
+      9
+    ],
+    "skill": {
+      "text": "Use Echo Skill to summon a Soulfrayer, dealing 91.18% Electro DMG 3 times.",
+      "hits": [
+        {
+          "name": "Soulfrayer",
+          "kind": "echo",
+          "element": "electro",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                91.18
+              ],
+              "times": 3
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [
+      "Casting Outro Skill within 15s after summoning Soulfrayer grants 12.00% Electro DMG Bonus to the incoming Resonator for 15s."
+    ],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 185,
+    "name": "Jade Nether Serpent",
+    "cost": 1,
+    "sonatas": [
+      17
+    ],
+    "skill": {
+      "text": "Summon a Jade Nether Serpent that bombards the target with fireballs, dealing 12.96% Fusion DMG 5 times, then 64.80% Fusion DMG once.",
+      "hits": [
+        {
+          "name": "Jade Nether Serpent",
+          "kind": "echo",
+          "element": "fusion",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                12.96
+              ],
+              "times": 5
+            },
+            {
+              "stat": "atk",
+              "values": [
+                64.8
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 186,
+    "name": "Bloomburst Puppet",
+    "cost": 1,
+    "sonatas": [
+      17
+    ],
+    "skill": {
+      "text": "Summon a Bloomburst Puppet to startle the target, dealing 1 instance of 25.92% Glacio DMG, followed by 2 instances of 12.96% Glacio DMG and 1 instance of 77.76% Glacio DMG.",
+      "hits": [
+        {
+          "name": "Bloomburst Puppet",
+          "kind": "echo",
+          "element": "glacio",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                25.92
+              ]
+            },
+            {
+              "stat": "atk",
+              "values": [
+                12.96
+              ],
+              "times": 2
+            },
+            {
+              "stat": "atk",
+              "values": [
+                77.76
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
+  },
+  {
+    "id": 187,
+    "name": "Skywatch Lancer",
+    "cost": 3,
+    "sonatas": [
+      9,
+      10
+    ],
+    "skill": {
+      "text": "Summon a Skywatch Lancer to attack the target, dealing 32.09% Aero DMG 6 times.",
+      "hits": [
+        {
+          "name": "Skywatch Lancer",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                32.09
+              ],
+              "times": 6
+            }
+          ]
+        }
+      ]
+    },
+    "buffs": [],
+    "mainSlotBonus": []
   }
 ]

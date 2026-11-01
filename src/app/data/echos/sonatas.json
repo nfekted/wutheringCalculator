@@ -28,6 +28,9 @@
         "pieces": 5,
         "text": "When the Resonator inflicts Fusion Burst on the enemies, they gain the following effects: Gain 10% Fusion DMG Bonus for 15s. While this effect is active, casting an Outro Skill grants the incoming Resonator 25% Fusion DMG Bonus for 15s."
       }
+    ],
+    "characters": [
+      "denia"
     ]
   },
   {
@@ -136,6 +139,9 @@
         "pieces": 5,
         "text": "When the Resonator inflicts Electro Flare on enemies, they gain the following effects: Gain 10% Electro DMG Bonus for 15s. While this effect is active, casting Outro Skill grants the incoming Resonator 25% Electro DMG Bonus for 15s."
       }
+    ],
+    "characters": [
+      "rovere"
     ]
   },
   {
@@ -220,6 +226,9 @@
         "pieces": 5,
         "text": "When healing a Resonator in the team, every 1% of Off-Tune Buildup Rate grants a 0.2% ATK increase to all Resonators in the team for 4s, up to 25%. Effects of the same name cannot stack."
       }
+    ],
+    "characters": [
+      "mornye"
     ]
   },
   {
@@ -253,6 +262,9 @@
         "pieces": 5,
         "text": "Inflicting Tune Strain - Shifting increases Crit. DMG by 20% and Aero DMG Bonus by 20% for 15s."
       }
+    ],
+    "characters": [
+      "qingxiao"
     ]
   },
   {
@@ -267,6 +279,10 @@
         "pieces": 5,
         "text": "Inflicting Electro Flare on the target, obtaining Unison, or triggering Unison Response increases the Resonator's Crit. Rate by 15% and grants them 22.5% Electro DMG for 30s."
       }
+    ],
+    "characters": [
+      "hsin",
+      "suoming"
     ]
   },
   {
@@ -281,6 +297,9 @@
         "pieces": 5,
         "text": "Upon gaining a Shield, gain 5% increase in Crit. Rate for 5s, max 4 stacks. This effect can be triggered every 0.5s. At max stacks, gain 15% Fusion DMG Bonus."
       }
+    ],
+    "characters": [
+      "jingran"
     ]
   },
   {
@@ -387,6 +406,10 @@
         "pieces": 5,
         "text": "Casting outro Skill increases the ATK of the incoming Resonator who casts Intro Skill by 15%. Each point of Tune Break Boost the incoming Resonator has additionally increases their ATK by 0.3%, up to 15%. This effect lasts for 15s, or until the Resonator is switched out."
       }
+    ],
+    "characters": [
+      "lynae",
+      "denia"
     ]
   },
   {
@@ -401,6 +424,11 @@
         "pieces": 5,
         "text": "Inflicting Tune Rupture - Shifting or Tune Strain - Shifting on enemies increases the Tune Break Boost of Resonators in the team by 20 for 30s. Effects of the same name do not stack."
       }
+    ],
+    "characters": [
+      "denia",
+      "rebecca",
+      "lucy"
     ]
   },
   {
@@ -438,6 +466,11 @@
         "pieces": 5,
         "text": "Dealing Basic Attack DMG increases Spectro DMG by 10% for 5s, stacking up to 3 times. With 3 stacks, casting Resonance Liberation grants 40% Basic Attack DMG Bonus."
       }
+    ],
+    "characters": [
+      "luuk",
+      "lucy",
+      "lynae"
     ]
   },
   {
@@ -479,6 +512,10 @@
         "pieces": 5,
         "text": "Upon inflicting Havoc Bane, gain Xuanling's Feather, which grants a 20% increase in Crit. Rate and 25% increase in Heavy Attack DMG Bonus to the Resonator, lasting 15s.\nUpon inflicting Glacio Chafe, gain Chongming's Feather, which grants a 0.1% increase in ATK to Resonators in the team for every 1% of the Resonator's Energy Regen, up to 25%, lasting 10s."
       }
+    ],
+    "characters": [
+      "yangyang-xuanling",
+      "suisui"
     ]
   },
   {
@@ -493,6 +530,9 @@
         "pieces": 5,
         "text": "Dealing Echo Skill DMG to enemies increases the Resonator's Echo Skill Crit. Rate by 20%, and grants 15% Aero DMG Bonus for 5s."
       }
+    ],
+    "characters": [
+      "sigrika"
     ]
   },
   {
@@ -537,6 +577,9 @@
         "pieces": 5,
         "text": "Inflicting Fusion Burst or Tune Rupture - Shifting increases the Resonator's Crit. Rate by 20% and grants 20% Fusion DMG Bonus for 8s."
       }
+    ],
+    "characters": [
+      "aemeath"
     ]
   },
   {
@@ -588,6 +631,10 @@
         "pieces": 5,
         "text": "Inflicting Glacio Chafe on enemies increases Glacio DMG dealt by 10% for 15s. The Resonator gains the Snowfall effect for 15s, which can be triggered every 25s.\nSnowfall Effect:\n- Dealing Resonance Liberation DMG removes Snowfall and increases Crit. Rate by 25% for 6s. While the effect is active, dealing Resonance Liberation DMG extends its duration by 4s, triggered once every 0.5s, up to 6 times.\n- Casting Outro Skill removes Snowfall and grants 25% Glacio DMG Bonus to the incoming Resonator for 15s.\nWhen Snowfall is removed, only one of the effects above can be triggered."
       }
+    ],
+    "characters": [
+      "lucilla",
+      "hiyuki"
     ]
   }
 ]
