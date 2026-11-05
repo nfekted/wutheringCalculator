@@ -236,5 +236,43 @@
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["FUSION DMG %", "ATK %"],
   "echo1": ["ATK %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "Basic %", "ATK %", "ATK", "Skill %"]
+  "echoSub": ["Crit Rate %", "Crit DMG %", "Basic %", "ATK %", "ATK", "Skill %"],
+  "recommended": {
+    "echos": [16, 15],
+    "sonatas": [
+      [22]
+    ],
+    "weapons": ["Stringmaster", "Rime-Draped Sprouts", "Cosmic Ripples", "Augment"],
+    "teams": [
+      [
+        { "character": "changli", "role": "main" },
+        { "character": "encore", "role": "main" },
+        { "character": "lupa", "role": "main" }
+      ],
+      [
+        { "character": "encore", "role": "main" },
+        { "character": "sanhua", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "fusion" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "dmg" },
+      { "stat": "energyRegen" },
+      { "stat": "basicBonus" }
+    ]
+  }
 }

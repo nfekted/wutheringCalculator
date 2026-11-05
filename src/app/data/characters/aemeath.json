@@ -324,5 +324,45 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [153, 107, 16],
+    "sonatas": [
+      [34],
+      [8],
+      [22]
+    ],
+    "weapons": ["Everbright Polestar", "Emerald of Genesis", "Feather Edge", "Somnoire Anchor"],
+    "teams": [
+      [
+        { "character": "aemeath", "role": "main" },
+        { "character": "lynae", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ],
+      [
+        { "character": "aemeath", "role": "main" },
+        { "character": "denia", "role": "sub" },
+        { "character": "chisa", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "fusion" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cDmg" },
+      { "stat": "cChance" },
+      { "stat": "energyRegen" },
+      { "stat": "liberationBonus" },
+      { "stat": "dmg" }
+    ]
+  }
 }

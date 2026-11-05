@@ -292,5 +292,44 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [159, 136],
+    "sonatas": [
+      [2],
+      [24]
+    ],
+    "weapons": ["Forged Dwarf Star", "Stringmaster", "Lethean Elegy", "Cosmic Ripples"],
+    "teams": [
+      [
+        { "character": "aemeath", "role": "main" },
+        { "character": "denia", "role": "sub" },
+        { "character": "chisa", "role": "sup" }
+      ],
+      [
+        { "character": "luuk", "role": "main" },
+        { "character": "denia", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "fusion" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cDmg" },
+      { "stat": "cChance" },
+      { "stat": "energyRegen" },
+      { "stat": "liberationBonus" },
+      { "stat": "dmg" }
+    ]
+  }
 }

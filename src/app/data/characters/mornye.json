@@ -256,5 +256,42 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [144, 59, 58],
+    "sonatas": [
+      [14],
+      [26]
+    ],
+    "weapons": ["Starfield Calibrator", "Discord", "Dauntless Evernight", "Broadblade#41"],
+    "teams": [
+      [
+        { "character": "aemeath", "role": "main" },
+        { "character": "lynae", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ],
+      [
+        { "character": "qingxiao", "role": "main" },
+        { "character": "denia", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "def" }
+      ],
+      "3": [
+        { "stat": "energyRegen" }
+      ],
+      "4": [
+        { "stat": "healingBonus" }
+      ]
+    },
+    "subs": [
+      { "stat": "energyRegen" },
+      { "stat": "def" },
+      { "stat": "def", "flat": true },
+      { "stat": "cDmg" }
+    ]
+  }
 }

@@ -264,5 +264,42 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [172, 95],
+    "sonatas": [
+      [18],
+      [3, 18]
+    ],
+    "weapons": ["Thousandfold Deliverance", "Thunderflare Dominion", "Verdant Summit"],
+    "teams": [
+      [
+        { "character": "jingran", "role": "main" },
+        { "character": "iuno", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "jingran", "role": "main" },
+        { "character": "lynae", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "hp" }
+      ],
+      "3": [],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cDmg" },
+      { "stat": "cChance" },
+      { "stat": "hp" },
+      { "stat": "heavyBonus" },
+      { "stat": "dmg" }
+    ]
+  }
 }
