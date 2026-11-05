@@ -335,5 +335,49 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [136],
+    "sonatas": [
+      [24],
+      [27]
+    ],
+    "weapons": ["Spectrum Blaster", "Phasic Homogenizer", "Static Mist", "Solar Flame"],
+    "teams": [
+      [
+        { "character": "aemeath", "role": "main" },
+        { "character": "lynae", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ],
+      [
+        { "character": "qingxiao", "role": "main" },
+        { "character": "lynae", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ],
+      [
+        { "character": "hiyuki", "role": "main" },
+        { "character": "lynae", "role": "sub" },
+        { "character": "chisa", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "spectro" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "basicBonus" },
+      { "stat": "dmg" },
+      { "stat": "energyRegen" }
+    ]
+  }
 }

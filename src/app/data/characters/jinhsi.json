@@ -256,5 +256,43 @@
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["SPECTRO DMG %", "ATK %"],
   "echo1": ["ATK %"],
-  "echoSub": ["Energy Regen %", "Crit Rate %", "Crit DMG %", "ATK %", "Skill %", "ATK", "Liberation %"]
+  "echoSub": ["Energy Regen %", "Crit Rate %", "Crit DMG %", "ATK %", "Skill %", "ATK", "Liberation %"],
+  "recommended": {
+    "echos": [48],
+    "sonatas": [
+      [1]
+    ],
+    "weapons": ["Ages of Harvest", "Radiance Cleaver", "Lustrous Razor", "Autumntrace"],
+    "teams": [
+      [
+        { "character": "hsin", "role": "main" },
+        { "character": "jinhsi", "role": "main" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "jinhsi", "role": "main" },
+        { "character": "zhezhi", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "spectro" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "skillBonus" },
+      { "stat": "dmg" }
+    ]
+  }
 }

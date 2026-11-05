@@ -331,5 +331,43 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [163],
+    "sonatas": [
+      [28, 27, 25]
+    ],
+    "weapons": ["Spectral Trigger", "Phasic Homogenizer", "Lux & Umbra", "Solar Flame"],
+    "teams": [
+      [
+        { "character": "lucy", "role": "main" },
+        { "character": "rebecca", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ],
+      [
+        { "character": "lucy", "role": "main" },
+        { "character": "iuno", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "spectro" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "heavyBonus" },
+      { "stat": "dmg" }
+    ]
+  }
 }

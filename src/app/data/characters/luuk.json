@@ -236,5 +236,44 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [149, 47, 136],
+    "sonatas": [
+      [27],
+      [1]
+    ],
+    "weapons": ["Daybreaker's Spine", "Pulsation Bracer", "Blazing Justice", "Abyss Surges"],
+    "teams": [
+      [
+        { "character": "luuk", "role": "main" },
+        { "character": "denia", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ],
+      [
+        { "character": "luuk", "role": "main" },
+        { "character": "sanhua", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "spectro" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "basicBonus" },
+      { "stat": "dmg" }
+    ]
+  }
 }

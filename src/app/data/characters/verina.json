@@ -227,5 +227,35 @@
   "echo4": ["Healing %"],
   "echo3": ["Energy Regen %"],
   "echo1": ["ATK %"],
-  "echoSub": ["Energy Regen %", "ATK %", "ATK"]
+  "echoSub": ["Energy Regen %", "ATK %", "ATK"],
+  "recommended": {
+    "echos": [59, 58],
+    "sonatas": [
+      [26]
+    ],
+    "weapons": ["Stellar Symphony", "Variation", "Cosmic Ripples"],
+    "teams": [
+      [
+        { "character": "rover", "role": "main" },
+        { "character": "yangyang", "role": "sub" },
+        { "character": "verina", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "energyRegen" }
+      ],
+      "4": [
+        { "stat": "healingBonus" }
+      ]
+    },
+    "subs": [
+      { "stat": "energyRegen" },
+      { "stat": "dmg" },
+      { "stat": "dmg", "flat": true }
+    ]
+  }
 }

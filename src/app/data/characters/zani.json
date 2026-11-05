@@ -217,5 +217,38 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [71, 66],
+    "sonatas": [
+      [6]
+    ],
+    "weapons": ["Blazing Justice", "Tragicomedy", "Verity's Handle", "Pulsation Bracer"],
+    "teams": [
+      [
+        { "character": "zani", "role": "main" },
+        { "character": "phoebe", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "spectro" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "heavyBonus" },
+      { "stat": "dmg" },
+      { "stat": "energyRegen" }
+    ]
+  }
 }

@@ -198,5 +198,31 @@
   "echo4": ["Healing %"],
   "echo3": ["Energy Regen %"],
   "echo1": ["HP %"],
-  "echoSub": ["Energy Regen %", "HP %", "HP"]
+  "echoSub": ["Energy Regen %", "HP %", "HP"],
+  "recommended": {
+    "echos": [59, 58],
+    "sonatas": [
+      [26]
+    ],
+    "weapons": ["Stellar Symphony", "Variation", "Rectifier#25"],
+    "teams": [],
+    "main": {
+      "1": [
+        { "stat": "hp" }
+      ],
+      "3": [
+        { "stat": "energyRegen" }
+      ],
+      "4": [
+        { "stat": "healingBonus" }
+      ]
+    },
+    "subs": [
+      { "stat": "energyRegen" },
+      { "stat": "hp" },
+      { "stat": "cDmg" },
+      { "stat": "skillBonus" },
+      { "stat": "hp", "flat": true }
+    ]
+  }
 }
