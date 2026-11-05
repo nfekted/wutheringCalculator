@@ -292,5 +292,45 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [163, 62, 31],
+    "sonatas": [
+      [28, 35, 25],
+      [23],
+      [35]
+    ],
+    "weapons": ["Skull Thrasher", "Phasic Homogenizer", "Spectrum Blaster", "Static Mist"],
+    "teams": [
+      [
+        { "character": "lucy", "role": "main" },
+        { "character": "rebecca", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ],
+      [
+        { "character": "yangyang-xuanling", "role": "main" },
+        { "character": "rebecca", "role": "sub" },
+        { "character": "chisa", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "electro" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "basicBonus" },
+      { "stat": "dmg" }
+    ]
+  }
 }

@@ -290,5 +290,43 @@
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["ELECTRO DMG %", "ATK %"],
   "echo1": ["ATK %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "Liberation %", "Basic %", "ATK"]
+  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "Liberation %", "Basic %", "ATK"],
+  "recommended": {
+    "echos": [31, 29],
+    "sonatas": [
+      [35]
+    ],
+    "weapons": ["Lustrous Razor", "Wildfire Mark", "Kumokiri", "Verdant Summit"],
+    "teams": [
+      [
+        { "character": "calcharo", "role": "main" },
+        { "character": "yinlin", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "calcharo", "role": "main" },
+        { "character": "sanhua", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "electro" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "dmg" },
+      { "stat": "liberationBonus" }
+    ]
+  }
 }

@@ -275,5 +275,40 @@
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["Energy Regen %"],
   "echo1": ["DEF %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "DEF %", "Energy Regen %"]
+  "echoSub": ["Crit Rate %", "Crit DMG %", "DEF %", "Energy Regen %"],
+  "recommended": {
+    "echos": [30, 58],
+    "sonatas": [
+      [5],
+      [23],
+      [35]
+    ],
+    "weapons": ["Abyss Surges", "Amity Accord", "Stonard", "Marcato"],
+    "teams": [
+      [
+        { "character": "rover", "role": "main" },
+        { "character": "yuanwu", "role": "sub" },
+        { "character": "baizhi", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "def" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "electro" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "def" },
+      { "stat": "skillBonus" },
+      { "stat": "def", "flat": true }
+    ]
+  }
 }

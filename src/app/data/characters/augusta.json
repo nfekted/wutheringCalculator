@@ -288,5 +288,45 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [95, 28],
+    "sonatas": [
+      [3, 35],
+      [3, 20],
+      [35]
+    ],
+    "weapons": ["Thunderflare Dominion", "Verdant Summit", "Ages of Harvest", "Aureate Zenith"],
+    "teams": [
+      [
+        { "character": "augusta", "role": "main" },
+        { "character": "iuno", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "augusta", "role": "main" },
+        { "character": "iuno", "role": "sub" },
+        { "character": "lynae", "role": "sub" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "electro" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "heavyBonus" },
+      { "stat": "dmg" },
+      { "stat": "energyRegen" }
+    ]
+  }
 }

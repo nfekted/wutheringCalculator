@@ -242,5 +242,53 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [31, 28, 29],
+    "sonatas": [
+      [35]
+    ],
+    "weapons": ["Verity's Handle", "Moongazer's Sigil", "Blazing Justice", "Pulsation Bracer"],
+    "teams": [
+      [
+        { "character": "xiangli-yao", "role": "main" },
+        { "character": "lynae", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ],
+      [
+        { "character": "xiangli-yao", "role": "main" },
+        { "character": "yinlin", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "xiangli-yao", "role": "main" },
+        { "character": "jianxin", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "xiangli-yao", "role": "main" },
+        { "character": "yuanwu", "role": "sub" },
+        { "character": "baizhi", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "electro" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "dmg" },
+      { "stat": "liberationBonus" }
+    ]
+  }
 }
