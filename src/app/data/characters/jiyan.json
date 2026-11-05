@@ -224,5 +224,48 @@
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["AERO DMG %", "ATK %"],
   "echo1": ["ATK %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "Heavy %", "ATK", "Energy Regen %"]
+  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "Heavy %", "ATK", "Energy Regen %"],
+  "recommended": {
+    "echos": [38, 37],
+    "sonatas": [
+      [29]
+    ],
+    "weapons": ["Verdant Summit", "Thunderflare Dominion", "Ages of Harvest", "Lustrous Razor"],
+    "teams": [
+      [
+        { "character": "jiyan", "role": "main" },
+        { "character": "iuno", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "jiyan", "role": "main" },
+        { "character": "ciaccona", "role": "sub" },
+        { "character": "rovera", "role": "sup" }
+      ],
+      [
+        { "character": "jiyan", "role": "main" },
+        { "character": "yangyang", "role": "sub" },
+        { "character": "baizhi", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "aero" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "energyRegen" },
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "heavyBonus" },
+      { "stat": "dmg" }
+    ]
+  }
 }

@@ -186,5 +186,44 @@
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["AERO DMG %", "Energy Regen %", "ATK %"],
   "echo1": ["ATK %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "Energy Regen %", "Basic %", "ATK"]
+  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "Energy Regen %", "Basic %", "ATK"],
+  "recommended": {
+    "echos": [58, 38, 62],
+    "sonatas": [
+      [23],
+      [29]
+    ],
+    "weapons": ["Emerald of Genesis", "Blazing Brilliance", "Lumingloss"],
+    "teams": [
+      [
+        { "character": "rover", "role": "main" },
+        { "character": "yangyang", "role": "sub" },
+        { "character": "baizhi", "role": "sup" }
+      ],
+      [
+        { "character": "jiyan", "role": "main" },
+        { "character": "yangyang", "role": "sub" },
+        { "character": "verina", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "aero" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "energyRegen" },
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "dmg" },
+      { "stat": "liberationBonus" }
+    ]
+  }
 }

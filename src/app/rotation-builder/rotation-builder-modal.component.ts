@@ -47,6 +47,10 @@ export class RotationBuilderModalComponent {
     .map(section => ({ section, name: this.character().data[section].name, hits: this.character().data[section].hits.map((hit, index) => ({ index, name: hit.name })) }))
     .filter(group => group.hits.length);
 
+  /** Ways of casting the Echo Skill of the main Echo; empty without one, or when it only buffs */
+  mainEcho = this.character().mainEcho;
+  echoOptions = (this.mainEcho?.skill.hits ?? []).map((hit, index) => ({ index, name: hit.name }));
+
   rows = computed<Row[]>(() => {
     const all = (section: SectionKey) => this.character().data[section].hits.map((_, index): RotationStep => ({ section, index }));
     return [
@@ -61,16 +65,18 @@ export class RotationBuilderModalComponent {
 
   private row(step: RotationStep, position: number): Row {
     const character = this.character();
-    const hit = character.data[step.section].hits[step.index];
-    const kind = character.mode > 0 && hit.altKind ? hit.altKind : hit.kind;
+    const hit = character.stepHit(step);
+    const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
     const { value, type } = character.rotationHit(step);
-    return { step, position, name: hit.name, color: KIND_COLORS[kind] ?? '', damage: type === 'damage', value };
+    // An Echo Skill step without a main Echo (or with one that only buffs) is kept, worth 0
+    const name = hit?.name ?? this.mainEcho?.name ?? '—';
+    return { step, position, name, color: kind ? KIND_COLORS[kind] ?? '' : '', damage: type === 'damage', value };
   }
 
   protected add() {
     if (!this.picked) return;
     const [section, index] = this.picked.split(':');
-    this.update([...this.middle(), { section: section as SectionKey, index: +index }]);
+    this.update([...this.middle(), { section: section as RotationStep['section'], index: +index }]);
     this.picked = '';
   }
 

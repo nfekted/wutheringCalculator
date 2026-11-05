@@ -209,5 +209,46 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [115, 59],
+    "sonatas": [
+      [36],
+      [26]
+    ],
+    "weapons": ["Bloodpact's Pledge"],
+    "teams": [
+      [
+        { "character": "cartethyia", "role": "main" },
+        { "character": "sanhua", "role": "sub" },
+        { "character": "rovera", "role": "sup" }
+      ],
+      [
+        { "character": "jiyan", "role": "main" },
+        { "character": "ciaccona", "role": "sub" },
+        { "character": "rovera", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "aero" },
+        { "stat": "energyRegen" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" },
+        { "stat": "healingBonus" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "skillBonus" },
+      { "stat": "dmg" },
+      { "stat": "energyRegen" }
+    ]
+  }
 }

@@ -215,5 +215,49 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [91, 62],
+    "sonatas": [
+      [19, 29],
+      [23]
+    ],
+    "weapons": ["Emerald Sentence", "Emerald of Genesis", "Red Spring", "Lumingloss"],
+    "teams": [
+      [
+        { "character": "sigrika", "role": "main" },
+        { "character": "qiuyuan", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "galbrena", "role": "main" },
+        { "character": "qiuyuan", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "phrolova", "role": "main" },
+        { "character": "cantarella", "role": "sub" },
+        { "character": "qiuyuan", "role": "sub" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "aero" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "heavyBonus" },
+      { "stat": "dmg" }
+    ]
+  }
 }

@@ -195,5 +195,49 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [115, 62],
+    "sonatas": [
+      [13],
+      [23]
+    ],
+    "weapons": ["Woodland Aria", "Phasic Homogenizer", "Static Mist", "Lux & Umbra"],
+    "teams": [
+      [
+        { "character": "cartethyia", "role": "main" },
+        { "character": "ciaccona", "role": "sub" },
+        { "character": "chisa", "role": "sup" }
+      ],
+      [
+        { "character": "qingxiao", "role": "main" },
+        { "character": "denia", "role": "sub" },
+        { "character": "ciaccona", "role": "sub" }
+      ],
+      [
+        { "character": "aalto", "role": "main" },
+        { "character": "ciaccona", "role": "sub" },
+        { "character": "rovera", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "aero" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "liberationBonus" },
+      { "stat": "dmg" }
+    ]
+  }
 }

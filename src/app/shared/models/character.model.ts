@@ -1,6 +1,6 @@
-import { CharacterResults, Levels, Stats, calculateResults, emptyResults } from "../../core/damage-engine";
-import { CharacterData, RotationStep } from "../../data/character-data.model";
-import { EchoSlot } from "../../data/echos/echo-data.model";
+import { CharacterResults, HitResult, Levels, Stats, calculateEchoResults, calculateResults, emptyResults } from "../../core/damage-engine";
+import { CharacterData, Hit, RotationStep } from "../../data/character-data.model";
+import { EchoData, EchoSlot } from "../../data/echos/echo-data.model";
 import { getEcho } from "../../data/echos";
 import { echoModifier, finalStats, sumModifiers } from "../../core/stat-engine";
 import { CharacterSave } from "./character-save.model";
@@ -41,6 +41,8 @@ export class Character implements Stats {
 
     levels: Levels = { basic: 1, skill: 1, liberation: 1, intro: 1, forte: 1 };
     results: CharacterResults = emptyResults();
+    /** Hits of the Echo Skill of the main Echo, one per way of casting it; empty without a main Echo */
+    echoResults: HitResult[] = [];
 
     constructor(index: number, data: CharacterData, load?: CharacterSave) {
         this.index = index;
@@ -92,6 +94,19 @@ export class Character implements Stats {
 
     calculate() {
         this.results = calculateResults(this.data, this, this.levels, this.mode);
+        this.echoResults = calculateEchoResults(this.mainEcho?.skill.hits ?? [], this);
+    }
+
+    /** Echo of the main slot (the first one) */
+    get mainEcho(): EchoData | undefined {
+        return this.echoSet[0] ? getEcho(this.echoSet[0].echo) : undefined;
+    }
+
+    /** Hit of a rotation step; an Echo Skill option the main Echo does not have falls back to its first one */
+    stepHit(step: RotationStep): Hit | undefined {
+        if (step.section !== 'echo') return this.data[step.section].hits[step.index];
+        const hits = this.mainEcho?.skill.hits ?? [];
+        return hits[step.index] ?? hits[0];
     }
 
     /** Whether the active mode is the one with Echo damage */
@@ -118,11 +133,12 @@ export class Character implements Stats {
 
     /**
      * What a rotation step is worth: the expected value against a common enemy, mixing the hits without and with a crit by the crit rate.
-     * Healing and shield hits are not mitigated and never crit. Steps without valid data count as 0
+     * Healing and shield hits are not mitigated and never crit. Steps without valid data (or an Echo Skill without a damage main Echo) count as 0
      */
     rotationHit(step: RotationStep): { value: number; type: 'damage' | 'heal' | 'shield' } {
-        const hit = this.data[step.section].hits[step.index];
-        const result = this.results[step.section][step.index];
+        const hit = this.stepHit(step);
+        const result = step.section !== 'echo' ? this.results[step.section][step.index]
+            : this.echoResults[step.index] ?? this.echoResults[0];
         const kind = this.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
         const type = kind === 'heal' || kind === 'shield' ? kind : 'damage';
         if (!result) return { value: 0, type };

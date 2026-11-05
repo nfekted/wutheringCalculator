@@ -116,7 +116,8 @@ export class CharacterComponent {
   }
 
   protected openEchoComparator() {
-    this.dialog.open(EchoComparatorModalComponent, { data: this.character(), backdropClass: 'app-backdrop', ariaLabelledBy: 'echo-title' });
+    const ref = this.dialog.open(EchoComparatorModalComponent, { data: this.character(), backdropClass: 'app-backdrop', ariaLabelledBy: 'echo-title' });
+    ref.closed.subscribe(() => this.changed.emit());
   }
 
   protected openEchoSet() {

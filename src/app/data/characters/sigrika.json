@@ -244,5 +244,50 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [160, 38, 37],
+    "sonatas": [
+      [31],
+      [29]
+    ],
+    "weapons": ["Solsworn Ciphers", "Blazing Justice", "Pulsation Bracer", "Abyss Surges"],
+    "teams": [
+      [
+        { "character": "sigrika", "role": "main" },
+        { "character": "qiuyuan", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "sigrika", "role": "main" },
+        { "character": "phrolova", "role": "main" },
+        { "character": "qiuyuan", "role": "sub" }
+      ],
+      [
+        { "character": "sigrika", "role": "main" },
+        { "character": "aalto", "role": "sub" },
+        { "character": "verina", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "energyRegen" },
+        { "stat": "dmg" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cDmg" },
+      { "stat": "cChance" },
+      { "stat": "energyRegen" },
+      { "stat": "dmg" },
+      { "stat": "dmg", "flat": true }
+    ]
+  }
 }

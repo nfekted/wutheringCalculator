@@ -1,3 +1,5 @@
+import { EchoAttribute, EchoCost } from './echos/echo-data.model';
+
 export type SectionKey = 'basic' | 'skill' | 'liberation' | 'intro' | 'outro' | 'forte';
 
 /** What a hit is; decides which damage bonus applies to it */
@@ -23,7 +25,7 @@ export interface Hit {
   parts: HitPart[];
   /** Basic attack that belongs to the combo chain (Stage 1, Stage 2...) */
   combo?: boolean;
-  /** Element of the damage (Echo hits: aero, glacio... or physical); without it, the element of the character */
+  /** Element of the damage of an Echo hit (aero, glacio... or physical), only as information: no elemental bonus applies to it */
   element?: string;
 }
 
@@ -33,9 +35,25 @@ export interface SkillData {
 }
 
 export interface RotationStep {
-  section: SectionKey;
-  /** Position of the hit inside the section */
+  /** 'echo' is the Echo Skill of the main Echo of the moment, whichever it is */
+  section: SectionKey | 'echo';
+  /** Position of the hit inside the section; for 'echo', the chosen way of casting it */
   index: number;
+}
+
+/** What is recommended for a character; every list goes from the best to the worst */
+export interface CharacterRecommendation {
+  /** Ids of the Echos for the main slot */
+  echos: number[];
+  /** Ids of the Sonatas; a combination (e.g. 3 + 2 pieces) has two */
+  sonatas: number[][];
+  /** Weapon names, kept until there is weapon data */
+  weapons: string[];
+  /** Teams, each member with its role (main: main DPS, sub: sub-DPS, sup: support), kept for later use */
+  teams: { character: string; role: 'main' | 'sub' | 'sup' }[][];
+  /** Main attributes of each cost; empty when no Echo of that cost is recommended */
+  main: Record<EchoCost, EchoAttribute[]>;
+  subs: EchoAttribute[];
 }
 
 export interface CharacterData {
@@ -75,4 +93,5 @@ export interface CharacterData {
   echo3: string[];
   echo1: string[];
   echoSub: string[];
+  recommended?: CharacterRecommendation;
 }

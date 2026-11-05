@@ -9,8 +9,22 @@ import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
 import { EchoEditorComponent } from './echo-editor.component';
 import { attributeLabel } from './echo-attribute';
 
-const MAX_COST = 12;
-const COSTS = [4, 3, 1] as const;
+export const MAX_COST = 12;
+export const COSTS = [4, 3, 1] as const;
+
+/** Sonatas the character uses first, then every other one by name */
+export function sonataGroups(characterId: string) {
+  const byName = [...SONATAS].sort((a, b) => a.name.localeCompare(b.name));
+  return [
+    { title: 'char.echoSet.recommended', sonatas: byName.filter(s => s.characters?.includes(characterId)) },
+    { title: 'char.echoSet.allSonatas', sonatas: byName.filter(s => !s.characters?.includes(characterId)) },
+  ].filter(group => group.sonatas.length);
+}
+
+/** Total cost of a set without one slot (-1: with all of them) */
+export function costWithout(slots: (EchoSlot | null)[], index: number): number {
+  return slots.reduce((sum, slot, i) => sum + (slot && i !== index ? getEcho(slot.echo)?.cost ?? 0 : 0), 0);
+}
 
 /** What the slot being filled or edited shows: the list of Sonatas, the Echos of one, or the editor */
 type View =
@@ -37,23 +51,15 @@ export class EchoSetModalComponent {
   protected readonly getEcho = getEcho;
   protected readonly getSonata = getSonata;
 
-  totalCost = computed(() => this.costWithout(-1));
+  totalCost = computed(() => costWithout(this.slots(), -1));
 
-  /** Sonatas the character uses first, then every other one by name */
-  sonataGroups = (() => {
-    const id = this.character().data.id;
-    const byName = [...SONATAS].sort((a, b) => a.name.localeCompare(b.name));
-    return [
-      { title: 'char.echoSet.recommended', sonatas: byName.filter(s => s.characters?.includes(id)) },
-      { title: 'char.echoSet.allSonatas', sonatas: byName.filter(s => !s.characters?.includes(id)) },
-    ].filter(group => group.sonatas.length);
-  })();
+  sonataGroups = sonataGroups(this.character().data.id);
 
   /** Echos of the Sonata being picked, by cost; the ones that would take the total over the limit are blocked */
   echoGroups = computed(() => {
     const view = this.view();
     if (view?.step !== 'echo') return [];
-    const free = MAX_COST - this.costWithout(view.slot);
+    const free = MAX_COST - costWithout(this.slots(), view.slot);
     return COSTS.map(cost => ({
       cost,
       echos: ECHOS.filter(e => e.cost === cost && e.sonatas.includes(view.sonata))
@@ -120,11 +126,6 @@ export class EchoSetModalComponent {
 
   protected remove(index: number) {
     this.update(this.slots().map((s, i) => i === index ? null : s));
-  }
-
-  /** Total cost of the set without one slot (-1: with all of them) */
-  private costWithout(index: number): number {
-    return this.slots().reduce((sum, slot, i) => sum + (slot && i !== index ? getEcho(slot.echo)?.cost ?? 0 : 0), 0);
   }
 
   private update(slots: (EchoSlot | null)[]) {

@@ -290,5 +290,44 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [173, 38],
+    "sonatas": [
+      [16],
+      [29]
+    ],
+    "weapons": ["Glint of Clouds", "Red Spring", "Emerald Sentence", "Emerald of Genesis"],
+    "teams": [
+      [
+        { "character": "qingxiao", "role": "main" },
+        { "character": "denia", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ],
+      [
+        { "character": "qingxiao", "role": "main" },
+        { "character": "sanhua", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "aero" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "dmg" },
+      { "stat": "dmg", "flat": true }
+    ]
+  }
 }

@@ -68,14 +68,25 @@ export function calculateResults(data: CharacterData, stats: Stats, levels: Leve
   for (const key of SECTIONS) {
     // The outro skill has no level
     const level = key === 'outro' ? 1 : levels[key];
-    results[key] = data[key].hits.map(hit => calculateHit(hit, mode > 0 && hit.altKind ? hit.altKind : hit.kind, stats, level));
+    results[key] = data[key].hits.map(hit => {
+      const kind = mode > 0 && hit.altKind ? hit.altKind : hit.kind;
+      const elemental = kind === 'heal' || kind === 'shield' ? 0 : stats.elementalBonus;
+      return calculateHit(hit, stats, level, 100 + elemental + bonusOf(stats, kind));
+    });
   }
   return results;
 }
 
-function calculateHit(hit: Hit, kind: HitKind, stats: Stats, level: number): HitResult {
-  const elemental = kind === 'heal' || kind === 'shield' ? 0 : stats.elementalBonus;
-  const bonus = 100 + elemental + bonusOf(stats, kind);
+/**
+ * Hits of an Echo Skill: the Echo only takes the ATK, HP, DEF and crit of the character,
+ * none of its damage bonuses (not even the elemental one or `echoBonus`)
+ */
+export function calculateEchoResults(hits: Hit[], stats: Stats): HitResult[] {
+  return hits.map(hit => calculateHit(hit, stats, 1, 100));
+}
+
+/** `bonus` is the total damage bonus in % (100 is none) */
+function calculateHit(hit: Hit, stats: Stats, level: number, bonus: number): HitResult {
 
   const parts = hit.parts.map(part => {
     // A skill without levels has a single value

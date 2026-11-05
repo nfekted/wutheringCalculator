@@ -335,5 +335,49 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [96, 62],
+    "sonatas": [
+      [3, 29],
+      [23]
+    ],
+    "weapons": ["Moongazer's Sigil", "Verity's Handle", "Blazing Justice", "Solsworn Ciphers"],
+    "teams": [
+      [
+        { "character": "jingran", "role": "main" },
+        { "character": "iuno", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "augusta", "role": "main" },
+        { "character": "iuno", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "iuno", "role": "main" },
+        { "character": "lynae", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "aero" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "liberationBonus" },
+      { "stat": "dmg" },
+      { "stat": "energyRegen" }
+    ]
+  }
 }

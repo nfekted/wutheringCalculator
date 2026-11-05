@@ -1,22 +1,16 @@
 import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
-import { DecimalPipe, NgTemplateOutlet } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { Stats } from '../core/damage-engine';
+import { StatModifier, echoModifier } from '../core/stat-engine';
+import { EchoAttribute, EchoData, EchoSlot } from '../data/echos/echo-data.model';
+import { ECHOS, getEcho, getSonata } from '../data/echos';
+import { EchoEditorComponent } from '../echo-set/echo-editor.component';
+import { COSTS, MAX_COST, costWithout, sonataGroups } from '../echo-set/echo-set-modal.component';
 import { Character } from '../shared/models/character.model';
-import { Echo } from '../shared/models/echo.model';
 import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
-
-/** What an Echo adds to the attributes */
-interface EchoEffect {
-  /** Fixed ATK, HP and DEF */
-  flat: { hp: number; dmg: number; def: number };
-  /** ATK %, HP % and DEF %, applied over the attribute with the fixed values */
-  pct: { hp: number; dmg: number; def: number };
-  /** Attributes that just add up */
-  add: Partial<Record<keyof Stats, number>>;
-}
 
 /** Attributes of the summary, in display order */
 const STAT_ROWS: Array<{ key: keyof Stats; prefix?: string; label: string; visible?: (c: Character) => boolean }> = [
@@ -34,11 +28,16 @@ const STAT_ROWS: Array<{ key: keyof Stats; prefix?: string; label: string; visib
   { key: 'energyRegen', label: 'Energy Regen %', visible: c => c.erScale },
 ];
 
-/** Sub attributes that add up straight to an attribute of the character */
-const SUB_ADDS: Record<string, keyof Stats> = {
-  'Crit Rate %': 'cChance', 'Crit DMG %': 'cDmg', 'Basic %': 'basicBonus', 'Heavy %': 'heavyBonus',
-  'Skill %': 'skillBonus', 'Liberation %': 'liberationBonus', 'Energy Regen %': 'energyRegen',
+/** Names the recommended attributes of the characters use (`echo1`, `echoSub`...) until they get the attribute keys (etapa 8) */
+const RECOMMENDED_NAMES: Record<string, string> = {
+  hp: 'HP %', dmg: 'ATK %', def: 'DEF %', cChance: 'Crit Rate %', cDmg: 'Crit DMG %', healingBonus: 'Healing %',
+  energyRegen: 'Energy Regen %', basicBonus: 'Basic %', heavyBonus: 'Heavy %', skillBonus: 'Skill %', liberationBonus: 'Liberation %',
 };
+
+function recommendedName(attribute: EchoAttribute): string {
+  if (attribute.stat === 'elementalBonus') return `${attribute.element?.toUpperCase()} DMG %`;
+  return attribute.flat ? RECOMMENDED_NAMES[attribute.stat].replace(' %', '') : RECOMMENDED_NAMES[attribute.stat];
+}
 
 interface HitLine {
   name: string;
@@ -53,7 +52,7 @@ interface HitLine {
     templateUrl: './echo-comparator-modal.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
     host: { class: 'block w-[min(90rem,calc(100vw-2rem))]' },
-    imports: [FormsModule, DecimalPipe, NgTemplateOutlet, TranslocoPipe, DialogPanelComponent]
+    imports: [FormsModule, DecimalPipe, TranslocoPipe, DialogPanelComponent, EchoEditorComponent]
 })
 export class EchoComparatorModalComponent {
 
@@ -61,10 +60,21 @@ export class EchoComparatorModalComponent {
 
   character = signal(inject<Character>(DIALOG_DATA)).asReadonly();
 
-  /** Echo the character uses now (already counted in the typed attributes) and the one to try instead */
-  current: Echo = new Echo();
-  next: Echo = new Echo();
+  protected readonly getEcho = getEcho;
+  protected readonly getSonata = getSonata;
+  protected readonly maxCost = MAX_COST;
+  sonataGroups = sonataGroups(this.character().data.id);
 
+  /** Slot being swapped (null until one is picked) and the Echo built to go in it */
+  slot: number | null = null;
+  next: EchoSlot | null = null;
+  /** Sonata and Echo picked for the new Echo; the editor then builds `next` */
+  nextSonata: number | null = null;
+  nextEcho: EchoData | null = null;
+
+  /** Recommended attributes of the current and the new Echo */
+  currentAttr: string[] = [];
+  nextAttr: string[] = [];
   text: string = '';
   /** Heal or damage rotation; local so the real character is not changed */
   showHealing = this.character().showHealing;
@@ -80,6 +90,44 @@ export class EchoComparatorModalComponent {
     this.calculate();
   }
 
+  /** Registered Echos, with the position of their slot */
+  protected filled() {
+    return this.character().echoSet.flatMap((slot, index) => slot ? [{ index, slot }] : []);
+  }
+
+  /** Echos of the picked Sonata, by cost */
+  protected echoGroups() {
+    return COSTS.map(cost => ({
+      cost,
+      echos: ECHOS.filter(e => e.cost === cost && this.nextSonata !== null && e.sonatas.includes(this.nextSonata))
+        .sort((a, b) => a.name.localeCompare(b.name)),
+    })).filter(group => group.echos.length);
+  }
+
+  /** Whether both Echos are known, so the comparison can run */
+  protected get ready(): boolean {
+    return this.slot !== null && this.next !== null;
+  }
+
+  /** The swap would take the total cost of the set over the limit */
+  protected get overCost(): boolean {
+    return this.slot !== null && !!this.nextEcho && costWithout(this.character().echoSet, this.slot) + this.nextEcho.cost > MAX_COST;
+  }
+
+  protected pickSonata() {
+    this.nextEcho = null;
+    this.setNext(null);
+  }
+
+  protected pickEcho() {
+    this.setNext(null);
+  }
+
+  protected setNext(slot: EchoSlot | null) {
+    this.next = slot;
+    this.calculate();
+  }
+
   protected recommended() {
     const data = this.character().data;
     return [
@@ -91,30 +139,40 @@ export class EchoComparatorModalComponent {
   }
 
   calculate() {
-    // The typed attributes, with 1000 standing in for empty ATK/HP/DEF
+    const current = this.slot !== null ? this.character().echoSet[this.slot] : null;
     const before = this.character().clone();
-    before.dmg ||= 1000;
-    before.def ||= 1000;
-    before.hp ||= 1000;
+    if (!before.hasBase) {
+      // The typed attributes, with 1000 standing in for empty ATK/HP/DEF
+      before.dmg ||= 1000;
+      before.def ||= 1000;
+      before.hp ||= 1000;
+    }
     before.calculate();
 
-    // The same character with the current Echo taken out and the new one put in
+    // The same character with the new Echo in the slot; the Echo Skill steps follow the new main Echo
     const after = before.clone();
-    this.applyEffect(after, this.effectOf(this.current, after), -1);
-    this.applyEffect(after, this.effectOf(this.next, after), 1);
+    if (this.ready) {
+      after.echoSet[this.slot!] = this.next;
+      if (after.hasBase) {
+        after.applyEchoSet();
+      } else {
+        this.applyEffect(after, echoModifier(current!, after.data.type), -1);
+        this.applyEffect(after, echoModifier(this.next!, after.data.type), 1);
+      }
+    }
     after.calculate();
 
     this.before = before;
     this.after = after;
     this.simulate();
 
-    this.echoScore(this.current);
-    this.echoScore(this.next);
+    this.currentAttr = this.recommendedOf(current);
+    this.nextAttr = this.recommendedOf(this.next);
 
     const type = this.showHealing ? this.transloco.translate('char.heal') : 'DMG';
     const char = this.character().name;
-    const attr = this.next.commonAttr.length;
-    const attr2 = this.current.commonAttr.length;
+    const attr = this.nextAttr.length;
+    const attr2 = this.currentAttr.length;
 
     if (this.totalNext == this.totalCurrent) {
       this.text = this.transloco.translate('char.echo.same', { type });
@@ -134,46 +192,20 @@ export class EchoComparatorModalComponent {
     }
   }
 
-  /** What an Echo adds. The percentages of the main attributes take the elemental DMG of the character into account */
-  private effectOf(echo: Echo, char: Character): EchoEffect {
-    const effect: EchoEffect = { flat: { hp: 0, dmg: 0, def: 0 }, pct: { hp: 0, dmg: 0, def: 0 }, add: {} };
-    const add = (key: keyof Stats, value: number) => effect.add[key] = (effect.add[key] ?? 0) + value;
-
-    for (const index of [echo.main1Index, echo.main2Index]) {
-      const value = echo.mainValues[echo.type][index];
-      const attr = echo.mainStats[echo.type][index];
-      if (index == 0) {
-        if (echo.type == 0) effect.flat.hp += value;
-        else effect.flat.dmg += value;
-      } else if (index == 1) effect.pct.hp += value;
-      else if (index == 2) effect.pct.dmg += value;
-      else if (index == 3) effect.pct.def += value;
-      else if (index == 4) add('energyRegen', value);
-      else if (echo.type == 1) {
-        if (attr.replace(' DMG %', '').toLowerCase() == char.data.type) add('elementalBonus', value);
-      } else if (echo.type == 2) {
-        if (index == 5) add('cChance', value);
-        if (index == 6) add('cDmg', value);
-        if (index == 7) add('healingBonus', value);
-      }
-    }
-
-    echo.currentSubs.forEach((attr, i) => {
-      const value = +echo.currentSubsValue[i] || 0;
-      if (attr == 'HP') effect.flat.hp += value;
-      else if (attr == 'DEF') effect.flat.def += value;
-      else if (attr == 'ATK') effect.flat.dmg += value;
-      else if (attr == 'HP %') effect.pct.hp += value;
-      else if (attr == 'DEF %') effect.pct.def += value;
-      else if (attr == 'ATK %') effect.pct.dmg += value;
-      else if (attr && SUB_ADDS[attr]) add(SUB_ADDS[attr], value);
-    });
-
-    return effect;
+  /** Puts the new Echo in the slot, as the swap in the game; the character is saved when the window closes */
+  protected swap() {
+    if (!this.ready || this.overCost) return;
+    const character = this.character();
+    character.echoSet = character.echoSet.map((slot, i) => i === this.slot ? this.next : slot);
+    character.applyEchoSet();
+    character.calculate();
+    this.nextSonata = null;
+    this.nextEcho = null;
+    this.setNext(null);
   }
 
-  /** Puts the effect of an Echo in (1) or takes it out (-1): HP, ATK and DEF are (value + fixed) * (1 + %), so taking out is the inverse of it */
-  private applyEffect(char: Character, effect: EchoEffect, sign: 1 | -1) {
+  /** Without the base: puts the effect of an Echo in (1) or takes it out (-1): HP, ATK and DEF are (value + fixed) * (1 + %), so taking out is the inverse of it */
+  private applyEffect(char: Character, effect: StatModifier, sign: 1 | -1) {
     for (const key of ['hp', 'dmg', 'def'] as const) {
       const factor = 1 + effect.pct[key] / 100;
       char[key] = Math.max(0, Math.round(sign == 1 ? (char[key] + effect.flat[key]) * factor : char[key] / factor - effect.flat[key]));
@@ -183,20 +215,18 @@ export class EchoComparatorModalComponent {
     }
   }
 
-  private echoScore(echo: Echo): Echo {
-    echo.commonAttr = [];
-
-    const attr1 = echo.mainStats[echo.type][echo.main1Index];
-    const attr2 = echo.mainStats[echo.type][echo.main2Index];
-    const recommended = [this.character().data.echo1, this.character().data.echo3, this.character().data.echo4][echo.type];
-    if (recommended.indexOf(attr1) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr1}`);
-    if (recommended.indexOf(attr2) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.main')}: ${attr2}`);
-
-    for (const attr of echo.currentSubs) {
-      if (this.character().data.echoSub.indexOf(attr) > -1) echo.commonAttr.push(`${this.transloco.translate('char.echo.sub')}: ${attr}`);
-    }
-
-    return echo;
+  /** Recommended attributes an Echo has: its main attributes against the list of its cost, its substats against the substat list */
+  private recommendedOf(slot: EchoSlot | null): string[] {
+    const echo = slot && getEcho(slot.echo);
+    if (!echo) return [];
+    const data = this.character().data;
+    const mainList = { 1: data.echo1, 3: data.echo3, 4: data.echo4 }[echo.cost];
+    const main = this.transloco.translate('char.echo.main');
+    const sub = this.transloco.translate('char.echo.sub');
+    return [
+      ...[slot.main].map(recommendedName).filter(name => mainList.includes(name)).map(name => `${main}: ${name}`),
+      ...slot.subs.map(recommendedName).filter(name => data.echoSub.includes(name)).map(name => `${sub}: ${name}`),
+    ];
   }
 
   /** Value of every step of the Rotation build with the attributes before and after the swap */
@@ -205,7 +235,7 @@ export class EchoComparatorModalComponent {
     this.lines = this.before.rotationSteps().map(step => {
       const current = this.before.rotationHit(step);
       return {
-        name: this.before.data[step.section].hits[step.index]?.name ?? '',
+        name: this.before.stepHit(step)?.name ?? this.after.stepHit(step)?.name ?? '',
         current: current.value,
         next: this.after.rotationHit(step).value,
         counted: current.type == wanted,

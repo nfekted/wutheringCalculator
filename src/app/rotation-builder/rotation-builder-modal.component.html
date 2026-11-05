@@ -14,6 +14,13 @@
             }
           </optgroup>
         }
+        <optgroup [label]="('char.rotationBuild.echoSkill' | transloco) + ' · ' + (mainEcho?.name ?? ('char.rotationBuild.noMainEcho' | transloco))">
+          @for (option of echoOptions; track option.index) {
+            <option [value]="'echo:' + option.index">{{ option.name }}</option>
+          } @empty {
+            <option value="" disabled>{{ (mainEcho ? 'char.rotationBuild.echoNoDamage' : 'char.rotationBuild.noMainEcho') | transloco }}</option>
+          }
+        </optgroup>
       </select>
     </label>
     <button type="button" class="ui-btn ui-btn-primary" [disabled]="!picked" (click)="add()">
@@ -34,7 +41,7 @@
       @for (row of rows(); track $index; let i = $index) {
         <tr>
           <td class="w-8 text-mute">{{ i + 1 }}</td>
-          <td class="w-28 text-xs text-mute">{{ 'char.' + row.step.section | transloco }}</td>
+          <td class="w-28 text-xs text-mute">{{ (row.step.section === 'echo' ? 'char.rotationBuild.echoSkill' : 'char.' + row.step.section) | transloco }}</td>
           <td [class]="'font-medium ' + row.color">{{ row.name }}</td>
           <td class="text-right tabular-nums" [class.text-heal]="!row.damage">{{ row.value | number: '1.0-0' }}</td>
           <td class="w-28 text-right">
