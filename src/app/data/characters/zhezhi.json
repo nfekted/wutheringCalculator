@@ -189,5 +189,44 @@
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["GLACIO DMG %", "ATK %"],
   "echo1": ["ATK %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "Energy Regen %", "ATK %", "Skill %", "ATK", "Basic %"]
+  "echoSub": ["Crit Rate %", "Crit DMG %", "Energy Regen %", "ATK %", "Skill %", "ATK", "Basic %"],
+  "recommended": {
+    "echos": [124, 123, 62],
+    "sonatas": [
+      [5],
+      [23]
+    ],
+    "weapons": ["Rime-Draped Sprouts", "Stringmaster", "Whispers of Sirens", "Cosmic Ripples"],
+    "teams": [
+      [
+        { "character": "carlotta", "role": "main" },
+        { "character": "zhezhi", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "jinhsi", "role": "main" },
+        { "character": "zhezhi", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "glacio" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "basicBonus" },
+      { "stat": "energyRegen" },
+      { "stat": "dmg" }
+    ]
+  }
 }

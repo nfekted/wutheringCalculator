@@ -219,5 +219,49 @@
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["GLACIO DMG %", "ATK %"],
   "echo1": ["ATK %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "Skill %", "ATK"]
+  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "Skill %", "ATK"],
+  "recommended": {
+    "echos": [134, 1],
+    "sonatas": [
+      [12],
+      [11]
+    ],
+    "weapons": ["The Last Dance", "Phasic Homogenizer", "Static Mist", "Thunderbolt"],
+    "teams": [
+      [
+        { "character": "carlotta", "role": "main" },
+        { "character": "zhezhi", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "carlotta", "role": "main" },
+        { "character": "lynae", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ],
+      [
+        { "character": "carlotta", "role": "main" },
+        { "character": "lumi", "role": "sub" },
+        { "character": "verina", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "glacio" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "skillBonus" },
+      { "stat": "energyRegen" },
+      { "stat": "dmg" }
+    ]
+  }
 }

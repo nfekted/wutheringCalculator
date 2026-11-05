@@ -212,5 +212,35 @@
   "echo4": ["Healing %"],
   "echo3": ["GLACIO DMG %", "ATK %"],
   "echo1": ["ATK %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "Skill %", "ATK %", "ATK"]
+  "echoSub": ["Crit Rate %", "Crit DMG %", "Skill %", "ATK %", "ATK"],
+  "recommended": {
+    "echos": [58, 59],
+    "sonatas": [
+      [26]
+    ],
+    "weapons": ["Abyss Surges", "Celestial Spiral", "Hollow Mirage"],
+    "teams": [
+      [
+        { "character": "jinhsi", "role": "main" },
+        { "character": "zhezhi", "role": "sub" },
+        { "character": "youhu", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "dmg" }
+      ],
+      "4": [
+        { "stat": "healingBonus" }
+      ]
+    },
+    "subs": [
+      { "stat": "energyRegen" },
+      { "stat": "dmg" },
+      { "stat": "dmg", "flat": true }
+    ]
+  }
 }

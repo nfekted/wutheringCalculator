@@ -250,5 +250,48 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [166, 59, 58],
+    "sonatas": [
+      [30],
+      [26]
+    ],
+    "weapons": ["Firstlight's Herald", "Stellar Symphony", "Variation", "Call of the Abyss"],
+    "teams": [
+      [
+        { "character": "yangyang-xuanling", "role": "main" },
+        { "character": "chisa", "role": "sub" },
+        { "character": "suisui", "role": "sup" }
+      ],
+      [
+        { "character": "hiyuki", "role": "main" },
+        { "character": "lucilla", "role": "sub" },
+        { "character": "suisui", "role": "sup" }
+      ],
+      [
+        { "character": "hsin", "role": "main" },
+        { "character": "rovere", "role": "sub" },
+        { "character": "suisui", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "hp" }
+      ],
+      "3": [
+        { "stat": "energyRegen" }
+      ],
+      "4": [
+        { "stat": "healingBonus" }
+      ]
+    },
+    "subs": [
+      { "stat": "energyRegen" },
+      { "stat": "hp" },
+      { "stat": "hp", "flat": true },
+      { "stat": "cDmg" },
+      { "stat": "cChance" }
+    ]
+  }
 }

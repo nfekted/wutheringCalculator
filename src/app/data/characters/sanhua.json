@@ -173,5 +173,48 @@
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["GLACIO DMG %", "ATK %"],
   "echo1": ["ATK %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "Liberation %", "Skill %", "Energy Regen %"]
+  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "Liberation %", "Skill %", "Energy Regen %"],
+  "recommended": {
+    "echos": [62],
+    "sonatas": [
+      [23]
+    ],
+    "weapons": ["Emerald of Genesis", "Overture", "Commando of Conviction"],
+    "teams": [
+      [
+        { "character": "suoming", "role": "main" },
+        { "character": "sanhua", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "luuk", "role": "main" },
+        { "character": "sanhua", "role": "sub" },
+        { "character": "mornye", "role": "sup" }
+      ],
+      [
+        { "character": "encore", "role": "main" },
+        { "character": "sanhua", "role": "sub" },
+        { "character": "verina", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "glacio" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "liberationBonus" },
+      { "stat": "dmg" }
+    ]
+  }
 }
