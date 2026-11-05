@@ -341,5 +341,53 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [79],
+    "sonatas": [
+      [32, 15]
+    ],
+    "weapons": ["Kumokiri", "Wildfire Mark", "Lustrous Razor", "Autumntrace"],
+    "teams": [
+      [
+        { "character": "yangyang-xuanling", "role": "main" },
+        { "character": "chisa", "role": "sub" },
+        { "character": "suisui", "role": "sup" }
+      ],
+      [
+        { "character": "hiyuki", "role": "main" },
+        { "character": "chisa", "role": "sub" },
+        { "character": "suisui", "role": "sup" }
+      ],
+      [
+        { "character": "hiyuki", "role": "main" },
+        { "character": "chisa", "role": "sup" },
+        { "character": "lucilla", "role": "sub" }
+      ],
+      [
+        { "character": "aemeath", "role": "main" },
+        { "character": "denia", "role": "sub" },
+        { "character": "chisa", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "havoc" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "liberationBonus" },
+      { "stat": "dmg" }
+    ]
+  }
 }

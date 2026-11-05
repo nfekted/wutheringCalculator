@@ -167,5 +167,44 @@
   "echo4": [],
   "echo3": [],
   "echo1": [],
-  "echoSub": []
+  "echoSub": [],
+  "recommended": {
+    "echos": [131, 130, 62],
+    "sonatas": [
+      [21],
+      [23]
+    ],
+    "weapons": ["Tragicomedy", "Blazing Justice", "Verity's Handle", "Abyss Surges"],
+    "teams": [
+      [
+        { "character": "camellya", "role": "main" },
+        { "character": "roccia", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "phrolova", "role": "main" },
+        { "character": "cantarella", "role": "sub" },
+        { "character": "roccia", "role": "sub" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "havoc" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "heavyBonus" },
+      { "stat": "dmg" }
+    ]
+  }
 }

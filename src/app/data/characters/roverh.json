@@ -246,5 +246,43 @@
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["AERO DMG %", "ATK %"],
   "echo1": ["ATK %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "ATK", "Skill %", "Liberation %"]
+  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "ATK", "Skill %", "Liberation %"],
+  "recommended": {
+    "echos": [55],
+    "sonatas": [
+      [15]
+    ],
+    "weapons": ["Emerald of Genesis", "Commando of Conviction", "Lumingloss"],
+    "teams": [
+      [
+        { "character": "roverh", "role": "main" },
+        { "character": "roccia", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ],
+      [
+        { "character": "roverh", "role": "main" },
+        { "character": "sanhua", "role": "sub" },
+        { "character": "baizhi", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "dmg" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "havoc" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "dmg" },
+      { "stat": "basicBonus" }
+    ]
+  }
 }

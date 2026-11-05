@@ -181,5 +181,38 @@
   "echo4": ["Crit Rate %", "Crit DMG %"],
   "echo3": ["Energy Regen %", "HAVOC DMG %"],
   "echo1": ["DEF %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "DEF %", "Energy Regen %"]
+  "echoSub": ["Crit Rate %", "Crit DMG %", "DEF %", "Energy Regen %"],
+  "recommended": {
+    "echos": [58, 62],
+    "sonatas": [
+      [23]
+    ],
+    "weapons": ["Dauntless Evernight", "Discord", "Autumntrace"],
+    "teams": [
+      [
+        { "character": "jinhsi", "role": "main" },
+        { "character": "taoqi", "role": "sub" },
+        { "character": "shorekeeper", "role": "sup" }
+      ]
+    ],
+    "main": {
+      "1": [
+        { "stat": "def" }
+      ],
+      "3": [
+        { "stat": "elementalBonus", "element": "havoc" }
+      ],
+      "4": [
+        { "stat": "cChance" },
+        { "stat": "cDmg" }
+      ]
+    },
+    "subs": [
+      { "stat": "def" },
+      { "stat": "cChance" },
+      { "stat": "cDmg" },
+      { "stat": "energyRegen" },
+      { "stat": "def", "flat": true }
+    ]
+  }
 }
