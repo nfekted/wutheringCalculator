@@ -24,7 +24,7 @@
             [style.box-shadow]="c === selected() ? 'inset 0 -2px 0 var(--' + c.data.type + ')' : null" [class.text-ink]="c === selected()"
             [class.border-transparent]="c !== selected()" [class.text-mute]="c !== selected()"
             (click)="select(c)">
-            <img [src]="'assets/img/characters/' + c.data.icon + '.png'" alt=""
+            <img [src]="'assets/img/characters/' + c.data.icon + '.webp'" alt=""
               class="h-8 w-8 rounded-full bg-surface-2 object-cover object-top" />
             {{ c.name }}
           </button>

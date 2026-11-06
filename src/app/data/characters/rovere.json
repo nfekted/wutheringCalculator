@@ -1,7 +1,7 @@
 {
   "id": "rovere",
   "name": "Rover (Electro)",
-  "icon": "rovere",
+  "icon": "rover",
   "type": "electro",
   "weapon": "sword",
   "base": { "hp": 10775, "atk": 437, "def": 1136 },

@@ -25,7 +25,7 @@ const ELEMENTS = ['aero', 'glacio', 'electro', 'fusion', 'havoc', 'spectro'];
         <li>
           <button type="button" class="group block w-full text-left" (click)="picked.emit(c.id)">
             <span class="ui-card block overflow-hidden group-hover:border-accent">
-              <img [src]="'assets/img/characters/' + c.icon + '.png'" alt="" loading="lazy"
+              <img [src]="'assets/img/characters/' + c.icon + '.webp'" alt="" loading="lazy"
                 class="aspect-square w-full bg-surface-2 object-cover object-top" />
             </span>
             <span class="mt-2 flex items-center gap-1.5 text-sm text-ink">

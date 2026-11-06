@@ -1,7 +1,7 @@
 {
   "id": "rovera",
   "name": "Rover (Aero)",
-  "icon": "rovera",
+  "icon": "rover",
   "type": "aero",
   "weapon": "sword",
   "base": { "hp": 10775, "atk": 437, "def": 1136 },
