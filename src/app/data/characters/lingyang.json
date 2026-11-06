@@ -233,14 +233,6 @@
       }
     ]
   },
-  "rotation": [],
-  "rotationDesc": [],
-  "rotationColor": [],
-  "rotationCommands": [],
-  "echo4": ["Crit Rate %", "Crit DMG %"],
-  "echo3": ["GLACIO DMG %", "ATK %"],
-  "echo1": ["ATK %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "ATK", "Basic %", "Skill %"],
   "recommended": {
     "echos": [134, 1],
     "sonatas": [

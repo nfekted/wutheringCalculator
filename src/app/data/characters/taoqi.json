@@ -174,14 +174,6 @@
       }
     ]
   },
-  "rotation": [],
-  "rotationDesc": [],
-  "rotationColor": [],
-  "rotationCommands": [],
-  "echo4": ["Crit Rate %", "Crit DMG %"],
-  "echo3": ["Energy Regen %", "HAVOC DMG %"],
-  "echo1": ["DEF %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "DEF %", "Energy Regen %"],
   "recommended": {
     "echos": [58, 62],
     "sonatas": [

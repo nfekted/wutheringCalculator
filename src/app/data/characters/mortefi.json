@@ -151,14 +151,6 @@
       }
     ]
   },
-  "rotation": [],
-  "rotationDesc": [],
-  "rotationColor": [],
-  "rotationCommands": [],
-  "echo4": ["Crit Rate %", "Crit DMG %"],
-  "echo3": ["Energy Regen %"],
-  "echo1": ["ATK %"],
-  "echoSub": ["Energy Regen %", "Crit Rate %", "Crit DMG %", "ATK %", "Skill %"],
   "recommended": {
     "echos": [123, 62, 16, 15],
     "sonatas": [

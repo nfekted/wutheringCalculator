@@ -52,7 +52,7 @@
           }
         }
         @case ('edit') {
-          <app-echo-editor [echo]="v.echo" [sonata]="v.sonata" [slot]="slots()[v.slot]" (saved)="save($event)" (cancelled)="back()" />
+          <app-echo-editor [echo]="v.echo" [sonata]="v.sonata" [slot]="slots()[v.slot]" [recommended]="recommended" (saved)="save($event)" (cancelled)="back()" />
         }
       }
     </div>
@@ -82,13 +82,13 @@
             <p class="text-xs text-mute">{{ 'char.echoSet.cost' | transloco: { cost: echo.cost } }} · {{ getSonata(slot.sonata)?.name }}</p>
             <ul class="mt-2 space-y-0.5 text-sm">
               @if (mainValue(slot); as main) {
-                <li class="text-ink">{{ label(main) }} <span class="tabular-nums">{{ main.value }}</span></li>
+                <li class="text-ink">{{ mark(main, echo.cost) }}{{ label(main) }} <span class="tabular-nums">{{ main.value }}</span></li>
               }
               @if (fixedValue(slot); as fixed) {
                 <li class="text-ink">{{ label(fixed) }} <span class="tabular-nums">{{ fixed.value }}</span></li>
               }
               @for (sub of slot.subs; track $index) {
-                <li class="text-body">{{ label(sub) }} <span class="tabular-nums">{{ sub.value }}</span></li>
+                <li class="text-body">{{ mark(sub) }}{{ label(sub) }} <span class="tabular-nums">{{ sub.value }}</span></li>
               }
             </ul>
 

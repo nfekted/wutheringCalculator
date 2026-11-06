@@ -10,8 +10,8 @@
         <div>
           <h3 class="font-bold text-ink">{{ group.title | transloco }}</h3>
           <ul class="mt-1 list-disc pl-5 text-body">
-            @for (item of group.items; track item) {
-              <li>{{ item }}</li>
+            @for (item of group.items; track $index) {
+              <li>{{ label(item) }}</li>
             }
           </ul>
         </div>
@@ -85,7 +85,7 @@
         <!-- Recreated for each Echo picked -->
         @for (echo of nextEcho ? [nextEcho] : []; track echo.id) {
           <div class="border-t border-hairline pt-3">
-            <app-echo-editor [echo]="echo" [sonata]="nextSonata!" [slot]="next" (saved)="setNext($event)"
+            <app-echo-editor [echo]="echo" [sonata]="nextSonata!" [slot]="next" [recommended]="character().data.recommended" (saved)="setNext($event)"
               (cancelled)="nextEcho = null; setNext(null)" />
           </div>
         }

@@ -5,9 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { Stats } from '../core/damage-engine';
 import { StatModifier, echoModifier } from '../core/stat-engine';
-import { EchoAttribute, EchoData, EchoSlot } from '../data/echos/echo-data.model';
+import { EchoData, EchoSlot } from '../data/echos/echo-data.model';
 import { ECHOS, getEcho, getSonata } from '../data/echos';
 import { EchoEditorComponent } from '../echo-set/echo-editor.component';
+import { attributeLabel, isRecommended } from '../echo-set/echo-attribute';
 import { COSTS, MAX_COST, costWithout, sonataGroups } from '../echo-set/echo-set-modal.component';
 import { Character } from '../shared/models/character.model';
 import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
@@ -27,17 +28,6 @@ const STAT_ROWS: Array<{ key: keyof Stats; prefix?: string; label: string; visib
   { key: 'healingBonus', label: 'Healing Bonus %', visible: c => c.data.hasHealing },
   { key: 'energyRegen', label: 'Energy Regen %', visible: c => c.erScale },
 ];
-
-/** Names the recommended attributes of the characters use (`echo1`, `echoSub`...) until they get the attribute keys (etapa 8) */
-const RECOMMENDED_NAMES: Record<string, string> = {
-  hp: 'HP %', dmg: 'ATK %', def: 'DEF %', cChance: 'Crit Rate %', cDmg: 'Crit DMG %', healingBonus: 'Healing %',
-  energyRegen: 'Energy Regen %', basicBonus: 'Basic %', heavyBonus: 'Heavy %', skillBonus: 'Skill %', liberationBonus: 'Liberation %',
-};
-
-function recommendedName(attribute: EchoAttribute): string {
-  if (attribute.stat === 'elementalBonus') return `${attribute.element?.toUpperCase()} DMG %`;
-  return attribute.flat ? RECOMMENDED_NAMES[attribute.stat].replace(' %', '') : RECOMMENDED_NAMES[attribute.stat];
-}
 
 interface HitLine {
   name: string;
@@ -62,6 +52,7 @@ export class EchoComparatorModalComponent {
 
   protected readonly getEcho = getEcho;
   protected readonly getSonata = getSonata;
+  protected readonly label = attributeLabel;
   protected readonly maxCost = MAX_COST;
   sonataGroups = sonataGroups(this.character().data.id);
 
@@ -129,12 +120,12 @@ export class EchoComparatorModalComponent {
   }
 
   protected recommended() {
-    const data = this.character().data;
+    const { main, subs } = this.character().data.recommended;
     return [
-      { title: 'char.echo.echo4', items: data.echo4 },
-      { title: 'char.echo.echo3', items: data.echo3 },
-      { title: 'char.echo.echo1', items: data.echo1 },
-      { title: 'char.echo.sub', items: data.echoSub },
+      { title: 'char.echo.echo4', items: main[4] },
+      { title: 'char.echo.echo3', items: main[3] },
+      { title: 'char.echo.echo1', items: main[1] },
+      { title: 'char.echo.sub', items: subs },
     ];
   }
 
@@ -219,13 +210,12 @@ export class EchoComparatorModalComponent {
   private recommendedOf(slot: EchoSlot | null): string[] {
     const echo = slot && getEcho(slot.echo);
     if (!echo) return [];
-    const data = this.character().data;
-    const mainList = { 1: data.echo1, 3: data.echo3, 4: data.echo4 }[echo.cost];
+    const recommended = this.character().data.recommended;
     const main = this.transloco.translate('char.echo.main');
     const sub = this.transloco.translate('char.echo.sub');
     return [
-      ...[slot.main].map(recommendedName).filter(name => mainList.includes(name)).map(name => `${main}: ${name}`),
-      ...slot.subs.map(recommendedName).filter(name => data.echoSub.includes(name)).map(name => `${sub}: ${name}`),
+      ...[slot.main].filter(a => isRecommended(recommended, a, echo.cost)).map(a => `${main}: ${attributeLabel(a)}`),
+      ...slot.subs.filter(a => isRecommended(recommended, a)).map(a => `${sub}: ${attributeLabel(a)}`),
     ];
   }
 

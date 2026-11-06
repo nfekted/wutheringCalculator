@@ -1,10 +1,11 @@
 import { Component, ChangeDetectionStrategy, OnInit, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { EchoData, EchoSlot } from '../data/echos/echo-data.model';
+import { EchoAttribute, EchoCost, EchoData, EchoSlot } from '../data/echos/echo-data.model';
+import { CharacterRecommendation } from '../data/character-data.model';
 import { ECHO_VALUES, getSonata } from '../data/echos';
 import { sameAttribute } from '../core/stat-engine';
-import { attributeLabel } from './echo-attribute';
+import { attributeLabel, isRecommended } from './echo-attribute';
 
 const SUB_COUNT = 5;
 
@@ -25,7 +26,7 @@ const SUB_COUNT = 5;
           <span class="mb-1 block">{{ 'char.echoSet.mainAttr' | transloco }}</span>
           <select class="ui-input text-sm" [(ngModel)]="main">
             @for (option of costValues.options; track $index) {
-              <option [ngValue]="$index">{{ label(option) }} {{ option.value }}</option>
+              <option [ngValue]="$index">{{ mark(option, echo().cost) }}{{ label(option) }} {{ option.value }}</option>
             }
           </select>
         </label>
@@ -44,7 +45,7 @@ const SUB_COUNT = 5;
                 [(ngModel)]="row.sub" (ngModelChange)="row.value = null">
                 <option [ngValue]="null">{{ 'char.echoSet.none' | transloco }}</option>
                 @for (sub of subValues; track $index; let s = $index) {
-                  <option [ngValue]="s" [disabled]="usedElsewhere(s, i)">{{ label(sub) }}</option>
+                  <option [ngValue]="s" [disabled]="usedElsewhere(s, i)">{{ mark(sub) }}{{ label(sub) }}</option>
                 }
               </select>
               <select class="ui-input text-sm" [attr.aria-label]="('char.echoSet.value' | transloco) + ' ' + (i + 1)"
@@ -61,6 +62,10 @@ const SUB_COUNT = 5;
         </div>
       </div>
 
+      @if (recommended()) {
+        <p class="text-xs text-mute">{{ 'char.echoSet.recommendedMark' | transloco }}</p>
+      }
+
       <div class="flex justify-end gap-2">
         <button type="button" class="ui-btn ui-btn-secondary" (click)="cancelled.emit()">{{ 'char.echoSet.cancel' | transloco }}</button>
         <button type="button" class="ui-btn ui-btn-primary" (click)="save()">{{ 'char.echoSet.save' | transloco }}</button>
@@ -74,6 +79,8 @@ export class EchoEditorComponent implements OnInit {
   sonata = input.required<number>();
   /** The slot being edited; without it, a new Echo */
   slot = input<EchoSlot | null>(null);
+  /** What the character recommends; its attributes get a star */
+  recommended = input<CharacterRecommendation | null>(null);
 
   saved = output<EchoSlot>();
   cancelled = output<void>();
@@ -97,6 +104,12 @@ export class EchoEditorComponent implements OnInit {
       const index = sub ? this.subValues.findIndex(s => sameAttribute(s, sub)) : -1;
       return index < 0 ? { sub: null, value: null } : { sub: index, value: sub!.value };
     });
+  }
+
+  /** Star before a recommended main attribute (with the cost) or substat */
+  protected mark(attribute: EchoAttribute, cost?: EchoCost): string {
+    const recommended = this.recommended();
+    return recommended && isRecommended(recommended, attribute, cost) ? '★ ' : '';
   }
 
   /** A substat does not repeat in the same Echo */

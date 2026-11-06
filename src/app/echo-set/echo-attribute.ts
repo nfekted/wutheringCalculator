@@ -1,4 +1,6 @@
-import { EchoAttribute } from '../data/echos/echo-data.model';
+import { EchoAttribute, EchoCost } from '../data/echos/echo-data.model';
+import { CharacterRecommendation } from '../data/character-data.model';
+import { sameAttribute } from '../core/stat-engine';
 
 const LABELS: Record<string, string> = {
   hp: 'HP', dmg: 'ATK', def: 'DEF',
@@ -14,4 +16,9 @@ export function attributeLabel(attribute: EchoAttribute): string {
     return `${element.charAt(0).toUpperCase()}${element.slice(1)} DMG Bonus %`;
   }
   return LABELS[attribute.stat] + (attribute.flat ? '' : ' %');
+}
+
+/** Whether the character recommends the attribute: a main attribute against the list of the cost of its Echo, a substat (no cost) against the substat list */
+export function isRecommended(recommended: CharacterRecommendation, attribute: EchoAttribute, cost?: EchoCost): boolean {
+  return (cost ? recommended.main[cost] : recommended.subs).some(r => sameAttribute(r, attribute));
 }

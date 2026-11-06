@@ -191,14 +191,6 @@
       }
     ]
   },
-  "rotation": [],
-  "rotationDesc": [],
-  "rotationColor": [],
-  "rotationCommands": [],
-  "echo4": ["Healing %"],
-  "echo3": ["Energy Regen %"],
-  "echo1": ["HP %"],
-  "echoSub": ["Energy Regen %", "HP %", "HP"],
   "recommended": {
     "echos": [59, 58],
     "sonatas": [

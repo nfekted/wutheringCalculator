@@ -96,6 +96,7 @@
         "attributes": "Attributes",
         "recommended": "Recommended",
         "allSonatas": "All Sonatas",
+        "recommendedMark": "★ Recommended for this character.",
         "cost": "Cost {{cost}}",
         "costLimit": "Echos that would take the total cost over {{max}} cannot be added.",
         "mainAttr": "Main attribute",

@@ -1,13 +1,13 @@
 import { Component, ChangeDetectionStrategy, computed, inject, signal } from '@angular/core';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { EchoAttribute, EchoData, EchoSlot } from '../data/echos/echo-data.model';
+import { EchoAttribute, EchoCost, EchoData, EchoSlot } from '../data/echos/echo-data.model';
 import { ECHO_VALUES, ECHOS, SONATAS, getEcho, getSonata } from '../data/echos';
 import { sameAttribute } from '../core/stat-engine';
 import { Character } from '../shared/models/character.model';
 import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
 import { EchoEditorComponent } from './echo-editor.component';
-import { attributeLabel } from './echo-attribute';
+import { attributeLabel, isRecommended } from './echo-attribute';
 
 export const MAX_COST = 12;
 export const COSTS = [4, 3, 1] as const;
@@ -50,6 +50,7 @@ export class EchoSetModalComponent {
   protected readonly label = attributeLabel;
   protected readonly getEcho = getEcho;
   protected readonly getSonata = getSonata;
+  protected readonly recommended = this.character().data.recommended;
 
   totalCost = computed(() => costWithout(this.slots(), -1));
 
@@ -84,6 +85,11 @@ export class EchoSetModalComponent {
   protected mainValue(slot: EchoSlot): EchoAttribute & { value: number } | undefined {
     const echo = getEcho(slot.echo);
     return echo && ECHO_VALUES.main[echo.cost].options.find(option => sameAttribute(option, slot.main));
+  }
+
+  /** Star before a recommended main attribute (with the cost) or substat */
+  protected mark(attribute: EchoAttribute, cost?: EchoCost): string {
+    return isRecommended(this.recommended, attribute, cost) ? '★ ' : '';
   }
 
   protected fixedValue(slot: EchoSlot) {

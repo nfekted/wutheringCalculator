@@ -283,14 +283,6 @@
       }
     ]
   },
-  "rotation": [],
-  "rotationDesc": [],
-  "rotationColor": [],
-  "rotationCommands": [],
-  "echo4": ["Crit Rate %", "Crit DMG %"],
-  "echo3": ["ELECTRO DMG %", "ATK %"],
-  "echo1": ["ATK %"],
-  "echoSub": ["Crit Rate %", "Crit DMG %", "ATK %", "Liberation %", "Basic %", "ATK"],
   "recommended": {
     "echos": [31, 29],
     "sonatas": [

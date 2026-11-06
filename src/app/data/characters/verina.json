@@ -220,14 +220,6 @@
       }
     ]
   },
-  "rotation": [],
-  "rotationDesc": [],
-  "rotationColor": [],
-  "rotationCommands": [],
-  "echo4": ["Healing %"],
-  "echo3": ["Energy Regen %"],
-  "echo1": ["ATK %"],
-  "echoSub": ["Energy Regen %", "ATK %", "ATK"],
   "recommended": {
     "echos": [59, 58],
     "sonatas": [
