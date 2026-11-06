@@ -131,7 +131,7 @@
         "choose": "Choose...",
         "selectSlot": "Select which Echo is being swapped.",
         "buildNew": "Set the attributes of the new Echo and save them to compare.",
-        "swap": "Swap Echo",
+        "swap": "Swap to new Echo",
         "swapCost": "The swap would take the total cost over {{max}}.",
         "currentEcho": "Current Echo",
         "newEcho": "New Echo",

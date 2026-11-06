@@ -133,7 +133,7 @@
         "choose": "Escolha...",
         "selectSlot": "Selecione qual echo estará em troca.",
         "buildNew": "Selecione os atributos do novo echo  e salve para comparar.",
-        "swap": "Trocar Echo",
+        "swap": "Trocar para Echo novo",
         "swapCost": "A troca passaria do custo de {{max}}.",
         "currentEcho": "Echo atual",
         "newEcho": "Novo Echo",
