@@ -9,7 +9,7 @@ import { EchoData, EchoSlot } from '../data/echos/echo-data.model';
 import { ECHOS, getEcho, getSonata } from '../data/echos';
 import { EchoEditorComponent } from '../echo-set/echo-editor.component';
 import { attributeLabel, isRecommended } from '../echo-set/echo-attribute';
-import { COSTS, MAX_COST, costWithout, sonataGroups } from '../echo-set/echo-set-modal.component';
+import { COSTS, MAX_COST, byRecommendation, costWithout, sonataGroups } from '../echo-set/echo-set-modal.component';
 import { Character } from '../shared/models/character.model';
 import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
 
@@ -54,7 +54,7 @@ export class EchoComparatorModalComponent {
   protected readonly getSonata = getSonata;
   protected readonly label = attributeLabel;
   protected readonly maxCost = MAX_COST;
-  sonataGroups = sonataGroups(this.character().data.id);
+  sonataGroups = sonataGroups(this.character().data.recommended);
 
   /** Slot being swapped (null until one is picked) and the Echo built to go in it */
   slot: number | null = null;
@@ -86,13 +86,18 @@ export class EchoComparatorModalComponent {
     return this.character().echoSet.flatMap((slot, index) => slot ? [{ index, slot }] : []);
   }
 
-  /** Echos of the picked Sonata, by cost */
+  /** Echos of the picked Sonata, by cost, the recommended ones first */
   protected echoGroups() {
     return COSTS.map(cost => ({
       cost,
-      echos: ECHOS.filter(e => e.cost === cost && this.nextSonata !== null && e.sonatas.includes(this.nextSonata))
-        .sort((a, b) => a.name.localeCompare(b.name)),
+      echos: byRecommendation(ECHOS.filter(e => e.cost === cost && this.nextSonata !== null && e.sonatas.includes(this.nextSonata)),
+        this.character().data.recommended),
     })).filter(group => group.echos.length);
+  }
+
+  /** Star before a recommended Echo */
+  protected echoMark(echo: EchoData): string {
+    return this.character().data.recommended.echos.includes(echo.id) ? '★ ' : '';
   }
 
   /** Whether both Echos are known, so the comparison can run */

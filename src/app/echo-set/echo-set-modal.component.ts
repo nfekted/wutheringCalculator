@@ -5,6 +5,7 @@ import { EchoAttribute, EchoCost, EchoData, EchoSlot } from '../data/echos/echo-
 import { ECHO_VALUES, ECHOS, SONATAS, getEcho, getSonata } from '../data/echos';
 import { sameAttribute } from '../core/stat-engine';
 import { Character } from '../shared/models/character.model';
+import { CharacterRecommendation } from '../data/character-data.model';
 import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
 import { EchoEditorComponent } from './echo-editor.component';
 import { attributeLabel, isRecommended } from './echo-attribute';
@@ -12,13 +13,23 @@ import { attributeLabel, isRecommended } from './echo-attribute';
 export const MAX_COST = 12;
 export const COSTS = [4, 3, 1] as const;
 
-/** Sonatas the character uses first, then every other one by name */
-export function sonataGroups(characterId: string) {
+/** Recommended Sonatas first, from the best combination to the worst, then every other one by name */
+export function sonataGroups(recommended: CharacterRecommendation) {
+  const ids = [...new Set(recommended.sonatas.flat())];
   const byName = [...SONATAS].sort((a, b) => a.name.localeCompare(b.name));
   return [
-    { title: 'char.echoSet.recommended', sonatas: byName.filter(s => s.characters?.includes(characterId)) },
-    { title: 'char.echoSet.allSonatas', sonatas: byName.filter(s => !s.characters?.includes(characterId)) },
+    { title: 'char.echoSet.recommended', sonatas: ids.flatMap(id => getSonata(id) ?? []) },
+    { title: 'char.echoSet.allSonatas', sonatas: byName.filter(s => !ids.includes(s.id)) },
   ].filter(group => group.sonatas.length);
+}
+
+/** Recommended Echos first, from the best to the worst, then every other one by name */
+export function byRecommendation(echos: EchoData[], recommended: CharacterRecommendation): EchoData[] {
+  const rank = (echo: EchoData) => {
+    const index = recommended.echos.indexOf(echo.id);
+    return index < 0 ? Infinity : index;
+  };
+  return [...echos].sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name));
 }
 
 /** Total cost of a set without one slot (-1: with all of them) */
@@ -54,7 +65,7 @@ export class EchoSetModalComponent {
 
   totalCost = computed(() => costWithout(this.slots(), -1));
 
-  sonataGroups = sonataGroups(this.character().data.id);
+  sonataGroups = sonataGroups(this.character().data.recommended);
 
   /** Echos of the Sonata being picked, by cost; the ones that would take the total over the limit are blocked */
   echoGroups = computed(() => {
@@ -63,8 +74,7 @@ export class EchoSetModalComponent {
     const free = MAX_COST - costWithout(this.slots(), view.slot);
     return COSTS.map(cost => ({
       cost,
-      echos: ECHOS.filter(e => e.cost === cost && e.sonatas.includes(view.sonata))
-        .sort((a, b) => a.name.localeCompare(b.name))
+      echos: byRecommendation(ECHOS.filter(e => e.cost === cost && e.sonatas.includes(view.sonata)), this.recommended)
         .map(echo => ({ echo, blocked: echo.cost > free })),
     })).filter(group => group.echos.length);
   });
@@ -85,6 +95,11 @@ export class EchoSetModalComponent {
   protected mainValue(slot: EchoSlot): EchoAttribute & { value: number } | undefined {
     const echo = getEcho(slot.echo);
     return echo && ECHO_VALUES.main[echo.cost].options.find(option => sameAttribute(option, slot.main));
+  }
+
+  /** Star before a recommended Echo */
+  protected echoMark(echo: EchoData): string {
+    return this.recommended.echos.includes(echo.id) ? '★ ' : '';
   }
 
   /** Star before a recommended main attribute (with the cost) or substat */

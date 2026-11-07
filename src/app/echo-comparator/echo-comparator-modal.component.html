@@ -75,7 +75,7 @@
               @for (group of echoGroups(); track group.cost) {
                 <optgroup [label]="'char.echoSet.cost' | transloco: { cost: group.cost }">
                   @for (echo of group.echos; track echo.id) {
-                    <option [ngValue]="echo">{{ echo.name }}</option>
+                    <option [ngValue]="echo">{{ echoMark(echo) + echo.name }}</option>
                   }
                 </optgroup>
               }

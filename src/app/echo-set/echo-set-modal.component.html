@@ -42,7 +42,7 @@
               @for (item of group.echos; track item.echo.id) {
                 <button type="button" class="ui-btn ui-btn-secondary justify-start gap-2" [disabled]="item.blocked"
                   [title]="item.blocked ? ('char.echoSet.costLimit' | transloco: { max: maxCost }) : ''" (click)="pickEcho(item.echo)">
-                  <img [src]="'assets/img/echos/' + item.echo.id + '.webp'" alt="" class="h-8 w-8 shrink-0" (error)="$any($event.target).hidden = true" />{{ item.echo.name }}
+                  <img [src]="'assets/img/echos/' + item.echo.id + '.webp'" alt="" class="h-8 w-8 shrink-0" (error)="$any($event.target).hidden = true" />{{ echoMark(item.echo) + item.echo.name }}
                 </button>
               }
             </div>

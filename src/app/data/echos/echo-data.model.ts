@@ -43,8 +43,6 @@ export interface SonataData {
   name: string;
   /** Bonus of each piece count (1, 2, 3 or 5), only as text for now */
   bonuses: { pieces: number; text: string }[];
-  /** Ids of the characters that use this Sonata */
-  characters?: string[];
 }
 
 export interface EchoData {
