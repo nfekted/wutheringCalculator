@@ -40,9 +40,9 @@
             <p class="mb-2 mt-3 text-xs font-bold uppercase text-mute">{{ 'char.echoSet.cost' | transloco: { cost: group.cost } }}</p>
             <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
               @for (item of group.echos; track item.echo.id) {
-                <button type="button" class="ui-btn ui-btn-secondary justify-start" [disabled]="item.blocked"
+                <button type="button" class="ui-btn ui-btn-secondary justify-start gap-2" [disabled]="item.blocked"
                   [title]="item.blocked ? ('char.echoSet.costLimit' | transloco: { max: maxCost }) : ''" (click)="pickEcho(item.echo)">
-                  {{ item.echo.name }}
+                  <img [src]="'assets/img/echos/' + item.echo.id + '.webp'" alt="" class="h-8 w-8 shrink-0" (error)="$any($event.target).hidden = true" />{{ item.echo.name }}
                 </button>
               }
             </div>
@@ -78,7 +78,7 @@
           </div>
 
           @if (slot && getEcho(slot.echo); as echo) {
-            <p class="mt-1 font-bold text-ink">{{ echo.name }}</p>
+            <p class="mt-1 flex items-center gap-2 font-bold text-ink"><img [src]="'assets/img/echos/' + echo.id + '.webp'" alt="" class="h-10 w-10 shrink-0" (error)="$any($event.target).hidden = true" />{{ echo.name }}</p>
             <p class="flex items-center gap-1 text-xs text-mute">{{ 'char.echoSet.cost' | transloco: { cost: echo.cost } }} · <img [src]="'assets/img/sonatas/' + slot.sonata + '.webp'" alt="" class="h-4 w-4 shrink-0" (error)="$any($event.target).hidden = true" />{{ getSonata(slot.sonata)?.name }}</p>
             <ul class="mt-2 space-y-0.5 text-sm">
               @if (mainValue(slot); as main) {

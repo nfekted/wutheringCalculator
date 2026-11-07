@@ -17,7 +17,7 @@ const SUB_COUNT = 5;
   template: `
     <div class="space-y-4">
       <div>
-        <p class="font-bold text-ink">{{ echo().name }}</p>
+        <p class="flex items-center gap-2 font-bold text-ink"><img [src]="'assets/img/echos/' + echo().id + '.webp'" alt="" class="h-10 w-10 shrink-0" (error)="$any($event.target).hidden = true" />{{ echo().name }}</p>
         <p class="flex items-center gap-1 text-xs text-mute">{{ 'char.echoSet.cost' | transloco: { cost: echo().cost } }} · <img [src]="'assets/img/sonatas/' + sonata() + '.webp'" alt="" class="h-4 w-4 shrink-0" (error)="$any($event.target).hidden = true" />{{ sonataName }}</p>
       </div>
 
