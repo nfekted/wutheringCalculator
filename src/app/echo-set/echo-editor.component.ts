@@ -18,7 +18,7 @@ const SUB_COUNT = 5;
     <div class="space-y-4">
       <div>
         <p class="font-bold text-ink">{{ echo().name }}</p>
-        <p class="text-xs text-mute">{{ 'char.echoSet.cost' | transloco: { cost: echo().cost } }} · {{ sonataName }}</p>
+        <p class="flex items-center gap-1 text-xs text-mute">{{ 'char.echoSet.cost' | transloco: { cost: echo().cost } }} · <img [src]="'assets/img/sonatas/' + sonata() + '.webp'" alt="" class="h-4 w-4 shrink-0" (error)="$any($event.target).hidden = true" />{{ sonataName }}</p>
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2">

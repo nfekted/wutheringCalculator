@@ -30,7 +30,7 @@
             <p class="mb-2 mt-3 text-xs font-bold uppercase text-mute">{{ group.title | transloco }}</p>
             <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
               @for (sonata of group.sonatas; track sonata.id) {
-                <button type="button" class="ui-btn ui-btn-secondary justify-start" (click)="pickSonata(sonata.id)">{{ sonata.name }}</button>
+                <button type="button" class="ui-btn ui-btn-secondary justify-start gap-2" (click)="pickSonata(sonata.id)"><img [src]="'assets/img/sonatas/' + sonata.id + '.webp'" alt="" class="h-6 w-6 shrink-0" (error)="$any($event.target).hidden = true" />{{ sonata.name }}</button>
               }
             </div>
           }
@@ -79,7 +79,7 @@
 
           @if (slot && getEcho(slot.echo); as echo) {
             <p class="mt-1 font-bold text-ink">{{ echo.name }}</p>
-            <p class="text-xs text-mute">{{ 'char.echoSet.cost' | transloco: { cost: echo.cost } }} · {{ getSonata(slot.sonata)?.name }}</p>
+            <p class="flex items-center gap-1 text-xs text-mute">{{ 'char.echoSet.cost' | transloco: { cost: echo.cost } }} · <img [src]="'assets/img/sonatas/' + slot.sonata + '.webp'" alt="" class="h-4 w-4 shrink-0" (error)="$any($event.target).hidden = true" />{{ getSonata(slot.sonata)?.name }}</p>
             <ul class="mt-2 space-y-0.5 text-sm">
               @if (mainValue(slot); as main) {
                 <li class="text-ink">{{ mark(main, echo.cost) }}{{ label(main) }} <span class="tabular-nums">{{ main.value }}</span></li>

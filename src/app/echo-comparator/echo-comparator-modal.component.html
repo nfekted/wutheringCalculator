@@ -45,7 +45,7 @@
         @if (slot === null) {
           <p class="text-xs text-mute">{{ 'char.echo.selectSlot' | transloco }}</p>
         } @else if (character().echoSet[slot]; as current) {
-          <p class="text-xs text-mute">{{ 'char.echoSet.cost' | transloco: { cost: getEcho(current.echo)?.cost } }} · {{ getSonata(current.sonata)?.name }}</p>
+          <p class="flex items-center gap-1 text-xs text-mute">{{ 'char.echoSet.cost' | transloco: { cost: getEcho(current.echo)?.cost } }} · <img [src]="'assets/img/sonatas/' + current.sonata + '.webp'" alt="" class="h-4 w-4 shrink-0" (error)="$any($event.target).hidden = true" />{{ getSonata(current.sonata)?.name }}</p>
         }
       </section>
 
