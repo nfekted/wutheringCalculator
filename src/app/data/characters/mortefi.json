@@ -2,6 +2,7 @@
   "id": "mortefi",
   "name": "Mortefi",
   "icon": "mortefi",
+  "iconSkill": "mortefi",
   "type": "fusion",
   "weapon": "pistols",
   "base": { "hp": 10025, "atk": 250, "def": 1136 },

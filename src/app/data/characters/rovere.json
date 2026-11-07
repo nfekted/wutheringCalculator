@@ -2,6 +2,7 @@
   "id": "rovere",
   "name": "Rover (Electro)",
   "icon": "rover",
+  "iconSkill": "rovere",
   "type": "electro",
   "weapon": "sword",
   "base": { "hp": 10775, "atk": 437, "def": 1136 },

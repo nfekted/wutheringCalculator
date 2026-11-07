@@ -2,6 +2,7 @@
   "id": "yuanwu",
   "name": "Yuanwu",
   "icon": "yuanwu",
+  "iconSkill": "yuanwu",
   "type": "electro",
   "weapon": "gauntlets",
   "base": { "hp": 8525, "atk": 225, "def": 1637 },

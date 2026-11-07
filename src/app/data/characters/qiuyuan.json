@@ -2,6 +2,7 @@
   "id": "qiuyuan",
   "name": "Qiuyuan",
   "icon": "qiuyuan",
+  "iconSkill": "qiuyuan",
   "type": "aero",
   "weapon": "sword",
   "base": { "hp": 12237, "atk": 375, "def": 1197 },

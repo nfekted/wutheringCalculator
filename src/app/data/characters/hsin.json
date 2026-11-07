@@ -2,6 +2,7 @@
   "id": "hsin",
   "name": "Hsin",
   "icon": "hsin",
+  "iconSkill": "hsin",
   "type": "electro",
   "weapon": "rectifier",
   "base": { "hp": 10300, "atk": 462, "def": 1112 },

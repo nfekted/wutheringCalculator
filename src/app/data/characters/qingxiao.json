@@ -2,6 +2,7 @@
   "id": "qingxiao",
   "name": "Qingxiao",
   "icon": "qingxiao",
+  "iconSkill": "qingxiao",
   "type": "aero",
   "weapon": "sword",
   "base": { "hp": 10300, "atk": 462, "def": 1112 },

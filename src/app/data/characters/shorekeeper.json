@@ -2,6 +2,7 @@
   "id": "shorekeeper",
   "name": "Shorekeeper",
   "icon": "shorekeeper",
+  "iconSkill": "shorekeeper",
   "type": "spectro",
   "weapon": "rectifier",
   "base": { "hp": 16712, "atk": 287, "def": 1099 },

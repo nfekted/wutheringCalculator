@@ -2,6 +2,7 @@
   "id": "aalto",
   "name": "Aalto",
   "icon": "aalto",
+  "iconSkill": "aalto",
   "type": "aero",
   "weapon": "pistols",
   "base": { "hp": 9850, "atk": 262, "def": 1075 },

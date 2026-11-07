@@ -2,6 +2,7 @@
   "id": "taoqi",
   "name": "Taoqi",
   "icon": "taoqi",
+  "iconSkill": "taoqi",
   "type": "havoc",
   "weapon": "broadblade",
   "base": { "hp": 8950, "atk": 225, "def": 1564 },

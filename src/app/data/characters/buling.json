@@ -2,6 +2,7 @@
   "id": "buling",
   "name": "Buling",
   "icon": "buling",
+  "iconSkill": "buling",
   "type": "electro",
   "weapon": "rectifier",
   "base": { "hp": 10625, "atk": 225, "def": 1258 },

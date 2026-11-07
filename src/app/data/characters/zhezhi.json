@@ -2,6 +2,7 @@
   "id": "zhezhi",
   "name": "Zhezhi",
   "icon": "zhezhi",
+  "iconSkill": "zhezhi",
   "type": "glacio",
   "weapon": "rectifier",
   "base": { "hp": 12250, "atk": 375, "def": 1197 },

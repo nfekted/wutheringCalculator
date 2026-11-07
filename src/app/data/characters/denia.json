@@ -2,6 +2,7 @@
   "id": "denia",
   "name": "Denia",
   "icon": "denia",
+  "iconSkill": "denia",
   "type": "fusion",
   "weapon": "rectifier",
   "base": { "hp": 11025, "atk": 425, "def": 1148 },

@@ -2,6 +2,7 @@
   "id": "rover",
   "name": "Rover (Spectro)",
   "icon": "rover",
+  "iconSkill": "rover",
   "type": "spectro",
   "weapon": "sword",
   "base": { "hp": 11400, "atk": 375, "def": 1368 },

@@ -2,6 +2,7 @@
   "id": "changli",
   "name": "Changli",
   "icon": "changli",
+  "iconSkill": "changli",
   "type": "fusion",
   "weapon": "sword",
   "base": { "hp": 10387, "atk": 462, "def": 1099 },

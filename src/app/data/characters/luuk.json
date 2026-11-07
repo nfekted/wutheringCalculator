@@ -2,6 +2,7 @@
   "id": "luuk",
   "name": "Luuk",
   "icon": "luuk",
+  "iconSkill": "luuk",
   "type": "spectro",
   "weapon": "gauntlets",
   "base": { "hp": 10300, "atk": 462, "def": 1122 },

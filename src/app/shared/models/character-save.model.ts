@@ -28,7 +28,8 @@ export class CharacterSave {
 
     constructor(char: Character) {
         this.index = char.index;
-        this.icon = char.data.icon;
+        // The field is named icon, but holds the character id (the Rovers share one icon)
+        this.icon = char.data.id;
         this.name = char.name;
         this.dmg = char.dmg;
         this.hp = char.hp;

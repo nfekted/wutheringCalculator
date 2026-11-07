@@ -2,6 +2,7 @@
   "id": "iuno",
   "name": "Iuno",
   "icon": "iuno",
+  "iconSkill": "iuno",
   "type": "aero",
   "weapon": "gauntlets",
   "base": { "hp": 10525, "atk": 450, "def": 1124 },

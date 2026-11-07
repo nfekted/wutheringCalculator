@@ -2,6 +2,7 @@
   "id": "lucilla",
   "name": "Lucilla",
   "icon": "lucilla",
+  "iconSkill": "lucilla",
   "type": "glacio",
   "weapon": "rectifier",
   "base": { "hp": 12237, "atk": 375, "def": 1197 },

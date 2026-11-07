@@ -61,10 +61,10 @@ export class CharacterComponent {
   /** Skill levels in the order they are shown, with the icon of each */
   protected levelRows: Array<{ key: keyof Levels; icon: (c: Character) => string }> = [
     { key: 'basic', icon: c => c.data.weapon },
-    { key: 'skill', icon: c => c.data.icon + '-skill' },
-    { key: 'forte', icon: c => c.data.icon + '-forte' },
-    { key: 'liberation', icon: c => c.data.icon + '-liberation' },
-    { key: 'intro', icon: c => c.data.icon + '-intro' },
+    { key: 'skill', icon: c => c.data.iconSkill + '/skill' },
+    { key: 'forte', icon: c => c.data.iconSkill + '/forte' },
+    { key: 'liberation', icon: c => c.data.iconSkill + '/liberation' },
+    { key: 'intro', icon: c => c.data.iconSkill + '/intro' },
   ];
 
   /** Tables, in display order */

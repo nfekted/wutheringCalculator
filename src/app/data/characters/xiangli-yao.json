@@ -2,6 +2,7 @@
   "id": "xiangli-yao",
   "name": "Xiangli Yao",
   "icon": "xiangli-yao",
+  "iconSkill": "xiangli-yao",
   "type": "electro",
   "weapon": "gauntlets",
   "base": { "hp": 10625, "atk": 425, "def": 1222 },

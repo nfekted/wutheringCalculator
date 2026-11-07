@@ -2,6 +2,7 @@
   "id": "yangyang-xuanling",
   "name": "Yangyang Xuanling",
   "icon": "yangyang-xuanling",
+  "iconSkill": "yangyang-xuanling",
   "type": "havoc",
   "weapon": "sword",
   "base": { "hp": 11025, "atk": 425, "def": 1148 },

@@ -2,6 +2,7 @@
   "id": "encore",
   "name": "Encore",
   "icon": "encore",
+  "iconSkill": "encore",
   "type": "fusion",
   "weapon": "rectifier",
   "base": { "hp": 10512, "atk": 425, "def": 1246 },

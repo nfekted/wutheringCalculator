@@ -2,6 +2,7 @@
   "id": "suisui",
   "name": "Suisui",
   "icon": "suisui",
+  "iconSkill": "suisui",
   "type": "glacio",
   "weapon": "rectifier",
   "base": { "hp": 16712, "atk": 287, "def": 1099 },

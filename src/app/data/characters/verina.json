@@ -2,6 +2,7 @@
   "id": "verina",
   "name": "Verina",
   "icon": "verina",
+  "iconSkill": "verina",
   "type": "spectro",
   "weapon": "rectifier",
   "base": { "hp": 14237, "atk": 337, "def": 1099 },

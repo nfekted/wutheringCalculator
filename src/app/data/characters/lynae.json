@@ -2,6 +2,7 @@
   "id": "lynae",
   "name": "Lynae",
   "icon": "lynae",
+  "iconSkill": "lynae",
   "type": "spectro",
   "weapon": "pistols",
   "base": { "hp": 12237, "atk": 375, "def": 1197 },

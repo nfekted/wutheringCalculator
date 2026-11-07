@@ -2,6 +2,7 @@
   "id": "carlotta",
   "name": "Carlotta",
   "icon": "carlotta",
+  "iconSkill": "carlotta",
   "type": "glacio",
   "weapon": "pistols",
   "base": { "hp": 12450, "atk": 462, "def": 1197 },

@@ -2,6 +2,7 @@
   "id": "phrolova",
   "name": "Phrolova",
   "icon": "phrolova",
+  "iconSkill": "phrolova",
   "type": "havoc",
   "weapon": "rectifier",
   "base": { "hp": 10775, "atk": 437, "def": 1136 },

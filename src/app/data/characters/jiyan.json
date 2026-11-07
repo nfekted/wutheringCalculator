@@ -2,6 +2,7 @@
   "id": "jiyan",
   "name": "Jiyan",
   "icon": "jiyan",
+  "iconSkill": "jiyan",
   "type": "aero",
   "weapon": "broadblade",
   "base": { "hp": 10487, "atk": 437, "def": 1185 },

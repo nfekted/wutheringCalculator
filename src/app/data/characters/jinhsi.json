@@ -2,6 +2,7 @@
   "id": "jinhsi",
   "name": "Jinhsi",
   "icon": "jinhsi",
+  "iconSkill": "jinhsi",
   "type": "spectro",
   "weapon": "broadblade",
   "base": { "hp": 10825, "atk": 412, "def": 1258 },

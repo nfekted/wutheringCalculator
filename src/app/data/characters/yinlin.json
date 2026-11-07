@@ -2,6 +2,7 @@
   "id": "yinlin",
   "name": "Yinlin",
   "icon": "yinlin",
+  "iconSkill": "yinlin",
   "type": "electro",
   "weapon": "rectifier",
   "base": { "hp": 11000, "atk": 400, "def": 1283 },

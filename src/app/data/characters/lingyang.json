@@ -2,6 +2,7 @@
   "id": "lingyang",
   "name": "Lingyang",
   "icon": "lingyang",
+  "iconSkill": "lingyang",
   "type": "glacio",
   "weapon": "gauntlets",
   "base": { "hp": 10387, "atk": 437, "def": 1209 },

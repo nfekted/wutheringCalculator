@@ -2,6 +2,7 @@
   "id": "calcharo",
   "name": "Calcharo",
   "icon": "calcharo",
+  "iconSkill": "calcharo",
   "type": "electro",
   "weapon": "broadblade",
   "base": { "hp": 10500, "atk": 437, "def": 1185 },

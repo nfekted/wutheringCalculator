@@ -2,6 +2,7 @@
   "id": "roverh",
   "name": "Rover (Havoc)",
   "icon": "rover",
+  "iconSkill": "roverh",
   "type": "havoc",
   "weapon": "sword",
   "base": { "hp": 10825, "atk": 412, "def": 1258 },

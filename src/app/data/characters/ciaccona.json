@@ -2,6 +2,7 @@
   "id": "ciaccona",
   "name": "Ciaccona",
   "icon": "ciaccona",
+  "iconSkill": "ciaccona",
   "type": "aero",
   "weapon": "pistols",
   "base": { "hp": 12237, "atk": 375, "def": 1197 },

@@ -2,6 +2,7 @@
   "id": "roccia",
   "name": "Roccia",
   "icon": "roccia",
+  "iconSkill": "roccia",
   "type": "havoc",
   "weapon": "gauntlets",
   "base": { "hp": 12250, "atk": 375, "def": 1197 },

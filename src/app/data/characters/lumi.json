@@ -2,6 +2,7 @@
   "id": "lumi",
   "name": "Lumi",
   "icon": "lumi",
+  "iconSkill": "lumi",
   "type": "electro",
   "weapon": "broadblade",
   "base": { "hp": 8500, "atk": 337, "def": 879 },

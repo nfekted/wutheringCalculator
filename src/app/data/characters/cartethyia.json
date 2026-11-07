@@ -2,6 +2,7 @@
   "id": "cartethyia",
   "name": "Cartethyia",
   "icon": "cartethyia",
+  "iconSkill": "cartethyia",
   "type": "aero",
   "weapon": "sword",
   "base": { "hp": 14800, "atk": 312, "def": 611 },

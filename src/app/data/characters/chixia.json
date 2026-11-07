@@ -2,6 +2,7 @@
   "id": "chixia",
   "name": "Chixia",
   "icon": "chixia",
+  "iconSkill": "chixia",
   "type": "fusion",
   "weapon": "pistols",
   "base": { "hp": 9087, "atk": 300, "def": 953 },

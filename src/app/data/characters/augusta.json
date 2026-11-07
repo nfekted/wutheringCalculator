@@ -2,6 +2,7 @@
   "id": "augusta",
   "name": "Augusta",
   "icon": "augusta",
+  "iconSkill": "augusta",
   "type": "electro",
   "weapon": "broadblade",
   "base": { "hp": 10300, "atk": 462, "def": 1112 },

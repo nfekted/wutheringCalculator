@@ -2,6 +2,7 @@
   "id": "lupa",
   "name": "Lupa",
   "icon": "lupa",
+  "iconSkill": "lupa",
   "type": "fusion",
   "weapon": "broadblade",
   "base": { "hp": 11912, "atk": 387, "def": 1185 },

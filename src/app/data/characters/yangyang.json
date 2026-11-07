@@ -2,6 +2,7 @@
   "id": "yangyang",
   "name": "Yangyang",
   "icon": "yangyang",
+  "iconSkill": "yangyang",
   "type": "aero",
   "weapon": "sword",
   "base": { "hp": 10200, "atk": 250, "def": 1099 },

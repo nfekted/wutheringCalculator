@@ -2,6 +2,7 @@
   "id": "rebecca",
   "name": "Rebecca",
   "icon": "rebecca",
+  "iconSkill": "rebecca",
   "type": "electro",
   "weapon": "pistols",
   "base": { "hp": 11600, "atk": 400, "def": 1173 },

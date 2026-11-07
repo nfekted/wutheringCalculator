@@ -60,6 +60,8 @@ export interface CharacterData {
   id: string;
   name: string;
   icon: string;
+  /** Folder of the skill icons, assets/img/icons/<iconSkill>/ */
+  iconSkill: string;
   type: string;
   weapon: string;
   /** HP, ATK and DEF at level 90, without weapon and Echos; 0 while unknown (DEF can really be 0) */

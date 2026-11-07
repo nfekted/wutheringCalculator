@@ -2,6 +2,7 @@
   "id": "galbrena",
   "name": "Galbrena",
   "icon": "galbrena",
+  "iconSkill": "galbrena",
   "type": "fusion",
   "weapon": "pistols",
   "base": { "hp": 10300, "atk": 462, "def": 1112 },

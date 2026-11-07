@@ -2,6 +2,7 @@
   "id": "baizhi",
   "name": "Baizhi",
   "icon": "baizhi",
+  "iconSkill": "baizhi",
   "type": "glacio",
   "weapon": "rectifier",
   "base": { "hp": 12812, "atk": 212, "def": 1002 },

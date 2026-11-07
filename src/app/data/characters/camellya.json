@@ -2,6 +2,7 @@
   "id": "camellya",
   "name": "Camellya",
   "icon": "camellya",
+  "iconSkill": "camellya",
   "type": "havoc",
   "weapon": "sword",
   "base": { "hp": 10325, "atk": 450, "def": 1161 },

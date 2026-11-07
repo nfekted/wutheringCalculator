@@ -2,6 +2,7 @@
   "id": "suoming",
   "name": "Suoming",
   "icon": "suoming",
+  "iconSkill": "suoming",
   "type": "electro",
   "weapon": "sword",
   "base": { "hp": 10300, "atk": 462, "def": 1112 },

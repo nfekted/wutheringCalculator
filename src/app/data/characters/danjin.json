@@ -2,6 +2,7 @@
   "id": "danjin",
   "name": "Danjin",
   "icon": "danjin",
+  "iconSkill": "danjin",
   "type": "havoc",
   "weapon": "sword",
   "base": { "hp": 9437, "atk": 262, "def": 1148 },

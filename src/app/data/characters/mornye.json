@@ -2,6 +2,7 @@
   "id": "mornye",
   "name": "Mornye",
   "icon": "mornye",
+  "iconSkill": "mornye",
   "type": "fusion",
   "weapon": "broadblade",
   "base": { "hp": 15375, "atk": 287, "def": 1356 },

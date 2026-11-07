@@ -2,6 +2,7 @@
   "id": "hiyuki",
   "name": "Hiyuki",
   "icon": "hiyuki",
+  "iconSkill": "hiyuki",
   "type": "glacio",
   "weapon": "sword",
   "base": { "hp": 10300, "atk": 462, "def": 1112 },

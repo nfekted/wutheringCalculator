@@ -2,6 +2,7 @@
   "id": "cantarella",
   "name": "Cantarella",
   "icon": "cantarella",
+  "iconSkill": "cantarella",
   "type": "havoc",
   "weapon": "rectifier",
   "base": { "hp": 11600, "atk": 400, "def": 1099 },

@@ -2,6 +2,7 @@
   "id": "sanhua",
   "name": "Sanhua",
   "icon": "sanhua",
+  "iconSkill": "sanhua",
   "type": "glacio",
   "weapon": "sword",
   "base": { "hp": 10062, "atk": 275, "def": 941 },

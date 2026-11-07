@@ -2,6 +2,7 @@
   "id": "jingran",
   "name": "Jingran",
   "icon": "jingran",
+  "iconSkill": "jingran",
   "type": "fusion",
   "weapon": "broadblade",
   "base": { "hp": 15375, "atk": 312, "def": 0 },

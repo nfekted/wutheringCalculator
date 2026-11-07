@@ -2,6 +2,7 @@
   "id": "jianxin",
   "name": "Jianxin",
   "icon": "jianxin",
+  "iconSkill": "jianxin",
   "type": "aero",
   "weapon": "gauntlets",
   "base": { "hp": 14112, "atk": 337, "def": 1224 },

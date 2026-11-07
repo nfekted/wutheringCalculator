@@ -2,6 +2,7 @@
   "id": "lucy",
   "name": "Lucy",
   "icon": "lucy",
+  "iconSkill": "lucy",
   "type": "spectro",
   "weapon": "pistols",
   "base": { "hp": 11025, "atk": 425, "def": 1148 },

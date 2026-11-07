@@ -2,6 +2,7 @@
   "id": "phoebe",
   "name": "Phoebe",
   "icon": "phoebe",
+  "iconSkill": "phoebe",
   "type": "spectro",
   "weapon": "rectifier",
   "base": { "hp": 10825, "atk": 412, "def": 1258 },
