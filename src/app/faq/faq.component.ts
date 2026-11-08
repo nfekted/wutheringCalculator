@@ -10,6 +10,6 @@ import { TranslocoPipe, provideTranslocoScope } from '@jsverse/transloco';
 })
 export class FaqComponent {
 
-  questions = [false, false, false, false, false, false, false, false, false];
+  questions = [false, false, false, false, false, false, false, false, false, false];
 
 }

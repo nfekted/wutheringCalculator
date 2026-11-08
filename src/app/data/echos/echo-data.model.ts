@@ -58,6 +58,8 @@ export interface EchoData {
   };
   /** Buffs of the Echo Skill, only as text for now */
   buffs: string[];
+  /** The character leaves the field and becomes the Echo (e.g. "Transform into..."): its Echo Skill spends 3 points of the buffs, otherwise 0 */
+  transform?: boolean;
   /** Bonus when the Echo is in the main slot, only as text for now; `character` when it is for a specific one */
   mainSlotBonus: { text: string; character?: string }[];
 }

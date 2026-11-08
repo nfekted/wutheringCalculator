@@ -77,7 +77,8 @@
         "hits": "Damage hits",
         "echoSkill": "Echo Skill",
         "noMainEcho": "No main Echo",
-        "echoNoDamage": "This Echo deals no damage"
+        "echoNoDamage": "This Echo deals no damage",
+        "critNote": "Damage is the expected average, crit included: no hit is chosen to crit. See the FAQ for details."
     },
     "echoSet": {
         "title": "Echo Set",

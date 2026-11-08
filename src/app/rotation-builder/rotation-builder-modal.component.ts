@@ -5,7 +5,8 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { RotationStep } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
 import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
-import { RotationEditorComponent, sectionSteps, sumSteps } from './rotation-editor.component';
+import { sectionSteps } from '../core/team-engine';
+import { RotationEditorComponent, sumSteps } from './rotation-editor.component';
 
 @Component({
   selector: 'app-rotation-builder-modal',

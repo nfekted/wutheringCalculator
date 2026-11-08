@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { Character } from '../shared/models/character.model';
 import { RotationStep } from '../data/character-data.model';
-import { RotationEditorComponent, sectionSteps, sumSteps } from '../rotation-builder/rotation-editor.component';
+import { RotationEditorComponent } from '../rotation-builder/rotation-editor.component';
+import { TeamResult, simulateTeam } from '../core/team-engine';
 import { Team, canJoinTeam, characterSteps } from '../shared/models/team.model';
 import { StorageService } from '../shared/services/storage.service';
 import { ConfirmService } from '../shared/ui/confirm.service';
@@ -37,6 +38,8 @@ export class TeamsModalComponent {
   protected editing = signal<Team | null>(null);
   /** Team whose rotation is shown */
   protected viewing = signal<Team | null>(null);
+  /** Result of each team, calculated again when its rotation changes */
+  private results = new Map<Team, TeamResult>();
 
   protected character(index: number | null): Character | undefined {
     return index === null ? undefined : this.data.characters[index];
@@ -94,12 +97,14 @@ export class TeamsModalComponent {
   /** Opens the team rotation; members without a copy of their hits get one from the character */
   protected openRotation(team: Team) {
     team.steps = team.members.map((m, i) => team.steps?.[i] ?? [...characterSteps(this.character(m)!)]);
+    this.results.delete(team);
     this.storage.saveTeams(this.teams());
     this.viewing.set(team);
   }
 
   protected setSteps(team: Team, slot: number, list: RotationStep[]) {
     team.steps![slot] = list;
+    this.results.delete(team);
     this.storage.saveTeams(this.teams());
   }
 
@@ -109,23 +114,19 @@ export class TeamsModalComponent {
 
   protected setRotations(team: Team, value: number) {
     team.rotations = value;
+    this.results.delete(team);
     this.storage.saveTeams(this.teams());
   }
 
-  /** Damage of a member over every rotation: A does the Intro only from the second one */
-  protected memberSum(team: Team, slot: number): { total: number; hits: number } {
-    const character = this.character(team.members[slot])!;
-    const steps: RotationStep[] = [];
-    for (let r = 0; r < (team.rotations ?? 1); r++) {
-      if (slot > 0 || r > 0) steps.push(...sectionSteps(character, 'intro'));
-      // Before the team rotation is opened, the hits of the character are used
-      steps.push(...(team.steps?.[slot] ?? characterSteps(character)), ...sectionSteps(character, 'outro'));
+  /** Team rotation with the Outro buffs; before the team rotation is opened, the hits of each character are used */
+  protected result(team: Team): TeamResult {
+    let result = this.results.get(team);
+    if (!result) {
+      const members = team.members.map(m => this.character(m)!);
+      const steps = members.map((c, i) => team.steps?.[i] ?? characterSteps(c));
+      result = simulateTeam(members, steps, team.rotations ?? 1);
+      this.results.set(team, result);
     }
-    return sumSteps(character, steps);
-  }
-
-  protected teamSum(team: Team): { total: number; hits: number } {
-    return team.members.map((_, i) => this.memberSum(team, i))
-      .reduce((a, b) => ({ total: a.total + b.total, hits: a.hits + b.hits }), { total: 0, hits: 0 });
+    return result;
   }
 }

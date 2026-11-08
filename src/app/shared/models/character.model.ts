@@ -1,4 +1,4 @@
-import { CharacterResults, HitResult, Levels, Stats, calculateEchoResults, calculateResults, emptyResults } from "../../core/damage-engine";
+import { Amplification, CharacterResults, HitResult, Levels, Stats, calculateEchoResults, calculateResults, emptyResults } from "../../core/damage-engine";
 import { CharacterData, Hit, RotationStep } from "../../data/character-data.model";
 import { EchoData, EchoSlot } from "../../data/echos/echo-data.model";
 import { getEcho } from "../../data/echos";
@@ -133,12 +133,15 @@ export class Character implements Stats {
 
     /**
      * What a rotation step is worth: the expected value against a common enemy, mixing the hits without and with a crit by the crit rate.
-     * Healing and shield hits are not mitigated and never crit. Steps without valid data (or an Echo Skill without a damage main Echo) count as 0
+     * Healing and shield hits are not mitigated and never crit. Steps without valid data (or an Echo Skill without a damage main Echo) count as 0.
+     * With `amplification` (the buffs active on the hit), the hit is calculated again with it
      */
-    rotationHit(step: RotationStep): { value: number; type: 'damage' | 'heal' | 'shield' } {
+    rotationHit(step: RotationStep, amplification?: Amplification): { value: number; type: 'damage' | 'heal' | 'shield' } {
         const hit = this.stepHit(step);
-        const result = step.section !== 'echo' ? this.results[step.section][step.index]
-            : this.echoResults[step.index] ?? this.echoResults[0];
+        const results = amplification ? calculateResults(this.data, this, this.levels, this.mode, amplification) : this.results;
+        const echoResults = amplification ? calculateEchoResults(this.mainEcho?.skill.hits ?? [], this, this.data.type, amplification) : this.echoResults;
+        const result = step.section !== 'echo' ? results[step.section][step.index]
+            : echoResults[step.index] ?? echoResults[0];
         const kind = this.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
         const type = kind === 'heal' || kind === 'shield' ? kind : 'damage';
         if (!result) return { value: 0, type };

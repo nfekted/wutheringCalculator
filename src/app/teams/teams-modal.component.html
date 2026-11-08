@@ -50,51 +50,88 @@
 
     @for (slot of slots; track slot; let i = $index) {
       @if (character(team.members[i]); as c) {
-        <section class="ui-card mt-4 p-4">
-          <div class="flex flex-wrap items-center gap-3">
+        <!-- Collapsed by default: only who the member is; expanded to edit its hits -->
+        <details class="ui-card group mt-2 p-3" [style.border-color]="'var(--' + c.data.type + ')'">
+          <summary class="flex cursor-pointer list-none flex-wrap items-center gap-3">
             <img [src]="'assets/img/characters/' + c.data.icon + '.webp'" alt=""
               class="h-8 w-8 rounded-full bg-surface-2 object-cover object-top" />
             <h3 class="min-w-0 flex-1 font-bold text-ink">{{ slot }} · {{ c.name }}</h3>
             @if (i === 0 && (team.rotations ?? 1) > 1) {
               <span class="text-xs text-mute">{{ 'home.teams.introSecond' | transloco }}</span>
             }
-          </div>
+            <span class="material-symbols-outlined shrink-0 text-mute transition-transform group-open:rotate-180" aria-hidden="true">expand_more</span>
+          </summary>
           <app-rotation-editor [character]="c" [intro]="i > 0" [steps]="team.steps![i]!" (stepsChange)="setSteps(team, i, $event)">
             <button type="button" class="ui-btn ui-btn-secondary" (click)="reimport(team, i)">
               {{ 'home.teams.reimport' | transloco }}
             </button>
           </app-rotation-editor>
-        </section>
+        </details>
       }
     }
 
-    <!-- Result -->
+    <!-- Result: the buffed damage is the main one -->
+    @let result = this.result(team);
     <table class="ui-table mt-4 w-full text-sm">
       <thead>
         <tr>
           <th class="text-left">{{ 'home.teams.memberColumn' | transloco }}</th>
           <th class="text-right">{{ 'char.rotationBuild.hits' | transloco }}</th>
-          <th class="text-right">{{ 'char.rotationBuild.total' | transloco }}</th>
+          <th class="text-right">{{ 'home.teams.withBuffs' | transloco }}</th>
           <th class="text-right">{{ 'char.rotationBuild.average' | transloco }}</th>
+          <th class="text-right text-mute">{{ 'home.teams.withoutBuffs' | transloco }}</th>
         </tr>
       </thead>
       <tbody>
         @for (slot of slots; track slot; let i = $index) {
-          @let sum = memberSum(team, i);
+          @let sum = result.members[i];
           <tr>
             <td>{{ slot }} · {{ character(team.members[i])?.name }}</td>
             <td class="text-right tabular-nums">{{ sum.hits }}</td>
-            <td class="text-right tabular-nums">{{ sum.total | number: '1.0-0' }}</td>
-            <td class="text-right tabular-nums">{{ (sum.hits ? sum.total / sum.hits : 0) | number: '1.0-0' }}</td>
+            <td class="text-right font-bold tabular-nums text-ink">{{ sum.buffed | number: '1.0-0' }}</td>
+            <td class="text-right tabular-nums">{{ (sum.hits ? sum.buffed / sum.hits : 0) | number: '1.0-0' }}</td>
+            <td class="text-right tabular-nums text-mute">{{ sum.base | number: '1.0-0' }}</td>
           </tr>
         }
-        @let all = teamSum(team);
         <tr class="font-bold text-ink">
           <td>{{ 'home.teams.teamTotal' | transloco }}</td>
-          <td class="text-right tabular-nums">{{ all.hits }}</td>
-          <td class="text-right tabular-nums">{{ all.total | number: '1.0-0' }}</td>
-          <td class="text-right tabular-nums">{{ (all.hits ? all.total / all.hits : 0) | number: '1.0-0' }}</td>
+          <td class="text-right tabular-nums">{{ result.total.hits }}</td>
+          <td class="text-right tabular-nums">{{ result.total.buffed | number: '1.0-0' }}</td>
+          <td class="text-right tabular-nums">{{ (result.total.hits ? result.total.buffed / result.total.hits : 0) | number: '1.0-0' }}</td>
+          <td class="text-right tabular-nums text-mute">{{ result.total.base | number: '1.0-0' }}</td>
         </tr>
+      </tbody>
+    </table>
+    <p class="mt-2 text-xs text-mute">{{ 'char.rotationBuild.critNote' | transloco }}</p>
+
+    <!-- Every hit of the team rotation, with the buffs active on it -->
+    <h3 class="mt-6 text-sm font-bold text-ink">{{ 'home.teams.detail' | transloco }}</h3>
+    <table class="ui-table mt-2 w-full text-sm">
+      <thead>
+        <tr>
+          <th class="w-10 text-left">#</th>
+          <th class="text-left">{{ 'home.teams.memberColumn' | transloco }}</th>
+          <th class="text-left">{{ 'home.teams.hit' | transloco }}</th>
+          <th class="text-left">{{ 'home.teams.buffs' | transloco }}</th>
+          <th class="text-right">{{ 'home.teams.withBuffs' | transloco }}</th>
+          <th class="text-right text-mute">{{ 'home.teams.withoutBuffs' | transloco }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of result.rows; track $index) {
+          <tr>
+            <td class="text-mute">{{ row.rotation + 1 }}</td>
+            <td>{{ slots[row.slot] }} · {{ character(team.members[row.slot])?.name }}</td>
+            <td class="font-medium">{{ row.name }}</td>
+            <td class="text-xs text-mute">
+              @for (buff of row.buffs; track $index) {
+                <span class="block">{{ buff }}</span>
+              }
+            </td>
+            <td class="text-right font-bold tabular-nums" [class.text-heal]="!row.damage" [class.text-ink]="row.damage">{{ row.buffed | number: '1.0-0' }}</td>
+            <td class="text-right tabular-nums text-mute">{{ row.base | number: '1.0-0' }}</td>
+          </tr>
+        }
       </tbody>
     </table>
   } @else {
@@ -123,7 +160,7 @@
           @if (!complete(team)) {
             <span class="text-xs text-mute">{{ 'home.teams.incomplete' | transloco }}</span>
           } @else {
-            <span class="text-sm tabular-nums text-ink" [title]="'char.rotationBuild.total' | transloco">~{{ teamSum(team).total | number: '1.0-0' }}</span>
+            <span class="text-sm tabular-nums text-ink" [title]="'char.rotationBuild.total' | transloco">~{{ result(team).total.buffed | number: '1.0-0' }}</span>
           }
           <span class="flex gap-1">
             <button type="button" class="ui-icon-btn" [attr.aria-label]="'home.teams.rotation' | transloco"

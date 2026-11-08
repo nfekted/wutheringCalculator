@@ -23,11 +23,16 @@
         "rotationOf": "Rotation of the team",
         "rotations": "Rotations",
         "back": "Back",
-        "rotationInfo": "Order A → B → C. A starts the first rotation without Intro; in the second one, A does the Intro after C. Each member keeps its own copy of the hits here: changes in the team do not change the character. Damage uses the current attributes, levels, Echos and mode of each character, without buffs yet.",
+        "rotationInfo": "Rotation A → B → C. Buffs with a duration are estimated by an average to find when they end.",
         "introSecond": "Intro from the 2nd rotation",
         "reimport": "Reimport from character",
         "teamTotal": "Team",
-        "memberColumn": "Member"
+        "memberColumn": "Member",
+        "withBuffs": "With buffs",
+        "withoutBuffs": "Without buffs",
+        "detail": "Hit by hit",
+        "hit": "Hit",
+        "buffs": "Active buffs"
     },
     "search": "Search by name"
 }

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { HitKind, RotationStep, SectionKey } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
+import { sectionSteps } from '../core/team-engine';
 
 /** Sections the player picks hits from; intro and outro are always part of the rotation */
 const PICKABLE: SectionKey[] = ['basic', 'skill', 'liberation', 'forte'];
@@ -22,11 +23,6 @@ interface Row {
   /** Damage hit (false for healing and shield, which are not added to the total) */
   damage: boolean;
   value: number;
-}
-
-/** Steps of the intro or the outro of a character */
-export function sectionSteps(character: Character, section: 'intro' | 'outro'): RotationStep[] {
-  return character.data[section].hits.map((_, index): RotationStep => ({ section, index }));
 }
 
 /** Total damage of a list of steps and how many of them are damage hits */
