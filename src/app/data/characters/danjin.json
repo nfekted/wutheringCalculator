@@ -365,8 +365,18 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Duality",
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "elemental",
+        "element": "havoc",
+        "value": 23,
+        "duration": 14,
+        "endsOnSwitch": true
+      }
+    ]
   },
   "forte": {
     "name": "Serene Vigil",

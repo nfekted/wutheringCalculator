@@ -273,7 +273,24 @@
   },
   "outro": {
     "name": "Applause, Please!",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "elemental",
+        "element": "havoc",
+        "value": 20,
+        "duration": 14,
+        "endsOnSwitch": true
+      },
+      {
+        "target": "incoming",
+        "amplification": "basic",
+        "value": 25,
+        "duration": 14,
+        "endsOnSwitch": true
+      }
+    ]
   },
   "forte": {
     "name": "A Prop Master Prepares",

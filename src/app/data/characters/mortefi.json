@@ -332,7 +332,16 @@
   },
   "outro": {
     "name": "Rage Transposition",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "heavy",
+        "value": 38,
+        "duration": 14,
+        "endsOnSwitch": true
+      }
+    ]
   },
   "forte": {
     "name": "Fury Fugue",

@@ -308,8 +308,17 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Iron Will",
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "skill",
+        "value": 38,
+        "duration": 14,
+        "endsOnSwitch": true
+      }
+    ]
   },
   "forte": {
     "name": "Power Shift",

@@ -411,6 +411,15 @@
           }
         ]
       }
+    ],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "all",
+        "value": 15,
+        "duration": 30,
+        "endsOnSwitch": true
+      }
     ]
   },
   "forte": {

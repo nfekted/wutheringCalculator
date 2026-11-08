@@ -1,0 +1,68 @@
+<app-dialog-panel [title]="'home.teams.title' | transloco" titleId="teams-title">
+  @if (editing(); as team) {
+    <!-- Create or edit a team -->
+    <label class="block text-xs text-mute">
+      <span class="mb-1 block">{{ 'home.teams.name' | transloco }}</span>
+      <input type="text" class="ui-input text-sm" [(ngModel)]="team.name" />
+    </label>
+
+    <div class="mt-4 grid gap-3 sm:grid-cols-3">
+      @for (slot of slots; track slot; let i = $index) {
+        <label class="block text-xs text-mute">
+          <span class="mb-1 block">{{ 'home.teams.member' | transloco: { slot } }}</span>
+          <select class="ui-input text-sm" [ngModel]="team.members[i]" (ngModelChange)="setMember(i, $event)">
+            <option [ngValue]="null">{{ 'home.teams.choose' | transloco }}</option>
+            @for (c of options(team, i); track c.index) {
+              <option [ngValue]="c.index">{{ c.name }}</option>
+            }
+          </select>
+        </label>
+      }
+    </div>
+    <p class="mt-3 text-xs text-mute">{{ 'home.teams.rule' | transloco }}</p>
+
+    <div class="mt-5 flex justify-end gap-2">
+      <button type="button" class="ui-btn ui-btn-secondary" (click)="editing.set(null)">{{ 'home.teams.cancel' | transloco }}</button>
+      <button type="button" class="ui-btn ui-btn-primary" [disabled]="!canSave(team)" (click)="save()">{{ 'home.teams.save' | transloco }}</button>
+    </div>
+  } @else {
+    <!-- List of teams -->
+    <div class="flex justify-end">
+      <button type="button" class="ui-btn ui-btn-primary" (click)="create()">
+        <span class="material-symbols-outlined" aria-hidden="true">add</span>
+        {{ 'home.teams.new' | transloco }}
+      </button>
+    </div>
+
+    <ul class="mt-4 space-y-2">
+      @for (team of teams(); track team.id) {
+        <li class="ui-card flex flex-wrap items-center gap-3 p-3">
+          <span class="min-w-0 flex-1 truncate font-medium text-ink">{{ team.name }}</span>
+          <span class="flex gap-1">
+            @for (m of team.members; track $index) {
+              @if (character(m); as c) {
+                <img [src]="'assets/img/characters/' + c.data.icon + '.webp'" [alt]="c.name" [title]="c.name"
+                  class="h-8 w-8 rounded-full bg-surface-2 object-cover object-top" />
+              } @else {
+                <span class="h-8 w-8 rounded-full border border-dashed border-hairline" [title]="'home.teams.emptySlot' | transloco"></span>
+              }
+            }
+          </span>
+          @if (!complete(team)) {
+            <span class="text-xs text-mute">{{ 'home.teams.incomplete' | transloco }}</span>
+          }
+          <span class="flex gap-1">
+            <button type="button" class="ui-icon-btn" [attr.aria-label]="'home.teams.edit' | transloco" (click)="edit(team)">
+              <span class="material-symbols-outlined" aria-hidden="true">edit</span>
+            </button>
+            <button type="button" class="ui-icon-btn" [attr.aria-label]="'home.teams.remove' | transloco" (click)="remove(team)">
+              <span class="material-symbols-outlined" aria-hidden="true">delete</span>
+            </button>
+          </span>
+        </li>
+      } @empty {
+        <li class="text-sm text-mute">{{ 'home.teams.empty' | transloco }}</li>
+      }
+    </ul>
+  }
+</app-dialog-panel>

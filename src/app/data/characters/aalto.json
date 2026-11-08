@@ -297,8 +297,18 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Dissolving Mist",
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "elemental",
+        "element": "aero",
+        "value": 23,
+        "duration": 14,
+        "endsOnSwitch": true
+      }
+    ]
   },
   "forte": {
     "name": "Misty Cover",

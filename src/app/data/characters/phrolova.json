@@ -474,7 +474,24 @@
   },
   "outro": {
     "name": "Unfinished Piece",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "elemental",
+        "element": "havoc",
+        "value": 20,
+        "duration": 14,
+        "endsOnSwitch": true
+      },
+      {
+        "target": "incoming",
+        "amplification": "heavy",
+        "value": 25,
+        "duration": 14,
+        "endsOnSwitch": true
+      }
+    ]
   },
   "forte": {
     "name": "Rhapsody of a New World",

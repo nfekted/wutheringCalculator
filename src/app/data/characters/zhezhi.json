@@ -295,7 +295,24 @@
   },
   "outro": {
     "name": "Carve and Draw",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "elemental",
+        "element": "glacio",
+        "value": 20,
+        "duration": 14,
+        "endsOnSwitch": true
+      },
+      {
+        "target": "incoming",
+        "amplification": "skill",
+        "value": 25,
+        "duration": 14,
+        "endsOnSwitch": true
+      }
+    ]
   },
   "forte": {
     "name": "Ink and Wash",

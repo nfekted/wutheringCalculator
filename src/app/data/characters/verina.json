@@ -448,7 +448,15 @@
   },
   "outro": {
     "name": "Blossom",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "team",
+        "amplification": "all",
+        "value": 15,
+        "duration": 30
+      }
+    ]
   },
   "forte": {
     "name": "Starflower Blooms",

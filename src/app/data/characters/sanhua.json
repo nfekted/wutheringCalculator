@@ -277,7 +277,16 @@
   },
   "outro": {
     "name": "Silversnow",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "basic",
+        "value": 38,
+        "duration": 14,
+        "endsOnSwitch": true
+      }
+    ]
   },
   "forte": {
     "name": "Clarity of Mind",

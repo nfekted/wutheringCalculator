@@ -543,7 +543,15 @@
   },
   "outro": {
     "name": "Recursion",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "team",
+        "amplification": "all",
+        "value": 25,
+        "duration": 30
+      }
+    ]
   },
   "forte": {
     "name": "Mass-Energy Equivalence",

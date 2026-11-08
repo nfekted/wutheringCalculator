@@ -702,6 +702,22 @@
           }
         ]
       }
+    ],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "all",
+        "value": 15,
+        "duration": 14,
+        "endsOnSwitch": true
+      },
+      {
+        "target": "incoming",
+        "amplification": "liberation",
+        "value": 25,
+        "duration": 14,
+        "endsOnSwitch": true
+      }
     ]
   },
   "forte": {

@@ -739,8 +739,25 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Stand by Me, Warrior",
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "elemental",
+        "element": "fusion",
+        "value": 20,
+        "duration": 14,
+        "endsOnSwitch": true
+      },
+      {
+        "target": "incoming",
+        "amplification": "basic",
+        "value": 25,
+        "duration": 14,
+        "endsOnSwitch": true
+      }
+    ]
   },
   "forte": {
     "name": "Ignis Lupa",

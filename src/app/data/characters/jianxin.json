@@ -343,7 +343,16 @@
   },
   "outro": {
     "name": "Transcendence",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "liberation",
+        "value": 38,
+        "duration": 14,
+        "endsOnSwitch": true
+      }
+    ]
   },
   "forte": {
     "name": "Primordial Chi Spiral",

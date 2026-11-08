@@ -9,6 +9,8 @@ import { StorageService } from '../shared/services/storage.service';
 import { getCharacterData } from '../data/characters';
 import { CharacterPickerComponent } from './character-picker.component';
 import { CharacterGridComponent } from './character-grid.component';
+import { Team } from '../shared/models/team.model';
+import { TeamsModalComponent, TeamsModalData } from '../teams/teams-modal.component';
 
 @Component({
     selector: 'app-home',
@@ -25,6 +27,7 @@ export class HomeComponent {
   characters = signal<Array<Character>>([]);
   selected = signal<Character | null>(null);
   loaded = signal(false);
+  teams = signal<Team[]>([]);
 
   ngOnInit(): void {
     this.load();
@@ -34,6 +37,11 @@ export class HomeComponent {
     const ref = this.dialog.open<string>(CharacterPickerComponent, { backdropClass: 'app-backdrop', ariaLabelledBy: 'picker-title' });
     const id = await firstValueFrom(ref.closed);
     if (id) this.createNew(id);
+  }
+
+  openTeams() {
+    const data: TeamsModalData = { characters: this.characters(), teams: this.teams };
+    this.dialog.open(TeamsModalComponent, { data, backdropClass: 'app-backdrop', ariaLabelledBy: 'teams-title' });
   }
 
   select(character: Character) {
@@ -58,6 +66,7 @@ export class HomeComponent {
       if (!getCharacterData(c.icon)) continue;
       this.createNew(c.icon, c);
     }
+    this.teams.set(await this.storage.loadTeams());
     this.selected.set(this.characters()[0] ?? null);
     this.loaded.set(true);
   }
@@ -71,5 +80,12 @@ export class HomeComponent {
     this.characters.set(list);
     this.selected.set(list[Math.min(index, list.length - 1)] ?? null);
     this.save();
+
+    // Teams keep the slot of the removed character empty; the others follow the new indexes
+    this.teams.update(teams => teams.map(t => ({
+      ...t,
+      members: t.members.map(m => m === null || m === index ? null : m > index ? m - 1 : m)
+    })));
+    this.storage.saveTeams(this.teams());
   }
 }

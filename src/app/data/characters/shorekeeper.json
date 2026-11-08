@@ -400,8 +400,16 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Binary Butterfly",
+    "hits": [],
+    "buffs": [
+      {
+        "target": "team",
+        "amplification": "all",
+        "value": 15,
+        "duration": 30
+      }
+    ]
   },
   "forte": {
     "name": "Astral Chord",

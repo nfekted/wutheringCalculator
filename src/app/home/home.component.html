@@ -30,6 +30,10 @@
           </button>
         }
       </div>
+      <button type="button" class="ui-btn ui-btn-secondary shrink-0" (click)="openTeams()">
+        <span class="material-symbols-outlined" aria-hidden="true">groups</span>
+        <span class="hidden sm:inline">{{ 'home.teams.button' | transloco }}</span>
+      </button>
       <button type="button" class="ui-btn ui-btn-secondary shrink-0" (click)="openPicker()">
         <span class="material-symbols-outlined" aria-hidden="true">add</span>
         <span class="hidden sm:inline">{{ 'home.add' | transloco }}</span>

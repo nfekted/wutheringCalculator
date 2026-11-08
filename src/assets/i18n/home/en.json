@@ -1,5 +1,23 @@
 {
     "char-modal-title": "Select the resonator",
     "add": "Add character",
-    "roster": "Your characters"
+    "roster": "Your characters",
+    "teams": {
+        "button": "Teams",
+        "title": "Teams",
+        "new": "New team",
+        "empty": "No teams yet.",
+        "defaultName": "Team {{n}}",
+        "name": "Name",
+        "member": "Member {{slot}}",
+        "choose": "Choose a character...",
+        "rule": "Only characters with at least one hit between Intro and Outro in the Rotation build can join a team. A starts the rotation without Intro.",
+        "save": "Save",
+        "cancel": "Cancel",
+        "edit": "Edit team",
+        "remove": "Delete team",
+        "delete": "Delete the team \"{{name}}\"?",
+        "emptySlot": "Empty slot",
+        "incomplete": "Incomplete: choose the missing members"
+    }
 }

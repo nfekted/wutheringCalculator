@@ -363,8 +363,17 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Escorting",
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "skill",
+        "value": 38,
+        "duration": 10,
+        "endsOnSwitch": true
+      }
+    ]
   },
   "forte": {
     "name": "Signal Light",

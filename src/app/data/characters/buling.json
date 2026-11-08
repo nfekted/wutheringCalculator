@@ -406,8 +406,16 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Exorcism Spell",
+    "hits": [],
+    "buffs": [
+      {
+        "target": "team",
+        "amplification": "all",
+        "value": 15,
+        "duration": 30
+      }
+    ]
   },
   "forte": {
     "name": "Thunder Begets Life",

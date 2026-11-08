@@ -418,6 +418,15 @@
           }
         ]
       }
+    ],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "echo",
+        "value": 50,
+        "duration": 14,
+        "endsOnSwitch": true
+      }
     ]
   },
   "forte": {

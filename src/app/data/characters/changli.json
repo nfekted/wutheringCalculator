@@ -510,7 +510,24 @@
   },
   "outro": {
     "name": "Strategy of Duality",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "elemental",
+        "element": "fusion",
+        "value": 20,
+        "duration": 10,
+        "endsOnSwitch": true
+      },
+      {
+        "target": "incoming",
+        "amplification": "liberation",
+        "value": 25,
+        "duration": 10,
+        "endsOnSwitch": true
+      }
+    ]
   },
   "forte": {
     "name": "Flaming Sacrifice",

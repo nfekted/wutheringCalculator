@@ -373,8 +373,25 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Gentle Tentacles",
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "elemental",
+        "element": "havoc",
+        "value": 20,
+        "duration": 14,
+        "endsOnSwitch": true
+      },
+      {
+        "target": "incoming",
+        "amplification": "skill",
+        "value": 25,
+        "duration": 14,
+        "endsOnSwitch": true
+      }
+    ]
   },
   "forte": {
     "name": "Between Illusion and Reality",
