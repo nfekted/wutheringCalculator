@@ -689,7 +689,20 @@
   },
   "outro": {
     "name": "Let's Hit the Road!",
-    "hits": []
+    "hits": [
+      {
+        "name": "Let's Hit the Road! DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              100
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Chromaticity Modeling",

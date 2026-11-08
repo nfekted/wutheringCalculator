@@ -358,8 +358,21 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Attentive Heart",
+    "hits": [
+      {
+        "name": "Attentive Heart DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              528.41
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Radiant Invocation",

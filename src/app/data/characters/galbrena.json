@@ -530,7 +530,27 @@
   },
   "outro": {
     "name": "Ashen Pursuit",
-    "hits": []
+    "hits": [
+      {
+        "name": "Ashen Pursuit DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              79.5
+            ],
+            "times": 3
+          },
+          {
+            "stat": "atk",
+            "values": [
+              556.5
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Beyond Threshold",

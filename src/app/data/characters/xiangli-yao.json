@@ -433,8 +433,22 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Chain Rule",
+    "hits": [
+      {
+        "name": "Chain Rule DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              237.63
+            ],
+            "times": 3
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Forever Seeking",

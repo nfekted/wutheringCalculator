@@ -482,8 +482,21 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Beacon For the Future",
+    "hits": [
+      {
+        "name": "Beacon For the Future DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              150
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "There Will Be A Light",

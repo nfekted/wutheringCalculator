@@ -587,7 +587,20 @@
   },
   "outro": {
     "name": "In This Very Moment",
-    "hits": []
+    "hits": [
+      {
+        "name": "In This Very Moment DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              795
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Within Infinity's Embrace",

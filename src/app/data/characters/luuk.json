@@ -653,7 +653,20 @@
   },
   "outro": {
     "name": "Bow to the Last Light",
-    "hits": []
+    "hits": [
+      {
+        "name": "Bow to the Last Light DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              500
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Spark from the Frost",

@@ -584,7 +584,26 @@
   },
   "outro": {
     "name": "Shadowy Raid",
-    "hits": []
+    "hits": [
+      {
+        "name": "Shadowy Raid DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              195.98
+            ]
+          },
+          {
+            "stat": "atk",
+            "values": [
+              391.96
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Hunting Mission",

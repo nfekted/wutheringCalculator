@@ -500,7 +500,20 @@
   },
   "outro": {
     "name": "Lingering Song",
-    "hits": []
+    "hits": [
+      {
+        "name": "Lingering Song DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              800
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Formless Heart Sword",

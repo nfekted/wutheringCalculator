@@ -456,8 +456,21 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Twining",
+    "hits": [
+      {
+        "name": "Twining DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              329.24
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Vegetative Universe",

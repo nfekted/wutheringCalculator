@@ -1403,8 +1403,21 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Herself a Thousand Lanterns",
+    "hits": [
+      {
+        "name": "Herself a Thousand Lanterns DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              100
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Forms Turn, Heart Abides",

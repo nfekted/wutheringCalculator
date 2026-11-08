@@ -599,7 +599,20 @@
   },
   "outro": {
     "name": "As the Wind Wills",
-    "hits": []
+    "hits": [
+      {
+        "name": "As the Wind Wills DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              300
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "The Way of Ten Thousand Voices",

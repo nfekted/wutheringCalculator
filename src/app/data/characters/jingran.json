@@ -708,7 +708,20 @@
   },
   "outro": {
     "name": "Rising Fortune and Ebbing Evil",
-    "hits": []
+    "hits": [
+      {
+        "name": "Rising Fortune and Ebbing Evil DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              795
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Upstream Along Santu",

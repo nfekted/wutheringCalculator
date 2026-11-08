@@ -309,7 +309,20 @@
   },
   "outro": {
     "name": "Leaping Flames",
-    "hits": []
+    "hits": [
+      {
+        "name": "Leaping Flames DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              530
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Heroic Bullets",

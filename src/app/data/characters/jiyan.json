@@ -424,8 +424,22 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Discipline",
+    "hits": [
+      {
+        "name": "Discipline DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              313.4
+            ],
+            "times": 2
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Qingloong at War",

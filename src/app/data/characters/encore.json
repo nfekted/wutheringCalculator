@@ -430,7 +430,21 @@
   },
   "outro": {
     "name": "Thermal Field",
-    "hits": []
+    "hits": [
+      {
+        "name": "Thermal Field DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              176.76
+            ],
+            "times": 4
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Black & White Woolies",

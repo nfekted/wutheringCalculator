@@ -278,7 +278,21 @@
   },
   "outro": {
     "name": "Soundweaver",
-    "hits": []
+    "hits": [
+      {
+        "name": "Soundweaver DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              143.3
+            ],
+            "times": 3
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Umbra Eclipse",

@@ -1078,7 +1078,21 @@
   },
   "outro": {
     "name": "Preem Choom",
-    "hits": []
+    "hits": [
+      {
+        "name": "Preem Choom DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              2.5
+            ],
+            "times": 14
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Gloves Are Comin' Off!",

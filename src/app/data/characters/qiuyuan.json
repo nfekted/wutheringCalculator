@@ -404,8 +404,21 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Strike Before Ready",
+    "hits": [
+      {
+        "name": "Strike Before Ready DMG",
+        "kind": "echo",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              100
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Verdant Edge",

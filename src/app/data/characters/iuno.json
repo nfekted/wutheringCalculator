@@ -473,7 +473,20 @@
   },
   "outro": {
     "name": "From Gloom to Gleam",
-    "hits": []
+    "hits": [
+      {
+        "name": "From Gloom to Gleam DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              100
+            ]
+          }
+        ]
+      }
+    ]
   },
   "forte": {
     "name": "Ebb and Flow",
