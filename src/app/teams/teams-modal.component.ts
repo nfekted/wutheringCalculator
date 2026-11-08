@@ -1,9 +1,12 @@
 import { Component, ChangeDetectionStrategy, WritableSignal, inject, signal } from '@angular/core';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
+import { DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { Character } from '../shared/models/character.model';
-import { Team, canJoinTeam } from '../shared/models/team.model';
+import { RotationStep } from '../data/character-data.model';
+import { RotationEditorComponent, sectionSteps, sumSteps } from '../rotation-builder/rotation-editor.component';
+import { Team, canJoinTeam, characterSteps } from '../shared/models/team.model';
 import { StorageService } from '../shared/services/storage.service';
 import { ConfirmService } from '../shared/ui/confirm.service';
 import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
@@ -17,8 +20,8 @@ export interface TeamsModalData {
   selector: 'app-teams-modal',
   templateUrl: './teams-modal.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
-  host: { class: 'block w-[min(48rem,calc(100vw-2rem))]' },
-  imports: [FormsModule, TranslocoPipe, DialogPanelComponent]
+  host: { class: 'block w-[min(60rem,calc(100vw-2rem))]' },
+  imports: [FormsModule, DecimalPipe, TranslocoPipe, DialogPanelComponent, RotationEditorComponent]
 })
 export class TeamsModalComponent {
 
@@ -32,6 +35,8 @@ export class TeamsModalComponent {
 
   /** Team being created or edited; null shows the list */
   protected editing = signal<Team | null>(null);
+  /** Team whose rotation is shown */
+  protected viewing = signal<Team | null>(null);
 
   protected character(index: number | null): Character | undefined {
     return index === null ? undefined : this.data.characters[index];
@@ -56,12 +61,15 @@ export class TeamsModalComponent {
   protected edit(team: Team) {
     // Members no longer able to join (removed, or rotation cleared) come back empty
     const members = team.members.map(m => { const c = this.character(m); return c && canJoinTeam(c) ? m : null; });
-    this.editing.set({ ...team, members });
+    this.editing.set({ ...team, members, steps: [...(team.steps ?? [null, null, null])] });
   }
 
   protected setMember(slot: number, value: number | null) {
     const team = this.editing()!;
     team.members[slot] = value;
+    // A new member brings its own rotation when the team rotation is opened
+    team.steps = [...(team.steps ?? [null, null, null])];
+    team.steps[slot] = null;
   }
 
   protected canSave(team: Team): boolean {
@@ -81,5 +89,43 @@ export class TeamsModalComponent {
     if (!await this.confirmation.confirm(this.transloco.translate('home.teams.delete', { name: team.name }))) return;
     this.teams.update(list => list.filter(t => t.id !== team.id));
     this.storage.saveTeams(this.teams());
+  }
+
+  /** Opens the team rotation; members without a copy of their hits get one from the character */
+  protected openRotation(team: Team) {
+    team.steps = team.members.map((m, i) => team.steps?.[i] ?? [...characterSteps(this.character(m)!)]);
+    this.storage.saveTeams(this.teams());
+    this.viewing.set(team);
+  }
+
+  protected setSteps(team: Team, slot: number, list: RotationStep[]) {
+    team.steps![slot] = list;
+    this.storage.saveTeams(this.teams());
+  }
+
+  protected reimport(team: Team, slot: number) {
+    this.setSteps(team, slot, [...characterSteps(this.character(team.members[slot])!)]);
+  }
+
+  protected setRotations(team: Team, value: number) {
+    team.rotations = value;
+    this.storage.saveTeams(this.teams());
+  }
+
+  /** Damage of a member over every rotation: A does the Intro only from the second one */
+  protected memberSum(team: Team, slot: number): { total: number; hits: number } {
+    const character = this.character(team.members[slot])!;
+    const steps: RotationStep[] = [];
+    for (let r = 0; r < (team.rotations ?? 1); r++) {
+      if (slot > 0 || r > 0) steps.push(...sectionSteps(character, 'intro'));
+      // Before the team rotation is opened, the hits of the character are used
+      steps.push(...(team.steps?.[slot] ?? characterSteps(character)), ...sectionSteps(character, 'outro'));
+    }
+    return sumSteps(character, steps);
+  }
+
+  protected teamSum(team: Team): { total: number; hits: number } {
+    return team.members.map((_, i) => this.memberSum(team, i))
+      .reduce((a, b) => ({ total: a.total + b.total, hits: a.hits + b.hits }), { total: 0, hits: 0 });
   }
 }

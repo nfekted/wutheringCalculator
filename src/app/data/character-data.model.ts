@@ -34,6 +34,29 @@ export interface SkillData {
   hits: Hit[];
 }
 
+/** Which DMG Amplification a buff gives (see Amplification in the damage engine) */
+export type AmplificationKind = 'all' | 'elemental' | 'basic' | 'heavy' | 'skill' | 'liberation' | 'echo';
+
+/** A buff the Outro Skill gives */
+export interface OutroBuff {
+  /** 'incoming': the next character to enter; 'team': every member, the giver too */
+  target: 'incoming' | 'team';
+  amplification: AmplificationKind;
+  /** Element of an elemental amplification; it only counts for a character (and an Echo hit) of that element */
+  element?: string;
+  /** In % */
+  value: number;
+  /** In seconds, spent as points by the hits of the rotation */
+  duration: number;
+  /** Ends when the character that has it leaves the field (its Outro) */
+  endsOnSwitch?: boolean;
+}
+
+export interface OutroData extends SkillData {
+  /** Buffs that enter the calculation; the others stay only as text in plans/outro-skills.md */
+  buffs?: OutroBuff[];
+}
+
 export interface RotationStep {
   /** 'echo' is the Echo Skill of the main Echo of the moment, whichever it is */
   section: SectionKey | 'echo';
@@ -83,7 +106,7 @@ export interface CharacterData {
   skill: SkillData;
   liberation: SkillData;
   intro: SkillData;
-  outro: SkillData;
+  outro: OutroData;
   forte: SkillData;
   /** Default hits of the Rotation build between the intro and the outro; without it, the build starts empty */
   rotationBuild?: RotationStep[];

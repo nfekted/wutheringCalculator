@@ -18,6 +18,16 @@
         "remove": "Delete team",
         "delete": "Delete the team \"{{name}}\"?",
         "emptySlot": "Empty slot",
-        "incomplete": "Incomplete: choose the missing members"
-    }
+        "incomplete": "Incomplete: choose the missing members",
+        "rotation": "Team rotation",
+        "rotationOf": "Rotation of the team",
+        "rotations": "Rotations",
+        "back": "Back",
+        "rotationInfo": "Order A → B → C. A starts the first rotation without Intro; in the second one, A does the Intro after C. Each member keeps its own copy of the hits here: changes in the team do not change the character. Damage uses the current attributes, levels, Echos and mode of each character, without buffs yet.",
+        "introSecond": "Intro from the 2nd rotation",
+        "reimport": "Reimport from character",
+        "teamTotal": "Team",
+        "memberColumn": "Member"
+    },
+    "search": "Search by name"
 }

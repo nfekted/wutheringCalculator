@@ -25,6 +25,78 @@
       <button type="button" class="ui-btn ui-btn-secondary" (click)="editing.set(null)">{{ 'home.teams.cancel' | transloco }}</button>
       <button type="button" class="ui-btn ui-btn-primary" [disabled]="!canSave(team)" (click)="save()">{{ 'home.teams.save' | transloco }}</button>
     </div>
+  } @else if (viewing(); as team) {
+    <!-- Rotation of the team: A (without Intro) -> B -> C, played 1 or 2 times -->
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="text-xs text-mute">{{ 'home.teams.rotationOf' | transloco }}</p>
+        <p class="text-lg font-bold text-ink">{{ team.name }}</p>
+      </div>
+      <div class="flex items-end gap-2">
+        <label class="block text-xs text-mute">
+          <span class="mb-1 block">{{ 'home.teams.rotations' | transloco }}</span>
+          <select class="ui-input text-sm" [ngModel]="team.rotations ?? 1" (ngModelChange)="setRotations(team, $event)">
+            <option [ngValue]="1">1</option>
+            <option [ngValue]="2">2</option>
+          </select>
+        </label>
+        <button type="button" class="ui-btn ui-btn-secondary" (click)="viewing.set(null)">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+          {{ 'home.teams.back' | transloco }}
+        </button>
+      </div>
+    </div>
+    <p class="mt-2 text-sm text-mute">{{ 'home.teams.rotationInfo' | transloco }}</p>
+
+    @for (slot of slots; track slot; let i = $index) {
+      @if (character(team.members[i]); as c) {
+        <section class="ui-card mt-4 p-4">
+          <div class="flex flex-wrap items-center gap-3">
+            <img [src]="'assets/img/characters/' + c.data.icon + '.webp'" alt=""
+              class="h-8 w-8 rounded-full bg-surface-2 object-cover object-top" />
+            <h3 class="min-w-0 flex-1 font-bold text-ink">{{ slot }} · {{ c.name }}</h3>
+            @if (i === 0 && (team.rotations ?? 1) > 1) {
+              <span class="text-xs text-mute">{{ 'home.teams.introSecond' | transloco }}</span>
+            }
+          </div>
+          <app-rotation-editor [character]="c" [intro]="i > 0" [steps]="team.steps![i]!" (stepsChange)="setSteps(team, i, $event)">
+            <button type="button" class="ui-btn ui-btn-secondary" (click)="reimport(team, i)">
+              {{ 'home.teams.reimport' | transloco }}
+            </button>
+          </app-rotation-editor>
+        </section>
+      }
+    }
+
+    <!-- Result -->
+    <table class="ui-table mt-4 w-full text-sm">
+      <thead>
+        <tr>
+          <th class="text-left">{{ 'home.teams.memberColumn' | transloco }}</th>
+          <th class="text-right">{{ 'char.rotationBuild.hits' | transloco }}</th>
+          <th class="text-right">{{ 'char.rotationBuild.total' | transloco }}</th>
+          <th class="text-right">{{ 'char.rotationBuild.average' | transloco }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (slot of slots; track slot; let i = $index) {
+          @let sum = memberSum(team, i);
+          <tr>
+            <td>{{ slot }} · {{ character(team.members[i])?.name }}</td>
+            <td class="text-right tabular-nums">{{ sum.hits }}</td>
+            <td class="text-right tabular-nums">{{ sum.total | number: '1.0-0' }}</td>
+            <td class="text-right tabular-nums">{{ (sum.hits ? sum.total / sum.hits : 0) | number: '1.0-0' }}</td>
+          </tr>
+        }
+        @let all = teamSum(team);
+        <tr class="font-bold text-ink">
+          <td>{{ 'home.teams.teamTotal' | transloco }}</td>
+          <td class="text-right tabular-nums">{{ all.hits }}</td>
+          <td class="text-right tabular-nums">{{ all.total | number: '1.0-0' }}</td>
+          <td class="text-right tabular-nums">{{ (all.hits ? all.total / all.hits : 0) | number: '1.0-0' }}</td>
+        </tr>
+      </tbody>
+    </table>
   } @else {
     <!-- List of teams -->
     <div class="flex justify-end">
@@ -50,8 +122,14 @@
           </span>
           @if (!complete(team)) {
             <span class="text-xs text-mute">{{ 'home.teams.incomplete' | transloco }}</span>
+          } @else {
+            <span class="text-sm tabular-nums text-ink" [title]="'char.rotationBuild.total' | transloco">~{{ teamSum(team).total | number: '1.0-0' }}</span>
           }
           <span class="flex gap-1">
+            <button type="button" class="ui-icon-btn" [attr.aria-label]="'home.teams.rotation' | transloco"
+              [title]="'home.teams.rotation' | transloco" [disabled]="!complete(team)" (click)="openRotation(team)">
+              <span class="material-symbols-outlined" aria-hidden="true">swords</span>
+            </button>
             <button type="button" class="ui-icon-btn" [attr.aria-label]="'home.teams.edit' | transloco" (click)="edit(team)">
               <span class="material-symbols-outlined" aria-hidden="true">edit</span>
             </button>

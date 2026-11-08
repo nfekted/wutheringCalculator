@@ -1,15 +1,17 @@
 import { ChangeDetectionStrategy, Component, computed, output, signal } from '@angular/core';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { CHARACTERS } from '../data/characters';
 
 const ELEMENTS = ['aero', 'glacio', 'electro', 'fusion', 'havoc', 'spectro'];
 
-/** Element filter plus a grid of every character; one click on a card emits its id. */
+/** Element and name filters plus a grid of every character; one click on a card emits its id. */
 @Component({
   selector: 'app-character-grid',
   changeDetection: ChangeDetectionStrategy.Eager,
   host: { class: 'block' },
+  imports: [TranslocoPipe],
   template: `
-    <div class="flex flex-wrap gap-2" role="group">
+    <div class="flex flex-wrap items-center gap-2" role="group">
       @for (e of elements; track e) {
         <button type="button" [attr.aria-pressed]="filter() === e" [attr.aria-label]="e"
           class="flex h-10 w-10 items-center justify-center rounded-sm border bg-surface hover:bg-surface-2"
@@ -18,6 +20,8 @@ const ELEMENTS = ['aero', 'glacio', 'electro', 'fusion', 'havoc', 'spectro'];
           <img [src]="'assets/img/icons/' + e + '.webp'" alt="" class="h-8 w-8" />
         </button>
       }
+      <input type="search" class="ui-input min-w-0 flex-1 text-sm sm:max-w-xs" [placeholder]="'home.search' | transloco"
+        [attr.aria-label]="'home.search' | transloco" [value]="search()" (input)="search.set($any($event.target).value)" />
     </div>
 
     <ul class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
@@ -43,7 +47,11 @@ export class CharacterGridComponent {
 
   protected elements = ELEMENTS;
   protected filter = signal('');
-  protected visible = computed(() => this.filter() ? CHARACTERS.filter(c => c.type === this.filter()) : CHARACTERS);
+  protected search = signal('');
+  protected visible = computed(() => {
+    const name = this.search().trim().toLowerCase();
+    return CHARACTERS.filter(c => (!this.filter() || c.type === this.filter()) && (!name || c.name.toLowerCase().includes(name)));
+  });
 
   protected toggle(element: string) {
     this.filter.set(this.filter() === element ? '' : element);
