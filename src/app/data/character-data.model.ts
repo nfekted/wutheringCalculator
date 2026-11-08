@@ -25,7 +25,7 @@ export interface Hit {
   parts: HitPart[];
   /** Basic attack that belongs to the combo chain (Stage 1, Stage 2...) */
   combo?: boolean;
-  /** Element of the damage of an Echo hit (aero, glacio... or physical), only as information: no elemental bonus applies to it */
+  /** Element of the damage of an Echo hit (aero, glacio... or physical); the elemental bonus of the character applies only when it is the same */
   element?: string;
 }
 

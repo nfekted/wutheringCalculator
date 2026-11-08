@@ -94,7 +94,7 @@ export class Character implements Stats {
 
     calculate() {
         this.results = calculateResults(this.data, this, this.levels, this.mode);
-        this.echoResults = calculateEchoResults(this.mainEcho?.skill.hits ?? [], this);
+        this.echoResults = calculateEchoResults(this.mainEcho?.skill.hits ?? [], this, this.data.type);
     }
 
     /** Echo of the main slot (the first one) */

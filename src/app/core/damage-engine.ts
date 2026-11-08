@@ -17,6 +17,25 @@ export interface Stats {
   energyRegen: number;
 }
 
+/**
+ * DMG Amplification in %: a multiplier of its own, after the DMG Bonus. Every amplification that applies to a hit is added up
+ * (all + the element of the hit + its kind). Heal, shield and tune hits get none. No source gives it yet (all 0)
+ */
+export interface Amplification {
+  all: number;
+  /** Of the element of the character; for an Echo hit, only when the Echo has that element */
+  elemental: number;
+  basic: number;
+  heavy: number;
+  skill: number;
+  liberation: number;
+  echo: number;
+}
+
+export function noAmplification(): Amplification {
+  return { all: 0, elemental: 0, basic: 0, heavy: 0, skill: 0, liberation: 0, echo: 0 };
+}
+
 export interface Levels {
   basic: number;
   skill: number;
@@ -63,7 +82,7 @@ export function emptyResults(): CharacterResults {
 }
 
 /** `mode` is the index in `data.modes`: the second mode uses the `altKind` of the hits that have one */
-export function calculateResults(data: CharacterData, stats: Stats, levels: Levels, mode = 0): CharacterResults {
+export function calculateResults(data: CharacterData, stats: Stats, levels: Levels, mode = 0, amplification = noAmplification()): CharacterResults {
   const results = {} as CharacterResults;
   for (const key of SECTIONS) {
     // The outro skill has no level
@@ -71,22 +90,26 @@ export function calculateResults(data: CharacterData, stats: Stats, levels: Leve
     results[key] = data[key].hits.map(hit => {
       const kind = mode > 0 && hit.altKind ? hit.altKind : hit.kind;
       const elemental = kind === 'heal' || kind === 'shield' ? 0 : stats.elementalBonus;
-      return calculateHit(hit, stats, level, 100 + elemental + bonusOf(stats, kind));
+      return calculateHit(hit, stats, level, 100 + elemental + bonusOf(stats, kind), amplificationOf(amplification, kind, true));
     });
   }
   return results;
 }
 
 /**
- * Hits of an Echo Skill: the Echo only takes the ATK, HP, DEF and crit of the character,
- * none of its damage bonuses (not even the elemental one or `echoBonus`)
+ * Hits of an Echo Skill: the Echo takes the attributes of the character and `echoBonus`;
+ * the elemental bonus and amplification only when the Echo hit has the element of the character (a physical one never does)
  */
-export function calculateEchoResults(hits: Hit[], stats: Stats): HitResult[] {
-  return hits.map(hit => calculateHit(hit, stats, 1, 100));
+export function calculateEchoResults(hits: Hit[], stats: Stats, element: string, amplification = noAmplification()): HitResult[] {
+  return hits.map(hit => {
+    const sameElement = hit.element === element;
+    const bonus = 100 + (sameElement ? stats.elementalBonus : 0) + stats.echoBonus;
+    return calculateHit(hit, stats, 1, bonus, amplificationOf(amplification, 'echo', sameElement));
+  });
 }
 
-/** `bonus` is the total damage bonus in % (100 is none) */
-function calculateHit(hit: Hit, stats: Stats, level: number, bonus: number): HitResult {
+/** `bonus` is the total damage bonus in % (100 is none); `amplification` the total DMG Amplification in % (0 is none) */
+function calculateHit(hit: Hit, stats: Stats, level: number, bonus: number, amplification: number): HitResult {
 
   const parts = hit.parts.map(part => {
     // A skill without levels has a single value
@@ -94,7 +117,7 @@ function calculateHit(hit: Hit, stats: Stats, level: number, bonus: number): Hit
     const base = part.stat === 'flat' ? raw
       : part.stat === 'er' ? raw * stats.energyRegen
       : statOf(stats, part.stat) * (raw / 100);
-    const expected = base * (bonus / 100);
+    const expected = base * (bonus / 100) * (1 + amplification / 100);
     return {
       value: +expected.toFixed(0),
       times: part.times ?? 1,
@@ -113,6 +136,13 @@ function calculateHit(hit: Hit, stats: Stats, level: number, bonus: number): Hit
 
 function statOf(stats: Stats, stat: Exclude<PartStat, 'flat' | 'er'>): number {
   return stat === 'hp' ? stats.hp : stat === 'def' ? stats.def : stats.dmg;
+}
+
+/** DMG Amplification (in %) that applies to a kind of hit; heal, shield and tune get none, outro and intro only the general ones */
+function amplificationOf(amplification: Amplification, kind: HitKind, sameElement: boolean): number {
+  if (kind === 'heal' || kind === 'shield' || kind === 'tune') return 0;
+  const byKind = kind === 'basic' || kind === 'heavy' || kind === 'skill' || kind === 'liberation' || kind === 'echo' ? amplification[kind] : 0;
+  return amplification.all + (sameElement ? amplification.elemental : 0) + byKind;
 }
 
 /** Damage bonus (in %) that applies to a kind of hit; intro, outro, shield and tune (a fixed multiplier) have none */
