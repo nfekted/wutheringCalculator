@@ -5,7 +5,11 @@
   "iconSkill": "yinlin",
   "type": "electro",
   "weapon": "rectifier",
-  "base": { "hp": 11000, "atk": 400, "def": 1283 },
+  "base": {
+    "hp": 11000,
+    "atk": 400,
+    "def": 1283
+  },
   "lastUpdate": "2026-10-27T00:29:05.226Z",
   "hasHealing": false,
   "healsAllies": false,
@@ -19,7 +23,21 @@
         "name": "Zapstring's Dance DMG 1",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [14.49, 15.68, 16.87, 18.53, 19.72, 21.09, 22.99, 24.89, 26.79, 28.81] }
+          {
+            "stat": "atk",
+            "values": [
+              14.49,
+              15.68,
+              16.87,
+              18.53,
+              19.72,
+              21.09,
+              22.99,
+              24.89,
+              26.79,
+              28.81
+            ]
+          }
         ],
         "combo": true
       },
@@ -29,7 +47,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [17.01, 18.41, 19.8, 21.76, 23.15, 24.76, 26.99, 29.22, 31.45, 33.82],
+            "values": [
+              17.01,
+              18.41,
+              19.8,
+              21.76,
+              23.15,
+              24.76,
+              26.99,
+              29.22,
+              31.45,
+              33.82
+            ],
             "times": 2
           }
         ],
@@ -41,7 +70,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [7.04, 7.62, 8.19, 9, 9.58, 10.24, 11.16, 12.09, 13.01, 13.99],
+            "values": [
+              7.04,
+              7.62,
+              8.19,
+              9,
+              9.58,
+              10.24,
+              11.16,
+              12.09,
+              13.01,
+              13.99
+            ],
             "times": 7
           }
         ],
@@ -51,7 +91,21 @@
         "name": "Zapstring's Dance DMG 4",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [37.8, 40.9, 44, 48.34, 51.44, 55.01, 59.97, 64.93, 69.89, 75.16] }
+          {
+            "stat": "atk",
+            "values": [
+              37.8,
+              40.9,
+              44,
+              48.34,
+              51.44,
+              55.01,
+              59.97,
+              64.93,
+              69.89,
+              75.16
+            ]
+          }
         ],
         "combo": true
       },
@@ -61,7 +115,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [15, 16.23, 17.46, 19.19, 20.42, 21.83, 23.8, 25.77, 27.74, 29.83],
+            "values": [
+              15,
+              16.23,
+              17.46,
+              19.19,
+              20.42,
+              21.83,
+              23.8,
+              25.77,
+              27.74,
+              29.83
+            ],
             "times": 2
           }
         ]
@@ -70,7 +135,21 @@
         "name": "Mid-Air Attack Damage",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [62, 67.09, 72.17, 79.29, 84.37, 90.22, 98.36, 106.49, 114.62, 123.27] }
+          {
+            "stat": "atk",
+            "values": [
+              62,
+              67.09,
+              72.17,
+              79.29,
+              84.37,
+              90.22,
+              98.36,
+              106.49,
+              114.62,
+              123.27
+            ]
+          }
         ]
       },
       {
@@ -79,7 +158,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [12.18, 13.18, 14.18, 15.58, 16.58, 17.72, 19.32, 20.92, 22.52, 24.22],
+            "values": [
+              12.18,
+              13.18,
+              14.18,
+              15.58,
+              16.58,
+              17.72,
+              19.32,
+              20.92,
+              22.52,
+              24.22
+            ],
             "times": 7
           }
         ]
@@ -95,7 +185,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65],
+            "values": [
+              30,
+              32.46,
+              34.92,
+              38.37,
+              40.83,
+              43.66,
+              47.59,
+              51.53,
+              55.47,
+              59.65
+            ],
             "times": 3
           }
         ]
@@ -106,7 +207,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [45, 48.69, 52.38, 57.55, 61.24, 65.48, 71.39, 77.29, 83.2, 89.47],
+            "values": [
+              45,
+              48.69,
+              52.38,
+              57.55,
+              61.24,
+              65.48,
+              71.39,
+              77.29,
+              83.2,
+              89.47
+            ],
             "times": 4
           }
         ]
@@ -115,7 +227,21 @@
         "name": "Electromagnetic Blast Damage",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [10, 10.82, 11.64, 12.79, 13.61, 14.56, 15.87, 17.18, 18.49, 19.89] }
+          {
+            "stat": "atk",
+            "values": [
+              10,
+              10.82,
+              11.64,
+              12.79,
+              13.61,
+              14.56,
+              15.87,
+              17.18,
+              18.49,
+              19.89
+            ]
+          }
         ]
       }
     ]
@@ -129,7 +255,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [58.63, 63.44, 68.25, 74.98, 79.79, 85.32, 93.01, 100.7, 108.39, 116.56],
+            "values": [
+              58.63,
+              63.44,
+              68.25,
+              74.98,
+              79.79,
+              85.32,
+              93.01,
+              100.7,
+              108.39,
+              116.56
+            ],
             "times": 7
           }
         ]
@@ -145,7 +282,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [7.2, 7.8, 8.39, 9.21, 9.8, 10.48, 11.43, 12.37, 13.32, 14.32],
+            "values": [
+              7.2,
+              7.8,
+              8.39,
+              9.21,
+              9.8,
+              10.48,
+              11.43,
+              12.37,
+              13.32,
+              14.32
+            ],
             "times": 10
           }
         ]
@@ -165,7 +313,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [90, 97.38, 104.76, 115.1, 122.48, 130.96, 142.77, 154.58, 166.39, 178.93],
+            "values": [
+              90,
+              97.38,
+              104.76,
+              115.1,
+              122.48,
+              130.96,
+              142.77,
+              154.58,
+              166.39,
+              178.93
+            ],
             "times": 2
           }
         ]
@@ -174,54 +333,129 @@
         "name": "Judgment Strike Damage",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [39.56, 42.8, 46.05, 50.59, 53.83, 57.56, 62.75, 67.94, 73.13, 78.64] }
+          {
+            "stat": "atk",
+            "values": [
+              39.56,
+              42.8,
+              46.05,
+              50.59,
+              53.83,
+              57.56,
+              62.75,
+              67.94,
+              73.13,
+              78.64
+            ]
+          }
         ]
       }
     ]
   },
   "recommended": {
-    "echos": [62, 30, 28],
-    "sonatas": [
-      [23],
-      [5],
-      [35]
+    "echos": [
+      62,
+      30,
+      28
     ],
-    "weapons": ["Stringmaster", "Rime-Draped Sprouts", "Lethean Elegy", "Cosmic Ripples"],
+    "sonatas": [
+      [
+        23
+      ],
+      [
+        5
+      ],
+      [
+        35
+      ]
+    ],
+    "weapons": [
+      "Stringmaster",
+      "Rime-Draped Sprouts",
+      "Lethean Elegy",
+      "Cosmic Ripples"
+    ],
     "teams": [
       [
-        { "character": "xiangli-yao", "role": "main" },
-        { "character": "yinlin", "role": "sub" },
-        { "character": "shorekeeper", "role": "sup" }
+        {
+          "character": "xiangli-yao",
+          "role": "main"
+        },
+        {
+          "character": "yinlin",
+          "role": "sub"
+        },
+        {
+          "character": "shorekeeper",
+          "role": "sup"
+        }
       ],
       [
-        { "character": "augusta", "role": "main" },
-        { "character": "yinlin", "role": "sub" },
-        { "character": "shorekeeper", "role": "sup" }
+        {
+          "character": "augusta",
+          "role": "main"
+        },
+        {
+          "character": "yinlin",
+          "role": "sub"
+        },
+        {
+          "character": "shorekeeper",
+          "role": "sup"
+        }
       ],
       [
-        { "character": "iuno", "role": "main" },
-        { "character": "yinlin", "role": "sub" },
-        { "character": "shorekeeper", "role": "sup" }
+        {
+          "character": "iuno",
+          "role": "main"
+        },
+        {
+          "character": "yinlin",
+          "role": "sub"
+        },
+        {
+          "character": "shorekeeper",
+          "role": "sup"
+        }
       ]
     ],
     "main": {
       "1": [
-        { "stat": "dmg" }
+        {
+          "stat": "dmg"
+        }
       ],
       "3": [
-        { "stat": "elementalBonus", "element": "electro" }
+        {
+          "stat": "elementalBonus",
+          "element": "electro"
+        }
       ],
       "4": [
-        { "stat": "cChance" },
-        { "stat": "cDmg" }
+        {
+          "stat": "cChance"
+        },
+        {
+          "stat": "cDmg"
+        }
       ]
     },
     "subs": [
-      { "stat": "cChance" },
-      { "stat": "cDmg" },
-      { "stat": "dmg" },
-      { "stat": "energyRegen" },
-      { "stat": "skillBonus" }
+      {
+        "stat": "cChance"
+      },
+      {
+        "stat": "cDmg"
+      },
+      {
+        "stat": "dmg"
+      },
+      {
+        "stat": "energyRegen"
+      },
+      {
+        "stat": "skillBonus"
+      }
     ]
   }
 }

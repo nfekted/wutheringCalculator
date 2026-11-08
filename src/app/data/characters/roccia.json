@@ -5,7 +5,11 @@
   "iconSkill": "roccia",
   "type": "havoc",
   "weapon": "gauntlets",
-  "base": { "hp": 12250, "atk": 375, "def": 1197 },
+  "base": {
+    "hp": 12250,
+    "atk": 375,
+    "def": 1197
+  },
   "lastUpdate": "2026-10-25T01:12:54.773Z",
   "hasHealing": false,
   "healsAllies": false,
@@ -19,7 +23,21 @@
         "name": "Pero, Easy DMG 1",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [36.81, 39.83, 42.85, 47.07, 50.09, 53.56, 58.39, 63.22, 68.05, 73.18] }
+          {
+            "stat": "atk",
+            "values": [
+              36.81,
+              39.83,
+              42.85,
+              47.07,
+              50.09,
+              53.56,
+              58.39,
+              63.22,
+              68.05,
+              73.18
+            ]
+          }
         ],
         "combo": true
       },
@@ -29,7 +47,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [19.19, 20.76, 22.33, 24.53, 26.11, 27.92, 30.43, 32.95, 35.47, 38.14],
+            "values": [
+              19.19,
+              20.76,
+              22.33,
+              24.53,
+              26.11,
+              27.92,
+              30.43,
+              32.95,
+              35.47,
+              38.14
+            ],
             "times": 3
           }
         ],
@@ -41,10 +70,35 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [17, 18.4, 19.79, 21.74, 23.14, 24.74, 26.97, 29.2, 31.43, 33.8],
+            "values": [
+              17,
+              18.4,
+              19.79,
+              21.74,
+              23.14,
+              24.74,
+              26.97,
+              29.2,
+              31.43,
+              33.8
+            ],
             "times": 2
           },
-          { "stat": "atk", "values": [51, 55.19, 59.37, 65.22, 69.41, 74.22, 80.91, 87.6, 94.29, 101.4] }
+          {
+            "stat": "atk",
+            "values": [
+              51,
+              55.19,
+              59.37,
+              65.22,
+              69.41,
+              74.22,
+              80.91,
+              87.6,
+              94.29,
+              101.4
+            ]
+          }
         ],
         "combo": true
       },
@@ -54,7 +108,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [52.41, 56.7, 61, 67.02, 71.31, 76.26, 83.13, 90.01, 96.88, 104.19],
+            "values": [
+              52.41,
+              56.7,
+              61,
+              67.02,
+              71.31,
+              76.26,
+              83.13,
+              90.01,
+              96.88,
+              104.19
+            ],
             "times": 2
           }
         ],
@@ -64,14 +129,42 @@
         "name": "Heavy Attack DMG",
         "kind": "heavy",
         "parts": [
-          { "stat": "atk", "values": [85, 91.97, 98.94, 108.7, 115.67, 123.69, 134.84, 145.99, 157.14, 168.99] }
+          {
+            "stat": "atk",
+            "values": [
+              85,
+              91.97,
+              98.94,
+              108.7,
+              115.67,
+              123.69,
+              134.84,
+              145.99,
+              157.14,
+              168.99
+            ]
+          }
         ]
       },
       {
         "name": "Mid-air Attack DMG",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [52.7, 57.03, 61.35, 67.4, 71.72, 76.69, 83.6, 90.52, 97.43, 104.78] }
+          {
+            "stat": "atk",
+            "values": [
+              52.7,
+              57.03,
+              61.35,
+              67.4,
+              71.72,
+              76.69,
+              83.6,
+              90.52,
+              97.43,
+              104.78
+            ]
+          }
         ]
       },
       {
@@ -80,7 +173,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [34.66, 37.5, 40.34, 44.32, 47.16, 50.43, 54.97, 59.52, 64.07, 68.9],
+            "values": [
+              34.66,
+              37.5,
+              40.34,
+              44.32,
+              47.16,
+              50.43,
+              54.97,
+              59.52,
+              64.07,
+              68.9
+            ],
             "times": 3
           }
         ]
@@ -96,7 +200,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [30.92, 33.46, 35.99, 39.54, 42.07, 44.99, 49.05, 53.1, 57.16, 61.47],
+            "values": [
+              30.92,
+              33.46,
+              35.99,
+              39.54,
+              42.07,
+              44.99,
+              49.05,
+              53.1,
+              57.16,
+              61.47
+            ],
             "times": 8
           }
         ]
@@ -112,7 +227,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [140, 151.48, 162.96, 179.04, 190.52, 203.72, 222.09, 240.45, 258.82, 278.34],
+            "values": [
+              140,
+              151.48,
+              162.96,
+              179.04,
+              190.52,
+              203.72,
+              222.09,
+              240.45,
+              258.82,
+              278.34
+            ],
             "times": 3
           }
         ]
@@ -126,7 +252,21 @@
         "name": "Pero, Help DMG",
         "kind": "intro",
         "parts": [
-          { "stat": "atk", "values": [85, 91.97, 98.94, 108.7, 115.67, 123.69, 134.84, 145.99, 157.14, 168.99] }
+          {
+            "stat": "atk",
+            "values": [
+              85,
+              91.97,
+              98.94,
+              108.7,
+              115.67,
+              123.69,
+              134.84,
+              145.99,
+              157.14,
+              168.99
+            ]
+          }
         ]
       }
     ]
@@ -142,62 +282,154 @@
         "name": "A Prop Master Prepares DMG 1",
         "kind": "heavy",
         "parts": [
-          { "stat": "atk", "values": [162, 175.29, 188.57, 207.17, 220.45, 235.73, 256.99, 278.24, 299.49, 322.08] }
+          {
+            "stat": "atk",
+            "values": [
+              162,
+              175.29,
+              188.57,
+              207.17,
+              220.45,
+              235.73,
+              256.99,
+              278.24,
+              299.49,
+              322.08
+            ]
+          }
         ]
       },
       {
         "name": "A Prop Master Prepares DMG 2",
         "kind": "heavy",
         "parts": [
-          { "stat": "atk", "values": [171, 185.03, 199.05, 218.68, 232.7, 248.83, 271.26, 293.7, 316.13, 339.97] }
+          {
+            "stat": "atk",
+            "values": [
+              171,
+              185.03,
+              199.05,
+              218.68,
+              232.7,
+              248.83,
+              271.26,
+              293.7,
+              316.13,
+              339.97
+            ]
+          }
         ]
       },
       {
         "name": "A Prop Master Prepares DMG 3",
         "kind": "heavy",
         "parts": [
-          { "stat": "atk", "values": [180, 194.76, 209.52, 230.19, 244.95, 261.92, 285.54, 309.15, 332.77, 357.86] }
+          {
+            "stat": "atk",
+            "values": [
+              180,
+              194.76,
+              209.52,
+              230.19,
+              244.95,
+              261.92,
+              285.54,
+              309.15,
+              332.77,
+              357.86
+            ]
+          }
         ]
       }
     ]
   },
   "recommended": {
-    "echos": [131, 130, 62],
-    "sonatas": [
-      [21],
-      [23]
+    "echos": [
+      131,
+      130,
+      62
     ],
-    "weapons": ["Tragicomedy", "Blazing Justice", "Verity's Handle", "Abyss Surges"],
-    "teams": [
+    "sonatas": [
       [
-        { "character": "camellya", "role": "main" },
-        { "character": "roccia", "role": "sub" },
-        { "character": "shorekeeper", "role": "sup" }
+        21
       ],
       [
-        { "character": "phrolova", "role": "main" },
-        { "character": "cantarella", "role": "sub" },
-        { "character": "roccia", "role": "sub" }
+        23
+      ]
+    ],
+    "weapons": [
+      "Tragicomedy",
+      "Blazing Justice",
+      "Verity's Handle",
+      "Abyss Surges"
+    ],
+    "teams": [
+      [
+        {
+          "character": "camellya",
+          "role": "main"
+        },
+        {
+          "character": "roccia",
+          "role": "sub"
+        },
+        {
+          "character": "shorekeeper",
+          "role": "sup"
+        }
+      ],
+      [
+        {
+          "character": "phrolova",
+          "role": "main"
+        },
+        {
+          "character": "cantarella",
+          "role": "sub"
+        },
+        {
+          "character": "roccia",
+          "role": "sub"
+        }
       ]
     ],
     "main": {
       "1": [
-        { "stat": "dmg" }
+        {
+          "stat": "dmg"
+        }
       ],
       "3": [
-        { "stat": "elementalBonus", "element": "havoc" }
+        {
+          "stat": "elementalBonus",
+          "element": "havoc"
+        }
       ],
       "4": [
-        { "stat": "cChance" },
-        { "stat": "cDmg" }
+        {
+          "stat": "cChance"
+        },
+        {
+          "stat": "cDmg"
+        }
       ]
     },
     "subs": [
-      { "stat": "cChance" },
-      { "stat": "cDmg" },
-      { "stat": "energyRegen" },
-      { "stat": "heavyBonus" },
-      { "stat": "dmg" }
+      {
+        "stat": "cChance"
+      },
+      {
+        "stat": "cDmg"
+      },
+      {
+        "stat": "energyRegen"
+      },
+      {
+        "stat": "heavyBonus"
+      },
+      {
+        "stat": "dmg"
+      }
     ]
   }
 }

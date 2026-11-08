@@ -5,7 +5,11 @@
   "iconSkill": "aalto",
   "type": "aero",
   "weapon": "pistols",
-  "base": { "hp": 9850, "atk": 262, "def": 1075 },
+  "base": {
+    "hp": 9850,
+    "atk": 262,
+    "def": 1075
+  },
   "lastUpdate": "2026-10-27T01:35:04.462Z",
   "hasHealing": false,
   "healsAllies": false,
@@ -19,7 +23,21 @@
         "name": "Half Truths DMG 1",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [16, 17.32, 18.63, 20.47, 21.78, 23.29, 25.39, 27.48, 29.58, 31.81] }
+          {
+            "stat": "atk",
+            "values": [
+              16,
+              17.32,
+              18.63,
+              20.47,
+              21.78,
+              23.29,
+              25.39,
+              27.48,
+              29.58,
+              31.81
+            ]
+          }
         ],
         "combo": true
       },
@@ -27,7 +45,21 @@
         "name": "Half Truths DMG 2",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [26.67, 28.86, 31.04, 34.11, 36.29, 38.81, 42.31, 45.8, 49.3, 53.02] }
+          {
+            "stat": "atk",
+            "values": [
+              26.67,
+              28.86,
+              31.04,
+              34.11,
+              36.29,
+              38.81,
+              42.31,
+              45.8,
+              49.3,
+              53.02
+            ]
+          }
         ],
         "combo": true
       },
@@ -37,7 +69,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [24, 25.97, 27.94, 30.7, 32.66, 34.93, 38.08, 41.22, 44.37, 47.72],
+            "values": [
+              24,
+              25.97,
+              27.94,
+              30.7,
+              32.66,
+              34.93,
+              38.08,
+              41.22,
+              44.37,
+              47.72
+            ],
             "times": 2
           }
         ],
@@ -49,7 +92,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [25.34, 27.42, 29.49, 32.4, 34.48, 36.87, 40.19, 43.51, 46.84, 50.37],
+            "values": [
+              25.34,
+              27.42,
+              29.49,
+              32.4,
+              34.48,
+              36.87,
+              40.19,
+              43.51,
+              46.84,
+              50.37
+            ],
             "times": 2
           }
         ],
@@ -59,7 +113,21 @@
         "name": "Half Truths DMG 5",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [90.4, 97.82, 105.23, 115.61, 123.02, 131.55, 143.41, 155.27, 167.13, 179.73] }
+          {
+            "stat": "atk",
+            "values": [
+              90.4,
+              97.82,
+              105.23,
+              115.61,
+              123.02,
+              131.55,
+              143.41,
+              155.27,
+              167.13,
+              179.73
+            ]
+          }
         ],
         "combo": true
       },
@@ -67,28 +135,84 @@
         "name": "Mid-air Attack",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65] }
+          {
+            "stat": "atk",
+            "values": [
+              30,
+              32.46,
+              34.92,
+              38.37,
+              40.83,
+              43.66,
+              47.59,
+              51.53,
+              55.47,
+              59.65
+            ]
+          }
         ]
       },
       {
         "name": "Aimed Shot Damage",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [18, 19.48, 20.96, 23.02, 24.5, 26.2, 28.56, 30.92, 33.28, 35.79] }
+          {
+            "stat": "atk",
+            "values": [
+              18,
+              19.48,
+              20.96,
+              23.02,
+              24.5,
+              26.2,
+              28.56,
+              30.92,
+              33.28,
+              35.79
+            ]
+          }
         ]
       },
       {
         "name": "Fully Charged Aimed Shot Damage",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [40.5, 43.83, 47.15, 51.8, 55.12, 58.94, 64.25, 69.56, 74.88, 80.52] }
+          {
+            "stat": "atk",
+            "values": [
+              40.5,
+              43.83,
+              47.15,
+              51.8,
+              55.12,
+              58.94,
+              64.25,
+              69.56,
+              74.88,
+              80.52
+            ]
+          }
         ]
       },
       {
         "name": "Dodge Counter DMG",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [107.7, 116.54, 125.37, 137.73, 146.56, 156.72, 170.85, 184.98, 199.11, 214.12] }
+          {
+            "stat": "atk",
+            "values": [
+              107.7,
+              116.54,
+              125.37,
+              137.73,
+              146.56,
+              156.72,
+              170.85,
+              184.98,
+              199.11,
+              214.12
+            ]
+          }
         ]
       }
     ]
@@ -100,7 +224,21 @@
         "name": "Mist Bullet Damage",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65] }
+          {
+            "stat": "atk",
+            "values": [
+              30,
+              32.46,
+              34.92,
+              38.37,
+              40.83,
+              43.66,
+              47.59,
+              51.53,
+              55.47,
+              59.65
+            ]
+          }
         ]
       }
     ]
@@ -112,7 +250,21 @@
         "name": "Flower in the Mist DMG",
         "kind": "liberation",
         "parts": [
-          { "stat": "atk", "values": [200, 216.4, 232.8, 255.76, 272.16, 291.02, 317.26, 343.5, 369.74, 397.62] }
+          {
+            "stat": "atk",
+            "values": [
+              200,
+              216.4,
+              232.8,
+              255.76,
+              272.16,
+              291.02,
+              317.26,
+              343.5,
+              369.74,
+              397.62
+            ]
+          }
         ]
       }
     ]
@@ -126,7 +278,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [33.34, 36.07, 38.8, 42.63, 45.36, 48.51, 52.88, 57.25, 61.63, 66.27],
+            "values": [
+              33.34,
+              36.07,
+              38.8,
+              42.63,
+              45.36,
+              48.51,
+              52.88,
+              57.25,
+              61.63,
+              66.27
+            ],
             "times": 3
           }
         ]
@@ -144,43 +307,96 @@
         "name": "Mist Bullet DMG",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65] }
+          {
+            "stat": "atk",
+            "values": [
+              30,
+              32.46,
+              34.92,
+              38.37,
+              40.83,
+              43.66,
+              47.59,
+              51.53,
+              55.47,
+              59.65
+            ]
+          }
         ]
       }
     ]
   },
   "recommended": {
-    "echos": [62, 38],
-    "sonatas": [
-      [23],
-      [29]
+    "echos": [
+      62,
+      38
     ],
-    "weapons": ["The Last Dance", "Static Mist", "Undying Flame"],
+    "sonatas": [
+      [
+        23
+      ],
+      [
+        29
+      ]
+    ],
+    "weapons": [
+      "The Last Dance",
+      "Static Mist",
+      "Undying Flame"
+    ],
     "teams": [
       [
-        { "character": "aalto", "role": "main" },
-        { "character": "ciaccona", "role": "sub" },
-        { "character": "rovera", "role": "sup" }
+        {
+          "character": "aalto",
+          "role": "main"
+        },
+        {
+          "character": "ciaccona",
+          "role": "sub"
+        },
+        {
+          "character": "rovera",
+          "role": "sup"
+        }
       ]
     ],
     "main": {
       "1": [
-        { "stat": "dmg" }
+        {
+          "stat": "dmg"
+        }
       ],
       "3": [
-        { "stat": "elementalBonus", "element": "aero" }
+        {
+          "stat": "elementalBonus",
+          "element": "aero"
+        }
       ],
       "4": [
-        { "stat": "cChance" },
-        { "stat": "cDmg" }
+        {
+          "stat": "cChance"
+        },
+        {
+          "stat": "cDmg"
+        }
       ]
     },
     "subs": [
-      { "stat": "energyRegen" },
-      { "stat": "cChance" },
-      { "stat": "cDmg" },
-      { "stat": "dmg" },
-      { "stat": "basicBonus" }
+      {
+        "stat": "energyRegen"
+      },
+      {
+        "stat": "cChance"
+      },
+      {
+        "stat": "cDmg"
+      },
+      {
+        "stat": "dmg"
+      },
+      {
+        "stat": "basicBonus"
+      }
     ]
   }
 }

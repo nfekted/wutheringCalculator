@@ -5,7 +5,11 @@
   "iconSkill": "rover",
   "type": "spectro",
   "weapon": "sword",
-  "base": { "hp": 11400, "atk": 375, "def": 1368 },
+  "base": {
+    "hp": 11400,
+    "atk": 375,
+    "def": 1368
+  },
   "lastUpdate": "2026-10-25T12:50:48.965Z",
   "hasHealing": false,
   "healsAllies": false,
@@ -19,7 +23,21 @@
         "name": "Vibration Manifestation DMG 1",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [29.75, 32.19, 34.63, 38.05, 40.49, 43.29, 47.2, 51.1, 55, 59.15] }
+          {
+            "stat": "atk",
+            "values": [
+              29.75,
+              32.19,
+              34.63,
+              38.05,
+              40.49,
+              43.29,
+              47.2,
+              51.1,
+              55,
+              59.15
+            ]
+          }
         ],
         "combo": true
       },
@@ -27,7 +45,21 @@
         "name": "Vibration Manifestation DMG 2",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [38.25, 41.39, 44.53, 48.92, 52.06, 55.66, 60.68, 65.7, 70.72, 76.05] }
+          {
+            "stat": "atk",
+            "values": [
+              38.25,
+              41.39,
+              44.53,
+              48.92,
+              52.06,
+              55.66,
+              60.68,
+              65.7,
+              70.72,
+              76.05
+            ]
+          }
         ],
         "combo": true
       },
@@ -37,7 +69,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [7.65, 8.28, 8.91, 9.79, 10.42, 11.14, 12.14, 13.14, 14.15, 15.21],
+            "values": [
+              7.65,
+              8.28,
+              8.91,
+              9.79,
+              10.42,
+              11.14,
+              12.14,
+              13.14,
+              14.15,
+              15.21
+            ],
             "times": 5
           }
         ],
@@ -47,7 +90,21 @@
         "name": "Vibration Manifestation DMG 4",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [65.45, 70.82, 76.19, 83.7, 89.07, 95.24, 103.83, 112.42, 121, 130.13] }
+          {
+            "stat": "atk",
+            "values": [
+              65.45,
+              70.82,
+              76.19,
+              83.7,
+              89.07,
+              95.24,
+              103.83,
+              112.42,
+              121,
+              130.13
+            ]
+          }
         ],
         "combo": true
       },
@@ -55,7 +112,21 @@
         "name": "Dodge Counter Damage",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [98.25, 106.31, 114.37, 125.65, 133.7, 142.97, 155.86, 168.75, 181.64, 195.34] }
+          {
+            "stat": "atk",
+            "values": [
+              98.25,
+              106.31,
+              114.37,
+              125.65,
+              133.7,
+              142.97,
+              155.86,
+              168.75,
+              181.64,
+              195.34
+            ]
+          }
         ]
       },
       {
@@ -64,7 +135,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [9.69, 10.49, 11.28, 12.4, 13.19, 14.1, 15.38, 16.65, 17.92, 19.27],
+            "values": [
+              9.69,
+              10.49,
+              11.28,
+              12.4,
+              13.19,
+              14.1,
+              15.38,
+              16.65,
+              17.92,
+              19.27
+            ],
             "times": 5
           }
         ]
@@ -73,21 +155,63 @@
         "name": "HA: Resonance Damage",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [38.25, 41.39, 44.53, 48.92, 52.06, 55.66, 60.68, 65.7, 70.72, 76.05] }
+          {
+            "stat": "atk",
+            "values": [
+              38.25,
+              41.39,
+              44.53,
+              48.92,
+              52.06,
+              55.66,
+              60.68,
+              65.7,
+              70.72,
+              76.05
+            ]
+          }
         ]
       },
       {
         "name": "HA: Aftertune Damage",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [63.75, 68.98, 74.21, 81.53, 86.76, 92.77, 101.13, 109.5, 117.86, 126.75] }
+          {
+            "stat": "atk",
+            "values": [
+              63.75,
+              68.98,
+              74.21,
+              81.53,
+              86.76,
+              92.77,
+              101.13,
+              109.5,
+              117.86,
+              126.75
+            ]
+          }
         ]
       },
       {
         "name": "Mid-Air Attack Damage",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [52.7, 57.03, 61.35, 67.4, 71.72, 76.69, 83.6, 90.52, 97.43, 104.78] }
+          {
+            "stat": "atk",
+            "values": [
+              52.7,
+              57.03,
+              61.35,
+              67.4,
+              71.72,
+              76.69,
+              83.6,
+              90.52,
+              97.43,
+              104.78
+            ]
+          }
         ]
       }
     ]
@@ -99,7 +223,21 @@
         "name": "Resonating Slashes DMG",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [118.8, 128.55, 138.29, 151.93, 161.67, 172.87, 188.46, 204.04, 219.63, 236.19] }
+          {
+            "stat": "atk",
+            "values": [
+              118.8,
+              128.55,
+              138.29,
+              151.93,
+              161.67,
+              172.87,
+              188.46,
+              204.04,
+              219.63,
+              236.19
+            ]
+          }
         ]
       }
     ]
@@ -111,8 +249,36 @@
         "name": "Echoing Orchestra DMG",
         "kind": "liberation",
         "parts": [
-          { "stat": "atk", "values": [100, 108.2, 116.4, 127.88, 136.08, 145.51, 158.63, 171.75, 184.87, 198.81] },
-          { "stat": "atk", "values": [340, 367.88, 395.76, 434.8, 462.68, 494.74, 539.35, 583.95, 628.56, 675.96] }
+          {
+            "stat": "atk",
+            "values": [
+              100,
+              108.2,
+              116.4,
+              127.88,
+              136.08,
+              145.51,
+              158.63,
+              171.75,
+              184.87,
+              198.81
+            ]
+          },
+          {
+            "stat": "atk",
+            "values": [
+              340,
+              367.88,
+              395.76,
+              434.8,
+              462.68,
+              494.74,
+              539.35,
+              583.95,
+              628.56,
+              675.96
+            ]
+          }
         ]
       }
     ]
@@ -124,7 +290,21 @@
         "name": "Waveshock DMG",
         "kind": "intro",
         "parts": [
-          { "stat": "atk", "values": [85, 91.97, 98.94, 108.7, 115.67, 123.69, 134.84, 145.99, 157.14, 168.99] }
+          {
+            "stat": "atk",
+            "values": [
+              85,
+              91.97,
+              98.94,
+              108.7,
+              115.67,
+              123.69,
+              134.84,
+              145.99,
+              157.14,
+              168.99
+            ]
+          }
         ]
       }
     ]
@@ -142,7 +322,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [64.93, 70.25, 75.58, 83.03, 88.35, 94.48, 103, 111.51, 120.03, 129.08],
+            "values": [
+              64.93,
+              70.25,
+              75.58,
+              83.03,
+              88.35,
+              94.48,
+              103,
+              111.51,
+              120.03,
+              129.08
+            ],
             "times": 2
           }
         ]
@@ -151,62 +342,153 @@
         "name": "Resonating Whirl Damage",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [20, 21.64, 23.28, 25.58, 27.22, 29.11, 31.73, 34.35, 36.98, 39.77] }
+          {
+            "stat": "atk",
+            "values": [
+              20,
+              21.64,
+              23.28,
+              25.58,
+              27.22,
+              29.11,
+              31.73,
+              34.35,
+              36.98,
+              39.77
+            ]
+          }
         ]
       },
       {
         "name": "Resonating Echoes Part 1 Damage",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [40, 43.28, 46.56, 51.16, 54.44, 58.21, 63.46, 68.7, 73.95, 79.53] }
+          {
+            "stat": "atk",
+            "values": [
+              40,
+              43.28,
+              46.56,
+              51.16,
+              54.44,
+              58.21,
+              63.46,
+              68.7,
+              73.95,
+              79.53
+            ]
+          }
         ]
       },
       {
         "name": "Resonating Echoes Part 2 Damage",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [80, 86.56, 93.12, 102.31, 108.87, 116.41, 126.91, 137.4, 147.9, 159.05] }
+          {
+            "stat": "atk",
+            "values": [
+              80,
+              86.56,
+              93.12,
+              102.31,
+              108.87,
+              116.41,
+              126.91,
+              137.4,
+              147.9,
+              159.05
+            ]
+          }
         ]
       }
     ]
   },
   "recommended": {
-    "echos": [62, 66],
-    "sonatas": [
-      [23],
-      [6]
+    "echos": [
+      62,
+      66
     ],
-    "weapons": ["Emerald of Genesis", "Blazing Brilliance", "Overture", "Endless Collapse"],
-    "teams": [
+    "sonatas": [
       [
-        { "character": "zani", "role": "main" },
-        { "character": "rover", "role": "sub" },
-        { "character": "shorekeeper", "role": "sup" }
+        23
       ],
       [
-        { "character": "rover", "role": "main" },
-        { "character": "yangyang", "role": "sub" },
-        { "character": "baizhi", "role": "sup" }
+        6
+      ]
+    ],
+    "weapons": [
+      "Emerald of Genesis",
+      "Blazing Brilliance",
+      "Overture",
+      "Endless Collapse"
+    ],
+    "teams": [
+      [
+        {
+          "character": "zani",
+          "role": "main"
+        },
+        {
+          "character": "rover",
+          "role": "sub"
+        },
+        {
+          "character": "shorekeeper",
+          "role": "sup"
+        }
+      ],
+      [
+        {
+          "character": "rover",
+          "role": "main"
+        },
+        {
+          "character": "yangyang",
+          "role": "sub"
+        },
+        {
+          "character": "baizhi",
+          "role": "sup"
+        }
       ]
     ],
     "main": {
       "1": [
-        { "stat": "dmg" }
+        {
+          "stat": "dmg"
+        }
       ],
       "3": [
-        { "stat": "elementalBonus", "element": "spectro" }
+        {
+          "stat": "elementalBonus",
+          "element": "spectro"
+        }
       ],
       "4": [
-        { "stat": "cChance" },
-        { "stat": "cDmg" }
+        {
+          "stat": "cChance"
+        },
+        {
+          "stat": "cDmg"
+        }
       ]
     },
     "subs": [
-      { "stat": "cChance" },
-      { "stat": "cDmg" },
-      { "stat": "dmg" },
-      { "stat": "energyRegen" },
-      { "stat": "liberationBonus" }
+      {
+        "stat": "cChance"
+      },
+      {
+        "stat": "cDmg"
+      },
+      {
+        "stat": "dmg"
+      },
+      {
+        "stat": "energyRegen"
+      },
+      {
+        "stat": "liberationBonus"
+      }
     ]
   }
 }

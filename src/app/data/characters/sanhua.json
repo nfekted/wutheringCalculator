@@ -5,7 +5,11 @@
   "iconSkill": "sanhua",
   "type": "glacio",
   "weapon": "sword",
-  "base": { "hp": 10062, "atk": 275, "def": 941 },
+  "base": {
+    "hp": 10062,
+    "atk": 275,
+    "def": 941
+  },
   "lastUpdate": "2026-10-22T10:08:27.603Z",
   "hasHealing": false,
   "healsAllies": false,
@@ -19,7 +23,21 @@
         "name": "Frigid Light DMG 1",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [24.5, 26.51, 28.52, 31.34, 33.34, 35.65, 38.87, 42.08, 45.3, 48.71] }
+          {
+            "stat": "atk",
+            "values": [
+              24.5,
+              26.51,
+              28.52,
+              31.34,
+              33.34,
+              35.65,
+              38.87,
+              42.08,
+              45.3,
+              48.71
+            ]
+          }
         ],
         "combo": true
       },
@@ -27,7 +45,21 @@
         "name": "Frigid Light DMG 2",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [37.1, 40.15, 43.19, 47.45, 50.49, 53.99, 58.86, 63.72, 68.59, 73.76] }
+          {
+            "stat": "atk",
+            "values": [
+              37.1,
+              40.15,
+              43.19,
+              47.45,
+              50.49,
+              53.99,
+              58.86,
+              63.72,
+              68.59,
+              73.76
+            ]
+          }
         ],
         "combo": true
       },
@@ -37,7 +69,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [10.85, 11.74, 12.63, 13.88, 14.77, 15.79, 17.22, 18.64, 20.06, 21.58],
+            "values": [
+              10.85,
+              11.74,
+              12.63,
+              13.88,
+              14.77,
+              15.79,
+              17.22,
+              18.64,
+              20.06,
+              21.58
+            ],
             "times": 4
           }
         ],
@@ -49,7 +92,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [19.95, 21.59, 23.23, 25.52, 27.15, 29.03, 31.65, 34.27, 36.89, 39.67],
+            "values": [
+              19.95,
+              21.59,
+              23.23,
+              25.52,
+              27.15,
+              29.03,
+              31.65,
+              34.27,
+              36.89,
+              39.67
+            ],
             "times": 2
           }
         ],
@@ -59,7 +113,21 @@
         "name": "Frigid Light DMG 5",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [117.6, 127.25, 136.89, 150.39, 160.04, 171.12, 186.55, 201.98, 217.41, 233.81] }
+          {
+            "stat": "atk",
+            "values": [
+              117.6,
+              127.25,
+              136.89,
+              150.39,
+              160.04,
+              171.12,
+              186.55,
+              201.98,
+              217.41,
+              233.81
+            ]
+          }
         ],
         "combo": true
       },
@@ -69,7 +137,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [11.2, 12.12, 13.04, 14.33, 15.25, 16.3, 17.77, 19.24, 20.71, 22.27],
+            "values": [
+              11.2,
+              12.12,
+              13.04,
+              14.33,
+              15.25,
+              16.3,
+              17.77,
+              19.24,
+              20.71,
+              22.27
+            ],
             "times": 5
           }
         ]
@@ -78,14 +157,42 @@
         "name": "Mid-air Attack DMG",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [43.4, 46.96, 50.52, 55.5, 59.06, 63.16, 68.85, 74.54, 80.24, 86.29] }
+          {
+            "stat": "atk",
+            "values": [
+              43.4,
+              46.96,
+              50.52,
+              55.5,
+              59.06,
+              63.16,
+              68.85,
+              74.54,
+              80.24,
+              86.29
+            ]
+          }
         ]
       },
       {
         "name": "Dodge Counter DMG",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [84, 90.89, 97.78, 107.42, 114.31, 122.23, 133.25, 144.27, 155.3, 167.01] }
+          {
+            "stat": "atk",
+            "values": [
+              84,
+              90.89,
+              97.78,
+              107.42,
+              114.31,
+              122.23,
+              133.25,
+              144.27,
+              155.3,
+              167.01
+            ]
+          }
         ]
       }
     ]
@@ -97,7 +204,21 @@
         "name": "Eternal Frost DMG",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [181, 195.85, 210.69, 231.47, 246.31, 263.38, 287.13, 310.87, 334.62, 359.85] }
+          {
+            "stat": "atk",
+            "values": [
+              181,
+              195.85,
+              210.69,
+              231.47,
+              246.31,
+              263.38,
+              287.13,
+              310.87,
+              334.62,
+              359.85
+            ]
+          }
         ]
       }
     ]
@@ -109,7 +230,21 @@
         "name": "Glacial Gaze DMG",
         "kind": "liberation",
         "parts": [
-          { "stat": "atk", "values": [407.16, 440.55, 473.94, 520.68, 554.07, 592.46, 645.88, 699.3, 752.72, 809.48] }
+          {
+            "stat": "atk",
+            "values": [
+              407.16,
+              440.55,
+              473.94,
+              520.68,
+              554.07,
+              592.46,
+              645.88,
+              699.3,
+              752.72,
+              809.48
+            ]
+          }
         ]
       }
     ]
@@ -121,7 +256,21 @@
         "name": "Freezing Thorns DMG",
         "kind": "intro",
         "parts": [
-          { "stat": "atk", "values": [70, 75.74, 81.48, 89.52, 95.26, 101.86, 111.05, 120.23, 129.41, 139.17] }
+          {
+            "stat": "atk",
+            "values": [
+              70,
+              75.74,
+              81.48,
+              89.52,
+              95.26,
+              101.86,
+              111.05,
+              120.23,
+              129.41,
+              139.17
+            ]
+          }
         ]
       }
     ]
@@ -139,7 +288,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [93.7, 101.39, 109.07, 119.83, 127.51, 136.35, 148.64, 160.93, 173.23, 186.29],
+            "values": [
+              93.7,
+              101.39,
+              109.07,
+              119.83,
+              127.51,
+              136.35,
+              148.64,
+              160.93,
+              173.23,
+              186.29
+            ],
             "times": 2
           }
         ]
@@ -148,66 +308,162 @@
         "name": "Glacier Burst Damage",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [70, 75.74, 81.48, 89.52, 95.26, 101.86, 111.05, 120.23, 129.41, 139.17] }
+          {
+            "stat": "atk",
+            "values": [
+              70,
+              75.74,
+              81.48,
+              89.52,
+              95.26,
+              101.86,
+              111.05,
+              120.23,
+              129.41,
+              139.17
+            ]
+          }
         ]
       },
       {
         "name": "Ice Prism Burst Damage",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [40, 43.28, 46.56, 51.16, 54.44, 58.21, 63.46, 68.7, 73.95, 79.53] }
+          {
+            "stat": "atk",
+            "values": [
+              40,
+              43.28,
+              46.56,
+              51.16,
+              54.44,
+              58.21,
+              63.46,
+              68.7,
+              73.95,
+              79.53
+            ]
+          }
         ]
       },
       {
         "name": "Ice Thorn Burst Damage",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [30, 32.46, 34.92, 38.37, 40.83, 43.66, 47.59, 51.53, 55.47, 59.65] }
+          {
+            "stat": "atk",
+            "values": [
+              30,
+              32.46,
+              34.92,
+              38.37,
+              40.83,
+              43.66,
+              47.59,
+              51.53,
+              55.47,
+              59.65
+            ]
+          }
         ]
       }
     ]
   },
   "recommended": {
-    "echos": [62],
-    "sonatas": [
-      [23]
+    "echos": [
+      62
     ],
-    "weapons": ["Emerald of Genesis", "Overture", "Commando of Conviction"],
+    "sonatas": [
+      [
+        23
+      ]
+    ],
+    "weapons": [
+      "Emerald of Genesis",
+      "Overture",
+      "Commando of Conviction"
+    ],
     "teams": [
       [
-        { "character": "suoming", "role": "main" },
-        { "character": "sanhua", "role": "sub" },
-        { "character": "shorekeeper", "role": "sup" }
+        {
+          "character": "suoming",
+          "role": "main"
+        },
+        {
+          "character": "sanhua",
+          "role": "sub"
+        },
+        {
+          "character": "shorekeeper",
+          "role": "sup"
+        }
       ],
       [
-        { "character": "luuk", "role": "main" },
-        { "character": "sanhua", "role": "sub" },
-        { "character": "mornye", "role": "sup" }
+        {
+          "character": "luuk",
+          "role": "main"
+        },
+        {
+          "character": "sanhua",
+          "role": "sub"
+        },
+        {
+          "character": "mornye",
+          "role": "sup"
+        }
       ],
       [
-        { "character": "encore", "role": "main" },
-        { "character": "sanhua", "role": "sub" },
-        { "character": "verina", "role": "sup" }
+        {
+          "character": "encore",
+          "role": "main"
+        },
+        {
+          "character": "sanhua",
+          "role": "sub"
+        },
+        {
+          "character": "verina",
+          "role": "sup"
+        }
       ]
     ],
     "main": {
       "1": [
-        { "stat": "dmg" }
+        {
+          "stat": "dmg"
+        }
       ],
       "3": [
-        { "stat": "elementalBonus", "element": "glacio" }
+        {
+          "stat": "elementalBonus",
+          "element": "glacio"
+        }
       ],
       "4": [
-        { "stat": "cChance" },
-        { "stat": "cDmg" }
+        {
+          "stat": "cChance"
+        },
+        {
+          "stat": "cDmg"
+        }
       ]
     },
     "subs": [
-      { "stat": "cChance" },
-      { "stat": "cDmg" },
-      { "stat": "energyRegen" },
-      { "stat": "liberationBonus" },
-      { "stat": "dmg" }
+      {
+        "stat": "cChance"
+      },
+      {
+        "stat": "cDmg"
+      },
+      {
+        "stat": "energyRegen"
+      },
+      {
+        "stat": "liberationBonus"
+      },
+      {
+        "stat": "dmg"
+      }
     ]
   }
 }

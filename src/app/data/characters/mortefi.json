@@ -5,7 +5,11 @@
   "iconSkill": "mortefi",
   "type": "fusion",
   "weapon": "pistols",
-  "base": { "hp": 10025, "atk": 250, "def": 1136 },
+  "base": {
+    "hp": 10025,
+    "atk": 250,
+    "def": 1136
+  },
   "lastUpdate": "2026-10-25T14:20:21.659Z",
   "hasHealing": false,
   "healsAllies": false,
@@ -19,7 +23,21 @@
         "name": "Impromptu Show DMG 1",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [24.29, 26.29, 28.28, 31.07, 33.06, 35.35, 38.54, 41.72, 44.91, 48.3] }
+          {
+            "stat": "atk",
+            "values": [
+              24.29,
+              26.29,
+              28.28,
+              31.07,
+              33.06,
+              35.35,
+              38.54,
+              41.72,
+              44.91,
+              48.3
+            ]
+          }
         ],
         "combo": true
       },
@@ -29,7 +47,18 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [20.51, 22.2, 23.88, 26.23, 27.92, 29.85, 32.54, 35.23, 37.92, 40.78],
+            "values": [
+              20.51,
+              22.2,
+              23.88,
+              26.23,
+              27.92,
+              29.85,
+              32.54,
+              35.23,
+              37.92,
+              40.78
+            ],
             "times": 2
           }
         ],
@@ -39,7 +68,21 @@
         "name": "Impromptu Show DMG 3",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [53.97, 58.4, 62.83, 69.02, 73.45, 78.54, 85.62, 92.7, 99.78, 107.3] }
+          {
+            "stat": "atk",
+            "values": [
+              53.97,
+              58.4,
+              62.83,
+              69.02,
+              73.45,
+              78.54,
+              85.62,
+              92.7,
+              99.78,
+              107.3
+            ]
+          }
         ],
         "combo": true
       },
@@ -49,10 +92,35 @@
         "parts": [
           {
             "stat": "atk",
-            "values": [10.57, 11.44, 12.31, 13.52, 14.39, 15.39, 16.77, 18.16, 19.55, 21.02],
+            "values": [
+              10.57,
+              11.44,
+              12.31,
+              13.52,
+              14.39,
+              15.39,
+              16.77,
+              18.16,
+              19.55,
+              21.02
+            ],
             "times": 4
           },
-          { "stat": "atk", "values": [63.84, 69.08, 74.31, 81.64, 86.88, 92.9, 101.27, 109.65, 118.03, 126.93] }
+          {
+            "stat": "atk",
+            "values": [
+              63.84,
+              69.08,
+              74.31,
+              81.64,
+              86.88,
+              92.9,
+              101.27,
+              109.65,
+              118.03,
+              126.93
+            ]
+          }
         ],
         "combo": true
       },
@@ -60,35 +128,105 @@
         "name": "Aimed Shot Damage",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [49.14, 53.17, 57.2, 62.85, 66.87, 71.51, 77.96, 84.4, 90.85, 97.7] }
+          {
+            "stat": "atk",
+            "values": [
+              49.14,
+              53.17,
+              57.2,
+              62.85,
+              66.87,
+              71.51,
+              77.96,
+              84.4,
+              90.85,
+              97.7
+            ]
+          }
         ]
       },
       {
         "name": "Fully Charged Aimed Shot Damage",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [84, 90.89, 97.78, 107.42, 114.31, 122.23, 133.25, 144.27, 155.3, 167.01] }
+          {
+            "stat": "atk",
+            "values": [
+              84,
+              90.89,
+              97.78,
+              107.42,
+              114.31,
+              122.23,
+              133.25,
+              144.27,
+              155.3,
+              167.01
+            ]
+          }
         ]
       },
       {
         "name": "Mid-Air Attack Stage 1 Damage",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [11.69, 12.65, 13.61, 14.95, 15.91, 17.02, 18.55, 20.08, 21.62, 23.25] }
+          {
+            "stat": "atk",
+            "values": [
+              11.69,
+              12.65,
+              13.61,
+              14.95,
+              15.91,
+              17.02,
+              18.55,
+              20.08,
+              21.62,
+              23.25
+            ]
+          }
         ]
       },
       {
         "name": "Mid-Air Attack Stage 2 Damage",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [11.69, 12.65, 13.61, 14.95, 15.91, 17.02, 18.55, 20.08, 21.62, 23.25] }
+          {
+            "stat": "atk",
+            "values": [
+              11.69,
+              12.65,
+              13.61,
+              14.95,
+              15.91,
+              17.02,
+              18.55,
+              20.08,
+              21.62,
+              23.25
+            ]
+          }
         ]
       },
       {
         "name": "Dodge Counter Damage",
         "kind": "basic",
         "parts": [
-          { "stat": "atk", "values": [98.07, 106.12, 114.16, 125.42, 133.46, 142.71, 155.57, 168.44, 181.31, 194.98] }
+          {
+            "stat": "atk",
+            "values": [
+              98.07,
+              106.12,
+              114.16,
+              125.42,
+              133.46,
+              142.71,
+              155.57,
+              168.44,
+              181.31,
+              194.98
+            ]
+          }
         ]
       }
     ]
@@ -100,7 +238,21 @@
         "name": "Passionate Variation DMG",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [105, 113.61, 122.22, 134.28, 142.89, 152.79, 166.57, 180.34, 194.12, 208.76] }
+          {
+            "stat": "atk",
+            "values": [
+              105,
+              113.61,
+              122.22,
+              134.28,
+              142.89,
+              152.79,
+              166.57,
+              180.34,
+              194.12,
+              208.76
+            ]
+          }
         ]
       }
     ]
@@ -112,14 +264,42 @@
         "name": "Violent Finale Damage",
         "kind": "liberation",
         "parts": [
-          { "stat": "atk", "values": [80, 86.56, 93.12, 102.31, 108.87, 116.41, 126.91, 137.4, 147.9, 159.05] }
+          {
+            "stat": "atk",
+            "values": [
+              80,
+              86.56,
+              93.12,
+              102.31,
+              108.87,
+              116.41,
+              126.91,
+              137.4,
+              147.9,
+              159.05
+            ]
+          }
         ]
       },
       {
         "name": "Marcato Damage",
         "kind": "liberation",
         "parts": [
-          { "stat": "atk", "values": [16, 17.32, 18.63, 20.47, 21.78, 23.29, 25.39, 27.48, 29.58, 31.81] }
+          {
+            "stat": "atk",
+            "values": [
+              16,
+              17.32,
+              18.63,
+              20.47,
+              21.78,
+              23.29,
+              25.39,
+              27.48,
+              29.58,
+              31.81
+            ]
+          }
         ]
       }
     ]
@@ -131,7 +311,21 @@
         "name": "Dissonance DMG",
         "kind": "intro",
         "parts": [
-          { "stat": "atk", "values": [85, 91.97, 98.94, 108.7, 115.67, 123.69, 134.84, 145.99, 157.14, 168.99] }
+          {
+            "stat": "atk",
+            "values": [
+              85,
+              91.97,
+              98.94,
+              108.7,
+              115.67,
+              123.69,
+              134.84,
+              145.99,
+              157.14,
+              168.99
+            ]
+          }
         ]
       }
     ]
@@ -147,49 +341,115 @@
         "name": "Fury Fugue Damage",
         "kind": "skill",
         "parts": [
-          { "stat": "atk", "values": [164, 177.45, 190.9, 209.73, 223.18, 238.64, 260.16, 281.67, 303.19, 326.05] }
+          {
+            "stat": "atk",
+            "values": [
+              164,
+              177.45,
+              190.9,
+              209.73,
+              223.18,
+              238.64,
+              260.16,
+              281.67,
+              303.19,
+              326.05
+            ]
+          }
         ]
       }
     ]
   },
   "recommended": {
-    "echos": [123, 62, 16, 15],
-    "sonatas": [
-      [5],
-      [23],
-      [22]
+    "echos": [
+      123,
+      62,
+      16,
+      15
     ],
-    "weapons": ["Static Mist", "The Last Dance", "Cadenza"],
-    "teams": [
+    "sonatas": [
       [
-        { "character": "yangyang-xuanling", "role": "main" },
-        { "character": "mortefi", "role": "sub" },
-        { "character": "chisa", "role": "sup" }
+        5
       ],
       [
-        { "character": "jinhsi", "role": "main" },
-        { "character": "mortefi", "role": "sub" },
-        { "character": "verina", "role": "sup" }
+        23
+      ],
+      [
+        22
+      ]
+    ],
+    "weapons": [
+      "Static Mist",
+      "The Last Dance",
+      "Cadenza"
+    ],
+    "teams": [
+      [
+        {
+          "character": "yangyang-xuanling",
+          "role": "main"
+        },
+        {
+          "character": "mortefi",
+          "role": "sub"
+        },
+        {
+          "character": "chisa",
+          "role": "sup"
+        }
+      ],
+      [
+        {
+          "character": "jinhsi",
+          "role": "main"
+        },
+        {
+          "character": "mortefi",
+          "role": "sub"
+        },
+        {
+          "character": "verina",
+          "role": "sup"
+        }
       ]
     ],
     "main": {
       "1": [
-        { "stat": "dmg" }
+        {
+          "stat": "dmg"
+        }
       ],
       "3": [
-        { "stat": "elementalBonus", "element": "fusion" }
+        {
+          "stat": "elementalBonus",
+          "element": "fusion"
+        }
       ],
       "4": [
-        { "stat": "cChance" },
-        { "stat": "cDmg" }
+        {
+          "stat": "cChance"
+        },
+        {
+          "stat": "cDmg"
+        }
       ]
     },
     "subs": [
-      { "stat": "cChance" },
-      { "stat": "cDmg" },
-      { "stat": "energyRegen" },
-      { "stat": "liberationBonus" },
-      { "stat": "dmg" }
+      {
+        "stat": "cChance"
+      },
+      {
+        "stat": "cDmg"
+      },
+      {
+        "stat": "energyRegen"
+      },
+      {
+        "stat": "liberationBonus"
+      },
+      {
+        "stat": "dmg"
+      }
     ]
   }
 }
