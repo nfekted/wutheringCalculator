@@ -119,5 +119,34 @@
         </li>
       }
     </ol>
+
+    <!-- Sonatas of the Echo Set: pieces and which bonuses are counted -->
+    @if (sonatas(); as list) {
+      @if (list.length) {
+        <section class="ui-card mt-4 p-4">
+          <p class="text-xs font-bold uppercase text-mute">{{ 'char.echoSet.sonatas' | transloco }}</p>
+          <ul class="mt-2 space-y-3">
+            @for (sonata of list; track sonata.id) {
+              <li>
+                <p class="flex items-center gap-2 text-sm font-bold text-ink">
+                  <img [src]="'assets/img/sonatas/' + sonata.id + '.webp'" alt="" class="h-6 w-6 shrink-0" (error)="$any($event.target).hidden = true" />
+                  {{ sonata.name }}
+                  <span class="font-normal tabular-nums text-mute">{{ 'char.echoSet.pieces' | transloco: { n: sonata.pieces } }}</span>
+                </p>
+                <ul class="mt-1 space-y-1 text-xs leading-relaxed">
+                  @for (bonus of sonata.bonuses; track $index) {
+                    <li [class.text-body]="bonus.state !== 'locked'" [class.text-mute]="bonus.state === 'locked'" [class.opacity-60]="bonus.state === 'locked'">
+                      <span class="font-bold" [class.text-ink]="bonus.state === 'counted'">{{ bonus.state === 'counted' ? '✓ ' : '' }}{{ bonus.pieces }}pc:</span>
+                      {{ bonus.text }}
+                    </li>
+                  }
+                </ul>
+              </li>
+            }
+          </ul>
+          <p class="mt-3 text-xs text-mute">{{ 'char.echoSet.sonataLegend' | transloco }}</p>
+        </section>
+      }
+    }
   }
 </app-dialog-panel>

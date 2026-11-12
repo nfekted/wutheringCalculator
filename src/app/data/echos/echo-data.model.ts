@@ -38,11 +38,21 @@ export interface EchoSlot {
   subs: (EchoAttribute & { value: number })[];
 }
 
+/** An attribute a Sonata bonus adds, always active (type A); HP, ATK and DEF are a percentage */
+export interface SonataStat {
+  stat: EchoStat;
+  value: number;
+  /** Element of an elemental DMG bonus; without it, every element (e.g. "all Attribute DMG") */
+  element?: string;
+  /** Only counts with this final Energy Regen or more */
+  minEnergyRegen?: number;
+}
+
 export interface SonataData {
   id: number;
   name: string;
-  /** Bonus of each piece count (1, 2, 3 or 5), only as text for now */
-  bonuses: { pieces: number; text: string }[];
+  /** Bonus of each piece count (1, 2, 3 or 5); `stats` only on the ones counted in the attributes, the others are text for now */
+  bonuses: { pieces: number; text: string; stats?: SonataStat[] }[];
 }
 
 export interface EchoData {

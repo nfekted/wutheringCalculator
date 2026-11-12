@@ -5,7 +5,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Spectro DMG +10%."
+        "text": "Spectro DMG +10%.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "spectro"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -19,7 +26,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Fusion DMG +10%"
+        "text": "Fusion DMG +10%",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "fusion"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -53,7 +67,13 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Energy Regen +10%."
+        "text": "Energy Regen +10%.",
+        "stats": [
+          {
+            "stat": "energyRegen",
+            "value": 10
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -67,7 +87,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Spectro DMG +10%."
+        "text": "Spectro DMG +10%.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "spectro"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -91,7 +118,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Fusion DMG +10%."
+        "text": "Fusion DMG +10%.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "fusion"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -105,7 +139,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Electro DMG +10%"
+        "text": "Electro DMG +10%",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "electro"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -119,7 +160,13 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Healing Bonus +10%"
+        "text": "Healing Bonus +10%",
+        "stats": [
+          {
+            "stat": "healingBonus",
+            "value": 10
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -133,7 +180,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Glacio DMG +10%."
+        "text": "Glacio DMG +10%.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "glacio"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -147,7 +201,13 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Resonance Skill DMG +12%"
+        "text": "Resonance Skill DMG +12%",
+        "stats": [
+          {
+            "stat": "skillBonus",
+            "value": 12
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -161,7 +221,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Aero DMG +10%."
+        "text": "Aero DMG +10%.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "aero"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -175,7 +242,13 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Healing Bonus +10%"
+        "text": "Healing Bonus +10%",
+        "stats": [
+          {
+            "stat": "healingBonus",
+            "value": 10
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -189,7 +262,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Havoc DMG +10%."
+        "text": "Havoc DMG +10%.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "havoc"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -203,7 +283,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Aero DMG +10%"
+        "text": "Aero DMG +10%",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "aero"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -217,7 +304,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Electro DMG +10%"
+        "text": "Electro DMG +10%",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "electro"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -231,7 +325,13 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "HP +10%"
+        "text": "HP +10%",
+        "stats": [
+          {
+            "stat": "hp",
+            "value": 10
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -255,7 +355,13 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "ATK +10%."
+        "text": "ATK +10%.",
+        "stats": [
+          {
+            "stat": "dmg",
+            "value": 10
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -269,7 +375,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Havoc DMG +10%."
+        "text": "Havoc DMG +10%.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "havoc"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -283,7 +396,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Fusion DMG +10%."
+        "text": "Fusion DMG +10%.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "fusion"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -297,7 +417,13 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Energy Regen +10%."
+        "text": "Energy Regen +10%.",
+        "stats": [
+          {
+            "stat": "energyRegen",
+            "value": 10
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -311,7 +437,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Spectro DMG +10%"
+        "text": "Spectro DMG +10%",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "spectro"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -325,7 +458,13 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "ATK +10%"
+        "text": "ATK +10%",
+        "stats": [
+          {
+            "stat": "dmg",
+            "value": 10
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -339,7 +478,13 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Healing Bonus +10%."
+        "text": "Healing Bonus +10%.",
+        "stats": [
+          {
+            "stat": "healingBonus",
+            "value": 10
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -353,7 +498,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Spectro DMG +10%"
+        "text": "Spectro DMG +10%",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "spectro"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -377,7 +529,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Aero DMG +10%."
+        "text": "Aero DMG +10%.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "aero"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -391,7 +550,13 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Energy Regen +10%"
+        "text": "Energy Regen +10%",
+        "stats": [
+          {
+            "stat": "energyRegen",
+            "value": 10
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -405,7 +570,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Aero DMG +10%"
+        "text": "Aero DMG +10%",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "aero"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -429,11 +601,28 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Energy Regen +10%."
+        "text": "Energy Regen +10%.",
+        "stats": [
+          {
+            "stat": "energyRegen",
+            "value": 10
+          }
+        ]
       },
       {
         "pieces": 5,
-        "text": "Increase the Resonator's ATK by 15%. Reaching 250% Energy Regen increases all Attribute DMG by 30% for the Resonator."
+        "text": "Increase the Resonator's ATK by 15%. Reaching 250% Energy Regen increases all Attribute DMG by 30% for the Resonator.",
+        "stats": [
+          {
+            "stat": "dmg",
+            "value": 15
+          },
+          {
+            "stat": "elementalBonus",
+            "value": 30,
+            "minEnergyRegen": 250
+          }
+        ]
       }
     ]
   },
@@ -443,7 +632,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Fusion DMG +10%"
+        "text": "Fusion DMG +10%",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "fusion"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -457,7 +653,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Electro DMG +10%."
+        "text": "Electro DMG +10%.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "electro"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -471,7 +674,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Aero DMG +10%."
+        "text": "Aero DMG +10%.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "aero"
+          }
+        ]
       },
       {
         "pieces": 5,
@@ -485,7 +695,14 @@
     "bonuses": [
       {
         "pieces": 2,
-        "text": "Glacio DMG +10%"
+        "text": "Glacio DMG +10%",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "glacio"
+          }
+        ]
       },
       {
         "pieces": 5,

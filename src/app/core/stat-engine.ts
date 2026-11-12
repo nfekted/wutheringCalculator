@@ -1,6 +1,6 @@
 import { CharacterData } from '../data/character-data.model';
-import { EchoAttribute, EchoSlot, EchoStat } from '../data/echos/echo-data.model';
-import { ECHO_VALUES, getEcho } from '../data/echos';
+import { EchoAttribute, EchoSlot, EchoStat, SonataStat } from '../data/echos/echo-data.model';
+import { ECHO_VALUES, SONATAS, getEcho } from '../data/echos';
 import { Stats } from './damage-engine';
 
 /** HP, ATK and DEF of the character alone (level 90) */
@@ -38,6 +38,37 @@ export function echoModifier(slot: EchoSlot, element: string): StatModifier {
   for (const attribute of attributes) {
     if (attribute.element && attribute.element !== element) continue;
     addAttribute(modifier, attribute, attribute.value);
+  }
+  return modifier;
+}
+
+/** Pieces of each Sonata in the Echo Set, by Sonata id: the same Echo in more than one slot counts once */
+export function sonataPieces(echoSet: (EchoSlot | null)[]): Map<number, number> {
+  const echos = new Map<number, Set<number>>();
+  for (const slot of echoSet) {
+    if (!slot) continue;
+    if (!echos.has(slot.sonata)) echos.set(slot.sonata, new Set());
+    echos.get(slot.sonata)!.add(slot.echo);
+  }
+  return new Map([...echos].map(([id, set]) => [id, set.size]));
+}
+
+/** Whether an always active Sonata attribute counts: the element of the character (or every element), and the Energy Regen it asks for */
+export function sonataStatApplies(stat: SonataStat, element: string, energyRegen: number): boolean {
+  return (!stat.element || stat.element === element) && energyRegen >= (stat.minEnergyRegen ?? 0);
+}
+
+/** What the Sonata bonuses with enough pieces add; `energyRegen` is the final one (0 leaves out the bonuses that ask for it) */
+export function sonataModifier(echoSet: (EchoSlot | null)[], element: string, energyRegen = 0): StatModifier {
+  const modifier = emptyModifier();
+  for (const [id, pieces] of sonataPieces(echoSet)) {
+    const sonata = SONATAS.find(s => s.id === id);
+    for (const bonus of sonata?.bonuses ?? []) {
+      if (bonus.pieces > pieces) continue;
+      for (const stat of bonus.stats ?? []) {
+        if (sonataStatApplies(stat, element, energyRegen)) addAttribute(modifier, stat, stat.value);
+      }
+    }
   }
   return modifier;
 }

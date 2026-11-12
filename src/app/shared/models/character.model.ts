@@ -2,7 +2,7 @@ import { Amplification, CharacterResults, HitResult, Levels, Stats, calculateEch
 import { CharacterData, Hit, RotationStep } from "../../data/character-data.model";
 import { EchoData, EchoSlot } from "../../data/echos/echo-data.model";
 import { getEcho } from "../../data/echos";
-import { echoModifier, finalStats, sumModifiers } from "../../core/stat-engine";
+import { echoModifier, finalStats, sonataModifier, sumModifiers } from "../../core/stat-engine";
 import { CharacterSave } from "./character-save.model";
 
 export class Character implements Stats {
@@ -85,11 +85,16 @@ export class Character implements Stats {
         this.calculate();
     }
 
-    /** With the base known, the attributes the Echos change come from the base and the Echo Set; the others keep the typed value */
+    /**
+     * With the base known, the attributes the Echos change come from the base, the Echo Set and the always active Sonata bonuses;
+     * the others keep the typed value. A Sonata bonus that asks for an Energy Regen is checked against the final one without it
+     */
     applyEchoSet() {
         if (!this.hasBase) return;
         const modifiers = this.echoSet.filter(slot => !!slot).map(slot => echoModifier(slot, this.data.type));
-        Object.assign(this, finalStats(this.data.base, sumModifiers(modifiers), this));
+        const first = finalStats(this.data.base, sumModifiers([...modifiers, sonataModifier(this.echoSet, this.data.type)]), this);
+        const sonatas = sonataModifier(this.echoSet, this.data.type, first.energyRegen);
+        Object.assign(this, finalStats(this.data.base, sumModifiers([...modifiers, sonatas]), this));
     }
 
     calculate() {

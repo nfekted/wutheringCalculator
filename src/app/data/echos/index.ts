@@ -6,7 +6,7 @@ import sonatas from './sonatas.json';
 
 export const ECHO_VALUES = echoValues as unknown as EchoValues;
 export const ECHOS = echos as unknown as EchoData[];
-export const SONATAS = sonatas as SonataData[];
+export const SONATAS = sonatas as unknown as SonataData[];
 
 export function getEcho(id: number): EchoData | undefined {
   return ECHOS.find(e => e.id === id);

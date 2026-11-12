@@ -82,7 +82,7 @@
     },
     "echoSet": {
         "title": "Echo Set",
-        "info": "Register up to 5 Echos. The first slot is the main one. Sonata effects and main slot bonuses are not counted yet.",
+        "info": "Register up to 5 Echos. The first slot is the main one. Only the always active Sonata bonuses are counted; conditional ones and main slot bonuses are not counted yet.",
         "totalCost": "Cost {{total}} / {{max}}",
         "noBase": "The base attributes of this character are not known yet, so the Echos do not change the attributes.",
         "locked": "Calculated from the base attributes and the Echo Set.",
@@ -110,7 +110,10 @@
         "skill": "Echo Skill",
         "forms": "Forms",
         "mainSlotBonus": "Main slot bonus",
-        "onlyInfo": "Shown only as information: not counted in the attributes."
+        "onlyInfo": "Shown only as information: not counted in the attributes.",
+        "sonatas": "Sonatas",
+        "pieces": "{{n}} piece(s)",
+        "sonataLegend": "✓ Counted in the attributes. Without ✓: not counted yet (conditional effect), of another element, or below the Energy Regen it asks for. Faded: not enough pieces. The same Echo in more than one slot counts as one piece."
     },
     "echo": {
         "echo": "Echo Comparator",

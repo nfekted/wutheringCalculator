@@ -3,7 +3,7 @@ import { DIALOG_DATA } from '@angular/cdk/dialog';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { EchoAttribute, EchoCost, EchoData, EchoSlot } from '../data/echos/echo-data.model';
 import { ECHO_VALUES, ECHOS, SONATAS, getEcho, getSonata } from '../data/echos';
-import { sameAttribute } from '../core/stat-engine';
+import { sameAttribute, sonataPieces, sonataStatApplies } from '../core/stat-engine';
 import { Character } from '../shared/models/character.model';
 import { CharacterRecommendation } from '../data/character-data.model';
 import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
@@ -147,6 +147,23 @@ export class EchoSetModalComponent {
 
   protected remove(index: number) {
     this.update(this.slots().map((s, i) => i === index ? null : s));
+  }
+
+  /**
+   * Sonatas of the Echo Set with their pieces; each bonus is 'counted' (in the attributes), 'notCounted' (enough pieces, but
+   * conditional, of another element or below the Energy Regen it asks for) or 'locked' (not enough pieces)
+   */
+  protected sonatas() {
+    const character = this.character();
+    return [...sonataPieces(this.slots())].map(([id, pieces]) => {
+      const sonata = getSonata(id);
+      const bonuses = (sonata?.bonuses ?? []).map(bonus => ({
+        ...bonus,
+        state: bonus.pieces > pieces ? 'locked'
+          : bonus.stats?.some(stat => sonataStatApplies(stat, character.data.type, character.energyRegen)) ? 'counted' : 'notCounted',
+      }));
+      return { id, name: sonata?.name ?? '', pieces, bonuses };
+    });
   }
 
   private update(slots: (EchoSlot | null)[]) {
