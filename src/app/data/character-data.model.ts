@@ -37,6 +37,8 @@ export interface Hit {
   bonusAfter?: BonusAfter;
   /** Points the hit spends, instead of the one of its section (e.g. a Heavy Attack in the Forte section) */
   cost?: number;
+  /** The values of the hit are this many times the ones of the wiki (e.g. an Inherent Skill "the DMG multiplier is increased by 40%") */
+  multiplier?: number;
 }
 
 export interface BonusAfter {
@@ -89,6 +91,9 @@ export interface CoordinatedAttack {
   perKind: Partial<Record<HitKind, number>>;
   interval?: number;
   stacking?: { name: string; value: number; max: number };
+  /** Hits that detonate it: they add the `detonation` hit, in the same action, and end it */
+  detonatedBy?: HitKey[];
+  detonation?: HitKey;
 }
 
 /** A mark a hit leaves (at most 1); the `detonate` hit adds the `hit` of each mark held, in the same action. They go on the Outro */
@@ -121,8 +126,8 @@ export interface CharacterCounter {
   max: number;
   /** Hits that add 1 */
   gain: HitKey[];
-  /** Hit that needs the counter full, and spends it all */
-  unlocks: HitKey;
+  /** Hit (or hits) that needs the counter full, and spends it all */
+  unlocks: HitKey | HitKey[];
   /** Hits not available while the counter is full */
   replaces: HitKey[];
   /** Index in `states` of the only state where the counter exists; it goes back to 0 when the state ends */

@@ -168,6 +168,12 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       });
       markers.forEach((marker, m) => { if (marker.gain.includes(key)) held.add(m); });
 
+      // Detonating a Coordinated Attack: its detonation hit, in the same action, and it ends
+      for (const c of coordinated.filter(c => c.attack.detonatedBy?.includes(key) && c.slot === slot)) {
+        if (c.attack.detonation) autoRow(c.character, c.slot, c.attack.detonation, []);
+        coordinated = coordinated.filter(other => other !== c);
+      }
+
       // Coordinated Attacks: each Basic or Heavy action (only the first hit of a linked block) fires them
       const fires = spends[position] ? kind : undefined;
       for (const c of fires ? coordinated : []) {

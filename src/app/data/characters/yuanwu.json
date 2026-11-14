@@ -398,7 +398,8 @@
               39.77
             ]
           }
-        ]
+        ],
+        "multiplier": 1.4
       },
       {
         "name": "Lightning Infused Basic Attack Part 1 Damage",
@@ -448,7 +449,7 @@
         "kind": "basic",
         "parts": [
           {
-            "stat": "atk",
+            "stat": "def",
             "values": [
               5.5,
               5.95,
@@ -504,11 +505,11 @@
         ]
       },
       {
-        "name": "Lightning Infused Basic Attack Part V Damage",
+        "name": "Lightning Infused Basic Attack Part 5 Damage",
         "kind": "basic",
         "parts": [
           {
-            "stat": "atk",
+            "stat": "def",
             "values": [
               8.24,
               8.91,
@@ -566,7 +567,7 @@
         "kind": "basic",
         "parts": [
           {
-            "stat": "atk",
+            "stat": "def",
             "values": [
               15.6,
               16.88,
@@ -603,7 +604,7 @@
         "kind": "basic",
         "parts": [
           {
-            "stat": "atk",
+            "stat": "def",
             "values": [
               21.76,
               23.55,
@@ -714,5 +715,55 @@
         "flat": true
       }
     ]
-  }
+  },
+  "coordinated": {
+    "name": "Thunder Wedge",
+    "start": "skill:0",
+    "hits": [
+      "skill:1"
+    ],
+    "duration": 12,
+    "perKind": {
+      "basic": 1,
+      "heavy": 1,
+      "skill": 1,
+      "liberation": 1,
+      "intro": 1,
+      "outro": 1,
+      "echo": 1
+    },
+    "interval": 1.2,
+    "detonatedBy": [
+      "skill:3",
+      "liberation:0"
+    ],
+    "detonation": "skill:2"
+  },
+  "states": [
+    {
+      "name": "Lightning Infused",
+      "start": "liberation:0",
+      "hits": [
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6",
+        "forte:7",
+        "forte:8"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7"
+      ],
+      "duration": 10
+    }
+  ]
 }

@@ -114,7 +114,7 @@ function calculateHit(hit: Hit, stats: Stats, level: number, bonus: number, ampl
 
   const parts = hit.parts.map(part => {
     // A skill without levels has a single value
-    const raw = part.values.length === 1 ? part.values[0] : part.values[level - 1];
+    const raw = (part.values.length === 1 ? part.values[0] : part.values[level - 1]) * (hit.multiplier ?? 1);
     const base = part.stat === 'flat' ? raw
       : part.stat === 'er' ? raw * stats.energyRegen
       : statOf(stats, part.stat) * (raw / 100);

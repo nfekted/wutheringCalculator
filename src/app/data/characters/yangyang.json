@@ -169,7 +169,7 @@
       },
       {
         "name": "Zephyr Song Damage",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -319,6 +319,14 @@
             ],
             "times": 2
           }
+        ],
+        "buffs": [
+          {
+            "name": "Lazuline Mercy",
+            "stat": "elementalBonus",
+            "value": 8,
+            "duration": 8
+          }
         ]
       }
     ]
@@ -350,7 +358,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Feather Release Damage",
@@ -479,5 +488,37 @@
         "stat": "liberationBonus"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:6": [
+        "basic:4",
+        "basic:7"
+      ],
+      "forte:0": [
+        "basic:4",
+        "basic:7"
+      ]
+    }
+  },
+  "counters": [
+    {
+      "name": "Melody",
+      "max": 3,
+      "gain": [
+        "basic:3",
+        "basic:6",
+        "skill:0",
+        "intro:0"
+      ],
+      "unlocks": [
+        "forte:0",
+        "forte:1"
+      ],
+      "replaces": [
+        "basic:6",
+        "basic:5"
+      ]
+    }
+  ]
 }
