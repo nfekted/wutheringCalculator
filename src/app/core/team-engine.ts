@@ -1,7 +1,7 @@
 import { Amplification, Stats, noAmplification } from './damage-engine';
 import { OutroBuff, RotationStep, StatBuff } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
-import { advance, startContext } from './rotation-rules';
+import { advance, spendsPoints, startContext } from './rotation-rules';
 
 /** Points a step spends from every active buff: by its section; in the Basic section a Heavy hit is 1; an Echo that transforms is 3 */
 export function stepCost(character: Character, step: RotationStep): number {
@@ -97,31 +97,45 @@ export function simulateRotation(character: Character, steps: RotationStep[]): T
 function simulate(segments: Segment[], memberCount: number): TeamResult {
   const rows: TeamHitRow[] = [];
   let active: ActiveBuff[] = [];
+  /** Points left until the guaranteed crit of each member is ready again */
+  const critCooldown = new Map<number, number>();
 
   segments.forEach(({ character, slot, rotation, steps }, i) => {
     const states = character.data.states ?? [];
+    const spends = spendsPoints(character.data, steps);
     let context = startContext();
 
-    for (const step of steps) {
+    steps.forEach((step, position) => {
       const applied = active.filter(a => a.receiver === null || a.receiver === slot);
       const stateBuffs = context.states.flatMap(s => (states[s].buffs ?? []).map(buff => ({ buff, label: `${states[s].name}: ${statLabel(buff)}` })));
       const statBuffs = [...applied.flatMap(a => a.stat ? [a.stat] : []), ...stateBuffs.map(s => s.buff)];
       const amplification = applied.some(a => a.outro) ? amplificationOf(applied, character) : undefined;
       const extra = statBuffs.length ? extraStats(statBuffs, character) : undefined;
 
+      // A hit of the kind that always crits, when its cooldown is over
+      const crit = character.data.guaranteedCrit;
+      const hit = character.stepHit(step);
+      const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
+      const crits = !!crit && kind === crit.kind && !(critCooldown.get(slot)! > 0);
+      const critExtra = crits ? { ...extra, cChance: (extra?.cChance ?? 0) + 100 } : extra;
+
       const base = character.rotationHit(step);
-      const buffed = amplification || extra ? character.rotationHit(step, amplification, extra).value : base.value;
+      const buffed = amplification || critExtra ? character.rotationHit(step, amplification, critExtra).value : base.value;
       rows.push({
         rotation, slot, step,
         name: step.section === 'end' ? `Leave ${states[step.index]?.name ?? ''}` : character.stepHit(step)?.name ?? character.mainEcho?.name ?? '—',
-        buffs: step.section === 'end' ? [] : [...applied.map(a => a.label), ...stateBuffs.map(s => s.label)],
+        // An elemental buff of another element is not listed: it does nothing for this character
+        buffs: step.section === 'end' ? [] : [...applied.filter(a => !(a.outro?.amplification === 'elemental' && a.outro.element !== character.data.type)).map(a => a.label), ...stateBuffs.map(s => s.label), ...(crits ? [`${crit!.name} (crit)`] : [])],
         damage: base.type === 'damage',
         base: base.value,
         buffed,
       });
 
-      const cost = stepCost(character, step);
+      // In a linked block (and in the Intro) only the first hit spends points
+      const cost = spends[position] ? stepCost(character, step) : 0;
       active = active.map(a => ({ ...a, points: a.points - cost })).filter(a => a.points > 0);
+      for (const [member, left] of critCooldown) critCooldown.set(member, left - cost);
+      if (crits) critCooldown.set(slot, crit!.cooldown);
 
       // Buffs the hit gives the character itself start after it
       character.stepHit(step)?.buffs?.forEach((buff, position) => {
@@ -131,7 +145,7 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
         active.push({ id, receiver: slot, points: buff.duration, label: `${character.name}: ${statLabel(buff)}`, stat: buff });
       });
       context = advance(character, context, step);
-    }
+    });
 
     // Buffs received that end when this member leaves the field
     active = active.filter(a => !(a.endsOnSwitch && a.receiver === slot));
@@ -173,6 +187,8 @@ function extraStats(buffs: StatBuff[], character: Character): Partial<Stats> {
   const extra: Partial<Stats> = {};
   for (const buff of buffs) {
     if (buff.stat === 'atk') extra.dmg = (extra.dmg ?? 0) + character.data.base.atk * buff.value / 100;
+    // Every damage hit of the character gets the elemental bonus, so a DMG Bonus on all of them is added there
+    else if (buff.stat === 'damageBonus') extra.elementalBonus = (extra.elementalBonus ?? 0) + buff.value;
     else extra[buff.stat] = (extra[buff.stat] ?? 0) + buff.value;
   }
   return extra;
@@ -184,6 +200,6 @@ function outroLabel(buff: OutroBuff): string {
 }
 
 function statLabel(buff: StatBuff): string {
-  const stat = buff.stat === 'atk' ? 'ATK' : 'Elemental DMG';
+  const stat = buff.stat === 'atk' ? 'ATK' : buff.stat === 'damageBonus' ? 'DMG' : 'Elemental DMG';
   return `${buff.name} (${stat} +${buff.value}%)`;
 }

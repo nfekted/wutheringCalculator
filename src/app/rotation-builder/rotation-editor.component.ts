@@ -5,7 +5,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { HitKind, RotationStep } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
 import { sectionSteps } from '../core/team-engine';
-import { PICKABLE, allowed, cleanSteps, contextAfter, isLinkedSecond, linkedWith, middleContext, stepKey } from '../core/rotation-rules';
+import { PICKABLE, allowed, cleanSteps, contextAfter, linkedBlock, middleContext, units } from '../core/rotation-rules';
 
 const KIND_COLORS: Partial<Record<HitKind, string>> = {
   basic: 'text-kind-basic', skill: 'text-kind-skill', liberation: 'text-kind-liberation',
@@ -68,7 +68,7 @@ export class RotationEditorComponent {
         section, name: data[section].name,
         hits: data[section].hits.flatMap((hit, index) => {
           const step: RotationStep = { section, index };
-          return allowed(data, context, step) && !isLinkedSecond(data, step) ? [{ index, name: hit.name }] : [];
+          return allowed(data, context, step) ? [{ index, name: hit.name }] : [];
         }),
       }))
       .filter(group => group.hits.length);
@@ -101,8 +101,7 @@ export class RotationEditorComponent {
     if (!this.picked) return;
     const [section, index] = this.picked.split(':');
     const step: RotationStep = { section: section as RotationStep['section'], index: +index };
-    const second = linkedWith(this.character().data, step);
-    this.steps.set([...this.steps(), step, ...(second ? [second] : [])]);
+    this.steps.set([...this.steps(), ...(linkedBlock(this.character().data, step) ?? [step])]);
     this.picked = '';
   }
 
@@ -110,22 +109,27 @@ export class RotationEditorComponent {
     this.steps.set([...this.steps(), { section: 'end', index: state }]);
   }
 
-  /** Removes the hit (and the other one of a linked pair) and every hit that can no longer come */
-  protected remove(position: number) {
-    const data = this.character().data;
-    const list = this.steps();
-    const step = list[position];
-    const partner = linkedWith(data, step) && list[position + 1] && stepKey(list[position + 1]) === stepKey(linkedWith(data, step)!) ? position + 1
-      : isLinkedSecond(data, step) ? position - 1 : -1;
-    this.update(list.filter((_, i) => i !== position && i !== partner));
+  /** The list split in units (a linked block is one), and the unit that has the step at this position */
+  private unitAt(position: number): { list: RotationStep[][]; unit: number } {
+    const list = units(this.character().data, this.steps());
+    let start = 0;
+    const unit = list.findIndex(u => (start += u.length) > position);
+    return { list, unit };
   }
 
+  /** Removes the hit (with the rest of its linked block) and every hit that can no longer come */
+  protected remove(position: number) {
+    const { list, unit } = this.unitAt(position);
+    this.update(list.filter((_, i) => i !== unit).flat());
+  }
+
+  /** Moves the hit (with its linked block) past the unit before or after it */
   protected move(position: number, delta: number) {
-    const list = [...this.steps()];
-    const target = position + delta;
+    const { list, unit } = this.unitAt(position);
+    const target = unit + delta;
     if (target < 0 || target >= list.length) return;
-    [list[position], list[target]] = [list[target], list[position]];
-    this.update(list);
+    [list[unit], list[target]] = [list[target], list[unit]];
+    this.update(list.flat());
   }
 
   private update(list: RotationStep[]) {

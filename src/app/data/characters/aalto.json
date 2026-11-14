@@ -154,7 +154,7 @@
       },
       {
         "name": "Aimed Shot Damage",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -175,7 +175,7 @@
       },
       {
         "name": "Fully Charged Aimed Shot Damage",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -264,6 +264,14 @@
               369.74,
               397.62
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Flower in the Mist",
+            "stat": "damageBonus",
+            "value": 10,
+            "duration": 10
           }
         ]
       }
@@ -408,5 +416,10 @@
         "stat": "basicBonus"
       }
     ]
+  },
+  "guaranteedCrit": {
+    "name": "Perfect Performance",
+    "kind": "heavy",
+    "cooldown": 30
   }
 }

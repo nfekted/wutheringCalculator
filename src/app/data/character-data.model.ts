@@ -33,8 +33,19 @@ export interface Hit {
   buffs?: StatBuff[];
 }
 
-/** Attribute a buff of the character raises during the rotation: 'atk' is a percentage of the base ATK, the others are added */
-export type BuffStat = 'atk' | 'elementalBonus';
+/**
+ * Attribute a buff of the character raises during the rotation: 'atk' is a percentage of the base ATK, the others are added;
+ * 'damageBonus' is a DMG Bonus on every damage hit of the character (added to the elemental bonus)
+ */
+export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus';
+
+/** Hits of a kind that always crit, once every `cooldown` points (e.g. an Inherent Skill "Heavy Attack always crits, once every 30s") */
+export interface GuaranteedCrit {
+  name: string;
+  kind: HitKind;
+  /** In seconds, spent as points by the following hits */
+  cooldown: number;
+}
 
 export interface StatBuff {
   /** Where it comes from (e.g. the Inherent Skill), shown on the hits it applies to */
@@ -53,8 +64,9 @@ export type HitKey = string;
 export interface SequenceRules {
   /** A hit that can only come right after one of these (for a numbered hit, besides the previous number) */
   after?: Record<HitKey, HitKey[]>;
-  /** Hits added and removed together, the second right after the first */
-  linked?: [HitKey, HitKey][];
+  /** Blocks of hits that are one action: picked by the first, added and removed together (a hit can repeat, e.g. 4 coordinated attacks);
+   * only the first spends points */
+  linked?: HitKey[][];
 }
 
 /** A state a hit puts the character in (e.g. Dark Surge); it ends on the Outro or when the player leaves it in the rotation */
@@ -147,6 +159,7 @@ export interface CharacterData {
   sequence?: SequenceRules;
   /** States some hits put the character in */
   states?: CharacterState[];
+  guaranteedCrit?: GuaranteedCrit;
   basic: SkillData;
   skill: SkillData;
   liberation: SkillData;

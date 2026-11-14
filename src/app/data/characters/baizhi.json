@@ -522,5 +522,24 @@
         "flat": true
       }
     ]
+  },
+  "sequence": {
+    "linked": [
+      [
+        "skill:0",
+        "skill:1"
+      ],
+      [
+        "liberation:2",
+        "liberation:0",
+        "liberation:0",
+        "liberation:0",
+        "liberation:0",
+        "liberation:1",
+        "liberation:1",
+        "liberation:1",
+        "liberation:1"
+      ]
+    ]
   }
 }

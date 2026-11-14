@@ -53,7 +53,7 @@ function previousNumber(data: CharacterData, key: HitKey): HitKey | undefined {
 /**
  * Whether a hit can come now. A numbered hit comes right after the previous number; a hit with an "after" rule right after one of
  * those hits (a numbered one, after either). A state hit only in its state; a replaced hit, or the start of an active state, not in it.
- * The second hit of a linked pair only right after the first
+ * A hit that only comes inside a linked block is never picked alone
  */
 export function allowed(data: CharacterData, context: RotationContext, step: RotationStep): boolean {
   if (step.section === 'echo') return true;
@@ -62,9 +62,7 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
   const states = data.states ?? [];
   if (states.some((state, i) => state.hits.includes(key) && !context.states.includes(i))) return false;
   if (context.states.some(i => states[i].replaces.includes(key) || states[i].start === key)) return false;
-
-  const linked = data.sequence?.linked?.find(([, second]) => second === key);
-  if (linked) return context.last === linked[0];
+  if (isLinkedRest(data, step)) return false;
 
   const previous = previousNumber(data, key);
   const after = data.sequence?.after?.[key];
@@ -93,13 +91,46 @@ export function contextAfter(character: Character, steps: RotationStep[], contex
   return steps.reduce((ctx, step) => advance(character, ctx, step), context);
 }
 
-/** Keeps only the steps that can still come where they are; a removed step does not change the context (what followed it may go too) */
+/** The linked block that starts with this hit: every hit of it, the first one included (they are added and removed together) */
+export function linkedBlock(data: CharacterData, step: RotationStep): RotationStep[] | undefined {
+  return data.sequence?.linked?.find(block => block[0] === stepKey(step))?.map(keyStep);
+}
+
+/** Whether the hit only comes inside a linked block, after its first hit */
+function isLinkedRest(data: CharacterData, step: RotationStep): boolean {
+  return !!data.sequence?.linked?.some(block => block.slice(1).includes(stepKey(step)));
+}
+
+/**
+ * The list split in units: a whole linked block is one unit (its first hit and the rest right after it), any other step is one alone.
+ * A hit of a block out of its block is a unit alone (and is not allowed)
+ */
+export function units(data: CharacterData, steps: RotationStep[]): RotationStep[][] {
+  const list: RotationStep[][] = [];
+  for (let i = 0; i < steps.length;) {
+    const block = linkedBlock(data, steps[i]);
+    const whole = block && block.every((step, j) => steps[i + j] && stepKey(steps[i + j]) === stepKey(step));
+    const size = whole ? block.length : 1;
+    list.push(steps.slice(i, i + size));
+    i += size;
+  }
+  return list;
+}
+
+/** Whether each step spends points: in a linked block (and in the Intro) only the first hit does, the others are the same action */
+export function spendsPoints(data: CharacterData, steps: RotationStep[]): boolean[] {
+  return units(data, steps).flatMap(unit => unit.map((step, j) => j === 0 && !(step.section === 'intro' && step.index > 0)));
+}
+
+/** Keeps only the units that can still come where they are; a removed one does not change the context (what followed it may go too) */
 export function cleanSteps(character: Character, steps: RotationStep[], context = startContext()): RotationStep[] {
   const kept: RotationStep[] = [];
-  for (const step of steps) {
-    if (!allowed(character.data, context, step)) continue;
-    kept.push(step);
-    context = advance(character, context, step);
+  for (const unit of units(character.data, steps)) {
+    const block = linkedBlock(character.data, unit[0]);
+    if (block && block.length !== unit.length) continue;
+    if (!allowed(character.data, context, unit[0])) continue;
+    kept.push(...unit);
+    context = contextAfter(character, unit, context);
   }
   return kept;
 }
@@ -108,15 +139,4 @@ export function cleanSteps(character: Character, steps: RotationStep[], context 
 export function middleContext(character: Character, withIntro: boolean): RotationContext {
   const intro = character.data.intro.hits.map((_, index): RotationStep => ({ section: 'intro', index }));
   return withIntro ? contextAfter(character, intro) : startContext();
-}
-
-/** The hit added together with this one (the second of a linked pair) */
-export function linkedWith(data: CharacterData, step: RotationStep): RotationStep | undefined {
-  const pair = data.sequence?.linked?.find(([first]) => first === stepKey(step));
-  return pair && keyStep(pair[1]);
-}
-
-/** Whether the step is the second hit of a linked pair (it is not picked: it comes with the first) */
-export function isLinkedSecond(data: CharacterData, step: RotationStep): boolean {
-  return !!data.sequence?.linked?.some(([, second]) => second === stepKey(step));
 }
