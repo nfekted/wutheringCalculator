@@ -153,7 +153,7 @@
       },
       {
         "name": "HA: Resonance Damage",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -170,11 +170,19 @@
               76.05
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Silent Listener",
+            "stat": "atk",
+            "value": 15,
+            "duration": 5
+          }
         ]
       },
       {
         "name": "HA: Aftertune Damage",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -378,7 +386,8 @@
               79.53
             ]
           }
-        ]
+        ],
+        "bonus": 60
       },
       {
         "name": "Resonating Echoes Part 2 Damage",
@@ -399,7 +408,8 @@
               159.05
             ]
           }
-        ]
+        ],
+        "bonus": 60
       }
     ]
   },
@@ -489,6 +499,27 @@
       {
         "stat": "liberationBonus"
       }
+    ]
+  },
+  "sequence": {
+    "after": {
+      "basic:6": [
+        "basic:2",
+        "basic:5"
+      ],
+      "basic:7": [
+        "basic:6",
+        "basic:4"
+      ],
+      "forte:2": [
+        "forte:1"
+      ]
+    },
+    "linked": [
+      [
+        "forte:0",
+        "forte:1"
+      ]
     ]
   }
 }

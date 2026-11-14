@@ -677,5 +677,54 @@
         "stat": "basicBonus"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:3": [
+        "basic:5"
+      ],
+      "forte:7": [
+        "forte:6"
+      ],
+      "forte:3": [
+        "forte:7"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Umbra",
+      "start": "forte:0",
+      "hits": [
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6",
+        "forte:7",
+        "forte:8",
+        "forte:9",
+        "forte:10"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "skill:0"
+      ],
+      "buffs": [
+        {
+          "name": "Metamorph",
+          "stat": "elementalBonus",
+          "value": 20
+        }
+      ]
+    }
+  ]
 }

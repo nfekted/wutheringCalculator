@@ -1,0 +1,122 @@
+import { CharacterData, HitKey, RotationStep, SectionKey } from '../data/character-data.model';
+import { Character } from '../shared/models/character.model';
+
+/** Sections the player picks hits from; intro and outro are always part of the rotation */
+export const PICKABLE: SectionKey[] = ['basic', 'skill', 'liberation', 'forte'];
+
+export function stepKey(step: RotationStep): HitKey {
+  return `${step.section}:${step.index}`;
+}
+
+function keyStep(key: HitKey): RotationStep {
+  const [section, index] = key.split(':');
+  return { section: section as RotationStep['section'], index: +index };
+}
+
+/** Where the rotation is: the last hit that counts for the sequence, and the active states (indexes in `data.states`) */
+export interface RotationContext {
+  last: HitKey | null;
+  states: number[];
+}
+
+export function startContext(): RotationContext {
+  return { last: null, states: [] };
+}
+
+/** Numbered hits ("DMG 2", "Stage 2", "Part 2"): the key of the previous number, when the section has it */
+const previousCache = new WeakMap<CharacterData, Map<HitKey, HitKey>>();
+function previousNumber(data: CharacterData, key: HitKey): HitKey | undefined {
+  let map = previousCache.get(data);
+  if (!map) {
+    map = new Map();
+    for (const section of [...PICKABLE, 'intro', 'outro'] as SectionKey[]) {
+      const groups = new Map<string, Map<number, number>>();
+      data[section].hits.forEach((hit, index) => {
+        const match = hit.name.match(/(DMG|Stage|Part)\s*(\d+)/i);
+        if (!match) return;
+        const group = hit.name.replace(match[0], match[1] + ' #');
+        if (!groups.has(group)) groups.set(group, new Map());
+        groups.get(group)!.set(+match[2], index);
+      });
+      for (const numbers of groups.values()) {
+        for (const [n, index] of numbers) {
+          const previous = numbers.get(n - 1);
+          if (previous !== undefined) map.set(`${section}:${index}`, `${section}:${previous}`);
+        }
+      }
+    }
+    previousCache.set(data, map);
+  }
+  return map.get(key);
+}
+
+/**
+ * Whether a hit can come now. A numbered hit comes right after the previous number; a hit with an "after" rule right after one of
+ * those hits (a numbered one, after either). A state hit only in its state; a replaced hit, or the start of an active state, not in it.
+ * The second hit of a linked pair only right after the first
+ */
+export function allowed(data: CharacterData, context: RotationContext, step: RotationStep): boolean {
+  if (step.section === 'echo') return true;
+  if (step.section === 'end') return context.states.includes(step.index);
+  const key = stepKey(step);
+  const states = data.states ?? [];
+  if (states.some((state, i) => state.hits.includes(key) && !context.states.includes(i))) return false;
+  if (context.states.some(i => states[i].replaces.includes(key) || states[i].start === key)) return false;
+
+  const linked = data.sequence?.linked?.find(([, second]) => second === key);
+  if (linked) return context.last === linked[0];
+
+  const previous = previousNumber(data, key);
+  const after = data.sequence?.after?.[key];
+  if (!previous && !after) return true;
+  return (!!previous && context.last === previous) || (!!after && !!context.last && after.includes(context.last));
+}
+
+/**
+ * Context after a step. Healing and shield are part of the action that gives them, and an Echo that does not transform attacks
+ * alongside the character: neither changes the sequence. A state starts on its hit and ends on an 'end' step
+ */
+export function advance(character: Character, context: RotationContext, step: RotationStep): RotationContext {
+  if (step.section === 'end') return { last: null, states: context.states.filter(i => i !== step.index) };
+  if (step.section === 'echo') return character.mainEcho?.transform ? { ...context, last: 'echo' } : context;
+  const hit = character.stepHit(step);
+  const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
+  if (kind === 'heal' || kind === 'shield') return context;
+
+  const key = stepKey(step);
+  const started = (character.data.states ?? []).flatMap((state, i) => state.start === key && !context.states.includes(i) ? [i] : []);
+  return { last: key, states: [...context.states, ...started] };
+}
+
+/** Context after a list of steps */
+export function contextAfter(character: Character, steps: RotationStep[], context = startContext()): RotationContext {
+  return steps.reduce((ctx, step) => advance(character, ctx, step), context);
+}
+
+/** Keeps only the steps that can still come where they are; a removed step does not change the context (what followed it may go too) */
+export function cleanSteps(character: Character, steps: RotationStep[], context = startContext()): RotationStep[] {
+  const kept: RotationStep[] = [];
+  for (const step of steps) {
+    if (!allowed(character.data, context, step)) continue;
+    kept.push(step);
+    context = advance(character, context, step);
+  }
+  return kept;
+}
+
+/** Context where the hits between the Intro and the Outro start: after the Intro, or from nothing (member A of the first team rotation) */
+export function middleContext(character: Character, withIntro: boolean): RotationContext {
+  const intro = character.data.intro.hits.map((_, index): RotationStep => ({ section: 'intro', index }));
+  return withIntro ? contextAfter(character, intro) : startContext();
+}
+
+/** The hit added together with this one (the second of a linked pair) */
+export function linkedWith(data: CharacterData, step: RotationStep): RotationStep | undefined {
+  const pair = data.sequence?.linked?.find(([first]) => first === stepKey(step));
+  return pair && keyStep(pair[1]);
+}
+
+/** Whether the step is the second hit of a linked pair (it is not picked: it comes with the first) */
+export function isLinkedSecond(data: CharacterData, step: RotationStep): boolean {
+  return !!data.sequence?.linked?.some(([, second]) => second === stepKey(step));
+}

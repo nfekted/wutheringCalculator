@@ -1,6 +1,7 @@
-import { Amplification, noAmplification } from './damage-engine';
-import { OutroBuff, RotationStep } from '../data/character-data.model';
+import { Amplification, Stats, noAmplification } from './damage-engine';
+import { OutroBuff, RotationStep, StatBuff } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
+import { advance, startContext } from './rotation-rules';
 
 /** Points a step spends from every active buff: by its section; in the Basic section a Heavy hit is 1; an Echo that transforms is 3 */
 export function stepCost(character: Character, step: RotationStep): number {
@@ -14,19 +15,21 @@ export function stepCost(character: Character, step: RotationStep): number {
     case 'intro': return 1;
     case 'forte': return 2;
     case 'outro': return 0;
+    case 'end': return 0;
   }
 }
 
-/** A buff of an Outro while it lasts */
+/** A buff while it lasts: from an Outro (DMG Amplification) or from a hit of the character itself (an attribute) */
 interface ActiveBuff {
-  buff: OutroBuff;
-  /** Slot of the member that gave it, and the position of the buff in its Outro (the same buff given again renews it) */
-  giver: number;
-  position: number;
+  /** The same buff given again renews its duration */
+  id: string;
   /** Slot of the member that receives it; null for the whole team */
   receiver: number | null;
   points: number;
+  endsOnSwitch?: boolean;
   label: string;
+  outro?: OutroBuff;
+  stat?: StatBuff;
 }
 
 export interface TeamHitRow {
@@ -36,7 +39,7 @@ export interface TeamHitRow {
   name: string;
   /** Labels of the buffs that applied to the hit */
   buffs: string[];
-  /** Damage hit (healing and shield are listed, not added up) */
+  /** Damage hit (healing, shield and leaving a state are listed, not added up) */
   damage: boolean;
   /** Value without and with the buffs */
   base: number;
@@ -55,74 +58,132 @@ export interface TeamResult {
   total: TeamSum;
 }
 
-/**
- * Plays the team rotation hit by hit: A (without Intro in the first rotation) -> B -> C, 1 or 2 times.
- * Each Outro with buffs starts them; every following hit spends its points from every active buff, and a hit still gets
- * a buff that had points left before it. "incoming" buffs go to the next member; those that end on switch end after its Outro
- */
-export function simulateTeam(members: Character[], steps: RotationStep[][], rotations: number): TeamResult {
-  const rows: TeamHitRow[] = [];
-  let active: ActiveBuff[] = [];
-
-  for (let rotation = 0; rotation < rotations; rotation++) {
-    members.forEach((character, slot) => {
-      const intro = slot > 0 || rotation > 0 ? sectionSteps(character, 'intro') : [];
-      for (const step of [...intro, ...steps[slot], ...sectionSteps(character, 'outro')]) {
-        const applied = active.filter(a => a.receiver === null || a.receiver === slot);
-        const base = character.rotationHit(step);
-        const buffed = applied.length ? character.rotationHit(step, amplificationOf(applied, character)).value : base.value;
-        rows.push({
-          rotation, slot, step,
-          name: character.stepHit(step)?.name ?? character.mainEcho?.name ?? '—',
-          buffs: applied.map(a => a.label),
-          damage: base.type === 'damage',
-          base: base.value,
-          buffed,
-        });
-        const cost = stepCost(character, step);
-        active = active.map(a => ({ ...a, points: a.points - cost })).filter(a => a.points > 0);
-      }
-
-      // Buffs received that end when this member leaves the field
-      active = active.filter(a => !(a.buff.endsOnSwitch && a.receiver === slot));
-
-      // The Outro starts its buffs; the same one given again renews its duration
-      const next = (slot + 1) % members.length;
-      const hasNext = slot < members.length - 1 || rotation < rotations - 1;
-      (character.data.outro.buffs ?? []).forEach((buff, position) => {
-        if (buff.target === 'incoming' && !hasNext) return;
-        active = active.filter(a => !(a.giver === slot && a.position === position));
-        active.push({
-          buff, giver: slot, position,
-          receiver: buff.target === 'incoming' ? next : null,
-          points: buff.duration,
-          label: `${character.name}: ${buffLabel(buff)}`,
-        });
-      });
-    });
-  }
-
-  const sum = (list: TeamHitRow[]): TeamSum => list.filter(r => r.damage)
-    .reduce((s, r) => ({ hits: s.hits + 1, base: s.base + r.base, buffed: s.buffed + r.buffed }), { hits: 0, base: 0, buffed: 0 });
-  return { rows, members: members.map((_, slot) => sum(rows.filter(r => r.slot === slot))), total: sum(rows) };
-}
-
 /** Steps of the intro or the outro of a character */
 export function sectionSteps(character: Character, section: 'intro' | 'outro'): RotationStep[] {
   return character.data[section].hits.map((_, index): RotationStep => ({ section, index }));
 }
 
-/** Amplifications of the active buffs added up; an elemental one counts only for a character of its element */
+interface Segment {
+  character: Character;
+  slot: number;
+  rotation: number;
+  /** Every step of the segment: Intro (when it has one), the hits and the Outro */
+  steps: RotationStep[];
+}
+
+/**
+ * Plays the team rotation hit by hit: A (without Intro in the first rotation) -> B -> C, 1 or 2 times.
+ * Each Outro with buffs starts them; every following hit spends its points from every active buff, and a hit still gets
+ * a buff that had points left before it. "incoming" buffs go to the next member; those that end on switch end after its Outro.
+ * Hits of the character itself can start buffs (after the hit) and states (whose buffs last until the state ends or the Outro)
+ */
+export function simulateTeam(members: Character[], steps: RotationStep[][], rotations: number): TeamResult {
+  const segments: Segment[] = [];
+  for (let rotation = 0; rotation < rotations; rotation++) {
+    members.forEach((character, slot) => {
+      const intro = slot > 0 || rotation > 0 ? sectionSteps(character, 'intro') : [];
+      segments.push({ character, slot, rotation, steps: [...intro, ...steps[slot], ...sectionSteps(character, 'outro')] });
+    });
+  }
+  return simulate(segments, members.length);
+}
+
+/** Rotation build of one character: Intro, the hits and the Outro, with the buffs it gives itself */
+export function simulateRotation(character: Character, steps: RotationStep[]): TeamResult {
+  const all = [...sectionSteps(character, 'intro'), ...steps, ...sectionSteps(character, 'outro')];
+  return simulate([{ character, slot: 0, rotation: 0, steps: all }], 1);
+}
+
+function simulate(segments: Segment[], memberCount: number): TeamResult {
+  const rows: TeamHitRow[] = [];
+  let active: ActiveBuff[] = [];
+
+  segments.forEach(({ character, slot, rotation, steps }, i) => {
+    const states = character.data.states ?? [];
+    let context = startContext();
+
+    for (const step of steps) {
+      const applied = active.filter(a => a.receiver === null || a.receiver === slot);
+      const stateBuffs = context.states.flatMap(s => (states[s].buffs ?? []).map(buff => ({ buff, label: `${states[s].name}: ${statLabel(buff)}` })));
+      const statBuffs = [...applied.flatMap(a => a.stat ? [a.stat] : []), ...stateBuffs.map(s => s.buff)];
+      const amplification = applied.some(a => a.outro) ? amplificationOf(applied, character) : undefined;
+      const extra = statBuffs.length ? extraStats(statBuffs, character) : undefined;
+
+      const base = character.rotationHit(step);
+      const buffed = amplification || extra ? character.rotationHit(step, amplification, extra).value : base.value;
+      rows.push({
+        rotation, slot, step,
+        name: step.section === 'end' ? `Leave ${states[step.index]?.name ?? ''}` : character.stepHit(step)?.name ?? character.mainEcho?.name ?? '—',
+        buffs: step.section === 'end' ? [] : [...applied.map(a => a.label), ...stateBuffs.map(s => s.label)],
+        damage: base.type === 'damage',
+        base: base.value,
+        buffed,
+      });
+
+      const cost = stepCost(character, step);
+      active = active.map(a => ({ ...a, points: a.points - cost })).filter(a => a.points > 0);
+
+      // Buffs the hit gives the character itself start after it
+      character.stepHit(step)?.buffs?.forEach((buff, position) => {
+        if (!buff.duration) return;
+        const id = `hit:${slot}:${step.section}:${step.index}:${position}`;
+        active = active.filter(a => a.id !== id);
+        active.push({ id, receiver: slot, points: buff.duration, label: `${character.name}: ${statLabel(buff)}`, stat: buff });
+      });
+      context = advance(character, context, step);
+    }
+
+    // Buffs received that end when this member leaves the field
+    active = active.filter(a => !(a.endsOnSwitch && a.receiver === slot));
+
+    // The Outro starts its buffs; the same one given again renews its duration
+    const next = segments[i + 1]?.slot;
+    (character.data.outro.buffs ?? []).forEach((buff, position) => {
+      if (buff.target === 'incoming' && next === undefined) return;
+      const id = `outro:${slot}:${position}`;
+      active = active.filter(a => a.id !== id);
+      active.push({
+        id, outro: buff, endsOnSwitch: buff.endsOnSwitch,
+        receiver: buff.target === 'incoming' ? next! : null,
+        points: buff.duration,
+        label: `${character.name}: ${outroLabel(buff)}`,
+      });
+    });
+  });
+
+  const sum = (list: TeamHitRow[]): TeamSum => list.filter(r => r.damage)
+    .reduce((s, r) => ({ hits: s.hits + 1, base: s.base + r.base, buffed: s.buffed + r.buffed }), { hits: 0, base: 0, buffed: 0 });
+  const members = Array.from({ length: memberCount }, (_, slot) => sum(rows.filter(r => r.slot === slot)));
+  return { rows, members, total: sum(rows) };
+}
+
+/** Amplifications of the active Outro buffs added up; an elemental one counts only for a character of its element */
 function amplificationOf(buffs: ActiveBuff[], character: Character): Amplification {
   const amplification = noAmplification();
-  for (const { buff } of buffs) {
-    if (buff.amplification === 'elemental' && buff.element !== character.data.type) continue;
-    amplification[buff.amplification] += buff.value;
+  for (const { outro } of buffs) {
+    if (!outro) continue;
+    if (outro.amplification === 'elemental' && outro.element !== character.data.type) continue;
+    amplification[outro.amplification] += outro.value;
   }
   return amplification;
 }
 
-function buffLabel(buff: OutroBuff): string {
+/** Attributes the buffs add: ATK as a percentage of the base ATK, the others as they are */
+function extraStats(buffs: StatBuff[], character: Character): Partial<Stats> {
+  const extra: Partial<Stats> = {};
+  for (const buff of buffs) {
+    if (buff.stat === 'atk') extra.dmg = (extra.dmg ?? 0) + character.data.base.atk * buff.value / 100;
+    else extra[buff.stat] = (extra[buff.stat] ?? 0) + buff.value;
+  }
+  return extra;
+}
+
+function outroLabel(buff: OutroBuff): string {
   const kind = buff.amplification === 'elemental' ? buff.element! : buff.amplification;
   return `${kind[0].toUpperCase() + kind.slice(1)} +${buff.value}%`;
+}
+
+function statLabel(buff: StatBuff): string {
+  const stat = buff.stat === 'atk' ? 'ATK' : 'Elemental DMG';
+  return `${buff.name} (${stat} +${buff.value}%)`;
 }

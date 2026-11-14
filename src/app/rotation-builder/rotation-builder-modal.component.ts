@@ -5,8 +5,9 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { RotationStep } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
 import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
-import { sectionSteps } from '../core/team-engine';
-import { RotationEditorComponent, sumSteps } from './rotation-editor.component';
+import { simulateRotation } from '../core/team-engine';
+import { cleanSteps, middleContext } from '../core/rotation-rules';
+import { RotationEditorComponent } from './rotation-editor.component';
 
 @Component({
   selector: 'app-rotation-builder-modal',
@@ -24,15 +25,14 @@ export class RotationBuilderModalComponent {
 
   hasDefault = (this.character().data.rotationBuild?.length ?? 0) > 0;
 
-  private sum = computed(() => {
-    const character = this.character();
-    return sumSteps(character, [...sectionSteps(character, 'intro'), ...this.middle(), ...sectionSteps(character, 'outro')]);
-  });
-  total = computed(() => this.sum().total);
-  damageHits = computed(() => this.sum().hits);
+  /** The rotation with the buffs the character gives itself (Inherent Skills, states) */
+  private result = computed(() => simulateRotation(this.character(), this.middle()));
+  values = computed(() => this.result().rows.map(row => row.buffed));
+  total = computed(() => this.result().total.buffed);
+  damageHits = computed(() => this.result().total.hits);
 
   protected importDefault() {
-    this.update([...(this.character().data.rotationBuild ?? [])]);
+    this.update(cleanSteps(this.character(), [...(this.character().data.rotationBuild ?? [])], middleContext(this.character(), true)));
   }
 
   protected clear() {

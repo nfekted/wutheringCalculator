@@ -109,6 +109,7 @@ export class Character implements Stats {
 
     /** Hit of a rotation step; an Echo Skill option the main Echo does not have falls back to its first one */
     stepHit(step: RotationStep): Hit | undefined {
+        if (step.section === 'end') return undefined;
         if (step.section !== 'echo') return this.data[step.section].hits[step.index];
         const hits = this.mainEcho?.skill.hits ?? [];
         return hits[step.index] ?? hits[0];
@@ -139,12 +140,17 @@ export class Character implements Stats {
     /**
      * What a rotation step is worth: the expected value against a common enemy, mixing the hits without and with a crit by the crit rate.
      * Healing and shield hits are not mitigated and never crit. Steps without valid data (or an Echo Skill without a damage main Echo) count as 0.
-     * With `amplification` (the buffs active on the hit), the hit is calculated again with it
+     * With `amplification` and `extra` (the buffs active on the hit: amplification, and attributes added to the character's), the hit is
+     * calculated again with them. A step that leaves a state is 'none', worth 0
      */
-    rotationHit(step: RotationStep, amplification?: Amplification): { value: number; type: 'damage' | 'heal' | 'shield' } {
+    rotationHit(step: RotationStep, amplification?: Amplification, extra?: Partial<Stats>): { value: number; type: 'damage' | 'heal' | 'shield' | 'none' } {
+        if (step.section === 'end') return { value: 0, type: 'none' };
         const hit = this.stepHit(step);
-        const results = amplification ? calculateResults(this.data, this, this.levels, this.mode, amplification) : this.results;
-        const echoResults = amplification ? calculateEchoResults(this.mainEcho?.skill.hits ?? [], this, this.data.type, amplification) : this.echoResults;
+        const stats: Stats = extra ? { ...this } : this;
+        for (const [key, value] of Object.entries(extra ?? {}) as [keyof Stats, number][]) stats[key] += value;
+        const again = !!amplification || !!extra;
+        const results = again ? calculateResults(this.data, stats, this.levels, this.mode, amplification) : this.results;
+        const echoResults = again ? calculateEchoResults(this.mainEcho?.skill.hits ?? [], stats, this.data.type, amplification) : this.echoResults;
         const result = step.section !== 'echo' ? results[step.section][step.index]
             : echoResults[step.index] ?? echoResults[0];
         const kind = this.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
@@ -154,7 +160,7 @@ export class Character implements Stats {
         let value = result.sum;
         if (type === 'damage') {
             const range = result.commonSum;
-            const chance = Math.min(this.cChance, 100) / 100;
+            const chance = Math.min(stats.cChance, 100) / 100;
             value = (range.min + range.max) / 2 * (1 - chance) + (range.critMin + range.critMax) / 2 * chance;
         }
         return { value: Number.isFinite(value) ? value : 0, type };

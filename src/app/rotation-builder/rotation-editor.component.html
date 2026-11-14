@@ -27,15 +27,26 @@
   <ng-content />
 </div>
 
+<!-- States the character is in at the end of the list: clicking one leaves it (a step worth 0) -->
+@for (state of activeStates(); track state.index) {
+  <button type="button" class="ui-btn ui-btn-secondary mt-3 gap-2" [title]="'char.rotationBuild.leaveState' | transloco: { name: state.name }"
+    (click)="leave(state.index)">
+    <span class="material-symbols-outlined" aria-hidden="true">toggle_on</span>
+    {{ 'char.rotationBuild.inState' | transloco: { name: state.name } }}
+  </button>
+}
+
 <!-- Rotation -->
 <table class="ui-table mt-4 w-full text-sm">
   <tbody>
     @for (row of rows(); track $index; let i = $index) {
       <tr>
         <td class="w-8 text-mute">{{ i + 1 }}</td>
-        <td class="w-28 text-xs text-mute">{{ (row.step.section === 'echo' ? 'char.rotationBuild.echoSkill' : 'char.' + row.step.section) | transloco }}</td>
-        <td [class]="'font-medium ' + row.color">{{ row.name }}</td>
-        <td class="text-right tabular-nums" [class.text-heal]="!row.damage">{{ row.value | number: '1.0-0' }}</td>
+        <td class="w-28 text-xs text-mute">{{ (row.step.section === 'echo' ? 'char.rotationBuild.echoSkill' : row.step.section === 'end' ? 'char.rotationBuild.state' : 'char.' + row.step.section) | transloco }}</td>
+        <td [class]="'font-medium ' + row.color">
+          {{ row.step.section === 'end' ? ('char.rotationBuild.leftState' | transloco: { name: row.name }) : row.name }}
+        </td>
+        <td class="text-right tabular-nums" [class.text-heal]="!row.damage">{{ (values()?.[i] ?? row.value) | number: '1.0-0' }}</td>
         <td class="w-28 text-right">
           @if (row.position >= 0) {
             <button type="button" class="ui-icon-btn" [attr.aria-label]="'char.rotationBuild.moveUp' | transloco"

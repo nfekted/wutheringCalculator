@@ -7,6 +7,7 @@ import { Character } from '../shared/models/character.model';
 import { RotationStep } from '../data/character-data.model';
 import { RotationEditorComponent } from '../rotation-builder/rotation-editor.component';
 import { TeamResult, simulateTeam } from '../core/team-engine';
+import { cleanSteps, middleContext } from '../core/rotation-rules';
 import { Team, canJoinTeam, characterSteps } from '../shared/models/team.model';
 import { StorageService } from '../shared/services/storage.service';
 import { ConfirmService } from '../shared/ui/confirm.service';
@@ -96,7 +97,7 @@ export class TeamsModalComponent {
 
   /** Opens the team rotation; members without a copy of their hits get one from the character */
   protected openRotation(team: Team) {
-    team.steps = team.members.map((m, i) => team.steps?.[i] ?? [...characterSteps(this.character(m)!)]);
+    team.steps = team.members.map((m, i) => team.steps?.[i] ?? this.copySteps(team, i));
     this.results.delete(team);
     this.storage.saveTeams(this.teams());
     this.viewing.set(team);
@@ -109,7 +110,13 @@ export class TeamsModalComponent {
   }
 
   protected reimport(team: Team, slot: number) {
-    this.setSteps(team, slot, [...characterSteps(this.character(team.members[slot])!)]);
+    this.setSteps(team, slot, this.copySteps(team, slot));
+  }
+
+  /** Copy of the hits of the character, keeping only the ones that can come in the team (A starts without Intro) */
+  private copySteps(team: Team, slot: number): RotationStep[] {
+    const character = this.character(team.members[slot])!;
+    return cleanSteps(character, characterSteps(character), middleContext(character, slot > 0));
   }
 
   protected setRotations(team: Team, value: number) {

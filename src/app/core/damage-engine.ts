@@ -90,7 +90,8 @@ export function calculateResults(data: CharacterData, stats: Stats, levels: Leve
     results[key] = data[key].hits.map(hit => {
       const kind = mode > 0 && hit.altKind ? hit.altKind : hit.kind;
       const elemental = kind === 'heal' || kind === 'shield' ? 0 : stats.elementalBonus;
-      return calculateHit(hit, stats, level, 100 + elemental + bonusOf(stats, kind), amplificationOf(amplification, kind, true));
+      // `hit.bonus`: a passive DMG Bonus of this hit only, added to the bonus of its kind
+      return calculateHit(hit, stats, level, 100 + elemental + bonusOf(stats, kind) + (hit.bonus ?? 0), amplificationOf(amplification, kind, true));
     });
   }
   return results;

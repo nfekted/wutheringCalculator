@@ -27,6 +27,47 @@ export interface Hit {
   combo?: boolean;
   /** Element of the damage of an Echo hit (aero, glacio... or physical); the elemental bonus of the character applies only when it is the same */
   element?: string;
+  /** Passive DMG Bonus in % of this hit only (e.g. an Inherent Skill "DMG of X is increased by 60%"), added to the other bonuses */
+  bonus?: number;
+  /** Buffs the character gives itself after this hit (e.g. an Inherent Skill "ATK +15% for 5s upon casting X") */
+  buffs?: StatBuff[];
+}
+
+/** Attribute a buff of the character raises during the rotation: 'atk' is a percentage of the base ATK, the others are added */
+export type BuffStat = 'atk' | 'elementalBonus';
+
+export interface StatBuff {
+  /** Where it comes from (e.g. the Inherent Skill), shown on the hits it applies to */
+  name: string;
+  stat: BuffStat;
+  /** In % */
+  value: number;
+  /** In seconds, spent as points by the following hits; without it, while the state that gives it lasts */
+  duration?: number;
+}
+
+/** Hit of a character as "section:index" (e.g. "forte:0") */
+export type HitKey = string;
+
+/** Rules of the hit sequence besides the default one (a numbered hit comes right after the previous number) */
+export interface SequenceRules {
+  /** A hit that can only come right after one of these (for a numbered hit, besides the previous number) */
+  after?: Record<HitKey, HitKey[]>;
+  /** Hits added and removed together, the second right after the first */
+  linked?: [HitKey, HitKey][];
+}
+
+/** A state a hit puts the character in (e.g. Dark Surge); it ends on the Outro or when the player leaves it in the rotation */
+export interface CharacterState {
+  name: string;
+  /** Hit that starts the state */
+  start: HitKey;
+  /** Hits only available in the state */
+  hits: HitKey[];
+  /** Hits not available in the state (replaced by the state hits) */
+  replaces: HitKey[];
+  /** Buffs active while the state lasts */
+  buffs?: StatBuff[];
 }
 
 export interface SkillData {
@@ -58,9 +99,9 @@ export interface OutroData extends SkillData {
 }
 
 export interface RotationStep {
-  /** 'echo' is the Echo Skill of the main Echo of the moment, whichever it is */
-  section: SectionKey | 'echo';
-  /** Position of the hit inside the section; for 'echo', the chosen way of casting it */
+  /** 'echo' is the Echo Skill of the main Echo of the moment, whichever it is; 'end' leaves a state (worth 0, spends no points) */
+  section: SectionKey | 'echo' | 'end';
+  /** Position of the hit inside the section; for 'echo', the chosen way of casting it; for 'end', the state in `states` */
   index: number;
 }
 
@@ -102,6 +143,10 @@ export interface CharacterData {
   erScale?: boolean;
   /** Two ways of playing the character, e.g. ["chafe", "echo"]; the first uses `kind` of the hits, the second `altKind` */
   modes?: string[];
+  /** Rules of the hit sequence besides the numbered one */
+  sequence?: SequenceRules;
+  /** States some hits put the character in */
+  states?: CharacterState[];
   basic: SkillData;
   skill: SkillData;
   liberation: SkillData;

@@ -63,7 +63,7 @@
     },
     "rotationBuild": {
         "title": "Rotation build",
-        "info": "Intro and Outro are always part of the rotation. Add the hits in between in the order you play them. Damage is the expected value against a common enemy, with your crit rate and crit damage. Healing and shield hits are listed but not added to the damage.",
+        "info": "Intro and Outro are always part of the rotation. Add the hits in between in the order you play them: only the hits that can come next are offered, and removing or moving a hit also removes the ones that can no longer come. Damage is the expected value against a common enemy, with your crit rate and crit damage, and the buffs the character gives itself. Healing and shield hits are listed but not added to the damage.",
         "add": "Add hit",
         "choose": "Choose a hit...",
         "importDefault": "Import default rotation",
@@ -78,7 +78,11 @@
         "echoSkill": "Echo Skill",
         "noMainEcho": "No main Echo",
         "echoNoDamage": "This Echo deals no damage",
-        "critNote": "Damage is the expected average, crit included: no hit is chosen to crit. See the FAQ for details."
+        "critNote": "Damage is the expected average, crit included: no hit is chosen to crit. See the FAQ for details.",
+        "state": "State",
+        "inState": "Currently in {{name}} mode",
+        "leaveState": "Click to leave {{name}} mode: the next hits are the normal ones again",
+        "leftState": "Leaves {{name}} mode"
     },
     "echoSet": {
         "title": "Echo Set",
