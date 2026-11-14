@@ -594,6 +594,12 @@
         "skill:4",
         "skill:5"
       ]
-    }
+    },
+    "linked": [
+      [
+        "liberation:0",
+        "liberation:1"
+      ]
+    ]
   }
 }

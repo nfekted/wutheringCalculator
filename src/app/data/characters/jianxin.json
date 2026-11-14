@@ -274,7 +274,8 @@
               29.83
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Resonance Liberation Explosion Damage",
@@ -295,7 +296,8 @@
               636.2
             ]
           }
-        ]
+        ],
+        "bonus": 20
       }
     ]
   },
@@ -517,7 +519,8 @@
               35.83
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Minor Zhoutian Final Shield",
@@ -553,7 +556,8 @@
               71.66
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Major Zhoutian: Inner Final Shield",
@@ -589,7 +593,8 @@
               143.33
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Major Zhoutian: Outer Final Shield",
@@ -625,7 +630,8 @@
               238.78
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Shield Healing",
@@ -751,6 +757,28 @@
       {
         "stat": "liberationBonus"
       }
+    ]
+  },
+  "sequence": {
+    "linked": [
+      [
+        "liberation:0",
+        "liberation:0",
+        "liberation:0",
+        "liberation:1"
+      ],
+      [
+        "forte:2",
+        "forte:7"
+      ],
+      [
+        "forte:3",
+        "forte:8"
+      ],
+      [
+        "forte:4",
+        "forte:9"
+      ]
     ]
   }
 }

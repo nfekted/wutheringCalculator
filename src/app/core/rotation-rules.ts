@@ -15,17 +15,49 @@ export function keyStep(key: HitKey): RotationStep {
 
 /**
  * Where the rotation is: the last hit that counts for the sequence, the one before a run of hits that keep the sequence (e.g. a Skill
- * that does not break the Basic Attack cycle), the active states (indexes in `data.states`) and the value of each counter
+ * that does not break the Basic Attack cycle), the active states (indexes in `data.states`), the value of each counter, the points left
+ * of each state that has a duration and of each buff the character gives itself (by name)
  */
 export interface RotationContext {
   last: HitKey | null;
   held: HitKey | null;
   states: number[];
   counters: number[];
+  statePoints: Record<number, number>;
+  buffPoints: Record<string, number>;
 }
 
 export function startContext(): RotationContext {
-  return { last: null, held: null, states: [], counters: [] };
+  return { last: null, held: null, states: [], counters: [], statePoints: {}, buffPoints: {} };
+}
+
+/**
+ * Points a step spends from every active buff (and state): by its section; in the Basic section a Heavy hit is 1; an Echo that
+ * transforms is 3; a hit that replaces the Intro (kind `intro` in another section) is 1, like the Intro; a hit of a state (kept in
+ * another section) costs by its kind
+ */
+export function stepCost(character: Character, step: RotationStep): number {
+  if (step.section === 'echo') return character.mainEcho?.transform ? 3 : 0;
+  const hit = character.stepHit(step);
+  const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
+  if (kind === 'intro') return 1;
+  if (character.data.states?.some(state => state.hits.includes(stepKey(step)))) {
+    switch (kind) {
+      case 'basic': return 0.5;
+      case 'heavy': return 1;
+      case 'skill': return 0.5;
+      case 'liberation': return 3;
+    }
+  }
+  switch (step.section) {
+    case 'basic': return kind === 'heavy' ? 1 : 0.5;
+    case 'skill': return 0.5;
+    case 'liberation': return 3;
+    case 'intro': return 1;
+    case 'forte': return 2;
+    case 'outro': return 0;
+    case 'end': return 0;
+  }
 }
 
 /** Numbered hits ("DMG 2", "Stage 2", "Part 2"): the key of the previous number, when the section has it */
@@ -66,8 +98,13 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
   if (step.section === 'end') return context.states.includes(step.index);
   const key = stepKey(step);
   const states = data.states ?? [];
-  if (states.some((state, i) => state.hits.includes(key) && !context.states.includes(i))) return false;
-  if (context.states.some(i => states[i].replaces.includes(key) || states[i].start === key)) return false;
+  // A state hit outside its state: only an extra way in, right after the hits it asks for (its start is always offered outside)
+  for (const [i, state] of states.entries()) {
+    if (!state.hits.includes(key) || key === state.start || context.states.includes(i)) continue;
+    const extra = state.starts?.[key];
+    if (!extra || !context.last || !extra.includes(context.last)) return false;
+  }
+  if (context.states.some(i => states[i].replaces.includes(key) || (states[i].start === key && !states[i].hits.includes(key)))) return false;
   if (states.some(state => state.nextIntro === key)) return false;
   for (const [i, counter] of (data.counters ?? []).entries()) {
     const full = (context.counters[i] ?? 0) >= counter.max;
@@ -87,34 +124,63 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
 /**
  * Context after a step. Healing and shield are part of the action that gives them, and an Echo that does not transform attacks
  * alongside the character: neither changes the sequence. A hit that keeps the sequence leaves the hit before it reachable. A state
- * starts on its hit and ends on an 'end' step (its counters go back to 0). A counter hit adds 1; the hit it unlocks spends it all
+ * starts on its hit (or an extra way in) and ends on an 'end' step, on its end hits or when its points run out (its counters go back
+ * to 0). A counter hit adds 1; the hit it unlocks spends it all. `spends` is false for a hit of a linked block that is not the first
  */
-export function advance(character: Character, context: RotationContext, step: RotationStep): RotationContext {
+export function advance(character: Character, context: RotationContext, step: RotationStep, spends = true): RotationContext {
   const data = character.data;
   const counters = data.counters ?? [];
+  const cost = spends ? stepCost(character, step) : 0;
+
+  // Points of the buffs the character gives itself (by name) and of the states with a duration
+  const buffPoints: Record<string, number> = {};
+  for (const [name, left] of Object.entries(context.buffPoints)) if (left - cost > 0) buffPoints[name] = left - cost;
+  const statePoints: Record<number, number> = {};
+  const runOut: number[] = [];
+  for (const i of context.states) {
+    const state = data.states![i];
+    if (state.duration === undefined) continue;
+    const slowed = !!state.slowedBy && (context.buffPoints[state.slowedBy] ?? 0) > 0;
+    const left = (context.statePoints[i] ?? state.duration) - cost * (slowed ? state.slowedRate ?? 1 : 1);
+    if (left > 0) statePoints[i] = left; else runOut.push(i);
+  }
+  const resetCounters = (ended: number[], value: (i: number) => number) =>
+    counters.map((counter, i) => counter.state !== undefined && ended.includes(counter.state) ? 0 : value(i));
+
   if (step.section === 'end') {
+    const ended = [step.index, ...runOut];
     return {
-      last: null, held: null,
-      states: context.states.filter(i => i !== step.index),
-      counters: counters.map((counter, i) => counter.state === step.index ? 0 : context.counters[i] ?? 0),
+      last: null, held: null, buffPoints, statePoints,
+      states: context.states.filter(i => !ended.includes(i)),
+      counters: resetCounters(ended, i => context.counters[i] ?? 0),
     };
   }
-  if (step.section === 'echo') return character.mainEcho?.transform ? { ...context, last: 'echo', held: null } : context;
   const hit = character.stepHit(step);
   const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
-  if (kind === 'heal' || kind === 'shield') return context;
+  if (step.section === 'echo' || kind === 'heal' || kind === 'shield') {
+    const transforms = step.section === 'echo' && !!character.mainEcho?.transform;
+    return {
+      ...context, buffPoints, statePoints,
+      states: context.states.filter(i => !runOut.includes(i)),
+      counters: resetCounters(runOut, i => context.counters[i] ?? 0),
+      ...(transforms && { last: 'echo', held: null }),
+    };
+  }
 
   const key = stepKey(step);
+  for (const buff of hit?.buffs ?? []) if (buff.duration) buffPoints[buff.name] = buff.duration;
   const keeps = (hit: HitKey | null) => !!hit && !!data.sequence?.keepsChain?.includes(hit);
   const held = keeps(key) ? (keeps(context.last) ? context.held : context.last) : null;
-  const started = (data.states ?? []).flatMap((state, i) => state.start === key && !context.states.includes(i) ? [i] : []);
-  const ended = (data.states ?? []).flatMap((state, i) => state.endsOn?.includes(key) ? [i] : []);
+  const started = (data.states ?? []).flatMap((state, i) =>
+    (state.start === key || !!state.starts?.[key]) && !context.states.includes(i) ? [i] : []);
+  const ended = [...runOut, ...(data.states ?? []).flatMap((state, i) => state.endsOn?.includes(key) ? [i] : [])];
   const states = [...context.states, ...started].filter(i => !ended.includes(i));
   return {
-    last: key, held, states,
-    counters: counters.map((counter, i) => {
+    last: key, held, states, buffPoints, statePoints,
+    counters: resetCounters(ended, i => {
+      const counter = counters[i];
       const value = context.counters[i] ?? 0;
-      if (counter.unlocks === key || (counter.state !== undefined && ended.includes(counter.state))) return 0;
+      if (counter.unlocks === key) return 0;
       if (counter.gain.includes(key) && (counter.state === undefined || states.includes(counter.state))) return Math.min(value + 1, counter.max);
       return value;
     }),
@@ -123,7 +189,8 @@ export function advance(character: Character, context: RotationContext, step: Ro
 
 /** Context after a list of steps */
 export function contextAfter(character: Character, steps: RotationStep[], context = startContext()): RotationContext {
-  return steps.reduce((ctx, step) => advance(character, ctx, step), context);
+  const spends = spendsPoints(character.data, steps);
+  return steps.reduce((ctx, step, i) => advance(character, ctx, step, spends[i]), context);
 }
 
 /** The linked block that starts with this hit: every hit of it, the first one included (they are added and removed together) */

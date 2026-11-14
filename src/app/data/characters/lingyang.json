@@ -304,6 +304,14 @@
               397.62
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Strive: Lion's Vigor",
+            "stat": "elementalBonus",
+            "value": 50,
+            "duration": 14
+          }
         ]
       }
     ]
@@ -331,7 +339,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "bonus": 50
       }
     ]
   },
@@ -455,7 +464,17 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "bonusAfter": {
+          "name": "Diligent Practice",
+          "after": [
+            "forte:1",
+            "forte:2",
+            "forte:4",
+            "forte:5"
+          ],
+          "multiplier": 2.5
+        }
       },
       {
         "name": "Stormy Kicks Damage",
@@ -604,5 +623,71 @@
         "stat": "energyRegen"
       }
     ]
-  }
+  },
+  "sequence": {
+    "keepsChain": [
+      "skill:0",
+      "skill:1"
+    ],
+    "after": {
+      "skill:1": [
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5"
+      ],
+      "basic:5": [
+        "skill:1"
+      ],
+      "basic:2": [
+        "basic:5"
+      ],
+      "forte:5": [
+        "forte:4"
+      ]
+    },
+    "replacedBy": {
+      "skill:0": [
+        "skill:1"
+      ],
+      "basic:4": [
+        "basic:5"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Striding Lion",
+      "start": "forte:0",
+      "starts": {
+        "forte:1": [
+          "intro:0",
+          "liberation:0"
+        ]
+      },
+      "hits": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "skill:0",
+        "skill:1"
+      ],
+      "duration": 5,
+      "slowedBy": "Strive: Lion's Vigor",
+      "slowedRate": 0.5
+    }
+  ]
 }

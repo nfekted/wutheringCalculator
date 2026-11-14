@@ -33,6 +33,16 @@ export interface Hit {
   buffs?: StatBuff[];
   /** Written by hand (not in the wiki): kept when the character is imported again */
   manual?: boolean;
+  /** Extra damage when the hit comes right after one of some hits (e.g. "after a Basic Attack, deals an additional 150%") */
+  bonusAfter?: BonusAfter;
+}
+
+export interface BonusAfter {
+  /** Where it comes from (e.g. the Inherent Skill), shown on the hit */
+  name: string;
+  after: HitKey[];
+  /** The hit is worth this many times its damage (e.g. 2.5 for an additional 150%) */
+  multiplier: number;
 }
 
 /**
@@ -104,6 +114,13 @@ export interface CharacterState {
   nextIntro?: HitKey;
   /** Hits that end the state (after them) */
   endsOn?: HitKey[];
+  /** Other ways in: a state hit that also starts it from outside, right after one of these hits */
+  starts?: Record<HitKey, HitKey[]>;
+  /** In seconds, spent as points by the hits in it; it ends when they run out */
+  duration?: number;
+  /** While the character has this buff (by name), the state spends its points at `slowedRate` */
+  slowedBy?: string;
+  slowedRate?: number;
 }
 
 export interface SkillData {

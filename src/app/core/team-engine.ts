@@ -1,37 +1,9 @@
 import { Amplification, Stats, noAmplification } from './damage-engine';
 import { OutroBuff, RotationStep, StatBuff } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
-import { advance, keyStep, spendsPoints, startContext, units } from './rotation-rules';
+import { advance, keyStep, spendsPoints, startContext, stepCost, units } from './rotation-rules';
 
-/**
- * Points a step spends from every active buff: by its section; in the Basic section a Heavy hit is 1; an Echo that transforms is 3;
- * a hit that replaces the Intro (kind `intro` in another section) is 1, like the Intro
- */
-export function stepCost(character: Character, step: RotationStep): number {
-  if (step.section === 'echo') return character.mainEcho?.transform ? 3 : 0;
-  const hit = character.stepHit(step);
-  const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
-  if (kind === 'intro') return 1;
-  // A hit of a state (kept in another section) costs by its kind
-  const key = `${step.section}:${step.index}`;
-  if (character.data.states?.some(state => state.hits.includes(key))) {
-    switch (kind) {
-      case 'basic': return 0.5;
-      case 'heavy': return 1;
-      case 'skill': return 0.5;
-      case 'liberation': return 3;
-    }
-  }
-  switch (step.section) {
-    case 'basic': return kind === 'heavy' ? 1 : 0.5;
-    case 'skill': return 0.5;
-    case 'liberation': return 3;
-    case 'intro': return 1;
-    case 'forte': return 2;
-    case 'outro': return 0;
-    case 'end': return 0;
-  }
-}
+export { stepCost };
 
 /** A buff while it lasts: from an Outro (DMG Amplification) or from a hit of the character itself (an attribute) */
 interface ActiveBuff {
@@ -147,13 +119,17 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       const crits = !!crit && kind === crit.kind && !(critCooldown.get(slot)! > 0);
       const critExtra = crits ? { ...extra, cChance: (extra?.cChance ?? 0) + 100 } : extra;
 
-      const base = character.rotationHit(step);
-      const buffed = amplification || critExtra ? character.rotationHit(step, amplification, critExtra).value : base.value;
+      // Extra damage of a hit that comes right after some others (not a buff: it counts without the buffs too)
+      const bonusAfter = hit?.bonusAfter && context.last && hit.bonusAfter.after.includes(context.last) ? hit.bonusAfter : undefined;
+      const times = bonusAfter?.multiplier ?? 1;
+      const alone = character.rotationHit(step);
+      const base = { ...alone, value: alone.value * times };
+      const buffed = amplification || critExtra ? character.rotationHit(step, amplification, critExtra).value * times : base.value;
       rows.push({
         rotation, slot, step,
         name: step.section === 'end' ? `Leave ${states[step.index]?.name ?? ''}` : character.stepHit(step)?.name ?? character.mainEcho?.name ?? '—',
         // An elemental buff of another element is not listed: it does nothing for this character
-        buffs: step.section === 'end' ? [] : [...applied.filter(a => !(a.outro?.amplification === 'elemental' && a.outro.element !== character.data.type) && listed(a.stat)).map(a => a.label), ...stateBuffs.filter(s => listed(s.buff)).map(s => s.label), ...(crits ? [`${crit!.name} (crit)`] : [])],
+        buffs: step.section === 'end' ? [] : [...applied.filter(a => !(a.outro?.amplification === 'elemental' && a.outro.element !== character.data.type) && listed(a.stat)).map(a => a.label), ...stateBuffs.filter(s => listed(s.buff)).map(s => s.label), ...(crits ? [`${crit!.name} (crit)`] : []), ...(bonusAfter ? [`${bonusAfter.name} (×${bonusAfter.multiplier})`] : [])],
         damage: base.type === 'damage',
         base: base.value,
         buffed,
@@ -176,7 +152,7 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       });
       // A state that ends gives its hit for the next Intro
       if (step.section === 'end' && states[step.index]?.nextIntro) nextIntro.set(slot, states[step.index].nextIntro!);
-      context = advance(character, context, step);
+      context = advance(character, context, step, spends[position]);
     });
 
     // States still active end on the Outro
