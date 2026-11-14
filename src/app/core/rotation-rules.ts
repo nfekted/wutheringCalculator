@@ -39,6 +39,7 @@ export function startContext(): RotationContext {
 export function stepCost(character: Character, step: RotationStep): number {
   if (step.section === 'echo') return character.mainEcho?.transform ? 3 : 0;
   const hit = character.stepHit(step);
+  if (hit?.cost !== undefined) return hit.cost;
   const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
   if (kind === 'intro') return 1;
   if (character.data.states?.some(state => state.hits.includes(stepKey(step)))) {
@@ -106,6 +107,8 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
   }
   if (context.states.some(i => states[i].replaces.includes(key) || (states[i].start === key && !states[i].hits.includes(key)))) return false;
   if (states.some(state => state.nextIntro === key)) return false;
+  // Hits that only come on their own (a Coordinated Attack, the hit of a mark)
+  if (data.coordinated?.hit === key || data.markers?.some(marker => marker.hit === key)) return false;
   for (const [i, counter] of (data.counters ?? []).entries()) {
     const full = (context.counters[i] ?? 0) >= counter.max;
     if (counter.unlocks === key && !full) return false;

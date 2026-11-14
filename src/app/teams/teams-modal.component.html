@@ -122,7 +122,7 @@
           <tr>
             <td class="text-mute">{{ row.rotation + 1 }}</td>
             <td>{{ slots[row.slot] }} · {{ character(team.members[row.slot])?.name }}</td>
-            <td class="font-medium">{{ row.name }}</td>
+            <td class="font-medium" [class.pl-6]="row.auto">{{ row.name }}</td>
             <td class="text-xs text-mute">
               @for (buff of row.buffs; track $index) {
                 <span class="block">{{ buff }}</span>

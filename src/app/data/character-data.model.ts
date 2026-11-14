@@ -35,6 +35,8 @@ export interface Hit {
   manual?: boolean;
   /** Extra damage when the hit comes right after one of some hits (e.g. "after a Basic Attack, deals an additional 150%") */
   bonusAfter?: BonusAfter;
+  /** Points the hit spends, instead of the one of its section (e.g. a Heavy Attack in the Forte section) */
+  cost?: number;
 }
 
 export interface BonusAfter {
@@ -49,7 +51,7 @@ export interface BonusAfter {
  * Attribute a buff of the character raises during the rotation: 'atk' is a percentage of the base ATK, the others are added;
  * 'damageBonus' is a DMG Bonus on every damage hit of the character (added to the elemental bonus)
  */
-export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus';
+export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus';
 
 /** Hits of a kind that always crit, once every `cooldown` points (e.g. an Inherent Skill "Heavy Attack always crits, once every 30s") */
 export interface GuaranteedCrit {
@@ -67,6 +69,30 @@ export interface StatBuff {
   value: number;
   /** In seconds, spent as points by the following hits; without it, while the state that gives it lasts */
   duration?: number;
+  /** Only these hits get it (e.g. "the DMG of Fury Fugue is increased by 25%"); without it, every hit */
+  hits?: HitKey[];
+}
+
+/**
+ * Coordinated Attack: a hit starts it for the whole team; while it lasts, every Basic or Heavy action of the active character
+ * (by kind) makes the character fire its hit, as many times as `perKind` says. `stacking`: each one fired raises the DMG of the
+ * next ones, up to `max` times, until it ends (casting it again starts over)
+ */
+export interface CoordinatedAttack {
+  name: string;
+  start: HitKey;
+  hit: HitKey;
+  duration: number;
+  perKind: Partial<Record<HitKind, number>>;
+  stacking?: { name: string; value: number; max: number };
+}
+
+/** A mark a hit leaves (at most 1); the `detonate` hit adds the `hit` of each mark held, in the same action. They go on the Outro */
+export interface CharacterMarker {
+  name: string;
+  gain: HitKey[];
+  hit: HitKey;
+  detonate: HitKey;
 }
 
 /** Hit of a character as "section:index" (e.g. "forte:0") */
@@ -202,6 +228,8 @@ export interface CharacterData {
   states?: CharacterState[];
   guaranteedCrit?: GuaranteedCrit;
   counters?: CharacterCounter[];
+  coordinated?: CoordinatedAttack;
+  markers?: CharacterMarker[];
   basic: SkillData;
   skill: SkillData;
   liberation: SkillData;

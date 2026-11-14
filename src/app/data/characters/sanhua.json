@@ -129,7 +129,20 @@
             ]
           }
         ],
-        "combo": true
+        "combo": true,
+        "buffs": [
+          {
+            "name": "Avalanche",
+            "stat": "skillBonus",
+            "value": 20,
+            "duration": 8,
+            "hits": [
+              "forte:1",
+              "forte:2",
+              "forte:3"
+            ]
+          }
+        ]
       },
       {
         "name": "Heavy Attack DMG",
@@ -271,6 +284,14 @@
               139.17
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Condensation",
+            "stat": "skillBonus",
+            "value": 20,
+            "duration": 8
+          }
         ]
       }
     ]
@@ -311,7 +332,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Glacier Burst Damage",
@@ -474,5 +496,31 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "markers": [
+    {
+      "name": "Ice Thorn",
+      "gain": [
+        "intro:0"
+      ],
+      "hit": "forte:3",
+      "detonate": "forte:0"
+    },
+    {
+      "name": "Ice Prism",
+      "gain": [
+        "skill:0"
+      ],
+      "hit": "forte:2",
+      "detonate": "forte:0"
+    },
+    {
+      "name": "Glacier",
+      "gain": [
+        "liberation:0"
+      ],
+      "hit": "forte:1",
+      "detonate": "forte:0"
+    }
+  ]
 }

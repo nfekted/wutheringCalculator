@@ -126,7 +126,7 @@
       },
       {
         "name": "Aimed Shot Damage",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -147,7 +147,7 @@
       },
       {
         "name": "Fully Charged Aimed Shot Damage",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -251,6 +251,17 @@
               180.34,
               194.12,
               208.76
+            ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Harmonic Control",
+            "stat": "skillBonus",
+            "value": 25,
+            "duration": 8,
+            "hits": [
+              "forte:0"
             ]
           }
         ]
@@ -460,5 +471,20 @@
         "stat": "dmg"
       }
     ]
+  },
+  "coordinated": {
+    "name": "Burning Rhapsody",
+    "start": "liberation:0",
+    "hit": "liberation:1",
+    "duration": 10,
+    "perKind": {
+      "basic": 1,
+      "heavy": 2
+    },
+    "stacking": {
+      "name": "Rhythmic Vibrato",
+      "value": 1.5,
+      "max": 50
+    }
   }
 }

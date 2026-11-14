@@ -45,6 +45,9 @@
         <td class="w-28 text-xs text-mute">{{ (row.step.section === 'echo' ? 'char.rotationBuild.echoSkill' : row.step.section === 'end' ? 'char.rotationBuild.state' : 'char.' + row.step.section) | transloco }}</td>
         <td [class]="'font-medium ' + row.color">
           {{ row.step.section === 'end' ? ('char.rotationBuild.leftState' | transloco: { name: row.name }) : row.name }}
+          @if (notes()?.[i]; as note) {
+            <span class="ml-1 text-xs font-normal text-mute">{{ note }}</span>
+          }
         </td>
         <td class="text-right tabular-nums" [class.text-heal]="!row.damage">{{ (values()?.[i] ?? row.value) | number: '1.0-0' }}</td>
         <td class="w-28 text-right">

@@ -1,7 +1,7 @@
 import { Amplification, Stats, noAmplification } from './damage-engine';
-import { OutroBuff, RotationStep, StatBuff } from '../data/character-data.model';
+import { CoordinatedAttack, HitKey, OutroBuff, RotationStep, StatBuff } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
-import { advance, keyStep, spendsPoints, startContext, stepCost, units } from './rotation-rules';
+import { advance, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
 
 export { stepCost };
 
@@ -30,6 +30,8 @@ export interface TeamHitRow {
   /** Value without and with the buffs */
   base: number;
   buffed: number;
+  /** Added by another hit, not picked (a Coordinated Attack, the hit of a mark) */
+  auto?: boolean;
 }
 
 export interface TeamSum {
@@ -74,6 +76,21 @@ export function simulateTeam(members: Character[], steps: RotationStep[][], rota
   return simulate(segments, members.length);
 }
 
+/** A Coordinated Attack while it lasts, with how many hits it fired */
+interface ActiveCoordinated {
+  character: Character;
+  slot: number;
+  attack: CoordinatedAttack;
+  points: number;
+  fired: number;
+}
+
+/** A buff with the label shown on the hits it applies to */
+interface LabeledBuff {
+  buff: StatBuff;
+  label: string;
+}
+
 /** Rotation build of one character: Intro, the hits and the Outro, with the buffs it gives itself */
 export function simulateRotation(character: Character, steps: RotationStep[]): TeamResult {
   const all = [...sectionSteps(character, 'intro'), ...steps, ...sectionSteps(character, 'outro')];
@@ -87,6 +104,7 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
   const critCooldown = new Map<number, number>();
   /** Hit that replaces the next Intro of each member (a state of it ended) */
   const nextIntro = new Map<number, string>();
+  let coordinated: ActiveCoordinated[] = [];
 
   segments.forEach(({ character, slot, rotation, steps }, i) => {
     const states = character.data.states ?? [];
@@ -101,49 +119,73 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
     const blockEnd: boolean[] = [];
     for (const unit of units(character.data, steps)) unit.forEach((_, j) => { blockOf.push(unit[0]); blockEnd.push(j === unit.length - 1); });
     let context = startContext();
+    /** Marks held (indexes in `data.markers`); they go on the Outro */
+    const markers = character.data.markers ?? [];
+    const held = new Set<number>();
+
+    // A hit added by another one: worth its value with the buffs on its member, in the same action (it spends nothing)
+    const autoRow = (who: Character, whoSlot: number, key: HitKey, others: LabeledBuff[]) => {
+      const step = keyStep(key);
+      const value = valueOf(who, whoSlot, step, active, others);
+      rows.push({ rotation, slot: whoSlot, step, name: who.stepHit(step)?.name ?? '—', buffs: value.labels, damage: value.type === 'damage', base: value.base, buffed: value.buffed, auto: true });
+    };
 
     steps.forEach((step, position) => {
-      const applied = active.filter(a => a.receiver === null || a.receiver === slot);
+      const key = stepKey(step);
       const stateBuffs = context.states.flatMap(s => (states[s].buffs ?? []).map(buff => ({ buff, label: `${states[s].name}: ${statLabel(buff)}` })));
-      const statBuffs = [...applied.flatMap(a => a.stat ? [a.stat] : []), ...stateBuffs.map(s => s.buff)];
-      const amplification = applied.some(a => a.outro) ? amplificationOf(applied, character) : undefined;
-      const extra = statBuffs.length ? extraStats(statBuffs, character) : undefined;
-
       const hit = character.stepHit(step);
       const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
-      // A bonus of one kind (e.g. Liberation DMG) is not listed on the hits of other kinds: it does nothing for them
-      const listed = (buff?: StatBuff) => !buff || !(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat];
 
       // A hit of the kind that always crits, when its cooldown is over
       const crit = character.data.guaranteedCrit;
       const crits = !!crit && kind === crit.kind && !(critCooldown.get(slot)! > 0);
-      const critExtra = crits ? { ...extra, cChance: (extra?.cChance ?? 0) + 100 } : extra;
 
       // Extra damage of a hit that comes right after some others (not a buff: it counts without the buffs too)
       const bonusAfter = hit?.bonusAfter && context.last && hit.bonusAfter.after.includes(context.last) ? hit.bonusAfter : undefined;
-      const times = bonusAfter?.multiplier ?? 1;
-      const alone = character.rotationHit(step);
-      const base = { ...alone, value: alone.value * times };
-      const buffed = amplification || critExtra ? character.rotationHit(step, amplification, critExtra).value * times : base.value;
+      const value = valueOf(character, slot, step, active, stateBuffs, crits, bonusAfter?.multiplier);
       rows.push({
         rotation, slot, step,
-        name: step.section === 'end' ? `Leave ${states[step.index]?.name ?? ''}` : character.stepHit(step)?.name ?? character.mainEcho?.name ?? '—',
-        // An elemental buff of another element is not listed: it does nothing for this character
-        buffs: step.section === 'end' ? [] : [...applied.filter(a => !(a.outro?.amplification === 'elemental' && a.outro.element !== character.data.type) && listed(a.stat)).map(a => a.label), ...stateBuffs.filter(s => listed(s.buff)).map(s => s.label), ...(crits ? [`${crit!.name} (crit)`] : []), ...(bonusAfter ? [`${bonusAfter.name} (×${bonusAfter.multiplier})`] : [])],
-        damage: base.type === 'damage',
-        base: base.value,
-        buffed,
+        name: step.section === 'end' ? `Leave ${states[step.index]?.name ?? ''}` : hit?.name ?? character.mainEcho?.name ?? '—',
+        buffs: step.section === 'end' ? [] : [...value.labels, ...(crits ? [`${crit!.name} (crit)`] : []), ...(bonusAfter ? [`${bonusAfter.name} (×${bonusAfter.multiplier})`] : [])],
+        damage: value.type === 'damage',
+        base: value.base,
+        buffed: value.buffed,
       });
+
+      // Detonating: the hit of each mark held, then the mark goes; a hit can leave a mark
+      markers.forEach((marker, m) => {
+        if (marker.detonate === key && held.delete(m)) autoRow(character, slot, marker.hit, stateBuffs);
+      });
+      markers.forEach((marker, m) => { if (marker.gain.includes(key)) held.add(m); });
+
+      // Coordinated Attacks: each Basic or Heavy action (only the first hit of a linked block) fires them
+      const fires = spends[position] ? kind : undefined;
+      for (const c of fires ? coordinated : []) {
+        for (let n = 0; n < (c.attack.perKind[fires!] ?? 0); n++) {
+          const stacking = c.attack.stacking;
+          const stacks = Math.min(c.fired, stacking?.max ?? 0);
+          const buff: StatBuff | undefined = stacking && stacks ? { name: stacking.name, stat: 'damageBonus', value: +(stacks * stacking.value).toFixed(2) } : undefined;
+          autoRow(c.character, c.slot, c.attack.hit, buff ? [{ buff, label: `${c.character.name}: ${statLabel(buff)}` }] : []);
+          c.fired++;
+        }
+      }
 
       // In a linked block (and in the Intro) only the first hit spends points
       const cost = spends[position] ? stepCost(character, step) : 0;
       active = active.map(a => ({ ...a, points: a.points - cost })).filter(a => a.points > 0);
+      coordinated = coordinated.map(c => ({ ...c, points: c.points - cost })).filter(c => c.points > 0);
       for (const [member, left] of critCooldown) critCooldown.set(member, left - cost);
       if (crits) critCooldown.set(slot, crit!.cooldown);
 
+      // A Coordinated Attack starts after its hit; casting it again starts it over
+      const attack = character.data.coordinated;
+      if (attack?.start === key) {
+        coordinated = [...coordinated.filter(c => c.slot !== slot), { character, slot, attack, points: attack.duration, fired: 0 }];
+      }
+
       // Buffs the hit gives the character itself start after it (after its block)
       const giver = blockOf[position];
-      if (blockEnd[position]) character.stepHit(giver)?.buffs?.forEach((buff, position) => {
+      if (blockEnd[position]) character.stepHit(giver)?.buffs?.forEach(buff => {
         if (!buff.duration) return;
         // By name: the same buff given by another hit (e.g. two Skills with the same Inherent Skill) renews it
         const id = `self:${slot}:${buff.name}`;
@@ -184,7 +226,30 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
 }
 
 /** Bonuses of one kind of hit */
-const KIND_OF: Partial<Record<StatBuff['stat'], string>> = { liberationBonus: 'liberation', heavyBonus: 'heavy' };
+const KIND_OF: Partial<Record<StatBuff['stat'], string>> = { liberationBonus: 'liberation', heavyBonus: 'heavy', skillBonus: 'skill' };
+
+/**
+ * Value of a hit of a member, without and with the buffs on it: the Outro ones and its own, and `others` (its states...). Only the buffs
+ * that do something for the hit apply and are listed: not a bonus of another kind, not one for other hits, not another element
+ */
+function valueOf(character: Character, slot: number, step: RotationStep, active: ActiveBuff[], others: LabeledBuff[], crit = false, times = 1) {
+  const key = stepKey(step);
+  const hit = character.stepHit(step);
+  const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
+  const fits = (buff?: StatBuff) => !buff || ((!buff.hits || buff.hits.includes(key)) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat]));
+  const applied = active.filter(a => (a.receiver === null || a.receiver === slot) && fits(a.stat)
+    && !(a.outro?.amplification === 'elemental' && a.outro.element !== character.data.type)
+    && !(a.outro && a.outro.amplification !== 'all' && a.outro.amplification !== 'elemental' && a.outro.amplification !== kind));
+  const own = others.filter(o => fits(o.buff));
+  const statBuffs = [...applied.flatMap(a => a.stat ? [a.stat] : []), ...own.map(o => o.buff)];
+  const amplification = applied.some(a => a.outro) ? amplificationOf(applied, character) : undefined;
+  const extra = statBuffs.length ? extraStats(statBuffs, character) : undefined;
+  const critExtra = crit ? { ...extra, cChance: (extra?.cChance ?? 0) + 100 } : extra;
+  const alone = character.rotationHit(step);
+  const base = alone.value * times;
+  const buffed = amplification || critExtra ? character.rotationHit(step, amplification, critExtra).value * times : base;
+  return { type: alone.type, base, buffed, labels: [...applied.map(a => a.label), ...own.map(o => o.label)] };
+}
 
 /** Amplifications of the active Outro buffs added up; an elemental one counts only for a character of its element */
 function amplificationOf(buffs: ActiveBuff[], character: Character): Amplification {
@@ -215,6 +280,6 @@ function outroLabel(buff: OutroBuff): string {
 }
 
 function statLabel(buff: StatBuff): string {
-  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG' }[buff.stat];
+  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG' }[buff.stat];
   return `${buff.name} (${stat} +${buff.value}%)`;
 }

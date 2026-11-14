@@ -55,6 +55,8 @@ export class RotationEditorComponent {
   intro = input(true);
   /** Value of each row, in the order of the rows (e.g. with the buffs); without it, the value of the hit alone */
   values = input<number[] | null>(null);
+  /** Note of each row, in the order of the rows (e.g. the hits it adds, already in its value) */
+  notes = input<string[] | null>(null);
 
   picked = '';
 

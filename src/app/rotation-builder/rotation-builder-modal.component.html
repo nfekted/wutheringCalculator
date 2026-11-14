@@ -1,7 +1,7 @@
 <app-dialog-panel [title]="'char.rotationBuild.title' | transloco" titleId="rotation-title">
   <p class="text-sm text-mute">{{ 'char.rotationBuild.info' | transloco }}</p>
 
-  <app-rotation-editor [character]="character()" [steps]="middle()" [values]="values()" (stepsChange)="update($event)">
+  <app-rotation-editor [character]="character()" [steps]="middle()" [values]="values()" [notes]="notes()" (stepsChange)="update($event)">
     <button type="button" class="ui-btn ui-btn-secondary" [disabled]="!hasDefault" (click)="importDefault()">
       {{ 'char.rotationBuild.importDefault' | transloco }}
     </button>

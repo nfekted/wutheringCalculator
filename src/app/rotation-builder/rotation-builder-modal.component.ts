@@ -27,7 +27,20 @@ export class RotationBuilderModalComponent {
 
   /** The rotation with the buffs the character gives itself (Inherent Skills, states) */
   private result = computed(() => simulateRotation(this.character(), this.middle()));
-  values = computed(() => this.result().rows.map(row => row.buffed));
+  /** One per row of the editor: the hits added by a hit (e.g. the bursts of a detonation) go into its value, with a note */
+  private merged = computed(() => {
+    const list: { value: number; added: Map<string, number> }[] = [];
+    for (const row of this.result().rows) {
+      if (!row.auto || !list.length) { list.push({ value: row.buffed, added: new Map() }); continue; }
+      const last = list[list.length - 1];
+      const name = row.name.replace(/\s*(Damage|DMG)$/i, '');
+      last.value += row.buffed;
+      last.added.set(name, (last.added.get(name) ?? 0) + 1);
+    }
+    return list;
+  });
+  values = computed(() => this.merged().map(row => row.value));
+  notes = computed(() => this.merged().map(row => [...row.added].map(([name, count]) => `+${count} ${name}`).join(', ')));
   total = computed(() => this.result().total.buffed);
   damageHits = computed(() => this.result().total.hits);
 
