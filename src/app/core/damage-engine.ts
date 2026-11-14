@@ -192,5 +192,6 @@ function sumRanges(ranges: DamageRange[]): DamageRange {
     max: total.max + r.max,
     critMin: total.critMin + r.critMin,
     critMax: total.critMax + r.critMax,
-  }));
+    // A hit without parts (e.g. casting a Liberation that only enters a state) is worth 0
+  }), { min: 0, max: 0, critMin: 0, critMax: 0 });
 }

@@ -75,6 +75,7 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
     if (full && counter.replaces.includes(key)) return false;
   }
   if (isLinkedRest(data, step)) return false;
+  if (data.sequence?.replacedBy?.[key]?.some(other => allowed(data, context, keyStep(other)))) return false;
 
   const previous = previousNumber(data, key);
   const after = data.sequence?.after?.[key];
@@ -107,12 +108,13 @@ export function advance(character: Character, context: RotationContext, step: Ro
   const keeps = (hit: HitKey | null) => !!hit && !!data.sequence?.keepsChain?.includes(hit);
   const held = keeps(key) ? (keeps(context.last) ? context.held : context.last) : null;
   const started = (data.states ?? []).flatMap((state, i) => state.start === key && !context.states.includes(i) ? [i] : []);
-  const states = [...context.states, ...started];
+  const ended = (data.states ?? []).flatMap((state, i) => state.endsOn?.includes(key) ? [i] : []);
+  const states = [...context.states, ...started].filter(i => !ended.includes(i));
   return {
     last: key, held, states,
     counters: counters.map((counter, i) => {
       const value = context.counters[i] ?? 0;
-      if (counter.unlocks === key) return 0;
+      if (counter.unlocks === key || (counter.state !== undefined && ended.includes(counter.state))) return 0;
       if (counter.gain.includes(key) && (counter.state === undefined || states.includes(counter.state))) return Math.min(value + 1, counter.max);
       return value;
     }),

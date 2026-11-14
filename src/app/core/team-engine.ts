@@ -12,6 +12,16 @@ export function stepCost(character: Character, step: RotationStep): number {
   const hit = character.stepHit(step);
   const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
   if (kind === 'intro') return 1;
+  // A hit of a state (kept in another section) costs by its kind
+  const key = `${step.section}:${step.index}`;
+  if (character.data.states?.some(state => state.hits.includes(key))) {
+    switch (kind) {
+      case 'basic': return 0.5;
+      case 'heavy': return 1;
+      case 'skill': return 0.5;
+      case 'liberation': return 3;
+    }
+  }
   switch (step.section) {
     case 'basic': return kind === 'heavy' ? 1 : 0.5;
     case 'skill': return 0.5;
@@ -130,7 +140,7 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       const hit = character.stepHit(step);
       const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
       // A bonus of one kind (e.g. Liberation DMG) is not listed on the hits of other kinds: it does nothing for them
-      const listed = (buff?: StatBuff) => !buff || buff.stat !== 'liberationBonus' || kind === 'liberation';
+      const listed = (buff?: StatBuff) => !buff || !(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat];
 
       // A hit of the kind that always crits, when its cooldown is over
       const crit = character.data.guaranteedCrit;
@@ -159,7 +169,8 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       const giver = blockOf[position];
       if (blockEnd[position]) character.stepHit(giver)?.buffs?.forEach((buff, position) => {
         if (!buff.duration) return;
-        const id = `hit:${slot}:${giver.section}:${giver.index}:${position}`;
+        // By name: the same buff given by another hit (e.g. two Skills with the same Inherent Skill) renews it
+        const id = `self:${slot}:${buff.name}`;
         active = active.filter(a => a.id !== id);
         active.push({ id, receiver: slot, points: buff.duration, label: `${character.name}: ${statLabel(buff)}`, stat: buff });
       });
@@ -189,11 +200,15 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
     });
   });
 
-  const sum = (list: TeamHitRow[]): TeamSum => list.filter(r => r.damage)
+  // A step worth nothing on its own (e.g. casting a Liberation that only enters a state) is not counted as a hit
+  const sum = (list: TeamHitRow[]): TeamSum => list.filter(r => r.damage && r.base > 0)
     .reduce((s, r) => ({ hits: s.hits + 1, base: s.base + r.base, buffed: s.buffed + r.buffed }), { hits: 0, base: 0, buffed: 0 });
   const members = Array.from({ length: memberCount }, (_, slot) => sum(rows.filter(r => r.slot === slot)));
   return { rows, members, total: sum(rows) };
 }
+
+/** Bonuses of one kind of hit */
+const KIND_OF: Partial<Record<StatBuff['stat'], string>> = { liberationBonus: 'liberation', heavyBonus: 'heavy' };
 
 /** Amplifications of the active Outro buffs added up; an elemental one counts only for a character of its element */
 function amplificationOf(buffs: ActiveBuff[], character: Character): Amplification {
@@ -224,6 +239,6 @@ function outroLabel(buff: OutroBuff): string {
 }
 
 function statLabel(buff: StatBuff): string {
-  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG' }[buff.stat];
+  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG' }[buff.stat];
   return `${buff.name} (${stat} +${buff.value}%)`;
 }

@@ -110,7 +110,7 @@
         "combo": true
       },
       {
-        "name": "Woolies Damage",
+        "name": "Wooly Strike DMG",
         "kind": "basic",
         "parts": [
           {
@@ -218,6 +218,14 @@
               76.61
             ],
             "times": 8
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Woolies Cheer Dance",
+            "stat": "elementalBonus",
+            "value": 10,
+            "duration": 10
           }
         ]
       },
@@ -358,7 +366,7 @@
       },
       {
         "name": "Cosmos Rampage Damage",
-        "kind": "basic",
+        "kind": "skill",
         "parts": [
           {
             "stat": "atk",
@@ -375,6 +383,14 @@
               63.32
             ],
             "times": 4
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Woolies Cheer Dance",
+            "stat": "elementalBonus",
+            "value": 10,
+            "duration": 10
           }
         ]
       },
@@ -399,6 +415,12 @@
             "times": 4
           }
         ]
+      },
+      {
+        "name": "Cosmos Rave",
+        "kind": "liberation",
+        "parts": [],
+        "manual": true
       }
     ]
   },
@@ -593,5 +615,46 @@
         "stat": "basicBonus"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:4": [
+        "basic:3"
+      ],
+      "skill:1": [
+        "skill:0"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Cosmos Rave",
+      "start": "liberation:7",
+      "hits": [
+        "liberation:0",
+        "liberation:1",
+        "liberation:2",
+        "liberation:3",
+        "liberation:4",
+        "liberation:5",
+        "liberation:6",
+        "forte:0",
+        "forte:1"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:7",
+        "skill:0"
+      ],
+      "endsOn": [
+        "forte:0",
+        "forte:1"
+      ]
+    }
+  ]
 }

@@ -31,13 +31,15 @@ export interface Hit {
   bonus?: number;
   /** Buffs the character gives itself after this hit (e.g. an Inherent Skill "ATK +15% for 5s upon casting X") */
   buffs?: StatBuff[];
+  /** Written by hand (not in the wiki): kept when the character is imported again */
+  manual?: boolean;
 }
 
 /**
  * Attribute a buff of the character raises during the rotation: 'atk' is a percentage of the base ATK, the others are added;
  * 'damageBonus' is a DMG Bonus on every damage hit of the character (added to the elemental bonus)
  */
-export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus';
+export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus';
 
 /** Hits of a kind that always crit, once every `cooldown` points (e.g. an Inherent Skill "Heavy Attack always crits, once every 30s") */
 export interface GuaranteedCrit {
@@ -69,6 +71,8 @@ export interface SequenceRules {
   linked?: HitKey[][];
   /** Hits that do not break the sequence of the others (e.g. a Skill that keeps the Basic Attack cycle): the hit before them still counts */
   keepsChain?: HitKey[];
+  /** A hit that is not offered while one of these can come (e.g. the Skill becomes another one after Basic Attack 2) */
+  replacedBy?: Record<HitKey, HitKey[]>;
 }
 
 /** A counter some hits fill (e.g. "Cruelty"); when full, a hit is unlocked and others are replaced by it */
@@ -98,6 +102,8 @@ export interface CharacterState {
   buffs?: StatBuff[];
   /** After the state ends, the next Intro of the character is this hit instead */
   nextIntro?: HitKey;
+  /** Hits that end the state (after them) */
+  endsOn?: HitKey[];
 }
 
 export interface SkillData {

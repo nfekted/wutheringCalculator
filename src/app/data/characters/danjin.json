@@ -241,6 +241,14 @@
             ],
             "times": 2
           }
+        ],
+        "buffs": [
+          {
+            "name": "Overflow",
+            "stat": "heavyBonus",
+            "value": 30,
+            "duration": 5
+          }
         ]
       },
       {
@@ -423,6 +431,51 @@
             ]
           }
         ]
+      },
+      {
+        "name": "Full Energy Chaoscleave Damage",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              71.99,
+              77.89,
+              83.8,
+              92.08,
+              97.98,
+              104.77,
+              114.2,
+              123.66,
+              133.11,
+              143.15
+            ],
+            "times": 7
+          }
+        ],
+        "manual": true
+      },
+      {
+        "name": "Full Energy Scatterbloom Damage",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              215.98,
+              232.78,
+              251.98,
+              275.98,
+              292.77,
+              314.37,
+              343.17,
+              371.97,
+              398.37,
+              429.56
+            ]
+          }
+        ],
+        "manual": true
       }
     ]
   },
@@ -515,5 +568,32 @@
         "flat": true
       }
     ]
+  },
+  "sequence": {
+    "after": {
+      "skill:1": [
+        "basic:1",
+        "basic:5",
+        "intro:0"
+      ],
+      "skill:3": [
+        "basic:2"
+      ],
+      "forte:1": [
+        "forte:0"
+      ],
+      "forte:3": [
+        "forte:2"
+      ]
+    },
+    "replacedBy": {
+      "skill:0": [
+        "skill:1",
+        "skill:2",
+        "skill:3",
+        "skill:4",
+        "skill:5"
+      ]
+    }
   }
 }
