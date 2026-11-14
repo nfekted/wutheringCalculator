@@ -108,7 +108,7 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
   if (context.states.some(i => states[i].replaces.includes(key) || (states[i].start === key && !states[i].hits.includes(key)))) return false;
   if (states.some(state => state.nextIntro === key)) return false;
   // Hits that only come on their own (a Coordinated Attack, the hit of a mark)
-  if (data.coordinated?.hit === key || data.markers?.some(marker => marker.hit === key)) return false;
+  if (data.coordinated?.hits.includes(key) || data.markers?.some(marker => marker.hit === key)) return false;
   for (const [i, counter] of (data.counters ?? []).entries()) {
     const full = (context.counters[i] ?? 0) >= counter.max;
     if (counter.unlocks === key && !full) return false;

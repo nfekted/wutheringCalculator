@@ -83,6 +83,8 @@ interface ActiveCoordinated {
   attack: CoordinatedAttack;
   points: number;
   fired: number;
+  /** Points since it last fired */
+  since: number;
 }
 
 /** A buff with the label shown on the hits it applies to */
@@ -105,6 +107,14 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
   /** Hit that replaces the next Intro of each member (a state of it ended) */
   const nextIntro = new Map<number, string>();
   let coordinated: ActiveCoordinated[] = [];
+
+  /** An attribute buff of a member, to itself or to the whole team; by name, the same buff given again (by any hit) renews it */
+  const give = (character: Character, slot: number, buff: StatBuff) => {
+    if (!buff.duration) return;
+    const id = `self:${slot}:${buff.name}`;
+    active = active.filter(a => a.id !== id);
+    active.push({ id, receiver: buff.target === 'team' ? null : slot, points: buff.duration, label: `${character.name}: ${statLabel(buff)}`, stat: buff });
+  };
 
   segments.forEach(({ character, slot, rotation, steps }, i) => {
     const states = character.data.states ?? [];
@@ -161,11 +171,14 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       // Coordinated Attacks: each Basic or Heavy action (only the first hit of a linked block) fires them
       const fires = spends[position] ? kind : undefined;
       for (const c of fires ? coordinated : []) {
-        for (let n = 0; n < (c.attack.perKind[fires!] ?? 0); n++) {
+        const times = c.attack.perKind[fires!] ?? 0;
+        if (!times || c.since < (c.attack.interval ?? 0)) continue;
+        c.since = 0;
+        for (let n = 0; n < times; n++) {
           const stacking = c.attack.stacking;
           const stacks = Math.min(c.fired, stacking?.max ?? 0);
           const buff: StatBuff | undefined = stacking && stacks ? { name: stacking.name, stat: 'damageBonus', value: +(stacks * stacking.value).toFixed(2) } : undefined;
-          autoRow(c.character, c.slot, c.attack.hit, buff ? [{ buff, label: `${c.character.name}: ${statLabel(buff)}` }] : []);
+          for (const key of c.attack.hits) autoRow(c.character, c.slot, key, buff ? [{ buff, label: `${c.character.name}: ${statLabel(buff)}` }] : []);
           c.fired++;
         }
       }
@@ -173,25 +186,19 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       // In a linked block (and in the Intro) only the first hit spends points
       const cost = spends[position] ? stepCost(character, step) : 0;
       active = active.map(a => ({ ...a, points: a.points - cost })).filter(a => a.points > 0);
-      coordinated = coordinated.map(c => ({ ...c, points: c.points - cost })).filter(c => c.points > 0);
+      coordinated = coordinated.map(c => ({ ...c, points: c.points - cost, since: c.since + cost })).filter(c => c.points > 0);
       for (const [member, left] of critCooldown) critCooldown.set(member, left - cost);
       if (crits) critCooldown.set(slot, crit!.cooldown);
 
       // A Coordinated Attack starts after its hit; casting it again starts it over
       const attack = character.data.coordinated;
       if (attack?.start === key) {
-        coordinated = [...coordinated.filter(c => c.slot !== slot), { character, slot, attack, points: attack.duration, fired: 0 }];
+        coordinated = [...coordinated.filter(c => c.slot !== slot), { character, slot, attack, points: attack.duration, fired: 0, since: Infinity }];
       }
 
       // Buffs the hit gives the character itself start after it (after its block)
       const giver = blockOf[position];
-      if (blockEnd[position]) character.stepHit(giver)?.buffs?.forEach(buff => {
-        if (!buff.duration) return;
-        // By name: the same buff given by another hit (e.g. two Skills with the same Inherent Skill) renews it
-        const id = `self:${slot}:${buff.name}`;
-        active = active.filter(a => a.id !== id);
-        active.push({ id, receiver: slot, points: buff.duration, label: `${character.name}: ${statLabel(buff)}`, stat: buff });
-      });
+      if (blockEnd[position]) character.stepHit(giver)?.buffs?.forEach(buff => give(character, slot, buff));
       // A state that ends gives its hit for the next Intro
       if (step.section === 'end' && states[step.index]?.nextIntro) nextIntro.set(slot, states[step.index].nextIntro!);
       context = advance(character, context, step, spends[position]);
@@ -204,6 +211,7 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
     active = active.filter(a => !(a.endsOnSwitch && a.receiver === slot));
 
     // The Outro starts its buffs; the same one given again renews its duration
+    character.data.outro.statBuffs?.forEach(buff => give(character, slot, buff));
     const next = segments[i + 1]?.slot;
     (character.data.outro.buffs ?? []).forEach((buff, position) => {
       if (buff.target === 'incoming' && next === undefined) return;
@@ -236,9 +244,13 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   const key = stepKey(step);
   const hit = character.stepHit(step);
   const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
-  const fits = (buff?: StatBuff) => !buff || ((!buff.hits || buff.hits.includes(key)) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat]));
+  // ATK only for a hit that scales with it; DMG Bonus and DMG Amplification never for healing or a shield
+  const support = kind === 'heal' || kind === 'shield';
+  const fits = (buff?: StatBuff) => !buff || ((!buff.hits || buff.hits.includes(key)) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat])
+    && (buff.stat === 'atk' ? !!hit?.parts.some(part => part.stat === 'atk') : !support));
   const applied = active.filter(a => (a.receiver === null || a.receiver === slot) && fits(a.stat)
     && !(a.outro?.amplification === 'elemental' && a.outro.element !== character.data.type)
+    && !(a.outro && (support || kind === 'tune'))
     && !(a.outro && a.outro.amplification !== 'all' && a.outro.amplification !== 'elemental' && a.outro.amplification !== kind));
   const own = others.filter(o => fits(o.buff));
   const statBuffs = [...applied.flatMap(a => a.stat ? [a.stat] : []), ...own.map(o => o.buff)];

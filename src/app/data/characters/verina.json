@@ -323,6 +323,15 @@
               198.81
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Gift of Nature",
+            "stat": "atk",
+            "value": 20,
+            "duration": 20,
+            "target": "team"
+          }
         ]
       },
       {
@@ -456,6 +465,15 @@
         "value": 15,
         "duration": 30
       }
+    ],
+    "statBuffs": [
+      {
+        "name": "Gift of Nature",
+        "stat": "atk",
+        "value": 20,
+        "duration": 20,
+        "target": "team"
+      }
     ]
   },
   "forte": {
@@ -495,6 +513,16 @@
               97.42
             ]
           }
+        ],
+        "cost": 1,
+        "buffs": [
+          {
+            "name": "Gift of Nature",
+            "stat": "atk",
+            "value": 20,
+            "duration": 20,
+            "target": "team"
+          }
         ]
       },
       {
@@ -515,6 +543,16 @@
               62.9,
               67.64
             ]
+          }
+        ],
+        "cost": 0.5,
+        "buffs": [
+          {
+            "name": "Gift of Nature",
+            "stat": "atk",
+            "value": 20,
+            "duration": 20,
+            "target": "team"
           }
         ]
       },
@@ -537,6 +575,16 @@
               63.82
             ]
           }
+        ],
+        "cost": 0.5,
+        "buffs": [
+          {
+            "name": "Gift of Nature",
+            "stat": "atk",
+            "value": 20,
+            "duration": 20,
+            "target": "team"
+          }
         ]
       },
       {
@@ -558,6 +606,16 @@
               30.5
             ],
             "times": 3
+          }
+        ],
+        "cost": 0.5,
+        "buffs": [
+          {
+            "name": "Gift of Nature",
+            "stat": "atk",
+            "value": 20,
+            "duration": 20,
+            "target": "team"
           }
         ]
       },
@@ -659,5 +717,48 @@
         "flat": true
       }
     ]
+  },
+  "sequence": {
+    "linked": [
+      [
+        "liberation:0",
+        "liberation:1"
+      ],
+      [
+        "forte:0",
+        "forte:4"
+      ],
+      [
+        "forte:1",
+        "forte:4"
+      ],
+      [
+        "forte:2",
+        "forte:4"
+      ],
+      [
+        "forte:3",
+        "forte:4"
+      ]
+    ]
+  },
+  "coordinated": {
+    "name": "Photosynthesis Mark",
+    "start": "liberation:0",
+    "hits": [
+      "liberation:2",
+      "liberation:3"
+    ],
+    "duration": 12,
+    "perKind": {
+      "basic": 1,
+      "heavy": 1,
+      "skill": 1,
+      "liberation": 1,
+      "intro": 1,
+      "outro": 1,
+      "echo": 1
+    },
+    "interval": 1
   }
 }

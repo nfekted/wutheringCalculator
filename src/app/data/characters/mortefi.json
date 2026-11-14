@@ -475,7 +475,9 @@
   "coordinated": {
     "name": "Burning Rhapsody",
     "start": "liberation:0",
-    "hit": "liberation:1",
+    "hits": [
+      "liberation:1"
+    ],
     "duration": 10,
     "perKind": {
       "basic": 1,

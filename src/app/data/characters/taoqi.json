@@ -130,7 +130,7 @@
       },
       {
         "name": "Strategic Parry Damage",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "def",
@@ -342,7 +342,8 @@
               86.2
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Timed Counters Part 2 Damage",
@@ -363,7 +364,8 @@
               110.93
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Timed Counters Part 3 Damage",
@@ -384,7 +386,8 @@
               145.41
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Timed Counters Part 1 Shield",
@@ -565,6 +568,28 @@
         "stat": "def",
         "flat": true
       }
+    ]
+  },
+  "sequence": {
+    "after": {
+      "forte:0": [
+        "basic:5",
+        "intro:0"
+      ]
+    },
+    "linked": [
+      [
+        "forte:0",
+        "forte:3"
+      ],
+      [
+        "forte:1",
+        "forte:4"
+      ],
+      [
+        "forte:2",
+        "forte:5"
+      ]
     ]
   }
 }

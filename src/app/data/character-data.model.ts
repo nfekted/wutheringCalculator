@@ -71,19 +71,23 @@ export interface StatBuff {
   duration?: number;
   /** Only these hits get it (e.g. "the DMG of Fury Fugue is increased by 25%"); without it, every hit */
   hits?: HitKey[];
+  /** 'team': every member gets it (e.g. "all team members' ATK are increased by 20%"); without it, only the character */
+  target?: 'team';
 }
 
 /**
- * Coordinated Attack: a hit starts it for the whole team; while it lasts, every Basic or Heavy action of the active character
- * (by kind) makes the character fire its hit, as many times as `perKind` says. `stacking`: each one fired raises the DMG of the
- * next ones, up to `max` times, until it ends (casting it again starts over)
+ * Coordinated Attack: a hit starts it for the whole team; while it lasts, every action of the active character of a kind in `perKind`
+ * makes the character fire its hits, as many times as `perKind` says; with `interval`, at most once every that many points.
+ * `stacking`: each one fired raises the DMG of the next ones, up to `max` times, until it ends (casting it again starts over)
  */
 export interface CoordinatedAttack {
   name: string;
   start: HitKey;
-  hit: HitKey;
+  /** Fired together (e.g. the damage and the healing of the same attack) */
+  hits: HitKey[];
   duration: number;
   perKind: Partial<Record<HitKind, number>>;
+  interval?: number;
   stacking?: { name: string; value: number; max: number };
 }
 
@@ -175,6 +179,8 @@ export interface OutroBuff {
 export interface OutroData extends SkillData {
   /** Buffs that enter the calculation; the others stay only as text in plans/outro-skills.md */
   buffs?: OutroBuff[];
+  /** Attribute buffs the Outro gives (like the ones of a hit), renewed by name */
+  statBuffs?: StatBuff[];
 }
 
 export interface RotationStep {
