@@ -495,7 +495,7 @@
       },
       {
         "name": "Heavy Attack Damage",
-        "kind": "heavy",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -517,7 +517,7 @@
       },
       {
         "name": "Dodge Counter Damage",
-        "kind": "basic",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -642,6 +642,14 @@
               72.73,
               78.22
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Bloodshed Awaken",
+            "stat": "liberationBonus",
+            "value": 10,
+            "duration": 15
           }
         ]
       },
@@ -768,5 +776,72 @@
         "stat": "liberationBonus"
       }
     ]
-  }
+  },
+  "sequence": {
+    "keepsChain": [
+      "skill:0",
+      "skill:1",
+      "skill:2"
+    ]
+  },
+  "states": [
+    {
+      "name": "Deathblade Gear",
+      "start": "liberation:0",
+      "hits": [
+        "liberation:2",
+        "liberation:3",
+        "liberation:4",
+        "liberation:5",
+        "liberation:6",
+        "liberation:7",
+        "liberation:8"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:6"
+      ],
+      "nextIntro": "liberation:1"
+    }
+  ],
+  "counters": [
+    {
+      "name": "Cruelty",
+      "max": 3,
+      "gain": [
+        "skill:0",
+        "skill:1",
+        "skill:2"
+      ],
+      "unlocks": "forte:0",
+      "replaces": [
+        "basic:4",
+        "liberation:7"
+      ]
+    },
+    {
+      "name": "Killing Intent",
+      "max": 5,
+      "gain": [
+        "liberation:2",
+        "liberation:3",
+        "liberation:4",
+        "liberation:5",
+        "liberation:6"
+      ],
+      "unlocks": "forte:1",
+      "replaces": [
+        "liberation:2",
+        "liberation:3",
+        "liberation:4",
+        "liberation:5",
+        "liberation:6"
+      ],
+      "state": 0
+    }
+  ]
 }

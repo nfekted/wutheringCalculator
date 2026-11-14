@@ -8,19 +8,24 @@ export function stepKey(step: RotationStep): HitKey {
   return `${step.section}:${step.index}`;
 }
 
-function keyStep(key: HitKey): RotationStep {
+export function keyStep(key: HitKey): RotationStep {
   const [section, index] = key.split(':');
   return { section: section as RotationStep['section'], index: +index };
 }
 
-/** Where the rotation is: the last hit that counts for the sequence, and the active states (indexes in `data.states`) */
+/**
+ * Where the rotation is: the last hit that counts for the sequence, the one before a run of hits that keep the sequence (e.g. a Skill
+ * that does not break the Basic Attack cycle), the active states (indexes in `data.states`) and the value of each counter
+ */
 export interface RotationContext {
   last: HitKey | null;
+  held: HitKey | null;
   states: number[];
+  counters: number[];
 }
 
 export function startContext(): RotationContext {
-  return { last: null, states: [] };
+  return { last: null, held: null, states: [], counters: [] };
 }
 
 /** Numbered hits ("DMG 2", "Stage 2", "Part 2"): the key of the previous number, when the section has it */
@@ -52,8 +57,9 @@ function previousNumber(data: CharacterData, key: HitKey): HitKey | undefined {
 
 /**
  * Whether a hit can come now. A numbered hit comes right after the previous number; a hit with an "after" rule right after one of
- * those hits (a numbered one, after either). A state hit only in its state; a replaced hit, or the start of an active state, not in it.
- * A hit that only comes inside a linked block is never picked alone
+ * those hits (a numbered one, after either); the hit before a run of hits that keep the sequence also counts. A state hit only in its
+ * state; a replaced hit, or the start of an active state, not in it. A counter hit only with the counter full, and the hits it
+ * replaces not then. A hit that only comes inside a linked block, or that replaces the next Intro, is never picked alone
  */
 export function allowed(data: CharacterData, context: RotationContext, step: RotationStep): boolean {
   if (step.section === 'echo') return true;
@@ -62,28 +68,55 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
   const states = data.states ?? [];
   if (states.some((state, i) => state.hits.includes(key) && !context.states.includes(i))) return false;
   if (context.states.some(i => states[i].replaces.includes(key) || states[i].start === key)) return false;
+  if (states.some(state => state.nextIntro === key)) return false;
+  for (const [i, counter] of (data.counters ?? []).entries()) {
+    const full = (context.counters[i] ?? 0) >= counter.max;
+    if (counter.unlocks === key && !full) return false;
+    if (full && counter.replaces.includes(key)) return false;
+  }
   if (isLinkedRest(data, step)) return false;
 
   const previous = previousNumber(data, key);
   const after = data.sequence?.after?.[key];
   if (!previous && !after) return true;
-  return (!!previous && context.last === previous) || (!!after && !!context.last && after.includes(context.last));
+  const follows = (hit: HitKey | null) => !!hit && (hit === previous || !!after?.includes(hit));
+  return follows(context.last) || follows(context.held);
 }
 
 /**
  * Context after a step. Healing and shield are part of the action that gives them, and an Echo that does not transform attacks
- * alongside the character: neither changes the sequence. A state starts on its hit and ends on an 'end' step
+ * alongside the character: neither changes the sequence. A hit that keeps the sequence leaves the hit before it reachable. A state
+ * starts on its hit and ends on an 'end' step (its counters go back to 0). A counter hit adds 1; the hit it unlocks spends it all
  */
 export function advance(character: Character, context: RotationContext, step: RotationStep): RotationContext {
-  if (step.section === 'end') return { last: null, states: context.states.filter(i => i !== step.index) };
-  if (step.section === 'echo') return character.mainEcho?.transform ? { ...context, last: 'echo' } : context;
+  const data = character.data;
+  const counters = data.counters ?? [];
+  if (step.section === 'end') {
+    return {
+      last: null, held: null,
+      states: context.states.filter(i => i !== step.index),
+      counters: counters.map((counter, i) => counter.state === step.index ? 0 : context.counters[i] ?? 0),
+    };
+  }
+  if (step.section === 'echo') return character.mainEcho?.transform ? { ...context, last: 'echo', held: null } : context;
   const hit = character.stepHit(step);
   const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
   if (kind === 'heal' || kind === 'shield') return context;
 
   const key = stepKey(step);
-  const started = (character.data.states ?? []).flatMap((state, i) => state.start === key && !context.states.includes(i) ? [i] : []);
-  return { last: key, states: [...context.states, ...started] };
+  const keeps = (hit: HitKey | null) => !!hit && !!data.sequence?.keepsChain?.includes(hit);
+  const held = keeps(key) ? (keeps(context.last) ? context.held : context.last) : null;
+  const started = (data.states ?? []).flatMap((state, i) => state.start === key && !context.states.includes(i) ? [i] : []);
+  const states = [...context.states, ...started];
+  return {
+    last: key, held, states,
+    counters: counters.map((counter, i) => {
+      const value = context.counters[i] ?? 0;
+      if (counter.unlocks === key) return 0;
+      if (counter.gain.includes(key) && (counter.state === undefined || states.includes(counter.state))) return Math.min(value + 1, counter.max);
+      return value;
+    }),
+  };
 }
 
 /** Context after a list of steps */

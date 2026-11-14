@@ -37,7 +37,7 @@ export interface Hit {
  * Attribute a buff of the character raises during the rotation: 'atk' is a percentage of the base ATK, the others are added;
  * 'damageBonus' is a DMG Bonus on every damage hit of the character (added to the elemental bonus)
  */
-export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus';
+export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus';
 
 /** Hits of a kind that always crit, once every `cooldown` points (e.g. an Inherent Skill "Heavy Attack always crits, once every 30s") */
 export interface GuaranteedCrit {
@@ -67,6 +67,22 @@ export interface SequenceRules {
   /** Blocks of hits that are one action: picked by the first, added and removed together (a hit can repeat, e.g. 4 coordinated attacks);
    * only the first spends points */
   linked?: HitKey[][];
+  /** Hits that do not break the sequence of the others (e.g. a Skill that keeps the Basic Attack cycle): the hit before them still counts */
+  keepsChain?: HitKey[];
+}
+
+/** A counter some hits fill (e.g. "Cruelty"); when full, a hit is unlocked and others are replaced by it */
+export interface CharacterCounter {
+  name: string;
+  max: number;
+  /** Hits that add 1 */
+  gain: HitKey[];
+  /** Hit that needs the counter full, and spends it all */
+  unlocks: HitKey;
+  /** Hits not available while the counter is full */
+  replaces: HitKey[];
+  /** Index in `states` of the only state where the counter exists; it goes back to 0 when the state ends */
+  state?: number;
 }
 
 /** A state a hit puts the character in (e.g. Dark Surge); it ends on the Outro or when the player leaves it in the rotation */
@@ -80,6 +96,8 @@ export interface CharacterState {
   replaces: HitKey[];
   /** Buffs active while the state lasts */
   buffs?: StatBuff[];
+  /** After the state ends, the next Intro of the character is this hit instead */
+  nextIntro?: HitKey;
 }
 
 export interface SkillData {
@@ -160,6 +178,7 @@ export interface CharacterData {
   /** States some hits put the character in */
   states?: CharacterState[];
   guaranteedCrit?: GuaranteedCrit;
+  counters?: CharacterCounter[];
   basic: SkillData;
   skill: SkillData;
   liberation: SkillData;

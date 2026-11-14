@@ -346,6 +346,14 @@
               19.89
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Numbingly Spicy!",
+            "stat": "atk",
+            "value": 30,
+            "duration": 10
+          }
         ]
       },
       {
@@ -367,7 +375,8 @@
               437.39
             ]
           }
-        ]
+        ],
+        "bonus": 50
       }
     ]
   },
@@ -441,5 +450,49 @@
         "stat": "energyRegen"
       }
     ]
+  },
+  "sequence": {
+    "linked": [
+      [
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0",
+        "forte:0"
+      ]
+    ],
+    "after": {
+      "forte:1": [
+        "forte:0"
+      ],
+      "basic:3": [
+        "forte:0"
+      ]
+    }
   }
 }
