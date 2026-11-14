@@ -10,6 +10,7 @@ import { PICKABLE, allowed, cleanSteps, contextAfter, linkedBlock, middleContext
 const KIND_COLORS: Partial<Record<HitKind, string>> = {
   basic: 'text-kind-basic', skill: 'text-kind-skill', liberation: 'text-kind-liberation',
   intro: 'text-kind-intro', outro: 'text-kind-outro', heavy: 'text-kind-heavy',
+  echo: 'text-kind-echo', tune: 'text-kind-tune', heal: 'text-heal', shield: 'text-shield',
 };
 
 interface Row {

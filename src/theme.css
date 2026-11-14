@@ -32,11 +32,13 @@
 
   /* skill kinds */
   --kind-basic: #201d1d;
-  --kind-skill: #1f8a3b;
+  --kind-skill: #be185d;
   --kind-liberation: #d70015;
   --kind-intro: #9a6a00;
   --kind-outro: #0056b3;
   --kind-heavy: #8b2293;
+  --kind-echo: #c2410c;
+  --kind-tune: #0e7490;
   --heal: #1f8a3b;
   --shield: #9a8200;
 }
@@ -67,11 +69,13 @@
   --havoc: #ee5c99;
 
   --kind-basic: #eaecef;
-  --kind-skill: #3ddc6e;
+  --kind-skill: #f472b6;
   --kind-liberation: #ff5c52;
   --kind-intro: #f0c040;
   --kind-outro: #7bbcff;
   --kind-heavy: #c76bd0;
+  --kind-echo: #fb923c;
+  --kind-tune: #22d3ee;
   --heal: #7dff6a;
   --shield: #f0e050;
 }
@@ -104,6 +108,8 @@
   --color-kind-intro: var(--kind-intro);
   --color-kind-outro: var(--kind-outro);
   --color-kind-heavy: var(--kind-heavy);
+  --color-kind-echo: var(--kind-echo);
+  --color-kind-tune: var(--kind-tune);
   --color-heal: var(--heal);
   --color-shield: var(--shield);
 }
