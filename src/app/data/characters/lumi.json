@@ -535,6 +535,15 @@
             ],
             "times": 2
           }
+        ],
+        "cost": 0.5,
+        "buffs": [
+          {
+            "name": "Expediting",
+            "stat": "atk",
+            "value": 10,
+            "duration": 5
+          }
         ]
       },
       {
@@ -555,6 +564,15 @@
               234.05,
               251.7
             ]
+          }
+        ],
+        "cost": 0.5,
+        "buffs": [
+          {
+            "name": "Expediting",
+            "stat": "atk",
+            "value": 10,
+            "duration": 5
           }
         ]
       },
@@ -655,5 +673,141 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "forte:2": [
+        "forte:1"
+      ],
+      "forte:3": [
+        "forte:2"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Red Light Mode",
+      "start": [
+        "skill:0",
+        "forte:5"
+      ],
+      "hits": [
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "skill:1",
+        "forte:6"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:2",
+        "skill:0",
+        "forte:5"
+      ],
+      "endsOn": [
+        "skill:1",
+        "forte:6"
+      ],
+      "buffs": [
+        {
+          "name": "Pathfinding",
+          "stat": "elementalBonus",
+          "value": 10
+        }
+      ]
+    },
+    {
+      "name": "Red Spotlight Mode",
+      "start": "forte:5",
+      "hits": [
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4"
+      ],
+      "replaces": [
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6"
+      ],
+      "endsOn": [
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4"
+      ],
+      "endsAfter": 4
+    },
+    {
+      "name": "Yellow Spotlight Mode",
+      "start": "forte:6",
+      "hits": [
+        "forte:0"
+      ],
+      "replaces": [
+        "basic:1"
+      ],
+      "endsOn": [
+        "forte:0"
+      ],
+      "endsAfter": 6
+    }
+  ],
+  "counters": [
+    {
+      "name": "Yellow Light Spark",
+      "max": 100,
+      "gain": [],
+      "amounts": {
+        "basic:0": 30,
+        "basic:1": 10,
+        "forte:0": 15
+      },
+      "fills": [
+        "intro:0"
+      ],
+      "unlocks": "forte:5",
+      "replaces": [
+        "skill:0"
+      ],
+      "outro": {
+        "hit": "forte:7",
+        "per": 25,
+        "max": 4,
+        "state": 0,
+        "inState": false
+      }
+    },
+    {
+      "name": "Red Light Spark",
+      "max": 100,
+      "gain": [],
+      "amounts": {
+        "basic:3": 15,
+        "basic:4": 35,
+        "basic:5": 50,
+        "basic:6": 25,
+        "basic:8": 35,
+        "forte:1": 15,
+        "forte:2": 35,
+        "forte:3": 50,
+        "forte:4": 25
+      },
+      "unlocks": "forte:6",
+      "replaces": [
+        "skill:1"
+      ],
+      "outro": {
+        "hit": "forte:7",
+        "per": 25,
+        "max": 4,
+        "state": 0,
+        "inState": true
+      }
+    }
+  ]
 }

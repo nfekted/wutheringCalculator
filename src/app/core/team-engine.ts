@@ -50,8 +50,7 @@ export interface TeamResult {
 
 /** Steps of the intro or the outro of a character */
 export function sectionSteps(character: Character, section: 'intro' | 'outro'): RotationStep[] {
-  return character.data[section].hits.map((_, index): RotationStep => ({ section, index }))
-    .filter(step => !character.data.field?.intro.includes(stepKey(step)));
+  return character.sectionSteps(section);
 }
 
 interface Segment {
@@ -263,6 +262,15 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       context = advance(character, context, step, spends[position]);
     });
 
+    // Hits a counter gives when the character leaves the field
+    (character.data.counters ?? []).forEach((counter, c) => {
+      const rule = counter.outro;
+      if (!rule || (rule.state !== undefined && context.states.includes(rule.state) !== (rule.inState ?? true))) return;
+      const times = Math.min(rule.max, Math.floor((context.counters[c] ?? 0) / rule.per));
+      const stateBuffs = context.states.flatMap(s => (states[s].buffs ?? []).map(buff => ({ buff, label: `${states[s].name}: ${statLabel(buff)}` })));
+      for (let n = 0; n < times; n++) autoRow(character, slot, rule.hit, stateBuffs);
+    });
+
     // States still active end on the Outro
     for (const s of context.states) if (states[s].nextIntro) nextIntro.set(slot, states[s].nextIntro!);
 
@@ -313,12 +321,13 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
     && !(a.outro && a.outro.amplification !== 'all' && a.outro.amplification !== 'elemental' && a.outro.amplification !== kind));
   const own = others.filter(o => fits(o.buff));
   const statBuffs = [...applied.flatMap(a => a.stat ? [a.stat] : []), ...own.map(o => o.buff)];
+  const multiplier = 1 + statBuffs.filter(buff => buff.stat === 'multiplier').reduce((sum, buff) => sum + buff.value, 0) / 100;
   const amplification = applied.some(a => a.outro) ? amplificationOf(applied, character) : undefined;
   const extra = statBuffs.length ? extraStats(statBuffs, character) : undefined;
   const critExtra = crit ? { ...extra, cChance: (extra?.cChance ?? 0) + 100 } : extra;
   const alone = character.rotationHit(step);
   const base = alone.value * times;
-  const buffed = amplification || critExtra ? character.rotationHit(step, amplification, critExtra).value * times : base;
+  const buffed = (amplification || critExtra ? character.rotationHit(step, amplification, critExtra).value * times : base) * multiplier;
   return { type: alone.type, base, buffed, labels: [...applied.map(a => a.label), ...own.map(o => o.label)] };
 }
 
@@ -337,6 +346,7 @@ function amplificationOf(buffs: ActiveBuff[], character: Character): Amplificati
 function extraStats(buffs: StatBuff[], character: Character): Partial<Stats> {
   const extra: Partial<Stats> = {};
   for (const buff of buffs) {
+    if (buff.stat === 'multiplier') continue;
     if (buff.stat === 'atk') extra.dmg = (extra.dmg ?? 0) + character.data.base.atk * buff.value / 100;
     // Every damage hit of the character gets the elemental bonus, so a DMG Bonus on all of them is added there
     else if (buff.stat === 'damageBonus') extra.elementalBonus = (extra.elementalBonus ?? 0) + buff.value;
@@ -353,6 +363,6 @@ function outroLabel(buff: OutroBuff): string {
 }
 
 function statLabel(buff: StatBuff): string {
-  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG' }[buff.stat];
+  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG', multiplier: 'DMG Multiplier' }[buff.stat];
   return `${buff.name} (${stat} +${buff.value}%)`;
 }

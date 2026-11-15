@@ -112,7 +112,8 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
   if (states.some(state => state.nextIntro === key)) return false;
   // Hits that only come on their own (a Coordinated Attack, the hit of a mark)
   if (data.coordinated?.hits.includes(key) || data.coordinated?.detonation === key || data.markers?.some(marker => marker.hit === key)
-    || states.some(state => state.autoHit?.hit === key) || data.followUps?.some(followUp => followUp.hit === key)) return false;
+    || states.some(state => state.autoHit?.hit === key) || data.followUps?.some(followUp => followUp.hit === key)
+    || data.counters?.some(counter => counter.outro?.hit === key)) return false;
   for (const [i, counter] of (data.counters ?? []).entries()) {
     const ready = (context.counters[i] ?? 0) >= (counter.spend ?? counter.max);
     if (unlocks(counter, key) && !ready) return false;
@@ -283,7 +284,6 @@ export function cleanSteps(character: Character, steps: RotationStep[], context 
 
 /** Context where the hits between the Intro and the Outro start: after the Intro, or from nothing (member A of the first team rotation) */
 export function middleContext(character: Character, withIntro: boolean): RotationContext {
-  const intro = character.data.intro.hits.map((_, index): RotationStep => ({ section: 'intro', index }))
-    .filter(step => !character.data.field?.intro.includes(stepKey(step)));
+  const intro = character.sectionSteps('intro');
   return withIntro ? contextAfter(character, intro) : startContext();
 }

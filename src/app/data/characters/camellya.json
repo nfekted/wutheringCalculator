@@ -39,7 +39,8 @@
             ]
           }
         ],
-        "combo": true
+        "combo": true,
+        "bonus": 30
       },
       {
         "name": "Burgeoning DMG 2",
@@ -62,7 +63,8 @@
             "times": 2
           }
         ],
-        "combo": true
+        "combo": true,
+        "bonus": 30
       },
       {
         "name": "Burgeoning DMG 3",
@@ -85,7 +87,8 @@
             "times": 3
           }
         ],
-        "combo": true
+        "combo": true,
+        "bonus": 30
       },
       {
         "name": "Burgeoning DMG 4",
@@ -108,7 +111,8 @@
             "times": 20
           }
         ],
-        "combo": true
+        "combo": true,
+        "bonus": 30
       },
       {
         "name": "Burgeoning DMG 5",
@@ -131,11 +135,12 @@
             "times": 4
           }
         ],
-        "combo": true
+        "combo": true,
+        "bonus": 30
       },
       {
         "name": "Heavy Attack DMG",
-        "kind": "heavy",
+        "kind": "basic",
         "parts": [
           {
             "stat": "atk",
@@ -153,7 +158,9 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "cost": 1,
+        "bonus": 30
       },
       {
         "name": "Mid-air Attack DMG",
@@ -175,7 +182,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "bonus": 30
       },
       {
         "name": "Dodge Counter DMG",
@@ -197,7 +205,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "bonus": 30
       }
     ]
   },
@@ -224,7 +233,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "bonus": 30
       },
       {
         "name": "Vining Waltz 1 DMG",
@@ -245,7 +255,8 @@
               96.33
             ]
           }
-        ]
+        ],
+        "bonus": 30
       },
       {
         "name": "Vining Waltz 2 DMG",
@@ -267,7 +278,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "bonus": 30
       },
       {
         "name": "Vining Waltz 3 DMG",
@@ -289,7 +301,8 @@
             ],
             "times": 6
           }
-        ]
+        ],
+        "bonus": 30
       },
       {
         "name": "Vining Waltz 4 DMG",
@@ -311,7 +324,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "bonus": 30
       },
       {
         "name": "Blazing Waltz DMG",
@@ -333,7 +347,9 @@
             ],
             "times": 19
           }
-        ]
+        ],
+        "cost": 3,
+        "bonus": 30
       },
       {
         "name": "Floral Ravage DMG",
@@ -355,7 +371,8 @@
             ],
             "times": 5
           }
-        ]
+        ],
+        "bonus": 30
       },
       {
         "name": "Vining Ronde DMG",
@@ -377,7 +394,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "bonus": 30
       },
       {
         "name": "Atonement DMG",
@@ -399,7 +417,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "bonus": 30
       }
     ]
   },
@@ -425,7 +444,8 @@
               1202.81
             ]
           }
-        ]
+        ],
+        "bonus": 15
       }
     ]
   },
@@ -451,7 +471,8 @@
               198.81
             ]
           }
-        ]
+        ],
+        "bonus": 15
       }
     ]
   },
@@ -468,7 +489,22 @@
               329.24
             ]
           }
-        ]
+        ],
+        "bonus": 15
+      },
+      {
+        "name": "Twining Additional DMG",
+        "kind": "outro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              459.02
+            ]
+          }
+        ],
+        "manual": true,
+        "bonus": 15
       }
     ]
   },
@@ -494,7 +530,9 @@
               1262.45
             ]
           }
-        ]
+        ],
+        "cost": 1,
+        "bonus": 30
       }
     ]
   },
@@ -583,5 +621,110 @@
         "stat": "energyRegen"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "skill:2": [
+        "skill:1"
+      ],
+      "skill:3": [
+        "skill:2"
+      ],
+      "skill:4": [
+        "skill:3",
+        "skill:5"
+      ],
+      "skill:5": [
+        "skill:3"
+      ]
+    },
+    "linked": [
+      [
+        "basic:3",
+        "basic:4"
+      ]
+    ]
+  },
+  "states": [
+    {
+      "name": "Blossom Mode",
+      "start": "skill:0",
+      "hits": [
+        "skill:1",
+        "skill:2",
+        "skill:3",
+        "skill:4",
+        "skill:5",
+        "skill:6",
+        "skill:7",
+        "skill:8"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "skill:0"
+      ],
+      "endsOn": [
+        "skill:6",
+        "skill:7"
+      ]
+    },
+    {
+      "name": "Budding Mode",
+      "start": "forte:0",
+      "hits": [],
+      "replaces": [
+        "forte:0"
+      ],
+      "duration": 15,
+      "buffs": [
+        {
+          "name": "Sweet Dream",
+          "stat": "multiplier",
+          "value": 100,
+          "hits": [
+            "basic:0",
+            "basic:1",
+            "basic:2",
+            "basic:3",
+            "basic:4",
+            "basic:5",
+            "basic:6",
+            "basic:7",
+            "skill:0",
+            "skill:1",
+            "skill:2",
+            "skill:3",
+            "skill:4",
+            "skill:5",
+            "skill:6",
+            "skill:7",
+            "skill:8"
+          ]
+        }
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Ephemeral",
+      "max": 1,
+      "gain": [
+        "forte:0"
+      ],
+      "unlocks": [],
+      "replaces": [],
+      "outro": {
+        "hit": "outro:1",
+        "per": 1,
+        "max": 1
+      }
+    }
+  ]
 }

@@ -133,8 +133,13 @@ export class Character implements Stats {
 
     /** Steps of the Rotation build: the intro, the chosen hits (or the default ones) and the outro */
     rotationSteps(): RotationStep[] {
-        const all = (section: 'intro' | 'outro') => this.data[section].hits.map((_, index): RotationStep => ({ section, index }));
-        return [...all('intro'), ...(this.rotationBuild ?? this.data.rotationBuild ?? []), ...all('outro')];
+        return [...this.sectionSteps('intro'), ...(this.rotationBuild ?? this.data.rotationBuild ?? []), ...this.sectionSteps('outro')];
+    }
+
+    /** Steps of the Intro or the Outro, without the hits that only come in some cases (the Intro of a field, a hit a counter gives) */
+    sectionSteps(section: 'intro' | 'outro'): RotationStep[] {
+        const special = (key: string) => !!this.data.field?.intro.includes(key) || !!this.data.counters?.some(counter => counter.outro?.hit === key);
+        return this.data[section].hits.flatMap((_, index): RotationStep[] => special(`${section}:${index}`) ? [] : [{ section, index }]);
     }
 
     /**

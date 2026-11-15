@@ -51,9 +51,10 @@ export interface BonusAfter {
 
 /**
  * Attribute a buff of the character raises during the rotation: 'atk' is a percentage of the base ATK, the others are added;
- * 'damageBonus' is a DMG Bonus on every damage hit of the character (added to the elemental bonus)
+ * 'damageBonus' is a DMG Bonus on every damage hit of the character (added to the elemental bonus); 'multiplier' raises the DMG
+ * Multiplier of the hits by that %
  */
-export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'basicBonus' | 'critRate' | 'critDamage';
+export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'basicBonus' | 'critRate' | 'critDamage' | 'multiplier';
 
 /** Hits of a kind that always crit, once every `cooldown` points (e.g. an Inherent Skill "Heavy Attack always crits, once every 30s") */
 export interface GuaranteedCrit {
@@ -158,6 +159,8 @@ export interface CharacterCounter {
   boost?: CounterBoost;
   /** These hits get a DMG Bonus of `value`% for each point it has before them */
   perStack?: { name: string; value: number; hits: HitKey[] };
+  /** When the character leaves the field, `hit` once every `per` points, up to `max` (only with `state` active, or not, by `inState`) */
+  outro?: { hit: HitKey; per: number; max: number; state?: number; inState?: boolean };
 }
 
 /** A hit that, with at least `spend` in the counter, spends it and gets a DMG Bonus of `value`% (not in the state `notIn`) */
