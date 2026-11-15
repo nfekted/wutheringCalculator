@@ -25,10 +25,12 @@ export interface RotationContext {
   counters: number[];
   statePoints: Record<number, number>;
   buffPoints: Record<string, number>;
+  /** End hits of each state with `endsAfter` since it started */
+  stateEnds: Record<number, number>;
 }
 
 export function startContext(): RotationContext {
-  return { last: null, held: null, states: [], counters: [], statePoints: {}, buffPoints: {} };
+  return { last: null, held: null, states: [], counters: [], statePoints: {}, buffPoints: {}, stateEnds: {} };
 }
 
 /**
@@ -112,9 +114,9 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
   if (data.coordinated?.hits.includes(key) || data.coordinated?.detonation === key || data.markers?.some(marker => marker.hit === key)
     || states.some(state => state.autoHit?.hit === key)) return false;
   for (const [i, counter] of (data.counters ?? []).entries()) {
-    const full = (context.counters[i] ?? 0) >= counter.max;
-    if (unlocks(counter, key) && (context.counters[i] ?? 0) < (counter.spend ?? counter.max)) return false;
-    if (full && counter.replaces.includes(key)) return false;
+    const ready = (context.counters[i] ?? 0) >= (counter.spend ?? counter.max);
+    if (unlocks(counter, key) && !ready) return false;
+    if (ready && counter.replaces.includes(key)) return false;
   }
   if (isLinkedRest(data, step)) return false;
   if (data.sequence?.replacedBy?.[key]?.some(other => allowed(data, context, keyStep(other)))) return false;
@@ -155,7 +157,7 @@ export function advance(character: Character, context: RotationContext, step: Ro
   if (step.section === 'end') {
     const ended = [step.index, ...runOut];
     return {
-      last: null, held: null, buffPoints, statePoints,
+      last: null, held: null, buffPoints, statePoints, stateEnds: context.stateEnds,
       states: context.states.filter(i => !ended.includes(i)),
       counters: resetCounters(ended, i => context.counters[i] ?? 0),
     };
@@ -178,10 +180,17 @@ export function advance(character: Character, context: RotationContext, step: Ro
   const held = keeps(key) ? (keeps(context.last) ? context.held : context.last) : null;
   const started = (data.states ?? []).flatMap((state, i) =>
     (isStart(state, key) || !!state.starts?.[key]) && !context.states.includes(i) ? [i] : []);
-  const ended = [...runOut, ...(data.states ?? []).flatMap((state, i) => state.endsOn?.includes(key) ? [i] : [])];
+  const stateEnds = { ...context.stateEnds };
+  for (const i of started) delete stateEnds[i];
+  const ended = [...runOut, ...(data.states ?? []).flatMap((state, i) => {
+    if (!state.endsOn?.includes(key)) return [];
+    if (!state.endsAfter) return [i];
+    stateEnds[i] = (stateEnds[i] ?? 0) + 1;
+    return stateEnds[i] >= state.endsAfter ? [i] : [];
+  })];
   const states = [...context.states, ...started].filter(i => !ended.includes(i));
   return {
-    last: key, held, states, buffPoints, statePoints,
+    last: key, held, states, buffPoints, statePoints, stateEnds,
     counters: resetCounters(ended, i => {
       const counter = counters[i];
       const value = context.counters[i] ?? 0;
@@ -189,7 +198,8 @@ export function advance(character: Character, context: RotationContext, step: Ro
       if (boostApplies(counter, value, context, key)) return value - counter.boost!.spend;
       const exists = counter.state === undefined || states.includes(counter.state);
       if (counter.fills?.includes(key) && exists) return counter.max;
-      if (counter.gain.includes(key) && exists) return Math.min(value + (counter.amount ?? 1), counter.max);
+      const amount = counter.amounts?.[key] ?? (counter.gain.includes(key) ? counter.amount ?? 1 : 0);
+      if (amount && exists) return Math.min(value + amount, counter.max);
       return value;
     }),
   };

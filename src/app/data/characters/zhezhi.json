@@ -263,6 +263,12 @@
             ]
           }
         ]
+      },
+      {
+        "name": "Living Canvas",
+        "kind": "liberation",
+        "parts": [],
+        "manual": true
       }
     ]
   },
@@ -337,7 +343,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Stroke of Genius DMG",
@@ -357,6 +364,16 @@
               277.31,
               298.22
             ]
+          }
+        ],
+        "cost": 0.5,
+        "buffs": [
+          {
+            "name": "Calligrapher's Touch",
+            "stat": "atk",
+            "value": 6,
+            "duration": 27,
+            "stacks": 3
           }
         ]
       },
@@ -379,6 +396,22 @@
               119.29
             ],
             "times": 3
+          }
+        ],
+        "cost": 0.5,
+        "buffs": [
+          {
+            "name": "Calligrapher's Touch",
+            "stat": "atk",
+            "value": 6,
+            "duration": 27,
+            "stacks": 3
+          },
+          {
+            "name": "Creation's Zenith",
+            "stat": "basicBonus",
+            "value": 18,
+            "duration": 27
           }
         ]
       }
@@ -472,5 +505,58 @@
         "stat": "dmg"
       }
     ]
+  },
+  "counters": [
+    {
+      "name": "Phantasmic Imprint",
+      "max": 3,
+      "gain": [
+        "skill:0",
+        "skill:1",
+        "skill:2",
+        "forte:0"
+      ],
+      "unlocks": [
+        "forte:1",
+        "forte:2"
+      ],
+      "spend": 1,
+      "replaces": [
+        "skill:0",
+        "skill:1",
+        "skill:2"
+      ]
+    },
+    {
+      "name": "Painter's Delight",
+      "max": 2,
+      "gain": [],
+      "fills": [
+        "forte:1"
+      ],
+      "unlocks": "forte:2",
+      "replaces": [
+        "forte:1"
+      ]
+    }
+  ],
+  "coordinated": {
+    "name": "Inklit Spirit",
+    "start": "liberation:1",
+    "hits": [
+      "liberation:0"
+    ],
+    "duration": 30,
+    "perKind": {
+      "basic": 1,
+      "heavy": 1,
+      "skill": 1,
+      "liberation": 1,
+      "intro": 1,
+      "outro": 1,
+      "echo": 1
+    },
+    "interval": 1,
+    "max": 21
   }
 }

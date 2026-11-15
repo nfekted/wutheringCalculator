@@ -16,6 +16,8 @@ interface ActiveBuff {
   label: string;
   outro?: OutroBuff;
   stat?: StatBuff;
+  /** Stacks of a stat buff that stacks */
+  count?: number;
 }
 
 export interface TeamHitRow {
@@ -112,8 +114,10 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
   const give = (character: Character, slot: number, buff: StatBuff) => {
     if (!buff.duration) return;
     const id = `self:${slot}:${buff.name}`;
+    const count = buff.stacks ? Math.min((active.find(a => a.id === id)?.count ?? 0) + 1, buff.stacks) : 1;
+    const stat = count > 1 ? { ...buff, value: +(buff.value * count).toFixed(2) } : buff;
     active = active.filter(a => a.id !== id);
-    active.push({ id, receiver: buff.target === 'team' ? null : slot, points: buff.duration, label: `${character.name}: ${statLabel(buff)}`, stat: buff });
+    active.push({ id, receiver: buff.target === 'team' ? null : slot, points: buff.duration, label: `${character.name}: ${statLabel(stat)}`, stat, count });
   };
 
   segments.forEach(({ character, slot, rotation, steps }, i) => {
@@ -196,7 +200,7 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
         const times = c.attack.perKind[fires!] ?? 0;
         if (!times || c.since < (c.attack.interval ?? 0)) continue;
         c.since = 0;
-        for (let n = 0; n < times; n++) {
+        for (let n = 0; n < times && !(c.attack.max && c.fired >= c.attack.max); n++) {
           const stacking = c.attack.stacking;
           const stacks = Math.min(c.fired, stacking?.max ?? 0);
           const buff: StatBuff | undefined = stacking && stacks ? { name: stacking.name, stat: 'damageBonus', value: +(stacks * stacking.value).toFixed(2) } : undefined;
@@ -208,7 +212,7 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       // In a linked block (and in the Intro) only the first hit spends points
       const cost = spends[position] ? stepCost(character, step) : 0;
       active = active.map(a => ({ ...a, points: a.points - cost })).filter(a => a.points > 0);
-      coordinated = coordinated.map(c => ({ ...c, points: c.points - cost, since: c.since + cost })).filter(c => c.points > 0);
+      coordinated = coordinated.map(c => ({ ...c, points: c.points - cost, since: c.since + cost })).filter(c => c.points > 0 && !(c.attack.max && c.fired >= c.attack.max));
       for (const [member, left] of critCooldown) critCooldown.set(member, left - cost);
       if (crits) critCooldown.set(slot, crit!.cooldown);
 
@@ -256,7 +260,7 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
 }
 
 /** Bonuses of one kind of hit */
-const KIND_OF: Partial<Record<StatBuff['stat'], string>> = { liberationBonus: 'liberation', heavyBonus: 'heavy', skillBonus: 'skill' };
+const KIND_OF: Partial<Record<StatBuff['stat'], string>> = { liberationBonus: 'liberation', heavyBonus: 'heavy', skillBonus: 'skill', basicBonus: 'basic' };
 
 /**
  * Value of a hit of a member, without and with the buffs on it: the Outro ones and its own, and `others` (its states...). Only the buffs
@@ -316,6 +320,6 @@ function outroLabel(buff: OutroBuff): string {
 }
 
 function statLabel(buff: StatBuff): string {
-  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG' }[buff.stat];
+  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG' }[buff.stat];
   return `${buff.name} (${stat} +${buff.value}%)`;
 }

@@ -53,7 +53,7 @@ export interface BonusAfter {
  * Attribute a buff of the character raises during the rotation: 'atk' is a percentage of the base ATK, the others are added;
  * 'damageBonus' is a DMG Bonus on every damage hit of the character (added to the elemental bonus)
  */
-export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'critRate' | 'critDamage';
+export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'basicBonus' | 'critRate' | 'critDamage';
 
 /** Hits of a kind that always crit, once every `cooldown` points (e.g. an Inherent Skill "Heavy Attack always crits, once every 30s") */
 export interface GuaranteedCrit {
@@ -75,6 +75,8 @@ export interface StatBuff {
   hits?: HitKey[];
   /** 'team': every member gets it (e.g. "all team members' ATK are increased by 20%"); without it, only the character */
   target?: 'team';
+  /** Given again while it lasts, it adds a stack (up to this many) and renews the duration */
+  stacks?: number;
 }
 
 /**
@@ -94,6 +96,8 @@ export interface CoordinatedAttack {
   /** Hits that detonate it: they add the `detonation` hit, in the same action, and end it */
   detonatedBy?: HitKey[];
   detonation?: HitKey;
+  /** It ends after firing this many times */
+  max?: number;
 }
 
 /** A mark a hit leaves (at most 1); the `detonate` hit adds the `hit` of each mark held, in the same action. They go on the Outro */
@@ -127,12 +131,14 @@ export interface CharacterCounter {
   /** Hits that add `amount` (1 without it) */
   gain: HitKey[];
   amount?: number;
+  /** Hits that add their own amount (they do not need to be in `gain`) */
+  amounts?: Record<HitKey, number>;
   /** Hits that fill it */
   fills?: HitKey[];
   /** Hit (or hits) that needs the counter full, and spends it all; with `spend`, it needs that much and spends it */
   unlocks: HitKey | HitKey[];
   spend?: number;
-  /** Hits not available while the counter is full */
+  /** Hits not available while the counter is full (with `spend`, while it has that much) */
   replaces: HitKey[];
   /** Index in `states` of the only state where the counter exists; it goes back to 0 when the state ends */
   state?: number;
@@ -163,8 +169,9 @@ export interface CharacterState {
   buffs?: StatBuff[];
   /** After the state ends, the next Intro of the character is this hit instead */
   nextIntro?: HitKey;
-  /** Hits that end the state (after them) */
+  /** Hits that end the state (after them); with `endsAfter`, only the n-th of them since it started */
   endsOn?: HitKey[];
+  endsAfter?: number;
   /** Other ways in: a state hit that also starts it from outside, right after one of these hits */
   starts?: Record<HitKey, HitKey[]>;
   /** In seconds, spent as points by the hits in it; it ends when they run out */
