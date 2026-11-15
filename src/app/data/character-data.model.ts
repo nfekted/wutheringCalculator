@@ -53,7 +53,7 @@ export interface BonusAfter {
  * Attribute a buff of the character raises during the rotation: 'atk' is a percentage of the base ATK, the others are added;
  * 'damageBonus' is a DMG Bonus on every damage hit of the character (added to the elemental bonus)
  */
-export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus';
+export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'critRate' | 'critDamage';
 
 /** Hits of a kind that always crit, once every `cooldown` points (e.g. an Inherent Skill "Heavy Attack always crits, once every 30s") */
 export interface GuaranteedCrit {
@@ -124,14 +124,26 @@ export interface SequenceRules {
 export interface CharacterCounter {
   name: string;
   max: number;
-  /** Hits that add 1 */
+  /** Hits that add `amount` (1 without it) */
   gain: HitKey[];
-  /** Hit (or hits) that needs the counter full, and spends it all */
+  amount?: number;
+  /** Hit (or hits) that needs the counter full, and spends it all; with `spend`, it needs that much and spends it */
   unlocks: HitKey | HitKey[];
+  spend?: number;
   /** Hits not available while the counter is full */
   replaces: HitKey[];
   /** Index in `states` of the only state where the counter exists; it goes back to 0 when the state ends */
   state?: number;
+  boost?: CounterBoost;
+}
+
+/** A hit that, with at least `spend` in the counter, spends it and gets a DMG Bonus of `value`% (not in the state `notIn`) */
+export interface CounterBoost {
+  name: string;
+  hit: HitKey;
+  spend: number;
+  value: number;
+  notIn?: number;
 }
 
 /** A state a hit puts the character in (e.g. Dark Surge); it ends on the Outro or when the player leaves it in the rotation */
@@ -156,6 +168,8 @@ export interface CharacterState {
   /** While the character has this buff (by name), the state spends its points at `slowedRate` */
   slowedBy?: string;
   slowedRate?: number;
+  /** While the state lasts, each of the `after` hits adds `hit`, in the same action, up to `max` times each time it starts */
+  autoHit?: { hit: HitKey; after: HitKey[]; max: number };
 }
 
 export interface SkillData {

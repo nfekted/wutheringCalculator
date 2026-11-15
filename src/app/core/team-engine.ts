@@ -1,7 +1,7 @@
 import { Amplification, Stats, noAmplification } from './damage-engine';
 import { CoordinatedAttack, HitKey, OutroBuff, RotationStep, StatBuff } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
-import { advance, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
+import { advance, counterBoosts, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
 
 export { stepCost };
 
@@ -132,6 +132,8 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
     /** Marks held (indexes in `data.markers`); they go on the Outro */
     const markers = character.data.markers ?? [];
     const held = new Set<number>();
+    /** Hits each state added since it started (by index in `data.states`) */
+    const autoCount = new Map<number, number>();
 
     // A hit added by another one: worth its value with the buffs on its member, in the same action (it spends nothing)
     const autoRow = (who: Character, whoSlot: number, key: HitKey, others: LabeledBuff[]) => {
@@ -152,7 +154,12 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
 
       // Extra damage of a hit that comes right after some others (not a buff: it counts without the buffs too)
       const bonusAfter = hit?.bonusAfter && context.last && hit.bonusAfter.after.includes(context.last) ? hit.bonusAfter : undefined;
-      const value = valueOf(character, slot, step, active, stateBuffs, crits, bonusAfter?.multiplier);
+      // A counter boost: spent by the hit, a DMG Bonus on it
+      const boosts = counterBoosts(character.data, context, key).map(boost => {
+        const buff: StatBuff = { name: boost.name, stat: 'damageBonus', value: boost.value };
+        return { buff, label: `${character.name}: ${statLabel(buff)}` };
+      });
+      const value = valueOf(character, slot, step, active, [...stateBuffs, ...boosts], crits, bonusAfter?.multiplier);
       rows.push({
         rotation, slot, step,
         name: step.section === 'end' ? `Leave ${states[step.index]?.name ?? ''}` : hit?.name ?? character.mainEcho?.name ?? '—',
@@ -167,6 +174,15 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
         if (marker.detonate === key && held.delete(m)) autoRow(character, slot, marker.hit, stateBuffs);
       });
       markers.forEach((marker, m) => { if (marker.gain.includes(key)) held.add(m); });
+
+      // Hits a state adds after some of its hits, up to its max each time it starts
+      for (const s of context.states) {
+        const auto = states[s].autoHit;
+        if (!auto?.after.includes(key) || (autoCount.get(s) ?? 0) >= auto.max) continue;
+        autoRow(character, slot, auto.hit, stateBuffs);
+        autoCount.set(s, (autoCount.get(s) ?? 0) + 1);
+      }
+      states.forEach((state, s) => { if (state.start === key && !context.states.includes(s)) autoCount.set(s, 0); });
 
       // Detonating a Coordinated Attack: its detonation hit, in the same action, and it ends
       for (const c of coordinated.filter(c => c.attack.detonatedBy?.includes(key) && c.slot === slot)) {
@@ -287,6 +303,8 @@ function extraStats(buffs: StatBuff[], character: Character): Partial<Stats> {
     if (buff.stat === 'atk') extra.dmg = (extra.dmg ?? 0) + character.data.base.atk * buff.value / 100;
     // Every damage hit of the character gets the elemental bonus, so a DMG Bonus on all of them is added there
     else if (buff.stat === 'damageBonus') extra.elementalBonus = (extra.elementalBonus ?? 0) + buff.value;
+    else if (buff.stat === 'critRate') extra.cChance = (extra.cChance ?? 0) + buff.value;
+    else if (buff.stat === 'critDamage') extra.cDmg = (extra.cDmg ?? 0) + buff.value;
     else extra[buff.stat] = (extra[buff.stat] ?? 0) + buff.value;
   }
   return extra;
@@ -298,6 +316,6 @@ function outroLabel(buff: OutroBuff): string {
 }
 
 function statLabel(buff: StatBuff): string {
-  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG' }[buff.stat];
+  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG' }[buff.stat];
   return `${buff.name} (${stat} +${buff.value}%)`;
 }

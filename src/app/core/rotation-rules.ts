@@ -1,4 +1,4 @@
-import { CharacterCounter, CharacterData, HitKey, RotationStep, SectionKey } from '../data/character-data.model';
+import { CharacterCounter, CharacterData, CounterBoost, HitKey, RotationStep, SectionKey } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
 
 /** Sections the player picks hits from; intro and outro are always part of the rotation */
@@ -108,10 +108,11 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
   if (context.states.some(i => states[i].replaces.includes(key) || (states[i].start === key && !states[i].hits.includes(key)))) return false;
   if (states.some(state => state.nextIntro === key)) return false;
   // Hits that only come on their own (a Coordinated Attack, the hit of a mark)
-  if (data.coordinated?.hits.includes(key) || data.coordinated?.detonation === key || data.markers?.some(marker => marker.hit === key)) return false;
+  if (data.coordinated?.hits.includes(key) || data.coordinated?.detonation === key || data.markers?.some(marker => marker.hit === key)
+    || states.some(state => state.autoHit?.hit === key)) return false;
   for (const [i, counter] of (data.counters ?? []).entries()) {
     const full = (context.counters[i] ?? 0) >= counter.max;
-    if (unlocks(counter, key) && !full) return false;
+    if (unlocks(counter, key) && (context.counters[i] ?? 0) < (counter.spend ?? counter.max)) return false;
     if (full && counter.replaces.includes(key)) return false;
   }
   if (isLinkedRest(data, step)) return false;
@@ -183,11 +184,22 @@ export function advance(character: Character, context: RotationContext, step: Ro
     counters: resetCounters(ended, i => {
       const counter = counters[i];
       const value = context.counters[i] ?? 0;
-      if (unlocks(counter, key)) return 0;
-      if (counter.gain.includes(key) && (counter.state === undefined || states.includes(counter.state))) return Math.min(value + 1, counter.max);
+      if (unlocks(counter, key)) return counter.spend !== undefined ? value - counter.spend : 0;
+      if (boostApplies(counter, value, context, key)) return value - counter.boost!.spend;
+      if (counter.gain.includes(key) && (counter.state === undefined || states.includes(counter.state))) return Math.min(value + (counter.amount ?? 1), counter.max);
       return value;
     }),
   };
+}
+
+function boostApplies(counter: CharacterCounter, value: number, context: RotationContext, key: HitKey): boolean {
+  const boost = counter.boost;
+  return !!boost && boost.hit === key && value >= boost.spend && !(boost.notIn !== undefined && context.states.includes(boost.notIn));
+}
+
+/** The counter boosts the hit gets now (it spends them) */
+export function counterBoosts(data: CharacterData, context: RotationContext, key: HitKey): CounterBoost[] {
+  return (data.counters ?? []).flatMap((counter, i) => boostApplies(counter, context.counters[i] ?? 0, context, key) ? [counter.boost!] : []);
 }
 
 function unlocks(counter: CharacterCounter, key: HitKey): boolean {

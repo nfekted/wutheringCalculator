@@ -199,6 +199,14 @@
             ],
             "times": 3
           }
+        ],
+        "buffs": [
+          {
+            "name": "Pain Immersion",
+            "stat": "critRate",
+            "value": 15,
+            "duration": 5
+          }
         ]
       },
       {
@@ -220,6 +228,15 @@
               89.47
             ],
             "times": 4
+          }
+        ],
+        "bonus": 10,
+        "buffs": [
+          {
+            "name": "Deadly Focus",
+            "stat": "atk",
+            "value": 10,
+            "duration": 4
           }
         ]
       },
@@ -344,7 +361,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Judgment Strike Damage",
@@ -474,5 +492,49 @@
         "stat": "skillBonus"
       }
     ]
+  },
+  "states": [
+    {
+      "name": "Execution Mode",
+      "start": "skill:0",
+      "hits": [
+        "skill:1"
+      ],
+      "replaces": [
+        "skill:0"
+      ],
+      "endsOn": [
+        "skill:1"
+      ],
+      "autoHit": {
+        "hit": "skill:2",
+        "after": [
+          "basic:0",
+          "basic:1",
+          "basic:2",
+          "basic:3",
+          "basic:6"
+        ],
+        "max": 4
+      }
+    }
+  ],
+  "coordinated": {
+    "name": "Punishment Mark",
+    "start": "forte:0",
+    "hits": [
+      "forte:1"
+    ],
+    "duration": 18,
+    "perKind": {
+      "basic": 1,
+      "heavy": 1,
+      "skill": 1,
+      "liberation": 1,
+      "intro": 1,
+      "outro": 1,
+      "echo": 1
+    },
+    "interval": 1
   }
 }

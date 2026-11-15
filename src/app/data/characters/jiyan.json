@@ -39,7 +39,15 @@
             ]
           }
         ],
-        "combo": true
+        "combo": true,
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
+          }
+        ]
       },
       {
         "name": "Lone Lance DMG 2",
@@ -61,7 +69,15 @@
             ]
           }
         ],
-        "combo": true
+        "combo": true,
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
+          }
+        ]
       },
       {
         "name": "Lone Lance DMG 3",
@@ -84,7 +100,15 @@
             "times": 5
           }
         ],
-        "combo": true
+        "combo": true,
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
+          }
+        ]
       },
       {
         "name": "Lone Lance DMG 4",
@@ -107,7 +131,15 @@
             "times": 2
           }
         ],
-        "combo": true
+        "combo": true,
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
+          }
+        ]
       },
       {
         "name": "Lone Lance DMG 5",
@@ -146,7 +178,15 @@
             "times": 2
           }
         ],
-        "combo": true
+        "combo": true,
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
+          }
+        ]
       },
       {
         "name": "Heavy Attack DMG",
@@ -168,11 +208,19 @@
             ],
             "times": 6
           }
+        ],
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
+          }
         ]
       },
       {
         "name": "Windborne Strike Damage",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -189,11 +237,19 @@
               105.96
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
+          }
         ]
       },
       {
         "name": "Abyssal Slash Damage",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -209,6 +265,14 @@
               75.98,
               81.71
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
           }
         ]
       },
@@ -231,6 +295,14 @@
               123.26
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
+          }
         ]
       },
       {
@@ -251,6 +323,14 @@
               73.94,
               79.52
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
           }
         ]
       },
@@ -273,6 +353,14 @@
               155.66
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
+          }
         ]
       },
       {
@@ -294,6 +382,14 @@
               125.84
             ],
             "times": 2
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
           }
         ]
       }
@@ -322,6 +418,14 @@
             ],
             "times": 4
           }
+        ],
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
+          }
         ]
       }
     ]
@@ -349,6 +453,15 @@
             ],
             "times": 8
           }
+        ],
+        "cost": 0.5,
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
+          }
         ]
       },
       {
@@ -371,6 +484,15 @@
             ],
             "times": 8
           }
+        ],
+        "cost": 0.5,
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
+          }
         ]
       },
       {
@@ -392,6 +514,15 @@
               66.76
             ],
             "times": 8
+          }
+        ],
+        "cost": 0.5,
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
           }
         ]
       }
@@ -419,6 +550,20 @@
               198.81
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Heavenly Balance",
+            "stat": "atk",
+            "value": 10,
+            "duration": 15
+          },
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
+          }
         ]
       }
     ]
@@ -436,6 +581,14 @@
               313.4
             ],
             "times": 2
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
           }
         ]
       }
@@ -478,6 +631,15 @@
               398.66,
               428.73
             ]
+          }
+        ],
+        "cost": 1,
+        "buffs": [
+          {
+            "name": "Tempest Taming",
+            "stat": "critDamage",
+            "value": 12,
+            "duration": 8
           }
         ]
       }
@@ -581,5 +743,89 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "liberation:1": [
+        "liberation:0"
+      ],
+      "liberation:2": [
+        "liberation:1"
+      ],
+      "forte:0": [
+        "liberation:0"
+      ]
+    },
+    "linked": [
+      [
+        "basic:5",
+        "basic:6",
+        "basic:7"
+      ]
+    ],
+    "keepsChain": [
+      "forte:0"
+    ]
+  },
+  "states": [
+    {
+      "name": "Qingloong Mode",
+      "start": "liberation:0",
+      "hits": [
+        "liberation:0",
+        "liberation:1",
+        "liberation:2"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11"
+      ],
+      "buffs": [
+        {
+          "name": "Qingloong at War",
+          "stat": "damageBonus",
+          "value": 20,
+          "hits": [
+            "skill:0"
+          ]
+        }
+      ],
+      "duration": 10
+    }
+  ],
+  "counters": [
+    {
+      "name": "Resolve",
+      "max": 60,
+      "amount": 2,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "intro:0"
+      ],
+      "unlocks": "forte:0",
+      "spend": 30,
+      "replaces": [],
+      "boost": {
+        "name": "Qingloong at War",
+        "hit": "skill:0",
+        "spend": 30,
+        "value": 20,
+        "notIn": 0
+      }
+    }
+  ]
 }
