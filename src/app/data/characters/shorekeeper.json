@@ -197,7 +197,8 @@
               31.31
             ]
           }
-        ]
+        ],
+        "multiplier": 5
       },
       {
         "name": "Chaos Theory Healing",
@@ -283,7 +284,7 @@
     "hits": [
       {
         "name": "Enlightenment DMG",
-        "kind": "liberation",
+        "kind": "skill",
         "parts": [
           {
             "stat": "atk",
@@ -455,7 +456,8 @@
             ],
             "times": 5
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Transmutation DMG",
@@ -476,7 +478,8 @@
               73.96
             ]
           }
-        ]
+        ],
+        "cost": 1
       }
     ]
   },
@@ -530,6 +533,85 @@
         "stat": "hp",
         "flat": true
       }
+    ]
+  },
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "skill:0",
+        "forte:2"
+      ]
+    },
+    "linked": [
+      [
+        "skill:0",
+        "skill:1"
+      ]
+    ]
+  },
+  "guaranteedCrit": {
+    "name": "Discernment",
+    "kind": "liberation",
+    "cooldown": 0
+  },
+  "counters": [
+    {
+      "name": "Empirical Data",
+      "max": 5,
+      "gain": [],
+      "amounts": {
+        "basic:0": 1,
+        "basic:1": 1,
+        "basic:2": 2,
+        "basic:3": 1,
+        "basic:5": 1,
+        "basic:6": 1
+      },
+      "unlocks": [
+        "forte:1",
+        "forte:2"
+      ],
+      "replaces": [
+        "basic:4",
+        "basic:5"
+      ]
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "forte:0",
+      "after": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6"
+      ]
+    }
+  ],
+  "field": {
+    "name": "Stellarealm",
+    "start": "liberation:0",
+    "duration": 30,
+    "levels": [
+      {
+        "name": "Inner Stellarealm",
+        "stat": "critRate",
+        "perEnergyRegen": 0.05,
+        "max": 12.5
+      },
+      {
+        "name": "Supernal Stellarealm",
+        "stat": "critDamage",
+        "perEnergyRegen": 0.1,
+        "max": 25
+      }
+    ],
+    "intro": [
+      "intro:1",
+      "intro:3"
     ]
   }
 }

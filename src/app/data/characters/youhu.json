@@ -491,6 +491,14 @@
               109.35
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Rare Find",
+            "stat": "elementalBonus",
+            "value": 15,
+            "duration": 14
+          }
         ]
       }
     ]
@@ -657,6 +665,32 @@
         "stat": "dmg",
         "flat": true
       }
+    ]
+  },
+  "sequence": {
+    "after": {
+      "skill:2": [
+        "skill:0"
+      ],
+      "skill:3": [
+        "skill:0"
+      ],
+      "skill:4": [
+        "skill:0"
+      ],
+      "skill:5": [
+        "skill:0"
+      ]
+    },
+    "linked": [
+      [
+        "skill:0",
+        "skill:1"
+      ],
+      [
+        "forte:0",
+        "forte:1"
+      ]
     ]
   }
 }

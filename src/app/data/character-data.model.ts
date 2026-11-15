@@ -108,6 +108,19 @@ export interface CharacterMarker {
   detonate: HitKey;
 }
 
+/**
+ * A field a hit creates for the whole team (e.g. the Stellarealm): each Intro of a member in it raises its level, and the buffs of the
+ * levels reached add up (each one a percentage of the character's Energy Regen, up to `max`). At the top level, the next Intro of the
+ * character is `intro` instead, and it ends the field. The `intro` hits are not part of the normal Intro
+ */
+export interface TeamField {
+  name: string;
+  start: HitKey;
+  duration: number;
+  levels: { name: string; stat: BuffStat; perEnergyRegen: number; max: number }[];
+  intro: HitKey[];
+}
+
 /** Hit of a character as "section:index" (e.g. "forte:0") */
 export type HitKey = string;
 
@@ -266,6 +279,9 @@ export interface CharacterData {
   counters?: CharacterCounter[];
   coordinated?: CoordinatedAttack;
   markers?: CharacterMarker[];
+  /** Hits added, in the same action, after some hits (e.g. a butterfly after each Normal Attack) */
+  followUps?: { hit: HitKey; after: HitKey[] }[];
+  field?: TeamField;
   basic: SkillData;
   skill: SkillData;
   liberation: SkillData;

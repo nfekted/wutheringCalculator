@@ -1,5 +1,5 @@
 import { Amplification, Stats, noAmplification } from './damage-engine';
-import { CoordinatedAttack, HitKey, OutroBuff, RotationStep, StatBuff } from '../data/character-data.model';
+import { CoordinatedAttack, HitKey, OutroBuff, RotationStep, StatBuff, TeamField } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
 import { advance, counterBonuses, isStart, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
 
@@ -50,7 +50,8 @@ export interface TeamResult {
 
 /** Steps of the intro or the outro of a character */
 export function sectionSteps(character: Character, section: 'intro' | 'outro'): RotationStep[] {
-  return character.data[section].hits.map((_, index): RotationStep => ({ section, index }));
+  return character.data[section].hits.map((_, index): RotationStep => ({ section, index }))
+    .filter(step => !character.data.field?.intro.includes(stepKey(step)));
 }
 
 interface Segment {
@@ -89,6 +90,15 @@ interface ActiveCoordinated {
   since: number;
 }
 
+/** A field of a member while it lasts, with the level it reached */
+interface ActiveField {
+  character: Character;
+  slot: number;
+  field: TeamField;
+  points: number;
+  level: number;
+}
+
 /** A buff with the label shown on the hits it applies to */
 interface LabeledBuff {
   buff: StatBuff;
@@ -109,6 +119,12 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
   /** Hit that replaces the next Intro of each member (a state of it ended) */
   const nextIntro = new Map<number, string>();
   let coordinated: ActiveCoordinated[] = [];
+  let fields: ActiveField[] = [];
+  /** Buffs of the levels the active fields reached, for every member */
+  const fieldBuffs = (): LabeledBuff[] => fields.flatMap(f => f.field.levels.slice(0, f.level).map(level => {
+    const buff: StatBuff = { name: level.name, stat: level.stat, value: +Math.min(level.max, f.character.energyRegen * level.perEnergyRegen).toFixed(2) };
+    return { buff, label: `${f.character.name}: ${statLabel(buff)}` };
+  }));
 
   /** An attribute buff of a member, to itself or to the whole team; by name, the same buff given again (by any hit) renews it */
   const give = (character: Character, slot: number, buff: StatBuff) => {
@@ -127,6 +143,12 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       steps = [keyStep(replaced), ...steps.filter(step => step.section !== 'intro')];
       nextIntro.delete(slot);
     }
+    // A field of the member at its top level: its Intro is the one of the field, and it ends the field
+    const top = fields.find(f => f.slot === slot && f.level === f.field.levels.length);
+    if (top && steps.some(step => step.section === 'intro')) {
+      steps = [...top.field.intro.map(keyStep), ...steps.filter(step => step.section !== 'intro')];
+      fields = fields.filter(f => f !== top);
+    }
     const spends = spendsPoints(character.data, steps);
     // Buffs of a hit start after its whole linked block (e.g. a buff of a burst of bullets starts after the last one)
     const blockOf: RotationStep[] = [];
@@ -142,7 +164,7 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
     // A hit added by another one: worth its value with the buffs on its member, in the same action (it spends nothing)
     const autoRow = (who: Character, whoSlot: number, key: HitKey, others: LabeledBuff[]) => {
       const step = keyStep(key);
-      const value = valueOf(who, whoSlot, step, active, others);
+      const value = valueOf(who, whoSlot, step, active, [...others, ...fieldBuffs()]);
       rows.push({ rotation, slot: whoSlot, step, name: who.stepHit(step)?.name ?? '—', buffs: value.labels, damage: value.type === 'damage', base: value.base, buffed: value.buffed, auto: true });
     };
 
@@ -163,7 +185,7 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
         const buff: StatBuff = { name: boost.name, stat: 'damageBonus', value: boost.value };
         return { buff, label: `${character.name}: ${statLabel(buff)}` };
       });
-      const value = valueOf(character, slot, step, active, [...stateBuffs, ...boosts], crits, bonusAfter?.multiplier);
+      const value = valueOf(character, slot, step, active, [...stateBuffs, ...boosts, ...fieldBuffs()], crits, bonusAfter?.multiplier);
       rows.push({
         rotation, slot, step,
         name: step.section === 'end' ? `Leave ${states[step.index]?.name ?? ''}` : hit?.name ?? character.mainEcho?.name ?? '—',
@@ -178,6 +200,9 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
         if (marker.detonate === key && held.delete(m)) autoRow(character, slot, marker.hit, stateBuffs);
       });
       markers.forEach((marker, m) => { if (marker.gain.includes(key)) held.add(m); });
+
+      // Hits added after some hits
+      for (const followUp of character.data.followUps ?? []) if (followUp.after.includes(key)) autoRow(character, slot, followUp.hit, stateBuffs);
 
       // Hits a state adds after some of its hits, up to its max each time it starts
       for (const s of context.states) {
@@ -212,11 +237,19 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       // In a linked block (and in the Intro) only the first hit spends points
       const cost = spends[position] ? stepCost(character, step) : 0;
       active = active.map(a => ({ ...a, points: a.points - cost })).filter(a => a.points > 0);
+      fields = fields.map(f => ({ ...f, points: f.points - cost })).filter(f => f.points > 0);
       coordinated = coordinated.map(c => ({ ...c, points: c.points - cost, since: c.since + cost })).filter(c => c.points > 0 && !(c.attack.max && c.fired >= c.attack.max));
       for (const [member, left] of critCooldown) critCooldown.set(member, left - cost);
       if (crits) critCooldown.set(slot, crit!.cooldown);
 
       // A Coordinated Attack starts after its hit; casting it again starts it over
+      // An Intro (after its last hit) raises every field; a field starts after its hit, and casting it again starts it over
+      if (step.section === 'intro' && steps[position + 1]?.section !== 'intro') {
+        fields = fields.map(f => ({ ...f, level: Math.min(f.level + 1, f.field.levels.length) }));
+      }
+      const field = character.data.field;
+      if (field?.start === key) fields = [...fields.filter(f => f.slot !== slot), { character, slot, field, points: field.duration, level: 0 }];
+
       const attack = character.data.coordinated;
       if (attack?.start === key) {
         coordinated = [...coordinated.filter(c => c.slot !== slot), { character, slot, attack, points: attack.duration, fired: 0, since: Infinity }];
