@@ -39,7 +39,8 @@
             ]
           }
         ],
-        "combo": true
+        "combo": true,
+        "bonus": 20
       },
       {
         "name": "Slash of Breaking Dawn DMG 2",
@@ -77,7 +78,8 @@
             "times": 3
           }
         ],
-        "combo": true
+        "combo": true,
+        "bonus": 20
       },
       {
         "name": "Slash of Breaking Dawn DMG 3",
@@ -115,7 +117,8 @@
             ]
           }
         ],
-        "combo": true
+        "combo": true,
+        "bonus": 20
       },
       {
         "name": "Slash of Breaking Dawn DMG 4",
@@ -152,7 +155,8 @@
             ]
           }
         ],
-        "combo": true
+        "combo": true,
+        "bonus": 20
       },
       {
         "name": "Heavy Attack DMG",
@@ -204,7 +208,8 @@
               83.51
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Mid-air Attack DMG",
@@ -255,7 +260,8 @@
               86.29
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Dodge Counter DMG",
@@ -292,7 +298,8 @@
               44.02
             ]
           }
-        ]
+        ],
+        "bonus": 20
       }
     ]
   },
@@ -334,7 +341,8 @@
               77.84
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Overflowing Radiance DMG",
@@ -387,7 +395,8 @@
               39.45
             ]
           }
-        ]
+        ],
+        "bonus": 20
       }
     ]
   },
@@ -428,7 +437,8 @@
               1166.22
             ]
           }
-        ]
+        ],
+        "bonus": 20
       }
     ]
   },
@@ -454,7 +464,9 @@
               159.05
             ]
           }
-        ]
+        ],
+        "multiplier": 1.5,
+        "bonus": 20
       }
     ]
   },
@@ -484,7 +496,8 @@
               88.62
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Incarnation: Basic Attack 2 DMG",
@@ -535,7 +548,8 @@
               25.99
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Incarnation: Basic Attack 3 DMG",
@@ -571,7 +585,8 @@
               66.3
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Incarnation: Basic Attack 4 DMG",
@@ -608,7 +623,8 @@
               74.67
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Incarnation: Heavy Attack DMG",
@@ -644,7 +660,9 @@
               111.34
             ]
           }
-        ]
+        ],
+        "cost": 1,
+        "bonus": 20
       },
       {
         "name": "Incarnation: Dodge Counter DMG",
@@ -696,7 +714,8 @@
               109.71
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Crescent Divinity DMG",
@@ -748,7 +767,8 @@
               251.9
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Illuminous Epiphany: Solar Flare DMG",
@@ -770,7 +790,9 @@
             ],
             "times": 6
           }
-        ]
+        ],
+        "cost": 1,
+        "bonus": 20
       },
       {
         "name": "Illuminous Epiphany: Stella Glamor DMG",
@@ -790,8 +812,25 @@
               323.53,
               347.92
             ]
+          },
+          {
+            "stat": "atk",
+            "values": [
+              2227,
+              2409.61,
+              2592.23,
+              2847.89,
+              3030.5,
+              3240.6,
+              3532.79,
+              3824.97,
+              4117.15,
+              4427.53
+            ]
           }
-        ]
+        ],
+        "manual": true,
+        "bonus": 20
       }
     ]
   },
@@ -878,5 +917,92 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "skill:1": [
+        "basic:3",
+        "intro:0"
+      ],
+      "forte:1": [
+        "forte:0"
+      ],
+      "forte:2": [
+        "forte:1"
+      ],
+      "forte:3": [
+        "forte:2"
+      ]
+    },
+    "linked": [
+      [
+        "forte:7",
+        "forte:8"
+      ]
+    ],
+    "keepsChain": [
+      "forte:4",
+      "forte:5",
+      "forte:6"
+    ],
+    "replacedBy": {
+      "skill:0": [
+        "skill:1"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Incarnation",
+      "start": "skill:1",
+      "hits": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "skill:0",
+        "skill:1"
+      ],
+      "endsOn": [
+        "forte:3"
+      ],
+      "duration": 10
+    },
+    {
+      "name": "Ordination Glow",
+      "start": "forte:3",
+      "hits": [
+        "forte:4",
+        "forte:7",
+        "forte:8"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "skill:0",
+        "skill:1"
+      ],
+      "endsOn": [
+        "forte:8"
+      ],
+      "duration": 5
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 import { Amplification, Stats, noAmplification } from './damage-engine';
 import { CoordinatedAttack, HitKey, OutroBuff, RotationStep, StatBuff } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
-import { advance, counterBoosts, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
+import { advance, counterBonuses, isStart, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
 
 export { stepCost };
 
@@ -155,7 +155,7 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       // Extra damage of a hit that comes right after some others (not a buff: it counts without the buffs too)
       const bonusAfter = hit?.bonusAfter && context.last && hit.bonusAfter.after.includes(context.last) ? hit.bonusAfter : undefined;
       // A counter boost: spent by the hit, a DMG Bonus on it
-      const boosts = counterBoosts(character.data, context, key).map(boost => {
+      const boosts = counterBonuses(character.data, context, key).map(boost => {
         const buff: StatBuff = { name: boost.name, stat: 'damageBonus', value: boost.value };
         return { buff, label: `${character.name}: ${statLabel(buff)}` };
       });
@@ -182,7 +182,7 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
         autoRow(character, slot, auto.hit, stateBuffs);
         autoCount.set(s, (autoCount.get(s) ?? 0) + 1);
       }
-      states.forEach((state, s) => { if (state.start === key && !context.states.includes(s)) autoCount.set(s, 0); });
+      states.forEach((state, s) => { if (isStart(state, key) && !context.states.includes(s)) autoCount.set(s, 0); });
 
       // Detonating a Coordinated Attack: its detonation hit, in the same action, and it ends
       for (const c of coordinated.filter(c => c.attack.detonatedBy?.includes(key) && c.slot === slot)) {

@@ -462,6 +462,18 @@
               1212.75
             ]
           }
+        ],
+        "bonus": 20,
+        "buffs": [
+          {
+            "name": "Fiery Feather",
+            "stat": "atk",
+            "value": 25,
+            "duration": 10,
+            "hits": [
+              "forte:0"
+            ]
+          }
         ]
       }
     ]
@@ -567,7 +579,9 @@
               457.85
             ]
           }
-        ]
+        ],
+        "bonus": 20,
+        "cost": 1
       }
     ]
   },
@@ -640,5 +654,72 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:5": [
+        "basic:4"
+      ],
+      "basic:6": [
+        "basic:5",
+        "basic:8"
+      ],
+      "basic:7": [
+        "basic:6"
+      ],
+      "basic:2": [
+        "basic:9"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "True Sight",
+      "start": [
+        "basic:3",
+        "basic:7",
+        "skill:0",
+        "intro:0"
+      ],
+      "hits": [
+        "skill:0",
+        "skill:1",
+        "skill:2"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:4"
+      ],
+      "endsOn": [
+        "skill:1",
+        "skill:2"
+      ],
+      "duration": 12
+    }
+  ],
+  "counters": [
+    {
+      "name": "Enflamement",
+      "max": 4,
+      "gain": [
+        "skill:1",
+        "skill:2"
+      ],
+      "fills": [
+        "liberation:0"
+      ],
+      "unlocks": "forte:0",
+      "replaces": [
+        "basic:8"
+      ],
+      "perStack": {
+        "name": "Secret Strategist",
+        "value": 5,
+        "hits": [
+          "skill:1",
+          "skill:2"
+        ]
+      }
+    }
+  ]
 }

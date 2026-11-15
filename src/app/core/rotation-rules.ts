@@ -1,4 +1,4 @@
-import { CharacterCounter, CharacterData, CounterBoost, HitKey, RotationStep, SectionKey } from '../data/character-data.model';
+import { CharacterCounter, CharacterData, CharacterState, HitKey, RotationStep, SectionKey } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
 
 /** Sections the player picks hits from; intro and outro are always part of the rotation */
@@ -101,11 +101,12 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
   const states = data.states ?? [];
   // A state hit outside its state: only an extra way in, right after the hits it asks for (its start is always offered outside)
   for (const [i, state] of states.entries()) {
-    if (!state.hits.includes(key) || key === state.start || context.states.includes(i)) continue;
+    if (!state.hits.includes(key) || isStart(state, key) || context.states.includes(i)) continue;
+    if (states.some((other, j) => other.hits.includes(key) && context.states.includes(j))) continue;
     const extra = state.starts?.[key];
     if (!extra || !context.last || !extra.includes(context.last)) return false;
   }
-  if (context.states.some(i => states[i].replaces.includes(key) || (states[i].start === key && !states[i].hits.includes(key)))) return false;
+  if (context.states.some(i => states[i].replaces.includes(key) || (isStart(states[i], key) && !states[i].hits.includes(key)))) return false;
   if (states.some(state => state.nextIntro === key)) return false;
   // Hits that only come on their own (a Coordinated Attack, the hit of a mark)
   if (data.coordinated?.hits.includes(key) || data.coordinated?.detonation === key || data.markers?.some(marker => marker.hit === key)
@@ -176,7 +177,7 @@ export function advance(character: Character, context: RotationContext, step: Ro
   const keeps = (hit: HitKey | null) => !!hit && !!data.sequence?.keepsChain?.includes(hit);
   const held = keeps(key) ? (keeps(context.last) ? context.held : context.last) : null;
   const started = (data.states ?? []).flatMap((state, i) =>
-    (state.start === key || !!state.starts?.[key]) && !context.states.includes(i) ? [i] : []);
+    (isStart(state, key) || !!state.starts?.[key]) && !context.states.includes(i) ? [i] : []);
   const ended = [...runOut, ...(data.states ?? []).flatMap((state, i) => state.endsOn?.includes(key) ? [i] : [])];
   const states = [...context.states, ...started].filter(i => !ended.includes(i));
   return {
@@ -186,7 +187,9 @@ export function advance(character: Character, context: RotationContext, step: Ro
       const value = context.counters[i] ?? 0;
       if (unlocks(counter, key)) return counter.spend !== undefined ? value - counter.spend : 0;
       if (boostApplies(counter, value, context, key)) return value - counter.boost!.spend;
-      if (counter.gain.includes(key) && (counter.state === undefined || states.includes(counter.state))) return Math.min(value + (counter.amount ?? 1), counter.max);
+      const exists = counter.state === undefined || states.includes(counter.state);
+      if (counter.fills?.includes(key) && exists) return counter.max;
+      if (counter.gain.includes(key) && exists) return Math.min(value + (counter.amount ?? 1), counter.max);
       return value;
     }),
   };
@@ -197,9 +200,20 @@ function boostApplies(counter: CharacterCounter, value: number, context: Rotatio
   return !!boost && boost.hit === key && value >= boost.spend && !(boost.notIn !== undefined && context.states.includes(boost.notIn));
 }
 
-/** The counter boosts the hit gets now (it spends them) */
-export function counterBoosts(data: CharacterData, context: RotationContext, key: HitKey): CounterBoost[] {
-  return (data.counters ?? []).flatMap((counter, i) => boostApplies(counter, context.counters[i] ?? 0, context, key) ? [counter.boost!] : []);
+/** The DMG Bonuses the counters give the hit now: a boost (that it spends) and the bonus per point */
+export function counterBonuses(data: CharacterData, context: RotationContext, key: HitKey): { name: string; value: number }[] {
+  return (data.counters ?? []).flatMap((counter, i) => {
+    const value = context.counters[i] ?? 0;
+    const perStack = counter.perStack;
+    return [
+      ...(boostApplies(counter, value, context, key) ? [{ name: counter.boost!.name, value: counter.boost!.value }] : []),
+      ...(perStack?.hits.includes(key) && value ? [{ name: perStack.name, value: perStack.value * value }] : []),
+    ];
+  });
+}
+
+export function isStart(state: CharacterState, key: HitKey): boolean {
+  return Array.isArray(state.start) ? state.start.includes(key) : state.start === key;
 }
 
 function unlocks(counter: CharacterCounter, key: HitKey): boolean {

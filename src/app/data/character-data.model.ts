@@ -127,6 +127,8 @@ export interface CharacterCounter {
   /** Hits that add `amount` (1 without it) */
   gain: HitKey[];
   amount?: number;
+  /** Hits that fill it */
+  fills?: HitKey[];
   /** Hit (or hits) that needs the counter full, and spends it all; with `spend`, it needs that much and spends it */
   unlocks: HitKey | HitKey[];
   spend?: number;
@@ -135,6 +137,8 @@ export interface CharacterCounter {
   /** Index in `states` of the only state where the counter exists; it goes back to 0 when the state ends */
   state?: number;
   boost?: CounterBoost;
+  /** These hits get a DMG Bonus of `value`% for each point it has before them */
+  perStack?: { name: string; value: number; hits: HitKey[] };
 }
 
 /** A hit that, with at least `spend` in the counter, spends it and gets a DMG Bonus of `value`% (not in the state `notIn`) */
@@ -149,8 +153,8 @@ export interface CounterBoost {
 /** A state a hit puts the character in (e.g. Dark Surge); it ends on the Outro or when the player leaves it in the rotation */
 export interface CharacterState {
   name: string;
-  /** Hit that starts the state */
-  start: HitKey;
+  /** Hit (or hits) that starts the state */
+  start: HitKey | HitKey[];
   /** Hits only available in the state */
   hits: HitKey[];
   /** Hits not available in the state (replaced by the state hits) */
