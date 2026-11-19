@@ -169,6 +169,12 @@ const DAMAGE_SPREAD_MAX = 1.065;
 const ENEMY_MITIGATION_COMMON = 0.49;
 const ENEMY_MITIGATION_RESISTANT = 0.33;
 
+/** Value of a tick of a Negative Status against a common enemy: the middle of its range (it never crits) */
+export function statusTickValue(base: number): number {
+  const range = getRangeDamage(base, false, 100);
+  return (range.min + range.max) / 2;
+}
+
 function getRangeDamage(expected: number, resistance: boolean, critDmg: number): DamageRange {
   const mitigation = resistance ? ENEMY_MITIGATION_RESISTANT : ENEMY_MITIGATION_COMMON;
   const min = +(expected * DAMAGE_SPREAD_MIN * mitigation).toFixed(0);

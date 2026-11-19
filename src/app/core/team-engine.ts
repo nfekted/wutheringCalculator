@@ -1,6 +1,7 @@
 import { Amplification, Stats, noAmplification } from './damage-engine';
 import { CoordinatedAttack, HitKey, OutroBuff, RotationStep, StatBuff, TeamField } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
+import { NEGATIVE_STATUS, NegativeStatus, statusTick } from './negative-status';
 import { advance, counterBonuses, isStart, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
 
 export { stepCost };
@@ -75,7 +76,7 @@ export function simulateTeam(members: Character[], steps: RotationStep[][], rota
       segments.push({ character, slot, rotation, steps: [...intro, ...steps[slot], ...sectionSteps(character, 'outro')] });
     });
   }
-  return simulate(segments, members.length);
+  return simulate(segments, members.length, true);
 }
 
 /** A Coordinated Attack while it lasts, with how many hits it fired */
@@ -87,6 +88,18 @@ interface ActiveCoordinated {
   fired: number;
   /** Points since it last fired */
   since: number;
+}
+
+/** A Negative Status on the target while it lasts; the member that applied the last stack gets its ticks */
+interface ActiveStatus {
+  status: NegativeStatus;
+  stacks: number;
+  points: number;
+  /** Points since the last tick (or since it started) */
+  since: number;
+  character: Character;
+  slot: number;
+  step: RotationStep;
 }
 
 /** A field of a member while it lasts, with the level it reached */
@@ -110,8 +123,38 @@ export function simulateRotation(character: Character, steps: RotationStep[]): T
   return simulate([{ character, slot: 0, rotation: 0, steps: all }], 1);
 }
 
-function simulate(segments: Segment[], memberCount: number): TeamResult {
+/** `statuses`: whether the Negative Statuses on the target count (only for the team) */
+function simulate(segments: Segment[], memberCount: number, statuses = false): TeamResult {
   const rows: TeamHitRow[] = [];
+  let onTarget: ActiveStatus[] = [];
+  /** Raises of the max stacks of a status while they last */
+  let maxRaises: { status: NegativeStatus; extra: number; points: number }[] = [];
+  const maxOf = (status: NegativeStatus) => NEGATIVE_STATUS[status].max
+    + maxRaises.filter(r => r.status === status).reduce((sum, r) => sum + r.extra, 0);
+  /** Time passes for the statuses on the target: a tick every interval while they last */
+  const passTime = (points: number, rotation: number) => {
+    for (const s of onTarget) {
+      const interval = NEGATIVE_STATUS[s.status].interval;
+      let left = points;
+      while (s.points > 0) {
+        const next = interval - s.since;
+        if (next > left || next > s.points) {
+          const spent = Math.min(left, s.points);
+          s.points -= spent;
+          s.since += spent;
+          break;
+        }
+        left -= next;
+        s.points -= next;
+        s.since = 0;
+        const value = statusTick(s.status, s.stacks);
+        rows.push({ rotation, slot: s.slot, step: s.step, name: `${NEGATIVE_STATUS[s.status].name} (${s.stacks})`, buffs: [], damage: true, base: value, buffed: value, auto: true });
+      }
+    }
+    onTarget = onTarget.filter(s => s.points > 0);
+    maxRaises = maxRaises.map(r => ({ ...r, points: r.points - points })).filter(r => r.points > 0);
+    for (const s of onTarget) s.stacks = Math.min(s.stacks, maxOf(s.status));
+  };
   let active: ActiveBuff[] = [];
   /** Points left until the guaranteed crit of each member is ready again */
   const critCooldown = new Map<number, number>();
@@ -241,6 +284,7 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       active = active.map(a => ({ ...a, points: a.points - cost })).filter(a => a.points > 0);
       fields = fields.map(f => ({ ...f, points: f.points - cost })).filter(f => f.points > 0);
       coordinated = coordinated.map(c => ({ ...c, points: c.points - cost, since: c.since + cost })).filter(c => c.points > 0 && !(c.attack.max && c.fired >= c.attack.max));
+      if (statuses) passTime(cost, rotation);
       for (const [member, left] of critCooldown) critCooldown.set(member, left - cost);
       if (crits) critCooldown.set(slot, crit!.cooldown);
 
@@ -260,6 +304,18 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       // Buffs the hit gives the character itself start after it (after its block)
       const giver = blockOf[position];
       if (blockEnd[position]) character.stepHit(giver)?.buffs?.forEach(buff => give(character, slot, buff));
+      // Stacks of a Negative Status the hit applies: up to the max, and the duration starts over
+      for (const rule of statuses ? character.data.statuses ?? [] : []) {
+        const stacks = rule.hits?.[key];
+        if (!stacks) continue;
+        const data = NEGATIVE_STATUS[rule.status];
+        const old = onTarget.find(s => s.status === rule.status);
+        onTarget = onTarget.filter(s => s !== old);
+        onTarget.push({
+          status: rule.status, stacks: Math.min((old?.stacks ?? 0) + stacks, maxOf(rule.status)), points: data.duration,
+          since: old?.since ?? 0, character, slot, step,
+        });
+      }
       // A state that ends gives its hit for the next Intro
       if (step.section === 'end' && states[step.index]?.nextIntro) nextIntro.set(slot, states[step.index].nextIntro!);
       context = advance(character, context, step, spends[position]);
@@ -282,6 +338,10 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
 
     // The Outro starts its buffs; the same one given again renews its duration
     character.data.outro.statBuffs?.forEach(buff => give(character, slot, buff));
+    for (const rule of statuses ? character.data.statuses ?? [] : []) {
+      if (!rule.outroMax) continue;
+      maxRaises = [...maxRaises.filter(r => r.status !== rule.status), { status: rule.status, extra: rule.outroMax.extra, points: rule.outroMax.duration }];
+    }
     const next = segments[i + 1]?.slot;
     (character.data.outro.buffs ?? []).forEach((buff, position) => {
       if (buff.target === 'incoming' && next === undefined) return;
@@ -295,6 +355,9 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
       });
     });
   });
+
+  // The statuses still on the target tick until they end
+  if (statuses) passTime(Infinity, segments.at(-1)?.rotation ?? 0);
 
   // A step worth nothing on its own (e.g. casting a Liberation that only enters a state) is not counted as a hit
   const sum = (list: TeamHitRow[]): TeamSum => list.filter(r => r.damage && r.base > 0)

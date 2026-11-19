@@ -715,5 +715,14 @@
         "skill:0"
       ]
     }
+  ],
+  "statuses": [
+    {
+      "status": "aeroErosion",
+      "outroMax": {
+        "extra": 3,
+        "duration": 30
+      }
+    }
   ]
 }

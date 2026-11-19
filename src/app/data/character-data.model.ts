@@ -1,3 +1,4 @@
+import { NegativeStatus } from '../core/negative-status';
 import { EchoAttribute, EchoCost } from './echos/echo-data.model';
 
 export type SectionKey = 'basic' | 'skill' | 'liberation' | 'intro' | 'outro' | 'forte';
@@ -122,6 +123,16 @@ export interface TeamField {
   duration: number;
   levels: { name: string; stat: BuffStat; perEnergyRegen: number; max: number }[];
   intro: HitKey[];
+}
+
+/**
+ * What the character does with a Negative Status: stacks its hits apply to the target (after the hit), and how much its Outro raises
+ * the max stacks, for the whole team, for `duration` points
+ */
+export interface CharacterStatus {
+  status: NegativeStatus;
+  hits?: Record<HitKey, number>;
+  outroMax?: { extra: number; duration: number };
 }
 
 /** Hit of a character as "section:index" (e.g. "forte:0") */
@@ -287,6 +298,7 @@ export interface CharacterData {
   /** Hits added, in the same action, after some hits (e.g. a butterfly after each Normal Attack) */
   followUps?: { hit: HitKey; after: HitKey[] }[];
   field?: TeamField;
+  statuses?: CharacterStatus[];
   basic: SkillData;
   skill: SkillData;
   liberation: SkillData;
