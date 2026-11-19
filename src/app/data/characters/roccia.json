@@ -144,6 +144,14 @@
               168.99
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Immersive Performance",
+            "stat": "atk",
+            "value": 20,
+            "duration": 12
+          }
         ]
       },
       {
@@ -214,6 +222,14 @@
             ],
             "times": 8
           }
+        ],
+        "buffs": [
+          {
+            "name": "Immersive Performance",
+            "stat": "atk",
+            "value": 20,
+            "duration": 12
+          }
         ]
       }
     ]
@@ -240,6 +256,19 @@
               278.34
             ],
             "times": 3
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Commedia Improvviso!",
+            "stat": "flatAtk",
+            "value": 10,
+            "duration": 30,
+            "target": "team",
+            "perCritRate": {
+              "over": 50,
+              "max": 200
+            }
           }
         ]
       }
@@ -448,5 +477,32 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:3": [
+        "basic:2",
+        "intro:0"
+      ]
+    }
+  },
+  "counters": [
+    {
+      "name": "Imagination",
+      "max": 3,
+      "gain": [],
+      "amounts": {
+        "skill:0": 1,
+        "intro:0": 1,
+        "basic:4": 1
+      },
+      "unlocks": [
+        "forte:0",
+        "forte:1",
+        "forte:2"
+      ],
+      "spend": 1,
+      "replaces": []
+    }
+  ]
 }

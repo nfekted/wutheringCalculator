@@ -148,7 +148,7 @@
       },
       {
         "name": "Razor Wind DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -180,7 +180,8 @@
               44.46
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Mid-air Attack DMG",
@@ -378,7 +379,8 @@
               77
             ]
           }
-        ]
+        ],
+        "bonus": 20
       }
     ]
   },
@@ -418,6 +420,14 @@
               110.93,
               119.29
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Sand in the Storm",
+            "stat": "atk",
+            "value": 20,
+            "duration": 10
           }
         ]
       }
@@ -643,5 +653,67 @@
         "stat": "energyRegen"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:2": [
+        "basic:1",
+        "skill:0"
+      ],
+      "basic:3": [
+        "basic:2",
+        "basic:6"
+      ],
+      "basic:5": [
+        "basic:2",
+        "basic:7",
+        "basic:4"
+      ],
+      "forte:0": [
+        "skill:0",
+        "intro:0",
+        "basic:5"
+      ],
+      "forte:1": [
+        "forte:0"
+      ],
+      "forte:4": [
+        "forte:3"
+      ],
+      "skill:1": [
+        "forte:0",
+        "forte:1",
+        "basic:6"
+      ]
+    },
+    "linked": [
+      [
+        "liberation:0",
+        "liberation:1"
+      ],
+      [
+        "forte:0",
+        "forte:2"
+      ]
+    ]
+  },
+  "counters": [
+    {
+      "name": "Windstring",
+      "max": 24,
+      "gain": [],
+      "amounts": {
+        "forte:0": 5,
+        "forte:1": 5,
+        "intro:0": 4,
+        "basic:2": 2,
+        "basic:3": 2,
+        "basic:7": 2
+      },
+      "unlocks": "forte:3",
+      "replaces": [
+        "skill:0"
+      ]
+    }
+  ]
 }

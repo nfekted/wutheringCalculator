@@ -130,7 +130,10 @@ function simulate(segments: Segment[], memberCount: number): TeamResult {
     if (!buff.duration) return;
     const id = `self:${slot}:${buff.name}`;
     const count = buff.stacks ? Math.min((active.find(a => a.id === id)?.count ?? 0) + 1, buff.stacks) : 1;
-    const stat = count > 1 ? { ...buff, value: +(buff.value * count).toFixed(2) } : buff;
+    const perCrit = buff.perCritRate;
+    const value = perCrit ? Math.min(perCrit.max, Math.max(0, character.cChance - perCrit.over) * buff.value) : buff.value * count;
+    if (!value) return;
+    const stat = value !== buff.value ? { ...buff, value: +value.toFixed(2) } : buff;
     active = active.filter(a => a.id !== id);
     active.push({ id, receiver: buff.target === 'team' ? null : slot, points: buff.duration, label: `${character.name}: ${statLabel(stat)}`, stat, count });
   };
@@ -314,7 +317,7 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   // ATK only for a hit that scales with it; DMG Bonus and DMG Amplification never for healing or a shield
   const support = kind === 'heal' || kind === 'shield';
   const fits = (buff?: StatBuff) => !buff || ((!buff.hits || buff.hits.includes(key)) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat])
-    && (buff.stat === 'atk' ? !!hit?.parts.some(part => part.stat === 'atk') : !support));
+    && (buff.stat === 'atk' || buff.stat === 'flatAtk' ? !!hit?.parts.some(part => part.stat === 'atk') : !support));
   const applied = active.filter(a => (a.receiver === null || a.receiver === slot) && fits(a.stat)
     && !(a.outro?.amplification === 'elemental' && a.outro.element !== character.data.type)
     && !(a.outro && (support || kind === 'tune'))
@@ -348,6 +351,7 @@ function extraStats(buffs: StatBuff[], character: Character): Partial<Stats> {
   for (const buff of buffs) {
     if (buff.stat === 'multiplier') continue;
     if (buff.stat === 'atk') extra.dmg = (extra.dmg ?? 0) + character.data.base.atk * buff.value / 100;
+    else if (buff.stat === 'flatAtk') extra.dmg = (extra.dmg ?? 0) + buff.value;
     // Every damage hit of the character gets the elemental bonus, so a DMG Bonus on all of them is added there
     else if (buff.stat === 'damageBonus') extra.elementalBonus = (extra.elementalBonus ?? 0) + buff.value;
     else if (buff.stat === 'critRate') extra.cChance = (extra.cChance ?? 0) + buff.value;
@@ -363,6 +367,7 @@ function outroLabel(buff: OutroBuff): string {
 }
 
 function statLabel(buff: StatBuff): string {
+  if (buff.stat === 'flatAtk') return `${buff.name} (ATK +${buff.value})`;
   const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG', multiplier: 'DMG Multiplier' }[buff.stat];
   return `${buff.name} (${stat} +${buff.value}%)`;
 }

@@ -52,9 +52,9 @@ export interface BonusAfter {
 /**
  * Attribute a buff of the character raises during the rotation: 'atk' is a percentage of the base ATK, the others are added;
  * 'damageBonus' is a DMG Bonus on every damage hit of the character (added to the elemental bonus); 'multiplier' raises the DMG
- * Multiplier of the hits by that %
+ * Multiplier of the hits by that %; 'flatAtk' adds that many ATK points
  */
-export type BuffStat = 'atk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'basicBonus' | 'critRate' | 'critDamage' | 'multiplier';
+export type BuffStat = 'atk' | 'flatAtk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'basicBonus' | 'critRate' | 'critDamage' | 'multiplier';
 
 /** Hits of a kind that always crit, once every `cooldown` points (e.g. an Inherent Skill "Heavy Attack always crits, once every 30s") */
 export interface GuaranteedCrit {
@@ -78,6 +78,8 @@ export interface StatBuff {
   target?: 'team';
   /** Given again while it lasts, it adds a stack (up to this many) and renews the duration */
   stacks?: number;
+  /** The value is `value` for each 1% of Crit. Rate of the character over `over`, up to `max` */
+  perCritRate?: { over: number; max: number };
 }
 
 /**

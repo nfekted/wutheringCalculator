@@ -628,7 +628,8 @@
               501.21
             ]
           }
-        ]
+        ],
+        "cost": 1
       }
     ]
   },
@@ -733,5 +734,122 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:3": [
+        "basic:2"
+      ],
+      "basic:4": [
+        "basic:3"
+      ],
+      "basic:8": [
+        "basic:7"
+      ],
+      "skill:1": [
+        "skill:0"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Twilight Tango",
+      "start": "liberation:0",
+      "hits": [
+        "liberation:1",
+        "liberation:2"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "forte:0"
+      ],
+      "endsOn": [
+        "liberation:2"
+      ]
+    },
+    {
+      "name": "Final Bow",
+      "start": [
+        "basic:6",
+        "forte:0"
+      ],
+      "hits": [],
+      "replaces": [],
+      "endsOn": [
+        "liberation:2"
+      ],
+      "buffs": [
+        {
+          "name": "Final Bow",
+          "stat": "multiplier",
+          "value": 80,
+          "hits": [
+            "liberation:0",
+            "liberation:1",
+            "liberation:2"
+          ]
+        }
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Moldable Crystal",
+      "max": 6,
+      "gain": [],
+      "amounts": {
+        "basic:1": 3,
+        "basic:5": 3,
+        "basic:8": 3,
+        "intro:0": 3
+      },
+      "unlocks": [
+        "basic:2",
+        "basic:3",
+        "basic:4"
+      ],
+      "spend": 1,
+      "replaces": [
+        "basic:0",
+        "basic:1"
+      ]
+    },
+    {
+      "name": "Substance",
+      "max": 10,
+      "gain": [],
+      "amounts": {
+        "intro:0": 3,
+        "basic:2": 1,
+        "basic:3": 1,
+        "basic:4": 1,
+        "skill:1": 3
+      },
+      "unlocks": [
+        "basic:6",
+        "forte:0"
+      ],
+      "replaces": [
+        "basic:5"
+      ]
+    },
+    {
+      "name": "Meta Vectors",
+      "max": 4,
+      "gain": [
+        "liberation:1"
+      ],
+      "unlocks": "liberation:2",
+      "replaces": [
+        "liberation:1"
+      ],
+      "state": 0
+    }
+  ]
 }
