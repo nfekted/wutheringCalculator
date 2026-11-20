@@ -477,6 +477,14 @@
               80.8
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Quick Response",
+            "stat": "elementalBonus",
+            "value": 12,
+            "duration": 14
+          }
         ]
       }
     ]
@@ -576,8 +584,24 @@
               244.03,
               262.43
             ]
+          },
+          {
+            "stat": "atk",
+            "values": [
+              200,
+              216.41,
+              232.82,
+              255.76,
+              272.18,
+              291.03,
+              317.26,
+              343.5,
+              369.76,
+              397.65
+            ]
           }
-        ]
+        ],
+        "manual": true
       },
       {
         "name": "Heavy Slash - Lightsmash DMG",
@@ -672,5 +696,122 @@
         "stat": "energyRegen"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:2": [
+        "basic:1",
+        "basic:5",
+        "basic:6",
+        "skill:0"
+      ],
+      "basic:4": [
+        "basic:2"
+      ],
+      "skill:1": [
+        "skill:0"
+      ],
+      "forte:1": [
+        "forte:0"
+      ],
+      "forte:2": [
+        "forte:1",
+        "forte:3"
+      ]
+    },
+    "keepsChain": [
+      "basic:4"
+    ]
+  },
+  "states": [
+    {
+      "name": "Inferno Mode",
+      "start": "liberation:0",
+      "hits": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "liberation:1"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "skill:0",
+        "skill:1",
+        "skill:2",
+        "skill:3"
+      ],
+      "endsOn": [
+        "liberation:1"
+      ]
+    },
+    {
+      "name": "Sunburst",
+      "start": [
+        "skill:2",
+        "skill:3"
+      ],
+      "hits": [],
+      "replaces": [],
+      "buffs": [
+        {
+          "name": "Sunburst",
+          "stat": "amplification",
+          "value": 20,
+          "hits": [
+            "skill:2",
+            "skill:3",
+            "forte:0",
+            "forte:1",
+            "forte:2",
+            "forte:3"
+          ]
+        }
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Redundant Energy",
+      "max": 10,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "intro:0",
+        "skill:0",
+        "skill:1"
+      ],
+      "unlocks": [
+        "skill:2",
+        "skill:3"
+      ],
+      "replaces": [
+        "skill:0"
+      ]
+    }
+  ],
+  "statuses": [
+    {
+      "status": "spectroFrazzle",
+      "counts": [
+        "skill:2",
+        "skill:3",
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3"
+      ],
+      "convert": "Heliacal Ember"
+    }
+  ]
 }

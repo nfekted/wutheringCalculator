@@ -1,5 +1,5 @@
 import { Amplification, Stats, noAmplification } from './damage-engine';
-import { CoordinatedAttack, HitKey, OutroBuff, RotationStep, StatBuff, TeamField } from '../data/character-data.model';
+import { CoordinatedAttack, HitKey, OutroBuff, RotationStep, StatBuff, TeamField, CharacterStatus } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
 import { NEGATIVE_STATUS, NegativeStatus, statusTick } from './negative-status';
 import { advance, counterBonuses, counterBoosted, isStart, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
@@ -135,6 +135,36 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   const pauses = new Map<NegativeStatus, number>();
   /** DMG Amplification and longer interval of a status while they last */
   let statusBoosts: { status: NegativeStatus; amplification: number; intervalRate: number; points: number; label: string }[] = [];
+  /** A tick of a status, with the boosts on it */
+  const tickRow = (s: ActiveStatus, rotation: number, boosts: typeof statusBoosts, name = NEGATIVE_STATUS[s.status].name) => {
+    const base = statusTick(s.status, s.stacks);
+    const buffed = base * (1 + boosts.reduce((sum, b) => sum + b.amplification, 0) / 100);
+    rows.push({ rotation, slot: s.slot, step: s.step, name: `${name} (${s.stacks})`, buffs: boosts.map(b => b.label), damage: true, base, buffed, auto: true });
+  };
+  /** Statuses a member of the team converts as soon as they are applied */
+  const converts = new Map<NegativeStatus, string>();
+  for (const { character } of segments) for (const rule of character.data.statuses ?? []) if (rule.convert) converts.set(rule.status, rule.convert);
+  /** The DMG Amplification of the statuses, on the hits of the character considered damage of them */
+  const statusAmplification = (character: Character): LabeledBuff[] => (character.data.statuses ?? []).flatMap(rule => !rule.counts ? []
+    : statusBoosts.filter(b => b.status === rule.status).map(b => ({ buff: { name: b.label, stat: 'amplification' as const, value: b.amplification, hits: rule.counts }, label: b.label })));
+  /** The DMG Amplification of the hit by the stacks on the target */
+  const stacksAmplification = (character: Character, key: HitKey): LabeledBuff[] => (character.data.statuses ?? []).flatMap(rule => {
+    const stacks = onTarget.find(s => s.status === rule.status)?.stacks ?? 0;
+    const values: { name: string; value: number }[] = [];
+    if (rule.amplifiedBy) values.push({ name: rule.amplifiedBy.name, value: rule.amplifiedBy.values[Math.min(stacks, rule.amplifiedBy.values.length - 1)] });
+    if (rule.consume?.hit === key) values.push({ name: rule.consume.name, value: Math.min(stacks, rule.consume.max) * rule.consume.perStack });
+    return values.filter(v => v.value).map(v => {
+      const buff: StatBuff = { name: v.name, stat: 'amplification', value: v.value };
+      return { buff, label: `${character.name}: ${statLabel(buff)}` };
+    });
+  });
+  /** The boost a state of the character gives the status, while the character is in it */
+  const stateBoostOf = (character: Character, rule: CharacterStatus, states: number[], points: number) => {
+    const boost = rule.stateBoost;
+    if (!boost || !boost.states.every(s => states.includes(s))) return undefined;
+    return { status: rule.status, amplification: boost.amplification, intervalRate: boost.intervalRate, points, label: `${character.name}: ${boost.name} (+${boost.amplification}%)` };
+  };
+
   /** Time passes for the statuses on the target: a tick every interval while they last */
   const passTime = (points: number, rotation: number) => {
     for (const s of onTarget) {
@@ -154,9 +184,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         s.points -= next;
         s.since = 0;
         elapsed += next;
-        const base = statusTick(s.status, s.stacks);
-        const buffed = base * (1 + boosts.reduce((sum, b) => sum + b.amplification, 0) / 100);
-        rows.push({ rotation, slot: s.slot, step: s.step, name: `${NEGATIVE_STATUS[s.status].name} (${s.stacks})`, buffs: boosts.map(b => b.label), damage: true, base, buffed, auto: true });
+        tickRow(s, rotation, boosts);
         // A status without duration loses 1 stack each tick
         const paused = (pauses.get(s.status) ?? 0) > elapsed;
         if (NEGATIVE_STATUS[s.status].duration === undefined && !paused && --s.stacks <= 0) s.points = 0;
@@ -169,6 +197,11 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     for (const s of onTarget) s.stacks = Math.min(s.stacks, maxOf(s.status));
   };
   let active: ActiveBuff[] = [];
+  // Buffs always active for the team while the member is in it
+  for (const { character, slot } of segments) for (const buff of character.data.teamBuffs ?? []) {
+    const id = `always:${slot}:${buff.name}`;
+    if (!active.some(a => a.id === id)) active.push({ id, receiver: null, points: Infinity, label: `${character.name}: ${statLabel(buff)}`, stat: buff, count: 1 });
+  }
   /** Points left until the guaranteed crit of each member is ready again */
   const critCooldown = new Map<number, number>();
   /** Hit that replaces the next Intro of each member (a state of it ended) */
@@ -242,7 +275,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         const buff: StatBuff = { name: boost.name, stat: 'damageBonus', value: boost.value };
         return { buff, label: `${character.name}: ${statLabel(buff)}` };
       });
-      const value = valueOf(character, slot, step, active, [...stateBuffs, ...boosts, ...fieldBuffs()], crits, bonusAfter?.multiplier);
+      const value = valueOf(character, slot, step, active, [...stateBuffs, ...boosts, ...fieldBuffs(), ...statusAmplification(character), ...(statuses ? stacksAmplification(character, key) : [])], crits, bonusAfter?.multiplier);
       rows.push({
         rotation, slot, step,
         name: step.section === 'end' ? `Leave ${states[step.index]?.name ?? ''}` : hit?.name ?? character.mainEcho?.name ?? '—',
@@ -296,6 +329,11 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       active = active.map(a => ({ ...a, points: a.points - cost })).filter(a => a.points > 0);
       fields = fields.map(f => ({ ...f, points: f.points - cost })).filter(f => f.points > 0);
       coordinated = coordinated.map(c => ({ ...c, points: c.points - cost, since: c.since + cost })).filter(c => c.points > 0 && !(c.attack.max && c.fired >= c.attack.max));
+      // A state boost lasts while the character is in the state: given again for each hit
+      for (const rule of statuses ? character.data.statuses ?? [] : []) {
+        const boost = stateBoostOf(character, rule, context.states, cost);
+        if (boost) statusBoosts = [...statusBoosts.filter(b => b.label !== boost.label), boost];
+      }
       if (statuses) passTime(cost, rotation);
       for (const [member, left] of critCooldown) critCooldown.set(member, left - cost);
       if (crits) critCooldown.set(slot, crit!.cooldown);
@@ -323,10 +361,24 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         const data = NEGATIVE_STATUS[rule.status];
         const old = onTarget.find(s => s.status === rule.status);
         onTarget = onTarget.filter(s => s !== old);
-        onTarget.push({
+        const applied: ActiveStatus = {
           status: rule.status, stacks: Math.min((old?.stacks ?? 0) + stacks, maxOf(rule.status)), points: data.duration ?? Infinity,
           since: old?.since ?? 0, character, slot, step,
-        });
+        };
+        const convert = converts.get(rule.status);
+        if (convert) tickRow(applied, rotation, statusBoosts.filter(b => b.status === rule.status), `${data.name} → ${convert}`);
+        else onTarget.push(applied);
+      }
+      // A hit that detonates the status: 1 tick at once, and 1 stack less; a hit that consumes it: the status is gone
+      for (const rule of statuses ? character.data.statuses ?? [] : []) {
+        const s = onTarget.find(s => s.status === rule.status);
+        if (!s) continue;
+        if (rule.detonate?.includes(key)) {
+          const boost = stateBoostOf(character, rule, context.states, 0);
+          tickRow({ ...s, character, slot, step }, rotation, [...statusBoosts.filter(b => b.status === rule.status && b.label !== boost?.label), ...(boost ? [boost] : [])]);
+          if (--s.stacks <= 0) onTarget = onTarget.filter(other => other !== s);
+        }
+        if (rule.consume?.hit === key) onTarget = onTarget.filter(other => other !== s);
       }
       for (const rule of statuses ? character.data.statuses ?? [] : []) {
         const pause = rule.pause;
@@ -404,7 +456,7 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
   // ATK only for a hit that scales with it; DMG Bonus and DMG Amplification never for healing or a shield
   const support = kind === 'heal' || kind === 'shield';
-  const fits = (buff?: StatBuff) => !buff || ((!buff.hits || buff.hits.includes(key)) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat])
+  const fits = (buff?: StatBuff) => !buff || ((!buff.hits || buff.hits.includes(key)) && (!buff.element || buff.element === character.data.type) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat])
     && (buff.stat === 'atk' || buff.stat === 'flatAtk' ? !!hit?.parts.some(part => part.stat === 'atk') : !support));
   const applied = active.filter(a => (a.receiver === null || a.receiver === slot) && fits(a.stat)
     && !(a.outro?.amplification === 'elemental' && a.outro.element !== character.data.type)

@@ -141,7 +141,7 @@ export class Character implements Stats {
     /** Steps of the Intro or the Outro, without the hits that only come in some cases (the Intro of a field or of a state, a hit a counter gives) */
     sectionSteps(section: 'intro' | 'outro'): RotationStep[] {
         const special = (key: string) => !!this.data.field?.intro.includes(key) || !!this.data.counters?.some(counter => counter.outro?.hit === key)
-            || !!this.data.states?.some(state => state.nextIntro === key);
+            || !!this.data.states?.some(state => state.nextIntro === key) || !!this.data.ignoredHits?.includes(key);
         return this.data[section].hits.flatMap((_, index): RotationStep[] => special(`${section}:${index}`) ? [] : [{ section, index }]);
     }
 

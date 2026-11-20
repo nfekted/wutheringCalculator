@@ -163,7 +163,7 @@
       },
       {
         "name": "Aimed Shot DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -184,7 +184,7 @@
       },
       {
         "name": "Fully Charged Aimed Shot DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -343,6 +343,29 @@
             "times": 20
           }
         ]
+      },
+      {
+        "name": "Symphonic Poem: Tonic DMG (Yellow)",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              3.08,
+              3.33,
+              3.58,
+              3.94,
+              4.19,
+              4.48,
+              4.88,
+              5.29,
+              5.69,
+              6.12
+            ],
+            "times": 20
+          }
+        ],
+        "manual": true
       }
     ]
   },
@@ -414,7 +437,8 @@
               314.03
             ]
           }
-        ]
+        ],
+        "bonus": 30
       }
     ]
   },
@@ -519,5 +543,73 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:0",
+        "skill:0"
+      ],
+      "basic:2": [
+        "basic:1",
+        "intro:0"
+      ],
+      "basic:3": [
+        "basic:2",
+        "basic:8"
+      ],
+      "liberation:1": [
+        "liberation:0"
+      ],
+      "liberation:2": [
+        "liberation:0"
+      ]
+    }
+  },
+  "counters": [
+    {
+      "name": "Musical Essence",
+      "max": 3,
+      "gain": [
+        "basic:3",
+        "intro:0"
+      ],
+      "unlocks": "forte:0",
+      "replaces": [
+        "basic:4"
+      ]
+    }
+  ],
+  "teamBuffs": [
+    {
+      "name": "Solo Concert",
+      "stat": "elementalBonus",
+      "value": 24,
+      "element": "aero"
+    }
+  ],
+  "statuses": [
+    {
+      "status": "aeroErosion",
+      "hits": {
+        "basic:3": 1,
+        "skill:0": 1,
+        "intro:0": 1,
+        "forte:0": 1,
+        "liberation:1": 20
+      },
+      "outroBoost": {
+        "name": "Windcalling Tune",
+        "amplification": 100,
+        "intervalRate": 1,
+        "duration": 30
+      }
+    },
+    {
+      "status": "spectroFrazzle",
+      "hits": {
+        "liberation:2": 20
+      }
+    }
+  ]
 }

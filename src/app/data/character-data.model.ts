@@ -77,6 +77,8 @@ export interface StatBuff {
   hits?: HitKey[];
   /** 'team': every member gets it (e.g. "all team members' ATK are increased by 20%"); without it, only the character */
   target?: 'team';
+  /** Only a character of this element gets it (e.g. "Aero DMG Bonus to all Resonators in the team") */
+  element?: string;
   /** Given again while it lasts, it adds a stack (up to this many) and renews the duration */
   stacks?: number;
   /** The value is `value` for each 1% of Crit. Rate of the character over `over`, up to `max` */
@@ -141,6 +143,18 @@ export interface CharacterStatus {
   pause?: { hit: HitKey; duration: number; counter?: number };
   /** The Outro gives the whole team, for `duration` points, a DMG Amplification of the status and a longer interval (multiplied by `intervalRate`) */
   outroBoost?: { name: string; amplification: number; intervalRate: number; duration: number };
+  /** Hits considered damage of the status too: the DMG Amplification of the status applies to them */
+  counts?: HitKey[];
+  /** With the character in the team, applying the status deals at once 1 tick with all its stacks, and the status is gone (named this) */
+  convert?: string;
+  /** After these hits, 1 tick of the status at once, and it loses 1 stack */
+  detonate?: HitKey[];
+  /** `hit` gets a DMG Amplification of `perStack` for each stack on the target (up to `max`), then the status is gone */
+  consume?: { hit: HitKey; name: string; perStack: number; max: number };
+  /** Every hit of the character gets the DMG Amplification of the stacks on the target (by count, the last one for more) */
+  amplifiedBy?: { name: string; values: number[] };
+  /** While the character is in all these states (by index in `states`), the status gets a DMG Amplification and a longer interval */
+  stateBoost?: { name: string; amplification: number; intervalRate: number; states: number[] };
 }
 
 /** Hit of a character as "section:index" (e.g. "forte:0") */
@@ -315,6 +329,10 @@ export interface CharacterData {
   statuses?: CharacterStatus[];
   /** A passive that adds `per` ATK points for each 1% of Energy Regen over `over`, up to `max` (on the attributes from the Echos) */
   atkFromEnergyRegen?: { name: string; over: number; per: number; max: number };
+  /** Hits that never enter the rotation (e.g. the Intro of another form) */
+  ignoredHits?: HitKey[];
+  /** Buffs always active for the whole team while the character is in it */
+  teamBuffs?: StatBuff[];
   basic: SkillData;
   skill: SkillData;
   liberation: SkillData;

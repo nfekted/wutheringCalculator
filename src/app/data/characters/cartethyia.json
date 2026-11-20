@@ -266,7 +266,7 @@
       },
       {
         "name": "Heavy Attack DMG",
-        "kind": "heavy",
+        "kind": "basic",
         "parts": [
           {
             "stat": "hp",
@@ -439,7 +439,7 @@
         "kind": "liberation",
         "parts": [
           {
-            "stat": "atk",
+            "stat": "hp",
             "values": [
               6.6,
               7.14,
@@ -455,6 +455,13 @@
             "times": 7
           }
         ]
+      },
+      {
+        "name": "A Knight's Heartfelt Prayers",
+        "kind": "liberation",
+        "parts": [],
+        "cost": 1,
+        "manual": true
       }
     ]
   },
@@ -538,7 +545,16 @@
   },
   "outro": {
     "name": "Wind's Divine Blessing",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "team",
+        "amplification": "elemental",
+        "element": "aero",
+        "value": 17.5,
+        "duration": 20
+      }
+    ]
   },
   "forte": {
     "name": "Tempest",
@@ -1080,7 +1096,7 @@
         "kind": "skill",
         "parts": [
           {
-            "stat": "atk",
+            "stat": "hp",
             "values": [
               0.94,
               1.02,
@@ -1096,7 +1112,7 @@
             "times": 2
           },
           {
-            "stat": "atk",
+            "stat": "hp",
             "values": [
               3.54,
               3.83,
@@ -1194,5 +1210,161 @@
         "stat": "energyRegen"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:0",
+        "basic:9",
+        "intro:0"
+      ],
+      "forte:2": [
+        "forte:1",
+        "forte:11",
+        "forte:13"
+      ],
+      "forte:3": [
+        "forte:2",
+        "forte:5"
+      ],
+      "forte:8": [
+        "forte:7"
+      ],
+      "forte:13": [
+        "forte:12"
+      ],
+      "forte:10": [
+        "forte:9"
+      ],
+      "forte:11": [
+        "forte:10"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Manifest",
+      "start": "liberation:1",
+      "hits": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6",
+        "forte:7",
+        "forte:8",
+        "forte:9",
+        "forte:10",
+        "forte:11",
+        "forte:12",
+        "forte:13",
+        "liberation:0"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "skill:0",
+        "liberation:1"
+      ],
+      "endsOn": [
+        "liberation:0"
+      ]
+    },
+    {
+      "name": "Mandate of Divinity",
+      "start": [
+        "basic:6",
+        "basic:7",
+        "basic:8"
+      ],
+      "hits": [],
+      "replaces": [],
+      "endsOn": [
+        "liberation:0"
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Conviction",
+      "max": 12,
+      "gain": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6",
+        "forte:7",
+        "forte:8",
+        "forte:9",
+        "forte:10",
+        "forte:11",
+        "forte:12",
+        "forte:13"
+      ],
+      "unlocks": "liberation:0",
+      "replaces": [],
+      "state": 0
+    }
+  ],
+  "ignoredHits": [
+    "intro:1"
+  ],
+  "statuses": [
+    {
+      "status": "aeroErosion",
+      "hits": {
+        "basic:3": 1,
+        "skill:0": 2,
+        "intro:0": 2
+      },
+      "counts": [
+        "basic:9"
+      ],
+      "detonate": [
+        "forte:4",
+        "forte:10",
+        "forte:13"
+      ],
+      "consume": {
+        "hit": "liberation:0",
+        "name": "Blade of Howling Squall",
+        "perStack": 20,
+        "max": 5
+      },
+      "amplifiedBy": {
+        "name": "Wind's Indelible Imprint",
+        "values": [
+          0,
+          30,
+          30,
+          30,
+          40,
+          50,
+          60
+        ]
+      },
+      "stateBoost": {
+        "name": "Mandate of Divinity",
+        "amplification": 50,
+        "intervalRate": 0.5,
+        "states": [
+          0,
+          1
+        ]
+      }
+    }
+  ]
 }
