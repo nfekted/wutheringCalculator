@@ -149,6 +149,8 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         s.since = 0;
         const value = statusTick(s.status, s.stacks);
         rows.push({ rotation, slot: s.slot, step: s.step, name: `${NEGATIVE_STATUS[s.status].name} (${s.stacks})`, buffs: [], damage: true, base: value, buffed: value, auto: true });
+        // A status without duration loses 1 stack each tick
+        if (NEGATIVE_STATUS[s.status].duration === undefined && --s.stacks <= 0) s.points = 0;
       }
     }
     onTarget = onTarget.filter(s => s.points > 0);
@@ -312,7 +314,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         const old = onTarget.find(s => s.status === rule.status);
         onTarget = onTarget.filter(s => s !== old);
         onTarget.push({
-          status: rule.status, stacks: Math.min((old?.stacks ?? 0) + stacks, maxOf(rule.status)), points: data.duration,
+          status: rule.status, stacks: Math.min((old?.stacks ?? 0) + stacks, maxOf(rule.status)), points: data.duration ?? Infinity,
           since: old?.since ?? 0, character, slot, step,
         });
       }
