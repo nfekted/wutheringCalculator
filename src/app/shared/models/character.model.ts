@@ -95,6 +95,8 @@ export class Character implements Stats {
         const first = finalStats(this.data.base, sumModifiers([...modifiers, sonataModifier(this.echoSet, this.data.type)]), this);
         const sonatas = sonataModifier(this.echoSet, this.data.type, first.energyRegen);
         Object.assign(this, finalStats(this.data.base, sumModifiers([...modifiers, sonatas]), this));
+        const passive = this.data.atkFromEnergyRegen;
+        if (passive) this.dmg += Math.round(Math.min(passive.max, Math.max(0, this.energyRegen - passive.over) * passive.per));
     }
 
     calculate() {
@@ -136,9 +138,10 @@ export class Character implements Stats {
         return [...this.sectionSteps('intro'), ...(this.rotationBuild ?? this.data.rotationBuild ?? []), ...this.sectionSteps('outro')];
     }
 
-    /** Steps of the Intro or the Outro, without the hits that only come in some cases (the Intro of a field, a hit a counter gives) */
+    /** Steps of the Intro or the Outro, without the hits that only come in some cases (the Intro of a field or of a state, a hit a counter gives) */
     sectionSteps(section: 'intro' | 'outro'): RotationStep[] {
-        const special = (key: string) => !!this.data.field?.intro.includes(key) || !!this.data.counters?.some(counter => counter.outro?.hit === key);
+        const special = (key: string) => !!this.data.field?.intro.includes(key) || !!this.data.counters?.some(counter => counter.outro?.hit === key)
+            || !!this.data.states?.some(state => state.nextIntro === key);
         return this.data[section].hits.flatMap((_, index): RotationStep[] => special(`${section}:${index}`) ? [] : [{ section, index }]);
     }
 

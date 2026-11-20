@@ -133,13 +133,16 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     + maxRaises.filter(r => r.status === status).reduce((sum, r) => sum + r.extra, 0);
   /** Points left in which the ticks of a status take no stack */
   const pauses = new Map<NegativeStatus, number>();
+  /** DMG Amplification and longer interval of a status while they last */
+  let statusBoosts: { status: NegativeStatus; amplification: number; intervalRate: number; points: number; label: string }[] = [];
   /** Time passes for the statuses on the target: a tick every interval while they last */
   const passTime = (points: number, rotation: number) => {
     for (const s of onTarget) {
-      const interval = NEGATIVE_STATUS[s.status].interval;
       let left = points;
       let elapsed = 0;
       while (s.points > 0) {
+        const boosts = statusBoosts.filter(b => b.status === s.status && b.points > elapsed);
+        const interval = boosts.reduce((value, b) => value * b.intervalRate, NEGATIVE_STATUS[s.status].interval);
         const next = interval - s.since;
         if (next > left || next > s.points) {
           const spent = Math.min(left, s.points);
@@ -151,8 +154,9 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         s.points -= next;
         s.since = 0;
         elapsed += next;
-        const value = statusTick(s.status, s.stacks);
-        rows.push({ rotation, slot: s.slot, step: s.step, name: `${NEGATIVE_STATUS[s.status].name} (${s.stacks})`, buffs: [], damage: true, base: value, buffed: value, auto: true });
+        const base = statusTick(s.status, s.stacks);
+        const buffed = base * (1 + boosts.reduce((sum, b) => sum + b.amplification, 0) / 100);
+        rows.push({ rotation, slot: s.slot, step: s.step, name: `${NEGATIVE_STATUS[s.status].name} (${s.stacks})`, buffs: boosts.map(b => b.label), damage: true, base, buffed, auto: true });
         // A status without duration loses 1 stack each tick
         const paused = (pauses.get(s.status) ?? 0) > elapsed;
         if (NEGATIVE_STATUS[s.status].duration === undefined && !paused && --s.stacks <= 0) s.points = 0;
@@ -160,6 +164,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     }
     onTarget = onTarget.filter(s => s.points > 0);
     for (const [status, left] of pauses) pauses.set(status, left - points);
+    statusBoosts = statusBoosts.map(b => ({ ...b, points: b.points - points })).filter(b => b.points > 0);
     maxRaises = maxRaises.map(r => ({ ...r, points: r.points - points })).filter(r => r.points > 0);
     for (const s of onTarget) s.stacks = Math.min(s.stacks, maxOf(s.status));
   };
@@ -181,10 +186,8 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     if (!buff.duration) return;
     const id = `self:${slot}:${buff.name}`;
     const count = buff.stacks ? Math.min((active.find(a => a.id === id)?.count ?? 0) + 1, buff.stacks) : 1;
-    const perCrit = buff.perCritRate;
-    const value = perCrit ? Math.min(perCrit.max, Math.max(0, character.cChance - perCrit.over) * buff.value) : buff.value * count;
-    if (!value) return;
-    const stat = value !== buff.value ? { ...buff, value: +value.toFixed(2) } : buff;
+    const stat = scaled(character, buff, count);
+    if (!stat.value) return;
     active = active.filter(a => a.id !== id);
     active.push({ id, receiver: buff.target === 'team' ? null : slot, points: buff.duration, label: `${character.name}: ${statLabel(stat)}`, stat, count });
   };
@@ -223,7 +226,8 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
 
     steps.forEach((step, position) => {
       const key = stepKey(step);
-      const stateBuffs = context.states.flatMap(s => (states[s].buffs ?? []).map(buff => ({ buff, label: `${states[s].name}: ${statLabel(buff)}` })));
+      const stateBuffs = context.states.flatMap(s => (states[s].buffs ?? []).map(buff => scaled(character, buff))
+        .filter(buff => buff.value).map(buff => ({ buff, label: `${states[s].name}: ${statLabel(buff)}` })));
       const hit = character.stepHit(step);
       const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
 
@@ -315,7 +319,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       // Stacks of a Negative Status the hit applies: up to the max, and the duration starts over
       for (const rule of statuses ? character.data.statuses ?? [] : []) {
         const stacks = rule.hits?.[key];
-        if (!stacks) continue;
+        if (!stacks || (rule.state !== undefined && !context.states.includes(rule.state))) continue;
         const data = NEGATIVE_STATUS[rule.status];
         const old = onTarget.find(s => s.status === rule.status);
         onTarget = onTarget.filter(s => s !== old);
@@ -339,7 +343,8 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       const rule = counter.outro;
       if (!rule || (rule.state !== undefined && context.states.includes(rule.state) !== (rule.inState ?? true))) return;
       const times = Math.min(rule.max, Math.floor((context.counters[c] ?? 0) / rule.per));
-      const stateBuffs = context.states.flatMap(s => (states[s].buffs ?? []).map(buff => ({ buff, label: `${states[s].name}: ${statLabel(buff)}` })));
+      const stateBuffs = context.states.flatMap(s => (states[s].buffs ?? []).map(buff => scaled(character, buff))
+        .filter(buff => buff.value).map(buff => ({ buff, label: `${states[s].name}: ${statLabel(buff)}` })));
       for (let n = 0; n < times; n++) autoRow(character, slot, rule.hit, stateBuffs);
     });
 
@@ -352,8 +357,15 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     // The Outro starts its buffs; the same one given again renews its duration
     character.data.outro.statBuffs?.forEach(buff => give(character, slot, buff));
     for (const rule of statuses ? character.data.statuses ?? [] : []) {
-      if (!rule.outroMax) continue;
-      maxRaises = [...maxRaises.filter(r => r.status !== rule.status), { status: rule.status, extra: rule.outroMax.extra, points: rule.outroMax.duration }];
+      if (rule.state !== undefined && !context.states.includes(rule.state)) continue;
+      if (rule.outroMax) {
+        maxRaises = [...maxRaises.filter(r => r.status !== rule.status), { status: rule.status, extra: rule.outroMax.extra, points: rule.outroMax.duration }];
+      }
+      const boost = rule.outroBoost;
+      if (boost) {
+        const label = `${character.name}: ${boost.name} (+${boost.amplification}%)`;
+        statusBoosts = [...statusBoosts.filter(b => b.label !== label), { status: rule.status, amplification: boost.amplification, intervalRate: boost.intervalRate, points: boost.duration, label }];
+      }
     }
     const next = segments[i + 1]?.slot;
     (character.data.outro.buffs ?? []).forEach((buff, position) => {
@@ -401,7 +413,9 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   const own = others.filter(o => fits(o.buff));
   const statBuffs = [...applied.flatMap(a => a.stat ? [a.stat] : []), ...own.map(o => o.buff)];
   const multiplier = 1 + statBuffs.filter(buff => buff.stat === 'multiplier').reduce((sum, buff) => sum + buff.value, 0) / 100;
-  const amplification = applied.some(a => a.outro) ? amplificationOf(applied, character) : undefined;
+  const extraAmplification = statBuffs.filter(buff => buff.stat === 'amplification').reduce((sum, buff) => sum + buff.value, 0);
+  const amplification = applied.some(a => a.outro) || extraAmplification ? amplificationOf(applied, character) : undefined;
+  if (amplification) amplification.all += extraAmplification;
   const extra = statBuffs.length ? extraStats(statBuffs, character) : undefined;
   const critExtra = crit ? { ...extra, cChance: (extra?.cChance ?? 0) + 100 } : extra;
   const alone = character.rotationHit(step);
@@ -425,7 +439,7 @@ function amplificationOf(buffs: ActiveBuff[], character: Character): Amplificati
 function extraStats(buffs: StatBuff[], character: Character): Partial<Stats> {
   const extra: Partial<Stats> = {};
   for (const buff of buffs) {
-    if (buff.stat === 'multiplier') continue;
+    if (buff.stat === 'multiplier' || buff.stat === 'amplification') continue;
     if (buff.stat === 'atk') extra.dmg = (extra.dmg ?? 0) + character.data.base.atk * buff.value / 100;
     else if (buff.stat === 'flatAtk') extra.dmg = (extra.dmg ?? 0) + buff.value;
     // Every damage hit of the character gets the elemental bonus, so a DMG Bonus on all of them is added there
@@ -437,6 +451,13 @@ function extraStats(buffs: StatBuff[], character: Character): Partial<Stats> {
   return extra;
 }
 
+/** The buff with its value: by the Crit. Rate or the Energy Regen of the character, or times its stacks */
+function scaled(character: Character, buff: StatBuff, count = 1): StatBuff {
+  const by = buff.perCritRate ? { rule: buff.perCritRate, stat: character.cChance } : buff.perEnergyRegen ? { rule: buff.perEnergyRegen, stat: character.energyRegen } : undefined;
+  const value = by ? Math.min(by.rule.max, Math.max(0, by.stat - by.rule.over) * buff.value) : buff.value * count;
+  return value !== buff.value ? { ...buff, value: +value.toFixed(2) } : buff;
+}
+
 function outroLabel(buff: OutroBuff): string {
   const kind = buff.amplification === 'elemental' ? buff.element! : buff.amplification;
   return `${kind[0].toUpperCase() + kind.slice(1)} +${buff.value}%`;
@@ -444,6 +465,6 @@ function outroLabel(buff: OutroBuff): string {
 
 function statLabel(buff: StatBuff): string {
   if (buff.stat === 'flatAtk') return `${buff.name} (ATK +${buff.value})`;
-  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG', multiplier: 'DMG Multiplier' }[buff.stat];
+  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG', multiplier: 'DMG Multiplier', amplification: 'DMG Amplification' }[buff.stat];
   return `${buff.name} (${stat} +${buff.value}%)`;
 }

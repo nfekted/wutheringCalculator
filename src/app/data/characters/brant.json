@@ -196,7 +196,8 @@
               168.99
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Mid-air Attack Stage 1 DMG",
@@ -217,7 +218,8 @@
               122.86
             ]
           }
-        ]
+        ],
+        "bonus": 15
       },
       {
         "name": "Mid-air Attack Stage 1: Charged Attack DMG",
@@ -269,7 +271,8 @@
             ],
             "times": 6
           }
-        ]
+        ],
+        "bonus": 15
       },
       {
         "name": "Mid-air Attack Stage 1: Flip DMG",
@@ -305,7 +308,9 @@
               59.15
             ]
           }
-        ]
+        ],
+        "cost": 0,
+        "bonus": 15
       },
       {
         "name": "Mid-air Attack Stage 1 Slash DMG",
@@ -327,7 +332,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "bonus": 15
       },
       {
         "name": "Mid-air Attack Stage 2 DMG",
@@ -363,7 +369,8 @@
               84.92
             ]
           }
-        ]
+        ],
+        "bonus": 15
       },
       {
         "name": "Mid-air Attack Stage 2: Charged Attack DMG",
@@ -385,7 +392,8 @@
             ],
             "times": 6
           }
-        ]
+        ],
+        "bonus": 15
       },
       {
         "name": "Mid-air Attack Stage 2: Flip DMG",
@@ -421,7 +429,9 @@
               59.15
             ]
           }
-        ]
+        ],
+        "cost": 0,
+        "bonus": 15
       },
       {
         "name": "Mid-air Attack Stage 3 DMG",
@@ -443,7 +453,8 @@
             ],
             "times": 6
           }
-        ]
+        ],
+        "bonus": 15
       },
       {
         "name": "Mid-air Attack Stage 3: Flip DMG",
@@ -479,7 +490,9 @@
               59.15
             ]
           }
-        ]
+        ],
+        "cost": 0,
+        "bonus": 15
       },
       {
         "name": "Mid-air Attack Stage 4 DMG",
@@ -531,7 +544,8 @@
               76.15
             ]
           }
-        ]
+        ],
+        "bonus": 15
       },
       {
         "name": "Dodge Counter DMG",
@@ -880,7 +894,8 @@
               2.07
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Shield",
@@ -992,5 +1007,130 @@
         "stat": "dmg"
       }
     ]
+  },
+  "sequence": {
+    "after": {
+      "basic:5": [
+        "basic:1",
+        "basic:3",
+        "basic:15"
+      ],
+      "basic:7": [
+        "basic:6"
+      ],
+      "basic:8": [
+        "basic:6",
+        "basic:7"
+      ],
+      "basic:9": [
+        "basic:6"
+      ],
+      "basic:10": [
+        "basic:8",
+        "intro:0"
+      ],
+      "basic:11": [
+        "basic:10"
+      ],
+      "basic:12": [
+        "basic:10",
+        "basic:11"
+      ],
+      "basic:13": [
+        "basic:12"
+      ],
+      "basic:15": [
+        "basic:14"
+      ],
+      "skill:1": [
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12",
+        "basic:13",
+        "basic:14",
+        "basic:15",
+        "skill:0"
+      ]
+    },
+    "linked": [
+      [
+        "basic:13",
+        "basic:14"
+      ],
+      [
+        "liberation:0",
+        "liberation:1"
+      ],
+      [
+        "forte:0",
+        "forte:2"
+      ]
+    ]
+  },
+  "states": [
+    {
+      "name": "Aflame",
+      "start": "liberation:0",
+      "hits": [],
+      "replaces": [],
+      "endsOn": [
+        "forte:0"
+      ],
+      "buffs": [
+        {
+          "name": "\"My\" Moment",
+          "stat": "flatAtk",
+          "value": 8,
+          "perEnergyRegen": {
+            "over": 150,
+            "max": 1040
+          }
+        }
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Bravo",
+      "max": 100,
+      "gain": [],
+      "amounts": {
+        "basic:0": 6,
+        "basic:1": 6,
+        "basic:2": 6,
+        "basic:3": 6,
+        "basic:4": 6,
+        "basic:5": 6,
+        "basic:6": 6,
+        "basic:7": 6,
+        "basic:9": 6,
+        "basic:10": 6,
+        "basic:11": 6,
+        "basic:13": 6,
+        "basic:15": 6,
+        "basic:16": 6,
+        "skill:1": 6,
+        "skill:0": 50,
+        "intro:0": 25
+      },
+      "unlocks": "forte:0",
+      "replaces": [
+        "skill:0"
+      ],
+      "rateIn": {
+        "state": 0,
+        "rate": 2
+      }
+    }
+  ],
+  "atkFromEnergyRegen": {
+    "name": "Ocean Odyssey",
+    "over": 150,
+    "per": 12,
+    "max": 1560
   }
 }

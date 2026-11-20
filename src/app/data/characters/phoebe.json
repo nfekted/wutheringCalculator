@@ -396,7 +396,8 @@
               638.19
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Utter Confession DMG",
@@ -439,7 +440,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "cost": 1
       }
     ]
   },
@@ -527,5 +529,138 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "skill:3": [
+        "skill:2"
+      ],
+      "skill:4": [
+        "skill:3"
+      ],
+      "forte:2": [
+        "basic:2",
+        "skill:4",
+        "basic:5",
+        "basic:6"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Absolution",
+      "start": "forte:0",
+      "hits": [
+        "forte:0"
+      ],
+      "replaces": [],
+      "endsOn": [
+        "forte:1"
+      ],
+      "buffs": [
+        {
+          "name": "Revelation",
+          "stat": "elementalBonus",
+          "value": 12
+        },
+        {
+          "name": "Absolution Enhancement",
+          "stat": "multiplier",
+          "value": 255,
+          "hits": [
+            "liberation:0",
+            "outro:0"
+          ]
+        },
+        {
+          "name": "Absolution Enhancement",
+          "stat": "amplification",
+          "value": 256,
+          "hits": [
+            "forte:2"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Confession",
+      "start": "forte:1",
+      "hits": [
+        "forte:1"
+      ],
+      "replaces": [],
+      "endsOn": [
+        "forte:0"
+      ],
+      "buffs": [
+        {
+          "name": "Revelation",
+          "stat": "elementalBonus",
+          "value": 12
+        }
+      ]
+    },
+    {
+      "name": "Ring of Mirrors",
+      "start": "skill:0",
+      "hits": [
+        "skill:0",
+        "skill:1",
+        "skill:2",
+        "skill:3",
+        "skill:4",
+        "basic:6"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:5"
+      ],
+      "duration": 30
+    }
+  ],
+  "counters": [
+    {
+      "name": "Divine Voice",
+      "max": 4,
+      "gain": [],
+      "fills": [
+        "forte:0",
+        "forte:1"
+      ],
+      "unlocks": "forte:2",
+      "spend": 2,
+      "spendIn": {
+        "0": 1
+      },
+      "replaces": [
+        "forte:0",
+        "forte:1"
+      ]
+    }
+  ],
+  "statuses": [
+    {
+      "status": "spectroFrazzle",
+      "hits": {
+        "forte:0": 1,
+        "forte:1": 1
+      }
+    },
+    {
+      "status": "spectroFrazzle",
+      "state": 1,
+      "hits": {
+        "liberation:0": 8,
+        "forte:2": 5
+      },
+      "outroBoost": {
+        "name": "Silent Prayer",
+        "amplification": 100,
+        "intervalRate": 1.5,
+        "duration": 30
+      }
+    }
+  ]
 }

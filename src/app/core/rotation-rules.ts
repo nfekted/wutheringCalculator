@@ -115,7 +115,7 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
     || states.some(state => state.autoHit?.hit === key) || data.followUps?.some(followUp => followUp.hit === key)
     || data.counters?.some(counter => counter.outro?.hit === key)) return false;
   for (const [i, counter] of (data.counters ?? []).entries()) {
-    const ready = (context.counters[i] ?? 0) >= (counter.spend ?? counter.max);
+    const ready = (context.counters[i] ?? 0) >= (spendOf(counter, context) ?? counter.max);
     if (unlocks(counter, key) && !ready) return false;
     if (ready && counter.replaces.includes(key)) return false;
   }
@@ -189,21 +189,29 @@ export function advance(character: Character, context: RotationContext, step: Ro
     stateEnds[i] = (stateEnds[i] ?? 0) + 1;
     return stateEnds[i] >= state.endsAfter ? [i] : [];
   })];
-  const states = [...context.states, ...started].filter(i => !ended.includes(i));
-  return {
-    last: key, held, states, buffPoints, statePoints, stateEnds,
-    counters: resetCounters(ended, i => {
+  let states = [...context.states, ...started].filter(i => !ended.includes(i));
+  const next = resetCounters(ended, i => {
       const counter = counters[i];
       const value = context.counters[i] ?? 0;
-      if (unlocks(counter, key)) return counter.spend !== undefined ? value - counter.spend : 0;
+      const spend = spendOf(counter, context);
+      if (unlocks(counter, key)) return spend !== undefined ? value - spend : 0;
       if (boostApplies(counter, value, context, key)) return value - counter.boost!.spend;
       const exists = counter.state === undefined || states.includes(counter.state);
       if (counter.fills?.includes(key) && exists) return counter.max;
-      const amount = counter.amounts?.[key] ?? (counter.gain.includes(key) ? counter.amount ?? 1 : 0);
+      const rate = counter.rateIn && states.includes(counter.rateIn.state) ? counter.rateIn.rate : 1;
+      const amount = (counter.amounts?.[key] ?? (counter.gain.includes(key) ? counter.amount ?? 1 : 0)) * rate;
       if (amount && exists) return Math.min(value + amount, counter.max);
       return value;
-    }),
-  };
+    });
+  // A state that ends when its counter is used up
+  states = states.filter(s => !counters.some((counter, i) => counter.endsState === s && next[i] <= 0));
+  return { last: key, held, states, buffPoints, statePoints, stateEnds, counters: next };
+}
+
+/** What the unlocked hit spends now: by the active state, or `spend` */
+function spendOf(counter: CharacterCounter, context: RotationContext): number | undefined {
+  const inState = context.states.find(s => counter.spendIn?.[s] !== undefined);
+  return inState !== undefined ? counter.spendIn![inState] : counter.spend;
 }
 
 /** Whether the hit spends the boost of the counter now */

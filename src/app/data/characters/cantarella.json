@@ -129,7 +129,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Mid-air Attack DMG",
@@ -235,6 +236,15 @@
               196.23
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Poison",
+            "stat": "elementalBonus",
+            "value": 6,
+            "duration": 10,
+            "stacks": 2
+          }
         ]
       },
       {
@@ -282,6 +292,15 @@
               376
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Poison",
+            "stat": "elementalBonus",
+            "value": 6,
+            "duration": 10,
+            "stacks": 2
+          }
         ]
       },
       {
@@ -302,7 +321,7 @@
               13.52,
               14.54
             ],
-            "times": 21
+            "times": 1
           }
         ]
       }
@@ -518,6 +537,15 @@
             ],
             "times": 2
           }
+        ],
+        "buffs": [
+          {
+            "name": "Poison",
+            "stat": "elementalBonus",
+            "value": 6,
+            "duration": 10,
+            "stacks": 2
+          }
         ]
       },
       {
@@ -576,7 +604,8 @@
               45.36
             ]
           }
-        ]
+        ],
+        "bonus": 20
       },
       {
         "name": "Perception Drain Healing",
@@ -612,7 +641,8 @@
               189
             ]
           }
-        ]
+        ],
+        "bonus": 20
       }
     ]
   },
@@ -713,5 +743,130 @@
         "stat": "energyRegen"
       }
     ]
+  },
+  "sequence": {
+    "after": {
+      "basic:2": [
+        "basic:1",
+        "intro:0"
+      ],
+      "forte:1": [
+        "forte:0",
+        "forte:5"
+      ],
+      "forte:2": [
+        "forte:1"
+      ]
+    },
+    "linked": [
+      [
+        "forte:4",
+        "forte:7"
+      ]
+    ]
+  },
+  "states": [
+    {
+      "name": "Mirage",
+      "start": "basic:4",
+      "hits": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:5",
+        "forte:4",
+        "skill:1",
+        "basic:4"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:5",
+        "basic:6",
+        "skill:0"
+      ],
+      "duration": 8,
+      "nextIntro": "intro:1"
+    }
+  ],
+  "counters": [
+    {
+      "name": "Trance",
+      "max": 5,
+      "gain": [],
+      "amounts": {
+        "intro:0": 1,
+        "basic:2": 1,
+        "skill:0": 1,
+        "liberation:0": 3
+      },
+      "unlocks": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:5"
+      ],
+      "spend": 1,
+      "replaces": [
+        "basic:3"
+      ],
+      "endsState": 0
+    },
+    {
+      "name": "Shiver",
+      "max": 3,
+      "gain": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:5"
+      ],
+      "unlocks": "forte:4",
+      "replaces": [
+        "skill:1"
+      ]
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "skill:2",
+      "after": [
+        "skill:1",
+        "forte:4"
+      ]
+    },
+    {
+      "hit": "forte:6",
+      "after": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:5"
+      ]
+    }
+  ],
+  "coordinated": {
+    "name": "Diffusion",
+    "start": "liberation:0",
+    "hits": [
+      "liberation:1"
+    ],
+    "duration": 30,
+    "perKind": {
+      "basic": 1,
+      "heavy": 1,
+      "skill": 1,
+      "liberation": 1,
+      "intro": 1,
+      "outro": 1,
+      "echo": 1
+    },
+    "interval": 1,
+    "max": 21
   }
 }

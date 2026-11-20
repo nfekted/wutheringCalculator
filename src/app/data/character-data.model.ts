@@ -53,9 +53,9 @@ export interface BonusAfter {
 /**
  * Attribute a buff of the character raises during the rotation: 'atk' is a percentage of the base ATK, the others are added;
  * 'damageBonus' is a DMG Bonus on every damage hit of the character (added to the elemental bonus); 'multiplier' raises the DMG
- * Multiplier of the hits by that %; 'flatAtk' adds that many ATK points
+ * Multiplier of the hits by that %; 'flatAtk' adds that many ATK points; 'amplification' is a DMG Amplification (added to the others)
  */
-export type BuffStat = 'atk' | 'flatAtk' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'basicBonus' | 'critRate' | 'critDamage' | 'multiplier';
+export type BuffStat = 'atk' | 'flatAtk' | 'amplification' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'basicBonus' | 'critRate' | 'critDamage' | 'multiplier';
 
 /** Hits of a kind that always crit, once every `cooldown` points (e.g. an Inherent Skill "Heavy Attack always crits, once every 30s") */
 export interface GuaranteedCrit {
@@ -81,6 +81,8 @@ export interface StatBuff {
   stacks?: number;
   /** The value is `value` for each 1% of Crit. Rate of the character over `over`, up to `max` */
   perCritRate?: { over: number; max: number };
+  /** The same, by the Energy Regen */
+  perEnergyRegen?: { over: number; max: number };
 }
 
 /**
@@ -131,10 +133,14 @@ export interface TeamField {
  */
 export interface CharacterStatus {
   status: NegativeStatus;
+  /** Index in `states` of the only state where this applies (the hits, and the Outro) */
+  state?: number;
   hits?: Record<HitKey, number>;
   outroMax?: { extra: number; duration: number };
   /** After `hit`, its ticks take no stack for `duration` points; with `counter` (index in `counters`), only when its boost spends it */
   pause?: { hit: HitKey; duration: number; counter?: number };
+  /** The Outro gives the whole team, for `duration` points, a DMG Amplification of the status and a longer interval (multiplied by `intervalRate`) */
+  outroBoost?: { name: string; amplification: number; intervalRate: number; duration: number };
 }
 
 /** Hit of a character as "section:index" (e.g. "forte:0") */
@@ -167,6 +173,12 @@ export interface CharacterCounter {
   /** Hit (or hits) that needs the counter full, and spends it all; with `spend`, it needs that much and spends it */
   unlocks: HitKey | HitKey[];
   spend?: number;
+  /** What the unlocked hit spends in a state (by index in `states`), instead of `spend` */
+  spendIn?: Record<number, number>;
+  /** In the state (by index in `states`), the hits add `rate` times their amount */
+  rateIn?: { state: number; rate: number };
+  /** The state (by index in `states`) ends when the counter gets to 0 */
+  endsState?: number;
   /** Hits not available while the counter is full (with `spend`, while it has that much) */
   replaces: HitKey[];
   /** Index in `states` of the only state where the counter exists; it goes back to 0 when the state ends */
@@ -301,6 +313,8 @@ export interface CharacterData {
   followUps?: { hit: HitKey; after: HitKey[] }[];
   field?: TeamField;
   statuses?: CharacterStatus[];
+  /** A passive that adds `per` ATK points for each 1% of Energy Regen over `over`, up to `max` (on the attributes from the Echos) */
+  atkFromEnergyRegen?: { name: string; over: number; per: number; max: number };
   basic: SkillData;
   skill: SkillData;
   liberation: SkillData;
