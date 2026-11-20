@@ -206,6 +206,12 @@ export function advance(character: Character, context: RotationContext, step: Ro
   };
 }
 
+/** Whether the hit spends the boost of the counter now */
+export function counterBoosted(data: CharacterData, context: RotationContext, key: HitKey, index: number): boolean {
+  const counter = data.counters?.[index];
+  return !!counter && boostApplies(counter, context.counters[index] ?? 0, context, key);
+}
+
 function boostApplies(counter: CharacterCounter, value: number, context: RotationContext, key: HitKey): boolean {
   const boost = counter.boost;
   return !!boost && boost.hit === key && value >= boost.spend && !(boost.notIn !== undefined && context.states.includes(boost.notIn));
@@ -217,7 +223,7 @@ export function counterBonuses(data: CharacterData, context: RotationContext, ke
     const value = context.counters[i] ?? 0;
     const perStack = counter.perStack;
     return [
-      ...(boostApplies(counter, value, context, key) ? [{ name: counter.boost!.name, value: counter.boost!.value }] : []),
+      ...(boostApplies(counter, value, context, key) && counter.boost!.value ? [{ name: counter.boost!.name, value: counter.boost!.value }] : []),
       ...(perStack?.hits.includes(key) && value ? [{ name: perStack.name, value: perStack.value * value }] : []),
     ];
   });

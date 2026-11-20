@@ -2,7 +2,7 @@ import { Amplification, Stats, noAmplification } from './damage-engine';
 import { CoordinatedAttack, HitKey, OutroBuff, RotationStep, StatBuff, TeamField } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
 import { NEGATIVE_STATUS, NegativeStatus, statusTick } from './negative-status';
-import { advance, counterBonuses, isStart, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
+import { advance, counterBonuses, counterBoosted, isStart, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
 
 export { stepCost };
 
@@ -131,11 +131,14 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   let maxRaises: { status: NegativeStatus; extra: number; points: number }[] = [];
   const maxOf = (status: NegativeStatus) => NEGATIVE_STATUS[status].max
     + maxRaises.filter(r => r.status === status).reduce((sum, r) => sum + r.extra, 0);
+  /** Points left in which the ticks of a status take no stack */
+  const pauses = new Map<NegativeStatus, number>();
   /** Time passes for the statuses on the target: a tick every interval while they last */
   const passTime = (points: number, rotation: number) => {
     for (const s of onTarget) {
       const interval = NEGATIVE_STATUS[s.status].interval;
       let left = points;
+      let elapsed = 0;
       while (s.points > 0) {
         const next = interval - s.since;
         if (next > left || next > s.points) {
@@ -147,13 +150,16 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         left -= next;
         s.points -= next;
         s.since = 0;
+        elapsed += next;
         const value = statusTick(s.status, s.stacks);
         rows.push({ rotation, slot: s.slot, step: s.step, name: `${NEGATIVE_STATUS[s.status].name} (${s.stacks})`, buffs: [], damage: true, base: value, buffed: value, auto: true });
         // A status without duration loses 1 stack each tick
-        if (NEGATIVE_STATUS[s.status].duration === undefined && --s.stacks <= 0) s.points = 0;
+        const paused = (pauses.get(s.status) ?? 0) > elapsed;
+        if (NEGATIVE_STATUS[s.status].duration === undefined && !paused && --s.stacks <= 0) s.points = 0;
       }
     }
     onTarget = onTarget.filter(s => s.points > 0);
+    for (const [status, left] of pauses) pauses.set(status, left - points);
     maxRaises = maxRaises.map(r => ({ ...r, points: r.points - points })).filter(r => r.points > 0);
     for (const s of onTarget) s.stacks = Math.min(s.stacks, maxOf(s.status));
   };
@@ -317,6 +323,11 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
           status: rule.status, stacks: Math.min((old?.stacks ?? 0) + stacks, maxOf(rule.status)), points: data.duration ?? Infinity,
           since: old?.since ?? 0, character, slot, step,
         });
+      }
+      for (const rule of statuses ? character.data.statuses ?? [] : []) {
+        const pause = rule.pause;
+        if (pause?.hit !== key || (pause.counter !== undefined && !counterBoosted(character.data, context, key, pause.counter))) continue;
+        pauses.set(rule.status, Math.max(pauses.get(rule.status) ?? 0, pause.duration));
       }
       // A state that ends gives its hit for the next Intro
       if (step.section === 'end' && states[step.index]?.nextIntro) nextIntro.set(slot, states[step.index].nextIntro!);

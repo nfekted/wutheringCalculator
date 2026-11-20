@@ -521,5 +521,42 @@
         "forte:1"
       ]
     ]
-  }
+  },
+  "statuses": [
+    {
+      "status": "spectroFrazzle",
+      "hits": {
+        "liberation:0": 6,
+        "forte:0": 2
+      },
+      "pause": {
+        "hit": "forte:0",
+        "duration": 9,
+        "counter": 0
+      }
+    }
+  ],
+  "counters": [
+    {
+      "name": "Diminutive Sound",
+      "max": 10,
+      "gain": [],
+      "amounts": {
+        "basic:0": 1,
+        "basic:1": 1,
+        "basic:2": 1,
+        "basic:3": 1,
+        "basic:7": 5,
+        "intro:0": 5
+      },
+      "unlocks": [],
+      "replaces": [],
+      "boost": {
+        "name": "Shimmer",
+        "hit": "forte:0",
+        "spend": 5,
+        "value": 0
+      }
+    }
+  ]
 }

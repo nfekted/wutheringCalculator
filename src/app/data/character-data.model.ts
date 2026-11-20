@@ -133,6 +133,8 @@ export interface CharacterStatus {
   status: NegativeStatus;
   hits?: Record<HitKey, number>;
   outroMax?: { extra: number; duration: number };
+  /** After `hit`, its ticks take no stack for `duration` points; with `counter` (index in `counters`), only when its boost spends it */
+  pause?: { hit: HitKey; duration: number; counter?: number };
 }
 
 /** Hit of a character as "section:index" (e.g. "forte:0") */
@@ -176,7 +178,7 @@ export interface CharacterCounter {
   outro?: { hit: HitKey; per: number; max: number; state?: number; inState?: boolean };
 }
 
-/** A hit that, with at least `spend` in the counter, spends it and gets a DMG Bonus of `value`% (not in the state `notIn`) */
+/** A hit that, with at least `spend` in the counter, spends it and gets a DMG Bonus of `value`% (not in the state `notIn`); 0 is none */
 export interface CounterBoost {
   name: string;
   hit: HitKey;
