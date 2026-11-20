@@ -393,7 +393,13 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       }
       // A state that ends gives its hit for the next Intro
       if (step.section === 'end' && states[step.index]?.nextIntro) nextIntro.set(slot, states[step.index].nextIntro!);
+      const before = context.counters;
       context = advance(character, context, step, spends[position]);
+      // A counter that gets to a value gives a buff
+      (character.data.counters ?? []).forEach((counter, c) => {
+        const at = counter.buffAt;
+        if (at && (before[c] ?? 0) < at.value && (context.counters[c] ?? 0) >= at.value) give(character, slot, at.buff);
+      });
     });
 
     // Hits a counter gives when the character leaves the field
@@ -456,7 +462,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
 }
 
 /** Bonuses of one kind of hit */
-const KIND_OF: Partial<Record<StatBuff['stat'], string>> = { liberationBonus: 'liberation', heavyBonus: 'heavy', skillBonus: 'skill', basicBonus: 'basic' };
+const KIND_OF: Partial<Record<StatBuff['stat'], string>> = { liberationBonus: 'liberation', heavyBonus: 'heavy', skillBonus: 'skill', basicBonus: 'basic', echoBonus: 'echo' };
 
 /**
  * Value of a hit of a member, without and with the buffs on it: the Outro ones and its own, and `others` (its states...). Only the buffs
@@ -468,8 +474,8 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
   // ATK only for a hit that scales with it; DMG Bonus and DMG Amplification never for healing or a shield
   const support = kind === 'heal' || kind === 'shield';
-  const fits = (buff?: StatBuff) => !buff || ((!buff.hits || buff.hits.includes(key)) && (!buff.element || buff.element === character.data.type) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat])
-    && (buff.stat === 'atk' || buff.stat === 'flatAtk' ? !!hit?.parts.some(part => part.stat === 'atk') : !support));
+  const fits = (buff?: StatBuff) => !hit?.noBuffs && (!buff || ((!buff.hits || buff.hits.includes(key)) && (!buff.element || buff.element === character.data.type) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat])
+    && (buff.stat === 'atk' || buff.stat === 'flatAtk' ? !!hit?.parts.some(part => part.stat === 'atk') : !support)));
   const applied = active.filter(a => (a.receiver === null || a.receiver === slot) && fits(a.stat)
     && !(a.outro?.amplification === 'elemental' && a.outro.element !== character.data.type)
     && !(a.outro && (support || kind === 'tune'))
@@ -529,6 +535,6 @@ function outroLabel(buff: OutroBuff): string {
 
 function statLabel(buff: StatBuff): string {
   if (buff.stat === 'flatAtk') return `${buff.name} (ATK +${buff.value})`;
-  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG', multiplier: 'DMG Multiplier', amplification: 'DMG Amplification' }[buff.stat];
+  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', echoBonus: 'Echo DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG', multiplier: 'DMG Multiplier', amplification: 'DMG Amplification' }[buff.stat];
   return `${buff.name} (${stat} +${buff.value}%)`;
 }

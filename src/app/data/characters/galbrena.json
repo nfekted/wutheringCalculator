@@ -38,7 +38,8 @@
               59.18
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Slayer's Trigger DMG 2",
@@ -89,7 +90,8 @@
               78.91
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Slayer's Trigger DMG 3",
@@ -155,7 +157,8 @@
               42.89
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Slayer's Trigger DMG 4",
@@ -176,7 +179,8 @@
               177.86
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Dodge Counter - Blood for Blood DMG",
@@ -242,7 +246,8 @@
               61.57
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Mid-air Attack - Ashfall Barrage Plunging Attack DMG",
@@ -263,7 +268,8 @@
               143.15
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Mid-air Attack - Ashfall Barrage Sustained Fire DMG",
@@ -284,7 +290,8 @@
               26.84
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Heavy Attack - Volley of Death Stage 1 DMG",
@@ -320,7 +327,8 @@
               53.3
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Heavy Attack - Volley of Death Stage 2 DMG",
@@ -342,7 +350,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Heavy Attack - Volley of Death Stage 3 DMG",
@@ -379,7 +388,8 @@
               117.39
             ]
           }
-        ]
+        ],
+        "cost": 1
       }
     ]
   },
@@ -420,6 +430,14 @@
               25.04
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Burning Drive",
+            "stat": "atk",
+            "value": 20,
+            "duration": 4
+          }
         ]
       },
       {
@@ -455,6 +473,14 @@
               47.96,
               51.57
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Burning Drive",
+            "stat": "atk",
+            "value": 20,
+            "duration": 4
           }
         ]
       }
@@ -498,6 +524,27 @@
             ],
             "times": 11
           }
+        ],
+        "buffs": [
+          {
+            "name": "Hellfire Absolution",
+            "stat": "multiplier",
+            "value": 85,
+            "duration": 14,
+            "hits": [
+              "forte:1",
+              "forte:2",
+              "forte:3",
+              "forte:4",
+              "forte:5",
+              "forte:6",
+              "forte:7",
+              "forte:8",
+              "forte:9",
+              "forte:10",
+              "forte:11"
+            ]
+          }
         ]
       }
     ]
@@ -523,6 +570,14 @@
               87.52,
               94.12
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Burning Drive",
+            "stat": "atk",
+            "value": 20,
+            "duration": 4
           }
         ]
       }
@@ -574,6 +629,16 @@
               666
             ]
           }
+        ],
+        "cost": 0.5,
+        "noBuffs": true,
+        "buffs": [
+          {
+            "name": "Burning Drive",
+            "stat": "atk",
+            "value": 20,
+            "duration": 4
+          }
         ]
       },
       {
@@ -595,7 +660,8 @@
               58.99
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Basic Attack - Seraphic Execution Stage 2 DMG",
@@ -646,7 +712,8 @@
               83.51
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Basic Attack - Seraphic Execution Stage 3 DMG",
@@ -683,7 +750,8 @@
               170.21
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Basic Attack - Seraphic Execution Stage 4 DMG",
@@ -719,6 +787,15 @@
               118.12,
               127.02
             ]
+          }
+        ],
+        "cost": 0.5,
+        "buffs": [
+          {
+            "name": "Burning Drive",
+            "stat": "atk",
+            "value": 20,
+            "duration": 4
           }
         ]
       },
@@ -756,7 +833,8 @@
               156.99
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Heavy Attack - Flamewing Verdict Stage 1 DMG",
@@ -792,7 +870,8 @@
               59.22
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Heavy Attack - Flamewing Verdict Stage 2 DMG",
@@ -814,7 +893,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Heavy Attack - Flamewing Verdict Stage 3 DMG",
@@ -851,7 +931,8 @@
               123.77
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Dodge Counter - Purgatory Scourge",
@@ -888,7 +969,8 @@
               224.7
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Mid-air Attack - Hellsent Barrage Plunging Attack DMG",
@@ -909,7 +991,8 @@
               159.05
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Mid-air Attack - Hellsent Barrage Sustained Fire DMG",
@@ -930,7 +1013,8 @@
               29.83
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Resonance Skill - Ravage DMG",
@@ -965,6 +1049,15 @@
               23.29,
               25.04
             ]
+          }
+        ],
+        "cost": 0.5,
+        "buffs": [
+          {
+            "name": "Burning Drive",
+            "stat": "atk",
+            "value": 20,
+            "duration": 4
           }
         ]
       }
@@ -1044,5 +1137,137 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:3",
+        "basic:7",
+        "liberation:0",
+        "intro:0"
+      ],
+      "basic:2": [
+        "basic:5",
+        "basic:8",
+        "basic:9"
+      ],
+      "basic:3": [
+        "basic:4"
+      ],
+      "basic:8": [
+        "intro:0"
+      ],
+      "forte:2": [
+        "forte:6",
+        "skill:1",
+        "liberation:0",
+        "intro:0"
+      ],
+      "forte:3": [
+        "forte:5",
+        "forte:7",
+        "forte:8",
+        "forte:10"
+      ],
+      "forte:4": [
+        "forte:9"
+      ],
+      "forte:7": [
+        "intro:0"
+      ]
+    },
+    "keepsChain": [
+      "forte:0"
+    ],
+    "notTwice": [
+      "forte:0"
+    ]
+  },
+  "states": [
+    {
+      "name": "Demon Hypostasis",
+      "start": "skill:1",
+      "hits": [
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6",
+        "forte:7",
+        "forte:8",
+        "forte:9",
+        "forte:10",
+        "forte:11",
+        "forte:12"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "skill:0"
+      ],
+      "buffs": [
+        {
+          "name": "Afterflame",
+          "stat": "damageBonus",
+          "value": 60,
+          "hits": [
+            "forte:1",
+            "forte:2",
+            "forte:3",
+            "forte:4",
+            "forte:5",
+            "forte:6",
+            "forte:7",
+            "forte:8",
+            "forte:9",
+            "forte:10",
+            "forte:11",
+            "forte:12"
+          ]
+        }
+      ],
+      "duration": 50
+    }
+  ],
+  "counters": [
+    {
+      "name": "Sinflame",
+      "max": 10,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "skill:0"
+      ],
+      "amounts": {
+        "intro:0": 2
+      },
+      "unlocks": "skill:1",
+      "replaces": [
+        "skill:0"
+      ]
+    }
+  ],
+  "passiveBuffs": [
+    {
+      "name": "Fated End",
+      "stat": "amplification",
+      "value": 20
+    }
+  ]
 }

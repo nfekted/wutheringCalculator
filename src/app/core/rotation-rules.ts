@@ -109,7 +109,7 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
     if (!extra || !context.last || !extra.includes(context.last)) return false;
   }
   if (context.states.some(i => states[i].replaces.includes(key) || (isStart(states[i], key) && !states[i].hits.includes(key)))) return false;
-  if (states.some(state => state.nextIntro === key)) return false;
+  if (states.some(state => state.nextIntro === key) || data.ignoredHits?.includes(key)) return false;
   // Hits that only come on their own (a Coordinated Attack, the hit of a mark)
   if (data.coordinated?.hits.includes(key) || data.coordinated?.detonation === key || data.markers?.some(marker => marker.hit === key)
     || states.some(state => state.autoHit?.hit === key) || data.followUps?.some(followUp => followUp.hit === key)
@@ -120,6 +120,7 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
     if (ready && counter.replaces.includes(key)) return false;
   }
   if (isLinkedRest(data, step)) return false;
+  if (data.sequence?.notTwice?.includes(key) && context.last === key) return false;
   if (data.sequence?.replacedBy?.[key]?.some(other => allowed(data, context, keyStep(other)))) return false;
 
   const previous = previousNumber(data, key);

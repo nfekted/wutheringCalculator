@@ -40,6 +40,8 @@ export interface Hit {
   cost?: number;
   /** The values of the hit are this many times the ones of the wiki (e.g. an Inherent Skill "the DMG multiplier is increased by 40%") */
   multiplier?: number;
+  /** Gets no DMG Bonus, DMG Amplification or buff (e.g. a fixed DMG "that does not bear any effect from DMG buffs") */
+  noBuffs?: boolean;
 }
 
 export interface BonusAfter {
@@ -55,7 +57,7 @@ export interface BonusAfter {
  * 'damageBonus' is a DMG Bonus on every damage hit of the character (added to the elemental bonus); 'multiplier' raises the DMG
  * Multiplier of the hits by that %; 'flatAtk' adds that many ATK points; 'amplification' is a DMG Amplification (added to the others)
  */
-export type BuffStat = 'atk' | 'flatAtk' | 'amplification' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'basicBonus' | 'critRate' | 'critDamage' | 'multiplier';
+export type BuffStat = 'atk' | 'flatAtk' | 'amplification' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'basicBonus' | 'echoBonus' | 'critRate' | 'critDamage' | 'multiplier';
 
 /** Hits of a kind that always crit, once every `cooldown` points (e.g. an Inherent Skill "Heavy Attack always crits, once every 30s") */
 export interface GuaranteedCrit {
@@ -175,6 +177,8 @@ export interface SequenceRules {
   linked?: HitKey[][];
   /** Hits that do not break the sequence of the others (e.g. a Skill that keeps the Basic Attack cycle): the hit before them still counts */
   keepsChain?: HitKey[];
+  /** Hits that cannot come right after themselves */
+  notTwice?: HitKey[];
   /** A hit that is not offered while one of these can come (e.g. the Skill becomes another one after Basic Attack 2) */
   replacedBy?: Record<HitKey, HitKey[]>;
 }
@@ -203,6 +207,8 @@ export interface CharacterCounter {
   endsState?: number;
   /** Hits not available while the counter is full (with `spend`, while it has that much) */
   replaces: HitKey[];
+  /** When a hit takes it from under `value` to `value` or more, the character gives `buff` */
+  buffAt?: { value: number; buff: StatBuff };
   /** Index in `states` of the only state where the counter exists; it goes back to 0 when the state ends */
   state?: number;
   boost?: CounterBoost;

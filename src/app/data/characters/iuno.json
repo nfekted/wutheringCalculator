@@ -195,7 +195,8 @@
               126.45
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Moonbow - Basic Attack 2 DMG",
@@ -217,7 +218,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Moonbow - Basic Attack 3 DMG",
@@ -239,7 +241,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Moonbow - Dodge Counter DMG",
@@ -261,7 +264,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "cost": 0.5
       }
     ]
   },
@@ -362,7 +366,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Unfinished Refrain DMG",
@@ -425,6 +430,15 @@
               1093.46
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Blessing of the Wan Light",
+            "stat": "amplification",
+            "value": 20,
+            "duration": 10,
+            "endsOnReturn": true
+          }
         ]
       }
     ]
@@ -466,6 +480,15 @@
               44.37,
               47.72
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Blessing of the Wan Light",
+            "stat": "amplification",
+            "value": 20,
+            "duration": 10,
+            "endsOnReturn": true
           }
         ]
       }
@@ -519,7 +542,8 @@
               250.51
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Flux - Moonring DMG",
@@ -541,7 +565,8 @@
             ],
             "times": 4
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Enhanced Moonbow - Basic Attack 1 DMG",
@@ -562,7 +587,8 @@
               205.97
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Enhanced Moonbow - Basic Attack 2 DMG",
@@ -584,7 +610,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Enhanced Moonbow - Basic Attack 3 DMG",
@@ -606,7 +633,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Enhanced Moonbow - Dodge Counter DMG",
@@ -628,7 +656,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Enhanced Arc Beyond the Edge DMG",
@@ -650,7 +679,8 @@
             ],
             "times": 2
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Moonbow - Basic Attack 1 Healing",
@@ -671,7 +701,8 @@
               25.91
             ]
           }
-        ]
+        ],
+        "cost": 0
       },
       {
         "name": "Moonbow - Basic Attack 2 Healing",
@@ -692,7 +723,8 @@
               25.91
             ]
           }
-        ]
+        ],
+        "cost": 0
       },
       {
         "name": "Moonbow - Basic Attack 3 Healing",
@@ -713,7 +745,8 @@
               48.57
             ]
           }
-        ]
+        ],
+        "cost": 0
       },
       {
         "name": "Moonbow - Dodge Counter Healing",
@@ -734,7 +767,8 @@
               32.38
             ]
           }
-        ]
+        ],
+        "cost": 0
       },
       {
         "name": "Arc Beyond the Edge Healing",
@@ -755,7 +789,8 @@
               48.57
             ]
           }
-        ]
+        ],
+        "cost": 0
       },
       {
         "name": "Absolute Fullness DMG",
@@ -775,6 +810,16 @@
               147.9,
               159.05
             ]
+          }
+        ],
+        "cost": 1,
+        "buffs": [
+          {
+            "name": "Blessing of the Wan Light",
+            "stat": "amplification",
+            "value": 40,
+            "duration": 10,
+            "endsOnReturn": true
           }
         ]
       },
@@ -797,7 +842,8 @@
               194.26
             ]
           }
-        ]
+        ],
+        "cost": 0
       },
       {
         "name": "Full Moon Domain Healing",
@@ -924,5 +970,161 @@
         "stat": "energyRegen"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:2": [
+        "basic:1",
+        "basic:4"
+      ],
+      "basic:6": [
+        "basic:5",
+        "forte:2"
+      ],
+      "basic:7": [
+        "basic:6",
+        "basic:8",
+        "forte:3",
+        "forte:5"
+      ],
+      "forte:3": [
+        "forte:2",
+        "basic:5"
+      ],
+      "forte:4": [
+        "forte:3",
+        "forte:5",
+        "basic:6",
+        "basic:8"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Lunar Cycle - Half Moon",
+      "start": [
+        "skill:1",
+        "liberation:0",
+        "forte:1"
+      ],
+      "hits": [
+        "forte:0",
+        "skill:3",
+        "liberation:0"
+      ],
+      "replaces": [
+        "skill:0",
+        "skill:1"
+      ],
+      "endsOn": [
+        "forte:0",
+        "forte:12"
+      ]
+    },
+    {
+      "name": "Lunar Cycle - New Moon",
+      "start": "forte:0",
+      "hits": [
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "skill:2",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6",
+        "forte:1"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "skill:0",
+        "skill:1",
+        "skill:3"
+      ],
+      "endsOn": [
+        "forte:1",
+        "forte:12",
+        "liberation:0"
+      ]
+    },
+    {
+      "name": "Closing Refrain",
+      "start": [
+        "basic:2",
+        "intro:0",
+        "skill:0"
+      ],
+      "hits": [
+        "skill:1",
+        "basic:2"
+      ],
+      "replaces": [
+        "skill:0"
+      ],
+      "endsOn": [
+        "skill:1"
+      ],
+      "duration": 5
+    }
+  ],
+  "counters": [
+    {
+      "name": "Absolute Fullness",
+      "max": 1,
+      "gain": [
+        "forte:12"
+      ],
+      "unlocks": [],
+      "replaces": [
+        "forte:12"
+      ]
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "forte:7",
+      "after": [
+        "forte:2"
+      ]
+    },
+    {
+      "hit": "forte:8",
+      "after": [
+        "forte:3"
+      ]
+    },
+    {
+      "hit": "forte:9",
+      "after": [
+        "forte:4"
+      ]
+    },
+    {
+      "hit": "forte:10",
+      "after": [
+        "forte:5"
+      ]
+    },
+    {
+      "hit": "forte:11",
+      "after": [
+        "forte:6"
+      ]
+    },
+    {
+      "hit": "forte:13",
+      "after": [
+        "forte:12"
+      ]
+    }
+  ],
+  "ignoredHits": [
+    "forte:14"
+  ]
 }
