@@ -407,6 +407,59 @@
             ]
           }
         ]
+      },
+      {
+        "name": "Waltz of Forsaken Depths",
+        "kind": "liberation",
+        "parts": [],
+        "cost": 1,
+        "manual": true,
+        "buffs": [
+          {
+            "name": "Maestro",
+            "stat": "atk",
+            "value": 120,
+            "duration": 24,
+            "endsOnReturn": true
+          }
+        ]
+      },
+      {
+        "name": "Enhanced Attack - Hecate (Off-field) DMG",
+        "kind": "echo",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              52.5,
+              56.81,
+              61.11,
+              67.14,
+              71.45,
+              76.4,
+              83.29,
+              90.17,
+              97.06,
+              104.38
+            ]
+          },
+          {
+            "stat": "atk",
+            "values": [
+              122.5,
+              132.55,
+              142.59,
+              156.66,
+              166.7,
+              178.25,
+              194.33,
+              210.4,
+              226.47,
+              243.55
+            ]
+          }
+        ],
+        "manual": true
       }
     ]
   },
@@ -687,5 +740,134 @@
         "flat": true
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:0",
+        "basic:3"
+      ],
+      "basic:2": [
+        "basic:1",
+        "basic:6",
+        "intro:0",
+        "intro:1"
+      ],
+      "liberation:2": [
+        "liberation:1"
+      ],
+      "liberation:3": [
+        "liberation:1"
+      ],
+      "liberation:4": [
+        "liberation:1"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Reincarnate",
+      "start": [
+        "basic:2",
+        "skill:0"
+      ],
+      "hits": [
+        "forte:0",
+        "forte:1"
+      ],
+      "replaces": [
+        "basic:0",
+        "skill:0"
+      ],
+      "endsOn": [
+        "forte:0",
+        "forte:1"
+      ]
+    },
+    {
+      "name": "Resolving Chord",
+      "start": "basic:4",
+      "hits": [
+        "liberation:5",
+        "liberation:6"
+      ],
+      "replaces": [],
+      "endsOn": [
+        "liberation:5",
+        "liberation:6"
+      ]
+    },
+    {
+      "name": "Maestro",
+      "start": "liberation:6",
+      "hits": [
+        "liberation:0",
+        "liberation:1",
+        "liberation:2",
+        "liberation:3",
+        "liberation:4",
+        "liberation:5"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "skill:0",
+        "forte:0",
+        "forte:1"
+      ],
+      "endsOn": [
+        "liberation:5"
+      ],
+      "duration": 24,
+      "nextIntro": "intro:1",
+      "outroHits": {
+        "hit": "liberation:7",
+        "times": 2
+      }
+    }
+  ],
+  "counters": [
+    {
+      "name": "Volatile Notes",
+      "max": 6,
+      "gain": [
+        "basic:2",
+        "forte:0",
+        "skill:0",
+        "forte:1",
+        "intro:0",
+        "intro:1"
+      ],
+      "unlocks": "basic:4",
+      "replaces": [
+        "basic:3"
+      ]
+    }
+  ],
+  "coordinated": {
+    "name": "Hecate",
+    "start": "liberation:6",
+    "hits": [
+      "liberation:7"
+    ],
+    "duration": 24,
+    "perKind": {
+      "echo": 1
+    },
+    "max": 10,
+    "othersOnly": true,
+    "endsOnReturn": true
+  },
+  "passiveBuffs": [
+    {
+      "name": "Octet",
+      "stat": "critDamage",
+      "value": 25
+    }
+  ]
 }

@@ -580,12 +580,13 @@
       ]
     }
   ],
-  "teamBuffs": [
+  "passiveBuffs": [
     {
       "name": "Solo Concert",
       "stat": "elementalBonus",
       "value": 24,
-      "element": "aero"
+      "element": "aero",
+      "target": "team"
     }
   ],
   "statuses": [

@@ -79,6 +79,8 @@ export interface StatBuff {
   target?: 'team';
   /** Only a character of this element gets it (e.g. "Aero DMG Bonus to all Resonators in the team") */
   element?: string;
+  /** It ends when the character comes back to the field */
+  endsOnReturn?: boolean;
   /** Given again while it lasts, it adds a stack (up to this many) and renews the duration */
   stacks?: number;
   /** The value is `value` for each 1% of Crit. Rate of the character over `over`, up to `max` */
@@ -106,6 +108,10 @@ export interface CoordinatedAttack {
   detonation?: HitKey;
   /** It ends after firing this many times */
   max?: number;
+  /** Only the actions of the other members fire it */
+  othersOnly?: boolean;
+  /** It ends when the character comes back to the field */
+  endsOnReturn?: boolean;
 }
 
 /** A mark a hit leaves (at most 1); the `detonate` hit adds the `hit` of each mark held, in the same action. They go on the Outro */
@@ -180,13 +186,15 @@ export interface CharacterCounter {
   /** Hits that add `amount` (1 without it) */
   gain: HitKey[];
   amount?: number;
-  /** Hits that add their own amount (they do not need to be in `gain`) */
+  /** Hits that add their own amount (they do not need to be in `gain`); a negative one takes from it, down to 0 */
   amounts?: Record<HitKey, number>;
   /** Hits that fill it */
   fills?: HitKey[];
   /** Hit (or hits) that needs the counter full, and spends it all; with `spend`, it needs that much and spends it */
   unlocks: HitKey | HitKey[];
   spend?: number;
+  /** Unlocked hits that need it but spend nothing */
+  free?: HitKey[];
   /** What the unlocked hit spends in a state (by index in `states`), instead of `spend` */
   spendIn?: Record<number, number>;
   /** In the state (by index in `states`), the hits add `rate` times their amount */
@@ -238,6 +246,8 @@ export interface CharacterState {
   slowedRate?: number;
   /** While the state lasts, each of the `after` hits adds `hit`, in the same action, up to `max` times each time it starts */
   autoHit?: { hit: HitKey; after: HitKey[]; max: number };
+  /** On the Outro while in the state, `hit` is added this many `times` */
+  outroHits?: { hit: HitKey; times: number };
 }
 
 export interface SkillData {
@@ -331,8 +341,8 @@ export interface CharacterData {
   atkFromEnergyRegen?: { name: string; over: number; per: number; max: number };
   /** Hits that never enter the rotation (e.g. the Intro of another form) */
   ignoredHits?: HitKey[];
-  /** Buffs always active for the whole team while the character is in it */
-  teamBuffs?: StatBuff[];
+  /** Buffs always active, for the character (or, with `target: 'team'`, for the whole team while the character is in it) */
+  passiveBuffs?: StatBuff[];
   basic: SkillData;
   skill: SkillData;
   liberation: SkillData;

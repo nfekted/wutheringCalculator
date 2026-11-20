@@ -194,13 +194,13 @@ export function advance(character: Character, context: RotationContext, step: Ro
       const counter = counters[i];
       const value = context.counters[i] ?? 0;
       const spend = spendOf(counter, context);
-      if (unlocks(counter, key)) return spend !== undefined ? value - spend : 0;
+      if (unlocks(counter, key) && !counter.free?.includes(key)) return spend !== undefined ? value - spend : 0;
       if (boostApplies(counter, value, context, key)) return value - counter.boost!.spend;
       const exists = counter.state === undefined || states.includes(counter.state);
       if (counter.fills?.includes(key) && exists) return counter.max;
       const rate = counter.rateIn && states.includes(counter.rateIn.state) ? counter.rateIn.rate : 1;
       const amount = (counter.amounts?.[key] ?? (counter.gain.includes(key) ? counter.amount ?? 1 : 0)) * rate;
-      if (amount && exists) return Math.min(value + amount, counter.max);
+      if (amount && exists) return Math.max(0, Math.min(value + amount, counter.max));
       return value;
     });
   // A state that ends when its counter is used up
@@ -258,7 +258,8 @@ export function linkedBlock(data: CharacterData, step: RotationStep): RotationSt
 
 /** Whether the hit only comes inside a linked block, after its first hit */
 function isLinkedRest(data: CharacterData, step: RotationStep): boolean {
-  return !!data.sequence?.linked?.some(block => block.slice(1).includes(stepKey(step)));
+  // The first hit repeated in its own block (e.g. 9 Sunborne) still starts it
+  return !!data.sequence?.linked?.some(block => block[0] !== stepKey(step) && block.slice(1).includes(stepKey(step)));
 }
 
 /**

@@ -14,6 +14,8 @@ interface ActiveBuff {
   receiver: number | null;
   points: number;
   endsOnSwitch?: boolean;
+  /** Ends when the member that gave it comes back to the field */
+  endsOnReturn?: boolean;
   label: string;
   outro?: OutroBuff;
   stat?: StatBuff;
@@ -197,10 +199,11 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     for (const s of onTarget) s.stacks = Math.min(s.stacks, maxOf(s.status));
   };
   let active: ActiveBuff[] = [];
-  // Buffs always active for the team while the member is in it
-  for (const { character, slot } of segments) for (const buff of character.data.teamBuffs ?? []) {
+  // Buffs always active, for the member or for the team while the member is in it
+  for (const { character, slot } of segments) for (const buff of character.data.passiveBuffs ?? []) {
     const id = `always:${slot}:${buff.name}`;
-    if (!active.some(a => a.id === id)) active.push({ id, receiver: null, points: Infinity, label: `${character.name}: ${statLabel(buff)}`, stat: buff, count: 1 });
+    const receiver = buff.target === 'team' ? null : slot;
+    if (!active.some(a => a.id === id)) active.push({ id, receiver, points: Infinity, label: `${character.name}: ${statLabel(buff)}`, stat: buff, count: 1 });
   }
   /** Points left until the guaranteed crit of each member is ready again */
   const critCooldown = new Map<number, number>();
@@ -222,11 +225,14 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     const stat = scaled(character, buff, count);
     if (!stat.value) return;
     active = active.filter(a => a.id !== id);
-    active.push({ id, receiver: buff.target === 'team' ? null : slot, points: buff.duration, label: `${character.name}: ${statLabel(stat)}`, stat, count });
+    active.push({ id, receiver: buff.target === 'team' ? null : slot, points: buff.duration, label: `${character.name}: ${statLabel(stat)}`, stat, count, endsOnReturn: buff.endsOnReturn });
   };
 
   segments.forEach(({ character, slot, rotation, steps }, i) => {
     const states = character.data.states ?? [];
+    // What ends when the member comes back to the field
+    active = active.filter(a => !(a.endsOnReturn && a.id.startsWith(`self:${slot}:`)));
+    coordinated = coordinated.filter(c => !(c.attack.endsOnReturn && c.slot === slot));
     const replaced = nextIntro.get(slot);
     if (replaced && steps.some(step => step.section === 'intro')) {
       steps = [keyStep(replaced), ...steps.filter(step => step.section !== 'intro')];
@@ -313,7 +319,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       const fires = spends[position] ? kind : undefined;
       for (const c of fires ? coordinated : []) {
         const times = c.attack.perKind[fires!] ?? 0;
-        if (!times || c.since < (c.attack.interval ?? 0)) continue;
+        if (!times || c.since < (c.attack.interval ?? 0) || (c.attack.othersOnly && c.slot === slot)) continue;
         c.since = 0;
         for (let n = 0; n < times && !(c.attack.max && c.fired >= c.attack.max); n++) {
           const stacking = c.attack.stacking;
@@ -399,6 +405,12 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         .filter(buff => buff.value).map(buff => ({ buff, label: `${states[s].name}: ${statLabel(buff)}` })));
       for (let n = 0; n < times; n++) autoRow(character, slot, rule.hit, stateBuffs);
     });
+
+    // Hits a state still active gives on the Outro
+    for (const s of context.states) {
+      const rule = states[s].outroHits;
+      for (let n = 0; n < (rule?.times ?? 0); n++) autoRow(character, slot, rule!.hit, []);
+    }
 
     // States still active end on the Outro
     for (const s of context.states) if (states[s].nextIntro) nextIntro.set(slot, states[s].nextIntro!);

@@ -287,7 +287,7 @@
       },
       {
         "name": "Dodge Counter - Thunderoar: Backstep DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -511,7 +511,15 @@
   },
   "outro": {
     "name": "Battlesong of the Unyielding",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "all",
+        "value": 15,
+        "duration": 14
+      }
+    ]
   },
   "forte": {
     "name": "Call Me By the Sun",
@@ -727,5 +735,120 @@
         "stat": "energyRegen"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:0",
+        "basic:4"
+      ],
+      "basic:9": [
+        "basic:8",
+        "basic:12"
+      ],
+      "forte:1": [
+        "forte:0",
+        "forte:3"
+      ],
+      "forte:2": [
+        "forte:1"
+      ]
+    },
+    "linked": [
+      [
+        "liberation:1",
+        "liberation:1",
+        "liberation:1",
+        "liberation:1",
+        "liberation:1",
+        "liberation:1",
+        "liberation:1",
+        "liberation:1",
+        "liberation:1",
+        "liberation:2"
+      ]
+    ]
+  },
+  "counters": [
+    {
+      "name": "Prowess",
+      "max": 5,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:11",
+        "skill:0"
+      ],
+      "amounts": {
+        "intro:0": 5
+      },
+      "unlocks": [
+        "basic:8",
+        "basic:10",
+        "basic:11"
+      ],
+      "free": [
+        "basic:11"
+      ],
+      "replaces": [
+        "basic:4",
+        "basic:6"
+      ]
+    },
+    {
+      "name": "Ascendancy",
+      "max": 10,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12"
+      ],
+      "amounts": {
+        "intro:0": 2,
+        "skill:0": 1,
+        "liberation:0": 4
+      },
+      "unlocks": [
+        "forte:0",
+        "forte:3",
+        "basic:12"
+      ],
+      "free": [
+        "basic:12"
+      ],
+      "replaces": [
+        "skill:0",
+        "basic:6",
+        "basic:7",
+        "basic:11"
+      ]
+    },
+    {
+      "name": "Majesty",
+      "max": 2,
+      "gain": [],
+      "amounts": {
+        "forte:2": 1,
+        "intro:0": 1
+      },
+      "unlocks": "liberation:1",
+      "replaces": []
+    }
+  ]
 }

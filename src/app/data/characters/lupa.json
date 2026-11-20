@@ -254,6 +254,14 @@
               56.11
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Wildfire Banner",
+            "stat": "atk",
+            "value": 12,
+            "duration": 8
+          }
         ]
       },
       {
@@ -305,6 +313,14 @@
               89.45,
               96.19
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Wildfire Banner",
+            "stat": "atk",
+            "value": 12,
+            "duration": 8
           }
         ]
       },
@@ -404,7 +420,7 @@
       },
       {
         "name": "Mid-air Attack - Firestrike DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -435,6 +451,14 @@
               26.48,
               28.48
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Wildfire Banner",
+            "stat": "atk",
+            "value": 12,
+            "duration": 8
           }
         ]
       },
@@ -608,6 +632,15 @@
               313.61
             ]
           }
+        ],
+        "multiplier": 1.5,
+        "buffs": [
+          {
+            "name": "Wildfire Banner",
+            "stat": "atk",
+            "value": 12,
+            "duration": 8
+          }
         ]
       }
     ]
@@ -633,6 +666,29 @@
               762.91,
               820.44
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Wildfire Banner",
+            "stat": "atk",
+            "value": 12,
+            "duration": 8
+          },
+          {
+            "name": "Pack Hunt",
+            "stat": "atk",
+            "value": 18,
+            "duration": 35,
+            "target": "team"
+          },
+          {
+            "name": "Pack Hunt (Fusion)",
+            "stat": "elementalBonus",
+            "value": 10,
+            "duration": 35,
+            "target": "team",
+            "element": "fusion"
           }
         ]
       },
@@ -701,7 +757,7 @@
       },
       {
         "name": "Nowhere to Run! DMG",
-        "kind": "skill",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -812,6 +868,14 @@
               336.11
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Wildfire Banner",
+            "stat": "atk",
+            "value": 12,
+            "duration": 8
+          }
         ]
       },
       {
@@ -863,6 +927,14 @@
               421.93,
               453.75
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Wildfire Banner",
+            "stat": "atk",
+            "value": 12,
+            "duration": 8
           }
         ]
       },
@@ -978,5 +1050,135 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "ignoredHits": [
+    "intro:1"
+  ],
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:0",
+        "basic:12",
+        "basic:13",
+        "skill:0",
+        "skill:1"
+      ],
+      "basic:7": [
+        "basic:2",
+        "skill:0"
+      ],
+      "basic:9": [
+        "basic:8",
+        "intro:0"
+      ],
+      "basic:10": [
+        "basic:8",
+        "intro:0"
+      ],
+      "basic:6": [
+        "basic:5",
+        "basic:10"
+      ],
+      "basic:11": [
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "basic:10"
+      ],
+      "basic:12": [
+        "basic:11"
+      ],
+      "skill:1": [
+        "skill:0"
+      ],
+      "liberation:1": [
+        "liberation:0"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Burning Matchpoint",
+      "start": "liberation:1",
+      "hits": [
+        "forte:1"
+      ],
+      "replaces": [
+        "skill:0",
+        "skill:1",
+        "forte:0"
+      ],
+      "endsOn": [
+        "forte:1"
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Wolflame",
+      "max": 10,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "basic:11",
+        "basic:12",
+        "basic:13"
+      ],
+      "amounts": {
+        "skill:0": 2,
+        "skill:1": 2,
+        "liberation:0": 10,
+        "liberation:1": -10
+      },
+      "unlocks": [
+        "basic:5",
+        "basic:6",
+        "basic:10"
+      ],
+      "spend": 5,
+      "replaces": [
+        "basic:4",
+        "basic:9"
+      ],
+      "rateIn": {
+        "state": 0,
+        "rate": 6
+      }
+    },
+    {
+      "name": "Wolfaith",
+      "max": 2,
+      "gain": [
+        "basic:5",
+        "basic:6",
+        "basic:10"
+      ],
+      "amounts": {
+        "liberation:0": -2
+      },
+      "unlocks": [
+        "forte:0",
+        "forte:1"
+      ],
+      "replaces": [
+        "skill:0",
+        "skill:1"
+      ]
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "forte:2",
+      "after": [
+        "forte:0",
+        "forte:1"
+      ]
+    }
+  ]
 }
