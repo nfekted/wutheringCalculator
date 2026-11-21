@@ -130,7 +130,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   const rows: TeamHitRow[] = [];
   let onTarget: ActiveStatus[] = [];
   /** Raises of the max stacks of a status while they last */
-  let maxRaises: { status: NegativeStatus; extra: number; points: number }[] = [];
+  let maxRaises: { status: NegativeStatus; extra: number; points: number; slot?: number }[] = [];
   const maxOf = (status: NegativeStatus) => NEGATIVE_STATUS[status].max
     + maxRaises.filter(r => r.status === status).reduce((sum, r) => sum + r.extra, 0);
   /** Points left in which the ticks of a status take no stack */
@@ -436,6 +436,11 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         const label = `${character.name}: ${boost.name} (+${boost.amplification}%)`;
         statusBoosts = [...statusBoosts.filter(b => b.label !== label), { status: rule.status, amplification: boost.amplification, intervalRate: boost.intervalRate, points: boost.duration, label }];
       }
+    }
+    // An Outro that raises the max stacks of every Negative Status
+    const statusMax = character.data.outro.statusMax;
+    if (statuses && statusMax) for (const status of Object.keys(NEGATIVE_STATUS) as NegativeStatus[]) {
+      maxRaises = [...maxRaises.filter(r => !(r.status === status && r.slot === slot)), { status, extra: statusMax.extra, points: statusMax.duration, slot }];
     }
     const next = segments[i + 1]?.slot;
     (character.data.outro.buffs ?? []).forEach((buff, position) => {

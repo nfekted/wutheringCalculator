@@ -559,6 +559,14 @@
               954.29
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "All Ends Here",
+            "stat": "elementalBonus",
+            "value": 20,
+            "duration": 12
+          }
         ]
       },
       {
@@ -621,13 +629,25 @@
               95.43
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "All Ends Here",
+            "stat": "elementalBonus",
+            "value": 20,
+            "duration": 12
+          }
         ]
       }
     ]
   },
   "outro": {
     "name": "Unraveling - Law Zero",
-    "hits": []
+    "hits": [],
+    "statusMax": {
+      "extra": 3,
+      "duration": 20
+    }
   },
   "forte": {
     "name": "Sight of Unraveling - Oblivion",
@@ -652,7 +672,8 @@
             ],
             "times": 6
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Sawring - Blitz Stage 2 DMG",
@@ -674,7 +695,8 @@
             ],
             "times": 8
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Sawring - Blitz Stage 2 Hold DMG",
@@ -696,7 +718,8 @@
             ],
             "times": 10
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Sawring - Blitz Stage 2: Discordance DMG",
@@ -718,7 +741,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Sawring - Blitz Stage 3 DMG",
@@ -740,7 +764,8 @@
             ],
             "times": 8
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Sawring - Blitz Stage 3 Hold DMG",
@@ -762,7 +787,8 @@
             ],
             "times": 6
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Sawring - Blitz Stage 3: Falltone DMG",
@@ -784,7 +810,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Chainsaw Mode - Dodge Counter DMG",
@@ -806,7 +833,8 @@
             ],
             "times": 8
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Chainsaw Mode - Dodge Counter Hold DMG",
@@ -828,7 +856,8 @@
             ],
             "times": 10
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Sawring - Eradication DMG",
@@ -864,7 +893,8 @@
               206.13
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Sawring - Eradication Shield",
@@ -1016,5 +1046,194 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:8",
+        "liberation:0",
+        "intro:0"
+      ],
+      "basic:6": [
+        "basic:1",
+        "basic:11",
+        "basic:12",
+        "skill:0"
+      ],
+      "basic:2": [
+        "basic:6",
+        "basic:10"
+      ],
+      "basic:3": [
+        "basic:2"
+      ],
+      "basic:5": [
+        "basic:2",
+        "basic:3"
+      ],
+      "basic:9": [
+        "basic:7"
+      ],
+      "basic:10": [
+        "basic:6",
+        "basic:7",
+        "basic:9"
+      ],
+      "skill:2": [
+        "skill:1"
+      ],
+      "forte:1": [
+        "skill:0",
+        "skill:1",
+        "skill:2",
+        "intro:0"
+      ],
+      "forte:2": [
+        "forte:1"
+      ],
+      "forte:3": [
+        "forte:1",
+        "forte:2",
+        "forte:7",
+        "forte:8"
+      ],
+      "forte:4": [
+        "forte:2",
+        "forte:3",
+        "forte:7",
+        "forte:8",
+        "basic:12"
+      ],
+      "forte:5": [
+        "forte:4"
+      ],
+      "forte:6": [
+        "forte:4",
+        "forte:5"
+      ],
+      "forte:8": [
+        "forte:7"
+      ],
+      "forte:9": [
+        "forte:4",
+        "forte:5",
+        "forte:6"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Chainsaw Mode",
+      "start": "skill:1",
+      "hits": [
+        "skill:2",
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6",
+        "forte:7",
+        "forte:8",
+        "forte:9"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "skill:1"
+      ],
+      "endsOn": [
+        "forte:9"
+      ]
+    },
+    {
+      "name": "Woven Myriad - Convergence",
+      "start": "liberation:0",
+      "hits": [],
+      "replaces": [],
+      "endsOn": [
+        "forte:9"
+      ],
+      "duration": 15,
+      "buffs": [
+        {
+          "name": "Woven Myriad - Convergence",
+          "stat": "multiplier",
+          "value": 120,
+          "hits": [
+            "forte:0",
+            "forte:1",
+            "forte:2",
+            "forte:3",
+            "forte:4",
+            "forte:5",
+            "forte:6",
+            "forte:7",
+            "forte:8",
+            "forte:9"
+          ]
+        }
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Ring of Chainsaw",
+      "max": 5,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12",
+        "skill:0"
+      ],
+      "amounts": {
+        "liberation:0": 2,
+        "intro:0": 1
+      },
+      "unlocks": "skill:1",
+      "replaces": [
+        "skill:0"
+      ]
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "basic:4",
+      "after": [
+        "basic:2"
+      ]
+    },
+    {
+      "hit": "liberation:1",
+      "after": [
+        "liberation:0"
+      ]
+    },
+    {
+      "hit": "forte:10",
+      "after": [
+        "forte:9"
+      ]
+    }
+  ]
 }

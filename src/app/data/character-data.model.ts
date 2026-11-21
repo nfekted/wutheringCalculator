@@ -197,6 +197,8 @@ export interface CharacterCounter {
   /** Hit (or hits) that needs the counter full, and spends it all; with `spend`, it needs that much and spends it */
   unlocks: HitKey | HitKey[];
   spend?: number;
+  /** Unlocked hits that need and spend their own amount, instead of `spend` */
+  spendBy?: Record<HitKey, number>;
   /** Unlocked hits that need it but spend nothing */
   free?: HitKey[];
   /** What the unlocked hit spends in a state (by index in `states`), instead of `spend` */
@@ -284,6 +286,8 @@ export interface OutroData extends SkillData {
   buffs?: OutroBuff[];
   /** Attribute buffs the Outro gives (like the ones of a hit), renewed by name */
   statBuffs?: StatBuff[];
+  /** Raises the max stacks of every Negative Status by `extra` for `duration` points */
+  statusMax?: { extra: number; duration: number };
 }
 
 export interface RotationStep {

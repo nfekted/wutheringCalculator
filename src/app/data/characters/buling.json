@@ -266,6 +266,20 @@
             ]
           }
         ]
+      },
+      {
+        "name": "Heavy Attack - Twin Mountains",
+        "kind": "heavy",
+        "parts": [],
+        "cost": 1,
+        "manual": true
+      },
+      {
+        "name": "Heavy Attack - Twin Thunders",
+        "kind": "heavy",
+        "parts": [],
+        "cost": 1,
+        "manual": true
       }
     ]
   },
@@ -439,6 +453,16 @@
               536.79
             ]
           }
+        ],
+        "cost": 3,
+        "buffs": [
+          {
+            "name": "Thunder Spell - Heaven, Earth, Mind",
+            "stat": "skillBonus",
+            "value": 25,
+            "duration": 24,
+            "target": "team"
+          }
         ]
       },
       {
@@ -549,5 +573,114 @@
         "flat": true
       }
     ]
+  },
+  "sequence": {
+    "after": {
+      "basic:3": [
+        "basic:5",
+        "skill:0"
+      ]
+    },
+    "replacedBy": {
+      "liberation:0": [
+        "forte:0"
+      ]
+    }
+  },
+  "counters": [
+    {
+      "name": "Trigram - Mountain",
+      "max": 4,
+      "gain": [
+        "basic:1"
+      ],
+      "unlocks": [
+        "basic:6",
+        "basic:7",
+        "basic:10"
+      ],
+      "spend": 1,
+      "spendBy": {
+        "basic:10": 2
+      },
+      "replaces": []
+    },
+    {
+      "name": "Trigram - Thunder",
+      "max": 4,
+      "gain": [
+        "basic:3",
+        "basic:4",
+        "skill:0"
+      ],
+      "unlocks": [
+        "basic:6",
+        "basic:7",
+        "basic:11"
+      ],
+      "spend": 1,
+      "spendBy": {
+        "basic:11": 2
+      },
+      "replaces": []
+    },
+    {
+      "name": "Minor Yang",
+      "max": 1,
+      "gain": [
+        "basic:6",
+        "basic:7"
+      ],
+      "unlocks": "forte:0",
+      "replaces": []
+    },
+    {
+      "name": "Minor Yin",
+      "max": 1,
+      "gain": [
+        "basic:10",
+        "basic:11"
+      ],
+      "unlocks": "forte:0",
+      "replaces": []
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "basic:8",
+      "after": [
+        "basic:10"
+      ]
+    },
+    {
+      "hit": "basic:9",
+      "after": [
+        "basic:11"
+      ]
+    },
+    {
+      "hit": "skill:1",
+      "after": [
+        "skill:0"
+      ]
+    }
+  ],
+  "coordinated": {
+    "name": "Five Thunders Spell Array",
+    "start": "forte:0",
+    "hits": [
+      "forte:1"
+    ],
+    "duration": 24,
+    "interval": 2,
+    "perKind": {
+      "basic": 1,
+      "heavy": 1,
+      "skill": 1,
+      "liberation": 1,
+      "echo": 1,
+      "intro": 1,
+      "outro": 1
+    }
   }
 }

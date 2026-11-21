@@ -115,7 +115,7 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
     || states.some(state => state.autoHit?.hit === key) || data.followUps?.some(followUp => followUp.hit === key)
     || data.counters?.some(counter => counter.outro?.hit === key)) return false;
   for (const [i, counter] of (data.counters ?? []).entries()) {
-    const ready = (context.counters[i] ?? 0) >= (spendOf(counter, context) ?? counter.max);
+    const ready = (context.counters[i] ?? 0) >= (spendOf(counter, context, key) ?? counter.max);
     if (unlocks(counter, key) && !ready) return false;
     if (ready && counter.replaces.includes(key)) return false;
   }
@@ -194,7 +194,7 @@ export function advance(character: Character, context: RotationContext, step: Ro
   const next = resetCounters(ended, i => {
       const counter = counters[i];
       const value = context.counters[i] ?? 0;
-      const spend = spendOf(counter, context);
+      const spend = spendOf(counter, context, key);
       if (unlocks(counter, key) && !counter.free?.includes(key)) return spend !== undefined ? value - spend : 0;
       if (boostApplies(counter, value, context, key)) return value - counter.boost!.spend;
       const exists = counter.state === undefined || states.includes(counter.state);
@@ -209,8 +209,9 @@ export function advance(character: Character, context: RotationContext, step: Ro
   return { last: key, held, states, buffPoints, statePoints, stateEnds, counters: next };
 }
 
-/** What the unlocked hit spends now: by the active state, or `spend` */
-function spendOf(counter: CharacterCounter, context: RotationContext): number | undefined {
+/** What the unlocked hit spends now: its own amount, by the active state, or `spend` */
+function spendOf(counter: CharacterCounter, context: RotationContext, key: HitKey): number | undefined {
+  if (counter.spendBy?.[key] !== undefined) return counter.spendBy[key];
   const inState = context.states.find(s => counter.spendIn?.[s] !== undefined);
   return inState !== undefined ? counter.spendIn![inState] : counter.spend;
 }
