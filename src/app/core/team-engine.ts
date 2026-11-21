@@ -127,6 +127,11 @@ export function simulateRotation(character: Character, steps: RotationStep[]): T
   return simulate([{ character, slot: 0, rotation: 0, steps: all }], 1);
 }
 
+/** What the character does with the Negative Statuses, in its mode */
+function rulesOf(character: Character): CharacterStatus[] {
+  return (character.data.statuses ?? []).filter(rule => rule.mode === undefined || rule.mode === character.mode);
+}
+
 /** `statuses`: whether the Negative Statuses on the target count (only for the team) */
 function simulate(segments: Segment[], memberCount: number, statuses = false): TeamResult {
   const rows: TeamHitRow[] = [];
@@ -141,21 +146,32 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   /** DMG Amplification and longer interval of a status while they last */
   let statusBoosts: { status: NegativeStatus; amplification: number; intervalRate: number; points: number; label: string }[] = [];
   /** A tick of a status, with the boosts on it */
-  const tickRow = (s: ActiveStatus, rotation: number, boosts: typeof statusBoosts, name = NEGATIVE_STATUS[s.status].name) => {
-    const base = statusTick(s.status, s.stacks, s.overflow);
+  /** `extra`: a raise of its DMG Multiplier (in %), named in the row */
+  const tickRow = (s: ActiveStatus, rotation: number, boosts: typeof statusBoosts, name = NEGATIVE_STATUS[s.status].name, extra?: { label: string; value: number }) => {
+    const base = statusTick(s.status, s.stacks, s.overflow) * (1 + (extra?.value ?? 0) / 100);
     const buffed = base * (1 + boosts.reduce((sum, b) => sum + b.amplification, 0) / 100);
     const overflow = s.overflow ? ` + ${NEGATIVE_STATUS[s.status].overflow!.name} (${s.overflow})` : '';
-    rows.push({ rotation, slot: s.slot, step: s.step, name: `${name} (${s.stacks})${overflow}`, buffs: boosts.map(b => b.label), damage: true, base, buffed, auto: true });
+    rows.push({ rotation, slot: s.slot, step: s.step, name: `${name} (${s.stacks})${overflow}${extra?.label ?? ''}`, buffs: boosts.map(b => b.label), damage: true, base, buffed, auto: true });
     s.overflow = 0;
   };
+  /** Trails on the target (by status) and the rules of the members that give them; the members a status bursts early for */
+  const trails = new Map<NegativeStatus, { stacks: number; points: number }>();
+  const trailRules = new Map<NegativeStatus, NonNullable<CharacterStatus['trail']>>();
+  const burstAbove = new Map<NegativeStatus, number>();
+  for (const { character } of segments) for (const rule of rulesOf(character)) {
+    if (rule.trail) trailRules.set(rule.status, rule.trail);
+    if (rule.burstAbove !== undefined) burstAbove.set(rule.status, rule.burstAbove);
+  }
+  /** Members whose next max burst keeps the trail */
+  const keepsTrail = new Set<number>();
   /** Statuses a member of the team converts as soon as they are applied */
   const converts = new Map<NegativeStatus, string>();
-  for (const { character } of segments) for (const rule of character.data.statuses ?? []) if (rule.convert) converts.set(rule.status, rule.convert);
+  for (const { character } of segments) for (const rule of rulesOf(character)) if (rule.convert) converts.set(rule.status, rule.convert);
   /** The DMG Amplification of the statuses, on the hits of the character considered damage of them */
-  const statusAmplification = (character: Character): LabeledBuff[] => (character.data.statuses ?? []).flatMap(rule => !rule.counts ? []
+  const statusAmplification = (character: Character): LabeledBuff[] => rulesOf(character).flatMap(rule => !rule.counts ? []
     : statusBoosts.filter(b => b.status === rule.status).map(b => ({ buff: { name: b.label, stat: 'amplification' as const, value: b.amplification, hits: rule.counts }, label: b.label })));
   /** The DMG Amplification of the hit by the stacks on the target */
-  const stacksAmplification = (character: Character, key: HitKey): LabeledBuff[] => (character.data.statuses ?? []).flatMap(rule => {
+  const stacksAmplification = (character: Character, key: HitKey): LabeledBuff[] => rulesOf(character).flatMap(rule => {
     const stacks = onTarget.find(s => s.status === rule.status)?.stacks ?? 0;
     const values: { name: string; value: number }[] = [];
     if (rule.amplifiedBy) values.push({ name: rule.amplifiedBy.name, value: rule.amplifiedBy.values[Math.min(stacks, rule.amplifiedBy.values.length - 1)] });
@@ -174,7 +190,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
 
   /** Time passes for the statuses on the target: a tick every interval while they last */
   const passTime = (points: number, rotation: number) => {
-    for (const s of onTarget) {
+    for (const s of onTarget.filter(s => !NEGATIVE_STATUS[s.status].burstAtMax)) {
       let left = points;
       let elapsed = 0;
       while (s.points > 0) {
@@ -200,6 +216,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       }
     }
     onTarget = onTarget.filter(s => s.points > 0);
+    for (const [status, trail] of trails) if ((trail.points -= points) <= 0) trails.delete(status);
     for (const [status, left] of pauses) pauses.set(status, left - points);
     statusBoosts = statusBoosts.map(b => ({ ...b, points: b.points - points })).filter(b => b.points > 0);
     maxRaises = maxRaises.map(r => ({ ...r, points: r.points - points })).filter(r => r.points > 0);
@@ -209,13 +226,45 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     }
   };
   let active: ActiveBuff[] = [];
-  // Buffs always active, for the member or for the team while the member is in it
-  for (const { character, slot } of segments) for (const buff of character.data.passiveBuffs ?? []) {
-    const id = `always:${slot}:${buff.name}`;
-    const receiver = buff.target === 'team' ? null : slot;
-    const stat = scaled(character, buff);
-    if (!active.some(a => a.id === id)) active.push({ id, receiver, points: Infinity, label: `${character.name}: ${statLabel(stat)}`, stat, count: 1 });
-  }
+  /** The members of the team, by slot */
+  const team = new Map(segments.map(({ character, slot }) => [slot, character]));
+  /** Values of the counters of the members off the field that keep them (Echo of the team), and the Echo names each one counted */
+  const keptCounters = new Map<number, number[]>();
+  const echoSeen = new Map<string, Set<string>>();
+  /** Counters of the member on the field now */
+  let live: { slot: number; counters: number[] } | undefined;
+  const counterOf = (slot: number, c: number) => (live?.slot === slot ? live.counters : keptCounters.get(slot))?.[c] ?? 0;
+  // Buffs always active, for the member or for the team while the member is in it; the ones by a counter follow its value
+  const passives = (slot: number) => {
+    const character = team.get(slot)!;
+    for (const buff of character.data.passiveBuffs ?? []) {
+      const id = `always:${slot}:${buff.name}`;
+      const receiver = buff.target === 'team' ? null : slot;
+      const byCounter = buff.perCounter !== undefined || !!buff.fromCounter;
+      if (!byCounter && active.some(a => a.id === id)) continue;
+      active = active.filter(a => a.id !== id);
+      const points = buff.perCounter !== undefined ? counterOf(slot, buff.perCounter) : 1;
+      if (!points || (buff.fromCounter && counterOf(slot, buff.fromCounter.counter) < buff.fromCounter.value)) continue;
+      const stat = buff.perCounter !== undefined ? { ...buff, value: +(buff.value * points).toFixed(2) } : scaled(character, buff);
+      if (!stat.value) continue;
+      active.push({ id, receiver, points: Infinity, label: `${character.name}: ${statLabel(stat)}`, stat, count: 1 });
+    }
+  };
+  for (const slot of team.keys()) passives(slot);
+  /** A member casts its Echo Skill: the counters of the team that count it, once for each Echo name */
+  const echoCast = (name: string | undefined) => {
+    if (!name) return;
+    for (const [slot, member] of team) (member.data.counters ?? []).forEach((counter, c) => {
+      if (!counter.teamEcho) return;
+      const seen = echoSeen.get(`${slot}:${c}`) ?? new Set<string>();
+      if (seen.has(name)) return;
+      echoSeen.set(`${slot}:${c}`, seen.add(name));
+      const counters = live?.slot === slot ? live.counters : keptCounters.get(slot) ?? [];
+      counters[c] = Math.min((counters[c] ?? 0) + (counter.amount ?? 1), counter.max);
+      if (live?.slot !== slot) keptCounters.set(slot, counters);
+      passives(slot);
+    });
+  };
   /** Points left until the guaranteed crit of each member is ready again */
   const critCooldown = new Map<number, number>();
   /** Hit that replaces the next Intro of each member (a state of it ended) */
@@ -260,7 +309,10 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     const blockOf: RotationStep[] = [];
     const blockEnd: boolean[] = [];
     for (const unit of units(character.data, steps)) unit.forEach((_, j) => { blockOf.push(unit[0]); blockEnd.push(j === unit.length - 1); });
-    let context = startContext();
+    let context = startContext(character.mode);
+    // The counters of the Echo of the team keep their value
+    (character.data.counters ?? []).forEach((counter, c) => { if (counter.teamEcho) context.counters[c] = keptCounters.get(slot)?.[c] ?? 0; });
+    live = { slot, counters: context.counters };
     /** Marks held (indexes in `data.markers`); they go on the Outro */
     const markers = character.data.markers ?? [];
     const held = new Set<number>();
@@ -276,7 +328,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     };
     // Stacks of a Negative Status a hit applies: up to the max (the others to its overflow), and the duration starts over
     const applyStatuses = (who: Character, whoSlot: number, key: HitKey, whoStates: number[]) => {
-      for (const rule of statuses ? who.data.statuses ?? [] : []) {
+      for (const rule of statuses ? rulesOf(who) : []) {
         const stacks = rule.hits?.[key];
         if (!stacks || (rule.state !== undefined && !whoStates.includes(rule.state))) continue;
         const data = NEGATIVE_STATUS[rule.status];
@@ -288,8 +340,16 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
           status: rule.status, stacks: Math.min(total, maxOf(rule.status)), overflow: over, points: data.duration ?? Infinity,
           since: old?.since ?? 0, character: who, slot: whoSlot, step: keyStep(key),
         };
+        const trail = trailRules.get(rule.status);
+        if (trail) trails.set(rule.status, { stacks: Math.min((trails.get(rule.status)?.stacks ?? 0) + 1, trail.max), points: trail.duration });
         const convert = converts.get(rule.status);
+        const early = burstAbove.get(rule.status);
         if (convert) tickRow(applied, rotation, statusBoosts.filter(b => b.status === rule.status), `${data.name} → ${convert}`);
+        // At the max (or over the early limit), a status that bursts deals its hit with its max stacks and is gone (or 1 stack stays)
+        else if (data.burstAtMax && (applied.stacks >= maxOf(rule.status) || (early !== undefined && applied.stacks > early))) {
+          tickRow({ ...applied, stacks: maxOf(rule.status) }, rotation, statusBoosts.filter(b => b.status === rule.status));
+          if (early !== undefined) onTarget.push({ ...applied, stacks: 1 });
+        }
         else onTarget.push(applied);
       }
     };
@@ -309,7 +369,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       const bonusAfter = hit?.bonusAfter && context.last && hit.bonusAfter.after.includes(context.last) ? hit.bonusAfter : undefined;
       // A counter boost: spent by the hit, a DMG Bonus on it
       const boosts = counterBonuses(character.data, context, key).map(boost => {
-        const buff: StatBuff = { name: boost.name, stat: 'damageBonus', value: boost.value };
+        const buff: StatBuff = { name: boost.name, stat: boost.stat ?? 'damageBonus', value: boost.value };
         return { buff, label: `${character.name}: ${statLabel(buff)}` };
       });
       const value = valueOf(character, slot, step, active, [...stateBuffs, ...boosts, ...fieldBuffs(), ...statusAmplification(character), ...(statuses ? stacksAmplification(character, key) : [])], crits, bonusAfter?.multiplier);
@@ -329,7 +389,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       markers.forEach((marker, m) => { if (marker.gain.includes(key)) held.add(m); });
 
       // Hits added after some hits
-      for (const followUp of character.data.followUps ?? []) if (followUp.after.includes(key)) autoRow(character, slot, followUp.hit, stateBuffs);
+      for (const followUp of character.data.followUps ?? []) if (followUp.after.includes(key) && (followUp.mode === undefined || followUp.mode === character.mode)) autoRow(character, slot, followUp.hit, stateBuffs);
 
       // Hits a state adds after some of its hits, up to its max each time it starts
       for (const s of context.states) {
@@ -392,8 +452,22 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       const giver = blockOf[position];
       if (blockEnd[position]) character.stepHit(giver)?.buffs?.forEach(buff => give(character, slot, buff));
       applyStatuses(character, slot, key, context.states);
+      // A hit that makes the status burst with its max stacks (they stay), raised by the trail (which it takes) and by a state
+      for (const rule of statuses ? rulesOf(character) : []) {
+        const burst = rule.maxBurst;
+        if (!burst) continue;
+        if (burst.keepsTrailAfter === key) keepsTrail.add(slot);
+        if (!burst.hits.includes(key)) continue;
+        const trail = trails.get(rule.status)?.stacks ?? 0;
+        const inState = burst.state && context.states.includes(burst.state.state) ? burst.state.value : 0;
+        const name = trailRules.get(rule.status)?.name;
+        const s: ActiveStatus = { status: rule.status, stacks: maxOf(rule.status), points: 0, since: 0, character, slot, step };
+        tickRow(s, rotation, statusBoosts.filter(b => b.status === rule.status), undefined,
+          { label: (trail && name ? ` + ${name} (${trail})` : '') + (inState ? ` +${inState}%` : ''), value: trail * burst.perTrail + inState });
+        if (!keepsTrail.delete(slot)) trails.delete(rule.status);
+      }
       // A hit that detonates the status: 1 tick at once, and 1 stack less; a hit that consumes it: the status is gone
-      for (const rule of statuses ? character.data.statuses ?? [] : []) {
+      for (const rule of statuses ? rulesOf(character) : []) {
         const s = onTarget.find(s => s.status === rule.status);
         if (!s) continue;
         if (rule.detonate?.includes(key)) {
@@ -404,7 +478,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         }
         if (rule.consume?.hit === key) onTarget = onTarget.filter(other => other !== s);
       }
-      for (const rule of statuses ? character.data.statuses ?? [] : []) {
+      for (const rule of statuses ? rulesOf(character) : []) {
         const pause = rule.pause;
         if (pause?.hit !== key || (pause.counter !== undefined && !counterBoosted(character.data, context, key, pause.counter))) continue;
         pauses.set(rule.status, Math.max(pauses.get(rule.status) ?? 0, pause.duration));
@@ -413,6 +487,9 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       if (step.section === 'end' && states[step.index]?.nextIntro) nextIntro.set(slot, states[step.index].nextIntro!);
       const before = context.counters;
       context = advance(character, context, step, spends[position]);
+      live = { slot, counters: context.counters };
+      if (step.section === 'echo') echoCast(character.mainEcho?.name);
+      passives(slot);
       // A counter that gets to a value gives a buff
       (character.data.counters ?? []).forEach((counter, c) => {
         const at = counter.buffAt;
@@ -420,6 +497,11 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       });
     });
 
+    // The counters of the Echo of the team keep their value off the field (and count the same Echo again after the Outro)
+    keptCounters.set(slot, [...context.counters]);
+    (character.data.counters ?? []).forEach((counter, c) => { if (counter.teamEcho?.resetOnOutro) echoSeen.delete(`${slot}:${c}`); });
+    live = undefined;
+    passives(slot);
     // Hits a counter gives when the character leaves the field
     (character.data.counters ?? []).forEach((counter, c) => {
       const rule = counter.outro;
@@ -444,7 +526,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
 
     // The Outro starts its buffs; the same one given again renews its duration
     character.data.outro.statBuffs?.forEach(buff => give(character, slot, buff));
-    for (const rule of statuses ? character.data.statuses ?? [] : []) {
+    for (const rule of statuses ? rulesOf(character) : []) {
       if (rule.state !== undefined && !context.states.includes(rule.state)) continue;
       if (rule.outroMax) {
         maxRaises = [...maxRaises.filter(r => r.status !== rule.status), { status: rule.status, extra: rule.outroMax.extra, points: rule.outroMax.duration }];

@@ -1,7 +1,7 @@
 import { statusTickValue } from './damage-engine';
 
 /** A Negative Status on the target: it deals damage on its own, every `interval` points while it lasts */
-export type NegativeStatus = 'aeroErosion' | 'spectroFrazzle' | 'electroFlare';
+export type NegativeStatus = 'aeroErosion' | 'spectroFrazzle' | 'electroFlare' | 'fusionBurst';
 
 export interface NegativeStatusData {
   name: string;
@@ -11,9 +11,12 @@ export interface NegativeStatusData {
   duration?: number;
   /** Points between two ticks */
   interval: number;
-  /** Multiplier of 1, 2, 3... stacks; each stack over the list adds `extraPerStack` */
+  /** Multiplier of 1, 2, 3... stacks; each stack over the list adds `extraPerStack` (with `extraGrowth`, the last step plus that much more each time) */
   stacks: number[];
   extraPerStack: number;
+  extraGrowth?: number;
+  /** No ticks: the stacks stay until a hit takes them to the max, then 1 hit with the max stacks and they are gone (the others are lost) */
+  burstAtMax?: boolean;
   /** Each tick takes half of the stacks (rounded down) */
   halvesOnTick?: boolean;
   /** Stacks applied over the max go to this one, up to `max` (raised as the status): each one adds `perStack`% to the next tick, which takes them all */
@@ -31,6 +34,11 @@ export const NEGATIVE_STATUS: Record<NegativeStatus, NegativeStatusData> = {
     name: 'Electro Flare', max: 10, duration: 10, interval: 3, stacks: [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5], extraPerStack: 0.5,
     halvesOnTick: true, overflow: { name: 'Electro Rage', max: 10, perStack: 10 },
   },
+  // Not official yet: each step 2.5 more than the one before
+  fusionBurst: {
+    name: 'Fusion Burst', max: 10, interval: 0, stacks: [2, 5, 10, 17.5, 27.5, 40, 55, 72.5, 92.5, 115, 140, 167.5, 197.5], extraPerStack: 0, extraGrowth: 2.5,
+    burstAtMax: true,
+  },
 };
 
 /** Multiplier of a character level 90 (the level is fixed) */
@@ -44,6 +52,10 @@ const STATUS_BASE = 1.25078;
 export function statusTick(status: NegativeStatus, stacks: number, overflow = 0): number {
   const data = NEGATIVE_STATUS[status];
   const listed = Math.min(stacks, data.stacks.length);
-  const multiplier = data.stacks[listed - 1] + Math.max(0, stacks - data.stacks.length) * data.extraPerStack;
+  let multiplier = data.stacks[listed - 1] + Math.max(0, stacks - data.stacks.length) * data.extraPerStack;
+  if (data.extraGrowth) {
+    let step = data.stacks[listed - 1] - data.stacks[listed - 2];
+    for (let n = listed; n < stacks; n++) multiplier += (step += data.extraGrowth);
+  }
   return statusTickValue(LEVEL_MULTIPLIER * STATUS_BASE * multiplier * (1 + overflow * (data.overflow?.perStack ?? 0) / 100));
 }

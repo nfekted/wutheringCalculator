@@ -90,6 +90,10 @@ export interface StatBuff {
   perCritRate?: { over: number; max: number };
   /** The same, by the Energy Regen */
   perEnergyRegen?: { over: number; max: number };
+  /** Of a buff always active: `value` for each point of the counter (index in `counters`) of the character */
+  perCounter?: number;
+  /** Of a buff always active: only while the counter (index in `counters`) has at least `value` */
+  fromCounter?: { counter: number; value: number };
 }
 
 /**
@@ -144,6 +148,15 @@ export interface TeamField {
  */
 export interface CharacterStatus {
   status: NegativeStatus;
+  /** Only in this mode (index in `modes`) */
+  mode?: number;
+  /** With the character in the team, each time anyone applies the status, 1 stack of this on the target (up to `max`, for `duration` points) */
+  trail?: { name: string; max: number; duration: number };
+  /** With the character in the team, a status that bursts bursts with its max stacks once it has more than this, then 1 stack stays */
+  burstAbove?: number;
+  /** These hits make the status burst with its max stacks, without taking them: +`perTrail`% for each stack of the trail (which they
+   * take, except the first one after `keepsTrailAfter`), and +`state.value`% in that state */
+  maxBurst?: { hits: HitKey[]; perTrail: number; state?: { state: number; value: number }; keepsTrailAfter?: HitKey };
   /** Index in `states` of the only state where this applies (the hits, and the Outro) */
   state?: number;
   hits?: Record<HitKey, number>;
@@ -204,8 +217,16 @@ export interface CharacterCounter {
   free?: HitKey[];
   /** What the unlocked hit spends in a state (by index in `states`), instead of `spend` */
   spendIn?: Record<number, number>;
-  /** In the state (by index in `states`), the hits add `rate` times their amount */
+  /** In the state (by index in `states`), the hits add `rate` times their amount (what they take is not changed) */
   rateIn?: { state: number; rate: number };
+  /** In the state (by index in `states`), these hits add (or take) their own amount, instead of the one out of it; with more than one
+   * state active, the first one listed */
+  amountsIn?: { state: number; amounts: Record<HitKey, number> }[];
+  /** Adds `amount` (1 without it) when a hit spends the boost of this other counter (index in `counters`) */
+  gainOnBoost?: number;
+  /** Adds `amount` (1 without it) each time a member of the team (the character too) casts its Echo Skill, once for each Echo name
+   * (again after the Outro of the character, with `resetOnOutro`); it keeps its value while the character is off the field */
+  teamEcho?: { resetOnOutro?: boolean };
   /** The state (by index in `states`) ends when the counter gets to 0 */
   endsState?: number;
   /** Hits not available while the counter is full (with `spend`, while it has that much) */
@@ -215,8 +236,8 @@ export interface CharacterCounter {
   /** Index in `states` of the only state where the counter exists; it goes back to 0 when the state ends */
   state?: number;
   boost?: CounterBoost;
-  /** These hits get a DMG Bonus of `value`% for each point it has before them */
-  perStack?: { name: string; value: number; hits: HitKey[] };
+  /** These hits get a DMG Bonus (or, with `stat`, a DMG Multiplier raise) of `value`% for each point it has before them */
+  perStack?: { name: string; value: number; hits: HitKey[]; stat?: 'multiplier' | 'amplification' };
   /** When the character leaves the field, `hit` once every `per` points, up to `max` (only with `state` active, or not, by `inState`) */
   outro?: { hit: HitKey; per: number; max: number; state?: number; inState?: boolean };
 }
@@ -224,9 +245,11 @@ export interface CharacterCounter {
 /** A hit that, with at least `spend` in the counter, spends it and gets a DMG Bonus of `value`% (not in the state `notIn`); 0 is none */
 export interface CounterBoost {
   name: string;
-  hit: HitKey;
+  hit: HitKey | HitKey[];
   spend: number;
   value: number;
+  /** A DMG Multiplier raise instead of the DMG Bonus */
+  stat?: 'multiplier';
   notIn?: number;
 }
 
@@ -243,6 +266,8 @@ export interface CharacterState {
   buffs?: StatBuff[];
   /** After the state ends, the next Intro of the character is this hit instead */
   nextIntro?: HitKey;
+  /** Starts when the counter (index in `counters`) gets to `value`, only in the state `inState` (and it ends with it) */
+  startsAt?: { counter: number; value: number; inState?: number };
   /** Hits that end the state (after them); with `endsAfter`, only the n-th of them since it started */
   endsOn?: HitKey[];
   endsAfter?: number;
@@ -345,7 +370,9 @@ export interface CharacterData {
   coordinated?: CoordinatedAttack;
   markers?: CharacterMarker[];
   /** Hits added, in the same action, after some hits (e.g. a butterfly after each Normal Attack) */
-  followUps?: { hit: HitKey; after: HitKey[] }[];
+  followUps?: { hit: HitKey; after: HitKey[]; mode?: number }[];
+  /** Hits only offered in a mode (index in `modes`) */
+  modeHits?: Record<HitKey, number>;
   field?: TeamField;
   statuses?: CharacterStatus[];
   /** A passive that adds `per` ATK points for each 1% of Energy Regen over `over`, up to `max` (on the attributes from the Echos) */

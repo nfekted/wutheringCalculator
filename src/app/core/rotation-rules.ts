@@ -27,10 +27,12 @@ export interface RotationContext {
   buffPoints: Record<string, number>;
   /** End hits of each state with `endsAfter` since it started */
   stateEnds: Record<number, number>;
+  /** Mode of the character (index in `modes`) */
+  mode?: number;
 }
 
-export function startContext(): RotationContext {
-  return { last: null, held: null, states: [], counters: [], statePoints: {}, buffPoints: {}, stateEnds: {} };
+export function startContext(mode = 0): RotationContext {
+  return { last: null, held: null, states: [], counters: [], statePoints: {}, buffPoints: {}, stateEnds: {}, mode };
 }
 
 /**
@@ -110,6 +112,7 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
   }
   if (context.states.some(i => states[i].replaces.includes(key) || (isStart(states[i], key) && !states[i].hits.includes(key)))) return false;
   if (states.some(state => state.nextIntro === key) || data.ignoredHits?.includes(key)) return false;
+  if (data.modeHits?.[key] !== undefined && data.modeHits[key] !== (context.mode ?? 0)) return false;
   // Hits that only come on their own (a Coordinated Attack, the hit of a mark)
   if (data.coordinated?.hits.includes(key) || data.coordinated?.detonation === key || data.markers?.some(marker => marker.hit === key)
     || states.some(state => state.autoHit?.hit === key) || data.followUps?.some(followUp => followUp.hit === key)
@@ -159,7 +162,7 @@ export function advance(character: Character, context: RotationContext, step: Ro
   if (step.section === 'end') {
     const ended = [step.index, ...runOut];
     return {
-      last: null, held: null, buffPoints, statePoints, stateEnds: context.stateEnds,
+      last: null, held: null, buffPoints, statePoints, stateEnds: context.stateEnds, mode: context.mode,
       states: context.states.filter(i => !ended.includes(i)),
       counters: resetCounters(ended, i => context.counters[i] ?? 0),
     };
@@ -199,14 +202,24 @@ export function advance(character: Character, context: RotationContext, step: Ro
       if (boostApplies(counter, value, context, key)) return value - counter.boost!.spend;
       const exists = counter.state === undefined || states.includes(counter.state);
       if (counter.fills?.includes(key) && exists) return counter.max;
-      const rate = counter.rateIn && states.includes(counter.rateIn.state) ? counter.rateIn.rate : 1;
-      const amount = (counter.amounts?.[key] ?? (counter.gain.includes(key) ? counter.amount ?? 1 : 0)) * rate;
+      // The states of the hit: a state that ends on it still counts
+      const own = counter.amountsIn?.find(a => context.states.includes(a.state) || started.includes(a.state))?.amounts[key];
+      const boosted = counter.gainOnBoost !== undefined && boostApplies(counters[counter.gainOnBoost], context.counters[counter.gainOnBoost] ?? 0, context, key);
+      const base = (own ?? counter.amounts?.[key] ?? (counter.gain.includes(key) ? counter.amount ?? 1 : 0)) + (boosted ? counter.amount ?? 1 : 0);
+      const rate = counter.rateIn && states.includes(counter.rateIn.state) && base > 0 ? counter.rateIn.rate : 1;
+      const amount = base * rate;
       if (amount && exists) return Math.max(0, Math.min(value + amount, counter.max));
       return value;
     });
   // A state that ends when its counter is used up
   states = states.filter(s => !counters.some((counter, i) => counter.endsState === s && next[i] <= 0));
-  return { last: key, held, states, buffPoints, statePoints, stateEnds, counters: next };
+  // A state that starts when a counter gets to a value (in another state), and ends with it
+  (data.states ?? []).forEach((state, i) => {
+    const at = state.startsAt;
+    if (at && !states.includes(i) && !ended.includes(i) && next[at.counter] >= at.value && (at.inState === undefined || states.includes(at.inState))) states.push(i);
+  });
+  states = states.filter(s => { const inState = data.states![s].startsAt?.inState; return inState === undefined || states.includes(inState); });
+  return { last: key, held, states, buffPoints, statePoints, stateEnds, counters: next, mode: context.mode };
 }
 
 /** What the unlocked hit spends now: its own amount, by the active state, or `spend` */
@@ -224,17 +237,17 @@ export function counterBoosted(data: CharacterData, context: RotationContext, ke
 
 function boostApplies(counter: CharacterCounter, value: number, context: RotationContext, key: HitKey): boolean {
   const boost = counter.boost;
-  return !!boost && boost.hit === key && value >= boost.spend && !(boost.notIn !== undefined && context.states.includes(boost.notIn));
+  return !!boost && (Array.isArray(boost.hit) ? boost.hit.includes(key) : boost.hit === key) && value >= boost.spend && !(boost.notIn !== undefined && context.states.includes(boost.notIn));
 }
 
-/** The DMG Bonuses the counters give the hit now: a boost (that it spends) and the bonus per point */
-export function counterBonuses(data: CharacterData, context: RotationContext, key: HitKey): { name: string; value: number }[] {
+/** The DMG Bonuses the counters give the hit now: a boost (that it spends) and the bonus (or multiplier raise) per point */
+export function counterBonuses(data: CharacterData, context: RotationContext, key: HitKey): { name: string; value: number; stat?: 'multiplier' | 'amplification' }[] {
   return (data.counters ?? []).flatMap((counter, i) => {
     const value = context.counters[i] ?? 0;
     const perStack = counter.perStack;
     return [
-      ...(boostApplies(counter, value, context, key) && counter.boost!.value ? [{ name: counter.boost!.name, value: counter.boost!.value }] : []),
-      ...(perStack?.hits.includes(key) && value ? [{ name: perStack.name, value: perStack.value * value }] : []),
+      ...(boostApplies(counter, value, context, key) && counter.boost!.value ? [{ name: counter.boost!.name, value: counter.boost!.value, stat: counter.boost!.stat }] : []),
+      ...(perStack?.hits.includes(key) && value ? [{ name: perStack.name, value: perStack.value * value, stat: perStack.stat }] : []),
     ];
   });
 }
@@ -302,5 +315,5 @@ export function cleanSteps(character: Character, steps: RotationStep[], context 
 /** Context where the hits between the Intro and the Outro start: after the Intro, or from nothing (member A of the first team rotation) */
 export function middleContext(character: Character, withIntro: boolean): RotationContext {
   const intro = character.sectionSteps('intro');
-  return withIntro ? contextAfter(character, intro) : startContext();
+  return withIntro ? contextAfter(character, intro, startContext(character.mode)) : startContext(character.mode);
 }

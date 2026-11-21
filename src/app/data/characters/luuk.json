@@ -493,7 +493,8 @@
               88.53
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Aureole of Execution: Breach DMG",
@@ -515,7 +516,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Aureole of Execution: Glare DMG",
@@ -536,7 +538,8 @@
               354.11
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Basic Attack - Golden Impale DMG",
@@ -557,7 +560,8 @@
               155.47
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Ichor Deposit DMG",
@@ -578,7 +582,8 @@
               153.45
             ]
           }
-        ]
+        ],
+        "multiplier": 2.1
       }
     ]
   },
@@ -690,7 +695,9 @@
               306.9
             ]
           }
-        ]
+        ],
+        "cost": 1,
+        "multiplier": 2.1
       }
     ]
   },
@@ -782,5 +789,192 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:2": [
+        "basic:11"
+      ],
+      "basic:6": [
+        "basic:5",
+        "intro:0"
+      ],
+      "basic:8": [
+        "basic:5",
+        "intro:0"
+      ],
+      "basic:7": [
+        "basic:6",
+        "basic:8"
+      ],
+      "basic:9": [
+        "basic:6",
+        "basic:8"
+      ],
+      "basic:10": [
+        "basic:7",
+        "basic:9"
+      ],
+      "skill:4": [
+        "skill:1",
+        "skill:2"
+      ],
+      "forte:0": [
+        "skill:3"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Aureole of Execution",
+      "start": [
+        "basic:3",
+        "basic:7",
+        "basic:9"
+      ],
+      "hits": [
+        "skill:1"
+      ],
+      "replaces": [
+        "skill:0"
+      ]
+    },
+    {
+      "name": "Aureole of Execution: Breach",
+      "start": "skill:1",
+      "hits": [
+        "skill:2"
+      ],
+      "replaces": [
+        "skill:1"
+      ],
+      "endsOn": [
+        "skill:2"
+      ]
+    },
+    {
+      "name": "Aureole of Execution: Glare",
+      "start": "skill:2",
+      "hits": [
+        "skill:3"
+      ],
+      "replaces": [
+        "skill:1"
+      ],
+      "endsOn": [
+        "skill:3"
+      ]
+    },
+    {
+      "name": "Aureate Judge",
+      "start": [],
+      "hits": [],
+      "replaces": [],
+      "startsAt": {
+        "counter": 0,
+        "value": 6
+      },
+      "buffs": [
+        {
+          "name": "Aureate Judge",
+          "stat": "multiplier",
+          "value": 110,
+          "hits": [
+            "skill:1",
+            "skill:2",
+            "skill:3"
+          ]
+        }
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Ichor Flow",
+      "max": 6,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12",
+        "skill:0",
+        "skill:1",
+        "skill:2",
+        "skill:3",
+        "skill:4",
+        "forte:0"
+      ],
+      "fills": [
+        "intro:0"
+      ],
+      "unlocks": [],
+      "replaces": [],
+      "rateIn": {
+        "state": 3,
+        "rate": 0
+      },
+      "amountsIn": [
+        {
+          "state": 3,
+          "amounts": {
+            "skill:1": -2,
+            "skill:2": -2,
+            "skill:3": -2
+          }
+        }
+      ],
+      "endsState": 3
+    },
+    {
+      "name": "Endnotes on the Endgame",
+      "max": 3,
+      "gain": [
+        "skill:1",
+        "skill:2",
+        "skill:3"
+      ],
+      "amounts": {
+        "liberation:0": -3
+      },
+      "unlocks": [],
+      "replaces": [],
+      "perStack": {
+        "name": "Endnotes on the Endgame",
+        "value": 25,
+        "hits": [
+          "liberation:0"
+        ],
+        "stat": "multiplier"
+      }
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "skill:5",
+      "after": [
+        "skill:3"
+      ]
+    }
+  ],
+  "passiveBuffs": [
+    {
+      "name": "Uncaused Diagnosis",
+      "stat": "atk",
+      "value": 25
+    },
+    {
+      "name": "Uncaused Diagnosis - Tune Break Boost",
+      "stat": "amplification",
+      "value": 30
+    }
+  ]
 }

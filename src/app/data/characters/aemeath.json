@@ -218,11 +218,12 @@
               74.26
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Heavy Attack - Aemeath Charged II DMG",
-        "kind": "heavy",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -255,7 +256,8 @@
               185.6
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Mid-air Attack - Aemeath DMG",
@@ -588,7 +590,8 @@
               92.83
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Heavy Attack - Mech Charged II DMG",
@@ -609,7 +612,8 @@
               232
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Mid-air Attack - Mech DMG",
@@ -901,7 +905,8 @@
               178.93
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Seraphic Duet: Overture DMG",
@@ -970,7 +975,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Tune Rupture Response - Starburst DMG",
@@ -991,7 +997,8 @@
               596.43
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Seraphic Duet Bonus DMG (Per Instance)",
@@ -1012,7 +1019,8 @@
               109.35
             ]
           }
-        ]
+        ],
+        "multiplier": 11
       }
     ]
   },
@@ -1107,5 +1115,283 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "modes": [
+    "fusion",
+    "tune"
+  ],
+  "modeHits": {
+    "forte:2": 1
+  },
+  "sequence": {
+    "after": {
+      "skill:0": [
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:7"
+      ],
+      "skill:1": [
+        "skill:3",
+        "skill:4",
+        "skill:5",
+        "skill:6",
+        "skill:7",
+        "skill:9"
+      ],
+      "basic:1": [
+        "basic:4",
+        "basic:6",
+        "skill:1",
+        "forte:0"
+      ],
+      "basic:2": [
+        "basic:5",
+        "intro:0"
+      ],
+      "basic:3": [
+        "basic:7"
+      ],
+      "skill:3": [
+        "skill:0",
+        "skill:6",
+        "skill:8",
+        "forte:1",
+        "liberation:0"
+      ],
+      "skill:4": [
+        "skill:7",
+        "intro:1"
+      ],
+      "skill:5": [
+        "skill:9"
+      ],
+      "forte:1": [
+        "basic:3"
+      ],
+      "forte:0": [
+        "skill:5"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Mech",
+      "start": [
+        "skill:0",
+        "forte:1",
+        "liberation:0",
+        "intro:1"
+      ],
+      "hits": [
+        "skill:1",
+        "skill:2",
+        "skill:3",
+        "skill:4",
+        "skill:5",
+        "skill:6",
+        "skill:7",
+        "skill:8",
+        "skill:9",
+        "forte:0",
+        "intro:1"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "skill:0",
+        "forte:1"
+      ],
+      "endsOn": [
+        "skill:1",
+        "forte:0",
+        "liberation:1"
+      ],
+      "nextIntro": "intro:1"
+    },
+    {
+      "name": "Heavenfall Edict: Unbound",
+      "start": "liberation:0",
+      "hits": [
+        "liberation:1"
+      ],
+      "replaces": [
+        "liberation:0"
+      ],
+      "endsOn": [
+        "liberation:1"
+      ],
+      "duration": 60
+    },
+    {
+      "name": "Stardust Resonance",
+      "start": "liberation:0",
+      "hits": [],
+      "replaces": [],
+      "endsOn": [
+        "forte:0",
+        "forte:1"
+      ],
+      "endsAfter": 2,
+      "duration": 30,
+      "buffs": [
+        {
+          "name": "Stardust Resonance",
+          "stat": "multiplier",
+          "value": 100,
+          "hits": [
+            "forte:3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Instant Response",
+      "start": [],
+      "hits": [],
+      "replaces": [],
+      "endsOn": [
+        "liberation:1"
+      ],
+      "startsAt": {
+        "counter": 1,
+        "value": 4,
+        "inState": 1
+      },
+      "buffs": [
+        {
+          "name": "Before All Sounds",
+          "stat": "amplification",
+          "value": 200,
+          "hits": [
+            "basic:4",
+            "basic:5",
+            "skill:6",
+            "skill:7"
+          ]
+        }
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Synchronization Rate",
+      "max": 20,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:6",
+        "basic:7",
+        "skill:2",
+        "skill:3",
+        "skill:4",
+        "skill:5",
+        "skill:8",
+        "skill:9"
+      ],
+      "amounts": {
+        "skill:0": 2,
+        "skill:1": 2,
+        "intro:0": 4,
+        "intro:1": 4,
+        "liberation:0": 3
+      },
+      "fills": [
+        "basic:5",
+        "skill:7"
+      ],
+      "unlocks": [
+        "forte:0",
+        "forte:1",
+        "liberation:1"
+      ],
+      "spend": 10,
+      "spendBy": {
+        "liberation:1": 20
+      },
+      "replaces": []
+    },
+    {
+      "name": "Resonance Rate",
+      "max": 4,
+      "gain": [
+        "forte:0",
+        "forte:1"
+      ],
+      "amounts": {
+        "liberation:0": 2
+      },
+      "unlocks": "liberation:1",
+      "replaces": []
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "forte:3",
+      "after": [
+        "forte:0",
+        "forte:1"
+      ],
+      "mode": 1
+    }
+  ],
+  "statuses": [
+    {
+      "status": "fusionBurst",
+      "mode": 0,
+      "hits": {
+        "basic:2": 1,
+        "basic:3": 1,
+        "skill:4": 1,
+        "skill:5": 1,
+        "skill:0": 1,
+        "skill:1": 1,
+        "intro:0": 1,
+        "intro:1": 1
+      },
+      "trail": {
+        "name": "Fusion Trail",
+        "max": 30,
+        "duration": 30
+      },
+      "burstAbove": 5,
+      "maxBurst": {
+        "hits": [
+          "forte:0",
+          "forte:1"
+        ],
+        "perTrail": 10,
+        "state": {
+          "state": 2,
+          "value": 200
+        },
+        "keepsTrailAfter": "liberation:0"
+      }
+    }
+  ],
+  "passiveBuffs": [
+    {
+      "name": "Between the Stars",
+      "stat": "critDamage",
+      "value": 60
+    },
+    {
+      "name": "Between the Stars - Finale",
+      "stat": "amplification",
+      "value": 25,
+      "hits": [
+        "liberation:1"
+      ]
+    }
+  ]
 }

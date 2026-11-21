@@ -675,7 +675,8 @@
               264.75
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Runic Chain Whip DMG",
@@ -713,7 +714,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Runic Soliskin DMG",
@@ -765,7 +767,8 @@
               119.26
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Forte Circuit - Learn My True Name DMG",
@@ -801,7 +804,8 @@
               908.61
             ]
           }
-        ]
+        ],
+        "cost": 1
       }
     ]
   },
@@ -910,5 +914,273 @@
         "flat": true
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:5",
+        "basic:6",
+        "basic:8",
+        "intro:0"
+      ],
+      "basic:2": [
+        "skill:0"
+      ],
+      "basic:3": [
+        "basic:7"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Decipher",
+      "start": "basic:3",
+      "hits": [
+        "basic:4",
+        "basic:9",
+        "skill:1",
+        "skill:2"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:7",
+        "skill:0"
+      ],
+      "endsOn": [
+        "basic:4",
+        "basic:9",
+        "skill:1",
+        "skill:2"
+      ],
+      "duration": 5
+    },
+    {
+      "name": "Convergent",
+      "start": "intro:0",
+      "hits": [],
+      "replaces": [],
+      "endsOn": [
+        "basic:4",
+        "basic:9",
+        "skill:1",
+        "skill:2"
+      ],
+      "duration": 20
+    },
+    {
+      "name": "Divergent",
+      "start": "liberation:0",
+      "hits": [],
+      "replaces": [],
+      "endsOn": [
+        "basic:4",
+        "basic:9",
+        "skill:1",
+        "skill:2"
+      ],
+      "duration": 20
+    }
+  ],
+  "counters": [
+    {
+      "name": "Rune: Trust",
+      "max": 4,
+      "gain": [
+        "basic:4",
+        "basic:9"
+      ],
+      "unlocks": [
+        "forte:1",
+        "forte:2"
+      ],
+      "spend": 1,
+      "spendBy": {
+        "forte:2": 2
+      },
+      "replaces": [],
+      "amountsIn": [
+        {
+          "state": 1,
+          "amounts": {
+            "basic:4": 2,
+            "basic:9": 2
+          }
+        },
+        {
+          "state": 2,
+          "amounts": {
+            "skill:1": 1,
+            "skill:2": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rune: Answer",
+      "max": 4,
+      "gain": [
+        "skill:1",
+        "skill:2"
+      ],
+      "unlocks": [
+        "forte:1",
+        "forte:3"
+      ],
+      "spend": 1,
+      "spendBy": {
+        "forte:3": 2
+      },
+      "replaces": [],
+      "amountsIn": [
+        {
+          "state": 1,
+          "amounts": {
+            "skill:1": 2,
+            "skill:2": 2
+          }
+        },
+        {
+          "state": 2,
+          "amounts": {
+            "basic:4": 1,
+            "basic:9": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Full Stop",
+      "max": 2,
+      "gain": [
+        "forte:1",
+        "forte:2",
+        "forte:3"
+      ],
+      "unlocks": "forte:4",
+      "replaces": []
+    },
+    {
+      "name": "Full Stop (50)",
+      "max": 2,
+      "gain": [
+        "forte:1",
+        "forte:2",
+        "forte:3"
+      ],
+      "amounts": {
+        "forte:4": -2
+      },
+      "unlocks": "skill:2",
+      "spend": 1,
+      "free": [
+        "skill:2"
+      ],
+      "replaces": []
+    },
+    {
+      "name": "Soliskin Vitality",
+      "max": 6,
+      "gain": [],
+      "teamEcho": {
+        "resetOnOutro": true
+      },
+      "unlocks": [],
+      "replaces": [],
+      "boost": {
+        "name": "Soliskin Vitality",
+        "hit": [
+          "forte:1",
+          "forte:2",
+          "forte:3"
+        ],
+        "spend": 3,
+        "value": 50,
+        "stat": "multiplier"
+      }
+    },
+    {
+      "name": "Innate Gift",
+      "max": 2,
+      "gain": [],
+      "gainOnBoost": 4,
+      "amounts": {
+        "forte:4": -2
+      },
+      "unlocks": [],
+      "replaces": [],
+      "perStack": {
+        "name": "Innate Gift",
+        "value": 30,
+        "hits": [
+          "forte:1",
+          "forte:2",
+          "forte:3",
+          "forte:4"
+        ],
+        "stat": "amplification"
+      }
+    },
+    {
+      "name": "Blessing of Runes",
+      "max": 6,
+      "gain": [],
+      "teamEcho": {},
+      "unlocks": [],
+      "replaces": []
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "forte:0",
+      "after": [
+        "forte:1",
+        "forte:2",
+        "forte:3"
+      ]
+    }
+  ],
+  "passiveBuffs": [
+    {
+      "name": "Blessing of Runes - Aero DMG",
+      "stat": "elementalBonus",
+      "value": 3,
+      "target": "team",
+      "element": "aero",
+      "perCounter": 6
+    },
+    {
+      "name": "Blessing of Runes - Echo DMG",
+      "stat": "echoBonus",
+      "value": 3,
+      "target": "team",
+      "perCounter": 6
+    },
+    {
+      "name": "Blessing of Runes (6) - Aero DMG",
+      "stat": "elementalBonus",
+      "value": 30,
+      "fromCounter": {
+        "counter": 6,
+        "value": 6
+      }
+    },
+    {
+      "name": "Blessing of Runes (6) - Echo DMG",
+      "stat": "echoBonus",
+      "value": 30,
+      "fromCounter": {
+        "counter": 6,
+        "value": 6
+      }
+    },
+    {
+      "name": "True Names Aligned",
+      "stat": "echoBonus",
+      "value": 2,
+      "perEnergyRegen": {
+        "over": 125,
+        "max": 50
+      }
+    }
+  ]
 }
