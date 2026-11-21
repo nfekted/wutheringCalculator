@@ -350,7 +350,11 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
           tickRow({ ...applied, stacks: maxOf(rule.status) }, rotation, statusBoosts.filter(b => b.status === rule.status));
           if (early !== undefined) onTarget.push({ ...applied, stacks: 1 });
         }
-        else onTarget.push(applied);
+        else {
+          // A status that hits when it is applied
+          if (data.hitOnApply) tickRow({ ...applied }, rotation, statusBoosts.filter(b => b.status === rule.status));
+          onTarget.push(applied);
+        }
       }
     };
 

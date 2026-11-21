@@ -1,7 +1,7 @@
 import { statusTickValue } from './damage-engine';
 
 /** A Negative Status on the target: it deals damage on its own, every `interval` points while it lasts */
-export type NegativeStatus = 'aeroErosion' | 'spectroFrazzle' | 'electroFlare' | 'fusionBurst';
+export type NegativeStatus = 'aeroErosion' | 'spectroFrazzle' | 'electroFlare' | 'fusionBurst' | 'glacioChafe';
 
 export interface NegativeStatusData {
   name: string;
@@ -17,6 +17,8 @@ export interface NegativeStatusData {
   extraGrowth?: number;
   /** No ticks: the stacks stay until a hit takes them to the max, then 1 hit with the max stacks and they are gone (the others are lost) */
   burstAtMax?: boolean;
+  /** With `burstAtMax`: each time it is applied, 1 hit with the stacks it has then (at the max, that hit only, and they are gone) */
+  hitOnApply?: boolean;
   /** Each tick takes half of the stacks (rounded down) */
   halvesOnTick?: boolean;
   /** Stacks applied over the max go to this one, up to `max` (raised as the status): each one adds `perStack`% to the next tick, which takes them all */
@@ -38,6 +40,11 @@ export const NEGATIVE_STATUS: Record<NegativeStatus, NegativeStatusData> = {
   fusionBurst: {
     name: 'Fusion Burst', max: 10, interval: 0, stacks: [2, 5, 10, 17.5, 27.5, 40, 55, 72.5, 92.5, 115, 140, 167.5, 197.5], extraPerStack: 0, extraGrowth: 2.5,
     burstAtMax: true,
+  },
+  // Not official yet: 0.35 for each stack; at the max the target is Frozen (no damage) and the stacks are gone
+  glacioChafe: {
+    name: 'Glacio Chafe', max: 10, interval: 0, stacks: [0.35, 0.7, 1.05, 1.4, 1.75, 2.1, 2.45, 2.8, 3.15, 3.5], extraPerStack: 0.35,
+    burstAtMax: true, hitOnApply: true,
   },
 };
 
