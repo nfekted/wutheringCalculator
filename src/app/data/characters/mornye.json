@@ -486,6 +486,12 @@
             "times": 4
           }
         ]
+      },
+      {
+        "name": "Expectation Error",
+        "kind": "skill",
+        "parts": [],
+        "manual": true
       }
     ]
   },
@@ -510,6 +516,15 @@
               485.7,
               522.33
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "High Syntony Field",
+            "stat": "def",
+            "value": 20,
+            "duration": 25,
+            "target": "team"
           }
         ]
       }
@@ -648,7 +663,8 @@
               99.02
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Heavy Attack - Inversion DMG",
@@ -668,6 +684,20 @@
               240.34,
               258.46
             ]
+          }
+        ],
+        "cost": 1,
+        "buffs": [
+          {
+            "name": "Interfered Marker",
+            "stat": "amplification",
+            "value": 0.25,
+            "duration": 30,
+            "target": "team",
+            "perEnergyRegen": {
+              "over": 100,
+              "max": 40
+            }
           }
         ]
       },
@@ -690,7 +720,8 @@
               298.22
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       }
     ]
   },
@@ -776,5 +807,149 @@
         "stat": "cDmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:9",
+        "skill:4"
+      ],
+      "basic:2": [
+        "basic:8"
+      ],
+      "basic:6": [
+        "basic:10"
+      ],
+      "skill:2": [
+        "skill:4"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Wide Field Observation Mode",
+      "start": [
+        "forte:2",
+        "intro:0"
+      ],
+      "hits": [
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:10",
+        "skill:0",
+        "skill:3",
+        "forte:3"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:7",
+        "basic:9",
+        "skill:1",
+        "skill:2",
+        "skill:4",
+        "forte:2"
+      ],
+      "endsOn": [
+        "basic:8"
+      ],
+      "duration": 30
+    }
+  ],
+  "counters": [
+    {
+      "name": "Rest Mass Energy",
+      "max": 4,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:7",
+        "basic:9",
+        "skill:2"
+      ],
+      "amounts": {
+        "intro:0": -4
+      },
+      "unlocks": "forte:2",
+      "replaces": [
+        "basic:7"
+      ]
+    },
+    {
+      "name": "Relative Momentum",
+      "max": 4,
+      "gain": [
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:10",
+        "skill:3"
+      ],
+      "unlocks": "forte:3",
+      "replaces": [],
+      "state": 0
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "forte:1",
+      "after": [
+        "forte:2",
+        "intro:0"
+      ]
+    },
+    {
+      "hit": "forte:0",
+      "after": [
+        "forte:2",
+        "intro:0"
+      ]
+    },
+    {
+      "hit": "skill:1",
+      "after": [
+        "skill:4"
+      ]
+    },
+    {
+      "hit": "skill:0",
+      "after": [
+        "skill:3"
+      ]
+    }
+  ],
+  "passiveStats": {
+    "energyRegen": 10
+  },
+  "passiveBuffs": [
+    {
+      "name": "Critical Protocol - Crit. Rate",
+      "stat": "critRate",
+      "value": 0.5,
+      "hits": [
+        "liberation:0"
+      ],
+      "perEnergyRegen": {
+        "over": 100,
+        "max": 80
+      }
+    },
+    {
+      "name": "Critical Protocol - Crit. DMG",
+      "stat": "critDamage",
+      "value": 1,
+      "hits": [
+        "liberation:0"
+      ],
+      "perEnergyRegen": {
+        "over": 100,
+        "max": 160
+      }
+    }
+  ]
 }

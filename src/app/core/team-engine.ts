@@ -1,5 +1,5 @@
 import { Amplification, Stats, noAmplification } from './damage-engine';
-import { CoordinatedAttack, HitKey, OutroBuff, RotationStep, StatBuff, TeamField, CharacterStatus } from '../data/character-data.model';
+import { CoordinatedAttack, HitKey, HitKind, OutroBuff, RotationStep, StatBuff, TeamField, CharacterStatus } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
 import { NEGATIVE_STATUS, NegativeStatus, statusTick } from './negative-status';
 import { advance, counterBonuses, counterBoosted, isStart, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
@@ -96,6 +96,8 @@ interface ActiveCoordinated {
 interface ActiveStatus {
   status: NegativeStatus;
   stacks: number;
+  /** Stacks applied over the max (`overflow` of the status) */
+  overflow?: number;
   points: number;
   /** Points since the last tick (or since it started) */
   since: number;
@@ -131,17 +133,20 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   let onTarget: ActiveStatus[] = [];
   /** Raises of the max stacks of a status while they last */
   let maxRaises: { status: NegativeStatus; extra: number; points: number; slot?: number }[] = [];
-  const maxOf = (status: NegativeStatus) => NEGATIVE_STATUS[status].max
-    + maxRaises.filter(r => r.status === status).reduce((sum, r) => sum + r.extra, 0);
+  const raiseOf = (status: NegativeStatus) => maxRaises.filter(r => r.status === status).reduce((sum, r) => sum + r.extra, 0);
+  const maxOf = (status: NegativeStatus) => NEGATIVE_STATUS[status].max + raiseOf(status);
+  const overflowMaxOf = (status: NegativeStatus) => (NEGATIVE_STATUS[status].overflow?.max ?? 0) + raiseOf(status);
   /** Points left in which the ticks of a status take no stack */
   const pauses = new Map<NegativeStatus, number>();
   /** DMG Amplification and longer interval of a status while they last */
   let statusBoosts: { status: NegativeStatus; amplification: number; intervalRate: number; points: number; label: string }[] = [];
   /** A tick of a status, with the boosts on it */
   const tickRow = (s: ActiveStatus, rotation: number, boosts: typeof statusBoosts, name = NEGATIVE_STATUS[s.status].name) => {
-    const base = statusTick(s.status, s.stacks);
+    const base = statusTick(s.status, s.stacks, s.overflow);
     const buffed = base * (1 + boosts.reduce((sum, b) => sum + b.amplification, 0) / 100);
-    rows.push({ rotation, slot: s.slot, step: s.step, name: `${name} (${s.stacks})`, buffs: boosts.map(b => b.label), damage: true, base, buffed, auto: true });
+    const overflow = s.overflow ? ` + ${NEGATIVE_STATUS[s.status].overflow!.name} (${s.overflow})` : '';
+    rows.push({ rotation, slot: s.slot, step: s.step, name: `${name} (${s.stacks})${overflow}`, buffs: boosts.map(b => b.label), damage: true, base, buffed, auto: true });
+    s.overflow = 0;
   };
   /** Statuses a member of the team converts as soon as they are applied */
   const converts = new Map<NegativeStatus, string>();
@@ -190,20 +195,26 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         // A status without duration loses 1 stack each tick
         const paused = (pauses.get(s.status) ?? 0) > elapsed;
         if (NEGATIVE_STATUS[s.status].duration === undefined && !paused && --s.stacks <= 0) s.points = 0;
+        // Or half of them
+        if (NEGATIVE_STATUS[s.status].halvesOnTick && (s.stacks = Math.floor(s.stacks / 2)) <= 0) s.points = 0;
       }
     }
     onTarget = onTarget.filter(s => s.points > 0);
     for (const [status, left] of pauses) pauses.set(status, left - points);
     statusBoosts = statusBoosts.map(b => ({ ...b, points: b.points - points })).filter(b => b.points > 0);
     maxRaises = maxRaises.map(r => ({ ...r, points: r.points - points })).filter(r => r.points > 0);
-    for (const s of onTarget) s.stacks = Math.min(s.stacks, maxOf(s.status));
+    for (const s of onTarget) {
+      s.stacks = Math.min(s.stacks, maxOf(s.status));
+      if (s.overflow) s.overflow = Math.min(s.overflow, overflowMaxOf(s.status));
+    }
   };
   let active: ActiveBuff[] = [];
   // Buffs always active, for the member or for the team while the member is in it
   for (const { character, slot } of segments) for (const buff of character.data.passiveBuffs ?? []) {
     const id = `always:${slot}:${buff.name}`;
     const receiver = buff.target === 'team' ? null : slot;
-    if (!active.some(a => a.id === id)) active.push({ id, receiver, points: Infinity, label: `${character.name}: ${statLabel(buff)}`, stat: buff, count: 1 });
+    const stat = scaled(character, buff);
+    if (!active.some(a => a.id === id)) active.push({ id, receiver, points: Infinity, label: `${character.name}: ${statLabel(stat)}`, stat, count: 1 });
   }
   /** Points left until the guaranteed crit of each member is ready again */
   const critCooldown = new Map<number, number>();
@@ -261,6 +272,26 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       const step = keyStep(key);
       const value = valueOf(who, whoSlot, step, active, [...others, ...fieldBuffs()]);
       rows.push({ rotation, slot: whoSlot, step, name: who.stepHit(step)?.name ?? '—', buffs: value.labels, damage: value.type === 'damage', base: value.base, buffed: value.buffed, auto: true });
+      applyStatuses(who, whoSlot, key, who === character ? context.states : []);
+    };
+    // Stacks of a Negative Status a hit applies: up to the max (the others to its overflow), and the duration starts over
+    const applyStatuses = (who: Character, whoSlot: number, key: HitKey, whoStates: number[]) => {
+      for (const rule of statuses ? who.data.statuses ?? [] : []) {
+        const stacks = rule.hits?.[key];
+        if (!stacks || (rule.state !== undefined && !whoStates.includes(rule.state))) continue;
+        const data = NEGATIVE_STATUS[rule.status];
+        const old = onTarget.find(s => s.status === rule.status);
+        onTarget = onTarget.filter(s => s !== old);
+        const total = (old?.stacks ?? 0) + stacks;
+        const over = data.overflow ? Math.min((old?.overflow ?? 0) + Math.max(0, total - maxOf(rule.status)), overflowMaxOf(rule.status)) : 0;
+        const applied: ActiveStatus = {
+          status: rule.status, stacks: Math.min(total, maxOf(rule.status)), overflow: over, points: data.duration ?? Infinity,
+          since: old?.since ?? 0, character: who, slot: whoSlot, step: keyStep(key),
+        };
+        const convert = converts.get(rule.status);
+        if (convert) tickRow(applied, rotation, statusBoosts.filter(b => b.status === rule.status), `${data.name} → ${convert}`);
+        else onTarget.push(applied);
+      }
     };
 
     steps.forEach((step, position) => {
@@ -360,21 +391,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       // Buffs the hit gives the character itself start after it (after its block)
       const giver = blockOf[position];
       if (blockEnd[position]) character.stepHit(giver)?.buffs?.forEach(buff => give(character, slot, buff));
-      // Stacks of a Negative Status the hit applies: up to the max, and the duration starts over
-      for (const rule of statuses ? character.data.statuses ?? [] : []) {
-        const stacks = rule.hits?.[key];
-        if (!stacks || (rule.state !== undefined && !context.states.includes(rule.state))) continue;
-        const data = NEGATIVE_STATUS[rule.status];
-        const old = onTarget.find(s => s.status === rule.status);
-        onTarget = onTarget.filter(s => s !== old);
-        const applied: ActiveStatus = {
-          status: rule.status, stacks: Math.min((old?.stacks ?? 0) + stacks, maxOf(rule.status)), points: data.duration ?? Infinity,
-          since: old?.since ?? 0, character, slot, step,
-        };
-        const convert = converts.get(rule.status);
-        if (convert) tickRow(applied, rotation, statusBoosts.filter(b => b.status === rule.status), `${data.name} → ${convert}`);
-        else onTarget.push(applied);
-      }
+      applyStatuses(character, slot, key, context.states);
       // A hit that detonates the status: 1 tick at once, and 1 stack less; a hit that consumes it: the status is gone
       for (const rule of statuses ? character.data.statuses ?? [] : []) {
         const s = onTarget.find(s => s.status === rule.status);
@@ -382,6 +399,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         if (rule.detonate?.includes(key)) {
           const boost = stateBoostOf(character, rule, context.states, 0);
           tickRow({ ...s, character, slot, step }, rotation, [...statusBoosts.filter(b => b.status === rule.status && b.label !== boost?.label), ...(boost ? [boost] : [])]);
+          s.overflow = 0;
           if (--s.stacks <= 0) onTarget = onTarget.filter(other => other !== s);
         }
         if (rule.consume?.hit === key) onTarget = onTarget.filter(other => other !== s);
@@ -477,21 +495,25 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   const key = stepKey(step);
   const hit = character.stepHit(step);
   const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
-  // ATK only for a hit that scales with it; DMG Bonus and DMG Amplification never for healing or a shield
+  // ATK (DEF) only for a hit that scales with it; DMG Bonus and DMG Amplification never for healing or a shield
   const support = kind === 'heal' || kind === 'shield';
-  const fits = (buff?: StatBuff) => !hit?.noBuffs && (!buff || ((!buff.hits || buff.hits.includes(key)) && (!buff.element || buff.element === character.data.type) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat])
-    && (buff.stat === 'atk' || buff.stat === 'flatAtk' ? !!hit?.parts.some(part => part.stat === 'atk') : !support)));
+  // A hit of another element gets no elemental bonus of the character, and the element buffs of its own element
+  const element = hit?.element ?? character.data.type;
+  const fits = (buff?: StatBuff) => !hit?.noBuffs && (!buff || ((!buff.hits || buff.hits.includes(key)) && (!buff.element || buff.element === element)
+    && !(buff.stat === 'elementalBonus' && element !== character.data.type) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat])
+    && (buff.stat === 'atk' || buff.stat === 'flatAtk' ? !!hit?.parts.some(part => part.stat === 'atk')
+      : buff.stat === 'def' ? !!hit?.parts.some(part => part.stat === 'def') : !support)));
   const applied = active.filter(a => (a.receiver === null || a.receiver === slot) && fits(a.stat)
-    && !(a.outro?.amplification === 'elemental' && a.outro.element !== character.data.type)
+    && !(a.outro?.amplification === 'elemental' && a.outro.element !== element)
     && !(a.outro && (support || kind === 'tune'))
     && !(a.outro && a.outro.amplification !== 'all' && a.outro.amplification !== 'elemental' && a.outro.amplification !== kind));
   const own = others.filter(o => fits(o.buff));
   const statBuffs = [...applied.flatMap(a => a.stat ? [a.stat] : []), ...own.map(o => o.buff)];
   const multiplier = 1 + statBuffs.filter(buff => buff.stat === 'multiplier').reduce((sum, buff) => sum + buff.value, 0) / 100;
   const extraAmplification = statBuffs.filter(buff => buff.stat === 'amplification').reduce((sum, buff) => sum + buff.value, 0);
-  const amplification = applied.some(a => a.outro) || extraAmplification ? amplificationOf(applied, character) : undefined;
+  const amplification = applied.some(a => a.outro) || extraAmplification ? amplificationOf(applied, element) : undefined;
   if (amplification) amplification.all += extraAmplification;
-  const extra = statBuffs.length ? extraStats(statBuffs, character) : undefined;
+  const extra = statBuffs.length ? extraStats(statBuffs, character, element === character.data.type ? undefined : kind) : undefined;
   const critExtra = crit ? { ...extra, cChance: (extra?.cChance ?? 0) + 100 } : extra;
   const alone = character.rotationHit(step);
   const base = alone.value * times;
@@ -499,26 +521,32 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   return { type: alone.type, base, buffed, labels: [...applied.map(a => a.label), ...own.map(o => o.label)] };
 }
 
-/** Amplifications of the active Outro buffs added up; an elemental one counts only for a character of its element */
-function amplificationOf(buffs: ActiveBuff[], character: Character): Amplification {
+/** Amplifications of the active Outro buffs added up; an elemental one counts only for a hit of its element */
+function amplificationOf(buffs: ActiveBuff[], element: string): Amplification {
   const amplification = noAmplification();
   for (const { outro } of buffs) {
     if (!outro) continue;
-    if (outro.amplification === 'elemental' && outro.element !== character.data.type) continue;
+    if (outro.amplification === 'elemental' && outro.element !== element) continue;
     amplification[outro.amplification] += outro.value;
   }
   return amplification;
 }
 
-/** Attributes the buffs add: ATK as a percentage of the base ATK, the others as they are */
-function extraStats(buffs: StatBuff[], character: Character): Partial<Stats> {
+/** Attributes the buffs add: ATK (DEF) as a percentage of the base ATK (DEF), the others as they are; `otherElement`: the kind of a hit
+ * of another element, which gets the DMG Bonus on all hits in the bonus of its kind (it gets no elemental bonus) */
+function extraStats(buffs: StatBuff[], character: Character, otherElement?: HitKind): Partial<Stats> {
+  const KIND_BONUS: Partial<Record<HitKind, keyof Stats>> = { basic: 'basicBonus', heavy: 'heavyBonus', skill: 'skillBonus', liberation: 'liberationBonus', echo: 'echoBonus' };
   const extra: Partial<Stats> = {};
   for (const buff of buffs) {
     if (buff.stat === 'multiplier' || buff.stat === 'amplification') continue;
     if (buff.stat === 'atk') extra.dmg = (extra.dmg ?? 0) + character.data.base.atk * buff.value / 100;
     else if (buff.stat === 'flatAtk') extra.dmg = (extra.dmg ?? 0) + buff.value;
+    else if (buff.stat === 'def') extra.def = (extra.def ?? 0) + character.data.base.def * buff.value / 100;
     // Every damage hit of the character gets the elemental bonus, so a DMG Bonus on all of them is added there
-    else if (buff.stat === 'damageBonus') extra.elementalBonus = (extra.elementalBonus ?? 0) + buff.value;
+    else if (buff.stat === 'damageBonus') {
+      const field = otherElement ? KIND_BONUS[otherElement] : 'elementalBonus';
+      if (field) extra[field] = (extra[field] ?? 0) + buff.value;
+    }
     else if (buff.stat === 'critRate') extra.cChance = (extra.cChance ?? 0) + buff.value;
     else if (buff.stat === 'critDamage') extra.cDmg = (extra.cDmg ?? 0) + buff.value;
     else extra[buff.stat] = (extra[buff.stat] ?? 0) + buff.value;
@@ -540,6 +568,6 @@ function outroLabel(buff: OutroBuff): string {
 
 function statLabel(buff: StatBuff): string {
   if (buff.stat === 'flatAtk') return `${buff.name} (ATK +${buff.value})`;
-  const stat = { atk: 'ATK', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', echoBonus: 'Echo DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG', multiplier: 'DMG Multiplier', amplification: 'DMG Amplification' }[buff.stat];
+  const stat = { atk: 'ATK', def: 'DEF', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', echoBonus: 'Echo DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG', multiplier: 'DMG Multiplier', amplification: 'DMG Amplification' }[buff.stat];
   return `${buff.name} (${stat} +${buff.value}%)`;
 }

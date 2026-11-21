@@ -199,7 +199,8 @@
               32.43
             ]
           }
-        ]
+        ],
+        "element": "havoc"
       },
       {
         "name": "Mid-air Attack - Havoc Stage 2 DMG",
@@ -220,7 +221,8 @@
               37.16
             ]
           }
-        ]
+        ],
+        "element": "havoc"
       },
       {
         "name": "Mid-air Attack - Havoc Stage 3 DMG",
@@ -271,7 +273,8 @@
               38.68
             ]
           }
-        ]
+        ],
+        "element": "havoc"
       },
       {
         "name": "Mid-air Attack DMG",
@@ -541,6 +544,16 @@
               423.77
             ]
           }
+        ],
+        "cost": 0.5,
+        "buffs": [
+          {
+            "name": "Overshock",
+            "stat": "atk",
+            "value": 10,
+            "duration": 20,
+            "target": "team"
+          }
         ]
       },
       {
@@ -562,7 +575,9 @@
               99.12
             ]
           }
-        ]
+        ],
+        "element": "spectro",
+        "cost": 0.5
       },
       {
         "name": "Thrum of All Sounds: Spectro Stage 2 DMG",
@@ -613,7 +628,9 @@
               65.41
             ]
           }
-        ]
+        ],
+        "element": "spectro",
+        "cost": 0.5
       },
       {
         "name": "Thrum of All Sounds: Spectro Stage 3 DMG",
@@ -649,7 +666,9 @@
               153.08
             ]
           }
-        ]
+        ],
+        "element": "spectro",
+        "cost": 0.5
       },
       {
         "name": "Thrum of All Sounds: Havoc Stage 1 DMG",
@@ -686,7 +705,9 @@
               104.82
             ]
           }
-        ]
+        ],
+        "element": "havoc",
+        "cost": 0.5
       },
       {
         "name": "Thrum of All Sounds: Havoc Stage 2 DMG",
@@ -723,7 +744,9 @@
               82.98
             ]
           }
-        ]
+        ],
+        "element": "havoc",
+        "cost": 0.5
       },
       {
         "name": "Thrum of All Sounds: Havoc Stage 3 DMG",
@@ -819,7 +842,9 @@
               20.84
             ]
           }
-        ]
+        ],
+        "element": "havoc",
+        "cost": 0.5
       },
       {
         "name": "Thrum of All Sounds: Silencing Blade DMG",
@@ -856,7 +881,9 @@
               235.33
             ]
           }
-        ]
+        ],
+        "element": "aero",
+        "cost": 0.5
       },
       {
         "name": "Thrum of All Sounds: Aero DMG",
@@ -877,7 +904,9 @@
               158.09
             ]
           }
-        ]
+        ],
+        "element": "aero",
+        "cost": 0.5
       },
       {
         "name": "Thrum of All Sounds: Havoc Mid-air Attack Stage 1 DMG",
@@ -898,7 +927,9 @@
               50.63
             ]
           }
-        ]
+        ],
+        "element": "havoc",
+        "cost": 0.5
       },
       {
         "name": "Thrum of All Sounds: Havoc Mid-air Attack Stage 2 DMG",
@@ -919,7 +950,9 @@
               63.82
             ]
           }
-        ]
+        ],
+        "element": "havoc",
+        "cost": 0.5
       },
       {
         "name": "Thrum of All Sounds: Havoc Mid-air Attack Stage 3 DMG",
@@ -970,7 +1003,9 @@
               94.28
             ]
           }
-        ]
+        ],
+        "element": "havoc",
+        "cost": 0.5
       },
       {
         "name": "Thrum of All Sounds: Aero Mid-air Attack Stage 1 DMG",
@@ -991,7 +1026,9 @@
               84.61
             ]
           }
-        ]
+        ],
+        "element": "aero",
+        "cost": 0.5
       },
       {
         "name": "Thrum of All Sounds: Aero Mid-air Attack Stage 2 DMG",
@@ -1012,7 +1049,9 @@
               97.41
             ]
           }
-        ]
+        ],
+        "element": "aero",
+        "cost": 0.5
       },
       {
         "name": "Thrum of All Sounds: Aero Mid-air Attack Healing",
@@ -1069,7 +1108,9 @@
               282.48
             ]
           }
-        ]
+        ],
+        "element": "aero",
+        "cost": 0.5
       },
       {
         "name": "Thunder Bane DMG",
@@ -1089,6 +1130,68 @@
               36.98,
               39.77
             ]
+          }
+        ]
+      },
+      {
+        "name": "Overshock DMG (Hold)",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              40.6,
+              43.93,
+              47.26,
+              51.92,
+              55.25,
+              59.08,
+              64.41,
+              69.74,
+              75.06,
+              80.72
+            ],
+            "times": 7
+          },
+          {
+            "stat": "atk",
+            "values": [
+              213.15,
+              230.63,
+              248.11,
+              272.58,
+              290.06,
+              310.16,
+              338.12,
+              366.09,
+              394.06,
+              423.77
+            ]
+          },
+          {
+            "stat": "atk",
+            "values": [
+              213.15,
+              230.63,
+              248.11,
+              272.58,
+              290.06,
+              310.16,
+              338.12,
+              366.09,
+              394.06,
+              423.77
+            ]
+          }
+        ],
+        "cost": 0.5,
+        "manual": true,
+        "buffs": [
+          {
+            "name": "Regression",
+            "stat": "skillBonus",
+            "value": 20,
+            "duration": 20
           }
         ]
       }
@@ -1183,5 +1286,136 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:4"
+      ],
+      "basic:2": [
+        "basic:10"
+      ],
+      "basic:3": [
+        "forte:0"
+      ],
+      "basic:6": [
+        "basic:5"
+      ],
+      "skill:1": [
+        "skill:0",
+        "basic:8"
+      ],
+      "forte:4": [
+        "forte:3"
+      ],
+      "forte:7": [
+        "forte:6",
+        "forte:15"
+      ],
+      "forte:9": [
+        "forte:8"
+      ],
+      "forte:12": [
+        "forte:11"
+      ],
+      "forte:15": [
+        "forte:8",
+        "forte:9",
+        "forte:10",
+        "forte:11",
+        "forte:12",
+        "forte:13"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Apex Resonance",
+      "start": "forte:17",
+      "hits": [
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6",
+        "forte:7",
+        "forte:8",
+        "forte:9",
+        "forte:10",
+        "forte:11",
+        "forte:12",
+        "forte:13",
+        "forte:14",
+        "forte:15"
+      ],
+      "replaces": [
+        "skill:0",
+        "forte:0",
+        "forte:17"
+      ],
+      "duration": 10
+    }
+  ],
+  "counters": [
+    {
+      "name": "Electric Surge",
+      "max": 6,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "skill:0",
+        "skill:1"
+      ],
+      "amounts": {
+        "intro:0": 2
+      },
+      "unlocks": [
+        "forte:0",
+        "forte:17"
+      ],
+      "replaces": [
+        "skill:0"
+      ]
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "forte:16",
+      "after": [
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6",
+        "forte:7",
+        "forte:8",
+        "forte:9",
+        "forte:10",
+        "forte:11",
+        "forte:12",
+        "forte:13",
+        "forte:15"
+      ]
+    },
+    {
+      "hit": "forte:14",
+      "after": [
+        "forte:12",
+        "forte:13"
+      ]
+    }
+  ],
+  "statuses": [
+    {
+      "status": "electroFlare",
+      "hits": {
+        "forte:0": 10,
+        "forte:17": 10
+      }
+    }
+  ]
 }

@@ -430,7 +430,7 @@
       },
       {
         "name": "Kaleidoscopic Parade - Ground Heavy Attack DMG",
-        "kind": "heavy",
+        "kind": "basic",
         "parts": [
           {
             "stat": "atk",
@@ -448,7 +448,8 @@
             ],
             "times": 7
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Kaleidoscopic Parade - Graffiti Blast DMG",
@@ -509,7 +510,7 @@
       },
       {
         "name": "Kaleidoscopic Parade - Mid-air Heavy Attack DMG",
-        "kind": "heavy",
+        "kind": "basic",
         "parts": [
           {
             "stat": "atk",
@@ -527,7 +528,8 @@
             ],
             "times": 7
           }
-        ]
+        ],
+        "cost": 1
       }
     ]
   },
@@ -618,6 +620,15 @@
             ],
             "times": 10
           }
+        ],
+        "buffs": [
+          {
+            "name": "Prismatic Overblast",
+            "stat": "damageBonus",
+            "value": 24,
+            "duration": 30,
+            "target": "team"
+          }
         ]
       },
       {
@@ -683,6 +694,14 @@
             ],
             "times": 10
           }
+        ],
+        "buffs": [
+          {
+            "name": "Adaptive Optics: Everyday Applications",
+            "stat": "elementalBonus",
+            "value": 25,
+            "duration": 9
+          }
         ]
       }
     ]
@@ -742,7 +761,8 @@
               304.18
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Basic Attack - Visual Impact DMG",
@@ -763,7 +783,8 @@
               1216.72
             ]
           }
-        ]
+        ],
+        "cost": 1
       },
       {
         "name": "Basic Attack - Polychrome Leap 1",
@@ -785,7 +806,8 @@
             ],
             "times": 3
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Basic Attack - Polychrome Leap 2",
@@ -807,7 +829,8 @@
             ],
             "times": 6
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Basic Attack - Polychrome Leap 3",
@@ -829,7 +852,8 @@
             ],
             "times": 8
           }
-        ]
+        ],
+        "cost": 0.5
       },
       {
         "name": "Tune Rupture Response - Spectral Analysis DMG",
@@ -850,7 +874,8 @@
               1880.75
             ]
           }
-        ]
+        ],
+        "cost": 0.5
       }
     ]
   },
@@ -954,5 +979,154 @@
         "stat": "energyRegen"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "skill:0"
+      ],
+      "basic:9": [
+        "basic:13",
+        "skill:1",
+        "liberation:1",
+        "forte:0",
+        "forte:1",
+        "forte:2"
+      ],
+      "liberation:1": [
+        "liberation:0"
+      ],
+      "forte:3": [
+        "forte:2"
+      ],
+      "forte:4": [
+        "forte:3"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Kaleidoscopic Parade",
+      "start": "basic:7",
+      "hits": [
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12",
+        "basic:13",
+        "basic:14",
+        "basic:15",
+        "basic:16",
+        "basic:17",
+        "skill:1",
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7"
+      ],
+      "endsOn": [
+        "skill:0"
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Overflow",
+      "max": 6,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "skill:0"
+      ],
+      "amounts": {
+        "intro:0": 5
+      },
+      "unlocks": "basic:7",
+      "replaces": []
+    },
+    {
+      "name": "Lumiflow",
+      "max": 3,
+      "gain": [
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12",
+        "basic:13",
+        "basic:14",
+        "basic:17",
+        "skill:1",
+        "intro:0",
+        "liberation:1"
+      ],
+      "amounts": {
+        "basic:7": 3
+      },
+      "unlocks": [
+        "forte:2",
+        "forte:3",
+        "forte:4"
+      ],
+      "spend": 1,
+      "replaces": [],
+      "state": 0
+    },
+    {
+      "name": "True Color",
+      "max": 3,
+      "gain": [
+        "forte:2",
+        "forte:3",
+        "forte:4"
+      ],
+      "unlocks": [
+        "forte:0",
+        "forte:1"
+      ],
+      "replaces": [],
+      "state": 0
+    },
+    {
+      "name": "Visual Impact",
+      "max": 1,
+      "gain": [
+        "forte:1"
+      ],
+      "unlocks": "forte:0",
+      "free": [
+        "forte:0"
+      ],
+      "replaces": [
+        "forte:1"
+      ]
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "basic:15",
+      "after": [
+        "basic:14"
+      ]
+    }
+  ],
+  "ignoredHits": [
+    "basic:5",
+    "basic:6"
+  ]
 }

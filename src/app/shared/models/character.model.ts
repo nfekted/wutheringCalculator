@@ -2,7 +2,7 @@ import { Amplification, CharacterResults, HitResult, Levels, Stats, calculateEch
 import { CharacterData, Hit, RotationStep } from "../../data/character-data.model";
 import { EchoData, EchoSlot } from "../../data/echos/echo-data.model";
 import { getEcho } from "../../data/echos";
-import { echoModifier, finalStats, sonataModifier, sumModifiers } from "../../core/stat-engine";
+import { echoModifier, emptyModifier, finalStats, sonataModifier, sumModifiers } from "../../core/stat-engine";
 import { CharacterSave } from "./character-save.model";
 
 export class Character implements Stats {
@@ -92,11 +92,13 @@ export class Character implements Stats {
     applyEchoSet() {
         if (!this.hasBase) return;
         const modifiers = this.echoSet.filter(slot => !!slot).map(slot => echoModifier(slot, this.data.type));
-        const first = finalStats(this.data.base, sumModifiers([...modifiers, sonataModifier(this.echoSet, this.data.type)]), this);
+        const passive = emptyModifier();
+        passive.add.energyRegen = this.data.passiveStats?.energyRegen ?? 0;
+        const first = finalStats(this.data.base, sumModifiers([...modifiers, passive, sonataModifier(this.echoSet, this.data.type)]), this);
         const sonatas = sonataModifier(this.echoSet, this.data.type, first.energyRegen);
-        Object.assign(this, finalStats(this.data.base, sumModifiers([...modifiers, sonatas]), this));
-        const passive = this.data.atkFromEnergyRegen;
-        if (passive) this.dmg += Math.round(Math.min(passive.max, Math.max(0, this.energyRegen - passive.over) * passive.per));
+        Object.assign(this, finalStats(this.data.base, sumModifiers([...modifiers, passive, sonatas]), this));
+        const fromRegen = this.data.atkFromEnergyRegen;
+        if (fromRegen) this.dmg += Math.round(Math.min(fromRegen.max, Math.max(0, this.energyRegen - fromRegen.over) * fromRegen.per));
     }
 
     calculate() {

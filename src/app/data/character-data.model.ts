@@ -26,7 +26,8 @@ export interface Hit {
   parts: HitPart[];
   /** Basic attack that belongs to the combo chain (Stage 1, Stage 2...) */
   combo?: boolean;
-  /** Element of the damage of an Echo hit (aero, glacio... or physical); the elemental bonus of the character applies only when it is the same */
+  /** Element of the damage of an Echo hit (aero, glacio... or physical), or of a character hit of another element; the elemental bonus
+   * of the character applies only when it is the same */
   element?: string;
   /** Passive DMG Bonus in % of this hit only (e.g. an Inherent Skill "DMG of X is increased by 60%"), added to the other bonuses */
   bonus?: number;
@@ -57,7 +58,7 @@ export interface BonusAfter {
  * 'damageBonus' is a DMG Bonus on every damage hit of the character (added to the elemental bonus); 'multiplier' raises the DMG
  * Multiplier of the hits by that %; 'flatAtk' adds that many ATK points; 'amplification' is a DMG Amplification (added to the others)
  */
-export type BuffStat = 'atk' | 'flatAtk' | 'amplification' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'basicBonus' | 'echoBonus' | 'critRate' | 'critDamage' | 'multiplier';
+export type BuffStat = 'atk' | 'flatAtk' | 'def' | 'amplification' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'basicBonus' | 'echoBonus' | 'critRate' | 'critDamage' | 'multiplier';
 
 /** Hits of a kind that always crit, once every `cooldown` points (e.g. an Inherent Skill "Heavy Attack always crits, once every 30s") */
 export interface GuaranteedCrit {
@@ -349,6 +350,8 @@ export interface CharacterData {
   statuses?: CharacterStatus[];
   /** A passive that adds `per` ATK points for each 1% of Energy Regen over `over`, up to `max` (on the attributes from the Echos) */
   atkFromEnergyRegen?: { name: string; over: number; per: number; max: number };
+  /** Attributes the character always has (on the attributes from the Echos), e.g. an Inherent Skill "Energy Regen is increased by 10%" */
+  passiveStats?: { energyRegen?: number };
   /** Hits that never enter the rotation (e.g. the Intro of another form) */
   ignoredHits?: HitKey[];
   /** Buffs always active, for the character (or, with `target: 'team'`, for the whole team while the character is in it) */
