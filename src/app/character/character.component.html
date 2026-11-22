@@ -31,9 +31,9 @@
           <div role="group" [attr.aria-label]="'char.mode' | transloco" class="flex gap-1">
             @for (mode of modes; track mode; let i = $index) {
               <button type="button" class="ui-icon-btn h-8 w-8 capitalize" [attr.aria-pressed]="character().mode === i"
-                [class.bg-surface-2]="character().mode === i" [class.ring-1]="character().mode === i" [attr.aria-label]="mode" [title]="mode"
-                (click)="setMode(i)">
-                <img [src]="'assets/img/icons/' + mode + '.webp'" alt="" class="ui-glyph h-5 w-5" />
+                [class.bg-surface-2]="character().mode === i" [class.ring-1]="character().mode === i"
+                [attr.aria-label]="'char.modes.' + mode | transloco" [title]="'char.modes.' + mode | transloco" (click)="setMode(i)">
+                <img [src]="'assets/img/icons/' + mode + '.webp'" alt="" class="h-5 w-5" [class.ui-glyph]="mode !== character().data.type" />
               </button>
             }
           </div>

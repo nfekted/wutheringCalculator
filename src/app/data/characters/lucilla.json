@@ -18,7 +18,7 @@
   "defScale": false,
   "modes": [
     "chafe",
-    "echo"
+    "echoes"
   ],
   "basic": {
     "name": "Snapshot",

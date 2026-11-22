@@ -1143,8 +1143,8 @@
     ]
   },
   "modes": [
-    "fusion",
-    "tune"
+    "burst",
+    "rupture"
   ],
   "modeHits": {
     "forte:2": 1

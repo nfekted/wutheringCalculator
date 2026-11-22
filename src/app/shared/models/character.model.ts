@@ -121,7 +121,7 @@ export class Character implements Stats {
 
     /** Whether the active mode is the one with Echo damage */
     get isEchoMode(): boolean {
-        return this.data.modes?.[this.mode] === 'echo';
+        return this.data.modes?.[this.mode] === 'echoes';
     }
 
     /** Whether Echo damage can happen: the Echo mode is active, or some hit is always Echo damage */

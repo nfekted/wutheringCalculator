@@ -902,8 +902,8 @@
     ]
   },
   "modes": [
-    "fusion",
-    "tune"
+    "burst",
+    "strain"
   ],
   "sequence": {
     "after": {
