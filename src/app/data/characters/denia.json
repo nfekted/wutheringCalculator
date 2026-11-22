@@ -191,7 +191,7 @@
       },
       {
         "name": "Basic Attack - Breakdown Form Stage 1 DMG",
-        "kind": "basic",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -208,11 +208,12 @@
               36.51
             ]
           }
-        ]
+        ],
+        "multiplier": 1.5
       },
       {
         "name": "Basic Attack - Breakdown Form Stage 2 DMG",
-        "kind": "basic",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -245,11 +246,12 @@
             ],
             "times": 4
           }
-        ]
+        ],
+        "multiplier": 1.5
       },
       {
         "name": "Basic Attack - Breakdown Form Stage 3 DMG",
-        "kind": "basic",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -266,11 +268,12 @@
               62.39
             ]
           }
-        ]
+        ],
+        "multiplier": 1.5
       },
       {
         "name": "Basic Attack - Breakdown Form Stage 4 DMG",
-        "kind": "basic",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -302,11 +305,12 @@
               82.92
             ]
           }
-        ]
+        ],
+        "multiplier": 1.5
       },
       {
         "name": "Heavy Attack - Breakdown Form DMG",
-        "kind": "heavy",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -323,11 +327,12 @@
               137.06
             ]
           }
-        ]
+        ],
+        "multiplier": 1.5
       },
       {
         "name": "Mid-air Attack - Breakdown Form Stage 1 DMG",
-        "kind": "basic",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -344,11 +349,12 @@
               36.51
             ]
           }
-        ]
+        ],
+        "multiplier": 1.5
       },
       {
         "name": "Mid-air Attack - Breakdown Form Stage 2 DMG",
-        "kind": "basic",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -381,11 +387,12 @@
             ],
             "times": 4
           }
-        ]
+        ],
+        "multiplier": 1.5
       },
       {
         "name": "Mid-air Attack - Breakdown Form Stage 3 DMG",
-        "kind": "basic",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -402,11 +409,12 @@
               62.39
             ]
           }
-        ]
+        ],
+        "multiplier": 1.5
       },
       {
         "name": "Mid-air Attack - Breakdown Form Stage 4 DMG",
-        "kind": "basic",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -438,11 +446,12 @@
               82.92
             ]
           }
-        ]
+        ],
+        "multiplier": 1.5
       },
       {
         "name": "Mid-air Heavy Attack - Breakdown Form DMG",
-        "kind": "heavy",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -474,11 +483,12 @@
               44.38
             ]
           }
-        ]
+        ],
+        "multiplier": 1.5
       },
       {
         "name": "Dodge Counter - Breakdown Form DMG",
-        "kind": "basic",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -495,7 +505,8 @@
               108.08
             ]
           }
-        ]
+        ],
+        "multiplier": 1.5
       }
     ]
   },
@@ -541,7 +552,7 @@
       },
       {
         "name": "Beckon - Breakdown Form DMG",
-        "kind": "liberation",
+        "kind": "skill",
         "parts": [
           {
             "stat": "atk",
@@ -643,6 +654,23 @@
               397.62
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Entropy Shift: Breakdown Form",
+            "stat": "atk",
+            "value": 30,
+            "duration": 12
+          },
+          {
+            "name": "Etched Colors",
+            "stat": "elementalBonus",
+            "value": 30,
+            "element": "fusion",
+            "target": "team",
+            "duration": 12,
+            "mode": 0
+          }
         ]
       },
       {
@@ -664,6 +692,17 @@
               198.81
             ],
             "times": 4
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Etched Colors",
+            "stat": "elementalBonus",
+            "value": 30,
+            "element": "fusion",
+            "target": "team",
+            "duration": 30,
+            "mode": 0
           }
         ]
       }
@@ -713,13 +752,40 @@
             ],
             "times": 3
           }
+        ],
+        "buffs": [
+          {
+            "name": "Entropy Shift: Breakdown Form",
+            "stat": "atk",
+            "value": 30,
+            "duration": 12
+          },
+          {
+            "name": "Etched Colors",
+            "stat": "elementalBonus",
+            "value": 30,
+            "element": "fusion",
+            "target": "team",
+            "duration": 12,
+            "mode": 0
+          }
         ]
       }
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Unfinished Lies",
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "all",
+        "value": 15,
+        "duration": 16,
+        "endsOnSwitch": true,
+        "mode": 1
+      }
+    ]
   },
   "forte": {
     "name": "\"Flawless\"",
@@ -834,5 +900,158 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "modes": [
+    "fusion",
+    "tune"
+  ],
+  "sequence": {
+    "after": {
+      "basic:3": [
+        "basic:6",
+        "intro:0"
+      ],
+      "basic:10": [
+        "basic:17"
+      ],
+      "basic:15": [
+        "basic:17"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Breakdown Form",
+      "start": "liberation:0",
+      "endsOn": [
+        "liberation:1"
+      ],
+      "nextIntro": "intro:1",
+      "hits": [
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12",
+        "basic:13",
+        "basic:14",
+        "basic:15",
+        "basic:16",
+        "basic:17",
+        "skill:1",
+        "skill:2",
+        "skill:3",
+        "liberation:1"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "skill:0",
+        "liberation:0"
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Conformal Charge",
+      "max": 5,
+      "gain": [],
+      "amounts": {
+        "basic:7": 2,
+        "basic:8": 2,
+        "basic:9": 2,
+        "basic:10": 2,
+        "basic:11": 2,
+        "basic:12": 2,
+        "basic:13": 2,
+        "basic:14": 2,
+        "basic:15": 2,
+        "basic:16": 2,
+        "basic:17": 2,
+        "skill:1": 1,
+        "skill:3": 2
+      },
+      "unlocks": "liberation:1",
+      "replaces": []
+    },
+    {
+      "name": "Dark Core",
+      "max": 3,
+      "gain": [
+        "intro:0",
+        "intro:1",
+        "liberation:0",
+        "liberation:1"
+      ],
+      "amounts": {
+        "skill:3": -3
+      },
+      "unlocks": "skill:2",
+      "spend": 1,
+      "free": [
+        "skill:2"
+      ],
+      "replaces": [
+        "skill:1"
+      ],
+      "perStack": {
+        "name": "Dark Core",
+        "value": 150,
+        "hits": [
+          "skill:3"
+        ],
+        "stat": "multiplier"
+      }
+    }
+  ],
+  "coordinated": {
+    "name": "Erosion Field",
+    "start": "liberation:1",
+    "hits": [
+      "forte:0"
+    ],
+    "duration": 30,
+    "interval": 4,
+    "max": 7,
+    "perKind": {
+      "basic": 1,
+      "heavy": 1,
+      "skill": 1,
+      "liberation": 1,
+      "intro": 1,
+      "outro": 1,
+      "echo": 1
+    }
+  },
+  "statuses": [
+    {
+      "status": "fusionBurst",
+      "mode": 0,
+      "hits": {
+        "intro:0": 2,
+        "intro:1": 2,
+        "liberation:0": 2,
+        "liberation:1": 2,
+        "forte:0": 2,
+        "basic:2": 1,
+        "basic:3": 1,
+        "basic:9": 1,
+        "basic:10": 1,
+        "basic:14": 1,
+        "basic:15": 1
+      },
+      "outroBoost": {
+        "name": "Unfinished Lies",
+        "amplification": 60,
+        "intervalRate": 1,
+        "duration": 30
+      }
+    }
+  ]
 }

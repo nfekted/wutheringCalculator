@@ -294,6 +294,16 @@
               109.8
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Slow Motion",
+            "stat": "echoBonus",
+            "value": 25,
+            "duration": 30,
+            "target": "team",
+            "mode": 1
+          }
         ]
       }
     ]
@@ -320,6 +330,32 @@
               132.73,
               142.74
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Clear As Day",
+            "stat": "basicBonus",
+            "value": 30,
+            "duration": 10,
+            "mode": 0
+          },
+          {
+            "name": "Clear As Day",
+            "stat": "echoBonus",
+            "value": 30,
+            "duration": 10,
+            "mode": 1
+          },
+          {
+            "name": "Zoom",
+            "stat": "critDamage",
+            "value": 10,
+            "duration": 30,
+            "target": "team",
+            "kind": "echo",
+            "stacks": 4,
+            "mode": 1
           }
         ]
       },
@@ -567,8 +603,18 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Montage",
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "echo",
+        "value": 50,
+        "duration": 14,
+        "endsOnSwitch": true,
+        "mode": 1
+      }
+    ]
   },
   "forte": {
     "name": "Memory Palace",
@@ -592,6 +638,18 @@
               265.46,
               285.48
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Zoom",
+            "stat": "critDamage",
+            "value": 10,
+            "duration": 30,
+            "target": "team",
+            "kind": "echo",
+            "stacks": 4,
+            "mode": 1
           }
         ]
       }
@@ -689,5 +747,133 @@
         "flat": true
       }
     ]
+  },
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:4",
+        "skill:1",
+        "skill:2"
+      ],
+      "basic:2": [
+        "basic:1",
+        "basic:5"
+      ],
+      "basic:3": [
+        "basic:1",
+        "basic:5"
+      ],
+      "skill:1": [
+        "skill:0"
+      ],
+      "skill:2": [
+        "skill:0"
+      ],
+      "liberation:2": [
+        "liberation:5"
+      ],
+      "liberation:3": [
+        "liberation:6",
+        "intro:1"
+      ],
+      "forte:0": [
+        "liberation:3",
+        "forte:0"
+      ],
+      "liberation:4": [
+        "liberation:3",
+        "forte:0"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Reminiscence",
+      "start": "liberation:0",
+      "endsOn": [
+        "liberation:4"
+      ],
+      "nextIntro": "intro:1",
+      "hits": [
+        "liberation:1",
+        "liberation:2",
+        "liberation:3",
+        "liberation:4",
+        "liberation:5",
+        "liberation:6",
+        "forte:0"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "skill:0",
+        "skill:1",
+        "skill:2",
+        "liberation:0"
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Trace",
+      "max": 6,
+      "gain": [],
+      "amounts": {
+        "intro:0": 4,
+        "skill:2": 2,
+        "basic:3": 2,
+        "skill:1": 1,
+        "basic:2": 1
+      },
+      "unlocks": [
+        "liberation:0",
+        "forte:0"
+      ],
+      "free": [
+        "liberation:0"
+      ],
+      "spendBy": {
+        "forte:0": 2
+      },
+      "replaces": []
+    }
+  ],
+  "statuses": [
+    {
+      "status": "glacioChafe",
+      "mode": 0,
+      "hits": {
+        "intro:0": 1,
+        "intro:1": 1,
+        "skill:2": 1,
+        "forte:0": 1
+      },
+      "outroBoost": {
+        "name": "Montage",
+        "amplification": 60,
+        "intervalRate": 1,
+        "duration": 30
+      },
+      "reaction": {
+        "name": "Film Roll",
+        "max": 10,
+        "duration": 30,
+        "gain": {
+          "liberation:0": 4,
+          "forte:0": 2
+        },
+        "stacks": 2
+      }
+    }
+  ],
+  "echoCasts": {
+    "hits": [
+      "forte:0"
+    ],
+    "mode": 1
   }
 }

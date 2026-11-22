@@ -849,7 +849,33 @@
   },
   "outro": {
     "name": "Silent Protection",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "others",
+        "amplification": "all",
+        "value": 10,
+        "duration": 20,
+        "mode": 0,
+        "raised": {
+          "value": 20,
+          "status": "fusionBurst"
+        }
+      },
+      {
+        "target": "others",
+        "amplification": "all",
+        "value": 10,
+        "duration": 20,
+        "mode": 1,
+        "raised": {
+          "value": 20,
+          "members": [
+            "lynae"
+          ]
+        }
+      }
+    ]
   },
   "forte": {
     "name": "To Sculpt the Silence",
@@ -1149,7 +1175,8 @@
       ],
       "basic:2": [
         "basic:5",
-        "intro:0"
+        "intro:0",
+        "forte:2"
       ],
       "basic:3": [
         "basic:7"

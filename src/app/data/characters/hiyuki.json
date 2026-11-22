@@ -851,8 +851,18 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Snowlight Blessing",
+    "hits": [],
+    "buffs": [
+      {
+        "target": "others",
+        "amplification": "elemental",
+        "element": "glacio",
+        "value": 20,
+        "duration": 20,
+        "whileStatus": "glacioChafe"
+      }
+    ]
   },
   "forte": {
     "name": "Everfrost Dominion",
@@ -997,5 +1007,180 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:2": [
+        "basic:5",
+        "skill:0",
+        "intro:0"
+      ],
+      "basic:7": [
+        "basic:11",
+        "intro:0"
+      ],
+      "basic:8": [
+        "basic:16"
+      ],
+      "basic:15": [
+        "basic:14"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Foreclaimed Self",
+      "start": "liberation:0",
+      "endsOn": [
+        "liberation:1"
+      ],
+      "hits": [
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12",
+        "basic:13",
+        "basic:14",
+        "basic:15",
+        "basic:16",
+        "skill:1",
+        "skill:2",
+        "forte:0",
+        "liberation:1"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "skill:0",
+        "liberation:0"
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Dedication",
+      "max": 3,
+      "gain": [
+        "basic:2",
+        "skill:0"
+      ],
+      "amounts": {
+        "intro:0": 2
+      },
+      "unlocks": "basic:3",
+      "replaces": []
+    },
+    {
+      "name": "Foreclaiming: Inward Vision",
+      "max": 1,
+      "gain": [
+        "basic:3"
+      ],
+      "unlocks": "liberation:0",
+      "replaces": []
+    },
+    {
+      "name": "Frostharden Iai",
+      "max": 3,
+      "gain": [],
+      "fills": [
+        "liberation:0"
+      ],
+      "unlocks": "forte:0",
+      "spend": 1,
+      "replaces": []
+    },
+    {
+      "name": "Whiteout Bitterfrost",
+      "max": 3,
+      "gain": [
+        "forte:0"
+      ],
+      "unlocks": "basic:12",
+      "replaces": [
+        "basic:11"
+      ]
+    },
+    {
+      "name": "Snowforged Blade",
+      "max": 3,
+      "gain": [
+        "basic:12"
+      ],
+      "amounts": {
+        "liberation:1": -3
+      },
+      "unlocks": [],
+      "replaces": [],
+      "keeps": true,
+      "perStack": {
+        "name": "Snowforged Blade",
+        "value": 80,
+        "hits": [
+          "liberation:1"
+        ],
+        "stat": "multiplier"
+      }
+    }
+  ],
+  "ignoredHits": [
+    "liberation:2"
+  ],
+  "statuses": [
+    {
+      "status": "glacioChafe",
+      "hits": {
+        "basic:2": 1,
+        "basic:3": 1,
+        "basic:8": 1,
+        "basic:9": 1,
+        "basic:10": 1,
+        "basic:12": 1,
+        "basic:14": 1,
+        "basic:15": 1,
+        "liberation:0": 4,
+        "forte:0": 3,
+        "intro:0": 1
+      },
+      "bite": {
+        "name": "Glacio Bite",
+        "frostbind": {
+          "hits": [
+            "liberation:0",
+            "forte:0"
+          ],
+          "stacks": 10
+        },
+        "levels": {
+          "name": "Snow Rust",
+          "members": [
+            "chisa"
+          ],
+          "amplification": [
+            30,
+            30,
+            60
+          ],
+          "extra": {
+            "level": 2,
+            "multiplier": 1.02
+          }
+        }
+      }
+    }
+  ],
+  "passiveBuffs": [
+    {
+      "name": "Fine Snow",
+      "stat": "critDamage",
+      "value": 40
+    }
+  ]
 }

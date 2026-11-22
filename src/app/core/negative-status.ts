@@ -64,5 +64,10 @@ export function statusTick(status: NegativeStatus, stacks: number, overflow = 0)
     let step = data.stacks[listed - 1] - data.stacks[listed - 2];
     for (let n = listed; n < stacks; n++) multiplier += (step += data.extraGrowth);
   }
-  return statusTickValue(LEVEL_MULTIPLIER * STATUS_BASE * multiplier * (1 + overflow * (data.overflow?.perStack ?? 0) / 100));
+  return statusHit(multiplier * (1 + overflow * (data.overflow?.perStack ?? 0) / 100));
+}
+
+/** Value of a hit of a status with this DMG Multiplier */
+export function statusHit(multiplier: number): number {
+  return statusTickValue(LEVEL_MULTIPLIER * STATUS_BASE * multiplier);
 }

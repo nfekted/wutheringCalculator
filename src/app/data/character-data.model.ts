@@ -84,6 +84,10 @@ export interface StatBuff {
   element?: string;
   /** It ends when the character comes back to the field */
   endsOnReturn?: boolean;
+  /** Of a buff a hit gives: only in this Resonance Mode of the character (index in `modes`) */
+  mode?: number;
+  /** Only hits of this kind get it (e.g. the Echo Skill of whoever is on the field) */
+  kind?: HitKind;
   /** Given again while it lasts, it adds a stack (up to this many) and renews the duration */
   stacks?: number;
   /** The value is `value` for each 1% of Crit. Rate of the character over `over`, up to `max` */
@@ -169,6 +173,23 @@ export interface CharacterStatus {
   counts?: HitKey[];
   /** With the character in the team, applying the status deals at once 1 tick with all its stacks, and the status is gone (named this) */
   convert?: string;
+  /**
+   * With the character in the team, the status is this one (e.g. Glacio Bite): it does not burst, the stacks stay (up to the max), and each
+   * stack applied (also at the max) deals 1 hit with the max stacks. `frostbind`: after these hits of the character, `stacks` are taken
+   * when the target has that many. `levels` (e.g. Snow Rust): 1 for each member that applies the status or is one of `members` (ids),
+   * up to the length of `amplification`; while the character is on the field, the hits get that DMG Amplification, and from `extra.level`
+   * each time the character applies it, 1 more hit with the DMG Multiplier `extra.multiplier`
+   */
+  /**
+   * `name` (e.g. Film Roll): the hits of the character give it (up to `max`, for `duration` points, starting over on each gain); when
+   * another member on the field applies the status, the character spends 1 and applies `stacks` more (at most once for each hit)
+   */
+  reaction?: { name: string; max: number; duration: number; gain: Record<HitKey, number>; stacks: number };
+  bite?: {
+    name: string;
+    frostbind: { hits: HitKey[]; stacks: number };
+    levels: { name: string; members: string[]; amplification: number[]; extra: { level: number; multiplier: number } };
+  };
   /** After these hits, 1 tick of the status at once, and it loses 1 stack */
   detonate?: HitKey[];
   /** `hit` gets a DMG Amplification of `perStack` for each stack on the target (up to `max`), then the status is gone */
@@ -227,6 +248,8 @@ export interface CharacterCounter {
   /** Adds `amount` (1 without it) each time a member of the team (the character too) casts its Echo Skill, once for each Echo name
    * (again after the Outro of the character, with `resetOnOutro`); it keeps its value while the character is off the field */
   teamEcho?: { resetOnOutro?: boolean };
+  /** It keeps its value while the character is off the field (for the team) */
+  keeps?: boolean;
   /** The state (by index in `states`) ends when the counter gets to 0 */
   endsState?: number;
   /** Hits not available while the counter is full (with `spend`, while it has that much) */
@@ -294,8 +317,14 @@ export type AmplificationKind = 'all' | 'elemental' | 'basic' | 'heavy' | 'skill
 
 /** A buff the Outro Skill gives */
 export interface OutroBuff {
-  /** 'incoming': the next character to enter; 'team': every member, the giver too */
-  target: 'incoming' | 'team';
+  /** 'incoming': the next character to enter; 'team': every member, the giver too; 'others': every member but the giver */
+  target: 'incoming' | 'team' | 'others';
+  /** Only when the giver is in this Resonance Mode (index in `modes`) */
+  mode?: number;
+  /** A member that inflicts `status` (by its rules) or is one of `members` (ids) gets `value` instead */
+  raised?: { value: number; status?: NegativeStatus; members?: string[] };
+  /** Only while the target has this status (for the team); it also amplifies the hits of the status of its receivers */
+  whileStatus?: NegativeStatus;
   amplification: AmplificationKind;
   /** Element of an elemental amplification; it only counts for a character (and an Echo hit) of that element */
   element?: string;
@@ -371,6 +400,8 @@ export interface CharacterData {
   markers?: CharacterMarker[];
   /** Hits added, in the same action, after some hits (e.g. a butterfly after each Normal Attack) */
   followUps?: { hit: HitKey; after: HitKey[]; mode?: number }[];
+  /** These hits count as casting an Echo Skill (each one a different one) for the counters of the team, in the mode (index in `modes`) */
+  echoCasts?: { hits: HitKey[]; mode: number };
   /** Hits only offered in a mode (index in `modes`) */
   modeHits?: Record<HitKey, number>;
   field?: TeamField;
