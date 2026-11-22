@@ -505,7 +505,15 @@
   },
   "outro": {
     "name": "Timeless Classics",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "coordinated",
+        "value": 100,
+        "duration": 28
+      }
+    ]
   },
   "forte": {
     "name": "Poetic Essence",

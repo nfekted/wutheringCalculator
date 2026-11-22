@@ -548,7 +548,7 @@
     "hits": [],
     "buffs": [
       {
-        "target": "team",
+        "target": "others",
         "amplification": "elemental",
         "element": "aero",
         "value": 17.5,

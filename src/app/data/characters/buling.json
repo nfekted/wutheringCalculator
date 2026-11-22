@@ -421,7 +421,22 @@
   },
   "outro": {
     "name": "Exorcism Spell",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Exorcism Spell Healing",
+        "kind": "heal",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              18
+            ],
+            "times": 16
+          }
+        ],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "team",

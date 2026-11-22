@@ -457,7 +457,22 @@
   },
   "outro": {
     "name": "Blossom",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Blossom Healing",
+        "kind": "heal",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              19
+            ],
+            "times": 6
+          }
+        ],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "team",

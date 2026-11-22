@@ -340,8 +340,8 @@ export interface SkillData {
   hits: Hit[];
 }
 
-/** Which DMG Amplification a buff gives (see Amplification in the damage engine) */
-export type AmplificationKind = 'all' | 'elemental' | 'basic' | 'heavy' | 'skill' | 'liberation' | 'echo';
+/** Which DMG Amplification a buff gives (see Amplification in the damage engine); 'coordinated': the hits of the Coordinated Attack */
+export type AmplificationKind = 'all' | 'elemental' | 'basic' | 'heavy' | 'skill' | 'liberation' | 'echo' | 'coordinated';
 
 /** A buff the Outro Skill gives */
 export interface OutroBuff {

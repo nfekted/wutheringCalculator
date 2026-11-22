@@ -735,6 +735,7 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   const support = kind === 'heal' || kind === 'shield';
   // A hit of another element gets no elemental bonus of the character, and the element buffs of its own element
   const element = hit?.element ?? character.data.type;
+  const coordinated = !!character.data.coordinated?.hits.includes(key);
   const fits = (buff?: StatBuff) => !hit?.noBuffs && (!buff || ((!buff.hits || buff.hits.includes(key)) && (!buff.element || buff.element === element) && (!buff.kind || buff.kind === kind)
     && !(buff.stat === 'elementalBonus' && element !== character.data.type) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat])
     && (buff.stat === 'atk' || buff.stat === 'flatAtk' ? !!hit?.parts.some(part => part.stat === 'atk')
@@ -742,7 +743,8 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   const applied = active.filter(a => (a.receiver === null || a.receiver === slot) && fits(a.stat)
     && !(a.outro?.amplification === 'elemental' && a.outro.element !== element)
     && !(a.outro && (support || kind === 'tune'))
-    && !(a.outro && a.outro.amplification !== 'all' && a.outro.amplification !== 'elemental' && a.outro.amplification !== kind));
+    && !(a.outro && a.outro.amplification !== 'all' && a.outro.amplification !== 'elemental' && a.outro.amplification !== kind
+      && !(a.outro.amplification === 'coordinated' && coordinated)));
   const own = others.filter(o => fits(o.buff));
   const statBuffs = [...applied.flatMap(a => a.stat ? [a.stat] : []), ...own.map(o => o.buff)];
   const multiplier = 1 + statBuffs.filter(buff => buff.stat === 'multiplier').reduce((sum, buff) => sum + buff.value, 0) / 100;
@@ -763,7 +765,9 @@ function amplificationOf(buffs: ActiveBuff[], element: string): Amplification {
   for (const { outro } of buffs) {
     if (!outro) continue;
     if (outro.amplification === 'elemental' && outro.element !== element) continue;
-    amplification[outro.amplification] += outro.value;
+    // Only on a Coordinated Attack hit (see valueOf), added to all
+    if (outro.amplification === 'coordinated') amplification.all += outro.value;
+    else amplification[outro.amplification] += outro.value;
   }
   return amplification;
 }

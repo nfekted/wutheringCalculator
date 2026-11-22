@@ -504,6 +504,15 @@
           }
         ]
       }
+    ],
+    "buffs": [
+      {
+        "target": "others",
+        "amplification": "elemental",
+        "element": "spectro",
+        "value": 20,
+        "duration": 20
+      }
     ]
   },
   "forte": {
