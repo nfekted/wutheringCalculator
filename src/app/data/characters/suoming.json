@@ -539,6 +539,50 @@
             ]
           }
         ]
+      },
+      {
+        "name": "Resonance Skill - Furled Canopy: Rift Cleaver: Seal Master",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              53.62,
+              58.02,
+              62.42,
+              68.57,
+              72.97,
+              78.03,
+              85.06,
+              92.1,
+              99.13,
+              106.61
+            ]
+          }
+        ],
+        "manual": true,
+        "buffs": [
+          {
+            "name": "Seal Master",
+            "stat": "multiplier",
+            "value": 100,
+            "duration": 12,
+            "hits": [
+              "basic:3",
+              "basic:4",
+              "basic:5",
+              "basic:6",
+              "basic:10",
+              "basic:11"
+            ]
+          },
+          {
+            "name": "Seal Master",
+            "stat": "critDamage",
+            "value": 100,
+            "duration": 12
+          }
+        ]
       }
     ]
   },
@@ -601,7 +645,8 @@
               59.65
             ]
           }
-        ]
+        ],
+        "cost": 0
       }
     ]
   },
@@ -643,6 +688,14 @@
               36.97
             ],
             "times": 4
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Rain-Soaked Covenant",
+            "stat": "elementalBonus",
+            "value": 50,
+            "duration": 15
           }
         ]
       },
@@ -710,6 +763,14 @@
               122.21,
               131.43
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Rain-Soaked Covenant",
+            "stat": "elementalBonus",
+            "value": 50,
+            "duration": 15
           }
         ]
       },
@@ -822,7 +883,41 @@
   },
   "outro": {
     "name": "",
-    "hits": []
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "elemental",
+        "element": "electro",
+        "value": 20,
+        "duration": 8,
+        "endsOnSwitch": true
+      },
+      {
+        "target": "incoming",
+        "amplification": "skill",
+        "value": 0,
+        "duration": 8,
+        "endsOnSwitch": true,
+        "raised": {
+          "value": 25,
+          "members": [
+            "hsin",
+            "jinhsi"
+          ]
+        }
+      }
+    ],
+    "statBuffs": [
+      {
+        "name": "Aligned Seals",
+        "stat": "elementalBonus",
+        "value": 30,
+        "duration": 8,
+        "target": "incoming",
+        "element": "electro"
+      }
+    ]
   },
   "forte": {
     "name": "Bound Obsession, Forged Mind",
@@ -1049,5 +1144,161 @@
         "stat": "dmg"
       }
     ]
+  },
+  "ignoredHits": [
+    "intro:2",
+    "intro:3",
+    "liberation:1"
+  ],
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "skill:0",
+        "skill:2"
+      ],
+      "basic:2": [
+        "basic:7",
+        "skill:1"
+      ],
+      "skill:1": [
+        "skill:0",
+        "skill:2"
+      ],
+      "basic:5": [
+        "skill:0",
+        "skill:2",
+        "basic:8"
+      ],
+      "basic:6": [
+        "skill:1"
+      ],
+      "basic:10": [
+        "basic:4",
+        "basic:8"
+      ],
+      "basic:11": [
+        "intro:1"
+      ],
+      "forte:2": [
+        "forte:1"
+      ],
+      "forte:3": [
+        "forte:1"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Deep Mind",
+      "start": [
+        "forte:0",
+        "intro:0",
+        "intro:1"
+      ],
+      "endsOn": [
+        "forte:2",
+        "forte:3"
+      ],
+      "nextIntro": "intro:1",
+      "hits": [
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:8",
+        "basic:10",
+        "basic:11",
+        "liberation:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "intro:1"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:7",
+        "forte:0"
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Delusion",
+      "max": 4,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:10",
+        "basic:11",
+        "skill:1"
+      ],
+      "amounts": {
+        "liberation:0": 1,
+        "intro:1": 1,
+        "intro:0": -4,
+        "skill:2": -4
+      },
+      "unlocks": [
+        "forte:0",
+        "forte:1"
+      ],
+      "replaces": [
+        "skill:0",
+        "skill:2"
+      ]
+    },
+    {
+      "name": "Unison",
+      "max": 1,
+      "gain": [
+        "liberation:0"
+      ],
+      "unlocks": "skill:2",
+      "replaces": [
+        "skill:0"
+      ]
+    },
+    {
+      "name": "Unforsaken Mind",
+      "max": 1,
+      "gain": [
+        "forte:1"
+      ],
+      "unlocks": [
+        "forte:2",
+        "forte:3"
+      ],
+      "replaces": [],
+      "state": 0
+    }
+  ],
+  "coordinated": {
+    "name": "Blight Rain, Miasmic Thunder",
+    "start": "liberation:0",
+    "hits": [
+      "liberation:1"
+    ],
+    "duration": 13,
+    "interval": 1,
+    "max": 6,
+    "othersOnly": true,
+    "perKind": {
+      "basic": 1,
+      "heavy": 1,
+      "skill": 1,
+      "liberation": 1,
+      "intro": 1,
+      "outro": 1,
+      "echo": 1
+    }
   }
 }

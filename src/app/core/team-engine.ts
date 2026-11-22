@@ -173,9 +173,12 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   const trails = new Map<NegativeStatus, { stacks: number; points: number }>();
   const trailRules = new Map<NegativeStatus, NonNullable<CharacterStatus['trail']>>();
   const burstAbove = new Map<NegativeStatus, number>();
+  /** Statuses whose ticks take no stacks (by a member of the team) */
+  const keepsStacks = new Set<NegativeStatus>();
   for (const { character } of segments) for (const rule of rulesOf(character)) {
     if (rule.trail) trailRules.set(rule.status, rule.trail);
     if (rule.burstAbove !== undefined) burstAbove.set(rule.status, rule.burstAbove);
+    if (rule.keepsStacks) keepsStacks.add(rule.status);
   }
   /** Members whose next max burst keeps the trail */
   const keepsTrail = new Set<number>();
@@ -248,7 +251,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         const paused = (pauses.get(s.status) ?? 0) > elapsed;
         if (NEGATIVE_STATUS[s.status].duration === undefined && !paused && --s.stacks <= 0) s.points = 0;
         // Or half of them
-        if (NEGATIVE_STATUS[s.status].halvesOnTick && (s.stacks = Math.floor(s.stacks / 2)) <= 0) s.points = 0;
+        if (NEGATIVE_STATUS[s.status].halvesOnTick && !keepsStacks.has(s.status) && (s.stacks = Math.floor(s.stacks / 2)) <= 0) s.points = 0;
       }
     }
     onTarget = onTarget.filter(s => s.points > 0);
@@ -275,6 +278,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   const passives = (slot: number) => {
     const character = team.get(slot)!;
     for (const buff of character.data.passiveBuffs ?? []) {
+      if (buff.mode !== undefined && buff.mode !== character.mode) continue;
       const id = `always:${slot}:${buff.name}:${buff.stat}`;
       const receiver = buff.target === 'team' ? null : slot;
       const byCounter = buff.perCounter !== undefined || !!buff.fromCounter;
@@ -315,14 +319,18 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   }));
 
   /** An attribute buff of a member, to itself or to the whole team; by name, the same buff given again (by any hit) renews it */
-  const give = (character: Character, slot: number, buff: StatBuff) => {
+  /** `to`: the member that gets it instead (the incoming one of an Outro), until it leaves the field */
+  const give = (character: Character, slot: number, buff: StatBuff, to?: number) => {
     if (!buff.duration || (buff.mode !== undefined && buff.mode !== character.mode)) return;
-    const id = `self:${slot}:${buff.name}`;
+    const id = `self:${slot}:${buff.name}:${buff.stat}`;
     const count = buff.stacks ? Math.min((active.find(a => a.id === id)?.count ?? 0) + 1, buff.stacks) : 1;
     const stat = scaled(character, buff, count);
     if (!stat.value) return;
     active = active.filter(a => a.id !== id);
-    active.push({ id, receiver: buff.target === 'team' ? null : slot, points: buff.duration, label: `${character.name}: ${statLabel(stat)}`, stat, count, endsOnReturn: buff.endsOnReturn });
+    active.push({
+      id, receiver: to ?? (buff.target === 'team' ? null : slot), points: buff.duration, label: `${character.name}: ${statLabel(stat)}`, stat, count,
+      endsOnReturn: buff.endsOnReturn, endsOnSwitch: to !== undefined,
+    });
   };
 
   segments.forEach(({ character, slot, rotation, steps }, i) => {
@@ -599,6 +607,12 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
           if (--s.stacks <= 0) onTarget = onTarget.filter(other => other !== s);
         }
         if (rule.consume?.hit === key) onTarget = onTarget.filter(other => other !== s);
+        const burst = rule.burst;
+        if (burst?.hits.includes(key)) {
+          // The overflow (Electro Rage) is what the stacks of the burst come from
+          tickRow({ ...s, overflow: 0, character, slot, step }, rotation, statusBoosts.filter(b => b.status === rule.status), undefined,
+            { label: ` × ${burst.name} (${burst.multiplier})`, value: (burst.multiplier - 1) * 100 });
+        }
       }
       for (const rule of statuses ? rulesOf(character) : []) {
         const pause = rule.pause;
@@ -655,7 +669,11 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     active = active.filter(a => !(a.endsOnSwitch && a.receiver === slot));
 
     // The Outro starts its buffs; the same one given again renews its duration
-    character.data.outro.statBuffs?.forEach(buff => give(character, slot, buff));
+    const incoming = segments[i + 1]?.slot;
+    character.data.outro.statBuffs?.forEach(buff => {
+      if (buff.target !== 'incoming') give(character, slot, buff);
+      else if (incoming !== undefined) give(character, slot, buff, incoming);
+    });
     for (const rule of statuses ? rulesOf(character) : []) {
       if (rule.state !== undefined && !context.states.includes(rule.state)) continue;
       if (rule.outroMax) {

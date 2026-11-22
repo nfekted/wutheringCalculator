@@ -1014,7 +1014,15 @@
               11.37
             ]
           }
-        ]
+        ],
+        "cost": 0
+      },
+      {
+        "name": "Formshift",
+        "kind": "liberation",
+        "parts": [],
+        "manual": true,
+        "cost": 0
       }
     ]
   },
@@ -1205,6 +1213,15 @@
               121.18
             ],
             "times": 3
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Tides of Succession",
+            "stat": "atk",
+            "value": 50,
+            "duration": 8,
+            "mode": 1
           }
         ]
       },
@@ -1416,6 +1433,30 @@
             ]
           }
         ]
+      }
+    ],
+    "buffs": [
+      {
+        "target": "others",
+        "amplification": "elemental",
+        "element": "electro",
+        "value": 20,
+        "duration": 20,
+        "mode": 0
+      },
+      {
+        "target": "others",
+        "amplification": "all",
+        "value": 0,
+        "duration": 30,
+        "mode": 1,
+        "raised": {
+          "value": 20,
+          "members": [
+            "suoming",
+            "jinhsi"
+          ]
+        }
       }
     ]
   },
@@ -1772,5 +1813,263 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "modes": [
+    "electro",
+    "unison"
+  ],
+  "ignoredHits": [
+    "forte:1",
+    "forte:3",
+    "liberation:1",
+    "basic:10",
+    "intro:1",
+    "intro:3",
+    "intro:4",
+    "intro:5"
+  ],
+  "modeHits": {
+    "intro:0": 0,
+    "intro:2": 1
+  },
+  "followUps": [
+    {
+      "hit": "basic:10",
+      "after": [
+        "basic:11"
+      ]
+    }
+  ],
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:5",
+        "basic:6",
+        "basic:7"
+      ],
+      "basic:2": [
+        "basic:8",
+        "intro:2"
+      ],
+      "basic:3": [
+        "skill:0",
+        "intro:0"
+      ],
+      "basic:5": [
+        "basic:4"
+      ],
+      "basic:12": [
+        "basic:13",
+        "basic:16"
+      ],
+      "basic:19": [
+        "basic:21"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Illumining Form",
+      "start": "liberation:2",
+      "duration": 45,
+      "endsOn": [
+        "liberation:0"
+      ],
+      "hits": [
+        "basic:9",
+        "basic:11",
+        "basic:12",
+        "basic:13",
+        "basic:14",
+        "basic:15",
+        "basic:16",
+        "skill:1",
+        "forte:0",
+        "forte:4",
+        "liberation:0",
+        "basic:17",
+        "basic:18",
+        "basic:19",
+        "basic:20",
+        "basic:21"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "skill:0",
+        "forte:2",
+        "liberation:2"
+      ]
+    },
+    {
+      "name": "Mechanism Dominion",
+      "start": "forte:0",
+      "duration": 13,
+      "endsOn": [
+        "forte:4"
+      ],
+      "hits": [
+        "basic:17",
+        "basic:18",
+        "basic:19",
+        "basic:20",
+        "basic:21"
+      ],
+      "replaces": [
+        "basic:9",
+        "basic:11",
+        "basic:12",
+        "basic:16"
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Answering Heart",
+      "max": 5,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:6",
+        "basic:8",
+        "skill:0"
+      ],
+      "amounts": {
+        "intro:0": 3,
+        "intro:2": 3
+      },
+      "unlocks": "forte:2",
+      "replaces": [
+        "basic:6"
+      ]
+    },
+    {
+      "name": "Formshift",
+      "max": 1,
+      "gain": [
+        "forte:2"
+      ],
+      "unlocks": "liberation:2",
+      "replaces": []
+    },
+    {
+      "name": "Illumining Heart",
+      "max": 3,
+      "gain": [
+        "basic:9",
+        "basic:11",
+        "basic:12",
+        "basic:13",
+        "basic:14",
+        "basic:16",
+        "skill:1"
+      ],
+      "unlocks": "forte:0",
+      "replaces": [
+        "skill:1"
+      ],
+      "state": 0,
+      "amountsIn": [
+        {
+          "state": 1,
+          "amounts": {
+            "basic:13": 0,
+            "basic:14": 0,
+            "skill:1": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pillars Aligned",
+      "max": 4,
+      "gain": [
+        "basic:17",
+        "basic:18",
+        "basic:19",
+        "basic:20",
+        "basic:21"
+      ],
+      "unlocks": "forte:4",
+      "replaces": [
+        "basic:13"
+      ],
+      "state": 1
+    },
+    {
+      "name": "Pillars Across Heaven",
+      "max": 1,
+      "gain": [
+        "forte:4"
+      ],
+      "unlocks": "liberation:0",
+      "replaces": [],
+      "state": 0
+    }
+  ],
+  "coordinated": {
+    "name": "Edict",
+    "start": "liberation:2",
+    "hits": [
+      "liberation:1"
+    ],
+    "duration": 45,
+    "interval": 1,
+    "max": 21,
+    "perKind": {
+      "basic": 1,
+      "heavy": 1,
+      "skill": 1,
+      "liberation": 1,
+      "intro": 1,
+      "outro": 1,
+      "echo": 1
+    }
+  },
+  "statuses": [
+    {
+      "status": "electroFlare",
+      "mode": 0,
+      "keepsStacks": true,
+      "fillsMax": [
+        "liberation:2"
+      ],
+      "hits": {
+        "liberation:2": 5,
+        "forte:0": 5,
+        "forte:4": 5,
+        "intro:0": 1,
+        "forte:2": 1,
+        "basic:17": 1,
+        "basic:18": 1,
+        "basic:19": 1,
+        "basic:20": 1,
+        "basic:21": 1
+      },
+      "burst": {
+        "name": "Heart of Thunder",
+        "hits": [
+          "skill:0"
+        ],
+        "multiplier": 17.5
+      }
+    }
+  ],
+  "passiveBuffs": [
+    {
+      "name": "Tides of Succession",
+      "stat": "elementalBonus",
+      "value": 50,
+      "mode": 0
+    }
+  ]
 }

@@ -87,13 +87,14 @@ export interface StatBuff {
   duration?: number;
   /** Only these hits get it (e.g. "the DMG of Fury Fugue is increased by 25%"); without it, every hit */
   hits?: HitKey[];
-  /** 'team': every member gets it (e.g. "all team members' ATK are increased by 20%"); without it, only the character */
-  target?: 'team';
+  /** 'team': every member gets it (e.g. "all team members' ATK are increased by 20%"); 'incoming' (of an Outro): the next character to
+   * enter, until it leaves the field; without it, only the character */
+  target?: 'team' | 'incoming';
   /** Only a character of this element gets it (e.g. "Aero DMG Bonus to all Resonators in the team") */
   element?: string;
   /** It ends when the character comes back to the field */
   endsOnReturn?: boolean;
-  /** Of a buff a hit gives: only in this Resonance Mode of the character (index in `modes`) */
+  /** Of a buff a hit gives (or always active): only in this Resonance Mode of the character (index in `modes`) */
   mode?: number;
   /** Only hits of this kind get it (e.g. the Echo Skill of whoever is on the field) */
   kind?: HitKind;
@@ -213,6 +214,10 @@ export interface CharacterStatus {
   };
   /** After these hits, 1 tick of the status at once, and it loses 1 stack */
   detonate?: HitKey[];
+  /** After these hits, 1 tick of the status at once with its DMG Multiplier times `multiplier`, without taking stacks (e.g. Heart of Thunder) */
+  burst?: { name: string; hits: HitKey[]; multiplier: number };
+  /** With the character in the team, the ticks of the status take no stacks (e.g. the Electro Flare that would halve) */
+  keepsStacks?: boolean;
   /** `hit` gets a DMG Amplification of `perStack` for each stack on the target (up to `max`), then the status is gone */
   consume?: { hit: HitKey; name: string; perStack: number; max: number };
   /** Every hit of the character gets the DMG Amplification of the stacks on the target (by count, the last one for more) */
@@ -425,7 +430,7 @@ export interface CharacterData {
   followUps?: { hit: HitKey; after: HitKey[]; mode?: number }[];
   /** These hits count as casting an Echo Skill (each one a different one) for the counters of the team, in the mode (index in `modes`) */
   echoCasts?: { hits: HitKey[]; mode: number };
-  /** Hits only offered in a mode (index in `modes`) */
+  /** Hits only offered in a mode (index in `modes`); an Intro hit is only the Intro in that mode */
   modeHits?: Record<HitKey, number>;
   field?: TeamField;
   statuses?: CharacterStatus[];
