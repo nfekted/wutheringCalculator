@@ -1366,5 +1366,95 @@
         ]
       }
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 9
+    },
+    {
+      "section": "basic",
+      "index": 9
+    },
+    {
+      "section": "basic",
+      "index": 9
+    },
+    {
+      "section": "basic",
+      "index": 8
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 12
+    },
+    {
+      "section": "forte",
+      "index": 13
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "forte",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "forte",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 4
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    }
   ]
 }

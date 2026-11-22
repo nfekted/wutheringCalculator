@@ -494,5 +494,275 @@
         "forte:0"
       ]
     }
-  }
+  },
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "echo",
+      "index": 0
+    }
+  ]
 }

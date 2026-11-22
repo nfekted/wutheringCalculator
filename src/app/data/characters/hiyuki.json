@@ -1183,5 +1183,67 @@
       "stat": "critDamage",
       "value": 40
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "skill",
+      "index": 2
+    },
+    {
+      "section": "basic",
+      "index": 6
+    },
+    {
+      "section": "basic",
+      "index": 7
+    },
+    {
+      "section": "basic",
+      "index": 8
+    },
+    {
+      "section": "basic",
+      "index": 9
+    },
+    {
+      "section": "basic",
+      "index": 10
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 12
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    }
   ]
 }

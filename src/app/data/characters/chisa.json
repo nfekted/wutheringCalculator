@@ -1245,5 +1245,39 @@
         "stacks": 1
       }
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 4
+    }
   ]
 }

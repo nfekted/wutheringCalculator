@@ -656,5 +656,71 @@
         "forte:1"
       ]
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 7
+    },
+    {
+      "section": "liberation",
+      "index": 5
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 2
+    },
+    {
+      "section": "liberation",
+      "index": 3
+    },
+    {
+      "section": "liberation",
+      "index": 5
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 2
+    },
+    {
+      "section": "liberation",
+      "index": 3
+    },
+    {
+      "section": "liberation",
+      "index": 5
+    },
+    {
+      "section": "forte",
+      "index": 1
+    }
   ]
 }
