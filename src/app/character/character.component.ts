@@ -105,7 +105,13 @@ export class CharacterComponent {
     this.changed.emit();
   }
 
+  /** With hits in the Rotation build, the mode is locked (the hits belong to it): clear the rotation to change it */
+  protected modeLocked(): boolean {
+    return (this.character().rotationBuild?.length ?? 0) > 0;
+  }
+
   protected setMode(mode: number) {
+    if (this.modeLocked()) return;
     this.character().mode = mode;
     this.calculate();
   }

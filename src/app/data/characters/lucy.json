@@ -1808,5 +1808,67 @@
       ],
       "state": 1
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "skill",
+      "index": 3
+    },
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 10
+    },
+    {
+      "section": "basic",
+      "index": 11
+    },
+    {
+      "section": "basic",
+      "index": 12
+    },
+    {
+      "section": "basic",
+      "index": 13
+    },
+    {
+      "section": "basic",
+      "index": 15
+    },
+    {
+      "section": "basic",
+      "index": 16
+    },
+    {
+      "section": "liberation",
+      "index": 4
+    }
   ]
 }

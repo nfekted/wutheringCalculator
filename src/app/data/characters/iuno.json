@@ -1126,5 +1126,47 @@
   ],
   "ignoredHits": [
     "forte:14"
+  ],
+  "rotationBuild": [
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 6
+    },
+    {
+      "section": "forte",
+      "index": 6
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "forte",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 12
+    }
   ]
 }

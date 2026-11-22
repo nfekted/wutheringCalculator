@@ -1113,5 +1113,75 @@
       "replaces": [],
       "state": 1
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 4
+    },
+    {
+      "section": "basic",
+      "index": 5
+    },
+    {
+      "section": "basic",
+      "index": 6
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 0
+    }
   ]
 }

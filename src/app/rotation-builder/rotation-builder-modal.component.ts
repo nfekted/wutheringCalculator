@@ -23,7 +23,7 @@ export class RotationBuilderModalComponent {
   /** Hits between the intro and the outro */
   middle = signal<RotationStep[]>(this.character().rotationBuild ?? []);
 
-  hasDefault = (this.character().data.rotationBuild?.length ?? 0) > 0;
+  hasDefault = this.character().defaultRotation().length > 0;
 
   /** The rotation with the buffs the character gives itself (Inherent Skills, states) */
   private result = computed(() => simulateRotation(this.character(), this.middle()));
@@ -45,7 +45,7 @@ export class RotationBuilderModalComponent {
   damageHits = computed(() => this.result().total.hits);
 
   protected importDefault() {
-    this.update(cleanSteps(this.character(), [...(this.character().data.rotationBuild ?? [])], middleContext(this.character(), true)));
+    this.update(cleanSteps(this.character(), [...this.character().defaultRotation()], middleContext(this.character(), true)));
   }
 
   protected clear() {

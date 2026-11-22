@@ -338,15 +338,19 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     // What ends when the member comes back to the field
     active = active.filter(a => !(a.endsOnReturn && a.id.startsWith(`self:${slot}:`)));
     coordinated = coordinated.filter(c => !(c.attack.endsOnReturn && c.slot === slot));
+    // Only the Intro the segment starts with is replaced (an Intro in the middle stays)
+    const lead = steps.findIndex(step => step.section !== 'intro');
+    const introCount = lead < 0 ? steps.length : lead;
     const replaced = nextIntro.get(slot);
-    if (replaced && steps.some(step => step.section === 'intro')) {
-      steps = [keyStep(replaced), ...steps.filter(step => step.section !== 'intro')];
+    if (replaced && introCount) {
+      steps = [keyStep(replaced), ...steps.slice(introCount)];
       nextIntro.delete(slot);
     }
     // A field of the member at its top level: its Intro is the one of the field, and it ends the field
     const top = fields.find(f => f.slot === slot && f.level === f.field.levels.length);
-    if (top && steps.some(step => step.section === 'intro')) {
-      steps = [...top.field.intro.map(keyStep), ...steps.filter(step => step.section !== 'intro')];
+    if (top && steps[0]?.section === 'intro') {
+      const first = steps.findIndex(step => step.section !== 'intro');
+      steps = [...top.field.intro.map(keyStep), ...steps.slice(first < 0 ? steps.length : first)];
       fields = fields.filter(f => f !== top);
     }
     const spends = spendsPoints(character.data, steps);
@@ -479,6 +483,50 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         }
       }
     };
+
+    // The Outro starts its buffs (the same one given again renews its duration); in a team, an Outro in the middle of the turn too
+    const startOutro = () => {
+      const incoming = segments[i + 1]?.slot;
+      character.data.outro.statBuffs?.forEach(buff => {
+        if (buff.target !== 'incoming') give(character, slot, buff);
+        else if (incoming !== undefined) give(character, slot, buff, incoming);
+      });
+      for (const rule of statuses ? rulesOf(character) : []) {
+        if (rule.state !== undefined && !context.states.includes(rule.state)) continue;
+        if (rule.outroMax) {
+          maxRaises = [...maxRaises.filter(r => r.status !== rule.status), { status: rule.status, extra: rule.outroMax.extra, points: rule.outroMax.duration }];
+        }
+        const boost = rule.outroBoost;
+        if (boost) {
+          const label = `${character.name}: ${boost.name} (+${boost.amplification}%)`;
+          statusBoosts = [...statusBoosts.filter(b => b.label !== label), { status: rule.status, amplification: boost.amplification, intervalRate: boost.intervalRate, points: boost.duration, label }];
+        }
+      }
+      // An Outro that raises the max stacks of every Negative Status
+      const statusMax = character.data.outro.statusMax;
+      if (statuses && statusMax) raiseMax(statusMax, slot);
+      const next = segments[i + 1]?.slot;
+      (character.data.outro.buffs ?? []).forEach((buff, position) => {
+        if (buff.target === 'incoming' && next === undefined) return;
+        if (buff.mode !== undefined && buff.mode !== character.mode) return;
+        // 'others': one buff for each other member, raised for the ones that qualify
+        const receivers: (number | null)[] = buff.target === 'others' ? [...team.keys()].filter(s => s !== slot) : [buff.target === 'incoming' ? next! : null];
+        for (const receiver of receivers) {
+          const member = receiver === null ? undefined : team.get(receiver);
+          const raised = buff.raised && member && (buff.raised.members?.includes(member.data.id) || (!!buff.raised.status && rulesOf(member).some(r => r.status === buff.raised!.status)));
+          const given: OutroBuff = raised ? { ...buff, value: buff.raised!.value } : buff;
+          if (!given.value) continue;
+          const id = `outro:${slot}:${position}:${receiver}`;
+          active = active.filter(a => a.id !== id);
+          active.push({
+            id, outro: given, endsOnSwitch: buff.endsOnSwitch, receiver,
+            points: buff.duration,
+            label: `${character.name}: ${outroLabel(given)}`,
+          });
+        }
+      });
+    };
+    const finalOutro = steps.length - sectionSteps(character, 'outro').length;
 
     steps.forEach((step, position) => {
       const key = stepKey(step);
@@ -639,6 +687,8 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         const at = counter.buffAt;
         if (at && (before[c] ?? 0) < at.value && (context.counters[c] ?? 0) >= at.value) give(character, slot, at.buff);
       });
+      // An Outro in the middle of the turn (after its last hit) gives its buffs in a team; the character stays on the field
+      if (memberCount > 1 && step.section === 'outro' && position < finalOutro && steps[position + 1]?.section !== 'outro') startOutro();
     });
 
     // The counters of the Echo of the team keep their value off the field (and count the same Echo again after the Outro)
@@ -668,46 +718,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     // Buffs received that end when this member leaves the field
     active = active.filter(a => !(a.endsOnSwitch && a.receiver === slot));
 
-    // The Outro starts its buffs; the same one given again renews its duration
-    const incoming = segments[i + 1]?.slot;
-    character.data.outro.statBuffs?.forEach(buff => {
-      if (buff.target !== 'incoming') give(character, slot, buff);
-      else if (incoming !== undefined) give(character, slot, buff, incoming);
-    });
-    for (const rule of statuses ? rulesOf(character) : []) {
-      if (rule.state !== undefined && !context.states.includes(rule.state)) continue;
-      if (rule.outroMax) {
-        maxRaises = [...maxRaises.filter(r => r.status !== rule.status), { status: rule.status, extra: rule.outroMax.extra, points: rule.outroMax.duration }];
-      }
-      const boost = rule.outroBoost;
-      if (boost) {
-        const label = `${character.name}: ${boost.name} (+${boost.amplification}%)`;
-        statusBoosts = [...statusBoosts.filter(b => b.label !== label), { status: rule.status, amplification: boost.amplification, intervalRate: boost.intervalRate, points: boost.duration, label }];
-      }
-    }
-    // An Outro that raises the max stacks of every Negative Status
-    const statusMax = character.data.outro.statusMax;
-    if (statuses && statusMax) raiseMax(statusMax, slot);
-    const next = segments[i + 1]?.slot;
-    (character.data.outro.buffs ?? []).forEach((buff, position) => {
-      if (buff.target === 'incoming' && next === undefined) return;
-      if (buff.mode !== undefined && buff.mode !== character.mode) return;
-      // 'others': one buff for each other member, raised for the ones that qualify
-      const receivers: (number | null)[] = buff.target === 'others' ? [...team.keys()].filter(s => s !== slot) : [buff.target === 'incoming' ? next! : null];
-      for (const receiver of receivers) {
-        const member = receiver === null ? undefined : team.get(receiver);
-        const raised = buff.raised && member && (buff.raised.members?.includes(member.data.id) || (!!buff.raised.status && rulesOf(member).some(r => r.status === buff.raised!.status)));
-        const given: OutroBuff = raised ? { ...buff, value: buff.raised!.value } : buff;
-        if (!given.value) continue;
-        const id = `outro:${slot}:${position}:${receiver}`;
-        active = active.filter(a => a.id !== id);
-        active.push({
-          id, outro: given, endsOnSwitch: buff.endsOnSwitch, receiver,
-          points: buff.duration,
-          label: `${character.name}: ${outroLabel(given)}`,
-        });
-      }
-    });
+    startOutro();
   });
 
   // The statuses still on the target tick until they end

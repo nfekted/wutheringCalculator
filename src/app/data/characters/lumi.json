@@ -809,5 +809,71 @@
         "inState": true
       }
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 5
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "forte",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 6
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 5
+    },
+    {
+      "section": "echo",
+      "index": 0
+    }
   ]
 }

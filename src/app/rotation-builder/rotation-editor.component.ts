@@ -66,13 +66,13 @@ export class RotationEditorComponent {
   groups = computed(() => {
     const data = this.character().data;
     const context = this.context();
-    return PICKABLE
-      .map(section => ({
+    const picked = PICKABLE.map(section => ({ section, steps: data[section].hits.map((_, index): RotationStep => ({ section, index })) }));
+    // An Intro or an Outro can also come in the middle (e.g. a quick swap out and back), as many times as wanted
+    const swaps = (['intro', 'outro'] as const).map(section => ({ section, steps: sectionSteps(this.character(), section) }));
+    return [...picked, ...swaps]
+      .map(({ section, steps }) => ({
         section, name: data[section].name,
-        hits: data[section].hits.flatMap((hit, index) => {
-          const step: RotationStep = { section, index };
-          return allowed(data, context, step) ? [{ index, name: hit.name }] : [];
-        }),
+        hits: steps.flatMap(step => allowed(data, context, step) ? [{ index: step.index, name: data[section].hits[step.index].name }] : []),
       }))
       .filter(group => group.hits.length);
   });

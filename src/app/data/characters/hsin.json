@@ -2071,5 +2071,129 @@
       "value": 50,
       "mode": 0
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "liberation",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 9
+    },
+    {
+      "section": "basic",
+      "index": 11
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 17
+    },
+    {
+      "section": "basic",
+      "index": 18
+    },
+    {
+      "section": "basic",
+      "index": 19
+    },
+    {
+      "section": "basic",
+      "index": 20
+    },
+    {
+      "section": "forte",
+      "index": 4
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    }
+  ],
+  "altRotationBuild": [
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "liberation",
+      "index": 2
+    },
+    {
+      "section": "outro",
+      "index": 0
+    },
+    {
+      "section": "intro",
+      "index": 2
+    },
+    {
+      "section": "basic",
+      "index": 9
+    },
+    {
+      "section": "basic",
+      "index": 11
+    },
+    {
+      "section": "basic",
+      "index": 12
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 17
+    },
+    {
+      "section": "basic",
+      "index": 18
+    },
+    {
+      "section": "basic",
+      "index": 19
+    },
+    {
+      "section": "basic",
+      "index": 20
+    },
+    {
+      "section": "forte",
+      "index": 4
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    }
   ]
 }

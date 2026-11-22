@@ -1004,5 +1004,47 @@
       ],
       "duration": 5
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 6
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "forte",
+      "index": 3
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 7
+    },
+    {
+      "section": "forte",
+      "index": 8
+    }
   ]
 }

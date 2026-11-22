@@ -140,6 +140,11 @@ export class Character implements Stats {
         return [...this.sectionSteps('intro'), ...(this.rotationBuild ?? []), ...this.sectionSteps('outro')];
     }
 
+    /** Default hits between the intro and the outro of the active mode */
+    defaultRotation(): RotationStep[] {
+        return (this.mode > 0 ? this.data.altRotationBuild : undefined) ?? this.data.rotationBuild ?? [];
+    }
+
     /** Steps of the Intro or the Outro, without the hits that only come in some cases (the Intro of a field or of a state, a hit a counter gives) */
     sectionSteps(section: 'intro' | 'outro'): RotationStep[] {
         const special = (key: string) => !!this.data.field?.intro.includes(key) || !!this.data.counters?.some(counter => counter.outro?.hit === key)

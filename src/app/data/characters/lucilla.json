@@ -875,5 +875,39 @@
       "forte:0"
     ],
     "mode": 1
-  }
+  },
+  "rotationBuild": [
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 2
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 2
+    },
+    {
+      "section": "liberation",
+      "index": 3
+    },
+    {
+      "section": "liberation",
+      "index": 4
+    }
+  ]
 }

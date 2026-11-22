@@ -1,6 +1,7 @@
 {
     "update": "Updated at",
     "mode": "Playstyle",
+    "modeLocked": "Clear the Rotation build to change the mode",
     "modes": {
         "flare": "Electro Flare",
         "unison": "Unison",

@@ -450,5 +450,7 @@ export interface CharacterData {
   forte: SkillData;
   /** Default hits of the Rotation build between the intro and the outro; without it, the build starts empty */
   rotationBuild?: RotationStep[];
+  /** Default hits of the Rotation build in the second mode (see `modes`); without it, `rotationBuild` in both */
+  altRotationBuild?: RotationStep[];
   recommended: CharacterRecommendation;
 }
