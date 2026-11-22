@@ -10,6 +10,20 @@
         "rupture": "Tune Rupture",
         "strain": "Tune Strain"
     },
+    "attr": {
+        "hp": "HP",
+        "dmg": "ATK",
+        "def": "DEF",
+        "cChance": "Crit. Rate",
+        "cDmg": "Crit. DMG",
+        "energyRegen": "Energy Regen",
+        "healingBonus": "Healing Bonus",
+        "basicBonus": "Basic Attack DMG Bonus",
+        "heavyBonus": "Heavy Attack DMG Bonus",
+        "skillBonus": "Resonance Skill DMG Bonus",
+        "liberationBonus": "Resonance Liberation DMG Bonus",
+        "elementalBonus": "{{element}} DMG Bonus"
+    },
     "attributes": "Required attributes for this character:",
     "fusion": "<b class=\"fusion\">FUSION</b> is one of the six damage types in the game. Can be related to <b class=\"fusion\">Fire</b>",
     "glacio": "<b class=\"glacio\">GLACIO</b> is one of the six damage types in the game. Can be related to <b class=\"glacio\">Ice</b>",

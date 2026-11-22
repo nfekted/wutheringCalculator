@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, computed, inject, signal } from '@angular/core';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
-import { TranslocoPipe } from '@jsverse/transloco';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { EchoAttribute, EchoCost, EchoData, EchoSlot } from '../data/echos/echo-data.model';
 import { ECHO_VALUES, ECHOS, SONATAS, getEcho, getSonata } from '../data/echos';
 import { sameAttribute, sonataPieces, sonataStatApplies } from '../core/stat-engine';
@@ -58,7 +58,8 @@ export class EchoSetModalComponent {
   view = signal<View | null>(null);
 
   readonly maxCost = MAX_COST;
-  protected readonly label = attributeLabel;
+  private transloco = inject(TranslocoService);
+  protected readonly label = (attribute: EchoAttribute) => attributeLabel(attribute, this.transloco);
   protected readonly getEcho = getEcho;
   protected readonly getSonata = getSonata;
   protected readonly recommended = this.character().data.recommended;

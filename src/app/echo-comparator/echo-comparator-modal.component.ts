@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { Stats } from '../core/damage-engine';
 import { StatModifier, echoModifier } from '../core/stat-engine';
-import { EchoData, EchoSlot } from '../data/echos/echo-data.model';
+import { EchoAttribute, EchoData, EchoSlot } from '../data/echos/echo-data.model';
 import { ECHOS, getEcho, getSonata } from '../data/echos';
 import { EchoEditorComponent } from '../echo-set/echo-editor.component';
 import { attributeLabel, isRecommended } from '../echo-set/echo-attribute';
@@ -52,7 +52,7 @@ export class EchoComparatorModalComponent {
 
   protected readonly getEcho = getEcho;
   protected readonly getSonata = getSonata;
-  protected readonly label = attributeLabel;
+  protected readonly label = (attribute: EchoAttribute) => attributeLabel(attribute, this.transloco);
   protected readonly maxCost = MAX_COST;
   sonataGroups = sonataGroups(this.character().data.recommended);
 
@@ -219,8 +219,8 @@ export class EchoComparatorModalComponent {
     const main = this.transloco.translate('char.echo.main');
     const sub = this.transloco.translate('char.echo.sub');
     return [
-      ...[slot.main].filter(a => isRecommended(recommended, a, echo.cost)).map(a => `${main}: ${attributeLabel(a)}`),
-      ...slot.subs.filter(a => isRecommended(recommended, a)).map(a => `${sub}: ${attributeLabel(a)}`),
+      ...[slot.main].filter(a => isRecommended(recommended, a, echo.cost)).map(a => `${main}: ${attributeLabel(a, this.transloco)}`),
+      ...slot.subs.filter(a => isRecommended(recommended, a)).map(a => `${sub}: ${attributeLabel(a, this.transloco)}`),
     ];
   }
 

@@ -1,6 +1,6 @@
-import { Component, ChangeDetectionStrategy, OnInit, input, output } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, inject, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TranslocoPipe } from '@jsverse/transloco';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { EchoAttribute, EchoCost, EchoData, EchoSlot } from '../data/echos/echo-data.model';
 import { CharacterRecommendation } from '../data/character-data.model';
 import { ECHO_VALUES, getSonata } from '../data/echos';
@@ -86,7 +86,8 @@ export class EchoEditorComponent implements OnInit {
   cancelled = output<void>();
 
   protected readonly subValues = ECHO_VALUES.subs;
-  protected readonly label = attributeLabel;
+  private transloco = inject(TranslocoService);
+  protected readonly label = (attribute: EchoAttribute) => attributeLabel(attribute, this.transloco);
   protected costValues = ECHO_VALUES.main[1];
   protected sonataName = '';
   /** Index of the chosen main attribute in the options of the cost */
