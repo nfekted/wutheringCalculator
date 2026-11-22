@@ -13,20 +13,20 @@ import { COSTS, MAX_COST, byRecommendation, costWithout, sonataGroups } from '..
 import { Character } from '../shared/models/character.model';
 import { DialogPanelComponent } from '../shared/ui/dialog-panel.component';
 
-/** Attributes of the summary, in display order */
-const STAT_ROWS: Array<{ key: keyof Stats; prefix?: string; label: string; visible?: (c: Character) => boolean }> = [
-  { key: 'hp', label: 'HP', visible: c => c.hpScale },
-  { key: 'dmg', label: 'ATK' },
-  { key: 'def', label: 'DEF', visible: c => c.defScale },
-  { key: 'cChance', label: 'Crit. Rate %' },
-  { key: 'cDmg', label: 'Crit. DMG %' },
-  { key: 'skillBonus', prefix: 'char.skill', label: 'Bonus %' },
-  { key: 'basicBonus', prefix: 'char.basic', label: 'Bonus %' },
-  { key: 'heavyBonus', prefix: 'char.heavy', label: 'Bonus %' },
-  { key: 'liberationBonus', label: 'Lib. Bonus %' },
-  { key: 'elementalBonus', prefix: 'char.elemental', label: 'DMG %' },
-  { key: 'healingBonus', label: 'Healing Bonus %', visible: c => c.data.hasHealing },
-  { key: 'energyRegen', label: 'Energy Regen %', visible: c => c.erScale },
+/** Attributes of the summary, in display order (names in `char.statRows`) */
+const STAT_ROWS: Array<{ key: keyof Stats; visible?: (c: Character) => boolean }> = [
+  { key: 'hp', visible: c => c.hpScale },
+  { key: 'dmg' },
+  { key: 'def', visible: c => c.defScale },
+  { key: 'cChance' },
+  { key: 'cDmg' },
+  { key: 'skillBonus' },
+  { key: 'basicBonus' },
+  { key: 'heavyBonus' },
+  { key: 'liberationBonus' },
+  { key: 'elementalBonus' },
+  { key: 'healingBonus', visible: c => c.data.hasHealing },
+  { key: 'energyRegen', visible: c => c.erScale },
 ];
 
 interface HitLine {

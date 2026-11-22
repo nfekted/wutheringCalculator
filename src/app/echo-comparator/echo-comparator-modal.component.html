@@ -164,7 +164,7 @@
           <tbody>
             @for (row of rows; track row.key) {
               <tr>
-                <th scope="row" class="font-medium text-ink">{{ row.prefix ? (row.prefix | transloco) + ' ' : '' }}{{ row.label }}</th>
+                <th scope="row" class="font-medium text-ink">{{ 'char.statRows.' + row.key | transloco }}</th>
                 <td>{{ before[row.key] | number: '1.0-1' }}</td>
                 <td>{{ after[row.key] | number: '1.0-1' }}</td>
                 <td class="font-medium" [class.text-success]="after[row.key] > before[row.key]" [class.text-danger]="after[row.key] < before[row.key]">

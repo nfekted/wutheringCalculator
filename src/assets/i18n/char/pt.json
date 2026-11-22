@@ -1,6 +1,43 @@
 {
     "update": "Atualizado em",
     "mode": "Modo",
+    "modes": {
+        "flare": "Electro Flare",
+        "unison": "Unison",
+        "chafe": "Glacio Chafe",
+        "echoes": "Echo",
+        "burst": "Fusion Burst",
+        "rupture": "Tune Rupture",
+        "strain": "Tune Strain"
+    },
+    "attr": {
+        "hp": "HP",
+        "dmg": "ATK",
+        "def": "DEF",
+        "cChance": "Crit. Rate",
+        "cDmg": "Crit. DMG",
+        "energyRegen": "Energy Regen",
+        "healingBonus": "Healing Bonus",
+        "basicBonus": "Basic Attack DMG Bonus",
+        "heavyBonus": "Heavy Attack DMG Bonus",
+        "skillBonus": "Resonance Skill DMG Bonus",
+        "liberationBonus": "Resonance Liberation DMG Bonus",
+        "elementalBonus": "{{element}} DMG Bonus"
+    },
+    "statRows": {
+        "hp": "HP",
+        "dmg": "ATK",
+        "def": "DEF",
+        "cChance": "Crit. Rate %",
+        "cDmg": "Crit. DMG %",
+        "skillBonus": "Skill Bonus %",
+        "basicBonus": "Basic Bonus %",
+        "heavyBonus": "Heavy Bonus %",
+        "liberationBonus": "Lib. Bonus %",
+        "elementalBonus": "Elemental DMG %",
+        "healingBonus": "Healing Bonus %",
+        "energyRegen": "Energy Regen %"
+    },
     "attributes": "Atributos necessários para esse personagem:",
     "fusion": "<b class=\"fusion\">FUSION</b> (Fusão) é um dos seis tipos de dano presentes no jogo. Pode ser relacionado como <b class=\"fusion\">Fogo</b>",
     "glacio": "<b class=\"glacio\">GLACIO</b> (Glacial) é um dos seis tipos de dano presentes no jogo. Pode ser relacionado como <b class=\"glacio\">Gelo</b>",

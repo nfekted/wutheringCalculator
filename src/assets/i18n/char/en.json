@@ -24,6 +24,20 @@
         "liberationBonus": "Resonance Liberation DMG Bonus",
         "elementalBonus": "{{element}} DMG Bonus"
     },
+    "statRows": {
+        "hp": "HP",
+        "dmg": "ATK",
+        "def": "DEF",
+        "cChance": "Crit. Rate %",
+        "cDmg": "Crit. DMG %",
+        "skillBonus": "Skill Bonus %",
+        "basicBonus": "Basic Bonus %",
+        "heavyBonus": "Heavy Bonus %",
+        "liberationBonus": "Lib. Bonus %",
+        "elementalBonus": "Elemental DMG %",
+        "healingBonus": "Healing Bonus %",
+        "energyRegen": "Energy Regen %"
+    },
     "attributes": "Required attributes for this character:",
     "fusion": "<b class=\"fusion\">FUSION</b> is one of the six damage types in the game. Can be related to <b class=\"fusion\">Fire</b>",
     "glacio": "<b class=\"glacio\">GLACIO</b> is one of the six damage types in the game. Can be related to <b class=\"glacio\">Ice</b>",
