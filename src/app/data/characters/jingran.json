@@ -14,7 +14,7 @@
   "hasHealing": false,
   "healsAllies": false,
   "primaryDamage": true,
-  "hpScale": false,
+  "hpScale": true,
   "defScale": false,
   "basic": {
     "name": "Edge of Life and Death",
@@ -80,7 +80,7 @@
       },
       {
         "name": "Basic Attack - Drink Soul Stage 3 DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -103,7 +103,7 @@
       },
       {
         "name": "Basic Attack - Drink Soul Stage 4 DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -229,7 +229,7 @@
       },
       {
         "name": "Basic Attack - Devil's Bane Stage 3 DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -281,7 +281,7 @@
       },
       {
         "name": "Basic Attack - Devil's Bane Stage 4 DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -340,7 +340,7 @@
       },
       {
         "name": "Dodge Counter - Nether Dive DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -362,7 +362,7 @@
       },
       {
         "name": "Dodge Counter - Light Watch DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -676,7 +676,8 @@
               83.51
             ]
           }
-        ]
+        ],
+        "cost": 0
       }
     ]
   },
@@ -701,6 +702,18 @@
               184.87,
               198.81
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Fortune in Disguise",
+            "stat": "elementalBonus",
+            "value": 2.5,
+            "duration": 15,
+            "perHp": {
+              "over": 0,
+              "max": 125
+            }
           }
         ]
       }
@@ -929,5 +942,176 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "passiveBuffs": [
+    {
+      "name": "Nether to Light",
+      "stat": "elementalBonus",
+      "value": 1.5,
+      "perHp": {
+        "over": 0,
+        "max": 75
+      }
+    },
+    {
+      "name": "Yang Changes, Yin Unites",
+      "stat": "flatAtk",
+      "value": 36,
+      "perHp": {
+        "over": 0,
+        "max": 1800
+      }
+    },
+    {
+      "name": "Fire of Life",
+      "stat": "multiplier",
+      "value": 9,
+      "hits": [
+        "forte:0",
+        "forte:1"
+      ],
+      "perHp": {
+        "over": 25,
+        "max": 225
+      },
+      "fromCounter": {
+        "counter": 2,
+        "value": 1
+      }
+    }
+  ],
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:8",
+        "basic:11",
+        "intro:0",
+        "skill:1",
+        "forte:1"
+      ],
+      "basic:5": [
+        "basic:8",
+        "basic:11",
+        "intro:0",
+        "skill:3",
+        "forte:0"
+      ],
+      "basic:3": [
+        "basic:9"
+      ],
+      "basic:7": [
+        "basic:10"
+      ],
+      "skill:1": [
+        "skill:0"
+      ],
+      "skill:3": [
+        "skill:2"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Yin Vessel",
+      "start": "forte:1",
+      "endsOn": [
+        "forte:0"
+      ],
+      "hits": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:9",
+        "skill:0",
+        "skill:1",
+        "forte:0"
+      ],
+      "replaces": [
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:10",
+        "skill:2",
+        "skill:3",
+        "forte:1"
+      ]
+    },
+    {
+      "name": "Yinghuo",
+      "start": "liberation:0",
+      "duration": 15,
+      "hits": [],
+      "replaces": [],
+      "autoHit": {
+        "hit": "liberation:1",
+        "after": [
+          "forte:0",
+          "forte:1"
+        ],
+        "max": 4
+      }
+    }
+  ],
+  "counters": [
+    {
+      "name": "Qi",
+      "max": 6,
+      "gain": [],
+      "amount": 4,
+      "gainOnBoost": 1,
+      "unlocks": [
+        "forte:0",
+        "forte:1"
+      ],
+      "replaces": [],
+      "amounts": {
+        "basic:2": 1,
+        "basic:3": 1,
+        "basic:6": 1,
+        "basic:7": 1,
+        "basic:9": 2,
+        "basic:10": 2,
+        "skill:1": 2,
+        "skill:3": 2,
+        "intro:0": 2,
+        "liberation:0": 4
+      }
+    },
+    {
+      "name": "Wayfarer's Mark",
+      "max": 3,
+      "gain": [],
+      "fills": [
+        "liberation:0"
+      ],
+      "unlocks": [],
+      "replaces": [],
+      "boost": {
+        "name": "Wayfarer's Mark",
+        "hit": [
+          "forte:0",
+          "forte:1"
+        ],
+        "spend": 1,
+        "value": 0
+      }
+    },
+    {
+      "name": "Fire of Life",
+      "max": 4,
+      "gain": [],
+      "fills": [
+        "liberation:0"
+      ],
+      "amounts": {
+        "forte:0": -1,
+        "forte:1": -1
+      },
+      "unlocks": [],
+      "replaces": [],
+      "state": 1
+    }
+  ]
 }

@@ -33,6 +33,8 @@ export interface Hit {
   bonus?: number;
   /** Buffs the character gives itself after this hit (e.g. an Inherent Skill "ATK +15% for 5s upon casting X") */
   buffs?: StatBuff[];
+  /** After this hit, raises the max stacks of the Negative Statuses (e.g. Ceaseless Landscape) */
+  statusMax?: StatusMax;
   /** Written by hand (not in the wiki): kept when the character is imported again */
   manual?: boolean;
   /** Extra damage when the hit comes right after one of some hits (e.g. "after a Basic Attack, deals an additional 150%") */
@@ -68,6 +70,13 @@ export interface GuaranteedCrit {
   cooldown: number;
 }
 
+/** Raises the max stacks of every Negative Status (or only of `statuses`) by `extra` for `duration` points */
+export interface StatusMax {
+  extra: number;
+  duration: number;
+  statuses?: NegativeStatus[];
+}
+
 export interface StatBuff {
   /** Where it comes from (e.g. the Inherent Skill), shown on the hits it applies to */
   name: string;
@@ -94,6 +103,8 @@ export interface StatBuff {
   perCritRate?: { over: number; max: number };
   /** The same, by the Energy Regen */
   perEnergyRegen?: { over: number; max: number };
+  /** The same, for each 1000 of Max HP (`over` also in thousands) */
+  perHp?: { over: number; max: number };
   /** Of a buff always active: `value` for each point of the counter (index in `counters`) of the character */
   perCounter?: number;
   /** Of a buff always active: only while the counter (index in `counters`) has at least `value` */
@@ -354,7 +365,7 @@ export interface OutroData extends SkillData {
   /** Attribute buffs the Outro gives (like the ones of a hit), renewed by name */
   statBuffs?: StatBuff[];
   /** Raises the max stacks of every Negative Status by `extra` for `duration` points */
-  statusMax?: { extra: number; duration: number };
+  statusMax?: StatusMax;
 }
 
 export interface RotationStep {

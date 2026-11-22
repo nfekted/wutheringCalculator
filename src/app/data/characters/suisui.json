@@ -401,6 +401,23 @@
             ]
           }
         ]
+      },
+      {
+        "name": "Song of Thoroughfare",
+        "kind": "liberation",
+        "parts": [],
+        "manual": true,
+        "statusMax": {
+          "extra": 3,
+          "duration": 30,
+          "statuses": [
+            "spectroFrazzle",
+            "fusionBurst",
+            "glacioChafe",
+            "aeroErosion",
+            "electroFlare"
+          ]
+        }
       }
     ]
   },
@@ -439,6 +456,30 @@
         "amplification": "all",
         "value": 25,
         "duration": 30
+      }
+    ],
+    "statBuffs": [
+      {
+        "name": "Roaming Transcendent",
+        "stat": "amplification",
+        "value": 0.2,
+        "duration": 30,
+        "target": "team",
+        "perEnergyRegen": {
+          "over": 200,
+          "max": 12
+        }
+      },
+      {
+        "name": "Undulating Mist",
+        "stat": "atk",
+        "value": 0.8334,
+        "duration": 30,
+        "target": "team",
+        "perEnergyRegen": {
+          "over": 200,
+          "max": 50
+        }
       }
     ]
   },
@@ -837,5 +878,109 @@
         "stat": "cChance"
       }
     ]
-  }
+  },
+  "ignoredHits": [
+    "skill:3",
+    "liberation:0"
+  ],
+  "followUps": [
+    {
+      "hit": "skill:3",
+      "after": [
+        "skill:1",
+        "intro:0"
+      ]
+    }
+  ],
+  "passiveBuffs": [
+    {
+      "name": "Sky Over Water",
+      "stat": "critRate",
+      "value": 80,
+      "hits": [
+        "skill:1",
+        "intro:0"
+      ]
+    },
+    {
+      "name": "Sky Over Water",
+      "stat": "elementalBonus",
+      "value": 240,
+      "hits": [
+        "skill:1",
+        "intro:0"
+      ]
+    }
+  ],
+  "statuses": [
+    {
+      "status": "glacioChafe",
+      "hits": {
+        "skill:1": 1,
+        "intro:0": 1,
+        "forte:3": 1
+      }
+    }
+  ],
+  "sequence": {
+    "after": {
+      "basic:3": [
+        "basic:5"
+      ],
+      "forte:5": [
+        "forte:4"
+      ],
+      "forte:6": [
+        "forte:4"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Drizzle Stance",
+      "start": [
+        "skill:1",
+        "intro:0"
+      ],
+      "duration": 15,
+      "hits": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6",
+        "skill:2"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "skill:0",
+        "skill:1"
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Cloud Breath",
+      "max": 3,
+      "gain": [
+        "skill:0",
+        "basic:3",
+        "basic:5"
+      ],
+      "amounts": {
+        "intro:0": -3
+      },
+      "unlocks": "skill:1",
+      "replaces": [
+        "skill:0"
+      ]
+    }
+  ]
 }

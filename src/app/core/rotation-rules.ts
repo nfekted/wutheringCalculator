@@ -198,13 +198,13 @@ export function advance(character: Character, context: RotationContext, step: Ro
       const counter = counters[i];
       const value = context.counters[i] ?? 0;
       const spend = spendOf(counter, context, key);
-      if (unlocks(counter, key) && !counter.free?.includes(key)) return spend !== undefined ? value - spend : 0;
+      const boosted = counter.gainOnBoost !== undefined && boostApplies(counters[counter.gainOnBoost], context.counters[counter.gainOnBoost] ?? 0, context, key);
+      if (unlocks(counter, key) && !counter.free?.includes(key)) return Math.min(counter.max, (spend !== undefined ? value - spend : 0) + (boosted ? counter.amount ?? 1 : 0));
       if (boostApplies(counter, value, context, key)) return value - counter.boost!.spend;
       const exists = counter.state === undefined || states.includes(counter.state);
       if (counter.fills?.includes(key) && exists) return counter.max;
       // The states of the hit: a state that ends on it still counts
       const own = counter.amountsIn?.find(a => context.states.includes(a.state) || started.includes(a.state))?.amounts[key];
-      const boosted = counter.gainOnBoost !== undefined && boostApplies(counters[counter.gainOnBoost], context.counters[counter.gainOnBoost] ?? 0, context, key);
       const base = (own ?? counter.amounts?.[key] ?? (counter.gain.includes(key) ? counter.amount ?? 1 : 0)) + (boosted ? counter.amount ?? 1 : 0);
       const rate = counter.rateIn && states.includes(counter.rateIn.state) && base > 0 ? counter.rateIn.rate : 1;
       const amount = base * rate;

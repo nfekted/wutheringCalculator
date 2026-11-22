@@ -816,5 +816,155 @@
         "flat": true
       }
     ]
-  }
+  },
+  "passiveBuffs": [
+    {
+      "name": "Mindlock",
+      "stat": "amplification",
+      "value": 65,
+      "hits": [
+        "basic:4",
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "liberation:0"
+      ]
+    },
+    {
+      "name": "Ephemeral Transcendence",
+      "stat": "multiplier",
+      "value": 100,
+      "hits": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4"
+      ]
+    },
+    {
+      "name": "Heaven's Clarity",
+      "stat": "multiplier",
+      "value": 100,
+      "hits": [
+        "forte:5"
+      ]
+    }
+  ],
+  "sequence": {
+    "after": {
+      "basic:2": [
+        "basic:7",
+        "basic:8"
+      ],
+      "basic:3": [
+        "skill:0",
+        "basic:9"
+      ],
+      "skill:1": [
+        "basic:1",
+        "basic:2",
+        "basic:9"
+      ]
+    },
+    "replacedBy": {
+      "skill:0": [
+        "skill:1"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Ephemeral Transcendence",
+      "start": "basic:4",
+      "endsOn": [
+        "forte:5"
+      ],
+      "hits": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:9",
+        "skill:1"
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Qin Heart",
+      "max": 4,
+      "gain": [
+        "basic:0",
+        "basic:3"
+      ],
+      "amounts": {
+        "skill:0": 2,
+        "intro:0": 1
+      },
+      "amountsIn": [
+        {
+          "state": 0,
+          "amounts": {
+            "skill:0": 0
+          }
+        }
+      ],
+      "unlocks": "basic:4",
+      "replaces": []
+    },
+    {
+      "name": "Sword Cadence",
+      "max": 4,
+      "gain": [
+        "basic:1",
+        "basic:2",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:9",
+        "skill:1"
+      ],
+      "amounts": {
+        "intro:0": 1
+      },
+      "unlocks": "basic:4",
+      "replaces": []
+    },
+    {
+      "name": "Heart Sword Intent",
+      "max": 4,
+      "gain": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4"
+      ],
+      "unlocks": "forte:5",
+      "replaces": [
+        "forte:0",
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4"
+      ],
+      "state": 0
+    }
+  ]
 }
