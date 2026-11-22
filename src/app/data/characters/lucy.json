@@ -539,7 +539,7 @@
       },
       {
         "name": "Basic Attack - Thread Shredding Stage 1 DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -605,7 +605,7 @@
       },
       {
         "name": "Basic Attack - Thread Shredding Stage 2 DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -686,7 +686,7 @@
       },
       {
         "name": "Basic Attack - Thread Shredding Stage 3 DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -767,7 +767,7 @@
       },
       {
         "name": "Basic Attack - Thread Shredding Stage 4 DMG",
-        "kind": "basic",
+        "kind": "heavy",
         "parts": [
           {
             "stat": "atk",
@@ -1224,6 +1224,14 @@
               206.77
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Algorithm Compaction",
+            "stat": "elementalBonus",
+            "value": 65,
+            "duration": 8
+          }
         ]
       }
     ]
@@ -1271,7 +1279,8 @@
               79.53
             ]
           }
-        ]
+        ],
+        "cost": 0
       },
       {
         "name": "Spoofing Program: Synapse Burnout DMG",
@@ -1292,7 +1301,8 @@
               79.53
             ]
           }
-        ]
+        ],
+        "cost": 0
       },
       {
         "name": "Spoofing Program: Cripple Movement DMG",
@@ -1313,7 +1323,8 @@
               911.83
             ]
           }
-        ]
+        ],
+        "cost": 0
       },
       {
         "name": "Resonance Liberation - Old Net Deep Dive: Override DMG",
@@ -1333,6 +1344,22 @@
               1663.83,
               1789.29
             ]
+          }
+        ]
+      },
+      {
+        "name": "Spoofing Program: Cyberware Malfunction",
+        "kind": "heavy",
+        "parts": [],
+        "manual": true,
+        "cost": 0,
+        "buffs": [
+          {
+            "name": "Cyberware Malfunction",
+            "stat": "amplification",
+            "value": 5,
+            "duration": 30,
+            "target": "team"
           }
         ]
       }
@@ -1380,8 +1407,30 @@
     ]
   },
   "outro": {
-    "name": "",
-    "hits": []
+    "name": "Countermeasure Program",
+    "hits": [],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "basic",
+        "value": 25,
+        "duration": 14,
+        "endsOnSwitch": true
+      },
+      {
+        "target": "others",
+        "amplification": "all",
+        "value": 0,
+        "duration": 25,
+        "endsOnSwitch": true,
+        "raised": {
+          "value": 20,
+          "members": [
+            "rebecca"
+          ]
+        }
+      }
+    ]
   },
   "forte": {
     "name": "Depths of Blackwall",
@@ -1510,5 +1559,254 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:4": [
+        "basic:0"
+      ],
+      "basic:5": [
+        "basic:2",
+        "basic:7",
+        "skill:1"
+      ],
+      "basic:2": [
+        "basic:4"
+      ],
+      "basic:1": [
+        "basic:6",
+        "skill:1",
+        "skill:2",
+        "intro:0"
+      ],
+      "basic:3": [
+        "basic:7"
+      ],
+      "skill:2": [
+        "skill:1"
+      ],
+      "basic:11": [
+        "basic:8",
+        "basic:14",
+        "basic:15",
+        "basic:16",
+        "skill:3",
+        "intro:0"
+      ],
+      "basic:12": [
+        "basic:9"
+      ],
+      "basic:16": [
+        "basic:15"
+      ]
+    },
+    "linked": [
+      [
+        "skill:0",
+        "skill:1"
+      ]
+    ]
+  },
+  "states": [
+    {
+      "name": "Algorithm Compaction",
+      "start": "skill:3",
+      "endsOn": [
+        "liberation:0",
+        "liberation:4"
+      ],
+      "hits": [
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12",
+        "basic:13",
+        "basic:14",
+        "basic:15",
+        "basic:16",
+        "skill:3",
+        "liberation:4"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "skill:0",
+        "skill:1",
+        "skill:2"
+      ]
+    },
+    {
+      "name": "Protocol Interface",
+      "start": [
+        "liberation:1",
+        "liberation:2",
+        "liberation:3",
+        "liberation:5"
+      ],
+      "endsOn": [
+        "liberation:0",
+        "liberation:4"
+      ],
+      "hits": [
+        "liberation:1",
+        "liberation:2",
+        "liberation:3",
+        "liberation:5"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12",
+        "basic:13",
+        "basic:14",
+        "basic:15",
+        "basic:16",
+        "skill:0",
+        "skill:1",
+        "skill:2",
+        "skill:3"
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "TCP",
+      "max": 4,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "skill:1",
+        "skill:2"
+      ],
+      "amounts": {
+        "liberation:0": -4,
+        "liberation:4": -4
+      },
+      "unlocks": "skill:3",
+      "free": [
+        "skill:3"
+      ],
+      "replaces": [
+        "skill:0",
+        "skill:1",
+        "skill:2"
+      ]
+    },
+    {
+      "name": "Root Access",
+      "max": 4,
+      "gain": [
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12",
+        "basic:13",
+        "basic:14"
+      ],
+      "unlocks": "basic:15",
+      "replaces": [
+        "basic:14"
+      ]
+    },
+    {
+      "name": "SQL",
+      "max": 1,
+      "gain": [
+        "skill:3"
+      ],
+      "unlocks": [],
+      "replaces": [],
+      "boost": {
+        "name": "SQL",
+        "hit": "basic:16",
+        "spend": 1,
+        "value": 270,
+        "stat": "multiplier"
+      }
+    },
+    {
+      "name": "Old Net Deep Dive",
+      "max": 1,
+      "gain": [
+        "basic:16"
+      ],
+      "unlocks": "liberation:4",
+      "replaces": [
+        "liberation:0"
+      ],
+      "state": 0
+    },
+    {
+      "name": "Spoofing Program: Ping DMG",
+      "max": 1,
+      "gain": [
+        "liberation:1"
+      ],
+      "unlocks": [],
+      "replaces": [
+        "liberation:1"
+      ],
+      "state": 1
+    },
+    {
+      "name": "Spoofing Program: Synapse Burnout DMG",
+      "max": 1,
+      "gain": [
+        "liberation:2"
+      ],
+      "unlocks": [],
+      "replaces": [
+        "liberation:2"
+      ],
+      "state": 1
+    },
+    {
+      "name": "Spoofing Program: Cripple Movement DMG",
+      "max": 1,
+      "gain": [
+        "liberation:3"
+      ],
+      "unlocks": [],
+      "replaces": [
+        "liberation:3"
+      ],
+      "state": 1
+    },
+    {
+      "name": "Spoofing Program: Cyberware Malfunction",
+      "max": 1,
+      "gain": [
+        "liberation:5"
+      ],
+      "unlocks": [],
+      "replaces": [
+        "liberation:5"
+      ],
+      "state": 1
+    }
+  ]
 }

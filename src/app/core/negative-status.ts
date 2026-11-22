@@ -1,7 +1,7 @@
 import { statusTickValue } from './damage-engine';
 
 /** A Negative Status on the target: it deals damage on its own, every `interval` points while it lasts */
-export type NegativeStatus = 'aeroErosion' | 'spectroFrazzle' | 'electroFlare' | 'fusionBurst' | 'glacioChafe';
+export type NegativeStatus = 'aeroErosion' | 'spectroFrazzle' | 'electroFlare' | 'fusionBurst' | 'glacioChafe' | 'havocBane';
 
 export interface NegativeStatusData {
   name: string;
@@ -21,6 +21,8 @@ export interface NegativeStatusData {
   hitOnApply?: boolean;
   /** Each tick takes half of the stacks (rounded down) */
   halvesOnTick?: boolean;
+  /** No damage: each stack takes this % of the DEF of the target (it only lasts its duration) */
+  defDown?: number;
   /** Stacks applied over the max go to this one, up to `max` (raised as the status): each one adds `perStack`% to the next tick, which takes them all */
   overflow?: { name: string; max: number; perStack: number };
 }
@@ -46,6 +48,7 @@ export const NEGATIVE_STATUS: Record<NegativeStatus, NegativeStatusData> = {
     name: 'Glacio Chafe', max: 10, interval: 0, stacks: [0.35, 0.7, 1.05, 1.4, 1.75, 2.1, 2.45, 2.8, 3.15, 3.5], extraPerStack: 0.35,
     burstAtMax: true, hitOnApply: true,
   },
+  havocBane: { name: 'Havoc Bane', max: 3, duration: 15, interval: 0, stacks: [0], extraPerStack: 0, defDown: 2 },
 };
 
 /** Multiplier of a character level 90 (the level is fixed) */
@@ -65,6 +68,15 @@ export function statusTick(status: NegativeStatus, stacks: number, overflow = 0)
     for (let n = listed; n < stacks; n++) multiplier += (step += data.extraGrowth);
   }
   return statusHit(multiplier * (1 + overflow * (data.overflow?.perStack ?? 0) / 100));
+}
+
+/** DEF of a level 90 character and of a level 100 enemy, in the DEF multiplier (it gives the 0.49 of the enemy mitigation) */
+const CHARACTER_DEF = 800 + 8 * 90;
+const ENEMY_DEF = 792 + 8 * 100;
+
+/** How much more damage a hit deals with this part (0 to 1) of the DEF of the enemy taken away */
+export function defFactor(reduction: number): number {
+  return (CHARACTER_DEF + ENEMY_DEF) / (CHARACTER_DEF + ENEMY_DEF * (1 - reduction));
 }
 
 /** Value of a hit of a status with this DMG Multiplier */

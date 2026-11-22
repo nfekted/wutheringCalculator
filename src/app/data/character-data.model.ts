@@ -185,10 +185,20 @@ export interface CharacterStatus {
    * another member on the field applies the status, the character spends 1 and applies `stacks` more (at most once for each hit)
    */
   reaction?: { name: string; max: number; duration: number; gain: Record<HitKey, number>; stacks: number };
+  /** With the character in the team, each hit with damage of any member applies `stacks` (as the character), at most once every
+   * `interval` points (e.g. Unseen Snare, always on the target) */
+  mark?: { name: string; interval: number; stacks: number };
+  /** These hits of the character raise the stacks on the target to the max */
+  fillsMax?: HitKey[];
+  /** These hits of the character take that many stacks from the target */
+  takes?: Record<HitKey, number>;
+  /** Each time any member applies the status (at most once for each hit), the character gets `buff` (one more stack) and 1 point in
+   * the counter (index in `counters`) */
+  onApply?: { buff?: StatBuff; counter?: number };
   bite?: {
     name: string;
     frostbind: { hits: HitKey[]; stacks: number };
-    levels: { name: string; members: string[]; amplification: number[]; extra: { level: number; multiplier: number } };
+    levels: { name: string; members: string[]; statuses?: NegativeStatus[]; amplification: number[]; extra: { level: number; multiplier: number } };
   };
   /** After these hits, 1 tick of the status at once, and it loses 1 stack */
   detonate?: HitKey[];
@@ -250,6 +260,8 @@ export interface CharacterCounter {
   teamEcho?: { resetOnOutro?: boolean };
   /** It keeps its value while the character is off the field (for the team) */
   keeps?: boolean;
+  /** Full, after one of these hits `hit` comes on its own and the counter goes back to 0 (for the team) */
+  fullHit?: { after: HitKey[]; hit: HitKey };
   /** The state (by index in `states`) ends when the counter gets to 0 */
   endsState?: number;
   /** Hits not available while the counter is full (with `spend`, while it has that much) */

@@ -521,6 +521,24 @@
             "times": 3
           }
         ]
+      },
+      {
+        "name": "Sword Stance Switch: Azure",
+        "kind": "heavy",
+        "parts": [],
+        "manual": true
+      },
+      {
+        "name": "Sword Stance Switch: Feather",
+        "kind": "heavy",
+        "parts": [],
+        "manual": true
+      },
+      {
+        "name": "Feather Release: Xuanling",
+        "kind": "heavy",
+        "parts": [],
+        "manual": true
       }
     ]
   },
@@ -611,6 +629,19 @@
             ]
           }
         ]
+      }
+    ],
+    "buffs": [
+      {
+        "target": "others",
+        "amplification": "elemental",
+        "element": "havoc",
+        "value": 0,
+        "duration": 20,
+        "raised": {
+          "value": 20,
+          "status": "havocBane"
+        }
       }
     ]
   },
@@ -1060,5 +1091,266 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "sequence": {
+    "after": {
+      "basic:1": [
+        "basic:8"
+      ],
+      "basic:2": [
+        "basic:10"
+      ],
+      "basic:5": [
+        "basic:9"
+      ],
+      "basic:6": [
+        "basic:11"
+      ],
+      "forte:4": [
+        "forte:6"
+      ],
+      "forte:5": [
+        "forte:7"
+      ],
+      "forte:7": [
+        "forte:3"
+      ],
+      "forte:8": [
+        "forte:4"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Feather Sword Stance",
+      "start": [
+        "skill:1",
+        "skill:3"
+      ],
+      "endsOn": [
+        "skill:0",
+        "skill:2"
+      ],
+      "hits": [
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:9",
+        "basic:11",
+        "skill:0",
+        "skill:2",
+        "forte:1"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:8",
+        "basic:10",
+        "skill:1",
+        "skill:3",
+        "forte:0"
+      ]
+    },
+    {
+      "name": "Hark the Wind",
+      "start": "forte:1",
+      "duration": 12,
+      "endsOn": [
+        "forte:5",
+        "forte:8"
+      ],
+      "hits": [
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6",
+        "forte:7",
+        "forte:8"
+      ],
+      "replaces": [
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:11"
+      ]
+    },
+    {
+      "name": "Voice upon Voice",
+      "start": "liberation:0",
+      "endsOn": [
+        "skill:0",
+        "skill:1"
+      ],
+      "hits": [],
+      "replaces": [],
+      "autoHit": {
+        "hit": "liberation:1",
+        "after": [
+          "skill:0",
+          "skill:1"
+        ],
+        "max": 1
+      }
+    }
+  ],
+  "counters": [
+    {
+      "name": "Melody",
+      "max": 4,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:8",
+        "basic:10",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:9",
+        "basic:11",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6",
+        "forte:7",
+        "forte:8"
+      ],
+      "fills": [
+        "liberation:0"
+      ],
+      "unlocks": [
+        "skill:0",
+        "skill:1"
+      ],
+      "replaces": [
+        "skill:2",
+        "skill:3"
+      ]
+    },
+    {
+      "name": "Azure Plume",
+      "max": 2,
+      "gain": [
+        "skill:0",
+        "skill:1",
+        "intro:0",
+        "liberation:0"
+      ],
+      "unlocks": [
+        "forte:0",
+        "forte:1"
+      ],
+      "replaces": []
+    },
+    {
+      "name": "Windbound",
+      "max": 6,
+      "gain": [],
+      "unlocks": [],
+      "replaces": [],
+      "keeps": true,
+      "fullHit": {
+        "after": [
+          "skill:0",
+          "skill:1"
+        ],
+        "hit": "skill:4"
+      }
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "forte:2",
+      "after": [
+        "forte:1"
+      ]
+    }
+  ],
+  "ignoredHits": [
+    "skill:4"
+  ],
+  "statuses": [
+    {
+      "status": "havocBane",
+      "hits": {
+        "basic:3": 1,
+        "basic:7": 1,
+        "forte:0": 2,
+        "forte:1": 2,
+        "intro:0": 1,
+        "skill:4": 6
+      },
+      "fillsMax": [
+        "liberation:0"
+      ],
+      "takes": {
+        "skill:0": 1,
+        "skill:1": 1
+      },
+      "amplifiedBy": {
+        "name": "Unbroken Vow",
+        "values": [
+          0,
+          10,
+          20,
+          30,
+          42,
+          54,
+          66
+        ]
+      },
+      "onApply": {
+        "buff": {
+          "name": "Feathered Oath",
+          "stat": "critDamage",
+          "value": 25,
+          "duration": 4,
+          "stacks": 6,
+          "hits": [
+            "forte:0",
+            "forte:1",
+            "forte:2",
+            "forte:3",
+            "forte:4",
+            "forte:5",
+            "forte:6",
+            "forte:7",
+            "forte:8"
+          ]
+        },
+        "counter": 2
+      }
+    }
+  ],
+  "passiveBuffs": [
+    {
+      "name": "Bated Breath",
+      "stat": "critDamage",
+      "value": 160,
+      "hits": [
+        "forte:0"
+      ]
+    },
+    {
+      "name": "Streaming Storm",
+      "stat": "critDamage",
+      "value": 160,
+      "hits": [
+        "forte:1",
+        "forte:2",
+        "forte:3",
+        "forte:4",
+        "forte:5",
+        "forte:6",
+        "forte:7",
+        "forte:8"
+      ]
+    }
+  ]
 }

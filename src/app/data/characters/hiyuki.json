@@ -1160,9 +1160,7 @@
         },
         "levels": {
           "name": "Snow Rust",
-          "members": [
-            "chisa"
-          ],
+          "members": [],
           "amplification": [
             30,
             30,
@@ -1171,7 +1169,10 @@
           "extra": {
             "level": 2,
             "multiplier": 1.02
-          }
+          },
+          "statuses": [
+            "havocBane"
+          ]
         }
       }
     }

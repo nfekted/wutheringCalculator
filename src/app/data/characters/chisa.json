@@ -1235,5 +1235,15 @@
         "forte:9"
       ]
     }
+  ],
+  "statuses": [
+    {
+      "status": "havocBane",
+      "mark": {
+        "name": "Unseen Snare",
+        "interval": 2,
+        "stacks": 1
+      }
+    }
   ]
 }

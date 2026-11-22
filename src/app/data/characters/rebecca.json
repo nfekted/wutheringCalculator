@@ -118,7 +118,7 @@
       },
       {
         "name": "Heavy Attack - Huntress DMG",
-        "kind": "heavy",
+        "kind": "basic",
         "parts": [
           {
             "stat": "atk",
@@ -767,6 +767,16 @@
               24.3
             ]
           }
+        ],
+        "cost": 0,
+        "buffs": [
+          {
+            "name": "Left an Opening!",
+            "stat": "atk",
+            "value": 20,
+            "duration": 30,
+            "target": "team"
+          }
         ]
       },
       {
@@ -788,7 +798,8 @@
               48.6
             ]
           }
-        ]
+        ],
+        "cost": 0
       },
       {
         "name": "Mk. 31 HMG 2nd Enhancement DMG",
@@ -809,11 +820,12 @@
               72.9
             ]
           }
-        ]
+        ],
+        "cost": 0
       },
       {
         "name": "BOOM! Fireworks! DMG",
-        "kind": "basic",
+        "kind": "liberation",
         "parts": [
           {
             "stat": "atk",
@@ -976,6 +988,33 @@
               67.6
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "A Girl Gets What She Wants!",
+            "stat": "critDamage",
+            "value": 30,
+            "duration": 12,
+            "hits": [
+              "basic:9",
+              "basic:10",
+              "basic:11",
+              "basic:12",
+              "basic:13",
+              "basic:14",
+              "basic:15",
+              "basic:16",
+              "skill:1",
+              "forte:2"
+            ]
+          },
+          {
+            "name": "Tag, You're It!",
+            "stat": "atk",
+            "value": 10,
+            "duration": 12,
+            "stacks": 2
+          }
         ]
       },
       {
@@ -1092,6 +1131,28 @@
           }
         ]
       }
+    ],
+    "buffs": [
+      {
+        "target": "incoming",
+        "amplification": "all",
+        "value": 15,
+        "duration": 14,
+        "endsOnSwitch": true
+      },
+      {
+        "target": "incoming",
+        "amplification": "heavy",
+        "value": 17.5,
+        "duration": 14,
+        "endsOnSwitch": true,
+        "raised": {
+          "value": 35,
+          "members": [
+            "lucy"
+          ]
+        }
+      }
     ]
   },
   "forte": {
@@ -1197,6 +1258,15 @@
               19.89
             ]
           }
+        ],
+        "buffs": [
+          {
+            "name": "Tag, You're It!",
+            "stat": "atk",
+            "value": 10,
+            "duration": 12,
+            "stacks": 2
+          }
         ]
       },
       {
@@ -1217,6 +1287,15 @@
               258.82,
               278.34
             ]
+          }
+        ],
+        "buffs": [
+          {
+            "name": "Tag, You're It!",
+            "stat": "atk",
+            "value": 10,
+            "duration": 12,
+            "stacks": 2
           }
         ]
       }
@@ -1315,5 +1394,204 @@
         "stat": "dmg"
       }
     ]
-  }
+  },
+  "passiveBuffs": [
+    {
+      "name": "Switch Gears! - Huntress",
+      "stat": "critDamage",
+      "value": 30,
+      "hits": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "skill:0",
+        "intro:0",
+        "forte:1"
+      ]
+    }
+  ],
+  "ignoredHits": [
+    "intro:1"
+  ],
+  "sequence": {
+    "after": {
+      "basic:4": [
+        "basic:3"
+      ],
+      "basic:8": [
+        "basic:7"
+      ],
+      "basic:16": [
+        "basic:15"
+      ],
+      "liberation:1": [
+        "liberation:0",
+        "liberation:1"
+      ],
+      "liberation:2": [
+        "liberation:1",
+        "liberation:2"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Guts",
+      "start": [
+        "skill:0",
+        "intro:0"
+      ],
+      "endsOn": [
+        "skill:1"
+      ],
+      "hits": [
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12",
+        "basic:13",
+        "basic:14",
+        "basic:15",
+        "basic:16",
+        "skill:1",
+        "forte:2"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "skill:0",
+        "forte:1"
+      ]
+    },
+    {
+      "name": "Mk. 31 HMG",
+      "start": "liberation:0",
+      "endsOn": [
+        "liberation:3"
+      ],
+      "hits": [
+        "liberation:0",
+        "liberation:1",
+        "liberation:2",
+        "liberation:3"
+      ],
+      "replaces": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12",
+        "basic:13",
+        "basic:14",
+        "basic:15",
+        "basic:16",
+        "skill:0",
+        "skill:1",
+        "forte:1",
+        "forte:2"
+      ]
+    }
+  ],
+  "counters": [
+    {
+      "name": "Fervor",
+      "max": 12,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "basic:6",
+        "basic:7",
+        "basic:8",
+        "basic:9",
+        "basic:10",
+        "basic:11",
+        "basic:12",
+        "basic:13",
+        "basic:14",
+        "basic:15",
+        "basic:16",
+        "skill:0",
+        "skill:1"
+      ],
+      "amount": 2,
+      "amounts": {
+        "intro:0": 5
+      },
+      "unlocks": [
+        "forte:1",
+        "forte:2"
+      ],
+      "replaces": [
+        "basic:3",
+        "basic:4",
+        "basic:12"
+      ]
+    },
+    {
+      "name": "Overload",
+      "max": 45,
+      "gain": [],
+      "amounts": {
+        "liberation:0": 1,
+        "liberation:1": 2,
+        "liberation:2": 3
+      },
+      "unlocks": [],
+      "replaces": [
+        "liberation:0",
+        "liberation:1",
+        "liberation:2"
+      ],
+      "state": 1
+    },
+    {
+      "name": "Mk. 31 HMG 1st Enhancement",
+      "max": 1,
+      "gain": [
+        "liberation:1"
+      ],
+      "unlocks": [],
+      "replaces": [
+        "liberation:0"
+      ],
+      "state": 1
+    },
+    {
+      "name": "Mk. 31 HMG 2nd Enhancement",
+      "max": 1,
+      "gain": [
+        "liberation:2"
+      ],
+      "unlocks": [],
+      "replaces": [
+        "liberation:1"
+      ],
+      "state": 1
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 import { Amplification, Stats, noAmplification } from './damage-engine';
 import { CoordinatedAttack, HitKey, HitKind, OutroBuff, RotationStep, StatBuff, TeamField, CharacterStatus } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
-import { NEGATIVE_STATUS, NegativeStatus, statusHit, statusTick } from './negative-status';
+import { NEGATIVE_STATUS, NegativeStatus, defFactor, statusHit, statusTick } from './negative-status';
 import { advance, counterBonuses, counterBoosted, isStart, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
 
 export { stepCost };
@@ -136,6 +136,16 @@ function rulesOf(character: Character): CharacterStatus[] {
 function simulate(segments: Segment[], memberCount: number, statuses = false): TeamResult {
   const rows: TeamHitRow[] = [];
   let onTarget: ActiveStatus[] = [];
+  /** A row: with damage, raised by the DEF the statuses on the target take away */
+  const pushRow = (row: TeamHitRow) => {
+    for (const s of row.damage ? onTarget : []) {
+      const down = (NEGATIVE_STATUS[s.status].defDown ?? 0) * s.stacks;
+      if (!down) continue;
+      row.buffed *= defFactor(down / 100);
+      row.buffs = [...row.buffs, `${NEGATIVE_STATUS[s.status].name} (-${down}% DEF)`];
+    }
+    rows.push(row);
+  };
   /** Raises of the max stacks of a status while they last */
   let maxRaises: { status: NegativeStatus; extra: number; points: number; slot?: number }[] = [];
   const raiseOf = (status: NegativeStatus) => maxRaises.filter(r => r.status === status).reduce((sum, r) => sum + r.extra, 0);
@@ -151,7 +161,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     const base = statusTick(s.status, s.stacks, s.overflow) * (1 + (extra?.value ?? 0) / 100);
     const buffed = base * (1 + boosts.reduce((sum, b) => sum + b.amplification, 0) / 100);
     const overflow = s.overflow ? ` + ${NEGATIVE_STATUS[s.status].overflow!.name} (${s.overflow})` : '';
-    rows.push({ rotation, slot: s.slot, step: s.step, name: `${name} (${s.stacks})${overflow}${extra?.label ?? ''}`, buffs: boosts.map(b => b.label), damage: true, base, buffed, auto: true });
+    pushRow({ rotation, slot: s.slot, step: s.step, name: `${name} (${s.stacks})${overflow}${extra?.label ?? ''}`, buffs: boosts.map(b => b.label), damage: true, base, buffed, auto: true });
     s.overflow = 0;
   };
   /** Trails on the target (by status) and the rules of the members that give them; the members a status bursts early for */
@@ -167,6 +177,14 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   /** Statuses a member of the team converts as soon as they are applied */
   const converts = new Map<NegativeStatus, string>();
   for (const { character } of segments) for (const rule of rulesOf(character)) if (rule.convert) converts.set(rule.status, rule.convert);
+  /** Statuses a member of the team applies on the hits of anyone (`mark`), with the points since it last did */
+  const marks = new Map<NegativeStatus, { owner: Character; slot: number; rule: CharacterStatus; since: number }>();
+  for (const { character, slot } of segments) for (const rule of rulesOf(character)) {
+    if (rule.mark && !marks.has(rule.status)) marks.set(rule.status, { owner: character, slot, rule, since: Infinity });
+  }
+  /** Each hit, for the effects that come once for each hit */
+  let hitId = 0;
+  const applyHit = new Map<string, number>();
   /** What each member (by slot) holds to react to a status (`reaction`), while it lasts */
   const reactions = new Map<number, { owner: Character; rule: CharacterStatus; count: number; points: number }>();
   /** Statuses a member of the team turns into another one (`bite`), with that member and its level */
@@ -175,7 +193,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     const bite = rule.bite;
     if (!bite || bites.has(rule.status)) continue;
     const members = [...new Map(segments.map(s => [s.slot, s.character])).values()];
-    const count = members.filter(m => bite.levels.members.includes(m.data.id) || rulesOf(m).some(r => r.status === rule.status)).length;
+    const count = members.filter(m => bite.levels.members.includes(m.data.id) || rulesOf(m).some(r => r.status === rule.status || !!bite.levels.statuses?.includes(r.status))).length;
     bites.set(rule.status, { bite, owner: character, level: Math.min(count, bite.levels.amplification.length) });
   }
   /** The DMG Amplification of the statuses, on the hits of the character considered damage of them */
@@ -201,7 +219,9 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
 
   /** Time passes for the statuses on the target: a tick every interval while they last */
   const passTime = (points: number, rotation: number) => {
-    for (const s of onTarget.filter(s => !NEGATIVE_STATUS[s.status].burstAtMax)) {
+    for (const s of onTarget.filter(s => NEGATIVE_STATUS[s.status].defDown)) s.points -= points;
+    for (const [status, mark] of marks) marks.set(status, { ...mark, since: mark.since + points });
+    for (const s of onTarget.filter(s => !NEGATIVE_STATUS[s.status].burstAtMax && !NEGATIVE_STATUS[s.status].defDown)) {
       let left = points;
       let elapsed = 0;
       while (s.points > 0) {
@@ -336,8 +356,10 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     // A hit added by another one: worth its value with the buffs on its member, in the same action (it spends nothing)
     const autoRow = (who: Character, whoSlot: number, key: HitKey, others: LabeledBuff[]) => {
       const step = keyStep(key);
-      const value = valueOf(who, whoSlot, step, present(), [...others, ...fieldBuffs()]);
-      rows.push({ rotation, slot: whoSlot, step, name: who.stepHit(step)?.name ?? '—', buffs: value.labels, damage: value.type === 'damage', base: value.base, buffed: value.buffed, auto: true });
+      const value = valueOf(who, whoSlot, step, present(), [...others, ...fieldBuffs(), ...(statuses ? stacksAmplification(who, key) : [])]);
+      pushRow({ rotation, slot: whoSlot, step, name: who.stepHit(step)?.name ?? '—', buffs: value.labels, damage: value.type === 'damage', base: value.base, buffed: value.buffed, auto: true });
+      hitId++;
+      if (value.type === 'damage' && value.base > 0) markHit();
       applyStatuses(who, whoSlot, key, who === character ? context.states : []);
     };
     // The boosts on the hits of a status: its own, the Outro buffs of its member while the target has it, and the levels of its bite
@@ -351,12 +373,13 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     };
     // Stacks of a Negative Status a member applies: up to the max (the others to its overflow), and the duration starts over
     const addStacks = (who: Character, whoSlot: number, rule: CharacterStatus, stacks: number, key: HitKey) => {
+      applied(rule.status);
       const data = NEGATIVE_STATUS[rule.status];
       const old = onTarget.find(s => s.status === rule.status);
       onTarget = onTarget.filter(s => s !== old);
       const total = (old?.stacks ?? 0) + stacks;
       const over = data.overflow ? Math.min((old?.overflow ?? 0) + Math.max(0, total - maxOf(rule.status)), overflowMaxOf(rule.status)) : 0;
-      const applied: ActiveStatus = {
+      const added: ActiveStatus = {
         status: rule.status, stacks: Math.min(total, maxOf(rule.status)), overflow: over, points: data.duration ?? Infinity,
         since: old?.since ?? 0, character: who, slot: whoSlot, step: keyStep(key),
       };
@@ -367,34 +390,66 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       const bite = bites.get(rule.status);
       if (bite) {
         // Each stack applied: 1 hit with the max stacks; and the extra hit of its level when its member applies it
-        onTarget.push(applied);
-        for (let n = 0; n < stacks; n++) tickRow({ ...applied, stacks: maxOf(rule.status) }, rotation, boostsOf(applied), bite.bite.name);
+        onTarget.push(added);
+        for (let n = 0; n < stacks; n++) tickRow({ ...added, stacks: maxOf(rule.status) }, rotation, boostsOf(added), bite.bite.name);
         const extra = bite.bite.levels.extra;
         if (who === bite.owner && bite.level >= extra.level) {
           const base = statusHit(extra.multiplier);
-          const boosts = boostsOf(applied);
-          rows.push({ rotation, slot: whoSlot, step: applied.step, name: `${bite.bite.name} (${bite.bite.levels.name})`, buffs: boosts.map(b => b.label), damage: true, base,
+          const boosts = boostsOf(added);
+          pushRow({ rotation, slot: whoSlot, step: added.step, name: `${bite.bite.name} (${bite.bite.levels.name})`, buffs: boosts.map(b => b.label), damage: true, base,
             buffed: base * (1 + boosts.reduce((sum, b) => sum + b.amplification, 0) / 100), auto: true });
         }
         // Frostbind: the hit takes stacks when the target has that many
         const frostbind = rule.bite?.frostbind;
-        if (frostbind?.hits.includes(key) && applied.stacks >= frostbind.stacks) applied.stacks -= frostbind.stacks;
-        if (applied.stacks <= 0) onTarget = onTarget.filter(s => s !== applied);
+        if (frostbind?.hits.includes(key) && added.stacks >= frostbind.stacks) added.stacks -= frostbind.stacks;
+        if (added.stacks <= 0) onTarget = onTarget.filter(s => s !== added);
       }
-      else if (convert) tickRow(applied, rotation, statusBoosts.filter(b => b.status === rule.status), `${data.name} → ${convert}`);
+      else if (convert) tickRow(added, rotation, statusBoosts.filter(b => b.status === rule.status), `${data.name} → ${convert}`);
       // At the max (or over the early limit), a status that bursts deals its hit with its max stacks and is gone (or 1 stack stays)
-      else if (data.burstAtMax && (applied.stacks >= maxOf(rule.status) || (early !== undefined && applied.stacks > early))) {
-        tickRow({ ...applied, stacks: maxOf(rule.status) }, rotation, statusBoosts.filter(b => b.status === rule.status));
-        if (early !== undefined) onTarget.push({ ...applied, stacks: 1 });
+      else if (data.burstAtMax && (added.stacks >= maxOf(rule.status) || (early !== undefined && added.stacks > early))) {
+        tickRow({ ...added, stacks: maxOf(rule.status) }, rotation, statusBoosts.filter(b => b.status === rule.status));
+        if (early !== undefined) onTarget.push({ ...added, stacks: 1 });
       }
       else {
         // A status that hits when it is applied
-        if (data.hitOnApply) tickRow({ ...applied }, rotation, statusBoosts.filter(b => b.status === rule.status));
-        onTarget.push(applied);
+        if (data.hitOnApply) tickRow({ ...added }, rotation, statusBoosts.filter(b => b.status === rule.status));
+        onTarget.push(added);
+      }
+    };
+    /** A member applied a status: the members that get something for it (once for each hit) */
+    const applied = (status: NegativeStatus) => {
+      for (const [ownerSlot, owner] of team) for (const rule of rulesOf(owner)) {
+        const on = rule.onApply;
+        const id = `${ownerSlot}:${status}`;
+        if (rule.status !== status || !on || applyHit.get(id) === hitId) continue;
+        applyHit.set(id, hitId);
+        if (on.buff) give(owner, ownerSlot, on.buff);
+        if (on.counter === undefined) continue;
+        const counter = owner.data.counters![on.counter];
+        const counters = live?.slot === ownerSlot ? live.counters : keptCounters.get(ownerSlot) ?? [];
+        counters[on.counter] = Math.min((counters[on.counter] ?? 0) + 1, counter.max);
+        if (live?.slot !== ownerSlot) keptCounters.set(ownerSlot, counters);
+      }
+    };
+    /** A hit with damage: the statuses applied on the hits of anyone */
+    const markHit = () => {
+      for (const [status, mark] of statuses ? marks : []) {
+        if (mark.since < mark.rule.mark!.interval) continue;
+        marks.set(status, { ...mark, since: 0 });
+        addStacks(mark.owner, mark.slot, mark.rule, mark.rule.mark!.stacks, 'intro:0');
       }
     };
     const applyStatuses = (who: Character, whoSlot: number, key: HitKey, whoStates: number[]) => {
       for (const rule of statuses ? rulesOf(who) : []) {
+        // Hits that raise the stacks to the max, or take some
+        if (rule.fillsMax?.includes(key)) {
+          const old = onTarget.find(s => s.status === rule.status);
+          const more = maxOf(rule.status) - (old?.stacks ?? 0);
+          if (more > 0) addStacks(who, whoSlot, rule, more, key);
+        }
+        const taken = rule.takes?.[key];
+        const on = taken ? onTarget.find(s => s.status === rule.status) : undefined;
+        if (on && (on.stacks -= taken!) <= 0) onTarget = onTarget.filter(s => s !== on);
         const gain = rule.reaction?.gain[key];
         if (gain) {
           const held = reactions.get(whoSlot);
@@ -431,7 +486,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         return { buff, label: `${character.name}: ${statLabel(buff)}` };
       });
       const value = valueOf(character, slot, step, present(), [...stateBuffs, ...boosts, ...fieldBuffs(), ...statusAmplification(character), ...(statuses ? stacksAmplification(character, key) : [])], crits, bonusAfter?.multiplier);
-      rows.push({
+      pushRow({
         rotation, slot, step,
         name: step.section === 'end' ? `Leave ${states[step.index]?.name ?? ''}` : hit?.name ?? character.mainEcho?.name ?? '—',
         buffs: step.section === 'end' ? [] : [...value.labels, ...(crits ? [`${crit!.name} (crit)`] : []), ...(bonusAfter ? [`${bonusAfter.name} (×${bonusAfter.multiplier})`] : [])],
@@ -439,6 +494,8 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         base: value.base,
         buffed: value.buffed,
       });
+      hitId++;
+      if (value.type === 'damage' && value.base > 0) markHit();
 
       // Detonating: the hit of each mark held, then the mark goes; a hit can leave a mark
       markers.forEach((marker, m) => {
@@ -547,6 +604,12 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       context = advance(character, context, step, spends[position]);
       live = { slot, counters: context.counters };
       if (step.section === 'echo') echoCast(character.mainEcho?.name);
+      (character.data.counters ?? []).forEach((counter, c) => {
+        const full = counter.fullHit;
+        if (!full?.after.includes(key) || (context.counters[c] ?? 0) < counter.max) return;
+        context.counters[c] = 0;
+        autoRow(character, slot, full.hit, []);
+      });
       const casts = character.data.echoCasts;
       if (casts?.hits.includes(key) && casts.mode === character.mode) echoCast(`${character.name}:${key}:${rotation}:${position}`);
       passives(slot);
@@ -612,6 +675,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         const member = receiver === null ? undefined : team.get(receiver);
         const raised = buff.raised && member && (buff.raised.members?.includes(member.data.id) || (!!buff.raised.status && rulesOf(member).some(r => r.status === buff.raised!.status)));
         const given: OutroBuff = raised ? { ...buff, value: buff.raised!.value } : buff;
+        if (!given.value) continue;
         const id = `outro:${slot}:${position}:${receiver}`;
         active = active.filter(a => a.id !== id);
         active.push({
