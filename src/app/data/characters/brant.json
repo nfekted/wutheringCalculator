@@ -1054,6 +1054,10 @@
         "basic:14",
         "basic:15",
         "skill:0"
+      ],
+      "basic:3": [
+        "basic:2",
+        "basic:14"
       ]
     },
     "linked": [
@@ -1132,5 +1136,51 @@
     "over": 150,
     "per": 12,
     "max": 1560
-  }
+  },
+  "rotationBuild": [
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 6
+    },
+    {
+      "section": "basic",
+      "index": 10
+    },
+    {
+      "section": "basic",
+      "index": 13
+    },
+    {
+      "section": "basic",
+      "index": 14
+    },
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 2
+    }
+  ]
 }

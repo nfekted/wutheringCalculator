@@ -822,7 +822,7 @@
     },
     {
       "name": "Substance",
-      "max": 10,
+      "max": 9,
       "gain": [],
       "amounts": {
         "intro:0": 3,
@@ -850,6 +850,76 @@
         "liberation:1"
       ],
       "state": 0
+    }
+  ],
+  "rotationBuild": [
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 5
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "basic",
+      "index": 4
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 7
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 1
     }
   ]
 }

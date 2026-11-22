@@ -12,9 +12,9 @@ export interface Team {
     steps?: (RotationStep[] | null)[];
 }
 
-/** Hits between the Intro and the Outro of a character: the edited ones, or the default of the JSON */
+/** Hits between the Intro and the Outro of a character: the edited ones (none until edited) */
 export function characterSteps(character: Character): RotationStep[] {
-    return character.rotationBuild ?? character.data.rotationBuild ?? [];
+    return character.rotationBuild ?? [];
 }
 
 /** A character can join a team only with at least one hit between the Intro and the Outro (edited or default rotation) */

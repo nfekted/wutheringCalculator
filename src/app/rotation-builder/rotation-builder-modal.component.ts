@@ -21,7 +21,7 @@ export class RotationBuilderModalComponent {
   character = signal(inject<Character>(DIALOG_DATA)).asReadonly();
 
   /** Hits between the intro and the outro */
-  middle = signal<RotationStep[]>(this.character().rotationBuild ?? this.character().data.rotationBuild ?? []);
+  middle = signal<RotationStep[]>(this.character().rotationBuild ?? []);
 
   hasDefault = (this.character().data.rotationBuild?.length ?? 0) > 0;
 

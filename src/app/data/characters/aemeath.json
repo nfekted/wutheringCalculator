@@ -1339,8 +1339,7 @@
       ],
       "unlocks": [
         "forte:0",
-        "forte:1",
-        "liberation:1"
+        "forte:1"
       ],
       "spend": 10,
       "spendBy": {
@@ -1358,7 +1357,7 @@
       "amounts": {
         "liberation:0": 2
       },
-      "unlocks": "liberation:1",
+      "unlocks": [],
       "replaces": []
     }
   ],
@@ -1419,6 +1418,64 @@
       "hits": [
         "liberation:1"
       ]
+    }
+  ],
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 3
+    },
+    {
+      "section": "skill",
+      "index": 4
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 7
+    },
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 1
     }
   ]
 }

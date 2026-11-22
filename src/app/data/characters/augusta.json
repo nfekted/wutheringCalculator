@@ -851,5 +851,99 @@
       "unlocks": "liberation:1",
       "replaces": []
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 8
+    },
+    {
+      "section": "basic",
+      "index": 9
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "basic",
+      "index": 8
+    },
+    {
+      "section": "basic",
+      "index": 9
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 2
+    }
   ]
 }

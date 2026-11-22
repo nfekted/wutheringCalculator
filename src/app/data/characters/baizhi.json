@@ -541,5 +541,83 @@
         "liberation:1"
       ]
     ]
-  }
+  },
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 4
+    },
+    {
+      "section": "liberation",
+      "index": 2
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "echo",
+      "index": 0
+    }
+  ]
 }

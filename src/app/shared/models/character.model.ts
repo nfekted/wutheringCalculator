@@ -33,7 +33,7 @@ export class Character implements Stats {
     /** Active way of playing, as an index in `data.modes` */
     mode: number = 0;
 
-    /** Hits chosen for the Rotation build between the intro and the outro; null until edited (the default of `data.rotationBuild` applies) */
+    /** Hits chosen for the Rotation build between the intro and the outro; null until edited (only the intro and the outro; the default of `data.rotationBuild` is imported on demand) */
     rotationBuild: RotationStep[] | null = null;
 
     /** The 5 Echo slots, the first is the main one; null is an empty slot */
@@ -137,7 +137,7 @@ export class Character implements Stats {
 
     /** Steps of the Rotation build: the intro, the chosen hits (or the default ones) and the outro */
     rotationSteps(): RotationStep[] {
-        return [...this.sectionSteps('intro'), ...(this.rotationBuild ?? this.data.rotationBuild ?? []), ...this.sectionSteps('outro')];
+        return [...this.sectionSteps('intro'), ...(this.rotationBuild ?? []), ...this.sectionSteps('outro')];
     }
 
     /** Steps of the Intro or the Outro, without the hits that only come in some cases (the Intro of a field or of a state, a hit a counter gives) */

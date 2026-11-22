@@ -421,5 +421,35 @@
     "name": "Perfect Performance",
     "kind": "heavy",
     "cooldown": 30
-  }
+  },
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    }
+  ]
 }
