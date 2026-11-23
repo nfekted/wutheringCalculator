@@ -765,5 +765,19 @@
       ],
       "duration": 10
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "echo",
+      "index": 0
+    }
   ]
 }

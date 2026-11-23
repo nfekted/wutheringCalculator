@@ -520,5 +520,35 @@
         "basic:5"
       ]
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "echo",
+      "index": 0
+    }
   ]
 }

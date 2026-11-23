@@ -700,7 +700,7 @@
   "counters": [
     {
       "name": "Windstring",
-      "max": 24,
+      "max": 18,
       "gain": [],
       "amounts": {
         "forte:0": 5,
@@ -723,6 +723,72 @@
         "extra": 3,
         "duration": 30
       }
+    }
+  ],
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 6
+    },
+    {
+      "section": "basic",
+      "index": 6
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 4
+    },
+    {
+      "section": "echo",
+      "index": 0
     }
   ]
 }
