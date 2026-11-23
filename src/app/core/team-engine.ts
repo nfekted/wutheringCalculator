@@ -512,6 +512,11 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     const triggers = sonataTriggers(character);
     const startOutro = () => {
       const incoming = segments[i + 1]?.slot;
+      // Extra damage of the Echos and Sonatas on the Outro
+      for (const hit of gear.flatMap(g => g.hits ?? [])) {
+        const value = character.extraHit(hit);
+        pushRow({ rotation, slot, step: { section: 'outro', index: 0 }, name: hit.name, buffs: [], damage: true, base: value, buffed: value, auto: true });
+      }
       [...character.data.outro.statBuffs ?? [], ...gear.flatMap(g => g.statBuffs ?? [])].forEach(buff => {
         if (buff.target !== 'incoming') give(character, slot, buff);
         else if (incoming !== undefined) give(character, slot, buff, incoming);
@@ -660,6 +665,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       // Sonata buffs after an action with a hit of a kind (once per block, e.g. a Liberation with its healing), that inflicts a status,
       // or while the target has one
       const block = blockEnd[position] ? steps.filter((_, p) => blockOf[p] === giver) : [];
+      const blockSections = block.map(s => s.section);
       const blockKinds = block.flatMap(s => {
         const h = character.stepHit(s);
         return h ? [character.mode > 0 && h.altKind ? h.altKind : h.kind] : [];
@@ -668,7 +674,8 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         && (rule.state === undefined || context.states.includes(rule.state))
         && (rule.hits ? block.some(s => !!rule.hits![stepKey(s)]) : !!rule.mark && blockKinds.some(k => k !== 'heal' && k !== 'shield')));
       for (const trigger of block.length ? triggers : []) {
-        const fires = trigger.kinds?.some(k => blockKinds.includes(k)) || (!!trigger.inflicts && inflicts(trigger.inflicts))
+        const fires = trigger.kinds?.some(k => blockKinds.includes(k)) || trigger.sections?.some(s => blockSections.includes(s))
+          || (!!trigger.inflicts && inflicts(trigger.inflicts))
           || (!!trigger.onTarget && onTarget.some(s => s.status === trigger.onTarget!.status && s.stacks >= (trigger.onTarget!.stacks ?? 1)));
         if (fires) trigger.buffs.forEach(buff => give(character, slot, buff));
       }

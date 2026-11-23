@@ -30,6 +30,7 @@ export class Character implements Stats {
     /** From the main slot Echo (see Stats) */
     echoHitBonus: number = 0;
     coordinatedBonus: number = 0;
+    outroBonus: number = 0;
     healingBonus: number = 0;
     energyRegen: number = 100;
 
@@ -184,6 +185,18 @@ export class Character implements Stats {
             value = (range.min + range.max) / 2 * (1 - chance) + (range.critMin + range.critMax) / 2 * chance;
         }
         return { value: Number.isFinite(value) ? value : 0, type };
+    }
+
+    /**
+     * Expected value of an extra damage hit that is not of the character (e.g. of a Sonata): the elemental bonus only when it has the
+     * element of the character, no other bonus and no buff; crit as any hit
+     */
+    extraHit(hit: Hit): number {
+        const result = calculateEchoResults([hit], { ...this, echoBonus: 0 }, this.data.type)[0];
+        const range = result.commonSum;
+        const chance = Math.min(this.cChance, 100) / 100;
+        const value = (range.min + range.max) / 2 * (1 - chance) + (range.critMin + range.critMax) / 2 * chance;
+        return Number.isFinite(value) ? value : 0;
     }
 
     clone(): Character {

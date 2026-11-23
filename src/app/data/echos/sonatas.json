@@ -19,9 +19,6 @@
         "text": "Spectro DMG +30% for 15s after releasing Intro Skill.",
         "triggers": [
           {
-            "kinds": [
-              "intro"
-            ],
             "buffs": [
               {
                 "name": "Celestial Light",
@@ -30,6 +27,9 @@
                 "duration": 15,
                 "element": "spectro"
               }
+            ],
+            "sections": [
+              "intro"
             ]
           }
         ]
@@ -276,9 +276,6 @@
         "text": "Casting Resonance Liberation increases Fusion DMG of Resonators in the team by 15% and the caster's Resonance Liberation DMG by 20%, lasting for 35s.",
         "triggers": [
           {
-            "kinds": [
-              "liberation"
-            ],
             "buffs": [
               {
                 "name": "Flaming Clawprint",
@@ -294,6 +291,9 @@
                 "value": 20,
                 "duration": 35
               }
+            ],
+            "sections": [
+              "liberation"
             ]
           }
         ]
@@ -460,9 +460,6 @@
         "text": "Casting Resonance Skill grants 22.5% Glacio DMG Bonus for 15s and casting Resonance Liberation increases Resonance Skill DMG by 18%, lasting for 5s. This effect stacks up to 2 times.",
         "triggers": [
           {
-            "kinds": [
-              "skill"
-            ],
             "buffs": [
               {
                 "name": "Frosty Resolve",
@@ -471,12 +468,12 @@
                 "duration": 15,
                 "element": "glacio"
               }
+            ],
+            "sections": [
+              "skill"
             ]
           },
           {
-            "kinds": [
-              "liberation"
-            ],
             "buffs": [
               {
                 "name": "Frosty Resolve",
@@ -485,6 +482,9 @@
                 "duration": 5,
                 "stacks": 2
               }
+            ],
+            "sections": [
+              "liberation"
             ]
           }
         ]
@@ -732,9 +732,6 @@
         "text": "Casting Echo Skill grants 30% Heavy Attack DMG Bonus to the caster for 4s. Additionally, all Resonators in the team gain 4% Echo Skill DMG Bonus for 30s, stacking up to 4 times. Echoes of the same name can only trigger this effect once. The record of Echo triggering this effect is cleared along with this effect. At 4 stacks, casting Echo Skill again resets the duration of this effect.",
         "triggers": [
           {
-            "kinds": [
-              "echo"
-            ],
             "buffs": [
               {
                 "name": "Law of Harmony",
@@ -750,6 +747,9 @@
                 "target": "team",
                 "stacks": 4
               }
+            ],
+            "sections": [
+              "echo"
             ]
           }
         ]
@@ -777,6 +777,10 @@
           {
             "stat": "dmg",
             "value": 20
+          },
+          {
+            "stat": "outroBonus",
+            "value": 60
           }
         ]
       }
@@ -810,6 +814,21 @@
               "target": "incoming",
               "element": "havoc"
             }
+          ],
+          "hits": [
+            {
+              "name": "Midnight Veil",
+              "kind": "echo",
+              "element": "havoc",
+              "parts": [
+                {
+                  "stat": "atk",
+                  "values": [
+                    480
+                  ]
+                }
+              ]
+            }
           ]
         }
       }
@@ -835,9 +854,6 @@
         "text": "Fusion DMG +30% for 15s after releasing Resonance Skill.",
         "triggers": [
           {
-            "kinds": [
-              "skill"
-            ],
             "buffs": [
               {
                 "name": "Molten Rift",
@@ -846,6 +862,9 @@
                 "duration": 15,
                 "element": "fusion"
               }
+            ],
+            "sections": [
+              "skill"
             ]
           }
         ]
@@ -995,9 +1014,6 @@
             ]
           },
           {
-            "kinds": [
-              "liberation"
-            ],
             "buffs": [
               {
                 "name": "Rite of Gilded Revelation",
@@ -1005,6 +1021,9 @@
                 "value": 40,
                 "duration": 15
               }
+            ],
+            "sections": [
+              "liberation"
             ]
           }
         ]
@@ -1041,9 +1060,6 @@
         "text": "Aero DMG +30% for 15s after releasing Intro Skill.",
         "triggers": [
           {
-            "kinds": [
-              "intro"
-            ],
             "buffs": [
               {
                 "name": "Sierra Gale",
@@ -1052,6 +1068,9 @@
                 "duration": 15,
                 "element": "aero"
               }
+            ],
+            "sections": [
+              "intro"
             ]
           }
         ]
@@ -1279,8 +1298,7 @@
         "triggers": [
           {
             "kinds": [
-              "heavy",
-              "skill"
+              "heavy"
             ],
             "buffs": [
               {
@@ -1291,6 +1309,9 @@
                 "element": "electro",
                 "stacks": 2
               }
+            ],
+            "sections": [
+              "skill"
             ]
           }
         ]

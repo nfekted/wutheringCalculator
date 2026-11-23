@@ -16,6 +16,8 @@ export interface Stats {
   echoHitBonus?: number;
   /** DMG Bonus of the main slot Echo for the damage hits of the character's Coordinated Attack */
   coordinatedBonus?: number;
+  /** Outro Skill DMG Bonus (e.g. of a Sonata) */
+  outroBonus?: number;
   healingBonus: number;
   /** Total Energy Regen in % (100 is the base) */
   energyRegen: number;
@@ -154,7 +156,7 @@ function amplificationOf(amplification: Amplification, kind: HitKind, sameElemen
   return amplification.all + (sameElement ? amplification.elemental : 0) + byKind;
 }
 
-/** Damage bonus (in %) that applies to a kind of hit; intro, outro, shield and tune (a fixed multiplier) have none */
+/** Damage bonus (in %) that applies to a kind of hit; intro, shield and tune (a fixed multiplier) have none, outro only `outroBonus` */
 function bonusOf(stats: Stats, kind: HitKind): number {
   switch (kind) {
     case 'basic': return stats.basicBonus;
@@ -163,6 +165,7 @@ function bonusOf(stats: Stats, kind: HitKind): number {
     case 'liberation': return stats.liberationBonus;
     case 'echo': return stats.echoBonus + (stats.echoHitBonus ?? 0);
     case 'heal': return stats.healingBonus;
+    case 'outro': return stats.outroBonus ?? 0;
     default: return 0;
   }
 }

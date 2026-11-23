@@ -118,6 +118,7 @@ export function finalStats(base: BaseStats, modifier: StatModifier, typed: Stats
     echoBonus: typed.echoBonus,
     echoHitBonus: add('echoHitBonus'),
     coordinatedBonus: add('coordinatedBonus'),
+    outroBonus: add('outroBonus'),
   };
 }
 

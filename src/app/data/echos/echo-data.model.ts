@@ -1,4 +1,4 @@
-import { Hit, HitKind, OutroBuff, StatBuff } from '../character-data.model';
+import { Hit, HitKind, OutroBuff, SectionKey, StatBuff } from '../character-data.model';
 import { NegativeStatus } from '../../core/negative-status';
 
 /**
@@ -13,6 +13,8 @@ import { NegativeStatus } from '../../core/negative-status';
  */
 export interface SonataTrigger {
   kinds?: HitKind[];
+  /** "Casting X": an action of these sections, whatever the kind of its hits (e.g. a Liberation that deals Heavy DMG) */
+  sections?: (SectionKey | 'echo')[];
   inflicts?: NegativeStatus;
   onTarget?: { status: NegativeStatus; stacks?: number };
   status?: NegativeStatus;
@@ -24,6 +26,8 @@ export interface GearOutro {
   statBuffs?: StatBuff[];
   buffs?: OutroBuff[];
   status?: NegativeStatus;
+  /** Extra damage on the Outro (e.g. Midnight Veil "deal additional 480% Havoc DMG"): elemental bonus only, no buffs */
+  hits?: Hit[];
 }
 
 export type EchoCost = 1 | 3 | 4;
@@ -32,7 +36,7 @@ export type EchoCost = 1 | 3 | 4;
  * character's own hits of kind echo, never of the Echo Skill of the Echo; 'coordinatedBonus' (main slot only): DMG Bonus of the damage
  * hits of the character's Coordinated Attack */
 export type EchoStat = 'hp' | 'dmg' | 'def' | 'cChance' | 'cDmg' | 'elementalBonus' | 'basicBonus' | 'heavyBonus'
-  | 'skillBonus' | 'liberationBonus' | 'healingBonus' | 'energyRegen' | 'echoHitBonus' | 'coordinatedBonus';
+  | 'skillBonus' | 'liberationBonus' | 'healingBonus' | 'energyRegen' | 'echoHitBonus' | 'coordinatedBonus' | 'outroBonus';
 
 /** An attribute an Echo can have; HP, ATK and DEF are a percentage unless `flat` */
 export interface EchoAttribute {

@@ -126,7 +126,22 @@
     ],
     "skill": {
       "text": "Summon a Tambourinist that periodically emits Melodies of Annihilation. Friendly units hit with Melodies of Annihilation deal an extra Havoc DMG of 14.40% with their attacks, up to 10 times.",
-      "hits": []
+      "hits": [
+        {
+          "name": "Tambourinist",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                14.4
+              ],
+              "times": 10
+            }
+          ]
+        }
+      ]
     },
     "buffs": [
       "Friendly units hit with Melodies of Annihilation deal an extra Havoc DMG of 14.40% with their attacks, up to 10 times."
@@ -2869,6 +2884,13 @@
                 131.94
               ],
               "times": 2
+            },
+            {
+              "stat": "atk",
+              "values": [
+                24.57
+              ],
+              "times": 8
             }
           ]
         }
@@ -3419,6 +3441,12 @@
                 55.35
               ],
               "times": 4
+            },
+            {
+              "stat": "atk",
+              "values": [
+                405
+              ]
             }
           ]
         }
@@ -3720,7 +3748,22 @@
     ],
     "skill": {
       "text": "Summon a Tambourinist that plays out Melodies of Annihilation. Any Resonator on the team gains the following effect for 10s upon obtaining a Melody of Annihilation: When the Resonator hits a target, the Tambourinist deals 14.40% Havoc DMG to the target, up to 10 times.",
-      "hits": []
+      "hits": [
+        {
+          "name": "Nightmare: Tambourinist",
+          "kind": "echo",
+          "element": "havoc",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                14.4
+              ],
+              "times": 10
+            }
+          ]
+        }
+      ]
     },
     "buffs": [
       "Any Resonator on the team gains the following effect for 10s upon obtaining a Melody of Annihilation: When the Resonator hits a target, the Tambourinist deals 14.40% Havoc DMG to the target, up to 10 times."
@@ -4195,7 +4238,24 @@
         ]
       }
     ],
-    "transform": true
+    "transform": true,
+    "outro": {
+      "hits": [
+        {
+          "name": "Nightmare: Kelpie (Outro)",
+          "kind": "echo",
+          "element": "aero",
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                405
+              ]
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": 117,
