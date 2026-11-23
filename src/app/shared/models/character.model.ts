@@ -149,7 +149,7 @@ export class Character implements Stats {
     sectionSteps(section: 'intro' | 'outro'): RotationStep[] {
         const special = (key: string) => !!this.data.field?.intro.includes(key) || !!this.data.counters?.some(counter => counter.outro?.hit === key)
             || !!this.data.states?.some(state => state.nextIntro === key) || !!this.data.ignoredHits?.includes(key)
-            || (this.data.modeHits?.[key] ?? this.mode) !== this.mode;
+            || (this.data.modeHits?.[key] ?? this.mode) !== this.mode || !!this.data.coordinated?.hits.includes(key);
         return this.data[section].hits.flatMap((_, index): RotationStep[] => special(`${section}:${index}`) ? [] : [{ section, index }]);
     }
 

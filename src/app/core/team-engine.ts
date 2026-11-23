@@ -505,6 +505,11 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       // An Outro that raises the max stacks of every Negative Status
       const statusMax = character.data.outro.statusMax;
       if (statuses && statusMax) raiseMax(statusMax, slot);
+      // A Coordinated Attack of the Outro (its hits fire on the actions of the incoming member)
+      const attack = character.data.coordinated;
+      if (attack?.start.startsWith('outro:')) {
+        coordinated = [...coordinated.filter(c => c.slot !== slot), { character, slot, attack, points: attack.duration, fired: 0, since: Infinity }];
+      }
       const next = segments[i + 1]?.slot;
       (character.data.outro.buffs ?? []).forEach((buff, position) => {
         if (buff.target === 'incoming' && next === undefined) return;

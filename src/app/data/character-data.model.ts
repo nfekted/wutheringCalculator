@@ -119,6 +119,7 @@ export interface StatBuff {
  */
 export interface CoordinatedAttack {
   name: string;
+  /** An Outro hit here: it starts with the Outro, and its hits are not part of the Outro (e.g. Jiyan's Discipline) */
   start: HitKey;
   /** Fired together (e.g. the damage and the healing of the same attack) */
   hits: HitKey[];

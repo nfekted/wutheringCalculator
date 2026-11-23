@@ -580,17 +580,17 @@
             "values": [
               313.4
             ],
-            "times": 2
-          }
-        ],
-        "buffs": [
-          {
-            "name": "Tempest Taming",
-            "stat": "critDamage",
-            "value": 12,
-            "duration": 8
+            "times": 1
           }
         ]
+      }
+    ],
+    "statBuffs": [
+      {
+        "name": "Tempest Taming",
+        "stat": "critDamage",
+        "value": 12,
+        "duration": 8
       }
     ]
   },
@@ -869,5 +869,19 @@
       "section": "liberation",
       "index": 1
     }
-  ]
+  ],
+  "coordinated": {
+    "name": "Discipline",
+    "start": "outro:0",
+    "hits": [
+      "outro:0"
+    ],
+    "duration": 8,
+    "perKind": {
+      "heavy": 1
+    },
+    "interval": 1,
+    "max": 2,
+    "othersOnly": true
+  }
 }

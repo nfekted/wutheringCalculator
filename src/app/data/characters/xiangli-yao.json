@@ -463,7 +463,7 @@
             "values": [
               237.63
             ],
-            "times": 3
+            "times": 1
           }
         ]
       }
@@ -840,5 +840,19 @@
       "section": "skill",
       "index": 0
     }
-  ]
+  ],
+  "coordinated": {
+    "name": "Chain Rule",
+    "start": "outro:0",
+    "hits": [
+      "outro:0"
+    ],
+    "duration": 8,
+    "perKind": {
+      "basic": 1
+    },
+    "interval": 2,
+    "max": 3,
+    "othersOnly": true
+  }
 }

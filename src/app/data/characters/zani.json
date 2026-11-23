@@ -502,7 +502,8 @@
               150
             ]
           }
-        ]
+        ],
+        "multiplier": 2
       }
     ],
     "buffs": [
@@ -818,7 +819,8 @@
         "forte:0",
         "forte:1",
         "forte:2",
-        "forte:3"
+        "forte:3",
+        "outro:0"
       ],
       "convert": "Heliacal Ember"
     }
