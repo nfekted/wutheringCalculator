@@ -32,6 +32,21 @@
                 266.88
               ]
             }
+          ],
+          "buffs": [
+            {
+              "name": "Lampylumen Myriad",
+              "stat": "elementalBonus",
+              "value": 12,
+              "duration": 15,
+              "element": "glacio"
+            },
+            {
+              "name": "Lampylumen Myriad",
+              "stat": "skillBonus",
+              "value": 12,
+              "duration": 15
+            }
           ]
         }
       ]
@@ -491,6 +506,21 @@
                 282.8
               ]
             }
+          ],
+          "buffs": [
+            {
+              "name": "Inferno Rider",
+              "stat": "elementalBonus",
+              "value": 12,
+              "duration": 15,
+              "element": "fusion"
+            },
+            {
+              "name": "Inferno Rider",
+              "stat": "basicBonus",
+              "value": 12,
+              "duration": 15
+            }
           ]
         }
       ]
@@ -895,6 +925,21 @@
                 175.68
               ]
             }
+          ],
+          "buffs": [
+            {
+              "name": "Tempest Mephis",
+              "stat": "elementalBonus",
+              "value": 12,
+              "duration": 15,
+              "element": "electro"
+            },
+            {
+              "name": "Tempest Mephis",
+              "stat": "heavyBonus",
+              "value": 12,
+              "duration": 15
+            }
           ]
         }
       ]
@@ -938,6 +983,21 @@
               "values": [
                 31.57
               ]
+            }
+          ],
+          "buffs": [
+            {
+              "name": "Thundering Mephis",
+              "stat": "elementalBonus",
+              "value": 12,
+              "duration": 15,
+              "element": "electro"
+            },
+            {
+              "name": "Thundering Mephis",
+              "stat": "liberationBonus",
+              "value": 12,
+              "duration": 15
             }
           ]
         }
@@ -1208,6 +1268,21 @@
               "values": [
                 283.36
               ]
+            }
+          ],
+          "buffs": [
+            {
+              "name": "Feilian Beringal",
+              "stat": "elementalBonus",
+              "value": 12,
+              "duration": 15,
+              "element": "aero"
+            },
+            {
+              "name": "Feilian Beringal",
+              "stat": "heavyBonus",
+              "value": 12,
+              "duration": 15
             }
           ]
         }
@@ -1560,6 +1635,21 @@
                 236.16
               ]
             }
+          ],
+          "buffs": [
+            {
+              "name": "Mourning Aix",
+              "stat": "elementalBonus",
+              "value": 12,
+              "duration": 15,
+              "element": "spectro"
+            },
+            {
+              "name": "Mourning Aix",
+              "stat": "liberationBonus",
+              "value": 12,
+              "duration": 15
+            }
           ]
         }
       ]
@@ -1804,6 +1894,21 @@
               ],
               "times": 3
             }
+          ],
+          "buffs": [
+            {
+              "name": "Crownless",
+              "stat": "elementalBonus",
+              "value": 12,
+              "duration": 15,
+              "element": "havoc"
+            },
+            {
+              "name": "Crownless",
+              "stat": "skillBonus",
+              "value": 12,
+              "duration": 15
+            }
           ]
         }
       ]
@@ -1956,6 +2061,15 @@
                 145.92
               ]
             }
+          ],
+          "buffs": [
+            {
+              "name": "Bell-Borne Shield",
+              "stat": "damageBonus",
+              "value": 10,
+              "duration": 15,
+              "target": "team"
+            }
           ]
         }
       ]
@@ -1985,6 +2099,15 @@
               "values": [
                 15.86
               ]
+            }
+          ],
+          "buffs": [
+            {
+              "name": "Fallacy of No Return",
+              "stat": "atk",
+              "value": 10,
+              "duration": 20,
+              "target": "team"
             }
           ]
         }
@@ -2206,6 +2329,14 @@
               "values": [
                 160
               ]
+            }
+          ],
+          "buffs": [
+            {
+              "name": "Mech Abomination",
+              "stat": "atk",
+              "value": 12,
+              "duration": 15
             }
           ]
         }
