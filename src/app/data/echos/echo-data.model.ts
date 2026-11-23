@@ -1,10 +1,20 @@
-import { Hit, OutroBuff, StatBuff } from '../character-data.model';
+import { Hit, HitKind, OutroBuff, StatBuff } from '../character-data.model';
 import { NegativeStatus } from '../../core/negative-status';
 
 /**
  * Buffs the Outro of the character also gives (as `outro.statBuffs` / `outro.buffs`): from a Sonata bonus with enough pieces, or from
  * the main slot Echo when the rotation of the character casts its Echo Skill; `status`: only when the character inflicts it
  */
+/**
+ * A Sonata bonus with a trigger (type B): after an action of the character of one of `kinds` (e.g. "after releasing Intro Skill",
+ * "upon healing", "upon gaining a Shield"), it gets `buffs`; `characters`: only for these ids
+ */
+export interface SonataTrigger {
+  kinds: HitKind[];
+  buffs: StatBuff[];
+  characters?: string[];
+}
+
 export interface GearOutro {
   statBuffs?: StatBuff[];
   buffs?: OutroBuff[];
@@ -65,7 +75,7 @@ export interface SonataData {
   id: number;
   name: string;
   /** Bonus of each piece count (1, 2, 3 or 5); `stats` only on the ones counted in the attributes, the others are text for now */
-  bonuses: { pieces: number; text: string; stats?: SonataStat[]; outro?: GearOutro }[];
+  bonuses: { pieces: number; text: string; stats?: SonataStat[]; outro?: GearOutro; triggers?: SonataTrigger[] }[];
 }
 
 export interface EchoData {

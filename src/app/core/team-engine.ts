@@ -2,7 +2,7 @@ import { Amplification, Stats, noAmplification } from './damage-engine';
 import { CoordinatedAttack, HitKey, HitKind, OutroBuff, RotationStep, StatBuff, TeamField, CharacterStatus, StatusMax } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
 import { NEGATIVE_STATUS, NegativeStatus, defFactor, statusHit, statusTick } from './negative-status';
-import { GearOutro } from '../data/echos/echo-data.model';
+import { GearOutro, SonataTrigger } from '../data/echos/echo-data.model';
 import { SONATAS } from '../data/echos';
 import { sonataPieces } from './stat-engine';
 import { advance, counterBonuses, counterBoosted, isStart, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
@@ -139,6 +139,13 @@ function gearOutros(character: Character, steps: RotationStep[]): GearOutro[] {
   const sonatas = SONATAS.flatMap(sonata => sonata.bonuses.filter(bonus => bonus.pieces <= (pieces.get(sonata.id) ?? 0)).flatMap(bonus => bonus.outro ?? []));
   const echo = steps.some(step => step.section === 'echo') ? character.mainEcho?.outro : undefined;
   return [...sonatas, ...(echo ? [echo] : [])].filter(gear => !gear.status || rulesOf(character).some(rule => rule.status === gear.status));
+}
+
+/** Triggers of the character's Sonata bonuses with enough pieces (the ones limited to other characters left out) */
+function sonataTriggers(character: Character): SonataTrigger[] {
+  const pieces = sonataPieces(character.echoSet);
+  return SONATAS.flatMap(sonata => sonata.bonuses.filter(bonus => bonus.pieces <= (pieces.get(sonata.id) ?? 0)).flatMap(bonus => bonus.triggers ?? []))
+    .filter(trigger => !trigger.characters || trigger.characters.includes(character.data.id));
 }
 
 /** What the character does with the Negative Statuses, in its mode */
@@ -500,6 +507,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
 
     // The Outro starts its buffs (the same one given again renews its duration); in a team, an Outro in the middle of the turn too
     const gear = gearOutros(character, steps);
+    const triggers = sonataTriggers(character);
     const startOutro = () => {
       const incoming = segments[i + 1]?.slot;
       [...character.data.outro.statBuffs ?? [], ...gear.flatMap(g => g.statBuffs ?? [])].forEach(buff => {
@@ -647,6 +655,12 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       // Buffs the hit gives the character itself start after it (after its block)
       const giver = blockOf[position];
       if (blockEnd[position]) character.stepHit(giver)?.buffs?.forEach(buff => give(character, slot, buff));
+      // Sonata buffs after an action with a hit of a kind (once per block, e.g. a Liberation with its healing)
+      const blockKinds = blockEnd[position] ? steps.flatMap((s, p) => {
+        const h = blockOf[p] === giver ? character.stepHit(s) : undefined;
+        return h ? [character.mode > 0 && h.altKind ? h.altKind : h.kind] : [];
+      }) : [];
+      for (const trigger of triggers) if (trigger.kinds.some(k => blockKinds.includes(k))) trigger.buffs.forEach(buff => give(character, slot, buff));
       const hitMax = blockEnd[position] ? character.stepHit(giver)?.statusMax : undefined;
       if (statuses && hitMax) raiseMax(hitMax, slot);
       applyStatuses(character, slot, key, context.states);

@@ -16,7 +16,23 @@
       },
       {
         "pieces": 5,
-        "text": "Spectro DMG +30% for 15s after releasing Intro Skill."
+        "text": "Spectro DMG +30% for 15s after releasing Intro Skill.",
+        "triggers": [
+          {
+            "kinds": [
+              "intro"
+            ],
+            "buffs": [
+              {
+                "name": "Celestial Light",
+                "stat": "elementalBonus",
+                "value": 30,
+                "duration": 15,
+                "element": "spectro"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -60,7 +76,30 @@
     "bonuses": [
       {
         "pieces": 3,
-        "text": "Upon gaining a Shield, increase the Resonator's ATK by 6% and Crit DMG by 4% for 4s. This effect can be triggered once every 0.5s and stacks up to 5 times."
+        "text": "Upon gaining a Shield, increase the Resonator's ATK by 6% and Crit DMG by 4% for 4s. This effect can be triggered once every 0.5s and stacks up to 5 times.",
+        "triggers": [
+          {
+            "kinds": [
+              "shield"
+            ],
+            "buffs": [
+              {
+                "name": "Crown of Valor",
+                "stat": "atk",
+                "value": 6,
+                "duration": 4,
+                "stacks": 5
+              },
+              {
+                "name": "Crown of Valor",
+                "stat": "critDamage",
+                "value": 4,
+                "duration": 4,
+                "stacks": 5
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -90,7 +129,13 @@
       },
       {
         "pieces": 5,
-        "text": "Increase the Resonator's Coordinated Attack DMG by 80%. Upon a critical hit of Coordinated Attack, increase the active Resonator's ATK by 20% for 4s."
+        "text": "Increase the Resonator's Coordinated Attack DMG by 80%. Upon a critical hit of Coordinated Attack, increase the active Resonator's ATK by 20% for 4s.",
+        "stats": [
+          {
+            "stat": "coordinatedBonus",
+            "value": 80
+          }
+        ]
       }
     ]
   },
@@ -121,7 +166,51 @@
     "bonuses": [
       {
         "pieces": 3,
-        "text": "Dealing Echo Skill DMG increases Heavy Attack Crit. Rate by 20% for 6s. Dealing Heavy Attack DMG increases Echo Skill Crit. Rate by 20% for 6s. While both effects are active, gain 16% Fusion DMG Bonus."
+        "text": "Dealing Echo Skill DMG increases Heavy Attack Crit. Rate by 20% for 6s. Dealing Heavy Attack DMG increases Echo Skill Crit. Rate by 20% for 6s. While both effects are active, gain 16% Fusion DMG Bonus.",
+        "triggers": [
+          {
+            "kinds": [
+              "echo"
+            ],
+            "buffs": [
+              {
+                "name": "Flamewing's Shadow (Heavy)",
+                "stat": "critRate",
+                "value": 20,
+                "duration": 6,
+                "kind": "heavy"
+              },
+              {
+                "name": "Flamewing's Shadow",
+                "stat": "elementalBonus",
+                "value": 16,
+                "duration": 15,
+                "element": "fusion"
+              }
+            ]
+          },
+          {
+            "kinds": [
+              "heavy"
+            ],
+            "buffs": [
+              {
+                "name": "Flamewing's Shadow (Echo)",
+                "stat": "critRate",
+                "value": 20,
+                "duration": 6,
+                "kind": "echo"
+              },
+              {
+                "name": "Flamewing's Shadow",
+                "stat": "elementalBonus",
+                "value": 16,
+                "duration": 15,
+                "element": "fusion"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -142,7 +231,30 @@
       },
       {
         "pieces": 5,
-        "text": "Casting Resonance Liberation increases Fusion DMG of Resonators in the team by 15% and the caster's Resonance Liberation DMG by 20%, lasting for 35s."
+        "text": "Casting Resonance Liberation increases Fusion DMG of Resonators in the team by 15% and the caster's Resonance Liberation DMG by 20%, lasting for 35s.",
+        "triggers": [
+          {
+            "kinds": [
+              "liberation"
+            ],
+            "buffs": [
+              {
+                "name": "Flaming Clawprint",
+                "stat": "elementalBonus",
+                "value": 15,
+                "duration": 35,
+                "element": "fusion",
+                "target": "team"
+              },
+              {
+                "name": "Flaming Clawprint",
+                "stat": "liberationBonus",
+                "value": 20,
+                "duration": 35
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -196,7 +308,41 @@
       },
       {
         "pieces": 5,
-        "text": "Healing a Resonator in the team increases the ATK of all Resonators in the team by 10% for 30s. Effects of the same name cannot be stacked. While the effect is active, if the Resonator gains Unison or triggers Unison Response, their ATK is further increased by 15%."
+        "text": "Healing a Resonator in the team increases the ATK of all Resonators in the team by 10% for 30s. Effects of the same name cannot be stacked. While the effect is active, if the Resonator gains Unison or triggers Unison Response, their ATK is further increased by 15%.",
+        "triggers": [
+          {
+            "kinds": [
+              "heal"
+            ],
+            "buffs": [
+              {
+                "name": "Flower of Tinged Yearning",
+                "stat": "atk",
+                "value": 10,
+                "duration": 30,
+                "target": "team"
+              }
+            ]
+          },
+          {
+            "kinds": [
+              "heal"
+            ],
+            "buffs": [
+              {
+                "name": "Flower of Tinged Yearning (Unison)",
+                "stat": "atk",
+                "value": 15,
+                "duration": 30
+              }
+            ],
+            "characters": [
+              "hsin",
+              "suoming",
+              "jinhsi"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -217,7 +363,25 @@
       },
       {
         "pieces": 5,
-        "text": "Glacio DMG +10% after releasing Basic Attack or Heavy Attack. This effect stacks up to 3 times, each stack lasts 15s."
+        "text": "Glacio DMG +10% after releasing Basic Attack or Heavy Attack. This effect stacks up to 3 times, each stack lasts 15s.",
+        "triggers": [
+          {
+            "kinds": [
+              "basic",
+              "heavy"
+            ],
+            "buffs": [
+              {
+                "name": "Freezing Frost",
+                "stat": "elementalBonus",
+                "value": 10,
+                "duration": 15,
+                "element": "glacio",
+                "stacks": 3
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -237,7 +401,37 @@
       },
       {
         "pieces": 5,
-        "text": "Casting Resonance Skill grants 22.5% Glacio DMG Bonus for 15s and casting Resonance Liberation increases Resonance Skill DMG by 18%, lasting for 5s. This effect stacks up to 2 times."
+        "text": "Casting Resonance Skill grants 22.5% Glacio DMG Bonus for 15s and casting Resonance Liberation increases Resonance Skill DMG by 18%, lasting for 5s. This effect stacks up to 2 times.",
+        "triggers": [
+          {
+            "kinds": [
+              "skill"
+            ],
+            "buffs": [
+              {
+                "name": "Frosty Resolve",
+                "stat": "elementalBonus",
+                "value": 22.5,
+                "duration": 15,
+                "element": "glacio"
+              }
+            ]
+          },
+          {
+            "kinds": [
+              "liberation"
+            ],
+            "buffs": [
+              {
+                "name": "Frosty Resolve",
+                "stat": "skillBonus",
+                "value": 18,
+                "duration": 5,
+                "stacks": 2
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -299,7 +493,25 @@
       },
       {
         "pieces": 5,
-        "text": "Havoc DMG +7.5% after releasing Basic Attack or Heavy Attack. This effect stacks up to 4 times, each stack lasts 15s."
+        "text": "Havoc DMG +7.5% after releasing Basic Attack or Heavy Attack. This effect stacks up to 4 times, each stack lasts 15s.",
+        "triggers": [
+          {
+            "kinds": [
+              "basic",
+              "heavy"
+            ],
+            "buffs": [
+              {
+                "name": "Havoc Eclipse",
+                "stat": "elementalBonus",
+                "value": 7.5,
+                "duration": 15,
+                "element": "havoc",
+                "stacks": 4
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -361,7 +573,30 @@
       },
       {
         "pieces": 5,
-        "text": "Upon gaining a Shield, gain 5% increase in Crit. Rate for 5s, max 4 stacks. This effect can be triggered every 0.5s. At max stacks, gain 15% Fusion DMG Bonus."
+        "text": "Upon gaining a Shield, gain 5% increase in Crit. Rate for 5s, max 4 stacks. This effect can be triggered every 0.5s. At max stacks, gain 15% Fusion DMG Bonus.",
+        "triggers": [
+          {
+            "kinds": [
+              "shield"
+            ],
+            "buffs": [
+              {
+                "name": "Lamp of Nether Road",
+                "stat": "critRate",
+                "value": 5,
+                "duration": 5,
+                "stacks": 4
+              },
+              {
+                "name": "Lamp of Nether Road",
+                "stat": "elementalBonus",
+                "value": 15,
+                "duration": 5,
+                "element": "fusion"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -371,7 +606,30 @@
     "bonuses": [
       {
         "pieces": 3,
-        "text": "Casting Echo Skill grants 30% Heavy Attack DMG Bonus to the caster for 4s. Additionally, all Resonators in the team gain 4% Echo Skill DMG Bonus for 30s, stacking up to 4 times. Echoes of the same name can only trigger this effect once. The record of Echo triggering this effect is cleared along with this effect. At 4 stacks, casting Echo Skill again resets the duration of this effect."
+        "text": "Casting Echo Skill grants 30% Heavy Attack DMG Bonus to the caster for 4s. Additionally, all Resonators in the team gain 4% Echo Skill DMG Bonus for 30s, stacking up to 4 times. Echoes of the same name can only trigger this effect once. The record of Echo triggering this effect is cleared along with this effect. At 4 stacks, casting Echo Skill again resets the duration of this effect.",
+        "triggers": [
+          {
+            "kinds": [
+              "echo"
+            ],
+            "buffs": [
+              {
+                "name": "Law of Harmony",
+                "stat": "heavyBonus",
+                "value": 30,
+                "duration": 4
+              },
+              {
+                "name": "Law of Harmony",
+                "stat": "echoBonus",
+                "value": 4,
+                "duration": 30,
+                "target": "team",
+                "stacks": 4
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -391,7 +649,13 @@
       },
       {
         "pieces": 5,
-        "text": "While on the field, ATK increases by 5% every 1.5s. This effect stacks up to 4 stacks. Outro Skill DMG +60%."
+        "text": "While on the field, ATK increases by 5% every 1.5s. This effect stacks up to 4 stacks. Outro Skill DMG +60%.",
+        "stats": [
+          {
+            "stat": "dmg",
+            "value": 20
+          }
+        ]
       }
     ]
   },
@@ -445,7 +709,23 @@
       },
       {
         "pieces": 5,
-        "text": "Fusion DMG +30% for 15s after releasing Resonance Skill."
+        "text": "Fusion DMG +30% for 15s after releasing Resonance Skill.",
+        "triggers": [
+          {
+            "kinds": [
+              "skill"
+            ],
+            "buffs": [
+              {
+                "name": "Molten Rift",
+                "stat": "elementalBonus",
+                "value": 30,
+                "duration": 15,
+                "element": "fusion"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -537,7 +817,23 @@
       },
       {
         "pieces": 5,
-        "text": "Increases the ATK of all party members by 15% for 30s upon healing allies."
+        "text": "Increases the ATK of all party members by 15% for 30s upon healing allies.",
+        "triggers": [
+          {
+            "kinds": [
+              "heal"
+            ],
+            "buffs": [
+              {
+                "name": "Rejuvenating Glow",
+                "stat": "atk",
+                "value": 15,
+                "duration": 30,
+                "target": "team"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -558,7 +854,37 @@
       },
       {
         "pieces": 5,
-        "text": "Dealing Basic Attack DMG increases Spectro DMG by 10% for 5s, stacking up to 3 times. With 3 stacks, casting Resonance Liberation grants 40% Basic Attack DMG Bonus."
+        "text": "Dealing Basic Attack DMG increases Spectro DMG by 10% for 5s, stacking up to 3 times. With 3 stacks, casting Resonance Liberation grants 40% Basic Attack DMG Bonus.",
+        "triggers": [
+          {
+            "kinds": [
+              "basic"
+            ],
+            "buffs": [
+              {
+                "name": "Rite of Gilded Revelation",
+                "stat": "elementalBonus",
+                "value": 10,
+                "duration": 5,
+                "element": "spectro",
+                "stacks": 3
+              }
+            ]
+          },
+          {
+            "kinds": [
+              "liberation"
+            ],
+            "buffs": [
+              {
+                "name": "Rite of Gilded Revelation",
+                "stat": "basicBonus",
+                "value": 40,
+                "duration": 15
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -589,7 +915,23 @@
       },
       {
         "pieces": 5,
-        "text": "Aero DMG +30% for 15s after releasing Intro Skill."
+        "text": "Aero DMG +30% for 15s after releasing Intro Skill.",
+        "triggers": [
+          {
+            "kinds": [
+              "intro"
+            ],
+            "buffs": [
+              {
+                "name": "Sierra Gale",
+                "stat": "elementalBonus",
+                "value": 30,
+                "duration": 15,
+                "element": "aero"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -630,7 +972,30 @@
       },
       {
         "pieces": 5,
-        "text": "Dealing Echo Skill DMG to enemies increases the Resonator's Echo Skill Crit. Rate by 20%, and grants 15% Aero DMG Bonus for 5s."
+        "text": "Dealing Echo Skill DMG to enemies increases the Resonator's Echo Skill Crit. Rate by 20%, and grants 15% Aero DMG Bonus for 5s.",
+        "triggers": [
+          {
+            "kinds": [
+              "echo"
+            ],
+            "buffs": [
+              {
+                "name": "Sound of True Name",
+                "stat": "elementalBonus",
+                "value": 15,
+                "duration": 5,
+                "element": "aero"
+              },
+              {
+                "name": "Sound of True Name",
+                "stat": "critRate",
+                "value": 20,
+                "duration": 5,
+                "kind": "echo"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -713,7 +1078,25 @@
       },
       {
         "pieces": 5,
-        "text": "Electro DMG +15% after releasing Heavy Attack or Resonance Skill. This effect stacks up to 2 times, each stack lasts 15s."
+        "text": "Electro DMG +15% after releasing Heavy Attack or Resonance Skill. This effect stacks up to 2 times, each stack lasts 15s.",
+        "triggers": [
+          {
+            "kinds": [
+              "heavy",
+              "skill"
+            ],
+            "buffs": [
+              {
+                "name": "Void Thunder",
+                "stat": "elementalBonus",
+                "value": 15,
+                "duration": 15,
+                "element": "electro",
+                "stacks": 2
+              }
+            ]
+          }
+        ]
       }
     ]
   },
