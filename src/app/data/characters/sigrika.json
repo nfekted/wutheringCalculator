@@ -1182,5 +1182,59 @@
         "max": 50
       }
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "basic",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "basic",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 4
+    },
+    {
+      "section": "echo",
+      "index": 0
+    }
   ]
 }

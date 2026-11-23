@@ -522,5 +522,23 @@
       "hit": "forte:1",
       "detonate": "forte:0"
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "echo",
+      "index": 0
+    }
   ]
 }

@@ -1300,5 +1300,47 @@
       "outro": 1,
       "echo": 1
     }
-  }
+  },
+  "rotationBuild": [
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "outro",
+      "index": 0
+    },
+    {
+      "section": "intro",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 11
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "basic",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "echo",
+      "index": 0
+    }
+  ]
 }

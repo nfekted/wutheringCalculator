@@ -111,7 +111,8 @@ export function allowed(data: CharacterData, context: RotationContext, step: Rot
     if (!extra || !context.last || !extra.includes(context.last)) return false;
   }
   if (context.states.some(i => states[i].replaces.includes(key) || (isStart(states[i], key) && !states[i].hits.includes(key)))) return false;
-  if (states.some(state => state.nextIntro === key) || data.ignoredHits?.includes(key)) return false;
+  // The Intro a state leaves for later only comes while that state is active (an Intro in the middle of the rotation)
+  if (states.some((state, i) => state.nextIntro === key && !context.states.includes(i)) || data.ignoredHits?.includes(key)) return false;
   if (data.modeHits?.[key] !== undefined && data.modeHits[key] !== (context.mode ?? 0)) return false;
   // Hits that only come on their own (a Coordinated Attack, the hit of a mark)
   if (data.coordinated?.hits.includes(key) || data.coordinated?.detonation === key || data.markers?.some(marker => marker.hit === key)

@@ -726,5 +726,83 @@
         }
       ]
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "basic",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 6
+    },
+    {
+      "section": "forte",
+      "index": 7
+    },
+    {
+      "section": "forte",
+      "index": 10
+    },
+    {
+      "section": "forte",
+      "index": 6
+    },
+    {
+      "section": "forte",
+      "index": 7
+    },
+    {
+      "section": "forte",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 6
+    },
+    {
+      "section": "forte",
+      "index": 7
+    },
+    {
+      "section": "forte",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 4
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "echo",
+      "index": 0
+    }
   ]
 }

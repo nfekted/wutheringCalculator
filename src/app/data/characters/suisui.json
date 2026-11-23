@@ -982,5 +982,35 @@
         "skill:0"
       ]
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "skill",
+      "index": 2
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "forte",
+      "index": 3
+    },
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 1
+    }
   ]
 }

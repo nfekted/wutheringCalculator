@@ -504,5 +504,35 @@
       "spend": 1,
       "replaces": []
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 3
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 2
+    }
   ]
 }

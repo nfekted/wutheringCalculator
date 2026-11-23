@@ -5,7 +5,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { HitKind, RotationStep } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
 import { sectionSteps } from '../core/team-engine';
-import { PICKABLE, allowed, cleanSteps, contextAfter, linkedBlock, middleContext, units } from '../core/rotation-rules';
+import { PICKABLE, allowed, cleanSteps, contextAfter, keyStep, linkedBlock, middleContext, units } from '../core/rotation-rules';
 
 const KIND_COLORS: Partial<Record<HitKind, string>> = {
   basic: 'text-kind-basic', skill: 'text-kind-skill', liberation: 'text-kind-liberation',
@@ -68,7 +68,11 @@ export class RotationEditorComponent {
     const context = this.context();
     const picked = PICKABLE.map(section => ({ section, steps: data[section].hits.map((_, index): RotationStep => ({ section, index })) }));
     // An Intro or an Outro can also come in the middle (e.g. a quick swap out and back), as many times as wanted
-    const swaps = (['intro', 'outro'] as const).map(section => ({ section, steps: sectionSteps(this.character(), section) }));
+    // While a state that changes the next Intro is active, the Intro in the middle is that one
+    const next = context.states.map(i => data.states![i].nextIntro).find(key => !!key);
+    const swaps = (['intro', 'outro'] as const).map(section => ({
+      section, steps: section === 'intro' && next ? [keyStep(next)] : sectionSteps(this.character(), section),
+    }));
     return [...picked, ...swaps]
       .map(({ section, steps }) => ({
         section, name: data[section].name,
