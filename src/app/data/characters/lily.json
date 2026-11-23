@@ -1,0 +1,867 @@
+{
+  "id": "lily",
+  "name": "Lily",
+  "icon": "lily",
+  "iconSkill": "lily",
+  "type": "spectro",
+  "weapon": "pistols",
+  "base": {
+    "hp": 16712,
+    "atk": 287,
+    "def": 1099
+  },
+  "lastUpdate": "2026-11-23T02:33:50.695Z",
+  "hasHealing": true,
+  "healsAllies": true,
+  "primaryDamage": false,
+  "hpScale": true,
+  "defScale": false,
+  "basic": {
+    "name": "Mend and Cleanse",
+    "hits": [
+      {
+        "name": "Mend and Cleanse DMG 1",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              32,
+              34.63,
+              37.25,
+              40.93,
+              43.55,
+              46.57,
+              50.77,
+              54.96,
+              59.16,
+              63.62
+            ]
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Mend and Cleanse DMG 2",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              14.66,
+              15.87,
+              17.07,
+              18.75,
+              19.95,
+              21.34,
+              23.26,
+              25.18,
+              27.11,
+              29.15
+            ]
+          },
+          {
+            "stat": "atk",
+            "values": [
+              14.66,
+              15.87,
+              17.07,
+              18.75,
+              19.95,
+              21.34,
+              23.26,
+              25.18,
+              27.11,
+              29.15
+            ],
+            "times": 3
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Mend and Cleanse DMG 3",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              48,
+              51.94,
+              55.88,
+              61.39,
+              65.32,
+              69.85,
+              76.15,
+              82.44,
+              88.74,
+              95.43
+            ]
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Mend and Cleanse DMG 4",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              19.34,
+              20.93,
+              22.52,
+              24.74,
+              26.32,
+              28.15,
+              30.68,
+              33.22,
+              35.76,
+              38.45
+            ],
+            "times": 3
+          },
+          {
+            "stat": "atk",
+            "values": [
+              19.34,
+              20.93,
+              22.52,
+              24.74,
+              26.32,
+              28.15,
+              30.68,
+              33.22,
+              35.76,
+              38.45
+            ]
+          }
+        ],
+        "combo": true
+      },
+      {
+        "name": "Plunging Attack DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              57.6,
+              62.33,
+              67.05,
+              73.66,
+              78.39,
+              83.82,
+              91.38,
+              98.93,
+              106.49,
+              114.52
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Dodge Counter DMG",
+        "kind": "basic",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              120,
+              129.84,
+              139.68,
+              153.46,
+              163.3,
+              174.62,
+              190.36,
+              206.1,
+              221.85,
+              238.58
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "skill": {
+    "name": "Dream Blend",
+    "hits": [
+      {
+        "name": "Resonance Skill - Reverie Blend DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              80,
+              86.56,
+              93.12,
+              102.31,
+              108.87,
+              116.41,
+              126.91,
+              137.4,
+              147.9,
+              159.05
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Resonance Skill - Nightmare Blend DMG",
+        "kind": "skill",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              80,
+              86.56,
+              93.12,
+              102.31,
+              108.87,
+              116.41,
+              126.91,
+              137.4,
+              147.9,
+              159.05
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "liberation": {
+    "name": "Into the Dream Cradle",
+    "hits": [
+      {
+        "name": "Slumberland Healing",
+        "kind": "heal",
+        "parts": [
+          {
+            "stat": "flat",
+            "values": [
+              287,
+              321,
+              359,
+              402,
+              454,
+              503,
+              511,
+              523,
+              531,
+              546
+            ]
+          },
+          {
+            "stat": "hp",
+            "values": [
+              0.52,
+              0.54,
+              0.56,
+              0.59,
+              0.63,
+              0.68,
+              0.75,
+              0.84,
+              0.94,
+              1.09
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Dreambind Continuous DMG",
+        "kind": "liberation",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              10,
+              10.82,
+              11.64,
+              12.79,
+              13.61,
+              14.56,
+              15.87,
+              17.18,
+              18.49,
+              19.89
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Into the Dream Cradle",
+        "kind": "liberation",
+        "parts": [],
+        "manual": true,
+        "buffs": [
+          {
+            "name": "Dream Aroma",
+            "stat": "atk",
+            "value": 0.2,
+            "duration": 25,
+            "target": "team",
+            "endsOnReturn": true,
+            "perEnergyRegen": {
+              "over": 190,
+              "max": 14
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "intro": {
+    "name": "Blooming Dream",
+    "hits": [
+      {
+        "name": "Intro Skill - First Bloom DMG",
+        "kind": "intro",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              27.34,
+              29.59,
+              31.83,
+              34.97,
+              37.21,
+              39.79,
+              43.37,
+              46.96,
+              50.55,
+              54.36
+            ]
+          },
+          {
+            "stat": "atk",
+            "values": [
+              27.34,
+              29.59,
+              31.83,
+              34.97,
+              37.21,
+              39.79,
+              43.37,
+              46.96,
+              50.55,
+              54.36
+            ],
+            "times": 3
+          }
+        ]
+      },
+      {
+        "name": "Intro Skill - Eternal Bloom DMG",
+        "kind": "intro",
+        "parts": [
+          {
+            "stat": "hp",
+            "values": [
+              18.16,
+              19.65,
+              21.14,
+              23.22,
+              24.71,
+              26.42,
+              28.8,
+              31.18,
+              33.57,
+              36.1
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "outro": {
+    "name": "Blooming Fragrance",
+    "hits": [],
+    "buffs": [
+      {
+        "target": "team",
+        "amplification": "all",
+        "value": 25,
+        "duration": 30
+      }
+    ],
+    "statBuffs": [
+      {
+        "name": "Silvered Dream - ATK",
+        "stat": "atk",
+        "value": 0.4,
+        "duration": 30,
+        "target": "team",
+        "perEnergyRegen": {
+          "over": 190,
+          "max": 28
+        }
+      },
+      {
+        "name": "Silvered Dream - Echo Crit. Rate",
+        "stat": "critRate",
+        "value": 0.1429,
+        "duration": 30,
+        "target": "team",
+        "kind": "echo",
+        "perEnergyRegen": {
+          "over": 190,
+          "max": 10
+        }
+      },
+      {
+        "name": "Silvered Dream - Echo Crit. DMG",
+        "stat": "critDamage",
+        "value": 0.2857,
+        "duration": 30,
+        "target": "team",
+        "kind": "echo",
+        "perEnergyRegen": {
+          "over": 190,
+          "max": 20
+        }
+      }
+    ]
+  },
+  "forte": {
+    "name": "Dreamland of Flowers",
+    "hits": [
+      {
+        "name": "Heavy Attack - Woven Fairytale Healing",
+        "kind": "heal",
+        "parts": [
+          {
+            "stat": "flat",
+            "values": [
+              185,
+              207,
+              231,
+              259,
+              292,
+              323,
+              329,
+              336,
+              342,
+              351
+            ],
+            "times": 2
+          },
+          {
+            "stat": "hp",
+            "values": [
+              0.33,
+              0.35,
+              0.36,
+              0.38,
+              0.41,
+              0.43,
+              0.48,
+              0.54,
+              0.6,
+              0.7
+            ],
+            "times": 2
+          }
+        ],
+        "multiplier": 5
+      },
+      {
+        "name": "Heavy Attack - Woven Phantasm Healing",
+        "kind": "heal",
+        "parts": [
+          {
+            "stat": "flat",
+            "values": [
+              185,
+              207,
+              231,
+              259,
+              292,
+              323,
+              329,
+              336,
+              342,
+              351
+            ],
+            "times": 2
+          },
+          {
+            "stat": "hp",
+            "values": [
+              0.33,
+              0.35,
+              0.36,
+              0.38,
+              0.41,
+              0.43,
+              0.48,
+              0.54,
+              0.6,
+              0.7
+            ],
+            "times": 2
+          }
+        ],
+        "multiplier": 5
+      },
+      {
+        "name": "Heavy Attack - Woven Fairytale DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              12.5,
+              13.53,
+              14.55,
+              15.99,
+              17.01,
+              18.19,
+              19.83,
+              21.47,
+              23.11,
+              24.86
+            ]
+          },
+          {
+            "stat": "atk",
+            "values": [
+              12.5,
+              13.53,
+              14.55,
+              15.99,
+              17.01,
+              18.19,
+              19.83,
+              21.47,
+              23.11,
+              24.86
+            ],
+            "times": 19
+          }
+        ]
+      },
+      {
+        "name": "Heavy Attack - Woven Phantasm DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "atk",
+            "values": [
+              10.87,
+              11.77,
+              12.66,
+              13.9,
+              14.8,
+              15.82,
+              17.25,
+              18.67,
+              20.1,
+              21.61
+            ],
+            "times": 23
+          }
+        ]
+      },
+      {
+        "name": "Heavy Attack - Fairytale's Finale DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "hp",
+            "values": [
+              18,
+              19.48,
+              20.96,
+              23.02,
+              24.5,
+              26.2,
+              28.56,
+              30.92,
+              33.28,
+              35.79
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Heavy Attack - Phantasm's End DMG",
+        "kind": "heavy",
+        "parts": [
+          {
+            "stat": "hp",
+            "values": [
+              18,
+              19.48,
+              20.96,
+              23.02,
+              24.5,
+              26.2,
+              28.56,
+              30.92,
+              33.28,
+              35.79
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "recommended": {
+    "echos": [
+      183,
+      59
+    ],
+    "sonatas": [
+      [
+        10
+      ],
+      [
+        26
+      ]
+    ],
+    "weapons": [
+      "Lullaby",
+      "Cadenza",
+      "Static Mist"
+    ],
+    "teams": [
+      [
+        {
+          "character": "hsin",
+          "role": "main"
+        },
+        {
+          "character": "suoming",
+          "role": "sub"
+        },
+        {
+          "character": "lily",
+          "role": "sup"
+        }
+      ],
+      [
+        {
+          "character": "sigrika",
+          "role": "main"
+        },
+        {
+          "character": "lucilla",
+          "role": "sub"
+        },
+        {
+          "character": "lily",
+          "role": "sup"
+        }
+      ]
+    ],
+    "main": {
+      "1": [
+        {
+          "stat": "hp"
+        }
+      ],
+      "3": [
+        {
+          "stat": "energyRegen"
+        }
+      ],
+      "4": [
+        {
+          "stat": "healingBonus"
+        }
+      ]
+    },
+    "subs": [
+      {
+        "stat": "energyRegen"
+      },
+      {
+        "stat": "hp"
+      },
+      {
+        "stat": "hp",
+        "flat": true
+      },
+      {
+        "stat": "cDmg"
+      },
+      {
+        "stat": "cChance"
+      }
+    ]
+  },
+  "erScale": true,
+  "sequence": {
+    "after": {
+      "basic:2": [
+        "basic:1",
+        "intro:0",
+        "intro:1"
+      ],
+      "basic:3": [
+        "basic:2",
+        "basic:5"
+      ],
+      "forte:4": [
+        "forte:2"
+      ],
+      "forte:5": [
+        "forte:3"
+      ]
+    }
+  },
+  "states": [
+    {
+      "name": "Woven Phantasm",
+      "start": "skill:1",
+      "hits": [
+        "skill:0",
+        "forte:1",
+        "forte:3",
+        "forte:5"
+      ],
+      "replaces": [
+        "skill:1",
+        "forte:0",
+        "forte:2",
+        "forte:4"
+      ],
+      "endsOn": [
+        "skill:0"
+      ]
+    },
+    {
+      "name": "Slumberland",
+      "start": "liberation:2",
+      "hits": [
+        "liberation:1",
+        "intro:1"
+      ],
+      "replaces": [],
+      "endsOn": [
+        "intro:1"
+      ],
+      "nextIntro": "intro:1"
+    }
+  ],
+  "counters": [
+    {
+      "name": "Dream Perfume",
+      "max": 4,
+      "gain": [
+        "basic:0",
+        "basic:1",
+        "basic:2",
+        "basic:3",
+        "basic:4",
+        "basic:5",
+        "skill:0",
+        "skill:1"
+      ],
+      "amounts": {
+        "intro:1": 1
+      },
+      "unlocks": [
+        "forte:2",
+        "forte:3"
+      ],
+      "replaces": []
+    }
+  ],
+  "followUps": [
+    {
+      "hit": "forte:0",
+      "after": [
+        "forte:2"
+      ]
+    },
+    {
+      "hit": "forte:1",
+      "after": [
+        "forte:3"
+      ]
+    }
+  ],
+  "coordinated": {
+    "name": "Slumberland",
+    "start": "liberation:2",
+    "hits": [
+      "liberation:0"
+    ],
+    "duration": 50,
+    "interval": 3,
+    "max": 16,
+    "perKind": {
+      "basic": 1,
+      "heavy": 1,
+      "skill": 1,
+      "liberation": 1,
+      "intro": 1,
+      "outro": 1,
+      "echo": 1
+    },
+    "endsOnReturn": true
+  },
+  "passiveBuffs": [
+    {
+      "name": "Dreamland - Crit. Rate",
+      "stat": "critRate",
+      "value": 0.5,
+      "hits": [
+        "intro:1",
+        "forte:4",
+        "forte:5"
+      ],
+      "perEnergyRegen": {
+        "over": 100,
+        "max": 80
+      }
+    },
+    {
+      "name": "Dreamland - Crit. DMG",
+      "stat": "critDamage",
+      "value": 1,
+      "hits": [
+        "intro:1",
+        "forte:4",
+        "forte:5"
+      ],
+      "perEnergyRegen": {
+        "over": 100,
+        "max": 160
+      }
+    }
+  ],
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 5
+    },
+    {
+      "section": "liberation",
+      "index": 2
+    }
+  ]
+}

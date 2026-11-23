@@ -27,6 +27,7 @@ import jianxin from './jianxin.json';
 import jingran from './jingran.json';
 import jinhsi from './jinhsi.json';
 import jiyan from './jiyan.json';
+import lily from './lily.json';
 import lingyang from './lingyang.json';
 import lucilla from './lucilla.json';
 import lucy from './lucy.json';
@@ -63,7 +64,7 @@ import zani from './zani.json';
 import zhezhi from './zhezhi.json';
 
 export const CHARACTERS = [
-  aalto, aemeath, augusta, baizhi, brant, buling, calcharo, camellya, cantarella, carlotta, cartethyia, changli, chisa, chixia, ciaccona, danjin, denia, encore, galbrena, hiyuki, hsin, iuno, jianxin, jingran, jinhsi, jiyan, lingyang, lucilla, lucy, lumi, lupa, luuk, lynae, mornye, mortefi, phoebe, phrolova, qingxiao, qiuyuan, rebecca, roccia, rover, rovera, rovere, roverh, sanhua, shorekeeper, sigrika, suisui, suoming, taoqi, verina, xiangliYao, yangyang, yangyangXuanling, yinlin, youhu, yuanwu, zani, zhezhi
+  aalto, aemeath, augusta, baizhi, brant, buling, calcharo, camellya, cantarella, carlotta, cartethyia, changli, chisa, chixia, ciaccona, danjin, denia, encore, galbrena, hiyuki, hsin, iuno, jianxin, jingran, jinhsi, jiyan, lily, lingyang, lucilla, lucy, lumi, lupa, luuk, lynae, mornye, mortefi, phoebe, phrolova, qingxiao, qiuyuan, rebecca, roccia, rover, rovera, rovere, roverh, sanhua, shorekeeper, sigrika, suisui, suoming, taoqi, verina, xiangliYao, yangyang, yangyangXuanling, yinlin, youhu, yuanwu, zani, zhezhi
 ] as unknown as CharacterData[];
 
 export function getCharacterData(id: string): CharacterData {
