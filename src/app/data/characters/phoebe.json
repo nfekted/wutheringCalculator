@@ -662,5 +662,99 @@
         "duration": 30
       }
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 3
+    },
+    {
+      "section": "skill",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 3
+    },
+    {
+      "section": "skill",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 3
+    },
+    {
+      "section": "skill",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 3
+    },
+    {
+      "section": "skill",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "skill",
+      "index": 1
+    }
   ]
 }

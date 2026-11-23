@@ -967,5 +967,39 @@
       "stat": "atk",
       "value": 10
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "forte",
+      "index": 4
+    },
+    {
+      "section": "forte",
+      "index": 5
+    },
+    {
+      "section": "forte",
+      "index": 6
+    },
+    {
+      "section": "skill",
+      "index": 0
+    }
   ]
 }

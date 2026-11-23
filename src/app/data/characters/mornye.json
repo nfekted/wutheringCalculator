@@ -951,5 +951,35 @@
         "max": 160
       }
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 4
+    },
+    {
+      "section": "basic",
+      "index": 5
+    },
+    {
+      "section": "basic",
+      "index": 6
+    },
+    {
+      "section": "skill",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 3
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "echo",
+      "index": 0
+    }
   ]
 }

@@ -1593,5 +1593,39 @@
       ],
       "state": 1
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 9
+    },
+    {
+      "section": "basic",
+      "index": 10
+    },
+    {
+      "section": "basic",
+      "index": 11
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "forte",
+      "index": 1
+    },
+    {
+      "section": "echo",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 3
+    }
   ]
 }

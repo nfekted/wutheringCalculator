@@ -488,5 +488,39 @@
       "value": 1.5,
       "max": 50
     }
-  }
+  },
+  "rotationBuild": [
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "echo",
+      "index": 0
+    }
+  ]
 }

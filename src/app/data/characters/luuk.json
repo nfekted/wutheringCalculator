@@ -976,5 +976,67 @@
       "stat": "amplification",
       "value": 30
     }
+  ],
+  "rotationBuild": [
+    {
+      "section": "basic",
+      "index": 6
+    },
+    {
+      "section": "basic",
+      "index": 7
+    },
+    {
+      "section": "skill",
+      "index": 1
+    },
+    {
+      "section": "skill",
+      "index": 4
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 4
+    },
+    {
+      "section": "basic",
+      "index": 0
+    },
+    {
+      "section": "basic",
+      "index": 1
+    },
+    {
+      "section": "basic",
+      "index": 2
+    },
+    {
+      "section": "skill",
+      "index": 3
+    },
+    {
+      "section": "forte",
+      "index": 0
+    },
+    {
+      "section": "liberation",
+      "index": 0
+    }
   ]
 }
