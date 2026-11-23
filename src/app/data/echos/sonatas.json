@@ -66,7 +66,21 @@
             }
           ],
           "status": "fusionBurst"
-        }
+        },
+        "triggers": [
+          {
+            "inflicts": "fusionBurst",
+            "buffs": [
+              {
+                "name": "Chromatic Foam",
+                "stat": "elementalBonus",
+                "value": 10,
+                "duration": 15,
+                "element": "fusion"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -156,7 +170,35 @@
       },
       {
         "pieces": 5,
-        "text": "Inflicting enemies with Spectro Frazzle increases Crit. Rate by 20% for 15s. Attacking enemies with 10 stacks of Spectro Frazzle grants 15% Spectro DMG Bonus for 15s."
+        "text": "Inflicting enemies with Spectro Frazzle increases Crit. Rate by 20% for 15s. Attacking enemies with 10 stacks of Spectro Frazzle grants 15% Spectro DMG Bonus for 15s.",
+        "triggers": [
+          {
+            "inflicts": "spectroFrazzle",
+            "buffs": [
+              {
+                "name": "Eternal Radiance",
+                "stat": "critRate",
+                "value": 20,
+                "duration": 15
+              }
+            ]
+          },
+          {
+            "onTarget": {
+              "status": "spectroFrazzle",
+              "stacks": 10
+            },
+            "buffs": [
+              {
+                "name": "Eternal Radiance",
+                "stat": "elementalBonus",
+                "value": 15,
+                "duration": 15,
+                "element": "spectro"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -288,7 +330,21 @@
             }
           ],
           "status": "electroFlare"
-        }
+        },
+        "triggers": [
+          {
+            "inflicts": "electroFlare",
+            "buffs": [
+              {
+                "name": "Flash of Electric Reflection",
+                "stat": "elementalBonus",
+                "value": 10,
+                "duration": 15,
+                "element": "electro"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -452,7 +508,29 @@
       },
       {
         "pieces": 5,
-        "text": "Inflicting Aero Erosion on enemies increases Aero DMG for all Resonators in the team by 15%, and for the Resonator triggering this effect by an additional 15%, lasting for 20s."
+        "text": "Inflicting Aero Erosion on enemies increases Aero DMG for all Resonators in the team by 15%, and for the Resonator triggering this effect by an additional 15%, lasting for 20s.",
+        "triggers": [
+          {
+            "inflicts": "aeroErosion",
+            "buffs": [
+              {
+                "name": "Gusts of Welkin",
+                "stat": "elementalBonus",
+                "value": 15,
+                "duration": 20,
+                "element": "aero",
+                "target": "team"
+              },
+              {
+                "name": "Gusts of Welkin (self)",
+                "stat": "elementalBonus",
+                "value": 15,
+                "duration": 20,
+                "element": "aero"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -553,7 +631,52 @@
       },
       {
         "pieces": 5,
-        "text": "Inflicting Electro Flare on the target, obtaining Unison, or triggering Unison Response increases the Resonator's Crit. Rate by 15% and grants them 22.5% Electro DMG for 30s."
+        "text": "Inflicting Electro Flare on the target, obtaining Unison, or triggering Unison Response increases the Resonator's Crit. Rate by 15% and grants them 22.5% Electro DMG for 30s.",
+        "triggers": [
+          {
+            "inflicts": "electroFlare",
+            "buffs": [
+              {
+                "name": "Heart of Sworn Vigil",
+                "stat": "critRate",
+                "value": 15,
+                "duration": 30
+              },
+              {
+                "name": "Heart of Sworn Vigil",
+                "stat": "elementalBonus",
+                "value": 22.5,
+                "duration": 30,
+                "element": "electro"
+              }
+            ]
+          },
+          {
+            "kinds": [
+              "intro"
+            ],
+            "characters": [
+              "hsin",
+              "suoming",
+              "jinhsi"
+            ],
+            "buffs": [
+              {
+                "name": "Heart of Sworn Vigil",
+                "stat": "critRate",
+                "value": 15,
+                "duration": 30
+              },
+              {
+                "name": "Heart of Sworn Vigil",
+                "stat": "elementalBonus",
+                "value": 22.5,
+                "duration": 30,
+                "element": "electro"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -951,7 +1074,42 @@
       },
       {
         "pieces": 5,
-        "text": "Upon inflicting Havoc Bane, gain Xuanling's Feather, which grants a 20% increase in Crit. Rate and 25% increase in Heavy Attack DMG Bonus to the Resonator, lasting 15s.\nUpon inflicting Glacio Chafe, gain Chongming's Feather, which grants a 0.1% increase in ATK to Resonators in the team for every 1% of the Resonator's Energy Regen, up to 25%, lasting 10s."
+        "text": "Upon inflicting Havoc Bane, gain Xuanling's Feather, which grants a 20% increase in Crit. Rate and 25% increase in Heavy Attack DMG Bonus to the Resonator, lasting 15s.\nUpon inflicting Glacio Chafe, gain Chongming's Feather, which grants a 0.1% increase in ATK to Resonators in the team for every 1% of the Resonator's Energy Regen, up to 25%, lasting 10s.",
+        "triggers": [
+          {
+            "inflicts": "havocBane",
+            "buffs": [
+              {
+                "name": "Xuanling's Feather",
+                "stat": "critRate",
+                "value": 20,
+                "duration": 15
+              },
+              {
+                "name": "Xuanling's Feather",
+                "stat": "heavyBonus",
+                "value": 25,
+                "duration": 15
+              }
+            ]
+          },
+          {
+            "inflicts": "glacioChafe",
+            "buffs": [
+              {
+                "name": "Chongming's Feather",
+                "stat": "atk",
+                "value": 0.1,
+                "duration": 10,
+                "target": "team",
+                "perEnergyRegen": {
+                  "over": 0,
+                  "max": 25
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1005,7 +1163,26 @@
     "bonuses": [
       {
         "pieces": 3,
-        "text": "Inflicting Havoc Bane increases the Resonator's ATK by 20% and grants 30% Resonance Liberation DMG Bonus for 5s."
+        "text": "Inflicting Havoc Bane increases the Resonator's ATK by 20% and grants 30% Resonance Liberation DMG Bonus for 5s.",
+        "triggers": [
+          {
+            "inflicts": "havocBane",
+            "buffs": [
+              {
+                "name": "Thread of Severed Fate",
+                "stat": "atk",
+                "value": 20,
+                "duration": 5
+              },
+              {
+                "name": "Thread of Severed Fate",
+                "stat": "liberationBonus",
+                "value": 30,
+                "duration": 5
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1057,7 +1234,27 @@
       },
       {
         "pieces": 5,
-        "text": "Inflicting Fusion Burst or Tune Rupture - Shifting increases the Resonator's Crit. Rate by 20% and grants 20% Fusion DMG Bonus for 8s."
+        "text": "Inflicting Fusion Burst or Tune Rupture - Shifting increases the Resonator's Crit. Rate by 20% and grants 20% Fusion DMG Bonus for 8s.",
+        "triggers": [
+          {
+            "inflicts": "fusionBurst",
+            "buffs": [
+              {
+                "name": "Trailblazing Star",
+                "stat": "critRate",
+                "value": 20,
+                "duration": 8
+              },
+              {
+                "name": "Trailblazing Star",
+                "stat": "elementalBonus",
+                "value": 20,
+                "duration": 8,
+                "element": "fusion"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1117,7 +1314,29 @@
       },
       {
         "pieces": 5,
-        "text": "Hitting a target with Aero Erosion increases Crit Rate by 10% and grants 30% Aero DMG Bonus, lasting for 10s."
+        "text": "Hitting a target with Aero Erosion increases Crit Rate by 10% and grants 30% Aero DMG Bonus, lasting for 10s.",
+        "triggers": [
+          {
+            "onTarget": {
+              "status": "aeroErosion"
+            },
+            "buffs": [
+              {
+                "name": "Windward Pilgrimage",
+                "stat": "critRate",
+                "value": 10,
+                "duration": 10
+              },
+              {
+                "name": "Windward Pilgrimage",
+                "stat": "elementalBonus",
+                "value": 30,
+                "duration": 10,
+                "element": "aero"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1138,7 +1357,35 @@
       },
       {
         "pieces": 5,
-        "text": "Inflicting Glacio Chafe on enemies increases Glacio DMG dealt by 10% for 15s. The Resonator gains the Snowfall effect for 15s, which can be triggered every 25s.\nSnowfall Effect:\n- Dealing Resonance Liberation DMG removes Snowfall and increases Crit. Rate by 25% for 6s. While the effect is active, dealing Resonance Liberation DMG extends its duration by 4s, triggered once every 0.5s, up to 6 times.\n- Casting Outro Skill removes Snowfall and grants 25% Glacio DMG Bonus to the incoming Resonator for 15s.\nWhen Snowfall is removed, only one of the effects above can be triggered."
+        "text": "Inflicting Glacio Chafe on enemies increases Glacio DMG dealt by 10% for 15s. The Resonator gains the Snowfall effect for 15s, which can be triggered every 25s.\nSnowfall Effect:\n- Dealing Resonance Liberation DMG removes Snowfall and increases Crit. Rate by 25% for 6s. While the effect is active, dealing Resonance Liberation DMG extends its duration by 4s, triggered once every 0.5s, up to 6 times.\n- Casting Outro Skill removes Snowfall and grants 25% Glacio DMG Bonus to the incoming Resonator for 15s.\nWhen Snowfall is removed, only one of the effects above can be triggered.",
+        "triggers": [
+          {
+            "inflicts": "glacioChafe",
+            "buffs": [
+              {
+                "name": "Wishes of Quiet Snowfall",
+                "stat": "elementalBonus",
+                "value": 10,
+                "duration": 15,
+                "element": "glacio"
+              }
+            ]
+          },
+          {
+            "kinds": [
+              "liberation"
+            ],
+            "status": "glacioChafe",
+            "buffs": [
+              {
+                "name": "Snowfall",
+                "stat": "critRate",
+                "value": 25,
+                "duration": 6
+              }
+            ]
+          }
+        ]
       }
     ]
   }

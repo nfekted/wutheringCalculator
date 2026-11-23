@@ -141,11 +141,13 @@ function gearOutros(character: Character, steps: RotationStep[]): GearOutro[] {
   return [...sonatas, ...(echo ? [echo] : [])].filter(gear => !gear.status || rulesOf(character).some(rule => rule.status === gear.status));
 }
 
-/** Triggers of the character's Sonata bonuses with enough pieces (the ones limited to other characters left out) */
+/** Triggers of the character's Sonata bonuses with enough pieces and of its main slot Echo (the ones limited to others left out) */
 function sonataTriggers(character: Character): SonataTrigger[] {
   const pieces = sonataPieces(character.echoSet);
-  return SONATAS.flatMap(sonata => sonata.bonuses.filter(bonus => bonus.pieces <= (pieces.get(sonata.id) ?? 0)).flatMap(bonus => bonus.triggers ?? []))
-    .filter(trigger => !trigger.characters || trigger.characters.includes(character.data.id));
+  return [...SONATAS.flatMap(sonata => sonata.bonuses.filter(bonus => bonus.pieces <= (pieces.get(sonata.id) ?? 0)).flatMap(bonus => bonus.triggers ?? [])),
+    ...character.mainEcho?.triggers ?? []]
+    .filter(trigger => (!trigger.characters || trigger.characters.includes(character.data.id))
+      && (!trigger.status || rulesOf(character).some(rule => rule.status === trigger.status)));
 }
 
 /** What the character does with the Negative Statuses, in its mode */
@@ -655,12 +657,21 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       // Buffs the hit gives the character itself start after it (after its block)
       const giver = blockOf[position];
       if (blockEnd[position]) character.stepHit(giver)?.buffs?.forEach(buff => give(character, slot, buff));
-      // Sonata buffs after an action with a hit of a kind (once per block, e.g. a Liberation with its healing)
-      const blockKinds = blockEnd[position] ? steps.flatMap((s, p) => {
-        const h = blockOf[p] === giver ? character.stepHit(s) : undefined;
+      // Sonata buffs after an action with a hit of a kind (once per block, e.g. a Liberation with its healing), that inflicts a status,
+      // or while the target has one
+      const block = blockEnd[position] ? steps.filter((_, p) => blockOf[p] === giver) : [];
+      const blockKinds = block.flatMap(s => {
+        const h = character.stepHit(s);
         return h ? [character.mode > 0 && h.altKind ? h.altKind : h.kind] : [];
-      }) : [];
-      for (const trigger of triggers) if (trigger.kinds.some(k => blockKinds.includes(k))) trigger.buffs.forEach(buff => give(character, slot, buff));
+      });
+      const inflicts = (status: NegativeStatus) => rulesOf(character).some(rule => rule.status === status
+        && (rule.state === undefined || context.states.includes(rule.state))
+        && (rule.hits ? block.some(s => !!rule.hits![stepKey(s)]) : !!rule.mark && blockKinds.some(k => k !== 'heal' && k !== 'shield')));
+      for (const trigger of block.length ? triggers : []) {
+        const fires = trigger.kinds?.some(k => blockKinds.includes(k)) || (!!trigger.inflicts && inflicts(trigger.inflicts))
+          || (!!trigger.onTarget && onTarget.some(s => s.status === trigger.onTarget!.status && s.stacks >= (trigger.onTarget!.stacks ?? 1)));
+        if (fires) trigger.buffs.forEach(buff => give(character, slot, buff));
+      }
       const hitMax = blockEnd[position] ? character.stepHit(giver)?.statusMax : undefined;
       if (statuses && hitMax) raiseMax(hitMax, slot);
       applyStatuses(character, slot, key, context.states);

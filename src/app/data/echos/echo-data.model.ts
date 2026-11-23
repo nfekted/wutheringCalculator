@@ -6,11 +6,16 @@ import { NegativeStatus } from '../../core/negative-status';
  * the main slot Echo when the rotation of the character casts its Echo Skill; `status`: only when the character inflicts it
  */
 /**
- * A Sonata bonus with a trigger (type B): after an action of the character of one of `kinds` (e.g. "after releasing Intro Skill",
- * "upon healing", "upon gaining a Shield"), it gets `buffs`; `characters`: only for these ids
+ * A Sonata (or main slot Echo) bonus with a trigger (type B): after an action of the character with a hit of one of `kinds` (e.g. "after
+ * releasing Intro Skill", "upon healing", "upon gaining a Shield"), with a hit that `inflicts` a Negative Status (by its `hits`; a status
+ * applied by a mark counts on every damage action), or while the target has `onTarget` (team only), the character gets `buffs`.
+ * `status`: only for a character that inflicts it; `characters`: only for these ids
  */
 export interface SonataTrigger {
-  kinds: HitKind[];
+  kinds?: HitKind[];
+  inflicts?: NegativeStatus;
+  onTarget?: { status: NegativeStatus; stacks?: number };
+  status?: NegativeStatus;
   buffs: StatBuff[];
   characters?: string[];
 }
@@ -98,4 +103,6 @@ export interface EchoData {
   mainSlotBonus: { text: string; character?: string; stats?: SonataStat[] }[];
   /** Buffs of the Echo Skill given on the Outro (e.g. "casting Outro Skill within 15s after summoning X grants...") */
   outro?: GearOutro;
+  /** Triggered buffs while this is the main slot Echo (e.g. "DMG dealt to enemies with Spectro Frazzle +100%") */
+  triggers?: SonataTrigger[];
 }

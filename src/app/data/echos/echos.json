@@ -2386,6 +2386,22 @@
           }
         ]
       }
+    ],
+    "triggers": [
+      {
+        "onTarget": {
+          "status": "spectroFrazzle"
+        },
+        "buffs": [
+          {
+            "name": "Nightmare: Mourning Aix",
+            "stat": "damageBonus",
+            "value": 100,
+            "duration": 15,
+            "kind": "echo"
+          }
+        ]
+      }
     ]
   },
   {
@@ -2418,7 +2434,23 @@
       "DMG dealt to enemies inflicted by Spectro Frazzle is increased by 100.00%."
     ],
     "mainSlotBonus": [],
-    "transform": true
+    "transform": true,
+    "triggers": [
+      {
+        "onTarget": {
+          "status": "spectroFrazzle"
+        },
+        "buffs": [
+          {
+            "name": "Diurnus Knight",
+            "stat": "damageBonus",
+            "value": 100,
+            "duration": 15,
+            "kind": "echo"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": 68,
