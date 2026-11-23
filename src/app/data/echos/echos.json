@@ -528,7 +528,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Fusion DMG Bonus and 12.00% Resonance Skill DMG Bonus."
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Fusion DMG Bonus and 12.00% Resonance Skill DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "fusion"
+          },
+          {
+            "stat": "skillBonus",
+            "value": 12
+          }
+        ]
       }
     ]
   },
@@ -967,7 +978,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Electro DMG Bonus and 12.00% Resonance Skill DMG Bonus."
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Electro DMG Bonus and 12.00% Resonance Skill DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "electro"
+          },
+          {
+            "stat": "skillBonus",
+            "value": 12
+          }
+        ]
       }
     ],
     "transform": true
@@ -1000,7 +1022,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Electro DMG Bonus and 12.00% Resonance Liberation DMG Bonus."
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Electro DMG Bonus and 12.00% Resonance Liberation DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "electro"
+          },
+          {
+            "stat": "liberationBonus",
+            "value": 12
+          }
+        ]
       }
     ],
     "transform": true
@@ -1221,7 +1254,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Aero DMG Bonus and 12.00% Heavy Attack DMG Bonus."
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Aero DMG Bonus and 12.00% Heavy Attack DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "aero"
+          },
+          {
+            "stat": "heavyBonus",
+            "value": 12
+          }
+        ]
       }
     ]
   },
@@ -1838,7 +1882,18 @@
     ],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Basic Attack DMG Bonus."
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Basic Attack DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "havoc"
+          },
+          {
+            "stat": "basicBonus",
+            "value": 12
+          }
+        ]
       }
     ],
     "transform": true
@@ -2181,7 +2236,14 @@
     ],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Spectro DMG Bonus."
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Spectro DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "spectro"
+          }
+        ]
       }
     ]
   },
@@ -2277,7 +2339,14 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Electro DMG Bonus."
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Electro DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "electro"
+          }
+        ]
       }
     ],
     "transform": true
@@ -2363,7 +2432,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Spectro DMG Bonus and 12.00% Heavy Attack DMG Bonus."
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Spectro DMG Bonus and 12.00% Heavy Attack DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "spectro"
+          },
+          {
+            "stat": "heavyBonus",
+            "value": 12
+          }
+        ]
       }
     ]
   },
@@ -2626,7 +2706,18 @@
     ],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Havoc DMG Bonus and 12.00% Resonance Liberation DMG Bonus."
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Havoc DMG Bonus and 12.00% Resonance Liberation DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "havoc"
+          },
+          {
+            "stat": "liberationBonus",
+            "value": 12
+          }
+        ]
       }
     ]
   },
@@ -2849,7 +2940,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Aero DMG Bonus and 12.00% Resonance Liberation DMG Bonus."
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Aero DMG Bonus and 12.00% Resonance Liberation DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "aero"
+          },
+          {
+            "stat": "liberationBonus",
+            "value": 12
+          }
+        ]
       }
     ],
     "transform": true
@@ -2883,7 +2985,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Fusion DMG Bonus and 20.00% Echo Skill DMG Bonus."
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Fusion DMG Bonus and 20.00% Echo Skill DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "fusion"
+          },
+          {
+            "stat": "echoHitBonus",
+            "value": 20
+          }
+        ]
       }
     ]
   },
@@ -3010,7 +3123,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Aero DMG Bonus and 12.00% Heavy Attack DMG Bonus."
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Aero DMG Bonus and 12.00% Heavy Attack DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "aero"
+          },
+          {
+            "stat": "heavyBonus",
+            "value": 12
+          }
+        ]
       }
     ]
   },
@@ -3132,7 +3256,18 @@
     ],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Electro DMG Bonus and 12.00% Heavy Attack DMG Bonus."
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Electro DMG Bonus and 12.00% Heavy Attack DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "electro"
+          },
+          {
+            "stat": "heavyBonus",
+            "value": 12
+          }
+        ]
       }
     ],
     "transform": true
@@ -3165,7 +3300,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Aero DMG Bonus and 12.00% Resonance Liberation DMG Bonus."
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Aero DMG Bonus and 12.00% Resonance Liberation DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "aero"
+          },
+          {
+            "stat": "liberationBonus",
+            "value": 12
+          }
+        ]
       }
     ]
   },
@@ -3339,7 +3485,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with the Echo equipped in the main slot gains 12.00% Havoc DMG Bonus and 20.00% Echo Skill DMG Bonus."
+        "text": "The Resonator with the Echo equipped in the main slot gains 12.00% Havoc DMG Bonus and 20.00% Echo Skill DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "havoc"
+          },
+          {
+            "stat": "echoHitBonus",
+            "value": 20
+          }
+        ]
       }
     ],
     "transform": true
@@ -3502,7 +3659,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Fusion DMG Bonus and 12.00% Resonance Liberation DMG Bonus."
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Fusion DMG Bonus and 12.00% Resonance Liberation DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "fusion"
+          },
+          {
+            "stat": "liberationBonus",
+            "value": 12
+          }
+        ]
       }
     ]
   },
@@ -3775,15 +3943,36 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 10.00% Aero DMG Bonus."
+        "text": "The Resonator with this Echo equipped in the main slot gains 10.00% Aero DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "aero"
+          }
+        ]
       },
       {
         "text": "When Rover: Aero equips this Echo, they gain 10.00% more Aero DMG Bonus.",
-        "character": "rovera"
+        "character": "rovera",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "aero"
+          }
+        ]
       },
       {
         "text": "When Cartethyia equips this Echo, they gain 10.00% more Aero DMG Bonus.",
-        "character": "cartethyia"
+        "character": "cartethyia",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "aero"
+          }
+        ]
       }
     ]
   },
@@ -3818,7 +4007,19 @@
     ],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Glacio DMG Bonus and 12.00% Aero DMG Bonus."
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Glacio DMG Bonus and 12.00% Aero DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "glacio"
+          },
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "aero"
+          }
+        ]
       }
     ],
     "transform": true
@@ -3912,7 +4113,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Fusion DMG Bonus and 12.00% Basic Attack DMG Bonus."
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Fusion DMG Bonus and 12.00% Basic Attack DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "fusion"
+          },
+          {
+            "stat": "basicBonus",
+            "value": 12
+          }
+        ]
       }
     ],
     "transform": true
@@ -4033,7 +4245,13 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot has their Coordinated Attack DMG increased by 40.00%."
+        "text": "The Resonator with this Echo equipped in the main slot has their Coordinated Attack DMG increased by 40.00%.",
+        "stats": [
+          {
+            "stat": "coordinatedBonus",
+            "value": 40
+          }
+        ]
       }
     ]
   },
@@ -4066,7 +4284,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Glacio DMG Bonus and deals 30.00% more Coordinated Attack DMG"
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Glacio DMG Bonus and deals 30.00% more Coordinated Attack DMG",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "glacio"
+          },
+          {
+            "stat": "coordinatedBonus",
+            "value": 30
+          }
+        ]
       }
     ],
     "transform": true
@@ -4130,7 +4359,14 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Glacio DMG Bonus."
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Glacio DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "glacio"
+          }
+        ]
       }
     ],
     "transform": true
@@ -4254,7 +4490,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Basic Attack DMG Bonus."
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Basic Attack DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "havoc"
+          },
+          {
+            "stat": "basicBonus",
+            "value": 12
+          }
+        ]
       }
     ],
     "transform": true
@@ -4288,7 +4535,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Heavy Attack DMG Bonus."
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Heavy Attack DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "havoc"
+          },
+          {
+            "stat": "heavyBonus",
+            "value": 12
+          }
+        ]
       }
     ],
     "transform": true
@@ -4390,7 +4648,18 @@
     ],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Glacio DMG Bonus and 12.00% Resonance Skill DMG Bonus."
+        "text": "The Resonator with this Echo equipped in their main slot gains 12.00% Glacio DMG Bonus and 12.00% Resonance Skill DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "glacio"
+          },
+          {
+            "stat": "skillBonus",
+            "value": 12
+          }
+        ]
       }
     ],
     "transform": true
@@ -4702,7 +4971,13 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 10% Energy Regen."
+        "text": "The Resonator with this Echo equipped in their main slot gains 10% Energy Regen.",
+        "stats": [
+          {
+            "stat": "energyRegen",
+            "value": 10
+          }
+        ]
       }
     ],
     "transform": true
@@ -4847,7 +5122,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 12% Spectro DMG Bonus and 12% Basic Attack DMG Bonus."
+        "text": "The Resonator with this Echo equipped in the main slot gains 12% Spectro DMG Bonus and 12% Basic Attack DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "spectro"
+          },
+          {
+            "stat": "basicBonus",
+            "value": 12
+          }
+        ]
       }
     ],
     "transform": true
@@ -4883,7 +5169,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 12% Electro DMG Bonus and 12% Basic Attack DMG Bonus."
+        "text": "The Resonator with this Echo equipped in the main slot gains 12% Electro DMG Bonus and 12% Basic Attack DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "electro"
+          },
+          {
+            "stat": "basicBonus",
+            "value": 12
+          }
+        ]
       }
     ],
     "transform": true
@@ -4981,7 +5278,13 @@
     "mainSlotBonus": [
       {
         "text": "When equipped in the main slot by Aemeath, it grants 25% Resonance Liberation DMG Bonus.",
-        "character": "aemeath"
+        "character": "aemeath",
+        "stats": [
+          {
+            "stat": "liberationBonus",
+            "value": 25
+          }
+        ]
       }
     ]
   },
@@ -5210,7 +5513,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 12% Aero DMG Bonus and 20% Echo Skill DMG Bonus."
+        "text": "The Resonator with this Echo equipped in their main slot gains 12% Aero DMG Bonus and 20% Echo Skill DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "aero"
+          },
+          {
+            "stat": "echoHitBonus",
+            "value": 20
+          }
+        ]
       }
     ]
   },
@@ -5249,7 +5563,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Glacio DMG Bonus and 12.00% Resonance Liberation DMG Bonus."
+        "text": "The Resonator with this Echo equipped in the main slot gains 12.00% Glacio DMG Bonus and 12.00% Resonance Liberation DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "glacio"
+          },
+          {
+            "stat": "liberationBonus",
+            "value": 12
+          }
+        ]
       }
     ]
   },
@@ -5355,11 +5680,23 @@
     "mainSlotBonus": [
       {
         "text": "When Lucy or Rebecca has this Echo equipped in the main slot, their Crit. Rate is increased by 15% and they unlock special Echo Skills.",
-        "character": "lucy"
+        "character": "lucy",
+        "stats": [
+          {
+            "stat": "cChance",
+            "value": 15
+          }
+        ]
       },
       {
         "text": "When Lucy or Rebecca has this Echo equipped in the main slot, their Crit. Rate is increased by 15% and they unlock special Echo Skills.",
-        "character": "rebecca"
+        "character": "rebecca",
+        "stats": [
+          {
+            "stat": "cChance",
+            "value": 15
+          }
+        ]
       }
     ]
   },
@@ -5399,7 +5736,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "Resonators with this Echo equipped in the main slot gain 12.00% Havoc DMG and 12.00% Heavy Attack DMG bonuses."
+        "text": "Resonators with this Echo equipped in the main slot gain 12.00% Havoc DMG and 12.00% Heavy Attack DMG bonuses.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "havoc"
+          },
+          {
+            "stat": "heavyBonus",
+            "value": 12
+          }
+        ]
       }
     ]
   },
@@ -5464,7 +5812,13 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "Resonators with this Echo equipped in the main slot gain 10.00% Healing Bonus."
+        "text": "Resonators with this Echo equipped in the main slot gain 10.00% Healing Bonus.",
+        "stats": [
+          {
+            "stat": "healingBonus",
+            "value": 10
+          }
+        ]
       }
     ]
   },
@@ -5659,7 +6013,18 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "Resonators with this Echo equipped in the main slot gain 12.00% Fusion DMG Bonus and 12.00% Heavy Attack DMG Bonus."
+        "text": "Resonators with this Echo equipped in the main slot gain 12.00% Fusion DMG Bonus and 12.00% Heavy Attack DMG Bonus.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 12,
+            "element": "fusion"
+          },
+          {
+            "stat": "heavyBonus",
+            "value": 12
+          }
+        ]
       }
     ]
   },
@@ -5692,7 +6057,14 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 10.00% Aero DMG Bonus, and additionally gains 10.00% Aero DMG Bonus for 15s when inflicting Tune Strain - Shifting on the target."
+        "text": "The Resonator with this Echo equipped in the main slot gains 10.00% Aero DMG Bonus, and additionally gains 10.00% Aero DMG Bonus for 15s when inflicting Tune Strain - Shifting on the target.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "aero"
+          }
+        ]
       }
     ],
     "transform": true
@@ -6000,7 +6372,19 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in their main slot gains 10.00% Electro DMG Bonus. Inflicting Electro Flare, gaining Unison, or triggering Unison Response grants the Resonator an extra 10.00% Electro DMG Bonus for 30s."
+        "text": "The Resonator with this Echo equipped in their main slot gains 10.00% Electro DMG Bonus. Inflicting Electro Flare, gaining Unison, or triggering Unison Response grants the Resonator an extra 10.00% Electro DMG Bonus for 30s.",
+        "stats": [
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "electro"
+          },
+          {
+            "stat": "elementalBonus",
+            "value": 10,
+            "element": "electro"
+          }
+        ]
       }
     ]
   },
@@ -6033,7 +6417,13 @@
     "buffs": [],
     "mainSlotBonus": [
       {
-        "text": "The Resonator with this Echo equipped in the main slot gains 10.00% Energy Regen."
+        "text": "The Resonator with this Echo equipped in the main slot gains 10.00% Energy Regen.",
+        "stats": [
+          {
+            "stat": "energyRegen",
+            "value": 10
+          }
+        ]
       }
     ]
   },

@@ -12,6 +12,10 @@ export interface Stats {
   skillBonus: number;
   liberationBonus: number;
   echoBonus: number;
+  /** Echo Skill DMG Bonus of the main slot Echo: only the character's own hits of kind echo, not the Echo Skill */
+  echoHitBonus?: number;
+  /** DMG Bonus of the main slot Echo for the damage hits of the character's Coordinated Attack */
+  coordinatedBonus?: number;
   healingBonus: number;
   /** Total Energy Regen in % (100 is the base) */
   energyRegen: number;
@@ -87,12 +91,15 @@ export function calculateResults(data: CharacterData, stats: Stats, levels: Leve
   for (const key of SECTIONS) {
     // The outro skill has no level
     const level = key === 'outro' ? 1 : levels[key];
-    results[key] = data[key].hits.map(hit => {
+    results[key] = data[key].hits.map((hit, index) => {
       const kind = mode > 0 && hit.altKind ? hit.altKind : hit.kind;
-      const elemental = kind === 'heal' || kind === 'shield' || (hit.element && hit.element !== data.type) ? 0 : stats.elementalBonus;
+      const support = kind === 'heal' || kind === 'shield';
+      const elemental = support || (hit.element && hit.element !== data.type) ? 0 : stats.elementalBonus;
+      // A damage hit of the Coordinated Attack of the character gets `coordinatedBonus`
+      const coordinated = !support && data.coordinated?.hits.includes(`${key}:${index}`) ? stats.coordinatedBonus ?? 0 : 0;
       // `hit.bonus`: a passive DMG Bonus of this hit only, added to the bonus of its kind
       if (hit.noBuffs) return calculateHit(hit, stats, level, 100, 0);
-      return calculateHit(hit, stats, level, 100 + elemental + bonusOf(stats, kind) + (hit.bonus ?? 0), amplificationOf(amplification, kind, true));
+      return calculateHit(hit, stats, level, 100 + elemental + bonusOf(stats, kind) + (hit.bonus ?? 0) + coordinated, amplificationOf(amplification, kind, true));
     });
   }
   return results;
@@ -154,7 +161,7 @@ function bonusOf(stats: Stats, kind: HitKind): number {
     case 'heavy': return stats.heavyBonus;
     case 'skill': return stats.skillBonus;
     case 'liberation': return stats.liberationBonus;
-    case 'echo': return stats.echoBonus;
+    case 'echo': return stats.echoBonus + (stats.echoHitBonus ?? 0);
     case 'heal': return stats.healingBonus;
     default: return 0;
   }

@@ -2,9 +2,11 @@ import { Hit } from '../character-data.model';
 
 export type EchoCost = 1 | 3 | 4;
 
-/** Character stat an Echo attribute adds to (the keys of `Character`) */
+/** Character stat an Echo attribute adds to (the keys of `Character`); 'echoHitBonus' (main slot only): Echo Skill DMG Bonus of the
+ * character's own hits of kind echo, never of the Echo Skill of the Echo; 'coordinatedBonus' (main slot only): DMG Bonus of the damage
+ * hits of the character's Coordinated Attack */
 export type EchoStat = 'hp' | 'dmg' | 'def' | 'cChance' | 'cDmg' | 'elementalBonus' | 'basicBonus' | 'heavyBonus'
-  | 'skillBonus' | 'liberationBonus' | 'healingBonus' | 'energyRegen';
+  | 'skillBonus' | 'liberationBonus' | 'healingBonus' | 'energyRegen' | 'echoHitBonus' | 'coordinatedBonus';
 
 /** An attribute an Echo can have; HP, ATK and DEF are a percentage unless `flat` */
 export interface EchoAttribute {
@@ -71,5 +73,6 @@ export interface EchoData {
   /** The character leaves the field and becomes the Echo (e.g. "Transform into..."): its Echo Skill spends 3 points of the buffs, otherwise 0 */
   transform?: boolean;
   /** Bonus when the Echo is in the main slot, only as text for now; `character` when it is for a specific one */
-  mainSlotBonus: { text: string; character?: string }[];
+  /** In the main slot; `character`: only for that character; `stats`: the always active attributes it adds (as a Sonata type A) */
+  mainSlotBonus: { text: string; character?: string; stats?: SonataStat[] }[];
 }

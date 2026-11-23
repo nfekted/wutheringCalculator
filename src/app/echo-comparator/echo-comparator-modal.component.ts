@@ -4,7 +4,7 @@ import { DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { Stats } from '../core/damage-engine';
-import { StatModifier, echoModifier } from '../core/stat-engine';
+import { StatModifier, echoModifier, mainSlotModifier } from '../core/stat-engine';
 import { EchoAttribute, EchoData, EchoSlot } from '../data/echos/echo-data.model';
 import { ECHOS, getEcho, getSonata } from '../data/echos';
 import { EchoEditorComponent } from '../echo-set/echo-editor.component';
@@ -154,6 +154,10 @@ export class EchoComparatorModalComponent {
       } else {
         this.applyEffect(after, echoModifier(current!, after.data.type), -1);
         this.applyEffect(after, echoModifier(this.next!, after.data.type), 1);
+        if (this.slot === 0) {
+          this.applyEffect(after, mainSlotModifier(current!, after.data.id, after.data.type), -1);
+          this.applyEffect(after, mainSlotModifier(this.next!, after.data.id, after.data.type), 1);
+        }
       }
     }
     after.calculate();

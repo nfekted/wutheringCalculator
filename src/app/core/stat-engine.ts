@@ -73,6 +73,16 @@ export function sonataModifier(echoSet: (EchoSlot | null)[], element: string, en
   return modifier;
 }
 
+/** What the bonus of the Echo in the main slot adds: the general ones and the ones of this character, of its element */
+export function mainSlotModifier(slot: EchoSlot | null, character: string, element: string): StatModifier {
+  const modifier = emptyModifier();
+  for (const bonus of (slot && getEcho(slot.echo)?.mainSlotBonus) || []) {
+    if (bonus.character && bonus.character !== character) continue;
+    for (const stat of bonus.stats ?? []) if (!stat.element || stat.element === element) addAttribute(modifier, stat, stat.value);
+  }
+  return modifier;
+}
+
 export function sumModifiers(modifiers: StatModifier[]): StatModifier {
   const total = emptyModifier();
   for (const modifier of modifiers) {
@@ -106,6 +116,8 @@ export function finalStats(base: BaseStats, modifier: StatModifier, typed: Stats
     liberationBonus: add('liberationBonus'),
     healingBonus: add('healingBonus'),
     echoBonus: typed.echoBonus,
+    echoHitBonus: add('echoHitBonus'),
+    coordinatedBonus: add('coordinatedBonus'),
   };
 }
 

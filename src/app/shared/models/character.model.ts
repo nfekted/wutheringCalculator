@@ -2,7 +2,7 @@ import { Amplification, CharacterResults, HitResult, Levels, Stats, calculateEch
 import { CharacterData, Hit, RotationStep } from "../../data/character-data.model";
 import { EchoData, EchoSlot } from "../../data/echos/echo-data.model";
 import { getEcho } from "../../data/echos";
-import { echoModifier, emptyModifier, finalStats, sonataModifier, sumModifiers } from "../../core/stat-engine";
+import { echoModifier, emptyModifier, finalStats, mainSlotModifier, sonataModifier, sumModifiers } from "../../core/stat-engine";
 import { CharacterSave } from "./character-save.model";
 
 export class Character implements Stats {
@@ -27,6 +27,9 @@ export class Character implements Stats {
     skillBonus: number = 0;
     liberationBonus: number = 0;
     echoBonus: number = 0;
+    /** From the main slot Echo (see Stats) */
+    echoHitBonus: number = 0;
+    coordinatedBonus: number = 0;
     healingBonus: number = 0;
     energyRegen: number = 100;
 
@@ -91,7 +94,8 @@ export class Character implements Stats {
      */
     applyEchoSet() {
         if (!this.hasBase) return;
-        const modifiers = this.echoSet.filter(slot => !!slot).map(slot => echoModifier(slot, this.data.type));
+        const modifiers = [...this.echoSet.filter(slot => !!slot).map(slot => echoModifier(slot, this.data.type)),
+            mainSlotModifier(this.echoSet[0], this.data.id, this.data.type)];
         const passive = emptyModifier();
         passive.add.energyRegen = this.data.passiveStats?.energyRegen ?? 0;
         const first = finalStats(this.data.base, sumModifiers([...modifiers, passive, sonataModifier(this.echoSet, this.data.type)]), this);
