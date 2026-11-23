@@ -2090,7 +2090,17 @@
       "Once the initial attack lands on any enemy, the current character regains 10 Resonance Energy. If the current character uses their Outro Skill within the next 15s, the next character's damage dealt will be boosted by 12% for 15s."
     ],
     "mainSlotBonus": [],
-    "transform": true
+    "transform": true,
+    "outro": {
+      "buffs": [
+        {
+          "target": "incoming",
+          "amplification": "all",
+          "value": 12,
+          "duration": 15
+        }
+      ]
+    }
   },
   {
     "id": 63,
@@ -4709,7 +4719,18 @@
     "buffs": [
       "Casting Outro Skill within 15s after summoning Hyvatia grants 10.00% All-Attribute DMG Bonus to the next Resonator using Intro Skill for 15s."
     ],
-    "mainSlotBonus": []
+    "mainSlotBonus": [],
+    "outro": {
+      "statBuffs": [
+        {
+          "name": "Hyvatia",
+          "stat": "elementalBonus",
+          "value": 10,
+          "duration": 15,
+          "target": "incoming"
+        }
+      ]
+    }
   },
   {
     "id": 137,
@@ -5391,7 +5412,19 @@
     "buffs": [
       "Casting Outro Skill within 15s after summoning Glommoth grants 12% Glacio DMG Bonus to the incoming Resonator for 15s."
     ],
-    "mainSlotBonus": []
+    "mainSlotBonus": [],
+    "outro": {
+      "statBuffs": [
+        {
+          "name": "Glommoth",
+          "stat": "elementalBonus",
+          "value": 12,
+          "duration": 15,
+          "target": "incoming",
+          "element": "glacio"
+        }
+      ]
+    }
   },
   {
     "id": 157,
@@ -5482,7 +5515,19 @@
     "buffs": [
       "Within the next 15s, casting Outro Skill grants the incoming Resonator 12.00% Fusion DMG Bonus for 15s."
     ],
-    "mainSlotBonus": []
+    "mainSlotBonus": [],
+    "outro": {
+      "statBuffs": [
+        {
+          "name": "Reminiscence: Denia",
+          "stat": "elementalBonus",
+          "value": 12,
+          "duration": 15,
+          "target": "incoming",
+          "element": "fusion"
+        }
+      ]
+    }
   },
   {
     "id": 160,
@@ -5621,7 +5666,18 @@
       "Within 15s after using this Echo skill, casting Outro Skill increases the incoming Resonator's ATK by 12.00%."
     ],
     "mainSlotBonus": [],
-    "transform": true
+    "transform": true,
+    "outro": {
+      "statBuffs": [
+        {
+          "name": "Voidwing Moth",
+          "stat": "atk",
+          "value": 12,
+          "duration": 15,
+          "target": "incoming"
+        }
+      ]
+    }
   },
   {
     "id": 163,
@@ -6457,7 +6513,19 @@
     "buffs": [
       "Casting Outro Skill within 15s after summoning Soulfrayer grants 12.00% Electro DMG Bonus to the incoming Resonator for 15s."
     ],
-    "mainSlotBonus": []
+    "mainSlotBonus": [],
+    "outro": {
+      "statBuffs": [
+        {
+          "name": "Soulfrayer",
+          "stat": "elementalBonus",
+          "value": 12,
+          "duration": 15,
+          "target": "incoming",
+          "element": "electro"
+        }
+      ]
+    }
   },
   {
     "id": 185,

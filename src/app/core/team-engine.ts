@@ -2,6 +2,9 @@ import { Amplification, Stats, noAmplification } from './damage-engine';
 import { CoordinatedAttack, HitKey, HitKind, OutroBuff, RotationStep, StatBuff, TeamField, CharacterStatus, StatusMax } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
 import { NEGATIVE_STATUS, NegativeStatus, defFactor, statusHit, statusTick } from './negative-status';
+import { GearOutro } from '../data/echos/echo-data.model';
+import { SONATAS } from '../data/echos';
+import { sonataPieces } from './stat-engine';
 import { advance, counterBonuses, counterBoosted, isStart, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
 
 export { stepCost };
@@ -125,6 +128,17 @@ interface LabeledBuff {
 export function simulateRotation(character: Character, steps: RotationStep[]): TeamResult {
   const all = [...sectionSteps(character, 'intro'), ...steps, ...sectionSteps(character, 'outro')];
   return simulate([{ character, slot: 0, rotation: 0, steps: all }], 1);
+}
+
+/**
+ * Outro buffs of the Echos and Sonatas: each Sonata bonus with enough pieces, and the main slot Echo when the steps cast its Echo Skill;
+ * one with a `status` only when the character inflicts it
+ */
+function gearOutros(character: Character, steps: RotationStep[]): GearOutro[] {
+  const pieces = sonataPieces(character.echoSet);
+  const sonatas = SONATAS.flatMap(sonata => sonata.bonuses.filter(bonus => bonus.pieces <= (pieces.get(sonata.id) ?? 0)).flatMap(bonus => bonus.outro ?? []));
+  const echo = steps.some(step => step.section === 'echo') ? character.mainEcho?.outro : undefined;
+  return [...sonatas, ...(echo ? [echo] : [])].filter(gear => !gear.status || rulesOf(character).some(rule => rule.status === gear.status));
 }
 
 /** What the character does with the Negative Statuses, in its mode */
@@ -485,9 +499,10 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     };
 
     // The Outro starts its buffs (the same one given again renews its duration); in a team, an Outro in the middle of the turn too
+    const gear = gearOutros(character, steps);
     const startOutro = () => {
       const incoming = segments[i + 1]?.slot;
-      character.data.outro.statBuffs?.forEach(buff => {
+      [...character.data.outro.statBuffs ?? [], ...gear.flatMap(g => g.statBuffs ?? [])].forEach(buff => {
         if (buff.target !== 'incoming') give(character, slot, buff);
         else if (incoming !== undefined) give(character, slot, buff, incoming);
       });
@@ -511,7 +526,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         coordinated = [...coordinated.filter(c => c.slot !== slot), { character, slot, attack, points: attack.duration, fired: 0, since: Infinity }];
       }
       const next = segments[i + 1]?.slot;
-      (character.data.outro.buffs ?? []).forEach((buff, position) => {
+      [...character.data.outro.buffs ?? [], ...gear.flatMap(g => g.buffs ?? [])].forEach((buff, position) => {
         if (buff.target === 'incoming' && next === undefined) return;
         if (buff.mode !== undefined && buff.mode !== character.mode) return;
         // 'others': one buff for each other member, raised for the ones that qualify

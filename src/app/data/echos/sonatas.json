@@ -37,7 +37,20 @@
       },
       {
         "pieces": 5,
-        "text": "When the Resonator inflicts Fusion Burst on the enemies, they gain the following effects: Gain 10% Fusion DMG Bonus for 15s. While this effect is active, casting an Outro Skill grants the incoming Resonator 25% Fusion DMG Bonus for 15s."
+        "text": "When the Resonator inflicts Fusion Burst on the enemies, they gain the following effects: Gain 10% Fusion DMG Bonus for 15s. While this effect is active, casting an Outro Skill grants the incoming Resonator 25% Fusion DMG Bonus for 15s.",
+        "outro": {
+          "statBuffs": [
+            {
+              "name": "Chromatic Foam",
+              "stat": "elementalBonus",
+              "value": 25,
+              "duration": 15,
+              "target": "incoming",
+              "element": "fusion"
+            }
+          ],
+          "status": "fusionBurst"
+        }
       }
     ]
   },
@@ -150,7 +163,20 @@
       },
       {
         "pieces": 5,
-        "text": "When the Resonator inflicts Electro Flare on enemies, they gain the following effects: Gain 10% Electro DMG Bonus for 15s. While this effect is active, casting Outro Skill grants the incoming Resonator 25% Electro DMG Bonus for 15s."
+        "text": "When the Resonator inflicts Electro Flare on enemies, they gain the following effects: Gain 10% Electro DMG Bonus for 15s. While this effect is active, casting Outro Skill grants the incoming Resonator 25% Electro DMG Bonus for 15s.",
+        "outro": {
+          "statBuffs": [
+            {
+              "name": "Flash of Electric Reflection",
+              "stat": "elementalBonus",
+              "value": 25,
+              "duration": 15,
+              "target": "incoming",
+              "element": "electro"
+            }
+          ],
+          "status": "electroFlare"
+        }
       }
     ]
   },
@@ -386,7 +412,19 @@
       },
       {
         "pieces": 5,
-        "text": "When Outro Skill is triggered, deal additional 480% Havoc DMG to surrounding enemies, and grants the incoming Resonator 15% Havoc DMG Bonus for 15s."
+        "text": "When Outro Skill is triggered, deal additional 480% Havoc DMG to surrounding enemies, and grants the incoming Resonator 15% Havoc DMG Bonus for 15s.",
+        "outro": {
+          "statBuffs": [
+            {
+              "name": "Midnight Veil",
+              "stat": "elementalBonus",
+              "value": 15,
+              "duration": 15,
+              "target": "incoming",
+              "element": "havoc"
+            }
+          ]
+        }
       }
     ]
   },
@@ -427,7 +465,18 @@
       },
       {
         "pieces": 5,
-        "text": "After using Outro Skill, increases the ATK of the next Resonator by 22.5% for 15s."
+        "text": "After using Outro Skill, increases the ATK of the next Resonator by 22.5% for 15s.",
+        "outro": {
+          "statBuffs": [
+            {
+              "name": "Moonlit Clouds",
+              "stat": "atk",
+              "value": 22.5,
+              "duration": 15,
+              "target": "incoming"
+            }
+          ]
+        }
       }
     ]
   },

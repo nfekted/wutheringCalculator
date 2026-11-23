@@ -1,4 +1,15 @@
-import { Hit } from '../character-data.model';
+import { Hit, OutroBuff, StatBuff } from '../character-data.model';
+import { NegativeStatus } from '../../core/negative-status';
+
+/**
+ * Buffs the Outro of the character also gives (as `outro.statBuffs` / `outro.buffs`): from a Sonata bonus with enough pieces, or from
+ * the main slot Echo when the rotation of the character casts its Echo Skill; `status`: only when the character inflicts it
+ */
+export interface GearOutro {
+  statBuffs?: StatBuff[];
+  buffs?: OutroBuff[];
+  status?: NegativeStatus;
+}
 
 export type EchoCost = 1 | 3 | 4;
 
@@ -54,7 +65,7 @@ export interface SonataData {
   id: number;
   name: string;
   /** Bonus of each piece count (1, 2, 3 or 5); `stats` only on the ones counted in the attributes, the others are text for now */
-  bonuses: { pieces: number; text: string; stats?: SonataStat[] }[];
+  bonuses: { pieces: number; text: string; stats?: SonataStat[]; outro?: GearOutro }[];
 }
 
 export interface EchoData {
@@ -75,4 +86,6 @@ export interface EchoData {
   /** Bonus when the Echo is in the main slot, only as text for now; `character` when it is for a specific one */
   /** In the main slot; `character`: only for that character; `stats`: the always active attributes it adds (as a Sonata type A) */
   mainSlotBonus: { text: string; character?: string; stats?: SonataStat[] }[];
+  /** Buffs of the Echo Skill given on the Outro (e.g. "casting Outro Skill within 15s after summoning X grants...") */
+  outro?: GearOutro;
 }
