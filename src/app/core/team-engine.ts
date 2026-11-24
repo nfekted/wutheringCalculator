@@ -4,6 +4,7 @@ import { Character } from '../shared/models/character.model';
 import { NEGATIVE_STATUS, NegativeStatus, defFactor, statusHit, statusTick } from './negative-status';
 import { GearOutro, SonataTrigger } from '../data/echos/echo-data.model';
 import { SONATAS } from '../data/echos';
+import { weaponTriggers } from '../data/weapons';
 import { sonataPieces } from './stat-engine';
 import { advance, counterBonuses, counterBoosted, isStart, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
 
@@ -141,11 +142,11 @@ function gearOutros(character: Character, steps: RotationStep[]): GearOutro[] {
   return [...sonatas, ...(echo ? [echo] : [])].filter(gear => !gear.status || rulesOf(character).some(rule => rule.status === gear.status));
 }
 
-/** Triggers of the character's Sonata bonuses with enough pieces and of its main slot Echo (the ones limited to others left out) */
+/** Triggers of the character's Sonata bonuses with enough pieces, of its main slot Echo and of its weapon (the ones limited to others left out) */
 function sonataTriggers(character: Character): SonataTrigger[] {
   const pieces = sonataPieces(character.echoSet);
   return [...SONATAS.flatMap(sonata => sonata.bonuses.filter(bonus => bonus.pieces <= (pieces.get(sonata.id) ?? 0)).flatMap(bonus => bonus.triggers ?? [])),
-    ...character.mainEcho?.triggers ?? []]
+    ...character.mainEcho?.triggers ?? [], ...weaponTriggers(character.weapon)]
     .filter(trigger => (!trigger.characters || trigger.characters.includes(character.data.id))
       && (!trigger.status || rulesOf(character).some(rule => rule.status === trigger.status)));
 }
@@ -842,9 +843,9 @@ function extraStats(buffs: StatBuff[], character: Character, otherElement?: HitK
   const extra: Partial<Stats> = {};
   for (const buff of buffs) {
     if (buff.stat === 'multiplier' || buff.stat === 'amplification') continue;
-    if (buff.stat === 'atk') extra.dmg = (extra.dmg ?? 0) + character.data.base.atk * buff.value / 100;
+    if (buff.stat === 'atk') extra.dmg = (extra.dmg ?? 0) + character.baseStats.atk * buff.value / 100;
     else if (buff.stat === 'flatAtk') extra.dmg = (extra.dmg ?? 0) + buff.value;
-    else if (buff.stat === 'def') extra.def = (extra.def ?? 0) + character.data.base.def * buff.value / 100;
+    else if (buff.stat === 'def') extra.def = (extra.def ?? 0) + character.baseStats.def * buff.value / 100;
     // Every damage hit of the character gets the elemental bonus, so a DMG Bonus on all of them is added there
     else if (buff.stat === 'damageBonus') {
       const field = otherElement ? KIND_BONUS[otherElement] : 'elementalBonus';

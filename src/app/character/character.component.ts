@@ -8,6 +8,8 @@ import { Levels, Stats } from '../core/damage-engine';
 import { EchoComparatorModalComponent } from '../echo-comparator/echo-comparator-modal.component';
 import { EchoSetModalComponent } from '../echo-set/echo-set-modal.component';
 import { RotationBuilderModalComponent } from '../rotation-builder/rotation-builder-modal.component';
+import { WeaponModalComponent } from '../weapon/weapon-modal.component';
+import { getWeapon } from '../data/weapons';
 import { Character } from '../shared/models/character.model';
 import { ConfirmService } from '../shared/ui/confirm.service';
 import { DamageTableComponent } from './damage-table.component';
@@ -123,6 +125,17 @@ export class CharacterComponent {
 
   protected openEchoComparator() {
     const ref = this.dialog.open(EchoComparatorModalComponent, { data: this.character(), backdropClass: 'app-backdrop', ariaLabelledBy: 'echo-title' });
+    ref.closed.subscribe(() => this.changed.emit());
+  }
+
+  /** Equipped weapon, if any */
+  protected weapon() {
+    const slot = this.character().weapon;
+    return slot ? getWeapon(slot.id) : undefined;
+  }
+
+  protected openWeapon() {
+    const ref = this.dialog.open(WeaponModalComponent, { data: this.character(), backdropClass: 'app-backdrop', ariaLabelledBy: 'weapon-title' });
     ref.closed.subscribe(() => this.changed.emit());
   }
 

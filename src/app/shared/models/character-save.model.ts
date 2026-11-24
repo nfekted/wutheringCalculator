@@ -1,6 +1,7 @@
 import { Levels } from "../../core/damage-engine";
 import { RotationStep } from "../../data/character-data.model";
 import { EchoSlot } from "../../data/echos/echo-data.model";
+import { WeaponSlot } from "../../data/weapons/weapon-data.model";
 import { Character } from "./character.model";
 
 export class CharacterSave {
@@ -25,6 +26,7 @@ export class CharacterSave {
     rotationBuild: RotationStep[] | null = null;
     levels?: Levels;
     echoSet?: (EchoSlot | null)[];
+    weapon?: WeaponSlot | null;
 
     constructor(char: Character) {
         this.index = char.index;
@@ -48,5 +50,6 @@ export class CharacterSave {
         this.rotationBuild = char.rotationBuild;
         this.levels = { ...char.levels };
         this.echoSet = char.echoSet.map(slot => slot && structuredClone(slot));
+        this.weapon = char.weapon && { ...char.weapon };
     }
 }

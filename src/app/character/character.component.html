@@ -2,8 +2,23 @@
   <!-- Identity and actions -->
   <header class="ui-card flex flex-col gap-6 border-t-4 p-5 sm:flex-row sm:items-center"
     [style.border-top-color]="'var(--' + character().data.type + ')'">
-    <img [src]="'assets/img/characters/' + character().data.icon + '.webp'" alt=""
-      class="h-28 w-28 shrink-0 rounded-full bg-surface-2 object-cover object-top" />
+    <div class="flex shrink-0 items-center gap-3">
+      <img [src]="'assets/img/characters/' + character().data.icon + '.webp'" alt=""
+        class="h-28 w-28 shrink-0 rounded-full bg-surface-2 object-cover object-top" />
+
+      <!-- Weapon slot -->
+      <button type="button" class="flex h-28 w-24 shrink-0 flex-col items-center justify-center gap-1 rounded-sm border border-hairline bg-surface-2 p-1 text-center hover:ring-1"
+        [attr.aria-label]="'char.weapon.title' | transloco" [title]="weapon()?.name ?? ('char.weapon.title' | transloco)" (click)="openWeapon()">
+        @if (weapon(); as w) {
+          <img [src]="'assets/img/weapons/' + w.id + '.webp'" alt="" class="h-16 w-16" (error)="$any($event.target).hidden = true" />
+          <span class="w-full truncate text-xs text-body">{{ w.name }}</span>
+          <span class="text-xs font-bold text-ink">R{{ character().weapon!.rank }}</span>
+        } @else {
+          <span class="material-symbols-outlined text-mute" aria-hidden="true">add</span>
+          <span class="text-xs text-mute">{{ 'char.weapon.title' | transloco }}</span>
+        }
+      </button>
+    </div>
 
     <div class="min-w-0 flex-1">
       <div class="flex items-center gap-1">

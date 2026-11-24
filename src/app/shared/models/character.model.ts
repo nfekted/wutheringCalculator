@@ -2,7 +2,9 @@ import { Amplification, CharacterResults, HitResult, Levels, Stats, calculateEch
 import { CharacterData, Hit, RotationStep } from "../../data/character-data.model";
 import { EchoData, EchoSlot } from "../../data/echos/echo-data.model";
 import { getEcho } from "../../data/echos";
-import { echoModifier, emptyModifier, finalStats, mainSlotModifier, sonataModifier, sumModifiers } from "../../core/stat-engine";
+import { BaseStats, echoModifier, emptyModifier, finalStats, mainSlotModifier, sonataModifier, sumModifiers, weaponModifier } from "../../core/stat-engine";
+import { WeaponSlot } from "../../data/weapons/weapon-data.model";
+import { getWeapon } from "../../data/weapons";
 import { CharacterSave } from "./character-save.model";
 
 export class Character implements Stats {
@@ -42,6 +44,9 @@ export class Character implements Stats {
 
     /** The 5 Echo slots, the first is the main one; null is an empty slot */
     echoSet: (EchoSlot | null)[] = [null, null, null, null, null];
+
+    /** Equipped weapon (of the weapon type of the character) and its rank; null without one */
+    weapon: WeaponSlot | null = null;
 
     levels: Levels = { basic: 1, skill: 1, liberation: 1, intro: 1, forte: 1 };
     results: CharacterResults = emptyResults();
@@ -83,6 +88,9 @@ export class Character implements Stats {
                 const slot = load.echoSet?.[i];
                 return slot && getEcho(slot.echo)?.sonatas.includes(slot.sonata) ? slot : null;
             });
+            // A weapon that no longer exists, of another type or with an invalid rank comes back empty
+            const weapon = load.weapon && getWeapon(load.weapon.id);
+            this.weapon = weapon && weapon.type === data.weapon && [1, 2, 3, 4, 5].includes(load.weapon!.rank) ? { ...load.weapon! } : null;
             this.name = load.name;
         }
         this.applyEchoSet();
@@ -96,12 +104,12 @@ export class Character implements Stats {
     applyEchoSet() {
         if (!this.hasBase) return;
         const modifiers = [...this.echoSet.filter(slot => !!slot).map(slot => echoModifier(slot, this.data.type)),
-            mainSlotModifier(this.echoSet[0], this.data.id, this.data.type)];
+            mainSlotModifier(this.echoSet[0], this.data.id, this.data.type), weaponModifier(this.weapon, this.data.type)];
         const passive = emptyModifier();
         passive.add.energyRegen = this.data.passiveStats?.energyRegen ?? 0;
-        const first = finalStats(this.data.base, sumModifiers([...modifiers, passive, sonataModifier(this.echoSet, this.data.type)]), this);
+        const first = finalStats(this.baseStats, sumModifiers([...modifiers, passive, sonataModifier(this.echoSet, this.data.type)]), this);
         const sonatas = sonataModifier(this.echoSet, this.data.type, first.energyRegen);
-        Object.assign(this, finalStats(this.data.base, sumModifiers([...modifiers, passive, sonatas]), this));
+        Object.assign(this, finalStats(this.baseStats, sumModifiers([...modifiers, passive, sonatas]), this));
         const fromRegen = this.data.atkFromEnergyRegen;
         if (fromRegen) this.dmg += Math.round(Math.min(fromRegen.max, Math.max(0, this.energyRegen - fromRegen.over) * fromRegen.per));
     }
@@ -136,6 +144,12 @@ export class Character implements Stats {
     }
 
     /** Whether the base attributes are known, so the attributes can come from the Echos; DEF is not checked, it can really be 0 */
+    /** Base HP, ATK and DEF with the ATK of the equipped weapon (the percentages apply over both) */
+    get baseStats(): BaseStats {
+        const base = this.data.base;
+        return { ...base, atk: base.atk + (this.weapon ? getWeapon(this.weapon.id)?.atk ?? 0 : 0) };
+    }
+
     get hasBase(): boolean {
         return this.data.base.hp > 0 && this.data.base.atk > 0;
     }

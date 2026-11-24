@@ -149,6 +149,14 @@
         "mainSlotBonus": "Bonus de Slot principal",
         "onlyInfo": "Apenas informativo, não considerado nos atributos."
     },
+    "weapon": {
+        "title": "Arma",
+        "rank": "Rank",
+        "remove": "Remover arma",
+        "empty": "Nenhuma arma desse tipo cadastrada ainda.",
+        "noBase": "Os atributos base desse personagem ainda não são conhecidos, então a arma não altera os atributos.",
+        "counted": "Contados: o ATK da arma (no ATK base), o segundo atributo e a parte sempre ativa da passiva. As partes com gatilho são contadas no Rotation build e nos times; as outras ainda não são contadas."
+    },
     "echo": {
         "echo": "Comparador de Echos",
         "canHealDMG": "Ver dados de Dano",

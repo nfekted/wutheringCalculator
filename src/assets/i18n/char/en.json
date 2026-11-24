@@ -158,6 +158,14 @@
         "pieces": "{{n}} piece(s)",
         "sonataLegend": "✓ Counted in the attributes. Without ✓: not counted yet (conditional effect), of another element, or below the Energy Regen it asks for. Faded: not enough pieces. The same Echo in more than one slot counts as one piece."
     },
+    "weapon": {
+        "title": "Weapon",
+        "rank": "Rank",
+        "remove": "Remove weapon",
+        "empty": "No weapon of this type registered yet.",
+        "noBase": "The base attributes of this character are not known yet, so the weapon does not change the attributes.",
+        "counted": "Counted: the weapon ATK (in the base ATK), its second attribute and the always active part of the passive. Triggered parts are counted in the Rotation build and in teams; the others are not counted yet."
+    },
     "echo": {
         "echo": "Echo Comparator",
         "disclaimer": "All Echos are considered 5* and Level 25.",

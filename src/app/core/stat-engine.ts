@@ -2,6 +2,8 @@ import { CharacterData } from '../data/character-data.model';
 import { EchoAttribute, EchoSlot, EchoStat, SonataStat } from '../data/echos/echo-data.model';
 import { ECHO_VALUES, SONATAS, getEcho } from '../data/echos';
 import { Stats } from './damage-engine';
+import { WeaponSlot } from '../data/weapons/weapon-data.model';
+import { getWeapon } from '../data/weapons';
 
 /** HP, ATK and DEF of the character alone (level 90) */
 export type BaseStats = CharacterData['base'];
@@ -9,7 +11,7 @@ export type BaseStats = CharacterData['base'];
 type MainStat = 'hp' | 'dmg' | 'def';
 type AddStat = Exclude<EchoStat, MainStat>;
 
-/** What a source (an Echo; later Sonatas and weapons) adds to the attributes */
+/** What a source (an Echo, a Sonata, a weapon) adds to the attributes */
 export interface StatModifier {
   flat: Record<MainStat, number>;
   /** Percentages of the base */
@@ -80,6 +82,16 @@ export function mainSlotModifier(slot: EchoSlot | null, character: string, eleme
     if (bonus.character && bonus.character !== character) continue;
     for (const stat of bonus.stats ?? []) if (!stat.element || stat.element === element) addAttribute(modifier, stat, stat.value);
   }
+  return modifier;
+}
+
+/** What the equipped weapon adds: its second attribute and the always active part of the passive, of its rank (its ATK goes in the base) */
+export function weaponModifier(slot: WeaponSlot | null, element: string): StatModifier {
+  const modifier = emptyModifier();
+  const weapon = slot && getWeapon(slot.id);
+  if (!weapon) return modifier;
+  addAttribute(modifier, weapon.main, weapon.main.value);
+  for (const stat of weapon.stats ?? []) if (!stat.element || stat.element === element) addAttribute(modifier, stat, stat.values[slot.rank - 1]);
   return modifier;
 }
 
