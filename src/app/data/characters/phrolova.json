@@ -527,7 +527,14 @@
   },
   "outro": {
     "name": "Unfinished Piece",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Unfinished Piece",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

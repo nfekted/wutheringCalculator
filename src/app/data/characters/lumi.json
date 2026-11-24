@@ -364,7 +364,14 @@
   },
   "outro": {
     "name": "Escorting",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Escorting",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

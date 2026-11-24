@@ -643,7 +643,14 @@
   },
   "outro": {
     "name": "Unraveling - Law Zero",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Unraveling - Law Zero",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "statusMax": {
       "extra": 3,
       "duration": 20

@@ -374,7 +374,14 @@
   },
   "outro": {
     "name": "",
-    "hits": []
+    "hits": [
+      {
+        "name": "Outro Skill",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ]
   },
   "forte": {
     "name": "Unassuming Blade",

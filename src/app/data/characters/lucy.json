@@ -1408,7 +1408,14 @@
   },
   "outro": {
     "name": "Countermeasure Program",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Countermeasure Program",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

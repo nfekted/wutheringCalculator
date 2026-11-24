@@ -852,7 +852,14 @@
   },
   "outro": {
     "name": "Snowlight Blessing",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Snowlight Blessing",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "others",

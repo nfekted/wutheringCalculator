@@ -333,7 +333,14 @@
   },
   "outro": {
     "name": "Whispering Breeze",
-    "hits": []
+    "hits": [
+      {
+        "name": "Whispering Breeze",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ]
   },
   "forte": {
     "name": "Echoing Feathers",

@@ -775,7 +775,14 @@
   },
   "outro": {
     "name": "Unfinished Lies",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Unfinished Lies",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

@@ -402,7 +402,14 @@
   },
   "outro": {
     "name": "Binary Butterfly",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Binary Butterfly",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "team",

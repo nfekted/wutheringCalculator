@@ -449,7 +449,14 @@
   },
   "outro": {
     "name": "Rippling Waters",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Rippling Waters",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "team",

@@ -511,7 +511,14 @@
   },
   "outro": {
     "name": "Battlesong of the Unyielding",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Battlesong of the Unyielding",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

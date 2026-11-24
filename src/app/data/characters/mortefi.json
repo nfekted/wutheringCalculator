@@ -343,7 +343,14 @@
   },
   "outro": {
     "name": "Rage Transposition",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Rage Transposition",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

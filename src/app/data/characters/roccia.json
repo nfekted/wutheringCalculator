@@ -302,7 +302,14 @@
   },
   "outro": {
     "name": "Applause, Please!",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Applause, Please!",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

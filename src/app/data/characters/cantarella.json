@@ -393,7 +393,14 @@
   },
   "outro": {
     "name": "Gentle Tentacles",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Gentle Tentacles",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

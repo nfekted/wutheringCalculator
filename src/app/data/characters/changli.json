@@ -522,7 +522,14 @@
   },
   "outro": {
     "name": "Strategy of Duality",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Strategy of Duality",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

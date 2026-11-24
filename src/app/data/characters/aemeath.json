@@ -849,7 +849,14 @@
   },
   "outro": {
     "name": "Silent Protection",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Silent Protection",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "others",

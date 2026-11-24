@@ -604,7 +604,14 @@
   },
   "outro": {
     "name": "Montage",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Montage",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

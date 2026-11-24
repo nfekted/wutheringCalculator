@@ -883,7 +883,14 @@
   },
   "outro": {
     "name": "",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Outro Skill",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

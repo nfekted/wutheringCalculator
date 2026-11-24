@@ -489,7 +489,14 @@
   },
   "outro": {
     "name": "Rumbling Thunders",
-    "hits": []
+    "hits": [
+      {
+        "name": "Rumbling Thunders",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ]
   },
   "forte": {
     "name": "Myriad Omens' Mandate",

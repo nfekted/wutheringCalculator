@@ -505,7 +505,14 @@
   },
   "outro": {
     "name": "Timeless Classics",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Timeless Classics",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

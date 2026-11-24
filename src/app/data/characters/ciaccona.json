@@ -397,7 +397,14 @@
   },
   "outro": {
     "name": "Windcalling Tune",
-    "hits": []
+    "hits": [
+      {
+        "name": "Windcalling Tune",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ]
   },
   "forte": {
     "name": "Symphony of Wind and Verse",

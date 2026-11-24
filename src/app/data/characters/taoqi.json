@@ -309,7 +309,14 @@
   },
   "outro": {
     "name": "Iron Will",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Iron Will",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

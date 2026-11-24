@@ -298,7 +298,14 @@
   },
   "outro": {
     "name": "Silversnow",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Silversnow",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

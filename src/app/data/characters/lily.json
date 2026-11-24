@@ -377,7 +377,14 @@
   },
   "outro": {
     "name": "Blooming Fragrance",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Blooming Fragrance",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "team",

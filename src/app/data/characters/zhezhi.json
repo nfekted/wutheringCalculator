@@ -301,7 +301,14 @@
   },
   "outro": {
     "name": "Carve and Draw",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Carve and Draw",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

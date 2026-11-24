@@ -435,7 +435,14 @@
   },
   "outro": {
     "name": "Storm's Echo",
-    "hits": []
+    "hits": [
+      {
+        "name": "Storm's Echo",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ]
   },
   "forte": {
     "name": "Cycle of Wind",

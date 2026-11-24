@@ -319,7 +319,14 @@
   },
   "outro": {
     "name": "Strategist",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Strategist",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

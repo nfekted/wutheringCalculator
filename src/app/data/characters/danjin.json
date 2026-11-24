@@ -374,7 +374,14 @@
   },
   "outro": {
     "name": "Duality",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Duality",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

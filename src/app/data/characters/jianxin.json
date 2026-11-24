@@ -345,7 +345,14 @@
   },
   "outro": {
     "name": "Transcendence",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Transcendence",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

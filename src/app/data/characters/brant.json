@@ -770,7 +770,14 @@
   },
   "outro": {
     "name": "The Course is Set!",
-    "hits": [],
+    "hits": [
+      {
+        "name": "The Course is Set!",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

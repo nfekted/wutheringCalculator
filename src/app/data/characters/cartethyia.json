@@ -545,7 +545,14 @@
   },
   "outro": {
     "name": "Wind's Divine Blessing",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Wind's Divine Blessing",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "others",

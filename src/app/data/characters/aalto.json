@@ -306,7 +306,14 @@
   },
   "outro": {
     "name": "Dissolving Mist",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Dissolving Mist",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",

@@ -796,7 +796,14 @@
   },
   "outro": {
     "name": "Stand by Me, Warrior",
-    "hits": [],
+    "hits": [
+      {
+        "name": "Stand by Me, Warrior",
+        "kind": "outro",
+        "parts": [],
+        "manual": true
+      }
+    ],
     "buffs": [
       {
         "target": "incoming",
