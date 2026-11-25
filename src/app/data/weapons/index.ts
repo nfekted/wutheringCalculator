@@ -2,8 +2,9 @@ import { SonataTrigger } from '../echos/echo-data.model';
 import { WeaponData, WeaponSlot } from './weapon-data.model';
 
 import broadblade from './broadblade.json';
+import sword from './sword.json';
 
-export const WEAPONS = [...broadblade] as unknown as WeaponData[];
+export const WEAPONS = [...broadblade, ...sword] as unknown as WeaponData[];
 
 export function getWeapon(id: string): WeaponData | undefined {
   return WEAPONS.find(w => w.id === id);

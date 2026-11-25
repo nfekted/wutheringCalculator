@@ -81,7 +81,12 @@ export class WeaponModalComponent {
    * the parts at odd positions are those values */
   protected rankText(text: string): string[] {
     const rank = this.slot()?.rank ?? 1;
-    return text.split(/([\d.]+%?(?:\/[\d.]+%?){4})/).map((part, i) => i % 2 ? part.split('/')[rank - 1] : part);
+    // A group written with the % only on the last value ("30/37.5/45/52.5/60%") keeps the % on every rank
+    return text.split(/([\d.]+%?(?:\/[\d.]+%?){4})/).map((part, i) => {
+      if (!(i % 2)) return part;
+      const value = part.split('/')[rank - 1];
+      return part.endsWith('%') && !value.endsWith('%') ? value + '%' : value;
+    });
   }
 
   protected pick(weapon: WeaponData) {

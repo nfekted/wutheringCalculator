@@ -1,0 +1,725 @@
+[
+  {
+    "id": "s1",
+    "name": "Training Sword",
+    "type": "sword",
+    "atk": 250,
+    "main": {
+      "stat": "dmg",
+      "value": 11.47
+    },
+    "text": "Increases ATK by 4%/5%/6%/7%/8%.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s2",
+    "name": "Tyro Sword",
+    "type": "sword",
+    "atk": 275,
+    "main": {
+      "stat": "dmg",
+      "value": 14.85
+    },
+    "text": "Increases ATK by 5%/6.25%/7.5%/8.75%/10%.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          5,
+          6.25,
+          7.5,
+          8.75,
+          10
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s3",
+    "name": "Guardian Sword",
+    "type": "sword",
+    "atk": 300,
+    "main": {
+      "stat": "hp",
+      "value": 30.38
+    },
+    "text": "Resonance Skill DMG Bonus is increased by 12%/15%/18%/21%/24%.",
+    "stats": [
+      {
+        "stat": "skillBonus",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s4",
+    "name": "Sword of Voyager",
+    "type": "sword",
+    "atk": 300,
+    "main": {
+      "stat": "energyRegen",
+      "value": 32.4
+    },
+    "text": "When Resonance Skill is cast, restores 8/9/10/11/12 Resonance Energy. This effect can be triggered 1/1/1/1/1 time(s) every 20/20/20/20/20s."
+  },
+  {
+    "id": "s5",
+    "name": "Originite: Type II",
+    "type": "sword",
+    "atk": 325,
+    "main": {
+      "stat": "dmg",
+      "value": 24.3
+    },
+    "text": "When Resonance Liberation is cast, heals 5%/6.25%/7.5%/8.75%/10% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 20/20/20/20/20s."
+  },
+  {
+    "id": "s6",
+    "name": "Sword of Night",
+    "type": "sword",
+    "atk": 325,
+    "main": {
+      "stat": "dmg",
+      "value": 24.3
+    },
+    "text": "When Intro Skill is cast, increases ATK by 8%/10%/12%/14%/16%, lasting for 10/10/10/10/10s.",
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "buffs": [
+          {
+            "name": "Sword of Night",
+            "stat": "atk",
+            "values": [
+              8,
+              10,
+              12,
+              14,
+              16
+            ],
+            "duration": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s7",
+    "name": "Feather Edge",
+    "type": "sword",
+    "atk": 412.5,
+    "main": {
+      "stat": "cChance",
+      "value": 20.25
+    },
+    "text": "Casting Resonance Liberation increases ATK by 7.2%/11.1%/15.1%/19%/23% and grants 10.8%/16.7%/22.6%/28.6%/34.5% Resonance Liberation DMG Bonus for 15/15/15/15/15s.",
+    "triggers": [
+      {
+        "sections": [
+          "liberation"
+        ],
+        "buffs": [
+          {
+            "name": "Feather Edge",
+            "stat": "atk",
+            "values": [
+              7.2,
+              11.1,
+              15.1,
+              19,
+              23
+            ],
+            "duration": 15
+          },
+          {
+            "name": "Feather Edge",
+            "stat": "liberationBonus",
+            "values": [
+              10.8,
+              16.7,
+              22.6,
+              28.6,
+              34.5
+            ],
+            "duration": 15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s8",
+    "name": "Fables of Wisdom",
+    "type": "sword",
+    "atk": 462.5,
+    "main": {
+      "stat": "dmg",
+      "value": 18.23
+    },
+    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times."
+  },
+  {
+    "id": "s9",
+    "name": "Somnoire Anchor",
+    "type": "sword",
+    "atk": 462.5,
+    "main": {
+      "stat": "dmg",
+      "value": 18.23
+    },
+    "text": "Gain 1/1/1/1/1 stack of Hiss when dealing damage to the target, with 1/1/1/1/1 stack generated every 1/1/1/1/1s.\nHiss: each stack increases the wielder's ATK by 2%/2.5%/3%/3.5%/4% for 3/3/3/3/3s, stacking up to 10/10/10/10/10 times. Switching off the wielder clears all stacks. Gaining 10/10/10/10/10 stacks increases the wielder's Crit. Rate by 6%/7.5%/9%/10.5%/12%."
+  },
+  {
+    "id": "s10",
+    "name": "Endless Collapse",
+    "type": "sword",
+    "atk": 462.5,
+    "main": {
+      "stat": "dmg",
+      "value": 18.23
+    },
+    "text": "Casting the Resonance Skill grants 6/7/8/9/10 Resonance Energy and increases ATK by 10%/12.5%/15%/17.5%/20%, lasting for 16/16/16/16/16s. This effect can be triggered once every 20/20/20/20/20s.",
+    "triggers": [
+      {
+        "sections": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Endless Collapse",
+            "stat": "atk",
+            "values": [
+              10,
+              12.5,
+              15,
+              17.5,
+              20
+            ],
+            "duration": 16
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s11",
+    "name": "Lunar Cutter",
+    "type": "sword",
+    "atk": 412.5,
+    "main": {
+      "stat": "dmg",
+      "value": 30.38
+    },
+    "text": "Equipped Resonator gains 6/6/6/6/6 stack(s) of Oath upon entering the battlefield. Each stack increases ATK by 2%/2.5%/3%/3.5%/4%, up to 6/6/6/6/6 stacks. This effect can be triggered 1/1/1/1/1 time(s) every 12/12/12/12/12s. The equipped Resonator loses 1/1/1/1/1 stack(s) of Oath every 2/2/2/2/2s, and gains 6/6/6/6/6 stack(s) upon defeating an enemy."
+  },
+  {
+    "id": "s12",
+    "name": "Commando of Conviction",
+    "type": "sword",
+    "atk": 412.5,
+    "main": {
+      "stat": "dmg",
+      "value": 30.38
+    },
+    "text": "When Intro Skill is cast, increases ATK by 15%/18.75%/22.5%/26.25%/30%, lasting for 15/15/15/15/15s.",
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "buffs": [
+          {
+            "name": "Commando of Conviction",
+            "stat": "atk",
+            "values": [
+              15,
+              18.75,
+              22.5,
+              26.25,
+              30
+            ],
+            "duration": 15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s13",
+    "name": "Sword#18",
+    "type": "sword",
+    "atk": 387.5,
+    "main": {
+      "stat": "dmg",
+      "value": 36.45
+    },
+    "text": "When the Resonator's HP drops below 40%/50%/60%/70%/80%, increases Heavy Attack DMG Bonus by 18%/22.5%/27%/31.5%/36% and gives 5%/6.25%/7.5%/8.75%/10% healing when dealing Heavy Attack DMG. This effect can be triggered 1/1/1/1/1 time(s) every 8/8/8/8/8s."
+  },
+  {
+    "id": "s14",
+    "name": "Overture",
+    "type": "sword",
+    "atk": 337.5,
+    "main": {
+      "stat": "energyRegen",
+      "value": 51.84
+    },
+    "text": "When Resonance Skill is cast, restores 8/10/12/14/16 Concerto Energy. This effect can be triggered 1/1/1/1/1 time(s) every 20/20/20/20/20s."
+  },
+  {
+    "id": "s15",
+    "name": "Lumingloss",
+    "type": "sword",
+    "atk": 387.5,
+    "main": {
+      "stat": "dmg",
+      "value": 36.45
+    },
+    "text": "When Resonance Skill is cast, increases Basic Attack DMG Bonus and Heavy Attack DMG Bonus by 20%/31%/42%/53%/64%, stacking up to 1/1/1/1/1 time(s). This effect lasts for 10/10/10/10/10s and can be triggered 1/1/1/1/1 time(s) every 1/1/1/1/1s.",
+    "triggers": [
+      {
+        "sections": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Lumingloss",
+            "stat": "basicBonus",
+            "values": [
+              20,
+              31,
+              42,
+              53,
+              64
+            ],
+            "duration": 10
+          },
+          {
+            "name": "Lumingloss",
+            "stat": "heavyBonus",
+            "values": [
+              20,
+              31,
+              42,
+              53,
+              64
+            ],
+            "duration": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s16",
+    "name": "Unspoken Rue",
+    "type": "sword",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "ATK is increased by 12%/15%/18%/21%/24%. When the wielder gains Unison while not already having it, they gain 30%/37.5%/45%/52.5%/60% Electro DMG Bonus for 30/30/30/30/30s.\nWhen the wielder gains Unison while not already having it, they remove Yearning Mind and grant all Resonators in the team the Binding Mind effect, granting 24%/30%/36%/42%/48% Electro DMG Bonus for 30/30/30/30/30s. Effects with the same name cannot stack.\nWhen the wielder consumes fewer than 100/100/100/100/100 points of Concerto Energy, they remove Binding Mind from all Resonators on the team and gain the Yearning Mind effect, additionally gaining 40%/50%/60%/70%/80% Electro DMG Bonus for 14/14/14/14/14s. Switching to another Resonator ends this effect early.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s17",
+    "name": "Glint of Clouds",
+    "type": "sword",
+    "atk": 500,
+    "main": {
+      "stat": "cChance",
+      "value": 36
+    },
+    "text": "ATK is increased by 12%/15%/18%/21%/24%. Inflicting Tune Strain - Shifting grants 11.2%/14%/16.8%/19.6%/22.4% Aero DMG Bonus for 2/2/2/2/2s, stacking up to 5/5/5/5/5 times. This effect can be triggered once every 0.5/0.5/0.5/0.5/0.5s. Upon reaching the max stack limit, gain the following effects:\n- This Aero DMG Bonus effect's duration is extended to 30/30/30/30/30s.\n- Aero DMG ignores 10%/12.5%/15%/17.5%/20% of the target's DEF during this effect.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s18",
+    "name": "Azure Oath",
+    "type": "sword",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "Grants 12%/15%/18%/21%/24% All-Attribute DMG Bonus. After inflicting Havoc Bane, the wielder gains 36%/45%/54%/63%/72% Heavy Attack DMG Amplification and their Heavy Attack DMG ignores 12%/15%/18%/21%/24% of the target's DEF, lasting for 8/8/8/8/8s.",
+    "stats": [
+      {
+        "stat": "elementalBonus",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s19",
+    "name": "Frostburn",
+    "type": "sword",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "ATK is increased by 12%/15%/18%/21%/24%. After the wielder applies Glacio Chafe, Glacio DMG is Amplified by 28%/35%/42%/49%/56%, and Resonance Liberation DMG ignores 10%/12.5%/15%/17.5%/20% of the target's DEF. If the wielder is the active Resonator in the team, Glacio Chafe DMG dealt to all targets within a certain range is Amplified by 20%/25%/30%/35%/40% for 6/6/6/6/6s. This effect can be triggered up to 1/1/1/1/1 times every 0.1/0.1/0.1/0.1/0.1s. Only the strongest effect of the same name applies.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s20",
+    "name": "Everbright Polestar",
+    "type": "sword",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "Increases All-Attribute DMG Bonus by 12%/15%/18%/21%/24%. When inflicting Tune Rupture - Shifting or Fusion Burst, the wielder's Resonance Liberation DMG ignores 32%/40%/48%/56%/64% DEF and 10%/15%/20%/25%/30% Fusion RES on targets for 8/8/8/8/8s.",
+    "stats": [
+      {
+        "stat": "elementalBonus",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s21",
+    "name": "Laser Shearer",
+    "type": "sword",
+    "atk": 587.5,
+    "main": {
+      "stat": "energyRegen",
+      "value": 38.88
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. Dealing damage to targets under Tune Strain - Interfered grants 24%/27%/30%/33%/36% Resonance Skill Bonus for 3/3/3/3/3s. Retriggering the effect resets its duration",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s22",
+    "name": "Emerald Sentence",
+    "type": "sword",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "ATK is increased by 12%/15%/18%/21%/24%. Casting Echo Skill within 10/10/10/10/10s after casting Intro Skill or Basic Attack grants 1 stack of Bamboo Cleaver, which grants 30/37.5/45/52.5/60% Heavy Attack DMG Bonus to the wielder. This effect can be triggered by Echoes of the same name once only, stacking up to 2 times, lasting for 12/12/12/12/12s. Casting Echo Skill at max stacks does not reset the duration. This effect can be triggered once every 10/10/10/10/10s and ends early if the wielder is switched off the field.\nCasting Intro Skill grants 20%/25%/30%/35%/40% Echo Skill DMG Bonus to all Resonators in the team for 30/30/30/30/30s. Effects of the same name cannot be stacked.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "buffs": [
+          {
+            "name": "Emerald Sentence",
+            "stat": "echoBonus",
+            "values": [
+              20,
+              25,
+              30,
+              35,
+              40
+            ],
+            "duration": 30,
+            "target": "team"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s23",
+    "name": "Defier's Thorn",
+    "type": "sword",
+    "atk": 412.5,
+    "main": {
+      "stat": "hp",
+      "value": 72.23
+    },
+    "text": "Max HP is increased by 12%/15%/18%/21%/24%. 15/15/15/15/15s after casting Intro Skill or Basic Attacks, ignore 8%/10%/12%/14%/16% of the target's DEF when dealing damage. If the target has at least 1 stack of Aero Erosion, the DMG taken by the target is Amplified by 20%/25%/30%/35%/40%.",
+    "stats": [
+      {
+        "stat": "hp",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s24",
+    "name": "Bloodpact's Pledge",
+    "type": "sword",
+    "atk": 587.5,
+    "main": {
+      "stat": "energyRegen",
+      "value": 38.88
+    },
+    "text": "Providing Healing increases Resonance Skill DMG by 10%/14%/18%/22%/26% for 6/6/6/6/6s. When Rover: Aero casts Resonance Skill Unbound Flow, Aero DMG dealt by nearby Resonators on the field is Amplified by 10%/14%/18%/22%/26% for 30/30/30/30/30s."
+  },
+  {
+    "id": "s25",
+    "name": "Unflickering Valor",
+    "type": "sword",
+    "atk": 412.5,
+    "main": {
+      "stat": "energyRegen",
+      "value": 77.04
+    },
+    "text": "Increase Crit. Rate by 8%/10%/12%/14%/16%. Casting Resonance Liberation gives 24%/30%/36%/42%/48% Basic Attack DMG Bonus for 10/10/10/10/10s. Dealing Basic Attack DMG gives 24%/30%/36%/42%/48% Basic Attack DMG Bonus for 4/4/4/4/4s.",
+    "stats": [
+      {
+        "stat": "cChance",
+        "values": [
+          8,
+          10,
+          12,
+          14,
+          16
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "liberation"
+        ],
+        "buffs": [
+          {
+            "name": "Unflickering Valor: Liberation",
+            "stat": "basicBonus",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 10
+          }
+        ]
+      },
+      {
+        "kinds": [
+          "basic"
+        ],
+        "buffs": [
+          {
+            "name": "Unflickering Valor: Basic Attack",
+            "stat": "basicBonus",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s26",
+    "name": "Red Spring",
+    "type": "sword",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "Increase ATK by 12%/15%/18%/21%/24%. When dealing Basic Attack DMG, the wielder gains 10%/12.5%/15%/17.5%/20% Basic Attack DMG Bonus for 14/14/14/14/14s. This effect can be triggered once per second, stacking up to 3/3/3/3/3 times.\nWhen the wielder's Concerto Energy is consumed, gain 40%/50%/60%/70%/80% Basic DMG Bonus for 10/10/10/10/10. This effect can be triggered once per second and ends when the wielder is switched off the field.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "kinds": [
+          "basic"
+        ],
+        "buffs": [
+          {
+            "name": "Red Spring",
+            "stat": "basicBonus",
+            "values": [
+              10,
+              12.5,
+              15,
+              17.5,
+              20
+            ],
+            "duration": 14,
+            "stacks": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s27",
+    "name": "Blazing Brilliance",
+    "type": "sword",
+    "atk": 587.5,
+    "main": {
+      "stat": "cDmg",
+      "value": 28.6
+    },
+    "text": "ATK increased by 12%/15%/18%/21%/24%. The wielder gains 1 stack of Searing Feather upon dealing damage, which can be triggered once every 0.5s, and gains 5 stacks of the same effect upon casting Resonance Skill. Each stack of Searing Feather gives 4%/5%/6%/7%/8% additional Resonance Skill DMG Bonus for up to 14 stacks. After reaching the max stacks, all stacks will be removed in 12/12/12/12/12s.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "s28",
+    "name": "Emerald of Genesis",
+    "type": "sword",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "Increases Energy Regen by 12.8%/16%/19.2%/22.4%/25.6%. When Resonance Skill is cast, increases ATK by 6%/7.5%/9%/10.5%/12%, stacking up to 2/2/2/2/2 time(s). This effect lasts for 10/10/10/10/10s.",
+    "stats": [
+      {
+        "stat": "energyRegen",
+        "values": [
+          12.8,
+          16,
+          19.2,
+          22.4,
+          25.6
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Emerald of Genesis",
+            "stat": "atk",
+            "values": [
+              6,
+              7.5,
+              9,
+              10.5,
+              12
+            ],
+            "duration": 10,
+            "stacks": 2
+          }
+        ]
+      }
+    ]
+  }
+]
