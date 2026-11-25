@@ -3,8 +3,9 @@ import { WeaponData, WeaponSlot } from './weapon-data.model';
 
 import broadblade from './broadblade.json';
 import sword from './sword.json';
+import pistols from './pistols.json';
 
-export const WEAPONS = [...broadblade, ...sword] as unknown as WeaponData[];
+export const WEAPONS = [...broadblade, ...sword, ...pistols] as unknown as WeaponData[];
 
 export function getWeapon(id: string): WeaponData | undefined {
   return WEAPONS.find(w => w.id === id);

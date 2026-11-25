@@ -1,0 +1,631 @@
+[
+  {
+    "id": "p1",
+    "name": "Training Pistols",
+    "type": "pistols",
+    "atk": 250,
+    "main": {
+      "stat": "dmg",
+      "value": 11.47
+    },
+    "text": "Increases ATK by 4%/5%/6%/7%/8%.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p2",
+    "name": "Tyro Pistols",
+    "type": "pistols",
+    "atk": 275,
+    "main": {
+      "stat": "dmg",
+      "value": 14.85
+    },
+    "text": "Increases ATK by 5%/6.25%/7.5%/8.75%/10%.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          5,
+          6.25,
+          7.5,
+          8.75,
+          10
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p3",
+    "name": "Guardian Pistols",
+    "type": "pistols",
+    "atk": 300,
+    "main": {
+      "stat": "dmg",
+      "value": 30.38
+    },
+    "text": "Resonance Skill DMG Bonus is increased by 12%/15%/18%/21%/24%.",
+    "stats": [
+      {
+        "stat": "skillBonus",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p4",
+    "name": "Pistols of Voyager",
+    "type": "pistols",
+    "atk": 300,
+    "main": {
+      "stat": "dmg",
+      "value": 30.38
+    },
+    "text": "When Resonance Skill is cast, restores 8/9/10/11/12 Resonance Energy. This effect can be triggered 1/1/1/1/1 time(s) every 20/20/20/20/20s."
+  },
+  {
+    "id": "p5",
+    "name": "Originite: Type III",
+    "type": "pistols",
+    "atk": 325,
+    "main": {
+      "stat": "dmg",
+      "value": 24.3
+    },
+    "text": "When Dodge Counter is cast, heals 1.6%/2%/2.4%/2.8%/3.2% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 6/6/6/6/6s."
+  },
+  {
+    "id": "p6",
+    "name": "Pistols of Night",
+    "type": "pistols",
+    "atk": 325,
+    "main": {
+      "stat": "dmg",
+      "value": 24.3
+    },
+    "text": "When Intro Skill is cast, increases ATK by 8%/10%/12%/14%/16%, lasting for 10/10/10/10/10s.",
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "buffs": [
+          {
+            "name": "Pistols of Night",
+            "stat": "atk",
+            "values": [
+              8,
+              10,
+              12,
+              14,
+              16
+            ],
+            "duration": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p7",
+    "name": "Solar Flame",
+    "type": "pistols",
+    "atk": 412.5,
+    "main": {
+      "stat": "cChance",
+      "value": 20.25
+    },
+    "text": "Dealing Basic Attack or Heavy Attack DMG increases ATK by 2.2%/3.4%/4.7%/5.9%/7.2% and grants 2.2%/3.4%/4.7%/5.9%/7.2% Heavy Attack DMG Bonus for 7/7/7/7/7s, stacking up to 4/4/4/4 times. This effect can be triggered 1/1/1/1/1 times every 1/1/1/1/1s.",
+    "triggers": [
+      {
+        "kinds": [
+          "basic",
+          "heavy"
+        ],
+        "buffs": [
+          {
+            "name": "Solar Flame",
+            "stat": "atk",
+            "values": [
+              2.2,
+              3.4,
+              4.7,
+              5.9,
+              7.2
+            ],
+            "duration": 7,
+            "stacks": 4
+          },
+          {
+            "name": "Solar Flame",
+            "stat": "heavyBonus",
+            "values": [
+              2.2,
+              3.4,
+              4.7,
+              5.9,
+              7.2
+            ],
+            "duration": 7,
+            "stacks": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p8",
+    "name": "Romance in Farewell",
+    "type": "pistols",
+    "atk": 462.5,
+    "main": {
+      "stat": "dmg",
+      "value": 18.23
+    },
+    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times."
+  },
+  {
+    "id": "p9",
+    "name": "Relativistic Jet",
+    "type": "pistols",
+    "atk": 462.5,
+    "main": {
+      "stat": "dmg",
+      "value": 18.23
+    },
+    "text": "Casting the Resonance Skill grants 6/7/8/9/10 Resonance Energy and increases ATK by 10%/12.5%/15%/17.5%/20%, lasting for 16/16/16/16/16s. This effect can be triggered once every 20/20/20/20/20s.",
+    "triggers": [
+      {
+        "sections": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Relativistic Jet",
+            "stat": "atk",
+            "values": [
+              10,
+              12.5,
+              15,
+              17.5,
+              20
+            ],
+            "duration": 16
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p10",
+    "name": "Novaburst",
+    "type": "pistols",
+    "atk": 412.5,
+    "main": {
+      "stat": "dmg",
+      "value": 30.38
+    },
+    "text": "When the Resonator dashes or dodges, increases ATK by 4%/5%/6%/7%/8%, stacking up to 3/3/3/3/3 time(s). This effect lasts for 8/8/8/8/8s."
+  },
+  {
+    "id": "p11",
+    "name": "Undying Flame",
+    "type": "pistols",
+    "atk": 412.5,
+    "main": {
+      "stat": "dmg",
+      "value": 30.38
+    },
+    "text": "When Intro Skill is cast, increases Resonance Skill DMG Bonus by 20%/25%/30%/35%/40% for 15/15/15/15/15s.",
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "buffs": [
+          {
+            "name": "Undying Flame",
+            "stat": "skillBonus",
+            "values": [
+              20,
+              25,
+              30,
+              35,
+              40
+            ],
+            "duration": 15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p12",
+    "name": "Pistols#26",
+    "type": "pistols",
+    "atk": 387.5,
+    "main": {
+      "stat": "dmg",
+      "value": 36.45
+    },
+    "text": "When the Resonator takes no damage, increases ATK by 6%/7.5%/9%/10.5%/12% every 5/5/5/5/5s, stacking up to 2/2/2/2/2 time(s). This effect lasts for 8/8/8/8/8s. When the Resonator takes damage, loses 1/1/1/1/1 stacks and heals 5%/6.25%/7.5%/8.75%/10% of their Max HP."
+  },
+  {
+    "id": "p13",
+    "name": "Cadenza",
+    "type": "pistols",
+    "atk": 337.5,
+    "main": {
+      "stat": "energyRegen",
+      "value": 51.84
+    },
+    "text": "When Resonance Skill is cast, restores 8/10/12/14/16 Concerto Energy. This effect can be triggered 1/1/1/1/1 times every 20/20/20/20/20s."
+  },
+  {
+    "id": "p14",
+    "name": "Thunderbolt",
+    "type": "pistols",
+    "atk": 387.5,
+    "main": {
+      "stat": "dmg",
+      "value": 36.45
+    },
+    "text": "When hitting a target with Basic Attacks or Heavy Attacks, increases Resonance Skill DMG Bonus by 7%/11%/15%/19%/23%, stacking up to 3/3/3/3/3 time(s). This effect lasts for 10/10/10/10/10s and can be triggered 1/1/1/1/1 time(s) every 1/1/1/1/1s.",
+    "triggers": [
+      {
+        "kinds": [
+          "basic",
+          "heavy"
+        ],
+        "buffs": [
+          {
+            "name": "Thunderbolt",
+            "stat": "skillBonus",
+            "values": [
+              7,
+              11,
+              15,
+              19,
+              23
+            ],
+            "duration": 10,
+            "stacks": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p15",
+    "name": "Lullaby",
+    "type": "pistols",
+    "atk": 412.5,
+    "main": {
+      "stat": "energyRegen",
+      "value": 77.04
+    },
+    "text": "Increases Max HP by 12%/15%/18%/21%/24%. Casting Resonance Liberation restores 8/10/12/14/16 points of Concerto Energy, triggered once every 20/20/20/20/20s. All Resonators in the team gain Soothed Soul for 30/30/30/30/30s when the wielder provides healing with Heavy Attack. When Soothed Soul is active, if a Resonator in the team gains Unison or triggers Unison Response, that Resonator gains 16%/20%/24%/28%/32% ATK increase for 30/30/30/30/30s. This effect is removed when Soothed Soul ends. When the wielder provides healing with Heavy Attack, the active Resonator also gains 24%/30%/36%/42%/48% Echo Skill DMG Bonus for 30/30/30/30/30s. Effects of the same name do not stack.",
+    "stats": [
+      {
+        "stat": "hp",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p16",
+    "name": "Skull Thrasher",
+    "type": "pistols",
+    "atk": 500,
+    "main": {
+      "stat": "cDmg",
+      "value": 72
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. Casting Intro Skill grants 24%/30%/36%/42%/48% Basic Attack DMG Bonus to the wielder for 14/14/14/14/14s. Inflicting Hack - Shifting grants 12%/15%/18%/21%/24% Basic Attack DMG Bonus to the wielder for 14/14/14/14/14s, and increases the ATK of Resonators in the team by 24%/30%/36%/42%/48% for 30/30/30/30/30s. Effects of the same name do not stack.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "buffs": [
+          {
+            "name": "Skull Thrasher",
+            "stat": "basicBonus",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 14
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p17",
+    "name": "Spectral Trigger",
+    "type": "pistols",
+    "atk": 587.5,
+    "main": {
+      "stat": "cDmg",
+      "value": 48.6
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. Casting Resonance Skill grants 20%/25%/30%/35%/40% Spectro DMG Bonus to the wielder for 14/14/14/14/14s, stacking up to 2/2/2/2/2 times. Inflicting Hack - Shifting grants 30%/37.5%/45%/52.5%/60% Heavy Attack DMG Amplification to the wielder for 14/14/14/14/14s, during which Heavy Attack DMG ignores 10/12.5/15/17.5/20% of the target's DEF.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Spectral Trigger",
+            "stat": "elementalBonus",
+            "element": "spectro",
+            "values": [
+              20,
+              25,
+              30,
+              35,
+              40
+            ],
+            "duration": 14,
+            "stacks": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p18",
+    "name": "Phasic Homogenizer",
+    "type": "pistols",
+    "atk": 587.5,
+    "main": {
+      "stat": "cDmg",
+      "value": 48.6
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. After a Resonator in the team casts a Tune Break skill, it grants 20%/22.5%/25%/27.5%/30% All-Attribute DMG Bonus to the wielder for 14/14/14/14/14s.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p19",
+    "name": "Spectrum Blaste",
+    "type": "pistols",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. Casting Intro Skill or dealing Basic Attack DMG to targets increases the wielder's Basic Attack DMG Bonus by 36%/45%/54%/63%/72% for 4/4/4/4/4s. Each time the wielder inflicts Tune Rupture - Shifting or Tune Strain - Shifting during Basic Attacks, all DMG dealt by Resonators in the team is increased by 8%/10%/12%/14%/16% for 30/30/30/30/30s, up to 3/3/3/3/3 stacks. Effects of the same name cannot be stacked.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "kinds": [
+          "basic"
+        ],
+        "buffs": [
+          {
+            "name": "Spectrum Blaste",
+            "stat": "basicBonus",
+            "values": [
+              36,
+              45,
+              54,
+              63,
+              72
+            ],
+            "duration": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p20",
+    "name": "Lux & Umbra",
+    "type": "pistols",
+    "atk": 587.5,
+    "main": {
+      "stat": "cDmg",
+      "value": 48.6
+    },
+    "text": "ATK is increased by 12%/15%/18%/21%/24%. Upon dealing Echo Skill DMG, gain 24%/30%/36%/42%/48% Heavy Attack DMG Amplification for 6/6/6/6/6s. Upon dealing Heavy Attack DMG, gain 24%/30%/36%/42%/48% Echo Skill DMG Amplification for 6/6/6/6/6s. DMG Amplification on each attack is capped at 24%/30%/36%/42%/48%. While both effects are active, dealing damage ignores 8%/10%/12%/14%/16% of the target's DEF.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p21",
+    "name": "Woodland Aria",
+    "type": "pistols",
+    "atk": 500,
+    "main": {
+      "stat": "cChance",
+      "value": 36
+    },
+    "text": "ATK is increased by 12%/15%/18%/21%/24%. Inflicting Aero Erosion on the target gives 24%/30%/36%/42%/48% Aero DMG Bonus for 10/10/10/10/10s. Hitting targets with Aero Erosion reduces their Aero RES by 10%/11.5%/13%/14.5%/16% for 20/20/20/20/20s. Effects of the same name cannot be stacked.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "inflicts": "aeroErosion",
+        "buffs": [
+          {
+            "name": "Woodland Aria",
+            "stat": "elementalBonus",
+            "element": "aero",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p22",
+    "name": "The Last Dance",
+    "type": "pistols",
+    "atk": 500,
+    "main": {
+      "stat": "cDmg",
+      "value": 72
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. Every time Intro Skill or Resonance Liberation is cast, Resonance Skill DMG Bonus increases by 48%/60%/72%/84%/96% for 5/5/5/5/5s.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "intro",
+          "liberation"
+        ],
+        "buffs": [
+          {
+            "name": "The Last Dance",
+            "stat": "skillBonus",
+            "values": [
+              48,
+              60,
+              72,
+              84,
+              96
+            ],
+            "duration": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p23",
+    "name": "Static Mist",
+    "type": "pistols",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "Increases Energy Regen by 12.8%/16%/19.2%/22.4%/25.6%. Incoming Resonator's ATK is increased by 10%/12.5%/15%/17.5%/20% for 14/14/14/14/14s, stackable for up to 1/1/1/1/1 times after the wielder casts Outro Skill.",
+    "stats": [
+      {
+        "stat": "energyRegen",
+        "values": [
+          12.8,
+          16,
+          19.2,
+          22.4,
+          25.6
+        ]
+      }
+    ]
+  }
+]
