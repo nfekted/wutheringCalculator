@@ -1,0 +1,598 @@
+[
+  {
+    "id": "g1",
+    "name": "Training Gauntlets",
+    "type": "gauntlets",
+    "atk": 250,
+    "main": {
+      "stat": "dmg",
+      "value": 11.47
+    },
+    "text": "Increases ATK by 4%/5%/6%/7%/8%.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g2",
+    "name": "Tyro Gauntlets",
+    "type": "gauntlets",
+    "atk": 275,
+    "main": {
+      "stat": "dmg",
+      "value": 14.85
+    },
+    "text": "Increases ATK by 5%/6.25%/7.5%/8.75%/10%.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          5,
+          6.25,
+          7.5,
+          8.75,
+          10
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g3",
+    "name": "Guardian Gauntlets",
+    "type": "gauntlets",
+    "atk": 300,
+    "main": {
+      "stat": "def",
+      "value": 38.48
+    },
+    "text": "Increases Resonance Liberation DMG Bonus by 12%/15%/18%/21%/24%.",
+    "stats": [
+      {
+        "stat": "liberationBonus",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g4",
+    "name": "Gauntlets of Voyager",
+    "type": "gauntlets",
+    "atk": 325,
+    "main": {
+      "stat": "def",
+      "value": 30.78
+    },
+    "text": "When Resonance Skill is cast, restores 8/9/10/11/12 Resonance Energy. This effect can be triggered 1/1/1/1/1 time(s) every 20/20/20/20/20s."
+  },
+  {
+    "id": "g5",
+    "name": "Originite: Type IV",
+    "type": "gauntlets",
+    "atk": 300,
+    "main": {
+      "stat": "cDmg",
+      "value": 40.5
+    },
+    "text": "When dealing Basic Attack DMG, heals 0.5%/0.65%/0.8%/0.95%/1.1% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 3/3/3/3/3s."
+  },
+  {
+    "id": "g6",
+    "name": "Gauntlets of Night",
+    "type": "gauntlets",
+    "atk": 325,
+    "main": {
+      "stat": "dmg",
+      "value": 24.3
+    },
+    "text": "When Intro Skill is cast, increases ATK by 8%/10%/12%/14%/16%, lasting for 10/10/10/10/10s.",
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "buffs": [
+          {
+            "name": "Gauntlets of Night",
+            "stat": "atk",
+            "values": [
+              8,
+              10,
+              12,
+              14,
+              16
+            ],
+            "duration": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g7",
+    "name": "Aether Strike",
+    "type": "gauntlets",
+    "atk": 412.5,
+    "main": {
+      "stat": "cDmg",
+      "value": 40.5
+    },
+    "text": "Casting Resonance Liberation increases ATK by 7.2%/11.1%/15.1%/19%/23% and grants 10.8%/16.7%/22.6%/28.6%/34.5% Resonance Liberation DMG Bonus for 15/15/15/15/15s.",
+    "triggers": [
+      {
+        "sections": [
+          "liberation"
+        ],
+        "buffs": [
+          {
+            "name": "Aether Strike",
+            "stat": "atk",
+            "values": [
+              7.2,
+              11.1,
+              15.1,
+              19,
+              23
+            ],
+            "duration": 15
+          },
+          {
+            "name": "Aether Strike",
+            "stat": "liberationBonus",
+            "values": [
+              10.8,
+              16.7,
+              22.6,
+              28.6,
+              34.5
+            ],
+            "duration": 15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g8",
+    "name": "Legend of Drunken Hero",
+    "type": "gauntlets",
+    "atk": 462.5,
+    "main": {
+      "stat": "dmg",
+      "value": 18.23
+    },
+    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times."
+  },
+  {
+    "id": "g9",
+    "name": "Celestial Spiral",
+    "type": "gauntlets",
+    "atk": 462.5,
+    "main": {
+      "stat": "dmg",
+      "value": 18.23
+    },
+    "text": "Casting the Resonance Skill grants 6/7/8/9/10 Resonance Energy and increases ATK by 10%/12.5%/15%/17.5%/20%, lasting for 16/16/16/16/16s. This effect can be triggered once every 20/20/20/20/20s.",
+    "triggers": [
+      {
+        "sections": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Celestial Spiral",
+            "stat": "atk",
+            "values": [
+              10,
+              12.5,
+              15,
+              17.5,
+              20
+            ],
+            "duration": 16
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g10",
+    "name": "Hollow Mirage",
+    "type": "gauntlets",
+    "atk": 412.5,
+    "main": {
+      "stat": "dmg",
+      "value": 30.38
+    },
+    "text": "When Resonance Liberation is cast, grants 3/3/3/3/3 stack(s) of Iron Armor. Each stack increases ATK and DEF by 3%/3.5%/4%/4.5%/5%, stacking up to 3/3/3/3/3 time(s). When the Resonator takes damage, reduces the number of stacks by 1/1/1/1/1."
+  },
+  {
+    "id": "g11",
+    "name": "Amity Accord",
+    "type": "gauntlets",
+    "atk": 337.5,
+    "main": {
+      "stat": "def",
+      "value": 61.56
+    },
+    "text": "When Intro Skill is cast, increases Resonance Liberation DMG Bonus by 20%/25%/30%/35%/40%, lasting for 15/15/15/15/15s.",
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "buffs": [
+          {
+            "name": "Amity Accord",
+            "stat": "liberationBonus",
+            "values": [
+              20,
+              25,
+              30,
+              35,
+              40
+            ],
+            "duration": 15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g12",
+    "name": "Gauntlets#21D",
+    "type": "gauntlets",
+    "atk": 387.5,
+    "main": {
+      "stat": "energyRegen",
+      "value": 38.88
+    },
+    "text": "When the Resonator dashes or dodges, increases ATK by 8%/10%/12%/14%/16%. Increases Dodge Counter DMG by 50%/62.5%/75%/87.5%/100%, lasting for 8/8/8/8/8s. When Dodge Counter is performed, heals 5%/6.25%/7.5%/8.75%/10% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 6/6/6/6/6s."
+  },
+  {
+    "id": "g13",
+    "name": "Marcato",
+    "type": "gauntlets",
+    "atk": 337.5,
+    "main": {
+      "stat": "energyRegen",
+      "value": 51.84
+    },
+    "text": "When Resonance Skill is cast, restores 8/10/12/14/16 Concerto Energy. This effect can be triggered 1/1/1/1/1 times every 20/20/20/20/20s."
+  },
+  {
+    "id": "g14",
+    "name": "Stonard",
+    "type": "gauntlets",
+    "atk": 412.5,
+    "main": {
+      "stat": "cChance",
+      "value": 20.25
+    },
+    "text": "Casting Resonance Skill increases the wielder's Resonance Liberation DMG Bonus by 18%/27%/36%/45%/54%, lasting for 15/15/15/15/15s.",
+    "triggers": [
+      {
+        "sections": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Stonard",
+            "stat": "liberationBonus",
+            "values": [
+              18,
+              27,
+              36,
+              45,
+              54
+            ],
+            "duration": 15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g15",
+    "name": "Solsworn Ciphers",
+    "type": "gauntlets",
+    "atk": 587.5,
+    "main": {
+      "stat": "cDmg",
+      "value": 48.6
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. Casting Intro Skill or Echo Skill grants 32%/40%/48%/56%/64% Echo Skill DMG Amplification for 15/15/15/15/15s. When dealing Echo Skill DMG, Aero DMG ignores 10%/12.5%/15%/17.5%/20% of the target's DEF for 6/6/6/6/6s.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g16",
+    "name": "Daybreaker's Spine",
+    "type": "gauntlets",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. After dealing Basic Attack DMG, the wielder gains 20%/25%/30%/35%/40% Spectro DMG Bonus for 4/4/4/4/4s. Each time after the wielder inflicts Tune Strain - Shifting on the target, they gain 20%/25%/30%/35%/40% Basic Attack DMG Amplification and their Basic Attack DMG ignores 10%/12.5%/15%/17.5%/20% of the target's DEF for 6/6/6/6/6s.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "kinds": [
+          "basic"
+        ],
+        "buffs": [
+          {
+            "name": "Daybreaker's Spine",
+            "stat": "elementalBonus",
+            "element": "spectro",
+            "values": [
+              20,
+              25,
+              30,
+              35,
+              40
+            ],
+            "duration": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g17",
+    "name": "Pulsation Bracer",
+    "type": "gauntlets",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. Dealing damage to targets under Tune Strain - Interfered grants 6%/6.7%/7.5%/8.2%/9% Basic Attack DMG Bonus for 3/3/3/3/3s, stacking up to 4/4/4/4/4 times. This effect can be triggered 1/1/1/1/1 times every 0.5/0.5/0.5/0.5/0.5s. Retriggering the effect resets its duration.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g18",
+    "name": "Moongazer's Sigil",
+    "type": "gauntlets",
+    "atk": 500,
+    "main": {
+      "stat": "cChance",
+      "value": 36
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. Casting Intro Skill or Resonance Liberation increases Resonance Liberation DMG by 20%/25%/30%/35%/40% for 15/15/15/15/15s. Obtaining Shield allows Resonance Liberation DMG to ignore 7.2%/8.4%/9.6%/10.8%/12.0% of the target's DEF for 7/7/7/7/7s, stacking up to 5/5/5/5/5 times. This effect is triggered once every 0.5/0.5/0.5/0.5/0.5s. Upon casting Intro Skill, this effect reaches max stacks immediately, lasting for 3/3/3/3/3s.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g19",
+    "name": "Blazing Justice",
+    "type": "gauntlets",
+    "atk": 587.5,
+    "main": {
+      "stat": "cDmg",
+      "value": 48.6
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. Casting Basic Attack grants the following effects: Dealing damage ignores 8%/10%/12%/14%/16% of the target's DEF and Amplifies Spectro Frazzle DMG dealt by 50%/62.5%/75%/87.5%/100% for 6/6/6/6/6s. Retriggering the effect resets its duration.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g20",
+    "name": "Tragicomedy",
+    "type": "gauntlets",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. Every time Basic Attack or Intro Skill is cast, Heavy Attack DMG Bonus increases by 48%/60%/72%/84%/96% for 3/3/3/3/3s.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "basic",
+          "intro"
+        ],
+        "buffs": [
+          {
+            "name": "Tragicomedy",
+            "stat": "heavyBonus",
+            "values": [
+              48,
+              60,
+              72,
+              84,
+              96
+            ],
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g21",
+    "name": "Verity's Handle",
+    "type": "gauntlets",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "Gain 12%/15%/18%/21%/24% Attribute DMG Bonus. When using Resonance Liberation, the wielder gains 48%/60%/72%/84%/96% Resonance Liberation DMG Bonus for 8/8/8/8/8s. This effect can be extended by 5/5/5/5/5s each time Resonance Skills are cast, up to 3/3/3/3/3 times.",
+    "stats": [
+      {
+        "stat": "elementalBonus",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "liberation"
+        ],
+        "buffs": [
+          {
+            "name": "Verity's Handle",
+            "stat": "liberationBonus",
+            "values": [
+              48,
+              60,
+              72,
+              84,
+              96
+            ],
+            "duration": 8
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g22",
+    "name": "Abyss Surges",
+    "type": "gauntlets",
+    "atk": 587.5,
+    "main": {
+      "stat": "dmg",
+      "value": 36.45
+    },
+    "text": "Increases Energy Regen by 12.8%/16%/19.2%/22.4%/25.6%. When hitting a target with Resonance Skill, increases Basic Attack DMG Bonus by 10%/12.5%/15%/17.5%/20%, lasting for 8/8/8/8/8s. When hitting a target with Basic Attacks, increases Resonance Skill DMG Bonus by 10%/12.5%/15%/17.5%/20%, lasting for 8/8/8/8/8s.",
+    "stats": [
+      {
+        "stat": "energyRegen",
+        "values": [
+          12.8,
+          16,
+          19.2,
+          22.4,
+          25.6
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "kinds": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Abyss Surges: Skill",
+            "stat": "basicBonus",
+            "values": [
+              10,
+              12.5,
+              15,
+              17.5,
+              20
+            ],
+            "duration": 8
+          }
+        ]
+      },
+      {
+        "kinds": [
+          "basic"
+        ],
+        "buffs": [
+          {
+            "name": "Abyss Surges: Basic Attack",
+            "stat": "skillBonus",
+            "values": [
+              10,
+              12.5,
+              15,
+              17.5,
+              20
+            ],
+            "duration": 8
+          }
+        ]
+      }
+    ]
+  }
+]
