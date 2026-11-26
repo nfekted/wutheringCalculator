@@ -1,4 +1,4 @@
-import { Hit, HitKind, OutroBuff, SectionKey, StatBuff } from '../character-data.model';
+import { Hit, HitKey, HitKind, OutroBuff, SectionKey, StatBuff } from '../character-data.model';
 import { NegativeStatus } from '../../core/negative-status';
 
 /**
@@ -21,6 +21,8 @@ export interface SonataTrigger {
   onTarget?: { status: NegativeStatus | 'any'; stacks?: number };
   /** "Dashing or dodging": an action with a Dodge Counter hit (by its name) */
   dodge?: boolean;
+  /** An action with one of these hits (of the characters in `characters`) */
+  hits?: HitKey[];
   status?: NegativeStatus;
   buffs: StatBuff[];
   /** Also heals this % of the Max HP of the character (a healing row) */

@@ -351,7 +351,9 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   const give = (character: Character, slot: number, buff: StatBuff, to?: number) => {
     if ((!buff.duration && !buff.endsOnSwitch) || (buff.mode !== undefined && buff.mode !== character.mode)) return;
     const id = `self:${slot}:${buff.name}:${buff.stat}`;
-    const count = buff.stacks ? Math.min((active.find(a => a.id === id)?.count ?? 0) + 1, buff.stacks) : 1;
+    const before = active.find(a => a.id === id)?.count ?? 0;
+    const count = buff.stacks ? Math.min(before + (buff.gain ?? 1), buff.stacks) : 1;
+    if (buff.atMax && buff.stacks && count === buff.stacks) give(character, slot, buff.atMax, to);
     const stat = scaled(character, buff, count);
     if (!stat.value) return;
     active = active.filter(a => a.id !== id);
@@ -396,7 +398,10 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     /** Hits each state added since it started (by index in `data.states`) */
     const autoCount = new Map<number, number>();
     /** The active buffs, without the Outro buffs whose status is not on the target */
-    const present = () => active.filter(a => !a.outro?.whileStatus || onTarget.some(s => s.status === a.outro!.whileStatus && s.stacks > 0));
+    const present = () => active.filter(a => {
+      const status = a.outro?.whileStatus ?? a.stat?.whileStatus;
+      return !status || onTarget.some(s => s.status === status && s.stacks > 0);
+    });
 
     // A hit added by another one: worth its value with the buffs on its member, in the same action (it spends nothing)
     const autoRow = (who: Character, whoSlot: number, key: HitKey, others: LabeledBuff[]) => {
@@ -687,6 +692,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         const fires = trigger.kinds?.some(k => blockKinds.includes(k)) || trigger.sections?.some(s => blockSections.includes(s))
           || (!!trigger.inflicts && inflicts(trigger.inflicts))
           || (!!trigger.dodge && block.some(s => isDodgeCounter(character.stepHit(s))))
+          || (!!trigger.hits && block.some(s => trigger.hits!.includes(stepKey(s))))
           || (!!trigger.onTarget && onTarget.some(s => (trigger.onTarget!.status === 'any' || s.status === trigger.onTarget!.status) && s.stacks >= (trigger.onTarget!.stacks ?? 1)));
         const id = `${slot}:${t}`;
         if (!fires || (triggerCooldown.get(id) ?? 0) > 0) continue;
@@ -827,7 +833,7 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   // A hit of another element gets no elemental bonus of the character, and the element buffs of its own element
   const element = hit?.element ?? character.data.type;
   const coordinated = !!character.data.coordinated?.hits.includes(key);
-  const fits = (buff?: StatBuff) => !hit?.noBuffs && (!buff || ((!buff.hits || buff.hits.includes(key)) && (!buff.element || buff.element === element) && (!buff.kind || buff.kind === kind) && (!buff.dodge || isDodgeCounter(hit))
+  const fits = (buff?: StatBuff) => !hit?.noBuffs && (!buff || ((!buff.hits || buff.hits.includes(key)) && (!buff.element || buff.element === element) && (!buff.kind || buff.kind === kind) && (!buff.dodge || isDodgeCounter(hit)) && (!buff.characters || buff.characters.includes(character.data.id))
     && !(buff.stat === 'elementalBonus' && element !== character.data.type) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat])
     && (buff.stat === 'atk' || buff.stat === 'flatAtk' ? !!hit?.parts.some(part => part.stat === 'atk')
       : buff.stat === 'def' ? !!hit?.parts.some(part => part.stat === 'def') : !support)));

@@ -13,8 +13,9 @@ export interface WeaponStat {
 }
 
 /** A buff of a triggered passive, one value per rank */
-export interface WeaponBuff extends Omit<StatBuff, 'value'> {
+export interface WeaponBuff extends Omit<StatBuff, 'value' | 'atMax'> {
   values: number[];
+  atMax?: WeaponBuff;
 }
 
 /** A triggered passive (as a Sonata trigger), with the values of each rank */

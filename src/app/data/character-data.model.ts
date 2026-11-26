@@ -99,12 +99,20 @@ export interface StatBuff {
   endsOnSwitch?: boolean;
   /** Only Dodge Counter hits (by their name) get it */
   dodge?: boolean;
+  /** Only these characters (ids) get it (e.g. a team buff for the ones with Unison) */
+  characters?: string[];
   /** Of a buff a hit gives (or always active): only in this Resonance Mode of the character (index in `modes`) */
   mode?: number;
   /** Only hits of this kind get it (e.g. the Echo Skill of whoever is on the field) */
   kind?: HitKind;
   /** Given again while it lasts, it adds a stack (up to this many) and renews the duration */
   stacks?: number;
+  /** Stacks it adds each time it is given (1 without it) */
+  gain?: number;
+  /** Given too when it reaches its max `stacks` (e.g. "gaining 10 stacks increases Crit. Rate") */
+  atMax?: StatBuff;
+  /** It only counts while the target has this Negative Status */
+  whileStatus?: NegativeStatus;
   /** The value is `value` for each 1% of Crit. Rate of the character over `over`, up to `max` */
   perCritRate?: { over: number; max: number };
   /** The same, by the Energy Regen */

@@ -424,16 +424,20 @@
         ]
       },
       {
-        "characters": [
-          "lily"
-        ],
-        "sections": [
-          "liberation"
+        "kinds": [
+          "heal"
         ],
         "buffs": [
           {
             "name": "Lullaby: Soothed Soul",
             "stat": "atk",
+            "target": "team",
+            "characters": [
+              "lily",
+              "jinhsi",
+              "suoming",
+              "hsin"
+            ],
             "values": [
               16,
               20,
