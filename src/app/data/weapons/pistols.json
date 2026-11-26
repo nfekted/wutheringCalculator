@@ -88,7 +88,21 @@
       "stat": "dmg",
       "value": 24.3
     },
-    "text": "When Dodge Counter is cast, heals 1.6%/2%/2.4%/2.8%/3.2% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 6/6/6/6/6s."
+    "text": "When Dodge Counter is cast, heals 1.6%/2%/2.4%/2.8%/3.2% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 6/6/6/6/6s.",
+    "triggers": [
+      {
+        "dodge": true,
+        "buffs": [],
+        "heal": [
+          1.6,
+          2,
+          2.4,
+          2.8,
+          3.2
+        ],
+        "cooldown": 6
+      }
+    ]
   },
   {
     "id": "p6",
@@ -244,7 +258,27 @@
       "stat": "dmg",
       "value": 30.38
     },
-    "text": "When the Resonator dashes or dodges, increases ATK by 4%/5%/6%/7%/8%, stacking up to 3/3/3/3/3 time(s). This effect lasts for 8/8/8/8/8s."
+    "text": "When the Resonator dashes or dodges, increases ATK by 4%/5%/6%/7%/8%, stacking up to 3/3/3/3/3 time(s). This effect lasts for 8/8/8/8/8s.",
+    "triggers": [
+      {
+        "dodge": true,
+        "buffs": [
+          {
+            "name": "Novaburst",
+            "stat": "atk",
+            "values": [
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "duration": 8,
+            "stacks": 3
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "p11",
@@ -398,6 +432,48 @@
             "duration": 14
           }
         ]
+      },
+      {
+        "characters": [
+          "lucy",
+          "rebecca"
+        ],
+        "kinds": [
+          "basic",
+          "heavy",
+          "skill",
+          "liberation",
+          "intro",
+          "outro",
+          "echo"
+        ],
+        "buffs": [
+          {
+            "name": "Skull Thrasher: Hack",
+            "stat": "basicBonus",
+            "values": [
+              12,
+              15,
+              18,
+              21,
+              24
+            ],
+            "duration": 14
+          },
+          {
+            "name": "Skull Thrasher",
+            "stat": "atk",
+            "target": "team",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 30
+          }
+        ]
       }
     ]
   },
@@ -442,6 +518,49 @@
             ],
             "duration": 14,
             "stacks": 2
+          }
+        ]
+      },
+      {
+        "characters": [
+          "lucy",
+          "rebecca"
+        ],
+        "kinds": [
+          "basic",
+          "heavy",
+          "skill",
+          "liberation",
+          "intro",
+          "outro",
+          "echo"
+        ],
+        "buffs": [
+          {
+            "name": "Spectral Trigger",
+            "stat": "amplification",
+            "kind": "heavy",
+            "values": [
+              30,
+              37.5,
+              45,
+              52.5,
+              60
+            ],
+            "duration": 14
+          },
+          {
+            "name": "Spectral Trigger",
+            "stat": "defIgnore",
+            "kind": "heavy",
+            "values": [
+              10,
+              12.5,
+              15,
+              17.5,
+              20
+            ],
+            "duration": 14
           }
         ]
       }
@@ -512,6 +631,32 @@
               72
             ],
             "duration": 4
+          }
+        ]
+      },
+      {
+        "characters": [
+          "lynae",
+          "lucy",
+          "rebecca"
+        ],
+        "kinds": [
+          "basic"
+        ],
+        "buffs": [
+          {
+            "name": "Spectrum Blaster: Team",
+            "stat": "damageBonus",
+            "target": "team",
+            "values": [
+              8,
+              10,
+              12,
+              14,
+              16
+            ],
+            "duration": 30,
+            "stacks": 3
           }
         ]
       }

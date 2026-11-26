@@ -442,6 +442,23 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "inflicts": "electroFlare",
+        "buffs": [],
+        "statusAmplification": {
+          "status": "electroFlare",
+          "values": [
+            30,
+            37.5,
+            45,
+            52.5,
+            60
+          ],
+          "duration": 30
+        }
+      }
     ]
   },
   {
@@ -552,6 +569,35 @@
           {
             "name": "Forged Dwarf Star",
             "stat": "liberationBonus",
+            "values": [
+              36,
+              45,
+              54,
+              63,
+              72
+            ],
+            "duration": 5
+          }
+        ]
+      },
+      {
+        "characters": [
+          "denia"
+        ],
+        "kinds": [
+          "basic",
+          "heavy",
+          "skill",
+          "liberation",
+          "intro",
+          "outro",
+          "echo"
+        ],
+        "buffs": [
+          {
+            "name": "Forged Dwarf Star",
+            "stat": "liberationBonus",
+            "mode": 1,
             "values": [
               36,
               45,

@@ -1,5 +1,6 @@
 import { StatBuff } from '../character-data.model';
 import { EchoMainValue, EchoStat, SonataTrigger } from '../echos/echo-data.model';
+import { NegativeStatus } from '../../core/negative-status';
 
 export type WeaponType = 'broadblade' | 'sword' | 'pistols' | 'gauntlets' | 'rectifier';
 
@@ -17,10 +18,12 @@ export interface WeaponBuff extends Omit<StatBuff, 'value'> {
 }
 
 /** A triggered passive (as a Sonata trigger), with the values of each rank */
-export interface WeaponTrigger extends Omit<SonataTrigger, 'buffs' | 'heal'> {
+export interface WeaponTrigger extends Omit<SonataTrigger, 'buffs' | 'heal' | 'statusAmplification'> {
   buffs: WeaponBuff[];
   /** % of the Max HP it heals, one value per rank */
   heal?: number[];
+  /** Amplification of the damage of a Negative Status, one value per rank */
+  statusAmplification?: { status: NegativeStatus; values: number[]; duration: number };
 }
 
 export interface WeaponData {

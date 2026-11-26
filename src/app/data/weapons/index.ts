@@ -16,9 +16,10 @@ export function getWeapon(id: string): WeaponData | undefined {
 /** Triggers of the equipped weapon with the values of its rank */
 export function weaponTriggers(slot: WeaponSlot | null): SonataTrigger[] {
   const weapon = slot && getWeapon(slot.id);
-  return (weapon?.triggers ?? []).map(({ buffs, heal, ...trigger }) => ({
+  return (weapon?.triggers ?? []).map(({ buffs, heal, statusAmplification: amplification, ...trigger }) => ({
     ...trigger,
     buffs: buffs.map(({ values, ...buff }) => ({ ...buff, value: values[slot!.rank - 1] })),
     ...(heal && { heal: { name: weapon!.name, value: heal[slot!.rank - 1] } }),
+    ...(amplification && { statusAmplification: { name: weapon!.name, status: amplification.status, value: amplification.values[slot!.rank - 1], duration: amplification.duration } }),
   }));
 }

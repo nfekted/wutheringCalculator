@@ -95,8 +95,10 @@ export interface StatBuff {
   element?: string;
   /** It ends when the character comes back to the field */
   endsOnReturn?: boolean;
-  /** It ends when the character leaves the field (its Outro) */
+  /** It ends when the character leaves the field (its Outro); without `duration`, it lasts until then */
   endsOnSwitch?: boolean;
+  /** Only Dodge Counter hits (by their name) get it */
+  dodge?: boolean;
   /** Of a buff a hit gives (or always active): only in this Resonance Mode of the character (index in `modes`) */
   mode?: number;
   /** Only hits of this kind get it (e.g. the Echo Skill of whoever is on the field) */

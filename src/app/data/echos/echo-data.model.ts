@@ -19,10 +19,14 @@ export interface SonataTrigger {
   inflicts?: NegativeStatus | 'any';
   /** 'any': while the target has any Negative Status */
   onTarget?: { status: NegativeStatus | 'any'; stacks?: number };
+  /** "Dashing or dodging": an action with a Dodge Counter hit (by its name) */
+  dodge?: boolean;
   status?: NegativeStatus;
   buffs: StatBuff[];
   /** Also heals this % of the Max HP of the character (a healing row) */
   heal?: { name: string; value: number };
+  /** Also amplifies the damage of a Negative Status (its ticks) by `value`% for `duration` seconds (team only) */
+  statusAmplification?: { name: string; status: NegativeStatus; value: number; duration: number };
   /** Fires at most once every these seconds (points) */
   cooldown?: number;
   characters?: string[];

@@ -257,7 +257,40 @@
       "stat": "dmg",
       "value": 30.38
     },
-    "text": "When Resonance Liberation is cast, grants 3/3/3/3/3 stack(s) of Iron Armor. Each stack increases ATK and DEF by 3%/3.5%/4%/4.5%/5%, stacking up to 3/3/3/3/3 time(s). When the Resonator takes damage, reduces the number of stacks by 1/1/1/1/1."
+    "text": "When Resonance Liberation is cast, grants 3/3/3/3/3 stack(s) of Iron Armor. Each stack increases ATK and DEF by 3%/3.5%/4%/4.5%/5%, stacking up to 3/3/3/3/3 time(s). When the Resonator takes damage, reduces the number of stacks by 1/1/1/1/1.",
+    "triggers": [
+      {
+        "sections": [
+          "liberation"
+        ],
+        "buffs": [
+          {
+            "name": "Hollow Mirage",
+            "stat": "atk",
+            "values": [
+              9,
+              10.5,
+              12,
+              13.5,
+              15
+            ],
+            "endsOnSwitch": true
+          },
+          {
+            "name": "Hollow Mirage",
+            "stat": "def",
+            "values": [
+              9,
+              10.5,
+              12,
+              13.5,
+              15
+            ],
+            "endsOnSwitch": true
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "g11",
@@ -300,7 +333,51 @@
       "stat": "energyRegen",
       "value": 38.88
     },
-    "text": "When the Resonator dashes or dodges, increases ATK by 8%/10%/12%/14%/16%. Increases Dodge Counter DMG by 50%/62.5%/75%/87.5%/100%, lasting for 8/8/8/8/8s. When Dodge Counter is performed, heals 5%/6.25%/7.5%/8.75%/10% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 6/6/6/6/6s."
+    "text": "When the Resonator dashes or dodges, increases ATK by 8%/10%/12%/14%/16%. Increases Dodge Counter DMG by 50%/62.5%/75%/87.5%/100%, lasting for 8/8/8/8/8s. When Dodge Counter is performed, heals 5%/6.25%/7.5%/8.75%/10% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 6/6/6/6/6s.",
+    "triggers": [
+      {
+        "dodge": true,
+        "buffs": [
+          {
+            "name": "Gauntlets#21D",
+            "stat": "atk",
+            "values": [
+              8,
+              10,
+              12,
+              14,
+              16
+            ],
+            "duration": 8
+          },
+          {
+            "name": "Gauntlets#21D: Dodge Counter",
+            "stat": "damageBonus",
+            "dodge": true,
+            "values": [
+              50,
+              62.5,
+              75,
+              87.5,
+              100
+            ],
+            "duration": 8
+          }
+        ]
+      },
+      {
+        "dodge": true,
+        "buffs": [],
+        "heal": [
+          5,
+          6.25,
+          7.5,
+          8.75,
+          10
+        ],
+        "cooldown": 6
+      }
+    ]
   },
   {
     "id": "g13",
@@ -453,6 +530,48 @@
             "duration": 4
           }
         ]
+      },
+      {
+        "characters": [
+          "luuk"
+        ],
+        "kinds": [
+          "basic",
+          "heavy",
+          "skill",
+          "liberation",
+          "intro",
+          "outro",
+          "echo"
+        ],
+        "buffs": [
+          {
+            "name": "Daybreaker's Spine",
+            "stat": "amplification",
+            "kind": "basic",
+            "values": [
+              20,
+              25,
+              30,
+              35,
+              40
+            ],
+            "duration": 6
+          },
+          {
+            "name": "Daybreaker's Spine",
+            "stat": "defIgnore",
+            "kind": "basic",
+            "values": [
+              10,
+              12.5,
+              15,
+              17.5,
+              20
+            ],
+            "duration": 6
+          }
+        ]
       }
     ]
   },
@@ -595,7 +714,18 @@
             ],
             "duration": 6
           }
-        ]
+        ],
+        "statusAmplification": {
+          "status": "spectroFrazzle",
+          "values": [
+            50,
+            62.5,
+            75,
+            87.5,
+            100
+          ],
+          "duration": 6
+        }
       }
     ]
   },

@@ -412,6 +412,51 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "characters": [
+          "qingxiao"
+        ],
+        "kinds": [
+          "basic",
+          "heavy",
+          "skill",
+          "liberation",
+          "intro",
+          "outro",
+          "echo"
+        ],
+        "buffs": [
+          {
+            "name": "Glint of Clouds",
+            "stat": "elementalBonus",
+            "element": "aero",
+            "values": [
+              11.2,
+              14,
+              16.8,
+              19.6,
+              22.4
+            ],
+            "duration": 30,
+            "stacks": 5
+          },
+          {
+            "name": "Glint of Clouds",
+            "stat": "defIgnore",
+            "element": "aero",
+            "values": [
+              10,
+              12.5,
+              15,
+              17.5,
+              20
+            ],
+            "duration": 30
+          }
+        ]
+      }
     ]
   },
   {
@@ -491,6 +536,23 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "inflicts": "glacioChafe",
+        "buffs": [],
+        "statusAmplification": {
+          "status": "glacioChafe",
+          "values": [
+            20,
+            25,
+            30,
+            35,
+            40
+          ],
+          "duration": 6
+        }
+      }
     ]
   },
   {
@@ -531,6 +593,36 @@
               64
             ],
             "duration": 8
+          }
+        ]
+      },
+      {
+        "characters": [
+          "aemeath"
+        ],
+        "kinds": [
+          "basic",
+          "heavy",
+          "skill",
+          "liberation",
+          "intro",
+          "outro",
+          "echo"
+        ],
+        "buffs": [
+          {
+            "name": "Everbright Polestar",
+            "stat": "defIgnore",
+            "kind": "liberation",
+            "values": [
+              32,
+              40,
+              48,
+              56,
+              64
+            ],
+            "duration": 8,
+            "mode": 1
           }
         ]
       }

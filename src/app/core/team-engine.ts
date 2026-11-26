@@ -1,5 +1,5 @@
 import { Amplification, Stats, noAmplification } from './damage-engine';
-import { CoordinatedAttack, HitKey, HitKind, OutroBuff, RotationStep, StatBuff, TeamField, CharacterStatus, StatusMax } from '../data/character-data.model';
+import { CoordinatedAttack, Hit, HitKey, HitKind, OutroBuff, RotationStep, StatBuff, TeamField, CharacterStatus, StatusMax } from '../data/character-data.model';
 import { Character } from '../shared/models/character.model';
 import { NEGATIVE_STATUS, NegativeStatus, defFactor, statusHit, statusTick } from './negative-status';
 import { GearOutro, SonataTrigger } from '../data/echos/echo-data.model';
@@ -349,14 +349,14 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   /** An attribute buff of a member, to itself or to the whole team; by name, the same buff given again (by any hit) renews it */
   /** `to`: the member that gets it instead (the incoming one of an Outro), until it leaves the field */
   const give = (character: Character, slot: number, buff: StatBuff, to?: number) => {
-    if (!buff.duration || (buff.mode !== undefined && buff.mode !== character.mode)) return;
+    if ((!buff.duration && !buff.endsOnSwitch) || (buff.mode !== undefined && buff.mode !== character.mode)) return;
     const id = `self:${slot}:${buff.name}:${buff.stat}`;
     const count = buff.stacks ? Math.min((active.find(a => a.id === id)?.count ?? 0) + 1, buff.stacks) : 1;
     const stat = scaled(character, buff, count);
     if (!stat.value) return;
     active = active.filter(a => a.id !== id);
     active.push({
-      id, receiver: to ?? (buff.target === 'team' ? null : slot), points: buff.duration, label: `${character.name}: ${statLabel(stat)}`, stat, count,
+      id, receiver: to ?? (buff.target === 'team' ? null : slot), points: buff.duration ?? Infinity, label: `${character.name}: ${statLabel(stat)}`, stat, count,
       endsOnReturn: buff.endsOnReturn, endsOnSwitch: to !== undefined || buff.endsOnSwitch,
     });
   };
@@ -682,6 +682,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       for (const [t, trigger] of (block.length ? triggers : []).entries()) {
         const fires = trigger.kinds?.some(k => blockKinds.includes(k)) || trigger.sections?.some(s => blockSections.includes(s))
           || (!!trigger.inflicts && inflicts(trigger.inflicts))
+          || (!!trigger.dodge && block.some(s => isDodgeCounter(character.stepHit(s))))
           || (!!trigger.onTarget && onTarget.some(s => (trigger.onTarget!.status === 'any' || s.status === trigger.onTarget!.status) && s.stacks >= (trigger.onTarget!.stacks ?? 1)));
         const id = `${slot}:${t}`;
         if (!fires || (triggerCooldown.get(id) ?? 0) > 0) continue;
@@ -690,6 +691,11 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         if (trigger.heal) {
           const value = character.hp * trigger.heal.value / 100 * (1 + character.healingBonus / 100);
           pushRow({ rotation, slot, step: giver, name: `${trigger.heal.name} (heal)`, buffs: [], damage: false, base: value, buffed: value, auto: true });
+        }
+        const boost = trigger.statusAmplification;
+        if (boost) {
+          const label = `${character.name}: ${boost.name} (${NEGATIVE_STATUS[boost.status].name} +${boost.value}%)`;
+          statusBoosts = [...statusBoosts.filter(b => b.label !== label), { status: boost.status, amplification: boost.value, intervalRate: 1, points: boost.duration, label }];
         }
       }
       const hitMax = blockEnd[position] ? character.stepHit(giver)?.statusMax : undefined;
@@ -796,6 +802,11 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   return { rows, members, total: sum(rows) };
 }
 
+/** A Dodge Counter hit, by its name (there is no dodge in the rotation) */
+function isDodgeCounter(hit?: Hit): boolean {
+  return !!hit && /dodge counter/i.test(hit.name);
+}
+
 /** Bonuses of one kind of hit */
 const KIND_OF: Partial<Record<StatBuff['stat'], string>> = { liberationBonus: 'liberation', heavyBonus: 'heavy', skillBonus: 'skill', basicBonus: 'basic', echoBonus: 'echo' };
 
@@ -812,7 +823,7 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   // A hit of another element gets no elemental bonus of the character, and the element buffs of its own element
   const element = hit?.element ?? character.data.type;
   const coordinated = !!character.data.coordinated?.hits.includes(key);
-  const fits = (buff?: StatBuff) => !hit?.noBuffs && (!buff || ((!buff.hits || buff.hits.includes(key)) && (!buff.element || buff.element === element) && (!buff.kind || buff.kind === kind)
+  const fits = (buff?: StatBuff) => !hit?.noBuffs && (!buff || ((!buff.hits || buff.hits.includes(key)) && (!buff.element || buff.element === element) && (!buff.kind || buff.kind === kind) && (!buff.dodge || isDodgeCounter(hit))
     && !(buff.stat === 'elementalBonus' && element !== character.data.type) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat])
     && (buff.stat === 'atk' || buff.stat === 'flatAtk' ? !!hit?.parts.some(part => part.stat === 'atk')
       : buff.stat === 'def' ? !!hit?.parts.some(part => part.stat === 'def') : !support)));
