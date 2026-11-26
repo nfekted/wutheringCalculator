@@ -47,7 +47,7 @@ import { attributeLabel } from '../echo-set/echo-attribute';
           <button type="button" class="ui-btn ui-btn-secondary justify-start gap-2 text-left" [class.ring-1]="weapon.id === slot()?.id" (click)="pick(weapon)">
             <img [src]="'assets/img/weapons/' + weapon.id + '.webp'" alt="" class="h-8 w-8 shrink-0" (error)="$any($event.target).hidden = true" />
             <span class="min-w-0">
-              <span class="block truncate">{{ weapon.name }}</span>
+              <span class="block truncate">{{ star(weapon) }}{{ weapon.name }}</span>
               <span class="block text-xs text-mute">ATK {{ weapon.atk }} · {{ label(weapon) }} {{ weapon.main.value }}</span>
             </span>
           </button>
@@ -64,8 +64,17 @@ export class WeaponModalComponent {
   private transloco = inject(TranslocoService);
 
   protected readonly ranks = [1, 2, 3, 4, 5];
-  /** Weapons of the type of the character, the strongest first */
-  protected readonly weapons = WEAPONS.filter(w => w.type === this.character().data.weapon).reverse();
+  private readonly recommended = this.character().data.recommended.weapons;
+  /** Weapons of the type of the character: the recommended ones first (from the best to the worst), then the strongest first */
+  protected readonly weapons = [
+    ...this.recommended.flatMap(id => getWeapon(id) ?? []),
+    ...WEAPONS.filter(w => w.type === this.character().data.weapon && !this.recommended.includes(w.id)).reverse(),
+  ];
+
+  /** Star before a recommended weapon */
+  protected star(weapon: WeaponData): string {
+    return this.recommended.includes(weapon.id) ? '★ ' : '';
+  }
 
   slot = signal<WeaponSlot | null>(this.character().weapon);
   selected = computed(() => {

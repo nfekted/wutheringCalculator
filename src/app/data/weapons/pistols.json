@@ -449,7 +449,7 @@
   },
   {
     "id": "p19",
-    "name": "Spectrum Blaste",
+    "name": "Spectrum Blaster",
     "type": "pistols",
     "atk": 587.5,
     "main": {
@@ -479,7 +479,7 @@
         ],
         "buffs": [
           {
-            "name": "Spectrum Blaste",
+            "name": "Spectrum Blaster",
             "stat": "basicBonus",
             "values": [
               36,

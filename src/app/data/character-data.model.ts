@@ -387,7 +387,7 @@ export interface CharacterRecommendation {
   echos: number[];
   /** Ids of the Sonatas; a combination (e.g. 3 + 2 pieces) has two */
   sonatas: number[][];
-  /** Weapon names, kept until there is weapon data */
+  /** Ids of the weapons (`WeaponData.id`) */
   weapons: string[];
   /** Teams, each member with its role (main: main DPS, sub: sub-DPS, sup: support), kept for later use */
   teams: { character: string; role: 'main' | 'sub' | 'sup' }[][];
