@@ -4,7 +4,7 @@ import { Character } from '../shared/models/character.model';
 import { NEGATIVE_STATUS, NegativeStatus, defFactor, statusHit, statusTick } from './negative-status';
 import { GearOutro, SonataTrigger } from '../data/echos/echo-data.model';
 import { SONATAS } from '../data/echos';
-import { weaponTriggers } from '../data/weapons';
+import { weaponOutro, weaponTriggers } from '../data/weapons';
 import { sonataPieces } from './stat-engine';
 import { advance, counterBonuses, counterBoosted, isStart, keyStep, spendsPoints, startContext, stepCost, stepKey, units } from './rotation-rules';
 
@@ -132,14 +132,14 @@ export function simulateRotation(character: Character, steps: RotationStep[]): T
 }
 
 /**
- * Outro buffs of the Echos and Sonatas: each Sonata bonus with enough pieces, and the main slot Echo when the steps cast its Echo Skill;
+ * Outro buffs of the Echos, Sonatas and weapon: each Sonata bonus with enough pieces, the main slot Echo when the steps cast its Echo Skill, the weapon;
  * one with a `status` only when the character inflicts it
  */
 function gearOutros(character: Character, steps: RotationStep[]): GearOutro[] {
   const pieces = sonataPieces(character.echoSet);
   const sonatas = SONATAS.flatMap(sonata => sonata.bonuses.filter(bonus => bonus.pieces <= (pieces.get(sonata.id) ?? 0)).flatMap(bonus => bonus.outro ?? []));
   const echo = steps.some(step => step.section === 'echo') ? character.mainEcho?.outro : undefined;
-  return [...sonatas, ...(echo ? [echo] : [])].filter(gear => !gear.status || rulesOf(character).some(rule => rule.status === gear.status));
+  return [...sonatas, ...(echo ? [echo] : []), ...weaponOutro(character.weapon)].filter(gear => !gear.status || rulesOf(character).some(rule => rule.status === gear.status));
 }
 
 /** Triggers of the character's Sonata bonuses with enough pieces, of its main slot Echo and of its weapon (the ones limited to others left out) */
@@ -526,6 +526,10 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         if (buff.target !== 'incoming') give(character, slot, buff);
         else if (incoming !== undefined) give(character, slot, buff, incoming);
       });
+      for (const boost of gear.flatMap(g => g.statusAmplification ?? [])) {
+        const label = `${character.name}: ${boost.name} (${NEGATIVE_STATUS[boost.status].name} +${boost.value}%)`;
+        statusBoosts = [...statusBoosts.filter(b => b.label !== label), { status: boost.status, amplification: boost.value, intervalRate: 1, points: boost.duration, label }];
+      }
       for (const rule of statuses ? rulesOf(character) : []) {
         if (rule.state !== undefined && !context.states.includes(rule.state)) continue;
         if (rule.outroMax) {

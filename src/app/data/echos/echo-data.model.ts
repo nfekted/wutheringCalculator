@@ -38,6 +38,8 @@ export interface GearOutro {
   status?: NegativeStatus;
   /** Extra damage on the Outro (e.g. Midnight Veil "deal additional 480% Havoc DMG"): elemental bonus only, no buffs */
   hits?: Hit[];
+  /** Amplification of the damage of a Negative Status from the Outro (as `SonataTrigger.statusAmplification`; team only) */
+  statusAmplification?: SonataTrigger['statusAmplification'];
 }
 
 export type EchoCost = 1 | 3 | 4;

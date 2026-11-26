@@ -145,7 +145,7 @@
       "stat": "cChance",
       "value": 20.25
     },
-    "text": "Dealing Basic Attack or Heavy Attack DMG increases ATK by 2.2%/3.4%/4.7%/5.9%/7.2% and grants 2.2%/3.4%/4.7%/5.9%/7.2% Heavy Attack DMG Bonus for 7/7/7/7/7s, stacking up to 4/4/4/4 times. This effect can be triggered 1/1/1/1/1 times every 1/1/1/1/1s.",
+    "text": "Dealing Basic Attack or Heavy Attack DMG increases ATK by 2.2%/3.4%/4.7%/5.9%/7.2% and grants 2.2%/3.4%/4.7%/5.9%/7.2% Heavy Attack DMG Bonus for 7/7/7/7/7s, stacking up to 4/4/4/4/4 times. This effect can be triggered 1/1/1/1/1 times every 1/1/1/1/1s.",
     "triggers": [
       {
         "kinds": [
@@ -321,7 +321,19 @@
       "stat": "dmg",
       "value": 36.45
     },
-    "text": "When the Resonator takes no damage, increases ATK by 6%/7.5%/9%/10.5%/12% every 5/5/5/5/5s, stacking up to 2/2/2/2/2 time(s). This effect lasts for 8/8/8/8/8s. When the Resonator takes damage, loses 1/1/1/1/1 stacks and heals 5%/6.25%/7.5%/8.75%/10% of their Max HP."
+    "text": "When the Resonator takes no damage, increases ATK by 6%/7.5%/9%/10.5%/12% every 5/5/5/5/5s, stacking up to 2/2/2/2/2 time(s). This effect lasts for 8/8/8/8/8s. When the Resonator takes damage, loses 1/1/1/1/1 stacks and heals 5%/6.25%/7.5%/8.75%/10% of their Max HP.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
   },
   {
     "id": "p13",
@@ -387,6 +399,50 @@
           18,
           21,
           24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "kinds": [
+          "heal"
+        ],
+        "buffs": [
+          {
+            "name": "Lullaby",
+            "stat": "echoBonus",
+            "target": "team",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 30
+          }
+        ]
+      },
+      {
+        "characters": [
+          "lily"
+        ],
+        "sections": [
+          "liberation"
+        ],
+        "buffs": [
+          {
+            "name": "Lullaby: Soothed Soul",
+            "stat": "atk",
+            "values": [
+              16,
+              20,
+              24,
+              28,
+              32
+            ],
+            "duration": 30
+          }
         ]
       }
     ]
@@ -587,6 +643,27 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "kinds": [
+          "tune"
+        ],
+        "buffs": [
+          {
+            "name": "Phasic Homogenizer",
+            "stat": "elementalBonus",
+            "values": [
+              20,
+              22.5,
+              25,
+              27.5,
+              30
+            ],
+            "duration": 14
+          }
+        ]
+      }
     ]
   },
   {
@@ -702,6 +779,18 @@
               48
             ],
             "duration": 6
+          },
+          {
+            "name": "Lux & Umbra",
+            "stat": "defIgnore",
+            "values": [
+              8,
+              10,
+              12,
+              14,
+              16
+            ],
+            "duration": 6
           }
         ]
       },
@@ -720,6 +809,18 @@
               36,
               42,
               48
+            ],
+            "duration": 6
+          },
+          {
+            "name": "Lux & Umbra",
+            "stat": "defIgnore",
+            "values": [
+              8,
+              10,
+              12,
+              14,
+              16
             ],
             "duration": 6
           }
@@ -836,6 +937,23 @@
           25.6
         ]
       }
-    ]
+    ],
+    "outro": {
+      "statBuffs": [
+        {
+          "name": "Static Mist",
+          "stat": "atk",
+          "values": [
+            10,
+            12.5,
+            15,
+            17.5,
+            20
+          ],
+          "duration": 14,
+          "target": "incoming"
+        }
+      ]
+    }
   }
 ]

@@ -41,6 +41,8 @@ export interface WeaponData {
   stats?: WeaponStat[];
   /** Triggered part of the passive (team engine, as the Sonata triggers) */
   triggers?: WeaponTrigger[];
+  /** What the Outro of the wielder gives (as a Sonata `outro`), with the values of each rank */
+  outro?: { statBuffs?: WeaponBuff[]; statusAmplification?: WeaponTrigger['statusAmplification'] };
 }
 
 /** The weapon a character has equipped and its rank (1 to 5) */

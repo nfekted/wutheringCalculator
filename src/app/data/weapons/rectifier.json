@@ -632,6 +632,39 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "kinds": [
+          "tune"
+        ],
+        "buffs": [
+          {
+            "name": "Boson Astrolabe",
+            "stat": "atk",
+            "values": [
+              12,
+              13.5,
+              15,
+              16.5,
+              18
+            ],
+            "duration": 14
+          },
+          {
+            "name": "Boson Astrolabe",
+            "stat": "basicBonus",
+            "values": [
+              12,
+              13.5,
+              15,
+              16.5,
+              18
+            ],
+            "duration": 14
+          }
+        ]
+      }
     ]
   },
   {
@@ -782,7 +815,20 @@
           }
         ]
       }
-    ]
+    ],
+    "outro": {
+      "statusAmplification": {
+        "status": "spectroFrazzle",
+        "values": [
+          30,
+          37.5,
+          45,
+          52.5,
+          60
+        ],
+        "duration": 30
+      }
+    }
   },
   {
     "id": "r25",

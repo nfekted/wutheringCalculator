@@ -389,6 +389,45 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "characters": [
+          "suoming"
+        ],
+        "sections": [
+          "liberation"
+        ],
+        "buffs": [
+          {
+            "name": "Unspoken Rue",
+            "stat": "elementalBonus",
+            "element": "electro",
+            "values": [
+              30,
+              37.5,
+              45,
+              52.5,
+              60
+            ],
+            "duration": 30
+          },
+          {
+            "name": "Unspoken Rue: Binding Mind",
+            "stat": "elementalBonus",
+            "element": "electro",
+            "target": "team",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 30
+          }
+        ]
+      }
     ]
   },
   {
