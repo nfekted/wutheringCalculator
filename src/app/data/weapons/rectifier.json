@@ -1,0 +1,791 @@
+[
+  {
+    "id": "r1",
+    "name": "Training Rectifier",
+    "type": "rectifier",
+    "atk": 250,
+    "main": {
+      "stat": "dmg",
+      "value": 11.47
+    },
+    "text": "Increases ATK by 4%/5%/6%/7%/8%.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r2",
+    "name": "Tyro Rectifier",
+    "type": "rectifier",
+    "atk": 275,
+    "main": {
+      "stat": "dmg",
+      "value": 14.85
+    },
+    "text": "Increases ATK by 5%/6.25%/7.5%/8.75%/10%.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          5,
+          6.25,
+          7.5,
+          8.75,
+          10
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r3",
+    "name": "Guardian Rectifier",
+    "type": "rectifier",
+    "atk": 325,
+    "main": {
+      "stat": "dmg",
+      "value": 24.3
+    },
+    "text": "Increases Basic Attack and Heavy Attack DMG Bonus by 12%/15%/18%/21%/24%.",
+    "stats": [
+      {
+        "stat": "basicBonus",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      },
+      {
+        "stat": "heavyBonus",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r4",
+    "name": "Rectifier of Voyager",
+    "type": "rectifier",
+    "atk": 300,
+    "main": {
+      "stat": "energyRegen",
+      "value": 32.4
+    },
+    "text": "When Resonance Skill is cast, restores 8/9/10/11/12 Resonance Energy. This effect can be triggered 1/1/1/1/1 time(s) every 20/20/20/20/20s."
+  },
+  {
+    "id": "r5",
+    "name": "Originite: Type V",
+    "type": "rectifier",
+    "atk": 300,
+    "main": {
+      "stat": "hp",
+      "value": 30.38
+    },
+    "text": "When Intro Skill is cast, heals 5%/6.25%/7.5%/8.75%/10% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 20/20/20/20/20s."
+  },
+  {
+    "id": "r6",
+    "name": "Rectifier of Night",
+    "type": "rectifier",
+    "atk": 325,
+    "main": {
+      "stat": "dmg",
+      "value": 24.3
+    },
+    "text": "When Intro Skill is cast, increases ATK by 8%/10%/12%/14%/16%, lasting for 10/10/10/10/10s.",
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "buffs": [
+          {
+            "name": "Rectifier of Night",
+            "stat": "atk",
+            "values": [
+              8,
+              10,
+              12,
+              14,
+              16
+            ],
+            "duration": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r7",
+    "name": "Radiant Dawn",
+    "type": "rectifier",
+    "atk": 412.5,
+    "main": {
+      "stat": "cDmg",
+      "value": 40.5
+    },
+    "text": "Casting Resonance Skill increases ATK by 9%/13.9%/18.9%/23.8%/28.8% and grants 9%/13.9%/18.9%/23.8%/28.8% Basic Attack DMG Bonus for 10/10/10/10/10s.",
+    "triggers": [
+      {
+        "sections": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Radiant Dawn",
+            "stat": "atk",
+            "values": [
+              9,
+              13.9,
+              18.9,
+              23.8,
+              28.8
+            ],
+            "duration": 10
+          },
+          {
+            "name": "Radiant Dawn",
+            "stat": "basicBonus",
+            "values": [
+              9,
+              13.9,
+              18.9,
+              23.8,
+              28.8
+            ],
+            "duration": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r8",
+    "name": "Ocean's Gift",
+    "type": "rectifier",
+    "atk": 462.5,
+    "main": {
+      "stat": "dmg",
+      "value": 18.23
+    },
+    "text": "Dealing DMG to enemies with Spectro Frazzle increases the wielder's Spectro DMG by 6%/7%/8%/9%/10%, gaining 1 stack per second for 6s, stacking up to 4 times."
+  },
+  {
+    "id": "r9",
+    "name": "Waltz in Masquerade",
+    "type": "rectifier",
+    "atk": 462.5,
+    "main": {
+      "stat": "dmg",
+      "value": 18.23
+    },
+    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times."
+  },
+  {
+    "id": "r10",
+    "name": "Call of the Abyss",
+    "type": "rectifier",
+    "atk": 337.5,
+    "main": {
+      "stat": "energyRegen",
+      "value": 51.84
+    },
+    "text": "Casting Resonance Liberation increases the Resonator's Healing Bonus by 16%/20%/24%/28%/32% for 15/15/15/15/15s."
+  },
+  {
+    "id": "r11",
+    "name": "Fusion Accretion",
+    "type": "rectifier",
+    "atk": 462.5,
+    "main": {
+      "stat": "dmg",
+      "value": 18.23
+    },
+    "text": "Casting the Resonance Skill grants 6/7/8/9/10 Resonance Energy and increases ATK by 10%/12.5%/15%/17.5%/20%, lasting for 16/16/16/16/16s. This effect can be triggered once every 20/20/20/20/20s.",
+    "triggers": [
+      {
+        "sections": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Fusion Accretion",
+            "stat": "atk",
+            "values": [
+              10,
+              12.5,
+              15,
+              17.5,
+              20
+            ],
+            "duration": 16
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r12",
+    "name": "Comet Flare",
+    "type": "rectifier",
+    "atk": 412.5,
+    "main": {
+      "stat": "hp",
+      "value": 30.38
+    },
+    "text": "When dealing Basic Attack DMG or Heavy Attack DMG, increases Healing Bonus by 3%/3.75%/4.5%/5.25%/6%, stacking up to 3/3/3/3/3 time(s). This effect lasts for 8/8/8/8/8s and can be triggered 1/1/1/1/1 time(s) every 0.6/0.6/0.6/0.6/0.6s."
+  },
+  {
+    "id": "r13",
+    "name": "Jinzhou Keeper",
+    "type": "rectifier",
+    "atk": 387.5,
+    "main": {
+      "stat": "dmg",
+      "value": 36.45
+    },
+    "text": "Casting Intro Skill increases the wielder's ATK by 8%/10%/12%/14%/16% and HP by 10%/12.5%/15%/17.5%/20%, lasting for 15/15/15/15/15s.",
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "buffs": [
+          {
+            "name": "Jinzhou Keeper",
+            "stat": "atk",
+            "values": [
+              8,
+              10,
+              12,
+              14,
+              16
+            ],
+            "duration": 15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r14",
+    "name": "Rectifier#25",
+    "type": "rectifier",
+    "atk": 337.5,
+    "main": {
+      "stat": "energyRegen",
+      "value": 51.84
+    },
+    "text": "When Resonance Skill is cast, if the Resonator's HP is below 60%/60%/60%/60%/60%, heals 5%/6.25%/7.5%/8.75%/10% of their Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 8/8/8/8/8s. If the Resonator's HP is above 60%/60%/60%/60%/60%, increases ATK by 12%/15%/18%/21%/24%, lasting for 10/10/10/10/10s."
+  },
+  {
+    "id": "r15",
+    "name": "Variation",
+    "type": "rectifier",
+    "atk": 337.5,
+    "main": {
+      "stat": "energyRegen",
+      "value": 51.84
+    },
+    "text": "When Resonance Skill is cast, restores 8/10/12/14/16 Concerto Energy. This effect can be triggered 1/1/1/1/1 times every 20/20/20/20/20s"
+  },
+  {
+    "id": "r16",
+    "name": "Augment",
+    "type": "rectifier",
+    "atk": 412.5,
+    "main": {
+      "stat": "cChance",
+      "value": 20.25
+    },
+    "text": "Casting Resonance Liberation increases the wielder's ATK by 15%/23.25%/31.5%/39.75%/48%, lasting for 15/15/15/15/15s.",
+    "triggers": [
+      {
+        "sections": [
+          "liberation"
+        ],
+        "buffs": [
+          {
+            "name": "Augment",
+            "stat": "atk",
+            "values": [
+              15,
+              23.25,
+              31.5,
+              39.75,
+              48
+            ],
+            "duration": 15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r17",
+    "name": "Blooming Jadehaven",
+    "type": "rectifier",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "Grants 12%/15%/18%/21%/24% All-Attribute DMG Bonus. After the wielder inflicts Electro Flare or triggers Unison Response, Resonance Skill DMG is Amplified by 36%/45%/54%/63%/72% and ignores 10%/13.5%/17%/20.5%/24% of the target's Electro RES. While the wielder is the active Resonator, Electro Flare DMG taken by targets within a certain range is Amplified by 30%/37.5%/45%/52.5%/60% for 30/30/30/30/30s, triggered 1/1/1/1/1 time every 0.1/0.1/0.1/0.1/0.1s. Only the strongest effect of the same name applies.",
+    "stats": [
+      {
+        "stat": "elementalBonus",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r18",
+    "name": "Firstlight's Herald",
+    "type": "rectifier",
+    "atk": 412.5,
+    "main": {
+      "stat": "energyRegen",
+      "value": 77.04
+    },
+    "text": "Increases Max HP by 12%/15%/18%/21%/24%. Casting Resonance Liberation restores 8/10/12/14/16 points of Concerto Energy, triggered once every 20s. Inflicting Glacio Chafe grants Snow Taint for 6s. Applying healing grants Ripples for 6s. If the wielder has done both while on the field, the next Outro Skill grants both effects for 6s. When the wielder has both Snow Taint and Ripples, the ATK of all nearby Resonators in the team is increased by 20%/25%/30%/35%/40%. Effects of the same name do not stack.",
+    "stats": [
+      {
+        "stat": "hp",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r19",
+    "name": "Freeze Frame",
+    "type": "rectifier",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. After inflicting Glacio Chafe on the target, the wielder gains 30%/37.5%/45%/52.5%/60% Glacio DMG Bonus for 12/12/12/12/12s, and all Resonators in the team gain 24%/30%/36%/42%/48% ATK increase for 30/30/30/30/30s. Effects of the same name cannot be stacked.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "inflicts": "glacioChafe",
+        "buffs": [
+          {
+            "name": "Freeze Frame",
+            "stat": "elementalBonus",
+            "element": "glacio",
+            "values": [
+              30,
+              37.5,
+              45,
+              52.5,
+              60
+            ],
+            "duration": 12
+          },
+          {
+            "name": "Freeze Frame",
+            "stat": "atk",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 30,
+            "target": "team"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r20",
+    "name": "Forged Dwarf Star",
+    "type": "rectifier",
+    "atk": 500,
+    "main": {
+      "stat": "cChance",
+      "value": 36
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. After the wielder inflicts Fusion Burst or Tune Strain - Shifting on the target, their Resonance Liberation DMG Bonus is increased by 36%/45%/54%/63%/72% for 5/5/5/5/5s. While this effect lasts, after Resonators in the team inflict Fusion Burst or Tune Strain - Shifting, their ATK is increased by 24%/30%/36%/42%/48% for 15/15/15/15/15s. Effects of the same name cannot be stacked.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "inflicts": "fusionBurst",
+        "buffs": [
+          {
+            "name": "Forged Dwarf Star",
+            "stat": "liberationBonus",
+            "values": [
+              36,
+              45,
+              54,
+              63,
+              72
+            ],
+            "duration": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r21",
+    "name": "Boson Astrolabe",
+    "type": "rectifier",
+    "atk": 525,
+    "main": {
+      "stat": "energyRegen",
+      "value": 38.88
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. After a Resonator in the team casts a Tune Break skill, it grants a 12%/13.5%/15%/16.5%/18% ATK increase and 12%/13.5%/15%/16.5%/18% Basic Attack DMG Bonus to the wielder for 14/14/14/14/14s.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r22",
+    "name": "Lethean Elegy",
+    "type": "rectifier",
+    "atk": 587.5,
+    "main": {
+      "stat": "cChance",
+      "value": 24.3
+    },
+    "text": "ATK is increased by 12%/15%/18%/21%/24%. Within 12/12/12/12/12s after dealing Echo Skill DMG, gain 32%/40%/48%/56%/64% Resonance Skill DMG Bonus and 32%/40%/48%/56%/64% Echo Skill DMG Amplification, and ignore 8%/10%/12%/14%/16% of the target's DEF when dealing damage.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "kinds": [
+          "echo"
+        ],
+        "buffs": [
+          {
+            "name": "Lethean Elegy",
+            "stat": "skillBonus",
+            "values": [
+              32,
+              40,
+              48,
+              56,
+              64
+            ],
+            "duration": 12
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r23",
+    "name": "Whispers of Sirens",
+    "type": "rectifier",
+    "atk": 500,
+    "main": {
+      "stat": "cDmg",
+      "value": 72
+    },
+    "text": "Increases ATK by 12%/15%/18%/21%/24%. Casting Echo Skill within 10/10/10/10/10s after casting Intro Skill or Basic Attacks grants 1/1/1/1/1 stack of Gentle Dream. Echoes with the same name can only trigger this effect once, stacking up to 2/2/2/2/2 times, lasting for 10/10/10/10/10s. When reaching 2 stacks, casting Echo Skill no longer resets the duration of this effect. This effect activates up to once per 10s. Switching to another Resonator ends this effect early.\nWith 1/1/1/1/1 stack Grants 40%/50%/60%/70%/80% Basic Attack DMG Bonus.\nWith 2/2/2/2/2 stack Ignores 12%/15%/18%/21%/24% of the target's Havoc RES.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r24",
+    "name": "Luminous Hymn",
+    "type": "rectifier",
+    "atk": 500,
+    "main": {
+      "stat": "cChance",
+      "value": 36
+    },
+    "text": "Increase ATK by 12%/15%/18%/21%/24%. Dealing DMG to targets with Spectro Frazzle grants the wielder 14%/17.5%/21%/24.5%/28% Basic Attack DMG Bonus and 14%/17.5%/21%/24.5%/28% Heavy Attack DMG Bonus, stacking up to 3/3/3/3/3times for 6/6/6/6/6s. Casting Outro Skill Amplifies the Spectro Frazzle DMG on targets around the active Resonator by 30%/37.5%/45%/52.5%/60% for 30/30/30/30/30s. Effects of the same name cannot be stacked.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "onTarget": {
+          "status": "spectroFrazzle"
+        },
+        "buffs": [
+          {
+            "name": "Luminous Hymn",
+            "stat": "basicBonus",
+            "values": [
+              14,
+              17.5,
+              21,
+              24.5,
+              28
+            ],
+            "duration": 6,
+            "stacks": 3
+          },
+          {
+            "name": "Luminous Hymn",
+            "stat": "heavyBonus",
+            "values": [
+              14,
+              17.5,
+              21,
+              24.5,
+              28
+            ],
+            "duration": 6,
+            "stacks": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r25",
+    "name": "Stellar Symphony",
+    "type": "rectifier",
+    "atk": 412.5,
+    "main": {
+      "stat": "energyRegen",
+      "value": 77.04
+    },
+    "text": "Increase HP by 12%/15%/18%/21%/24%. Restore 8/10/12/14/16 Concerto Energy when casting Resonance Liberation. This effect can be triggered 1/1/1/1/1 time(s) every 20/20/20/20/20s. When casting Resonance Skill that heals, increase nearby party members' ATK by 14%/17.5%/21%/24.5%/28% for 30/30/30/30/30s. Effects of the same name cannot be stacked.",
+    "stats": [
+      {
+        "stat": "hp",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r26",
+    "name": "Rime-Draped Sprouts",
+    "type": "rectifier",
+    "atk": 500,
+    "main": {
+      "stat": "cDmg",
+      "value": 72
+    },
+    "text": "Increase ATK by 12%/15%/18%/21%/24%. While the wielder is on the field, using Resonance Skill grants 12%/15%/18%/21%/24% Basic Attack DMG Bonus, stacking up to 3/3/3/3/3 times for 6/6/6/6/6s. At 3/3/3/3/3 stacks or above, casting Outro Skill consumes all stacks of this effect and grants the wielder 52%/65%/78%/91%/104% Basic Attack DMG Bonus for 27/27/27/27/27s, effective when the wielder is off the field.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Rime-Draped Sprouts",
+            "stat": "basicBonus",
+            "values": [
+              12,
+              15,
+              18,
+              21,
+              24
+            ],
+            "duration": 6,
+            "stacks": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r27",
+    "name": "Stringmaster",
+    "type": "rectifier",
+    "atk": 500,
+    "main": {
+      "stat": "cChance",
+      "value": 36
+    },
+    "text": "Grants 12%/15%/18%/21%/24% Attribute DMG Bonus. When dealing Resonance Skill DMG, increases ATK by 12%/15%/18%/21%/24%, stacking up to 2/2/2/2/2 times. This effect lasts for 5/5/5/5/5s. When the wielder is not on the field, increases their ATK by an additional 12%/15%/18%/21%/24%.",
+    "stats": [
+      {
+        "stat": "elementalBonus",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "kinds": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Stringmaster",
+            "stat": "atk",
+            "values": [
+              12,
+              15,
+              18,
+              21,
+              24
+            ],
+            "duration": 5,
+            "stacks": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r28",
+    "name": "Cosmic Ripples",
+    "type": "rectifier",
+    "atk": 500,
+    "main": {
+      "stat": "dmg",
+      "value": 54
+    },
+    "text": "Increases Energy Regen by 12.8%/16%/19.2%/22.4%/25.6%. When dealing Basic Attack DMG, increases Basic Attack DMG Bonus by 3.2%/4%/4.8%/5.6%/6.4%, stacking up to 5/5/5/5/5 time(s). This effect lasts for 8/8/8/8/8s and can be triggered 1/1/1/1/1 time(s) every 0.5/0.5/0.5/0.5/0.5s.",
+    "stats": [
+      {
+        "stat": "energyRegen",
+        "values": [
+          12.8,
+          16,
+          19.2,
+          22.4,
+          25.6
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "kinds": [
+          "basic"
+        ],
+        "buffs": [
+          {
+            "name": "Cosmic Ripples",
+            "stat": "basicBonus",
+            "values": [
+              3.2,
+              4,
+              4.8,
+              5.6,
+              6.4
+            ],
+            "duration": 8,
+            "stacks": 5
+          }
+        ]
+      }
+    ]
+  }
+]
