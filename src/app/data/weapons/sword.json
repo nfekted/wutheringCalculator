@@ -88,7 +88,23 @@
       "stat": "dmg",
       "value": 24.3
     },
-    "text": "When Resonance Liberation is cast, heals 5%/6.25%/7.5%/8.75%/10% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 20/20/20/20/20s."
+    "text": "When Resonance Liberation is cast, heals 5%/6.25%/7.5%/8.75%/10% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 20/20/20/20/20s.",
+    "triggers": [
+      {
+        "sections": [
+          "liberation"
+        ],
+        "buffs": [],
+        "heal": [
+          5,
+          6.25,
+          7.5,
+          8.75,
+          10
+        ],
+        "cooldown": 20
+      }
+    ]
   },
   {
     "id": "s6",
@@ -175,7 +191,29 @@
       "stat": "dmg",
       "value": 18.23
     },
-    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times."
+    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times.",
+    "triggers": [
+      {
+        "onTarget": {
+          "status": "any"
+        },
+        "buffs": [
+          {
+            "name": "Fables of Wisdom",
+            "stat": "atk",
+            "values": [
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "duration": 10,
+            "stacks": 4
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "s9",
@@ -216,7 +254,8 @@
             ],
             "duration": 16
           }
-        ]
+        ],
+        "cooldown": 20
       }
     ]
   },
@@ -396,6 +435,39 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "inflicts": "havocBane",
+        "buffs": [
+          {
+            "name": "Azure Oath",
+            "stat": "amplification",
+            "kind": "heavy",
+            "values": [
+              36,
+              45,
+              54,
+              63,
+              72
+            ],
+            "duration": 8
+          },
+          {
+            "name": "Azure Oath",
+            "stat": "defIgnore",
+            "kind": "heavy",
+            "values": [
+              12,
+              15,
+              18,
+              21,
+              24
+            ],
+            "duration": 8
+          }
+        ]
+      }
     ]
   },
   {
@@ -442,6 +514,26 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "inflicts": "fusionBurst",
+        "buffs": [
+          {
+            "name": "Everbright Polestar",
+            "stat": "defIgnore",
+            "kind": "liberation",
+            "values": [
+              32,
+              40,
+              48,
+              56,
+              64
+            ],
+            "duration": 8
+          }
+        ]
+      }
     ]
   },
   {
@@ -463,6 +555,16 @@
           18,
           21,
           24
+        ]
+      },
+      {
+        "stat": "skillBonus",
+        "values": [
+          24,
+          27,
+          30,
+          33,
+          36
         ]
       }
     ]
@@ -533,6 +635,28 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "intro",
+          "basic"
+        ],
+        "buffs": [
+          {
+            "name": "Defier's Thorn",
+            "stat": "defIgnore",
+            "values": [
+              8,
+              10,
+              12,
+              14,
+              16
+            ],
+            "duration": 15
+          }
+        ]
+      }
     ]
   },
   {
@@ -544,7 +668,28 @@
       "stat": "energyRegen",
       "value": 38.88
     },
-    "text": "Providing Healing increases Resonance Skill DMG by 10%/14%/18%/22%/26% for 6/6/6/6/6s. When Rover: Aero casts Resonance Skill Unbound Flow, Aero DMG dealt by nearby Resonators on the field is Amplified by 10%/14%/18%/22%/26% for 30/30/30/30/30s."
+    "text": "Providing Healing increases Resonance Skill DMG by 10%/14%/18%/22%/26% for 6/6/6/6/6s. When Rover: Aero casts Resonance Skill Unbound Flow, Aero DMG dealt by nearby Resonators on the field is Amplified by 10%/14%/18%/22%/26% for 30/30/30/30/30s.",
+    "triggers": [
+      {
+        "kinds": [
+          "heal"
+        ],
+        "buffs": [
+          {
+            "name": "Bloodpact's Pledge",
+            "stat": "skillBonus",
+            "values": [
+              10,
+              14,
+              18,
+              22,
+              26
+            ],
+            "duration": 6
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "s25",

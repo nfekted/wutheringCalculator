@@ -98,7 +98,23 @@
       "stat": "hp",
       "value": 30.38
     },
-    "text": "When Intro Skill is cast, heals 5%/6.25%/7.5%/8.75%/10% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 20/20/20/20/20s."
+    "text": "When Intro Skill is cast, heals 5%/6.25%/7.5%/8.75%/10% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 20/20/20/20/20s.",
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "buffs": [],
+        "heal": [
+          5,
+          6.25,
+          7.5,
+          8.75,
+          10
+        ],
+        "cooldown": 20
+      }
+    ]
   },
   {
     "id": "r6",
@@ -185,7 +201,30 @@
       "stat": "dmg",
       "value": 18.23
     },
-    "text": "Dealing DMG to enemies with Spectro Frazzle increases the wielder's Spectro DMG by 6%/7%/8%/9%/10%, gaining 1 stack per second for 6s, stacking up to 4 times."
+    "text": "Dealing DMG to enemies with Spectro Frazzle increases the wielder's Spectro DMG by 6%/7%/8%/9%/10%, gaining 1 stack per second for 6s, stacking up to 4 times.",
+    "triggers": [
+      {
+        "onTarget": {
+          "status": "spectroFrazzle"
+        },
+        "buffs": [
+          {
+            "name": "Ocean's Gift",
+            "stat": "elementalBonus",
+            "element": "spectro",
+            "values": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "duration": 6,
+            "stacks": 4
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "r9",
@@ -196,7 +235,29 @@
       "stat": "dmg",
       "value": 18.23
     },
-    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times."
+    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times.",
+    "triggers": [
+      {
+        "onTarget": {
+          "status": "any"
+        },
+        "buffs": [
+          {
+            "name": "Waltz in Masquerade",
+            "stat": "atk",
+            "values": [
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "duration": 10,
+            "stacks": 4
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "r10",
@@ -237,7 +298,8 @@
             ],
             "duration": 16
           }
-        ]
+        ],
+        "cooldown": 20
       }
     ]
   },
@@ -293,7 +355,28 @@
       "stat": "energyRegen",
       "value": 51.84
     },
-    "text": "When Resonance Skill is cast, if the Resonator's HP is below 60%/60%/60%/60%/60%, heals 5%/6.25%/7.5%/8.75%/10% of their Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 8/8/8/8/8s. If the Resonator's HP is above 60%/60%/60%/60%/60%, increases ATK by 12%/15%/18%/21%/24%, lasting for 10/10/10/10/10s."
+    "text": "When Resonance Skill is cast, if the Resonator's HP is below 60%/60%/60%/60%/60%, heals 5%/6.25%/7.5%/8.75%/10% of their Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 8/8/8/8/8s. If the Resonator's HP is above 60%/60%/60%/60%/60%, increases ATK by 12%/15%/18%/21%/24%, lasting for 10/10/10/10/10s.",
+    "triggers": [
+      {
+        "sections": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Rectifier#25",
+            "stat": "atk",
+            "values": [
+              12,
+              15,
+              18,
+              21,
+              24
+            ],
+            "duration": 10
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "r15",
@@ -542,6 +625,31 @@
               48,
               56,
               64
+            ],
+            "duration": 12
+          },
+          {
+            "name": "Lethean Elegy",
+            "stat": "amplification",
+            "kind": "echo",
+            "values": [
+              32,
+              40,
+              48,
+              56,
+              64
+            ],
+            "duration": 12
+          },
+          {
+            "name": "Lethean Elegy",
+            "stat": "defIgnore",
+            "values": [
+              8,
+              10,
+              12,
+              14,
+              16
             ],
             "duration": 12
           }

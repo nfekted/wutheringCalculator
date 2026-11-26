@@ -109,7 +109,23 @@
       "stat": "def",
       "value": 38.48
     },
-    "text": "When Resonance Skill is cast, heals 3%/3.75%/4.5%/5.25%/6% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 12/12/12/12/12s."
+    "text": "When Resonance Skill is cast, heals 3%/3.75%/4.5%/5.25%/6% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 12/12/12/12/12s.",
+    "triggers": [
+      {
+        "sections": [
+          "skill"
+        ],
+        "buffs": [],
+        "heal": [
+          3,
+          3.75,
+          4.5,
+          5.25,
+          6
+        ],
+        "cooldown": 12
+      }
+    ]
   },
   {
     "id": "b7",
@@ -196,7 +212,29 @@
       "stat": "dmg",
       "value": 18.23
     },
-    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times."
+    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times.",
+    "triggers": [
+      {
+        "onTarget": {
+          "status": "any"
+        },
+        "buffs": [
+          {
+            "name": "Meditations on Mercy",
+            "stat": "atk",
+            "values": [
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "duration": 10,
+            "stacks": 4
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "b10",
@@ -226,7 +264,8 @@
             ],
             "duration": 16
           }
-        ]
+        ],
+        "cooldown": 20
       }
     ]
   },
@@ -239,7 +278,29 @@
       "stat": "dmg",
       "value": 30.38
     },
-    "text": "Within 12/12/12/12/12s after Resonance Skill is cast, increases ATK by 3%/3.75%/4.5%/5.25%/6% every 2/2/2/2/2s, stacking up to 4/4/4/4/4 time(s). This effect can be triggered 1/1/1/1/1 time(s) every 12/12/12/12/12s. When the number of stacks reaches 4/4/4/4/4, all stacks will be reset within 6/6/6/6/6s."
+    "text": "Within 12/12/12/12/12s after Resonance Skill is cast, increases ATK by 3%/3.75%/4.5%/5.25%/6% every 2/2/2/2/2s, stacking up to 4/4/4/4/4 time(s). This effect can be triggered 1/1/1/1/1 time(s) every 12/12/12/12/12s. When the number of stacks reaches 4/4/4/4/4, all stacks will be reset within 6/6/6/6/6s.",
+    "triggers": [
+      {
+        "sections": [
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Helios Cleaver",
+            "stat": "atk",
+            "values": [
+              3,
+              3.75,
+              4.5,
+              5.25,
+              6
+            ],
+            "duration": 12,
+            "stacks": 4
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "b12",
@@ -294,7 +355,19 @@
       "stat": "energyRegen",
       "value": 32.4
     },
-    "text": "When the Resonator's HP is above 80%/80%/80%/80%/80%, increases ATK by 12%/15%/18%/21%/24%. When the Resonator's HP is below 40%/50%/60%/70%/80%, gives 5%/6.25%/7.5%/8.75%/10% healing when dealing Basic Attack DMG or Heavy Attack DMG. This effect can be triggered 1/1/1/1/1 time(s) every 8/8/8/8/8s."
+    "text": "When the Resonator's HP is above 80%/80%/80%/80%/80%, increases ATK by 12%/15%/18%/21%/24%. When the Resonator's HP is below 40%/50%/60%/70%/80%, gives 5%/6.25%/7.5%/8.75%/10% healing when dealing Basic Attack DMG or Heavy Attack DMG. This effect can be triggered 1/1/1/1/1 time(s) every 8/8/8/8/8s.",
+    "stats": [
+      {
+        "stat": "dmg",
+        "values": [
+          12,
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    ]
   },
   {
     "id": "b14",
@@ -362,6 +435,60 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "kinds": [
+          "shield"
+        ],
+        "buffs": [
+          {
+            "name": "Thousandfold Deliverance: Nature's Order",
+            "stat": "critDamage",
+            "values": [
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "duration": 7,
+            "stacks": 6,
+            "endsOnSwitch": true
+          },
+          {
+            "name": "Thousandfold Deliverance: Nature's Order",
+            "stat": "critRate",
+            "kind": "heavy",
+            "values": [
+              12,
+              15,
+              18,
+              21,
+              24
+            ],
+            "duration": 7,
+            "endsOnSwitch": true
+          },
+          {
+            "name": "Thousandfold Deliverance: Cradle of Life",
+            "stat": "defIgnore",
+            "kind": "heavy",
+            "values": [
+              30,
+              35,
+              40,
+              45,
+              50
+            ],
+            "duration": 7,
+            "endsOnSwitch": true
+          }
+        ]
+      }
     ]
   },
   {
@@ -383,6 +510,16 @@
           18,
           21,
           24
+        ]
+      },
+      {
+        "stat": "liberationBonus",
+        "values": [
+          24,
+          27,
+          30,
+          33,
+          36
         ]
       }
     ]
@@ -453,6 +590,42 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "intro"
+        ],
+        "inflicts": "any",
+        "buffs": [
+          {
+            "name": "Kumokiri",
+            "stat": "liberationBonus",
+            "values": [
+              8,
+              10,
+              12,
+              14,
+              16
+            ],
+            "duration": 15,
+            "stacks": 3
+          },
+          {
+            "name": "Kumokiri",
+            "stat": "elementalBonus",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 15,
+            "target": "team"
+          }
+        ]
+      }
     ]
   },
   {
@@ -476,6 +649,49 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "intro",
+          "skill"
+        ],
+        "buffs": [
+          {
+            "name": "Thunderflare Dominion",
+            "stat": "heavyBonus",
+            "values": [
+              20,
+              25,
+              30,
+              35,
+              40
+            ],
+            "duration": 15
+          }
+        ]
+      },
+      {
+        "kinds": [
+          "shield"
+        ],
+        "buffs": [
+          {
+            "name": "Thunderflare Dominion",
+            "stat": "defIgnore",
+            "kind": "heavy",
+            "values": [
+              7.2,
+              8.4,
+              9.6,
+              10.8,
+              12
+            ],
+            "duration": 7,
+            "stacks": 5
+          }
+        ]
+      }
     ]
   },
   {
@@ -497,6 +713,49 @@
           18,
           21,
           24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "intro",
+          "liberation"
+        ],
+        "buffs": [
+          {
+            "name": "Wildfire Mark",
+            "stat": "liberationBonus",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 10
+          }
+        ]
+      },
+      {
+        "kinds": [
+          "heavy"
+        ],
+        "buffs": [
+          {
+            "name": "Wildfire Mark",
+            "stat": "elementalBonus",
+            "element": "fusion",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 30,
+            "target": "team"
+          }
         ]
       }
     ]

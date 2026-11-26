@@ -58,9 +58,10 @@ export interface BonusAfter {
 /**
  * Attribute a buff of the character raises during the rotation: 'atk' is a percentage of the base ATK, the others are added;
  * 'damageBonus' is a DMG Bonus on every damage hit of the character (added to the elemental bonus); 'multiplier' raises the DMG
- * Multiplier of the hits by that %; 'flatAtk' adds that many ATK points; 'amplification' is a DMG Amplification (added to the others)
+ * Multiplier of the hits by that %; 'flatAtk' adds that many ATK points; 'amplification' is a DMG Amplification (added to the others);
+ * 'defIgnore' is the part of the DEF of the target the hit ignores
  */
-export type BuffStat = 'atk' | 'flatAtk' | 'def' | 'amplification' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'basicBonus' | 'echoBonus' | 'critRate' | 'critDamage' | 'multiplier';
+export type BuffStat = 'atk' | 'flatAtk' | 'def' | 'amplification' | 'elementalBonus' | 'damageBonus' | 'liberationBonus' | 'heavyBonus' | 'skillBonus' | 'basicBonus' | 'echoBonus' | 'critRate' | 'critDamage' | 'multiplier' | 'defIgnore';
 
 /** Hits of a kind that always crit, once every `cooldown` points (e.g. an Inherent Skill "Heavy Attack always crits, once every 30s") */
 export interface GuaranteedCrit {
@@ -94,6 +95,8 @@ export interface StatBuff {
   element?: string;
   /** It ends when the character comes back to the field */
   endsOnReturn?: boolean;
+  /** It ends when the character leaves the field (its Outro) */
+  endsOnSwitch?: boolean;
   /** Of a buff a hit gives (or always active): only in this Resonance Mode of the character (index in `modes`) */
   mode?: number;
   /** Only hits of this kind get it (e.g. the Echo Skill of whoever is on the field) */

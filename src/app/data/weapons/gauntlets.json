@@ -88,7 +88,23 @@
       "stat": "cDmg",
       "value": 40.5
     },
-    "text": "When dealing Basic Attack DMG, heals 0.5%/0.65%/0.8%/0.95%/1.1% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 3/3/3/3/3s."
+    "text": "When dealing Basic Attack DMG, heals 0.5%/0.65%/0.8%/0.95%/1.1% of the Resonator's Max HP. This effect can be triggered 1/1/1/1/1 time(s) every 3/3/3/3/3s.",
+    "triggers": [
+      {
+        "kinds": [
+          "basic"
+        ],
+        "buffs": [],
+        "heal": [
+          0.5,
+          0.65,
+          0.8,
+          0.95,
+          1.1
+        ],
+        "cooldown": 3
+      }
+    ]
   },
   {
     "id": "g6",
@@ -175,7 +191,29 @@
       "stat": "dmg",
       "value": 18.23
     },
-    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times."
+    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times.",
+    "triggers": [
+      {
+        "onTarget": {
+          "status": "any"
+        },
+        "buffs": [
+          {
+            "name": "Legend of Drunken Hero",
+            "stat": "atk",
+            "values": [
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "duration": 10,
+            "stacks": 4
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "g9",
@@ -205,7 +243,8 @@
             ],
             "duration": 16
           }
-        ]
+        ],
+        "cooldown": 20
       }
     ]
   },
@@ -327,6 +366,49 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "intro",
+          "echo"
+        ],
+        "buffs": [
+          {
+            "name": "Solsworn Ciphers",
+            "stat": "amplification",
+            "kind": "echo",
+            "values": [
+              32,
+              40,
+              48,
+              56,
+              64
+            ],
+            "duration": 15
+          }
+        ]
+      },
+      {
+        "kinds": [
+          "echo"
+        ],
+        "buffs": [
+          {
+            "name": "Solsworn Ciphers",
+            "stat": "defIgnore",
+            "element": "aero",
+            "values": [
+              10,
+              12.5,
+              15,
+              17.5,
+              20
+            ],
+            "duration": 6
+          }
+        ]
+      }
     ]
   },
   {
@@ -394,6 +476,16 @@
           21,
           24
         ]
+      },
+      {
+        "stat": "basicBonus",
+        "values": [
+          24,
+          26.8,
+          30,
+          32.8,
+          36
+        ]
       }
     ]
   },
@@ -418,6 +510,49 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "intro",
+          "liberation"
+        ],
+        "buffs": [
+          {
+            "name": "Moongazer's Sigil",
+            "stat": "liberationBonus",
+            "values": [
+              20,
+              25,
+              30,
+              35,
+              40
+            ],
+            "duration": 15
+          }
+        ]
+      },
+      {
+        "kinds": [
+          "shield"
+        ],
+        "buffs": [
+          {
+            "name": "Moongazer's Sigil",
+            "stat": "defIgnore",
+            "kind": "liberation",
+            "values": [
+              7.2,
+              8.4,
+              9.6,
+              10.8,
+              12
+            ],
+            "duration": 7,
+            "stacks": 5
+          }
+        ]
+      }
     ]
   },
   {
@@ -439,6 +574,27 @@
           18,
           21,
           24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "sections": [
+          "basic"
+        ],
+        "buffs": [
+          {
+            "name": "Blazing Justice",
+            "stat": "defIgnore",
+            "values": [
+              8,
+              10,
+              12,
+              14,
+              16
+            ],
+            "duration": 6
+          }
         ]
       }
     ]
@@ -526,7 +682,7 @@
               84,
               96
             ],
-            "duration": 8
+            "duration": 23
           }
         ]
       }

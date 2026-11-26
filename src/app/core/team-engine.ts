@@ -160,14 +160,16 @@ function rulesOf(character: Character): CharacterStatus[] {
 function simulate(segments: Segment[], memberCount: number, statuses = false): TeamResult {
   const rows: TeamHitRow[] = [];
   let onTarget: ActiveStatus[] = [];
-  /** A row: with damage, raised by the DEF the statuses on the target take away */
-  const pushRow = (row: TeamHitRow) => {
+  /** A row: with damage, raised by the DEF the statuses on the target take away and the DEF the hit ignores, added up */
+  const pushRow = (row: TeamHitRow, defIgnore = 0) => {
+    let total = defIgnore;
     for (const s of row.damage ? onTarget : []) {
       const down = (NEGATIVE_STATUS[s.status].defDown ?? 0) * s.stacks;
       if (!down) continue;
-      row.buffed *= defFactor(down / 100);
+      total += down;
       row.buffs = [...row.buffs, `${NEGATIVE_STATUS[s.status].name} (-${down}% DEF)`];
     }
+    if (row.damage && total) row.buffed *= defFactor(Math.min(100, total) / 100);
     rows.push(row);
   };
   /** Raises of the max stacks of a status while they last */
@@ -332,6 +334,8 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   };
   /** Points left until the guaranteed crit of each member is ready again */
   const critCooldown = new Map<number, number>();
+  /** Points left until a trigger of a member (`slot:index`) can fire again */
+  const triggerCooldown = new Map<string, number>();
   /** Hit that replaces the next Intro of each member (a state of it ended) */
   const nextIntro = new Map<number, string>();
   let coordinated: ActiveCoordinated[] = [];
@@ -353,7 +357,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     active = active.filter(a => a.id !== id);
     active.push({
       id, receiver: to ?? (buff.target === 'team' ? null : slot), points: buff.duration, label: `${character.name}: ${statLabel(stat)}`, stat, count,
-      endsOnReturn: buff.endsOnReturn, endsOnSwitch: to !== undefined,
+      endsOnReturn: buff.endsOnReturn, endsOnSwitch: to !== undefined || buff.endsOnSwitch,
     });
   };
 
@@ -398,7 +402,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     const autoRow = (who: Character, whoSlot: number, key: HitKey, others: LabeledBuff[]) => {
       const step = keyStep(key);
       const value = valueOf(who, whoSlot, step, present(), [...others, ...fieldBuffs(), ...(statuses ? stacksAmplification(who, key) : [])]);
-      pushRow({ rotation, slot: whoSlot, step, name: who.stepHit(step)?.name ?? '—', buffs: value.labels, damage: value.type === 'damage', base: value.base, buffed: value.buffed, auto: true });
+      pushRow({ rotation, slot: whoSlot, step, name: who.stepHit(step)?.name ?? '—', buffs: value.labels, damage: value.type === 'damage', base: value.base, buffed: value.buffed, auto: true }, value.defIgnore);
       hitId++;
       if (value.type === 'damage' && value.base > 0) markHit();
       applyStatuses(who, whoSlot, key, who === character ? context.states : []);
@@ -590,7 +594,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         damage: value.type === 'damage',
         base: value.base,
         buffed: value.buffed,
-      });
+      }, value.defIgnore);
       hitId++;
       if (value.type === 'damage' && value.base > 0) markHit();
 
@@ -645,6 +649,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       }
       if (statuses) passTime(cost, rotation);
       for (const [member, left] of critCooldown) critCooldown.set(member, left - cost);
+      for (const [id, left] of triggerCooldown) triggerCooldown.set(id, left - cost);
       if (crits) critCooldown.set(slot, crit!.cooldown);
 
       // A Coordinated Attack starts after its hit; casting it again starts it over
@@ -671,14 +676,21 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
         const h = character.stepHit(s);
         return h ? [character.mode > 0 && h.altKind ? h.altKind : h.kind] : [];
       });
-      const inflicts = (status: NegativeStatus) => rulesOf(character).some(rule => rule.status === status
+      const inflicts = (status: NegativeStatus | 'any') => rulesOf(character).some(rule => (status === 'any' || rule.status === status)
         && (rule.state === undefined || context.states.includes(rule.state))
         && (rule.hits ? block.some(s => !!rule.hits![stepKey(s)]) : !!rule.mark && blockKinds.some(k => k !== 'heal' && k !== 'shield')));
-      for (const trigger of block.length ? triggers : []) {
+      for (const [t, trigger] of (block.length ? triggers : []).entries()) {
         const fires = trigger.kinds?.some(k => blockKinds.includes(k)) || trigger.sections?.some(s => blockSections.includes(s))
           || (!!trigger.inflicts && inflicts(trigger.inflicts))
-          || (!!trigger.onTarget && onTarget.some(s => s.status === trigger.onTarget!.status && s.stacks >= (trigger.onTarget!.stacks ?? 1)));
-        if (fires) trigger.buffs.forEach(buff => give(character, slot, buff));
+          || (!!trigger.onTarget && onTarget.some(s => (trigger.onTarget!.status === 'any' || s.status === trigger.onTarget!.status) && s.stacks >= (trigger.onTarget!.stacks ?? 1)));
+        const id = `${slot}:${t}`;
+        if (!fires || (triggerCooldown.get(id) ?? 0) > 0) continue;
+        if (trigger.cooldown) triggerCooldown.set(id, trigger.cooldown);
+        trigger.buffs.forEach(buff => give(character, slot, buff));
+        if (trigger.heal) {
+          const value = character.hp * trigger.heal.value / 100 * (1 + character.healingBonus / 100);
+          pushRow({ rotation, slot, step: giver, name: `${trigger.heal.name} (heal)`, buffs: [], damage: false, base: value, buffed: value, auto: true });
+        }
       }
       const hitMax = blockEnd[position] ? character.stepHit(giver)?.statusMax : undefined;
       if (statuses && hitMax) raiseMax(hitMax, slot);
@@ -813,6 +825,8 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   const statBuffs = [...applied.flatMap(a => a.stat ? [a.stat] : []), ...own.map(o => o.buff)];
   const multiplier = 1 + statBuffs.filter(buff => buff.stat === 'multiplier').reduce((sum, buff) => sum + buff.value, 0) / 100;
   const extraAmplification = statBuffs.filter(buff => buff.stat === 'amplification').reduce((sum, buff) => sum + buff.value, 0);
+  // Ignoring part of the DEF of the target: added to the DEF the statuses take away (see pushRow)
+  const defIgnore = Math.min(100, statBuffs.filter(buff => buff.stat === 'defIgnore').reduce((sum, buff) => sum + buff.value, 0));
   const amplification = applied.some(a => a.outro) || extraAmplification ? amplificationOf(applied, element) : undefined;
   if (amplification) amplification.all += extraAmplification;
   const extra = statBuffs.length ? extraStats(statBuffs, character, element === character.data.type ? undefined : kind) : undefined;
@@ -820,7 +834,7 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   const alone = character.rotationHit(step);
   const base = alone.value * times;
   const buffed = (amplification || critExtra ? character.rotationHit(step, amplification, critExtra).value * times : base) * multiplier;
-  return { type: alone.type, base, buffed, labels: [...applied.map(a => a.label), ...own.map(o => o.label)] };
+  return { type: alone.type, base, buffed, defIgnore, labels: [...applied.map(a => a.label), ...own.map(o => o.label)] };
 }
 
 /** Amplifications of the active Outro buffs added up; an elemental one counts only for a hit of its element */
@@ -842,7 +856,7 @@ function extraStats(buffs: StatBuff[], character: Character, otherElement?: HitK
   const KIND_BONUS: Partial<Record<HitKind, keyof Stats>> = { basic: 'basicBonus', heavy: 'heavyBonus', skill: 'skillBonus', liberation: 'liberationBonus', echo: 'echoBonus' };
   const extra: Partial<Stats> = {};
   for (const buff of buffs) {
-    if (buff.stat === 'multiplier' || buff.stat === 'amplification') continue;
+    if (buff.stat === 'multiplier' || buff.stat === 'amplification' || buff.stat === 'defIgnore') continue;
     if (buff.stat === 'atk') extra.dmg = (extra.dmg ?? 0) + character.baseStats.atk * buff.value / 100;
     else if (buff.stat === 'flatAtk') extra.dmg = (extra.dmg ?? 0) + buff.value;
     else if (buff.stat === 'def') extra.def = (extra.def ?? 0) + character.baseStats.def * buff.value / 100;
@@ -873,6 +887,6 @@ function outroLabel(buff: OutroBuff): string {
 
 function statLabel(buff: StatBuff): string {
   if (buff.stat === 'flatAtk') return `${buff.name} (ATK +${buff.value})`;
-  const stat = { atk: 'ATK', def: 'DEF', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', echoBonus: 'Echo DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG', multiplier: 'DMG Multiplier', amplification: 'DMG Amplification' }[buff.stat];
+  const stat = { atk: 'ATK', def: 'DEF', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', echoBonus: 'Echo DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG', multiplier: 'DMG Multiplier', amplification: 'DMG Amplification', defIgnore: 'DEF Ignored' }[buff.stat];
   return `${buff.name} (${stat} +${buff.value}%)`;
 }

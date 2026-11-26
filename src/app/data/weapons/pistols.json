@@ -178,7 +178,29 @@
       "stat": "dmg",
       "value": 18.23
     },
-    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times."
+    "text": "Dealing DMG to enemies with Negative Statuses increases the wielder's ATK by 4%/5%/6%/7%/8% for 10/10/10/10/10s. This effect can be triggered 1 time per second, stackable up to 4/4/4/4/4 times.",
+    "triggers": [
+      {
+        "onTarget": {
+          "status": "any"
+        },
+        "buffs": [
+          {
+            "name": "Romance in Farewell",
+            "stat": "atk",
+            "values": [
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "duration": 10,
+            "stacks": 4
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "p9",
@@ -208,7 +230,8 @@
             ],
             "duration": 16
           }
-        ]
+        ],
+        "cooldown": 20
       }
     ]
   },
@@ -513,6 +536,48 @@
           18,
           21,
           24
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "kinds": [
+          "echo"
+        ],
+        "buffs": [
+          {
+            "name": "Lux & Umbra: Heavy Attack",
+            "stat": "amplification",
+            "kind": "heavy",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 6
+          }
+        ]
+      },
+      {
+        "kinds": [
+          "heavy"
+        ],
+        "buffs": [
+          {
+            "name": "Lux & Umbra: Echo Skill",
+            "stat": "amplification",
+            "kind": "echo",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 6
+          }
         ]
       }
     ]

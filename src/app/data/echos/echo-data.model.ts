@@ -15,10 +15,16 @@ export interface SonataTrigger {
   kinds?: HitKind[];
   /** "Casting X": an action of these sections, whatever the kind of its hits (e.g. a Liberation that deals Heavy DMG) */
   sections?: (SectionKey | 'echo')[];
-  inflicts?: NegativeStatus;
-  onTarget?: { status: NegativeStatus; stacks?: number };
+  /** 'any': any Negative Status (e.g. "inflicting Negative Statuses") */
+  inflicts?: NegativeStatus | 'any';
+  /** 'any': while the target has any Negative Status */
+  onTarget?: { status: NegativeStatus | 'any'; stacks?: number };
   status?: NegativeStatus;
   buffs: StatBuff[];
+  /** Also heals this % of the Max HP of the character (a healing row) */
+  heal?: { name: string; value: number };
+  /** Fires at most once every these seconds (points) */
+  cooldown?: number;
   characters?: string[];
 }
 

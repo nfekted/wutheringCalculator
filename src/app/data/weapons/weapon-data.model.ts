@@ -17,8 +17,10 @@ export interface WeaponBuff extends Omit<StatBuff, 'value'> {
 }
 
 /** A triggered passive (as a Sonata trigger), with the values of each rank */
-export interface WeaponTrigger extends Omit<SonataTrigger, 'buffs'> {
+export interface WeaponTrigger extends Omit<SonataTrigger, 'buffs' | 'heal'> {
   buffs: WeaponBuff[];
+  /** % of the Max HP it heals, one value per rank */
+  heal?: number[];
 }
 
 export interface WeaponData {
