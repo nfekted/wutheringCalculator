@@ -268,7 +268,28 @@
       "stat": "energyRegen",
       "value": 51.84
     },
-    "text": "Casting Resonance Liberation increases the Resonator's Healing Bonus by 16%/20%/24%/28%/32% for 15/15/15/15/15s."
+    "text": "Casting Resonance Liberation increases the Resonator's Healing Bonus by 16%/20%/24%/28%/32% for 15/15/15/15/15s.",
+    "triggers": [
+      {
+        "sections": [
+          "liberation"
+        ],
+        "buffs": [
+          {
+            "name": "Call of the Abyss",
+            "stat": "healingBonus",
+            "values": [
+              16,
+              20,
+              24,
+              28,
+              32
+            ],
+            "duration": 15
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "r11",
@@ -312,7 +333,30 @@
       "stat": "hp",
       "value": 30.38
     },
-    "text": "When dealing Basic Attack DMG or Heavy Attack DMG, increases Healing Bonus by 3%/3.75%/4.5%/5.25%/6%, stacking up to 3/3/3/3/3 time(s). This effect lasts for 8/8/8/8/8s and can be triggered 1/1/1/1/1 time(s) every 0.6/0.6/0.6/0.6/0.6s."
+    "text": "When dealing Basic Attack DMG or Heavy Attack DMG, increases Healing Bonus by 3%/3.75%/4.5%/5.25%/6%, stacking up to 3/3/3/3/3 time(s). This effect lasts for 8/8/8/8/8s and can be triggered 1/1/1/1/1 time(s) every 0.6/0.6/0.6/0.6/0.6s.",
+    "triggers": [
+      {
+        "kinds": [
+          "basic",
+          "heavy"
+        ],
+        "buffs": [
+          {
+            "name": "Comet Flare",
+            "stat": "healingBonus",
+            "values": [
+              3,
+              3.75,
+              4.5,
+              5.25,
+              6
+            ],
+            "duration": 8,
+            "stacks": 3
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "r13",
@@ -339,6 +383,18 @@
               12,
               14,
               16
+            ],
+            "duration": 15
+          },
+          {
+            "name": "Jinzhou Keeper",
+            "stat": "hp",
+            "values": [
+              10,
+              12.5,
+              15,
+              17.5,
+              20
             ],
             "duration": 15
           }
@@ -446,7 +502,22 @@
     "triggers": [
       {
         "inflicts": "electroFlare",
-        "buffs": [],
+        "buffs": [
+          {
+            "name": "Blooming Jadehaven",
+            "stat": "amplification",
+            "kind": "skill",
+            "values": [
+              36,
+              45,
+              54,
+              63,
+              72
+            ],
+            "duration": 30,
+            "whileStatus": "electroFlare"
+          }
+        ],
         "statusAmplification": {
           "status": "electroFlare",
           "values": [
@@ -458,6 +529,36 @@
           ],
           "duration": 30
         }
+      },
+      {
+        "characters": [
+          "hsin"
+        ],
+        "kinds": [
+          "basic",
+          "heavy",
+          "skill",
+          "liberation",
+          "intro",
+          "outro",
+          "echo"
+        ],
+        "buffs": [
+          {
+            "name": "Blooming Jadehaven",
+            "stat": "amplification",
+            "kind": "skill",
+            "values": [
+              36,
+              45,
+              54,
+              63,
+              72
+            ],
+            "duration": 30,
+            "mode": 1
+          }
+        ]
       }
     ]
   },
@@ -482,7 +583,25 @@
           24
         ]
       }
-    ]
+    ],
+    "outro": {
+      "status": "glacioChafe",
+      "statBuffs": [
+        {
+          "name": "Firstlight's Herald",
+          "stat": "atk",
+          "target": "team",
+          "values": [
+            20,
+            25,
+            30,
+            35,
+            40
+          ],
+          "duration": 6
+        }
+      ]
+    }
   },
   {
     "id": "r19",
@@ -577,6 +696,20 @@
               72
             ],
             "duration": 5
+          },
+          {
+            "name": "Forged Dwarf Star: Team",
+            "stat": "atk",
+            "target": "team",
+            "element": "fusion",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 15
           }
         ]
       },
@@ -606,6 +739,21 @@
               72
             ],
             "duration": 5
+          },
+          {
+            "name": "Forged Dwarf Star: Team",
+            "stat": "atk",
+            "target": "team",
+            "element": "fusion",
+            "values": [
+              24,
+              30,
+              36,
+              42,
+              48
+            ],
+            "duration": 15,
+            "mode": 1
           }
         ]
       }
@@ -757,6 +905,28 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "kinds": [
+          "echo"
+        ],
+        "buffs": [
+          {
+            "name": "Whispers of Sirens: Gentle Dream",
+            "stat": "basicBonus",
+            "values": [
+              40,
+              50,
+              60,
+              70,
+              80
+            ],
+            "duration": 10,
+            "endsOnSwitch": true
+          }
+        ]
+      }
     ]
   },
   {
@@ -851,6 +1021,28 @@
           24
         ]
       }
+    ],
+    "triggers": [
+      {
+        "kinds": [
+          "heal"
+        ],
+        "buffs": [
+          {
+            "name": "Stellar Symphony",
+            "stat": "atk",
+            "target": "team",
+            "values": [
+              14,
+              17.5,
+              21,
+              24.5,
+              28
+            ],
+            "duration": 30
+          }
+        ]
+      }
     ]
   },
   {
@@ -896,7 +1088,24 @@
           }
         ]
       }
-    ]
+    ],
+    "outro": {
+      "statBuffs": [
+        {
+          "name": "Rime-Draped Sprouts: Off-field",
+          "stat": "basicBonus",
+          "values": [
+            52,
+            65,
+            78,
+            91,
+            104
+          ],
+          "duration": 27,
+          "offField": true
+        }
+      ]
+    }
   },
   {
     "id": "r27",
@@ -941,7 +1150,24 @@
           }
         ]
       }
-    ]
+    ],
+    "outro": {
+      "statBuffs": [
+        {
+          "name": "Stringmaster: Off-field",
+          "stat": "atk",
+          "values": [
+            12,
+            15,
+            18,
+            21,
+            24
+          ],
+          "offField": true,
+          "endsOnReturn": true
+        }
+      ]
+    }
   },
   {
     "id": "r28",

@@ -26,6 +26,7 @@ export function weaponOutro(slot: WeaponSlot | null): GearOutro[] {
   if (!outro) return [];
   const amplification = outro.statusAmplification;
   return [{
+    ...(outro.status && { status: outro.status }),
     ...(outro.statBuffs && { statBuffs: outro.statBuffs.map(buff => rankBuff(buff, slot!.rank)) }),
     ...(amplification && { statusAmplification: { name: weapon!.name, status: amplification.status, value: amplification.values[slot!.rank - 1], duration: amplification.duration } }),
   }];

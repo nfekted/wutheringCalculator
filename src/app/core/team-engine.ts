@@ -349,7 +349,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   /** An attribute buff of a member, to itself or to the whole team; by name, the same buff given again (by any hit) renews it */
   /** `to`: the member that gets it instead (the incoming one of an Outro), until it leaves the field */
   const give = (character: Character, slot: number, buff: StatBuff, to?: number) => {
-    if ((!buff.duration && !buff.endsOnSwitch) || (buff.mode !== undefined && buff.mode !== character.mode)) return;
+    if ((!buff.duration && !buff.endsOnSwitch && !buff.endsOnReturn) || (buff.mode !== undefined && buff.mode !== character.mode)) return;
     const id = `self:${slot}:${buff.name}:${buff.stat}`;
     const before = active.find(a => a.id === id)?.count ?? 0;
     const count = buff.stacks ? Math.min(before + (buff.gain ?? 1), buff.stacks) : 1;
@@ -406,7 +406,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     // A hit added by another one: worth its value with the buffs on its member, in the same action (it spends nothing)
     const autoRow = (who: Character, whoSlot: number, key: HitKey, others: LabeledBuff[]) => {
       const step = keyStep(key);
-      const value = valueOf(who, whoSlot, step, present(), [...others, ...fieldBuffs(), ...(statuses ? stacksAmplification(who, key) : [])]);
+      const value = valueOf(who, whoSlot, step, present(), [...others, ...fieldBuffs(), ...(statuses ? stacksAmplification(who, key) : [])], false, 1, whoSlot !== slot);
       pushRow({ rotation, slot: whoSlot, step, name: who.stepHit(step)?.name ?? '—', buffs: value.labels, damage: value.type === 'damage', base: value.base, buffed: value.buffed, auto: true }, value.defIgnore);
       hitId++;
       if (value.type === 'damage' && value.base > 0) markHit();
@@ -824,7 +824,7 @@ const KIND_OF: Partial<Record<StatBuff['stat'], string>> = { liberationBonus: 'l
  * Value of a hit of a member, without and with the buffs on it: the Outro ones and its own, and `others` (its states...). Only the buffs
  * that do something for the hit apply and are listed: not a bonus of another kind, not one for other hits, not another element
  */
-function valueOf(character: Character, slot: number, step: RotationStep, active: ActiveBuff[], others: LabeledBuff[], crit = false, times = 1) {
+function valueOf(character: Character, slot: number, step: RotationStep, active: ActiveBuff[], others: LabeledBuff[], crit = false, times = 1, offField = false) {
   const key = stepKey(step);
   const hit = character.stepHit(step);
   const kind = character.mode > 0 && hit?.altKind ? hit.altKind : hit?.kind;
@@ -833,10 +833,11 @@ function valueOf(character: Character, slot: number, step: RotationStep, active:
   // A hit of another element gets no elemental bonus of the character, and the element buffs of its own element
   const element = hit?.element ?? character.data.type;
   const coordinated = !!character.data.coordinated?.hits.includes(key);
-  const fits = (buff?: StatBuff) => !hit?.noBuffs && (!buff || ((!buff.hits || buff.hits.includes(key)) && (!buff.element || buff.element === element) && (!buff.kind || buff.kind === kind) && (!buff.dodge || isDodgeCounter(hit)) && (!buff.characters || buff.characters.includes(character.data.id))
+  const fits = (buff?: StatBuff) => !hit?.noBuffs && (!buff || ((!buff.hits || buff.hits.includes(key)) && (!buff.element || buff.element === element) && (!buff.kind || buff.kind === kind) && (!buff.dodge || isDodgeCounter(hit)) && (!buff.characters || buff.characters.includes(character.data.id)) && (!buff.offField || offField)
     && !(buff.stat === 'elementalBonus' && element !== character.data.type) && (!(buff.stat in KIND_OF) || kind === KIND_OF[buff.stat])
     && (buff.stat === 'atk' || buff.stat === 'flatAtk' ? !!hit?.parts.some(part => part.stat === 'atk')
-      : buff.stat === 'def' ? !!hit?.parts.some(part => part.stat === 'def') : !support)));
+      : buff.stat === 'def' ? !!hit?.parts.some(part => part.stat === 'def') : buff.stat === 'hp' ? !!hit?.parts.some(part => part.stat === 'hp')
+      : buff.stat === 'healingBonus' ? kind === 'heal' : !support)));
   const applied = active.filter(a => (a.receiver === null || a.receiver === slot) && fits(a.stat)
     && !(a.outro?.amplification === 'elemental' && a.outro.element !== element)
     && !(a.outro && (support || kind === 'tune'))
@@ -881,6 +882,7 @@ function extraStats(buffs: StatBuff[], character: Character, otherElement?: HitK
     if (buff.stat === 'atk') extra.dmg = (extra.dmg ?? 0) + character.baseStats.atk * buff.value / 100;
     else if (buff.stat === 'flatAtk') extra.dmg = (extra.dmg ?? 0) + buff.value;
     else if (buff.stat === 'def') extra.def = (extra.def ?? 0) + character.baseStats.def * buff.value / 100;
+    else if (buff.stat === 'hp') extra.hp = (extra.hp ?? 0) + character.baseStats.hp * buff.value / 100;
     // Every damage hit of the character gets the elemental bonus, so a DMG Bonus on all of them is added there
     else if (buff.stat === 'damageBonus') {
       const field = otherElement ? KIND_BONUS[otherElement] : 'elementalBonus';
@@ -908,6 +910,6 @@ function outroLabel(buff: OutroBuff): string {
 
 function statLabel(buff: StatBuff): string {
   if (buff.stat === 'flatAtk') return `${buff.name} (ATK +${buff.value})`;
-  const stat = { atk: 'ATK', def: 'DEF', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', echoBonus: 'Echo DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG', multiplier: 'DMG Multiplier', amplification: 'DMG Amplification', defIgnore: 'DEF Ignored' }[buff.stat];
+  const stat = { atk: 'ATK', def: 'DEF', damageBonus: 'DMG', elementalBonus: 'Elemental DMG', liberationBonus: 'Liberation DMG', heavyBonus: 'Heavy DMG', skillBonus: 'Skill DMG', basicBonus: 'Basic DMG', echoBonus: 'Echo DMG', critRate: 'Crit. Rate', critDamage: 'Crit. DMG', multiplier: 'DMG Multiplier', amplification: 'DMG Amplification', defIgnore: 'DEF Ignored', hp: 'HP', healingBonus: 'Healing Bonus' }[buff.stat];
   return `${buff.name} (${stat} +${buff.value}%)`;
 }
