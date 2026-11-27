@@ -825,5 +825,143 @@
       "section": "basic",
       "index": 2
     }
+  ],
+  "chains": [
+    {
+      "newHits": [
+        {
+          "section": "outro",
+          "hit": {
+            "name": "Verina S1 Healing",
+            "kind": "heal",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  20
+                ],
+                "times": 6
+              }
+            ],
+            "manual": true
+          }
+        }
+      ]
+    },
+    {},
+    {
+      "hits": {
+        "liberation:3": {
+          "bonus": 12
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Verina S4",
+              "stat": "elementalBonus",
+              "value": 15,
+              "duration": 24,
+              "target": "team",
+              "element": "spectro"
+            }
+          ]
+        },
+        "forte:1": {
+          "buffs": [
+            {
+              "name": "Verina S4",
+              "stat": "elementalBonus",
+              "value": 15,
+              "duration": 24,
+              "target": "team",
+              "element": "spectro"
+            }
+          ]
+        },
+        "forte:2": {
+          "buffs": [
+            {
+              "name": "Verina S4",
+              "stat": "elementalBonus",
+              "value": 15,
+              "duration": 24,
+              "target": "team",
+              "element": "spectro"
+            }
+          ]
+        },
+        "forte:3": {
+          "buffs": [
+            {
+              "name": "Verina S4",
+              "stat": "elementalBonus",
+              "value": 15,
+              "duration": 24,
+              "target": "team",
+              "element": "spectro"
+            }
+          ]
+        },
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Verina S4",
+              "stat": "elementalBonus",
+              "value": 15,
+              "duration": 24,
+              "target": "team",
+              "element": "spectro"
+            }
+          ]
+        }
+      },
+      "outroStatBuffs": [
+        {
+          "name": "Verina S4",
+          "stat": "elementalBonus",
+          "value": 15,
+          "duration": 24,
+          "target": "team",
+          "element": "spectro"
+        }
+      ]
+    },
+    {},
+    {
+      "hits": {
+        "forte:0": {
+          "bonus": 20
+        },
+        "forte:1": {
+          "bonus": 20
+        },
+        "forte:2": {
+          "bonus": 20
+        },
+        "forte:3": {
+          "bonus": 20
+        }
+      },
+      "followUps": [
+        {
+          "hit": "liberation:2",
+          "after": [
+            "forte:0",
+            "forte:3"
+          ]
+        },
+        {
+          "hit": "liberation:3",
+          "after": [
+            "forte:0",
+            "forte:3"
+          ]
+        }
+      ]
+    }
   ]
 }

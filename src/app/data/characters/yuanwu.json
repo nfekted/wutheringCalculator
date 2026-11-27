@@ -786,5 +786,80 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {},
+    {},
+    {
+      "hits": {
+        "skill:1": {
+          "parts": [
+            {
+              "stat": "def",
+              "values": [
+                20
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "newHits": [
+        {
+          "section": "liberation",
+          "hit": {
+            "name": "Shield (S4)",
+            "kind": "shield",
+            "parts": [
+              {
+                "stat": "def",
+                "values": [
+                  200
+                ]
+              }
+            ],
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "liberation:1",
+          "after": [
+            "liberation:0"
+          ]
+        }
+      ]
+    },
+    {
+      "hits": {
+        "skill:0": {
+          "buffs": [
+            {
+              "name": "Yuanwu S5",
+              "stat": "liberationBonus",
+              "value": 50,
+              "duration": 12
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "skill:0": {
+          "buffs": [
+            {
+              "name": "Yuanwu S6",
+              "stat": "def",
+              "value": 32,
+              "duration": 12,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    }
   ]
 }

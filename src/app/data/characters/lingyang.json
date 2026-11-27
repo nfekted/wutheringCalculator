@@ -723,5 +723,69 @@
       "section": "forte",
       "index": 5
     }
+  ],
+  "chains": [
+    {},
+    {},
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Lingyang S3",
+              "stat": "basicBonus",
+              "value": 20,
+              "duration": 14
+            },
+            {
+              "name": "Lingyang S3",
+              "stat": "skillBonus",
+              "value": 10,
+              "duration": 14
+            }
+          ]
+        }
+      }
+    },
+    {
+      "outroStatBuffs": [
+        {
+          "name": "Lingyang S4",
+          "stat": "elementalBonus",
+          "value": 20,
+          "duration": 30,
+          "target": "team",
+          "element": "glacio"
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                200
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:3": {
+          "buffs": [
+            {
+              "name": "Lingyang S6",
+              "stat": "basicBonus",
+              "value": 100,
+              "duration": 3
+            }
+          ]
+        }
+      }
+    }
   ]
 }

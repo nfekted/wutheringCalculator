@@ -557,5 +557,59 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Yangyang S1",
+              "stat": "elementalBonus",
+              "value": 15,
+              "duration": 8
+            }
+          ]
+        }
+      }
+    },
+    {},
+    {
+      "stats": [
+        {
+          "stat": "skillBonus",
+          "value": 40
+        }
+      ]
+    },
+    {
+      "hits": {
+        "forte:1": {
+          "bonus": 95
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "bonus": 85
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:1": {
+          "buffs": [
+            {
+              "name": "Yangyang S6",
+              "stat": "atk",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    }
   ]
 }

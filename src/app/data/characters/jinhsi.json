@@ -1053,5 +1053,76 @@
       "section": "forte",
       "index": 8
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "forte:7": {
+          "bonus": 80
+        },
+        "forte:8": {
+          "bonus": 80
+        }
+      }
+    },
+    {},
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Jinhsi S3",
+              "stat": "atk",
+              "value": 25,
+              "duration": 20,
+              "stacks": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Jinhsi S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        },
+        "forte:7": {
+          "buffs": [
+            {
+              "name": "Jinhsi S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 2.2
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:7": {
+          "multiplier": 1.45
+        },
+        "forte:8": {
+          "multiplier": 1.45
+        }
+      }
+    }
   ]
 }

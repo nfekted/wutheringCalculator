@@ -547,5 +547,78 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "basic:4": {
+          "buffs": [
+            {
+              "name": "Sanhua S1",
+              "stat": "critRate",
+              "value": 15,
+              "duration": 10
+            }
+          ]
+        }
+      }
+    },
+    {},
+    {
+      "passiveBuffs": [
+        {
+          "name": "Sanhua S3",
+          "stat": "amplification",
+          "value": 35
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Sanhua S4",
+              "stat": "damageBonus",
+              "value": 120,
+              "duration": 5,
+              "hits": [
+                "forte:0"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Sanhua S5",
+          "stat": "critDamage",
+          "value": 100,
+          "hits": [
+            "forte:1",
+            "forte:2",
+            "forte:3"
+          ]
+        }
+      ]
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Sanhua S6",
+              "stat": "atk",
+              "value": 10,
+              "duration": 20,
+              "target": "team",
+              "stacks": 2
+            }
+          ]
+        }
+      }
+    }
   ]
 }

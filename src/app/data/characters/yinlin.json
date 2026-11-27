@@ -581,5 +581,87 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "skill:0": {
+          "bonus": 70
+        },
+        "skill:1": {
+          "bonus": 70
+        }
+      }
+    },
+    {},
+    {
+      "hits": {
+        "forte:1": {
+          "multiplier": 1.55
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Yinlin S4",
+              "stat": "atk",
+              "value": 20,
+              "duration": 12,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "bonus": 100
+        }
+      }
+    },
+    {
+      "newHits": [
+        {
+          "section": "skill",
+          "hit": {
+            "name": "Furious Thunder (S6)",
+            "kind": "skill",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  419.59
+                ]
+              }
+            ],
+            "manual": true
+          }
+        }
+      ],
+      "states": [
+        {
+          "name": "Furious Thunder",
+          "start": "liberation:0",
+          "hits": [],
+          "replaces": [],
+          "duration": 30,
+          "autoHit": {
+            "hit": "skill:3",
+            "after": [
+              "basic:0",
+              "basic:1",
+              "basic:2",
+              "basic:3",
+              "basic:6"
+            ],
+            "max": 4
+          }
+        }
+      ]
+    }
   ]
 }

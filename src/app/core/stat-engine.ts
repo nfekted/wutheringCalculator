@@ -95,6 +95,14 @@ export function weaponModifier(slot: WeaponSlot | null, element: string): StatMo
   return modifier;
 }
 
+/** What the active Resonance Chain nodes (S1 to S`chain`) add to the attributes; an elemental bonus with `element` only for that element */
+export function chainModifier(data: CharacterData, chain: number): StatModifier {
+  const modifier = emptyModifier();
+  for (const node of data.chains?.slice(0, chain) ?? [])
+    for (const stat of node.stats ?? []) if (!stat.element || stat.element === data.type) addAttribute(modifier, stat, stat.value);
+  return modifier;
+}
+
 export function sumModifiers(modifiers: StatModifier[]): StatModifier {
   const total = emptyModifier();
   for (const modifier of modifiers) {

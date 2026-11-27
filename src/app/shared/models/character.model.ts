@@ -2,14 +2,17 @@ import { Amplification, CharacterResults, HitResult, Levels, Stats, calculateEch
 import { CharacterData, Hit, RotationStep } from "../../data/character-data.model";
 import { EchoData, EchoSlot } from "../../data/echos/echo-data.model";
 import { getEcho } from "../../data/echos";
-import { BaseStats, echoModifier, emptyModifier, finalStats, mainSlotModifier, sonataModifier, sumModifiers, weaponModifier } from "../../core/stat-engine";
+import { chainData } from "../../core/resonance-chain";
+import { BaseStats, chainModifier, echoModifier, emptyModifier, finalStats, mainSlotModifier, sonataModifier, sumModifiers, weaponModifier } from "../../core/stat-engine";
 import { WeaponSlot } from "../../data/weapons/weapon-data.model";
 import { getWeapon } from "../../data/weapons";
 import { CharacterSave } from "./character-save.model";
 
 export class Character implements Stats {
     index: number;
+    /** The data with the active Resonance Chain nodes applied (see `chainData`); `baseData` is the one of S0 */
     data: CharacterData;
+    baseData: CharacterData;
     name: string;
 
     /** Healing or damage view of the echo comparator */
@@ -48,6 +51,9 @@ export class Character implements Stats {
     /** Equipped weapon (of the weapon type of the character) and its rank; null without one */
     weapon: WeaponSlot | null = null;
 
+    /** Resonance Chain (0 to 6); each node needs the previous ones, so S3 has S1 to S3 active */
+    chain: number = 0;
+
     levels: Levels = { basic: 1, skill: 1, liberation: 1, intro: 1, forte: 1 };
     results: CharacterResults = emptyResults();
     /** Hits of the Echo Skill of the main Echo, one per way of casting it; empty without a main Echo */
@@ -55,7 +61,7 @@ export class Character implements Stats {
 
     constructor(index: number, data: CharacterData, load?: CharacterSave) {
         this.index = index;
-        this.data = data;
+        this.data = this.baseData = data;
         this.name = data.name;
         this.showHealing = data.hasHealing && !data.primaryDamage;
         this.hpScale = data.hpScale;
@@ -78,6 +84,9 @@ export class Character implements Stats {
             this.energyRegen = load.energyRegen ?? 100;
             this.mode = load.mode ?? 0;
             this.rotationBuild = load.rotationBuild ?? null;
+            // Saves from before the Resonance Chain start at S0; invalid values are clamped to 0-6
+            const chain = Math.round(Number(load.chain));
+            this.chain = Number.isFinite(chain) ? Math.min(Math.max(chain, 0), 6) : 0;
             // Saves from before the levels were stored keep every level at 1; invalid values are clamped to 1-10
             for (const key of Object.keys(this.levels) as (keyof Levels)[]) {
                 const level = Math.round(Number(load.levels?.[key]));
@@ -93,6 +102,7 @@ export class Character implements Stats {
             this.weapon = weapon && weapon.type === data.weapon && [1, 2, 3, 4, 5].includes(load.weapon!.rank) ? { ...load.weapon! } : null;
             this.name = load.name;
         }
+        this.data = chainData(this.baseData, this.chain);
         this.applyEchoSet();
         this.calculate();
     }
@@ -104,7 +114,8 @@ export class Character implements Stats {
     applyEchoSet() {
         if (!this.hasBase) return;
         const modifiers = [...this.echoSet.filter(slot => !!slot).map(slot => echoModifier(slot, this.data.type)),
-            mainSlotModifier(this.echoSet[0], this.data.id, this.data.type), weaponModifier(this.weapon, this.data.type)];
+            mainSlotModifier(this.echoSet[0], this.data.id, this.data.type), weaponModifier(this.weapon, this.data.type),
+            chainModifier(this.baseData, this.chain)];
         const passive = emptyModifier();
         passive.add.energyRegen = this.data.passiveStats?.energyRegen ?? 0;
         const first = finalStats(this.baseStats, sumModifiers([...modifiers, passive, sonataModifier(this.echoSet, this.data.type)]), this);
@@ -112,6 +123,14 @@ export class Character implements Stats {
         Object.assign(this, finalStats(this.baseStats, sumModifiers([...modifiers, passive, sonatas]), this));
         const fromRegen = this.data.atkFromEnergyRegen;
         if (fromRegen) this.dmg += Math.round(Math.min(fromRegen.max, Math.max(0, this.energyRegen - fromRegen.over) * fromRegen.per));
+    }
+
+    /** Changes the Resonance Chain (0 to 6): the data of its nodes, then the attributes and the results */
+    setChain(chain: number) {
+        this.chain = Math.min(6, Math.max(0, chain));
+        this.data = chainData(this.baseData, this.chain);
+        this.applyEchoSet();
+        this.calculate();
     }
 
     calculate() {
@@ -214,7 +233,7 @@ export class Character implements Stats {
     }
 
     clone(): Character {
-        const copy = Object.assign(new Character(this.index, this.data), this);
+        const copy = Object.assign(new Character(this.index, this.baseData), this);
         copy.echoSet = this.echoSet.map(slot => slot && structuredClone(slot));
         return copy;
     }

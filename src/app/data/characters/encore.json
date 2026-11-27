@@ -722,5 +722,281 @@
       "section": "forte",
       "index": 1
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "basic:0": {
+          "buffs": [
+            {
+              "name": "Encore S1",
+              "stat": "elementalBonus",
+              "value": 3,
+              "duration": 6,
+              "stacks": 4
+            }
+          ]
+        },
+        "basic:1": {
+          "buffs": [
+            {
+              "name": "Encore S1",
+              "stat": "elementalBonus",
+              "value": 3,
+              "duration": 6,
+              "stacks": 4
+            }
+          ]
+        },
+        "basic:2": {
+          "buffs": [
+            {
+              "name": "Encore S1",
+              "stat": "elementalBonus",
+              "value": 3,
+              "duration": 6,
+              "stacks": 4
+            }
+          ]
+        },
+        "basic:3": {
+          "buffs": [
+            {
+              "name": "Encore S1",
+              "stat": "elementalBonus",
+              "value": 3,
+              "duration": 6,
+              "stacks": 4
+            }
+          ]
+        },
+        "basic:4": {
+          "buffs": [
+            {
+              "name": "Encore S1",
+              "stat": "elementalBonus",
+              "value": 3,
+              "duration": 6,
+              "stacks": 4
+            }
+          ]
+        },
+        "basic:6": {
+          "buffs": [
+            {
+              "name": "Encore S1",
+              "stat": "elementalBonus",
+              "value": 3,
+              "duration": 6,
+              "stacks": 4
+            }
+          ]
+        },
+        "basic:7": {
+          "buffs": [
+            {
+              "name": "Encore S1",
+              "stat": "elementalBonus",
+              "value": 3,
+              "duration": 6,
+              "stacks": 4
+            }
+          ]
+        },
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Encore S1",
+              "stat": "elementalBonus",
+              "value": 3,
+              "duration": 6,
+              "stacks": 4
+            }
+          ]
+        },
+        "liberation:1": {
+          "buffs": [
+            {
+              "name": "Encore S1",
+              "stat": "elementalBonus",
+              "value": 3,
+              "duration": 6,
+              "stacks": 4
+            }
+          ]
+        },
+        "liberation:2": {
+          "buffs": [
+            {
+              "name": "Encore S1",
+              "stat": "elementalBonus",
+              "value": 3,
+              "duration": 6,
+              "stacks": 4
+            }
+          ]
+        },
+        "liberation:3": {
+          "buffs": [
+            {
+              "name": "Encore S1",
+              "stat": "elementalBonus",
+              "value": 3,
+              "duration": 6,
+              "stacks": 4
+            }
+          ]
+        },
+        "liberation:6": {
+          "buffs": [
+            {
+              "name": "Encore S1",
+              "stat": "elementalBonus",
+              "value": 3,
+              "duration": 6,
+              "stacks": 4
+            }
+          ]
+        }
+      }
+    },
+    {},
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 1.4
+        },
+        "forte:1": {
+          "multiplier": 1.4
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:1": {
+          "buffs": [
+            {
+              "name": "Encore S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team",
+              "element": "fusion"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "stats": [
+        {
+          "stat": "skillBonus",
+          "value": 35
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Encore S6",
+              "stat": "atk",
+              "value": 5,
+              "duration": 10,
+              "stacks": 5
+            }
+          ]
+        },
+        "liberation:1": {
+          "buffs": [
+            {
+              "name": "Encore S6",
+              "stat": "atk",
+              "value": 5,
+              "duration": 10,
+              "stacks": 5
+            }
+          ]
+        },
+        "liberation:2": {
+          "buffs": [
+            {
+              "name": "Encore S6",
+              "stat": "atk",
+              "value": 5,
+              "duration": 10,
+              "stacks": 5
+            }
+          ]
+        },
+        "liberation:3": {
+          "buffs": [
+            {
+              "name": "Encore S6",
+              "stat": "atk",
+              "value": 5,
+              "duration": 10,
+              "stacks": 5
+            }
+          ]
+        },
+        "liberation:4": {
+          "buffs": [
+            {
+              "name": "Encore S6",
+              "stat": "atk",
+              "value": 5,
+              "duration": 10,
+              "stacks": 5
+            }
+          ]
+        },
+        "liberation:5": {
+          "buffs": [
+            {
+              "name": "Encore S6",
+              "stat": "atk",
+              "value": 5,
+              "duration": 10,
+              "stacks": 5
+            }
+          ]
+        },
+        "liberation:6": {
+          "buffs": [
+            {
+              "name": "Encore S6",
+              "stat": "atk",
+              "value": 5,
+              "duration": 10,
+              "stacks": 5
+            }
+          ]
+        },
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Encore S6",
+              "stat": "atk",
+              "value": 5,
+              "duration": 10,
+              "stacks": 5
+            }
+          ]
+        },
+        "forte:1": {
+          "buffs": [
+            {
+              "name": "Encore S6",
+              "stat": "atk",
+              "value": 5,
+              "duration": 10,
+              "stacks": 5
+            }
+          ]
+        }
+      }
+    }
   ]
 }

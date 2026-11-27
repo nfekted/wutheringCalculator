@@ -764,5 +764,57 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "passiveBuffs": [
+        {
+          "name": "Chixia S1",
+          "stat": "critRate",
+          "value": 100,
+          "hits": [
+            "forte:1"
+          ]
+        }
+      ]
+    },
+    {},
+    {
+      "hits": {
+        "liberation:0": {
+          "bonus": 40
+        }
+      }
+    },
+    {},
+    {
+      "hits": {
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Chixia S5",
+              "stat": "atk",
+              "value": 30,
+              "duration": 10
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:1": {
+          "buffs": [
+            {
+              "name": "Chixia S6",
+              "stat": "basicBonus",
+              "value": 25,
+              "duration": 15,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    }
   ]
 }

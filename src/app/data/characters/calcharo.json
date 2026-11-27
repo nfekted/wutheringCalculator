@@ -913,5 +913,94 @@
       "section": "forte",
       "index": 1
     }
+  ],
+  "chains": [
+    {},
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Calcharo S2",
+              "stat": "skillBonus",
+              "value": 30,
+              "duration": 15
+            }
+          ]
+        },
+        "liberation:1": {
+          "buffs": [
+            {
+              "name": "Calcharo S2",
+              "stat": "skillBonus",
+              "value": 30,
+              "duration": 15
+            }
+          ]
+        }
+      }
+    },
+    {
+      "stateBuffs": {
+        "0": [
+          {
+            "name": "Calcharo S3",
+            "stat": "elementalBonus",
+            "value": 25
+          }
+        ]
+      }
+    },
+    {
+      "outroStatBuffs": [
+        {
+          "name": "Calcharo S4",
+          "stat": "elementalBonus",
+          "value": 20,
+          "duration": 30,
+          "target": "team",
+          "element": "electro"
+        }
+      ]
+    },
+    {
+      "hits": {
+        "intro:0": {
+          "bonus": 50
+        },
+        "liberation:1": {
+          "bonus": 50
+        }
+      }
+    },
+    {
+      "newHits": [
+        {
+          "section": "liberation",
+          "hit": {
+            "name": "Phantom (S6)",
+            "kind": "liberation",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  100
+                ],
+                "times": 2
+              }
+            ],
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "liberation:9",
+          "after": [
+            "forte:1"
+          ]
+        }
+      ]
+    }
   ]
 }

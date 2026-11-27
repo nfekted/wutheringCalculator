@@ -845,5 +845,91 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {},
+    {},
+    {},
+    {
+      "hits": {
+        "forte:1": {
+          "buffs": [
+            {
+              "name": "Jianxin S4",
+              "stat": "damageBonus",
+              "value": 80,
+              "duration": 14,
+              "hits": [
+                "liberation:0",
+                "liberation:1"
+              ]
+            }
+          ]
+        },
+        "forte:2": {
+          "buffs": [
+            {
+              "name": "Jianxin S4",
+              "stat": "damageBonus",
+              "value": 80,
+              "duration": 14,
+              "hits": [
+                "liberation:0",
+                "liberation:1"
+              ]
+            }
+          ]
+        },
+        "forte:3": {
+          "buffs": [
+            {
+              "name": "Jianxin S4",
+              "stat": "damageBonus",
+              "value": 80,
+              "duration": 14,
+              "hits": [
+                "liberation:0",
+                "liberation:1"
+              ]
+            }
+          ]
+        },
+        "forte:4": {
+          "buffs": [
+            {
+              "name": "Jianxin S4",
+              "stat": "damageBonus",
+              "value": 80,
+              "duration": 14,
+              "hits": [
+                "liberation:0",
+                "liberation:1"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {},
+    {
+      "newHits": [
+        {
+          "section": "forte",
+          "hit": {
+            "name": "Special Chi Counter (S6)",
+            "kind": "heavy",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  556.67
+                ]
+              }
+            ],
+            "manual": true
+          }
+        }
+      ]
+    }
   ]
 }

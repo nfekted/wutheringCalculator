@@ -883,5 +883,136 @@
     "interval": 1,
     "max": 2,
     "othersOnly": true
-  }
+  },
+  "chains": [
+    {},
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Jiyan S2",
+              "stat": "atk",
+              "value": 28,
+              "duration": 15
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "skill:0": {
+          "buffs": [
+            {
+              "name": "Jiyan S3",
+              "stat": "critRate",
+              "value": 16,
+              "duration": 8
+            },
+            {
+              "name": "Jiyan S3",
+              "stat": "critDamage",
+              "value": 32,
+              "duration": 8
+            }
+          ]
+        },
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Jiyan S3",
+              "stat": "critRate",
+              "value": 16,
+              "duration": 8
+            },
+            {
+              "name": "Jiyan S3",
+              "stat": "critDamage",
+              "value": 32,
+              "duration": 8
+            }
+          ]
+        },
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Jiyan S3",
+              "stat": "critRate",
+              "value": 16,
+              "duration": 8
+            },
+            {
+              "name": "Jiyan S3",
+              "stat": "critDamage",
+              "value": 32,
+              "duration": 8
+            }
+          ]
+        },
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Jiyan S3",
+              "stat": "critRate",
+              "value": 16,
+              "duration": 8
+            },
+            {
+              "name": "Jiyan S3",
+              "stat": "critDamage",
+              "value": 32,
+              "duration": 8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Jiyan S4",
+              "stat": "heavyBonus",
+              "value": 25,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        },
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Jiyan S4",
+              "stat": "heavyBonus",
+              "value": 25,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "outro:0": {
+          "multiplier": 2.2
+        }
+      },
+      "stats": [
+        {
+          "stat": "dmg",
+          "value": 45
+        }
+      ]
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 3.4
+        }
+      }
+    }
+  ]
 }

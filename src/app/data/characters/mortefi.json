@@ -529,5 +529,87 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "coordinated": {
+        "perKind": {
+          "skill": 2
+        }
+      }
+    },
+    {},
+    {
+      "passiveBuffs": [
+        {
+          "name": "Mortefi S3",
+          "stat": "critDamage",
+          "value": 30,
+          "hits": [
+            "liberation:1"
+          ]
+        }
+      ]
+    },
+    {
+      "coordinated": {
+        "duration": 17
+      }
+    },
+    {
+      "newHits": [
+        {
+          "section": "liberation",
+          "hit": {
+            "name": "Marcato (S5)",
+            "kind": "liberation",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  16,
+                  17.32,
+                  18.63,
+                  20.47,
+                  21.78,
+                  23.29,
+                  25.39,
+                  27.48,
+                  29.58,
+                  31.81
+                ],
+                "times": 4
+              }
+            ],
+            "multiplier": 0.5,
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "liberation:2",
+          "after": [
+            "skill:0",
+            "forte:0"
+          ]
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Mortefi S6",
+              "stat": "atk",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    }
   ]
 }

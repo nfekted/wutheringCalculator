@@ -1,5 +1,5 @@
 import { NegativeStatus } from '../core/negative-status';
-import { EchoAttribute, EchoCost } from './echos/echo-data.model';
+import { EchoAttribute, EchoCost, EchoMainValue } from './echos/echo-data.model';
 
 export type SectionKey = 'basic' | 'skill' | 'liberation' | 'intro' | 'outro' | 'forte';
 
@@ -352,6 +352,29 @@ export interface CharacterState {
   outroHits?: { hit: HitKey; times: number };
 }
 
+/** What a Resonance Chain node changes; S3 has S1 to S3 active. Applied over a copy of the data (see `chainData`) */
+export interface ChainNode {
+  /** Always active attributes, on the attributes from the Echos (as an Echo main value) */
+  stats?: EchoMainValue[];
+  /** Existing hits: `bonus` is added to the `bonus` of the hit, `buffs` to its buffs, `parts` to its parts; `multiplier` multiplies
+   * its `multiplier` (e.g. "DMG multiplier +40%" is 1.4; it also covers the added parts) */
+  hits?: Record<HitKey, { bonus?: number; buffs?: StatBuff[]; parts?: HitPart[]; multiplier?: number }>;
+  /** Hits added at the end of a section; a heal makes the character heal its allies */
+  newHits?: { section: SectionKey; hit: Hit }[];
+  /** Added to `passiveBuffs` */
+  passiveBuffs?: StatBuff[];
+  /** Added to `outro.statBuffs` */
+  outroStatBuffs?: StatBuff[];
+  /** Added to `followUps` */
+  followUps?: { hit: HitKey; after: HitKey[] }[];
+  /** Buffs added to an existing state (key: its index in `states`), while it lasts */
+  stateBuffs?: Record<number, StatBuff[]>;
+  /** States added at the end of `states` */
+  states?: CharacterState[];
+  /** Changes of `coordinated`: a new `duration`, `perKind` merged into the one it has */
+  coordinated?: { duration?: number; perKind?: Partial<Record<HitKind, number>> };
+}
+
 export interface SkillData {
   name: string;
   hits: Hit[];
@@ -459,6 +482,8 @@ export interface CharacterData {
   ignoredHits?: HitKey[];
   /** Buffs always active, for the character (or, with `target: 'team'`, for the whole team while the character is in it) */
   passiveBuffs?: StatBuff[];
+  /** Resonance Chain, S1 to S6 (index 0 is S1); a node with no effect on the calculation is an empty object */
+  chains?: ChainNode[];
   basic: SkillData;
   skill: SkillData;
   liberation: SkillData;

@@ -25,6 +25,7 @@ export class CharacterSave {
     mode: number = 0;
     rotationBuild: RotationStep[] | null = null;
     levels?: Levels;
+    chain?: number;
     echoSet?: (EchoSlot | null)[];
     weapon?: WeaponSlot | null;
 
@@ -49,6 +50,7 @@ export class CharacterSave {
         this.mode = char.mode;
         this.rotationBuild = char.rotationBuild;
         this.levels = { ...char.levels };
+        this.chain = char.chain;
         this.echoSet = char.echoSet.map(slot => slot && structuredClone(slot));
         this.weapon = char.weapon && { ...char.weapon };
     }

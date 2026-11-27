@@ -102,6 +102,11 @@ export class CharacterComponent {
     this.calculate();
   }
 
+  protected changeChain(delta: number) {
+    this.character().setChain(this.character().chain + delta);
+    this.changed.emit();
+  }
+
   calculate() {
     this.character().calculate();
     this.changed.emit();

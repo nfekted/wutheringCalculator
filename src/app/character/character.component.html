@@ -3,8 +3,22 @@
   <header class="ui-card flex flex-col gap-6 border-t-4 p-5 sm:flex-row sm:items-center"
     [style.border-top-color]="'var(--' + character().data.type + ')'">
     <div class="flex shrink-0 items-center gap-3">
-      <img [src]="'assets/img/characters/' + character().data.icon + '.webp'" alt=""
-        class="h-28 w-28 shrink-0 rounded-full bg-surface-2 object-cover object-top" />
+      <div class="flex shrink-0 flex-col items-center gap-1">
+        <img [src]="'assets/img/characters/' + character().data.icon + '.webp'" alt=""
+          class="h-28 w-28 shrink-0 rounded-full bg-surface-2 object-cover object-top" />
+        <!-- Resonance Chain -->
+        <div class="flex items-center" [title]="'char.chain' | transloco">
+          <button type="button" class="ui-icon-btn h-7 w-7" [attr.aria-label]="('char.chain' | transloco) + ' -'" [disabled]="character().chain <= 0"
+            (click)="changeChain(-1)">
+            <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+          </button>
+          <span class="w-7 text-center text-sm font-bold tabular-nums text-ink" aria-live="polite">S{{ character().chain }}</span>
+          <button type="button" class="ui-icon-btn h-7 w-7" [attr.aria-label]="('char.chain' | transloco) + ' +'" [disabled]="character().chain >= 6"
+            (click)="changeChain(1)">
+            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+          </button>
+        </div>
+      </div>
 
       <!-- Weapon slot -->
       <button type="button" class="flex h-28 w-24 shrink-0 flex-col items-center justify-center gap-1 rounded-sm border border-hairline bg-surface-2 p-1 text-center hover:ring-1"

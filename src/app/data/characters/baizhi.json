@@ -619,5 +619,62 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {},
+    {
+      "hits": {
+        "skill:0": {
+          "buffs": [
+            {
+              "name": "Baizhi S2",
+              "stat": "elementalBonus",
+              "value": 15,
+              "duration": 12
+            },
+            {
+              "name": "Baizhi S2",
+              "stat": "healingBonus",
+              "value": 15,
+              "duration": 12
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Baizhi S3",
+              "stat": "hp",
+              "value": 12,
+              "duration": 10
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "parts": [
+            {
+              "stat": "hp",
+              "values": [
+                1.2
+              ]
+            }
+          ],
+          "multiplier": 1.5
+        },
+        "liberation:1": {
+          "multiplier": 1.8
+        }
+      }
+    },
+    {},
+    {}
   ]
 }

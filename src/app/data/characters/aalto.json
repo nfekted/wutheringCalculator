@@ -458,5 +458,55 @@
       "section": "basic",
       "index": 2
     }
+  ],
+  "chains": [
+    {},
+    {
+      "stats": [
+        {
+          "stat": "dmg",
+          "value": 15
+        }
+      ]
+    },
+    {},
+    {
+      "hits": {
+        "skill:0": {
+          "bonus": 30
+        },
+        "forte:0": {
+          "bonus": 30
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Aalto S5",
+              "stat": "elementalBonus",
+              "value": 25,
+              "duration": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Aalto S6",
+              "stat": "critRate",
+              "value": 8,
+              "duration": 10
+            }
+          ]
+        }
+      }
+    }
   ]
 }

@@ -591,5 +591,86 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "skill:0": {
+          "buffs": [
+            {
+              "name": "Rover S1",
+              "stat": "critRate",
+              "value": 15,
+              "duration": 7
+            }
+          ]
+        },
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Rover S1",
+              "stat": "critRate",
+              "value": 15,
+              "duration": 7
+            }
+          ]
+        }
+      }
+    },
+    {
+      "stats": [
+        {
+          "stat": "elementalBonus",
+          "value": 20,
+          "element": "spectro"
+        }
+      ]
+    },
+    {
+      "stats": [
+        {
+          "stat": "energyRegen",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "newHits": [
+        {
+          "section": "liberation",
+          "hit": {
+            "name": "Rover S4 Healing",
+            "kind": "heal",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  20
+                ],
+                "times": 5
+              }
+            ],
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "liberation:1",
+          "after": [
+            "liberation:0"
+          ]
+        }
+      ]
+    },
+    {
+      "stats": [
+        {
+          "stat": "liberationBonus",
+          "value": 40
+        }
+      ]
+    },
+    {}
   ]
 }

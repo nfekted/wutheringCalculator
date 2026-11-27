@@ -624,5 +624,80 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "forte:3": {
+          "bonus": 40
+        },
+        "forte:4": {
+          "bonus": 40
+        },
+        "forte:5": {
+          "bonus": 40
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Taoqi S2",
+          "stat": "critRate",
+          "value": 20,
+          "hits": [
+            "liberation:0"
+          ]
+        },
+        {
+          "name": "Taoqi S2",
+          "stat": "critDamage",
+          "value": 20,
+          "hits": [
+            "liberation:0"
+          ]
+        }
+      ]
+    },
+    {},
+    {
+      "hits": {
+        "basic:5": {
+          "buffs": [
+            {
+              "name": "Taoqi S4",
+              "stat": "def",
+              "value": 50,
+              "duration": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "bonus": 50
+        },
+        "forte:1": {
+          "bonus": 50
+        },
+        "forte:2": {
+          "bonus": 50
+        }
+      }
+    },
+    {
+      "stats": [
+        {
+          "stat": "basicBonus",
+          "value": 40
+        },
+        {
+          "stat": "heavyBonus",
+          "value": 40
+        }
+      ]
+    }
   ]
 }

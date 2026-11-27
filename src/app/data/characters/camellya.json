@@ -772,5 +772,102 @@
       "section": "liberation",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Camellya S1",
+              "stat": "critDamage",
+              "value": 28,
+              "duration": 18
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 2.2
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 1.5
+        }
+      },
+      "stateBuffs": {
+        "1": [
+          {
+            "name": "Camellya S3",
+            "stat": "atk",
+            "value": 58
+          }
+        ]
+      }
+    },
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Camellya S4",
+              "stat": "basicBonus",
+              "value": 25,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "intro:0": {
+          "multiplier": 4.03
+        },
+        "outro:0": {
+          "multiplier": 1.68
+        },
+        "outro:1": {
+          "multiplier": 1.68
+        }
+      }
+    },
+    {
+      "stateBuffs": {
+        "1": [
+          {
+            "name": "Camellya S6",
+            "stat": "multiplier",
+            "value": 150,
+            "hits": [
+              "basic:0",
+              "basic:1",
+              "basic:2",
+              "basic:3",
+              "basic:4",
+              "basic:5",
+              "basic:6",
+              "basic:7",
+              "skill:0",
+              "skill:1",
+              "skill:2",
+              "skill:3",
+              "skill:4",
+              "skill:5",
+              "skill:6",
+              "skill:7",
+              "skill:8"
+            ]
+          }
+        ]
+      }
+    }
   ]
 }

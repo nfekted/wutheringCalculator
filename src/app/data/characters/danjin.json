@@ -678,5 +678,75 @@
       "section": "forte",
       "index": 3
     }
+  ],
+  "chains": [
+    {
+      "stats": [
+        {
+          "stat": "dmg",
+          "value": 30
+        }
+      ]
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Danjin S2",
+          "stat": "amplification",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "stats": [
+        {
+          "stat": "liberationBonus",
+          "value": 30
+        }
+      ]
+    },
+    {
+      "stats": [
+        {
+          "stat": "cChance",
+          "value": 15
+        }
+      ]
+    },
+    {
+      "stats": [
+        {
+          "stat": "elementalBonus",
+          "value": 15,
+          "element": "havoc"
+        }
+      ]
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Danjin S6",
+              "stat": "atk",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        },
+        "forte:2": {
+          "buffs": [
+            {
+              "name": "Danjin S6",
+              "stat": "atk",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    }
   ]
 }

@@ -804,5 +804,36 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "stats": [
+        {
+          "stat": "skillBonus",
+          "value": 30
+        }
+      ]
+    },
+    {},
+    {},
+    {},
+    {
+      "hits": {
+        "forte:5": {
+          "multiplier": 1.5
+        }
+      }
+    },
+    {
+      "stateBuffs": {
+        "0": [
+          {
+            "name": "Rover S6",
+            "stat": "critRate",
+            "value": 25
+          }
+        ]
+      }
+    }
   ]
 }
