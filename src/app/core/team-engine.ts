@@ -186,9 +186,17 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   const pauses = new Map<NegativeStatus, number>();
   /** DMG Amplification and longer interval of a status while they last */
   let statusBoosts: { status: NegativeStatus; amplification: number; intervalRate: number; points: number; label: string }[] = [];
+  /** DMG Amplifications of statuses always active while a member is in the team (`alwaysBoost`) */
+  const alwaysBoosts = new Map<string, { statuses?: NegativeStatus[]; amplification: number; intervalRate: number; points: number; label: string }>();
+  for (const { character } of segments) for (const rule of rulesOf(character)) {
+    const always = rule.alwaysBoost;
+    const label = always && `${character.name}: ${always.name} (+${always.amplification}%)`;
+    if (always && label) alwaysBoosts.set(label, { statuses: always.statuses, amplification: always.amplification, intervalRate: 1, points: Infinity, label });
+  }
   /** A tick of a status, with the boosts on it */
   /** `extra`: a raise of its DMG Multiplier (in %), named in the row */
   const tickRow = (s: ActiveStatus, rotation: number, boosts: typeof statusBoosts, name = NEGATIVE_STATUS[s.status].name, extra?: { label: string; value: number }) => {
+    boosts = [...boosts, ...[...alwaysBoosts.values()].filter(b => !b.statuses || b.statuses.includes(s.status)).map(b => ({ ...b, status: s.status }))];
     const base = statusTick(s.status, s.stacks, s.overflow) * (1 + (extra?.value ?? 0) / 100);
     const buffed = base * (1 + boosts.reduce((sum, b) => sum + b.amplification, 0) / 100);
     const overflow = s.overflow ? ` + ${NEGATIVE_STATUS[s.status].overflow!.name} (${s.overflow})` : '';

@@ -1038,5 +1038,120 @@
       "section": "liberation",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "basic:5": {
+          "bonus": 150
+        },
+        "basic:6": {
+          "bonus": 150
+        },
+        "basic:7": {
+          "bonus": 150
+        },
+        "basic:8": {
+          "bonus": 150
+        },
+        "basic:9": {
+          "bonus": 150
+        },
+        "basic:10": {
+          "bonus": 150
+        },
+        "basic:12": {
+          "bonus": 150
+        },
+        "forte:0": {
+          "bonus": 150
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Luuk S2",
+          "stat": "multiplier",
+          "value": 60,
+          "hits": [
+            "liberation:0"
+          ]
+        },
+        {
+          "name": "Luuk S2",
+          "stat": "amplification",
+          "value": 30
+        }
+      ]
+    },
+    {
+      "stateBuffs": {
+        "3": [
+          {
+            "name": "Luuk S3",
+            "stat": "multiplier",
+            "value": 136,
+            "hits": [
+              "skill:1",
+              "skill:2",
+              "skill:3"
+            ]
+          }
+        ]
+      },
+      "hits": {
+        "forte:0": {
+          "multiplier": 2.36
+        },
+        "skill:5": {
+          "multiplier": 2.36
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Luuk S4",
+          "stat": "amplification",
+          "value": 20,
+          "target": "team"
+        }
+      ]
+    },
+    {
+      "hits": {
+        "intro:0": {
+          "bonus": 80
+        },
+        "outro:0": {
+          "bonus": 80
+        },
+        "skill:0": {
+          "multiplier": 1.5
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Luuk S6",
+          "stat": "amplification",
+          "value": 30,
+          "hits": [
+            "skill:1",
+            "skill:2",
+            "skill:3",
+            "skill:5",
+            "forte:0"
+          ]
+        }
+      ],
+      "hits": {
+        "liberation:0": {
+          "bonus": 120
+        }
+      }
+    }
   ]
 }

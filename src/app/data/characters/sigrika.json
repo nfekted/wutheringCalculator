@@ -1236,5 +1236,88 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "basic:4": {
+          "multiplier": 1.7
+        },
+        "basic:9": {
+          "multiplier": 1.7
+        },
+        "skill:1": {
+          "multiplier": 1.7
+        },
+        "skill:2": {
+          "multiplier": 1.7
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:4": {
+          "multiplier": 2.2
+        }
+      }
+    },
+    {
+      "counters": {
+        "5": {
+          "max": 4,
+          "amounts": {
+            "forte:4": 0
+          }
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Sigrika S4",
+          "stat": "atk",
+          "value": 20,
+          "target": "team"
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 1.3
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Sigrika S6",
+          "stat": "amplification",
+          "value": 30
+        },
+        {
+          "name": "Innate Gift (S6)",
+          "stat": "amplification",
+          "value": 60,
+          "hits": [
+            "forte:1",
+            "forte:2",
+            "forte:3",
+            "forte:4"
+          ]
+        },
+        {
+          "name": "Innate Gift (S6)",
+          "stat": "defIgnore",
+          "value": 30,
+          "hits": [
+            "forte:1",
+            "forte:2",
+            "forte:3",
+            "forte:4"
+          ]
+        }
+      ]
+    }
   ]
 }

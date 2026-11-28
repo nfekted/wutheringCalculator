@@ -916,5 +916,84 @@
       "section": "liberation",
       "index": 4
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "skill:2": {
+          "buffs": [
+            {
+              "name": "Lucilla S1",
+              "stat": "critRate",
+              "value": 20,
+              "duration": 10
+            }
+          ]
+        }
+      }
+    },
+    {
+      "statuses": {
+        "0": {
+          "alwaysBoost": {
+            "name": "Lucilla S2",
+            "amplification": 80,
+            "statuses": [
+              "glacioChafe"
+            ]
+          }
+        }
+      },
+      "passiveBuffs": [
+        {
+          "name": "Lucilla S2",
+          "stat": "echoBonus",
+          "value": 40,
+          "target": "team",
+          "mode": 1
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:4": {
+          "multiplier": 2
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Lucilla S4",
+              "stat": "atk",
+              "value": 10,
+              "duration": 6,
+              "stacks": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 1.5
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Remembrance (S6)",
+          "stat": "amplification",
+          "value": 600,
+          "hits": [
+            "liberation:4"
+          ]
+        }
+      ]
+    }
   ]
 }

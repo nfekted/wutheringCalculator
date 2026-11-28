@@ -1166,5 +1166,86 @@
       "section": "liberation",
       "index": 1
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "forte:2": {
+          "multiplier": 2.2
+        },
+        "forte:3": {
+          "multiplier": 2.2
+        },
+        "forte:4": {
+          "multiplier": 2.2
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Lynae S2",
+          "stat": "amplification",
+          "value": 25
+        }
+      ],
+      "outroBuffs": [
+        {
+          "target": "incoming",
+          "amplification": "all",
+          "value": 25,
+          "duration": 14,
+          "endsOnSwitch": true
+        }
+      ]
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 1.9
+        },
+        "forte:1": {
+          "multiplier": 1.9
+        }
+      },
+      "passiveBuffs": [
+        {
+          "name": "Premixed Hue (S3)",
+          "stat": "elementalBonus",
+          "value": 1375,
+          "hits": [
+            "skill:1"
+          ]
+        }
+      ]
+    },
+    {
+      "stats": [
+        {
+          "stat": "dmg",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 1.7
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Color of Soul (S6)",
+          "stat": "amplification",
+          "value": 90,
+          "hits": [
+            "forte:0",
+            "forte:1"
+          ]
+        }
+      ]
+    }
   ]
 }

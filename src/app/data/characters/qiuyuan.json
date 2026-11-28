@@ -1001,5 +1001,146 @@
       "section": "skill",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "stats": [
+        {
+          "stat": "cChance",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Qiuyuan S2",
+          "stat": "amplification",
+          "value": 30,
+          "target": "team",
+          "kind": "echo"
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 6
+        }
+      },
+      "newHits": [
+        {
+          "section": "skill",
+          "hit": {
+            "name": "Straw Cape in Drizzly Rain DMG (S3)",
+            "kind": "echo",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  500
+                ]
+              }
+            ],
+            "manual": true,
+            "buffs": [
+              {
+                "name": "Qiuyuan S3",
+                "stat": "multiplier",
+                "value": 600,
+                "hits": [
+                  "forte:4",
+                  "forte:5",
+                  "forte:6"
+                ],
+                "endsOnSwitch": true
+              }
+            ]
+          }
+        },
+        {
+          "section": "skill",
+          "hit": {
+            "name": "Sheath Fallen, New Shoots Revealed DMG (S3, next Outro)",
+            "kind": "echo",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  500
+                ]
+              }
+            ],
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "skill:3",
+          "after": [
+            "skill:2"
+          ]
+        }
+      ]
+    },
+    {
+      "stats": [
+        {
+          "stat": "dmg",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Qiuyuan S5",
+          "stat": "defIgnore",
+          "value": 15
+        }
+      ]
+    },
+    {
+      "newHits": [
+        {
+          "section": "forte",
+          "hit": {
+            "name": "Inksplash of Mind Exit DMG (S6)",
+            "kind": "echo",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  600
+                ]
+              }
+            ],
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "forte:7",
+          "after": [
+            "forte:6"
+          ]
+        }
+      ],
+      "hits": {
+        "skill:2": {
+          "buffs": [
+            {
+              "name": "Qiuyuan S6",
+              "stat": "critDamage",
+              "value": 100,
+              "duration": 6,
+              "endsOnSwitch": true
+            }
+          ]
+        }
+      }
+    }
   ]
 }

@@ -101,7 +101,9 @@ export function calculateResults(data: CharacterData, stats: Stats, levels: Leve
       const coordinated = !support && data.coordinated?.hits.includes(`${key}:${index}`) ? stats.coordinatedBonus ?? 0 : 0;
       // `hit.bonus`: a passive DMG Bonus of this hit only, added to the bonus of its kind
       if (hit.noBuffs) return calculateHit(hit, stats, level, 100, 0);
-      return calculateHit(hit, stats, level, 100 + elemental + bonusOf(stats, kind) + (hit.bonus ?? 0) + coordinated, amplificationOf(amplification, kind, true));
+      // `bonusRate`: the bonus of the kind from every source multiplied (e.g. 1.4)
+      const kindBonus = bonusOf(stats, kind) * (data.bonusRate?.[kind] ?? 1);
+      return calculateHit(hit, stats, level, 100 + elemental + kindBonus + (hit.bonus ?? 0) + coordinated, amplificationOf(amplification, kind, true));
     });
   }
   return results;

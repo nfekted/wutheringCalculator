@@ -1484,5 +1484,162 @@
       "section": "liberation",
       "index": 1
     }
+  ],
+  "chains": [
+    {
+      "stateBuffs": {
+        "3": [
+          {
+            "name": "Aemeath S1",
+            "stat": "critDamage",
+            "value": 300,
+            "hits": [
+              "basic:4",
+              "basic:5",
+              "skill:6",
+              "skill:7"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 2
+        },
+        "forte:1": {
+          "multiplier": 2
+        }
+      },
+      "passiveBuffs": [
+        {
+          "name": "Aemeath S2",
+          "stat": "multiplier",
+          "value": 100,
+          "hits": [
+            "forte:3"
+          ],
+          "mode": 1
+        }
+      ],
+      "statuses": {
+        "0": {
+          "maxBurst": {
+            "perTrail": 15,
+            "stateValue": 400
+          }
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:1": {
+          "multiplier": 2
+        },
+        "liberation:0": {
+          "multiplier": 1.4
+        }
+      },
+      "statuses": {
+        "0": {
+          "hits": {
+            "basic:4": 1,
+            "basic:5": 1,
+            "skill:6": 1,
+            "skill:7": 1
+          }
+        }
+      }
+    },
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Aemeath S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        },
+        "intro:1": {
+          "buffs": [
+            {
+              "name": "Aemeath S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        },
+        "skill:0": {
+          "buffs": [
+            {
+              "name": "Aemeath S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        },
+        "skill:1": {
+          "buffs": [
+            {
+              "name": "Aemeath S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        },
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Aemeath S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        },
+        "forte:1": {
+          "buffs": [
+            {
+              "name": "Aemeath S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {},
+    {
+      "passiveBuffs": [
+        {
+          "name": "Aemeath S6",
+          "stat": "amplification",
+          "value": 40,
+          "kind": "liberation"
+        }
+      ],
+      "hits": {
+        "forte:2": {
+          "multiplier": 2.4
+        },
+        "forte:3": {
+          "multiplier": 2.4
+        }
+      }
+    }
   ]
 }

@@ -243,6 +243,8 @@ export interface CharacterStatus {
   consume?: { hit: HitKey; name: string; perStack: number; max: number };
   /** The `consume` hit does not remove the status */
   keepsOnConsume?: boolean;
+  /** With the character in the team, the ticks of these statuses (every one without `statuses`) always get this DMG Amplification */
+  alwaysBoost?: { name: string; amplification: number; statuses?: NegativeStatus[] };
   /** Every hit of the character gets the DMG Amplification of the stacks on the target (by count, the last one for more) */
   amplifiedBy?: { name: string; values: number[] };
   /** While the character is in all these states (by index in `states`), the status gets a DMG Amplification and a longer interval */
@@ -371,6 +373,8 @@ export interface ChainNode {
   passiveBuffs?: StatBuff[];
   /** Added to `outro.statBuffs` */
   outroStatBuffs?: StatBuff[];
+  /** Added to `outro.buffs` */
+  outroBuffs?: OutroBuff[];
   /** Added to `followUps` */
   followUps?: { hit: HitKey; after: HitKey[] }[];
   /** Buffs added to an existing state (key: its index in `states`), while it lasts */
@@ -382,8 +386,15 @@ export interface ChainNode {
   /** Changes of `field`: a new `duration`, `keepsOnIntro` */
   field?: { duration?: number; keepsOnIntro?: boolean };
   /** Changes of a rule in `statuses` (key: its index): `hits` merged into its stacks per hit, `outroBoost` added to the Amplification of
-   * its `outroBoost`, `fillsMax` added to its `fillsMax`, `keepsOnConsume` set */
-  statuses?: Record<number, { hits?: Record<HitKey, number>; outroBoost?: number; fillsMax?: HitKey[]; keepsOnConsume?: boolean }>;
+   * its `outroBoost`, `fillsMax` added to its `fillsMax`, `keepsOnConsume`, `burst` and `alwaysBoost` set, `mark` and `maxBurst` merged */
+  statuses?: Record<number, {
+    hits?: Record<HitKey, number>; outroBoost?: number; fillsMax?: HitKey[]; keepsOnConsume?: boolean; burst?: CharacterStatus['burst'];
+    alwaysBoost?: CharacterStatus['alwaysBoost']; mark?: { interval?: number; stacks?: number }; maxBurst?: { perTrail?: number; stateValue?: number };
+  }>;
+  /** Changes of a counter (key: its index in `counters`): a new `max`, `amounts` merged */
+  counters?: Record<number, { max?: number; amounts?: Record<HitKey, number> }>;
+  /** Merged into `bonusRate` */
+  bonusRate?: Partial<Record<HitKind, number>>;
 }
 
 export interface SkillData {
@@ -485,6 +496,8 @@ export interface CharacterData {
   modeHits?: Record<HitKey, number>;
   field?: TeamField;
   statuses?: CharacterStatus[];
+  /** The DMG Bonus of a kind of hit, from every source, multiplied by this (e.g. "Basic Attack DMG Bonus from every source +40%": 1.4) */
+  bonusRate?: Partial<Record<HitKind, number>>;
   /** A passive that adds `per` ATK points for each 1% of Energy Regen over `over`, up to `max` (on the attributes from the Echos) */
   atkFromEnergyRegen?: { name: string; over: number; per: number; max: number };
   /** Attributes the character always has (on the attributes from the Echos), e.g. an Inherent Skill "Energy Regen is increased by 10%" */

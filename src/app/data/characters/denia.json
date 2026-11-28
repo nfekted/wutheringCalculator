@@ -1110,5 +1110,176 @@
       "section": "liberation",
       "index": 1
     }
+  ],
+  "chains": [
+    {
+      "stats": [
+        {
+          "stat": "cDmg",
+          "value": 30
+        }
+      ]
+    },
+    {
+      "hits": {
+        "skill:2": {
+          "multiplier": 1.4
+        },
+        "skill:3": {
+          "multiplier": 1.4
+        }
+      },
+      "passiveBuffs": [
+        {
+          "name": "Denia S2",
+          "stat": "elementalBonus",
+          "value": 50,
+          "target": "team",
+          "element": "fusion",
+          "mode": 0
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:1": {
+          "multiplier": 1.8
+        }
+      },
+      "counters": {
+        "1": {
+          "max": 5,
+          "amounts": {
+            "skill:3": -5
+          }
+        }
+      },
+      "newHits": [
+        {
+          "section": "basic",
+          "hit": {
+            "name": "Basic Attack - Stagecraft Form Stage 4 DMG (S3, max Dark Cores)",
+            "kind": "liberation",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  64.38,
+                  69.66,
+                  74.94,
+                  82.33,
+                  87.61,
+                  93.68,
+                  102.13,
+                  110.58,
+                  119.02,
+                  128
+                ]
+              }
+            ],
+            "combo": true,
+            "multiplier": 13,
+            "manual": true
+          }
+        },
+        {
+          "section": "skill",
+          "hit": {
+            "name": "Phantom Bubble - Stagecraft Form DMG (S3, max Dark Cores)",
+            "kind": "liberation",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  8.76,
+                  9.48,
+                  10.2,
+                  11.21,
+                  11.93,
+                  12.75,
+                  13.9,
+                  15.05,
+                  16.2,
+                  17.42
+                ],
+                "times": 3
+              },
+              {
+                "stat": "atk",
+                "values": [
+                  26.28,
+                  28.44,
+                  30.59,
+                  33.61,
+                  35.77,
+                  38.25,
+                  41.69,
+                  45.14,
+                  48.59,
+                  52.25
+                ]
+              }
+            ],
+            "multiplier": 13,
+            "manual": true
+          }
+        }
+      ]
+    },
+    {},
+    {
+      "hits": {
+        "liberation:0": {
+          "bonus": 100
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Denia S6",
+              "stat": "atk",
+              "value": 60,
+              "duration": 12
+            },
+            {
+              "name": "Denia S6",
+              "stat": "elementalBonus",
+              "value": 60,
+              "duration": 12
+            }
+          ]
+        },
+        "intro:1": {
+          "buffs": [
+            {
+              "name": "Denia S6",
+              "stat": "atk",
+              "value": 60,
+              "duration": 12
+            },
+            {
+              "name": "Denia S6",
+              "stat": "elementalBonus",
+              "value": 60,
+              "duration": 12
+            }
+          ]
+        }
+      },
+      "statuses": {
+        "0": {
+          "burst": {
+            "name": "Denia S6",
+            "hits": [
+              "liberation:1"
+            ],
+            "multiplier": 3
+          }
+        }
+      }
+    }
   ]
 }

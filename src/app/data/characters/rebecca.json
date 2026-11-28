@@ -1627,5 +1627,178 @@
       "section": "liberation",
       "index": 3
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "basic:0": {
+          "multiplier": 1.5
+        },
+        "basic:1": {
+          "multiplier": 1.5
+        },
+        "basic:2": {
+          "multiplier": 1.5
+        },
+        "basic:3": {
+          "multiplier": 1.5
+        },
+        "basic:6": {
+          "multiplier": 1.5
+        },
+        "basic:7": {
+          "multiplier": 1.5
+        },
+        "basic:8": {
+          "multiplier": 1.5
+        },
+        "basic:9": {
+          "multiplier": 1.5
+        },
+        "basic:10": {
+          "multiplier": 1.5
+        },
+        "basic:11": {
+          "multiplier": 1.5
+        },
+        "basic:14": {
+          "multiplier": 1.5
+        },
+        "basic:15": {
+          "multiplier": 1.5
+        },
+        "basic:16": {
+          "multiplier": 1.5
+        }
+      }
+    },
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Rebecca S2",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        },
+        "intro:1": {
+          "buffs": [
+            {
+              "name": "Rebecca S2",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        },
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Rebecca S2",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        }
+      },
+      "passiveBuffs": [
+        {
+          "name": "Rebecca S2",
+          "stat": "amplification",
+          "value": 15,
+          "target": "team"
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 1.6
+        },
+        "liberation:1": {
+          "multiplier": 1.6
+        },
+        "liberation:2": {
+          "multiplier": 1.6
+        },
+        "liberation:3": {
+          "multiplier": 1.6
+        }
+      }
+    },
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "A Girl Gets What She Wants! (S4)",
+              "stat": "critDamage",
+              "value": 18,
+              "duration": 12,
+              "hits": [
+                "basic:9",
+                "basic:10",
+                "basic:11",
+                "basic:12",
+                "basic:13",
+                "basic:14",
+                "basic:15",
+                "basic:16",
+                "skill:1",
+                "forte:2"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Rebecca S5",
+          "stat": "basicBonus",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "bonusRate": {
+        "basic": 1.4
+      },
+      "newHits": [
+        {
+          "section": "forte",
+          "hit": {
+            "name": "Heavy Attack Extra Shot DMG (S6)",
+            "kind": "basic",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  900
+                ]
+              }
+            ],
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "forte:3",
+          "after": [
+            "forte:1",
+            "forte:2"
+          ]
+        }
+      ]
+    }
   ]
 }

@@ -988,5 +988,47 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {},
+    {
+      "passiveBuffs": [
+        {
+          "name": "Mornye S2",
+          "stat": "critDamage",
+          "value": 0.2,
+          "target": "team",
+          "perEnergyRegen": {
+            "over": 100,
+            "max": 32
+          }
+        }
+      ]
+    },
+    {},
+    {
+      "hits": {
+        "forte:0": {
+          "bonus": 30
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 1.4
+        },
+        "forte:4": {
+          "multiplier": 2.6
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "bonus": 400
+        }
+      }
+    }
   ]
 }

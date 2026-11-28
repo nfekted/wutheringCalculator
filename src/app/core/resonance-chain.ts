@@ -21,6 +21,7 @@ export function chainData(data: CharacterData, chain: number): CharacterData {
     }
     if (node.passiveBuffs) copy.passiveBuffs = [...copy.passiveBuffs ?? [], ...node.passiveBuffs];
     if (node.outroStatBuffs) copy.outro.statBuffs = [...copy.outro.statBuffs ?? [], ...node.outroStatBuffs];
+    if (node.outroBuffs) copy.outro.buffs = [...copy.outro.buffs ?? [], ...node.outroBuffs];
     if (node.followUps) copy.followUps = [...copy.followUps ?? [], ...node.followUps];
     for (const [index, buffs] of Object.entries(node.stateBuffs ?? {})) {
       const state = copy.states![+index];
@@ -39,7 +40,20 @@ export function chainData(data: CharacterData, chain: number): CharacterData {
       if (change.outroBoost && rule.outroBoost) rule.outroBoost.amplification += change.outroBoost;
       if (change.fillsMax) rule.fillsMax = [...rule.fillsMax ?? [], ...change.fillsMax];
       if (change.keepsOnConsume) rule.keepsOnConsume = true;
+      if (change.burst) rule.burst = change.burst;
+      if (change.alwaysBoost) rule.alwaysBoost = change.alwaysBoost;
+      if (change.mark && rule.mark) Object.assign(rule.mark, change.mark);
+      if (change.maxBurst && rule.maxBurst) {
+        if (change.maxBurst.perTrail !== undefined) rule.maxBurst.perTrail = change.maxBurst.perTrail;
+        if (change.maxBurst.stateValue !== undefined && rule.maxBurst.state) rule.maxBurst.state.value = change.maxBurst.stateValue;
+      }
     }
+    for (const [index, change] of Object.entries(node.counters ?? {})) {
+      const counter = copy.counters![+index];
+      if (change.max !== undefined) counter.max = change.max;
+      if (change.amounts) counter.amounts = { ...counter.amounts, ...change.amounts };
+    }
+    if (node.bonusRate) copy.bonusRate = { ...copy.bonusRate, ...node.bonusRate };
   }
   return copy;
 }
