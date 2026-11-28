@@ -1019,5 +1019,61 @@
       "section": "liberation",
       "index": 1
     }
+  ],
+  "chains": [
+    {},
+    {
+      "passiveBuffs": [
+        {
+          "name": "Suisui S2",
+          "stat": "critDamage",
+          "value": 50,
+          "target": "team"
+        }
+      ]
+    },
+    {},
+    {
+      "hits": {
+        "skill:3": {
+          "bonus": 50
+        },
+        "liberation:0": {
+          "bonus": 50
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 2
+        },
+        "forte:1": {
+          "multiplier": 2
+        },
+        "forte:2": {
+          "multiplier": 2
+        },
+        "forte:3": {
+          "multiplier": 2
+        },
+        "forte:4": {
+          "multiplier": 2
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Suisui S6",
+          "stat": "critDamage",
+          "value": 500,
+          "hits": [
+            "intro:0",
+            "skill:1"
+          ]
+        }
+      ]
+    }
   ]
 }

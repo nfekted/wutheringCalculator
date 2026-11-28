@@ -1490,5 +1490,91 @@
       "section": "forte",
       "index": 7
     }
+  ],
+  "chains": [
+    {},
+    {
+      "statuses": {
+        "0": {
+          "hits": {
+            "liberation:0": 5
+          }
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 1.2
+        },
+        "forte:17": {
+          "multiplier": 1.2
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 1.2
+        }
+      }
+    },
+    {
+      "stateBuffs": {
+        "0": [
+          {
+            "name": "Rover S5",
+            "stat": "critDamage",
+            "value": 20
+          }
+        ]
+      }
+    },
+    {
+      "hits": {
+        "forte:1": {
+          "multiplier": 1.2
+        },
+        "forte:2": {
+          "multiplier": 1.2
+        },
+        "forte:3": {
+          "multiplier": 1.2
+        },
+        "forte:4": {
+          "multiplier": 1.2
+        },
+        "forte:5": {
+          "multiplier": 1.2
+        },
+        "forte:6": {
+          "multiplier": 1.2
+        },
+        "forte:7": {
+          "multiplier": 1.2
+        },
+        "forte:8": {
+          "multiplier": 1.2
+        },
+        "forte:9": {
+          "multiplier": 1.2
+        },
+        "forte:10": {
+          "multiplier": 1.2
+        },
+        "forte:11": {
+          "multiplier": 1.2
+        },
+        "forte:12": {
+          "multiplier": 1.2
+        },
+        "forte:13": {
+          "multiplier": 1.2
+        },
+        "forte:15": {
+          "multiplier": 1.2
+        }
+      }
+    }
   ]
 }

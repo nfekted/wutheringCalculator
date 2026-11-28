@@ -231,12 +231,17 @@ export interface CharacterStatus {
   bite?: {
     name: string;
     frostbind: { hits: HitKey[]; stacks: number };
-    levels: { name: string; members: string[]; statuses?: NegativeStatus[]; amplification: number[]; extra: { level: number; multiplier: number } };
+    /** `bonus`: levels added to the count (e.g. a Resonance Chain) */
+    levels: { name: string; members: string[]; statuses?: NegativeStatus[]; amplification: number[]; extra: { level: number; multiplier: number }; bonus?: number };
   };
   /** After these hits, 1 tick of the status at once, and it loses 1 stack */
   detonate?: HitKey[];
   /** After these hits, 1 tick of the status at once with its DMG Multiplier times `multiplier`, without taking stacks (e.g. Heart of Thunder) */
   burst?: { name: string; hits: HitKey[]; multiplier: number };
+  /** More bursts like `burst` (e.g. from a Resonance Chain) */
+  bursts?: NonNullable<CharacterStatus['burst']>[];
+  /** With the character in the team, the ticks of the status can crit: they are multiplied by the average crit (`rate` and `damage` in %) */
+  crit?: { name: string; rate: number; damage: number };
   /** With the character in the team, the ticks of the status take no stacks (e.g. the Electro Flare that would halve) */
   keepsStacks?: boolean;
   /** `hit` gets a DMG Amplification of `perStack` for each stack on the target (up to `max`), then the status is gone (unless `keepsOnConsume`) */
@@ -386,13 +391,15 @@ export interface ChainNode {
   /** Changes of `field`: a new `duration`, `keepsOnIntro` */
   field?: { duration?: number; keepsOnIntro?: boolean };
   /** Changes of a rule in `statuses` (key: its index): `hits` merged into its stacks per hit, `outroBoost` added to the Amplification of
-   * its `outroBoost`, `fillsMax` added to its `fillsMax`, `keepsOnConsume`, `burst` and `alwaysBoost` set, `mark` and `maxBurst` merged */
+   * its `outroBoost`, `fillsMax` added to its `fillsMax`, `keepsOnConsume`, `burst`, `alwaysBoost` and `crit` set, `bursts` added, `mark` and
+   * `maxBurst` merged, `bite`: `levelBonus` set on its levels and `extraMultiplier` on their extra hit */
   statuses?: Record<number, {
     hits?: Record<HitKey, number>; outroBoost?: number; fillsMax?: HitKey[]; keepsOnConsume?: boolean; burst?: CharacterStatus['burst'];
     alwaysBoost?: CharacterStatus['alwaysBoost']; mark?: { interval?: number; stacks?: number }; maxBurst?: { perTrail?: number; stateValue?: number };
+    bursts?: CharacterStatus['bursts']; crit?: CharacterStatus['crit']; bite?: { levelBonus?: number; extraMultiplier?: number };
   }>;
-  /** Changes of a counter (key: its index in `counters`): a new `max`, `amounts` merged */
-  counters?: Record<number, { max?: number; amounts?: Record<HitKey, number> }>;
+  /** Changes of a counter (key: its index in `counters`): a new `max`, `amounts` merged, a new `value` of its `boost` */
+  counters?: Record<number, { max?: number; amounts?: Record<HitKey, number>; boost?: number }>;
   /** Merged into `bonusRate` */
   bonusRate?: Partial<Record<HitKind, number>>;
 }

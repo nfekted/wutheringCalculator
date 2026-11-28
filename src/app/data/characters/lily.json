@@ -870,5 +870,54 @@
       "section": "liberation",
       "index": 2
     }
+  ],
+  "chains": [
+    {},
+    {
+      "hits": {
+        "liberation:2": {
+          "buffs": [
+            {
+              "name": "Lily S2",
+              "stat": "critRate",
+              "value": 8,
+              "duration": 25,
+              "target": "team",
+              "endsOnReturn": true
+            },
+            {
+              "name": "Lily S2",
+              "stat": "critDamage",
+              "value": 24,
+              "duration": 25,
+              "target": "team",
+              "endsOnReturn": true
+            }
+          ]
+        }
+      }
+    },
+    {},
+    {
+      "hits": {
+        "liberation:0": {
+          "bonus": 30
+        }
+      }
+    },
+    {},
+    {
+      "hits": {
+        "forte:4": {
+          "bonus": 100
+        },
+        "forte:5": {
+          "bonus": 100
+        },
+        "intro:1": {
+          "bonus": 700
+        }
+      }
+    }
   ]
 }

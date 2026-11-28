@@ -2195,5 +2195,100 @@
       "section": "liberation",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "intro:2": {
+          "multiplier": 1.55
+        },
+        "intro:5": {
+          "multiplier": 1.55
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:1": {
+          "multiplier": 1.6
+        },
+        "forte:2": {
+          "multiplier": 1.6
+        },
+        "forte:3": {
+          "multiplier": 1.6
+        },
+        "forte:4": {
+          "multiplier": 1.6
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 1.7
+        }
+      },
+      "passiveBuffs": [
+        {
+          "name": "Hsin S3",
+          "stat": "critDamage",
+          "value": 80,
+          "hits": [
+            "liberation:0"
+          ],
+          "mode": 1
+        }
+      ],
+      "statuses": {
+        "0": {
+          "bursts": [
+            {
+              "name": "Hsin S3",
+              "hits": [
+                "liberation:0"
+              ],
+              "multiplier": 15
+            }
+          ]
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Hsin S4",
+          "stat": "elementalBonus",
+          "value": 20,
+          "target": "team"
+        }
+      ]
+    },
+    {},
+    {
+      "passiveBuffs": [
+        {
+          "name": "Hsin S6",
+          "stat": "amplification",
+          "value": 40,
+          "kind": "skill"
+        },
+        {
+          "name": "Hsin S6",
+          "stat": "defIgnore",
+          "value": 20,
+          "kind": "skill"
+        }
+      ],
+      "statuses": {
+        "0": {
+          "crit": {
+            "name": "Hsin S6",
+            "rate": 80,
+            "damage": 230
+          }
+        }
+      }
+    }
   ]
 }

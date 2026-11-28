@@ -43,6 +43,12 @@ export function chainData(data: CharacterData, chain: number): CharacterData {
       if (change.burst) rule.burst = change.burst;
       if (change.alwaysBoost) rule.alwaysBoost = change.alwaysBoost;
       if (change.mark && rule.mark) Object.assign(rule.mark, change.mark);
+      if (change.bursts) rule.bursts = [...rule.bursts ?? [], ...change.bursts];
+      if (change.crit) rule.crit = change.crit;
+      if (change.bite && rule.bite) {
+        if (change.bite.levelBonus !== undefined) rule.bite.levels.bonus = change.bite.levelBonus;
+        if (change.bite.extraMultiplier !== undefined) rule.bite.levels.extra.multiplier = change.bite.extraMultiplier;
+      }
       if (change.maxBurst && rule.maxBurst) {
         if (change.maxBurst.perTrail !== undefined) rule.maxBurst.perTrail = change.maxBurst.perTrail;
         if (change.maxBurst.stateValue !== undefined && rule.maxBurst.state) rule.maxBurst.state.value = change.maxBurst.stateValue;
@@ -52,6 +58,7 @@ export function chainData(data: CharacterData, chain: number): CharacterData {
       const counter = copy.counters![+index];
       if (change.max !== undefined) counter.max = change.max;
       if (change.amounts) counter.amounts = { ...counter.amounts, ...change.amounts };
+      if (change.boost !== undefined && counter.boost) counter.boost.value = change.boost;
     }
     if (node.bonusRate) copy.bonusRate = { ...copy.bonusRate, ...node.bonusRate };
   }

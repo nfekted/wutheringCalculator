@@ -1028,5 +1028,131 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "stats": [
+        {
+          "stat": "cChance",
+          "value": 16
+        }
+      ],
+      "newHits": [
+        {
+          "section": "basic",
+          "hit": {
+            "name": "Juque Perdition DMG (S1)",
+            "kind": "basic",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  400
+                ]
+              }
+            ],
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "basic:10",
+          "after": [
+            "basic:3"
+          ]
+        }
+      ],
+      "passiveBuffs": [
+        {
+          "name": "Exorcising Seal (S1)",
+          "stat": "amplification",
+          "value": 100,
+          "hits": [
+            "basic:10"
+          ]
+        }
+      ]
+    },
+    {
+      "hits": {
+        "basic:4": {
+          "multiplier": 1.4
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Qingxiao S3",
+          "stat": "critDamage",
+          "value": 100,
+          "hits": [
+            "liberation:0"
+          ]
+        },
+        {
+          "name": "World in Chorus (S3)",
+          "stat": "multiplier",
+          "value": 75,
+          "hits": [
+            "forte:5"
+          ]
+        }
+      ]
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Qingxiao S4",
+          "stat": "atk",
+          "value": 20,
+          "target": "team"
+        }
+      ]
+    },
+    {
+      "hits": {
+        "skill:0": {
+          "multiplier": 2
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Qingxiao S6",
+          "stat": "amplification",
+          "value": 40,
+          "hits": [
+            "basic:4",
+            "forte:5",
+            "liberation:0",
+            "basic:10"
+          ]
+        },
+        {
+          "name": "Mindlock (S6)",
+          "stat": "amplification",
+          "value": 85,
+          "hits": [
+            "basic:10"
+          ]
+        }
+      ],
+      "hits": {
+        "basic:10": {
+          "bonus": 85
+        }
+      },
+      "followUps": [
+        {
+          "hit": "basic:10",
+          "after": [
+            "forte:0"
+          ]
+        }
+      ]
+    }
   ]
 }

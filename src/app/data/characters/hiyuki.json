@@ -1252,5 +1252,153 @@
       "section": "liberation",
       "index": 1
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "basic:6": {
+          "multiplier": 2.2
+        },
+        "basic:7": {
+          "multiplier": 2.2
+        },
+        "basic:8": {
+          "multiplier": 2.2
+        },
+        "basic:9": {
+          "multiplier": 2.2
+        },
+        "basic:10": {
+          "multiplier": 2.2
+        },
+        "basic:11": {
+          "multiplier": 2.2
+        },
+        "basic:13": {
+          "multiplier": 2.2
+        },
+        "basic:14": {
+          "multiplier": 2.2
+        },
+        "basic:15": {
+          "multiplier": 2.2
+        },
+        "basic:16": {
+          "multiplier": 2.2
+        }
+      },
+      "statuses": {
+        "0": {
+          "hits": {
+            "basic:6": 1,
+            "basic:7": 1
+          }
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 2.25
+        }
+      }
+    },
+    {
+      "hits": {
+        "basic:3": {
+          "multiplier": 2.6
+        },
+        "basic:12": {
+          "multiplier": 2.6
+        }
+      },
+      "statuses": {
+        "0": {
+          "bite": {
+            "levelBonus": 1,
+            "extraMultiplier": 5.9
+          }
+        }
+      }
+    },
+    {
+      "hits": {
+        "skill:0": {
+          "buffs": [
+            {
+              "name": "Hiyuki S4",
+              "stat": "amplification",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        },
+        "skill:1": {
+          "buffs": [
+            {
+              "name": "Hiyuki S4",
+              "stat": "amplification",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        },
+        "skill:2": {
+          "buffs": [
+            {
+              "name": "Hiyuki S4",
+              "stat": "amplification",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "skill:0": {
+          "multiplier": 1.8
+        },
+        "skill:1": {
+          "multiplier": 1.8
+        },
+        "skill:2": {
+          "multiplier": 1.8
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Hiyuki S6",
+          "stat": "critDamage",
+          "value": 500,
+          "hits": [
+            "liberation:0",
+            "liberation:1"
+          ]
+        },
+        {
+          "name": "Hiyuki S6",
+          "stat": "critDamage",
+          "value": 40
+        }
+      ],
+      "statuses": {
+        "0": {
+          "alwaysBoost": {
+            "name": "Hiyuki S6",
+            "amplification": 25,
+            "statuses": [
+              "glacioChafe"
+            ]
+          }
+        }
+      }
+    }
   ]
 }

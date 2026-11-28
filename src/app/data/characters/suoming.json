@@ -1349,5 +1349,91 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "intro:0": {
+          "multiplier": 1.6
+        },
+        "intro:1": {
+          "multiplier": 1.6
+        },
+        "intro:2": {
+          "multiplier": 1.6
+        },
+        "intro:3": {
+          "multiplier": 1.6
+        }
+      }
+    },
+    {
+      "stats": [
+        {
+          "stat": "cDmg",
+          "value": 40
+        }
+      ],
+      "outroStatBuffs": [
+        {
+          "name": "Suoming S2",
+          "stat": "critDamage",
+          "value": 24,
+          "duration": 30,
+          "target": "incoming",
+          "endsOnSwitch": true
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Suoming S3",
+              "stat": "amplification",
+              "value": 30,
+              "duration": 25,
+              "kind": "basic"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "stats": [
+        {
+          "stat": "dmg",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 1.4
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:2": {
+          "multiplier": 1.5
+        },
+        "forte:3": {
+          "multiplier": 1.5
+        },
+        "skill:2": {
+          "buffs": [
+            {
+              "name": "Seal Master (S6)",
+              "stat": "critDamage",
+              "value": 200,
+              "duration": 12
+            }
+          ]
+        }
+      }
+    }
   ]
 }

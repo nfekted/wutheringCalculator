@@ -193,14 +193,21 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     const label = always && `${character.name}: ${always.name} (+${always.amplification}%)`;
     if (always && label) alwaysBoosts.set(label, { statuses: always.statuses, amplification: always.amplification, intervalRate: 1, points: Infinity, label });
   }
+  /** The average crit of the ticks of a status that can crit (`crit`), with its label */
+  const tickCrits = new Map<NegativeStatus, { value: number; label: string }>();
+  for (const { character } of segments) for (const rule of rulesOf(character)) {
+    const crit = rule.crit;
+    if (crit) tickCrits.set(rule.status, { value: 1 + crit.rate / 100 * (crit.damage / 100 - 1), label: `${character.name}: ${crit.name} (${crit.rate}% / ${crit.damage}%)` });
+  }
   /** A tick of a status, with the boosts on it */
   /** `extra`: a raise of its DMG Multiplier (in %), named in the row */
   const tickRow = (s: ActiveStatus, rotation: number, boosts: typeof statusBoosts, name = NEGATIVE_STATUS[s.status].name, extra?: { label: string; value: number }) => {
     boosts = [...boosts, ...[...alwaysBoosts.values()].filter(b => !b.statuses || b.statuses.includes(s.status)).map(b => ({ ...b, status: s.status }))];
     const base = statusTick(s.status, s.stacks, s.overflow) * (1 + (extra?.value ?? 0) / 100);
-    const buffed = base * (1 + boosts.reduce((sum, b) => sum + b.amplification, 0) / 100);
+    const crit = tickCrits.get(s.status);
+    const buffed = base * (1 + boosts.reduce((sum, b) => sum + b.amplification, 0) / 100) * (crit?.value ?? 1);
     const overflow = s.overflow ? ` + ${NEGATIVE_STATUS[s.status].overflow!.name} (${s.overflow})` : '';
-    pushRow({ rotation, slot: s.slot, step: s.step, name: `${name} (${s.stacks})${overflow}${extra?.label ?? ''}`, buffs: boosts.map(b => b.label), damage: true, base, buffed, auto: true });
+    pushRow({ rotation, slot: s.slot, step: s.step, name: `${name} (${s.stacks})${overflow}${extra?.label ?? ''}`, buffs: [...boosts.map(b => b.label), ...crit ? [crit.label] : []], damage: true, base, buffed, auto: true });
     s.overflow = 0;
   };
   /** Trails on the target (by status) and the rules of the members that give them; the members a status bursts early for */
@@ -236,7 +243,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
     if (!bite || bites.has(rule.status)) continue;
     const members = [...new Map(segments.map(s => [s.slot, s.character])).values()];
     const count = members.filter(m => bite.levels.members.includes(m.data.id) || rulesOf(m).some(r => r.status === rule.status || !!bite.levels.statuses?.includes(r.status))).length;
-    bites.set(rule.status, { bite, owner: character, level: Math.min(count, bite.levels.amplification.length) });
+    bites.set(rule.status, { bite, owner: character, level: Math.min(count + (bite.levels.bonus ?? 0), bite.levels.amplification.length) });
   }
   /** The DMG Amplification of the statuses, on the hits of the character considered damage of them */
   const statusAmplification = (character: Character): LabeledBuff[] => rulesOf(character).flatMap(rule => !rule.counts ? []
@@ -746,8 +753,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
           if (--s.stacks <= 0) onTarget = onTarget.filter(other => other !== s);
         }
         if (rule.consume?.hit === key && !rule.keepsOnConsume) onTarget = onTarget.filter(other => other !== s);
-        const burst = rule.burst;
-        if (burst?.hits.includes(key)) {
+        for (const burst of [rule.burst, ...rule.bursts ?? []]) if (burst?.hits.includes(key)) {
           // The overflow (Electro Rage) is what the stacks of the burst come from
           tickRow({ ...s, overflow: 0, character, slot, step }, rotation, statusBoosts.filter(b => b.status === rule.status), undefined,
             { label: ` × ${burst.name} (${burst.multiplier})`, value: (burst.multiplier - 1) * 100 });

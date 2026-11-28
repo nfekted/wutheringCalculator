@@ -1877,5 +1877,110 @@
       "section": "liberation",
       "index": 4
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Lucy S1",
+              "stat": "atk",
+              "value": 20,
+              "duration": 14
+            }
+          ]
+        }
+      }
+    },
+    {
+      "newHits": [
+        {
+          "section": "skill",
+          "hit": {
+            "name": "Pulse Interference Extra DMG (S2)",
+            "kind": "heavy",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  450
+                ]
+              }
+            ],
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "skill:4",
+          "after": [
+            "skill:2"
+          ]
+        }
+      ],
+      "counters": {
+        "2": {
+          "boost": 560
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 1.5
+        },
+        "liberation:4": {
+          "multiplier": 1.5
+        },
+        "liberation:3": {
+          "multiplier": 1.65
+        },
+        "forte:0": {
+          "multiplier": 1.65
+        }
+      },
+      "passiveBuffs": [
+        {
+          "name": "Lucy S3",
+          "stat": "critDamage",
+          "value": 100,
+          "hits": [
+            "liberation:0",
+            "liberation:4"
+          ]
+        }
+      ]
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Lucy S4",
+          "stat": "elementalBonus",
+          "value": 20,
+          "target": "team"
+        }
+      ]
+    },
+    {},
+    {
+      "passiveBuffs": [
+        {
+          "name": "Lucy S6",
+          "stat": "amplification",
+          "value": 40,
+          "kind": "heavy"
+        }
+      ],
+      "hits": {
+        "liberation:3": {
+          "multiplier": 1.6
+        },
+        "forte:0": {
+          "multiplier": 1.6
+        }
+      }
+    }
   ]
 }

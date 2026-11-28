@@ -1183,5 +1183,115 @@
       "section": "forte",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "skill:0": {
+          "multiplier": 1.8
+        },
+        "skill:1": {
+          "multiplier": 1.8
+        },
+        "skill:2": {
+          "multiplier": 1.8
+        },
+        "skill:3": {
+          "multiplier": 1.8
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 1.46
+        },
+        "forte:1": {
+          "multiplier": 1.46
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Burial of Thousand Souls (S3)",
+              "stat": "flatAtk",
+              "value": 14,
+              "duration": 15,
+              "perHp": {
+                "over": 0,
+                "max": 700
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Jingran S4",
+          "stat": "elementalBonus",
+          "value": 20,
+          "target": "team"
+        }
+      ]
+    },
+    {},
+    {
+      "hits": {
+        "liberation:1": {
+          "multiplier": 1.8
+        }
+      },
+      "passiveBuffs": [
+        {
+          "name": "Jingran S6",
+          "stat": "amplification",
+          "value": 40,
+          "kind": "heavy"
+        }
+      ],
+      "newHits": [
+        {
+          "section": "liberation",
+          "hit": {
+            "name": "Chimei Wangliang DMG (S6, Parade of Thousand Souls)",
+            "kind": "heavy",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  42,
+                  45.45,
+                  48.89,
+                  53.71,
+                  57.16,
+                  61.12,
+                  66.63,
+                  72.14,
+                  77.65,
+                  83.51
+                ],
+                "times": 8
+              }
+            ],
+            "cost": 0,
+            "multiplier": 1.8,
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "liberation:2",
+          "after": [
+            "liberation:0"
+          ]
+        }
+      ]
+    }
   ]
 }
