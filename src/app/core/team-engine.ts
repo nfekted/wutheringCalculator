@@ -376,12 +376,12 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
       steps = [keyStep(replaced), ...steps.slice(introCount)];
       nextIntro.delete(slot);
     }
-    // A field of the member at its top level: its Intro is the one of the field, and it ends the field
+    // A field of the member at its top level: its Intro is the one of the field, and it ends the field (unless `keepsOnIntro`)
     const top = fields.find(f => f.slot === slot && f.level === f.field.levels.length);
     if (top && steps[0]?.section === 'intro') {
       const first = steps.findIndex(step => step.section !== 'intro');
       steps = [...top.field.intro.map(keyStep), ...steps.slice(first < 0 ? steps.length : first)];
-      fields = fields.filter(f => f !== top);
+      if (!top.field.keepsOnIntro) fields = fields.filter(f => f !== top);
     }
     const spends = spendsPoints(character.data, steps);
     // Buffs of a hit start after its whole linked block (e.g. a buff of a burst of bullets starts after the last one)

@@ -797,5 +797,88 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {},
+    {
+      "newHits": [
+        {
+          "section": "forte",
+          "hit": {
+            "name": "Unbound Flow Healing (S2)",
+            "kind": "heal",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  20
+                ],
+                "times": 10
+              }
+            ],
+            "noBuffs": true,
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "forte:5",
+          "after": [
+            "forte:3"
+          ]
+        }
+      ]
+    },
+    {
+      "stats": [
+        {
+          "stat": "elementalBonus",
+          "value": 15,
+          "element": "aero"
+        }
+      ]
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Rover S4",
+              "stat": "skillBonus",
+              "value": 15,
+              "duration": 5
+            }
+          ]
+        },
+        "forte:1": {
+          "buffs": [
+            {
+              "name": "Rover S4",
+              "stat": "skillBonus",
+              "value": 15,
+              "duration": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 1.2
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:3": {
+          "multiplier": 1.3
+        },
+        "forte:4": {
+          "multiplier": 1.3
+        }
+      }
+    }
   ]
 }

@@ -603,5 +603,146 @@
       "section": "liberation",
       "index": 1
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "forte:2": {
+          "buffs": [
+            {
+              "name": "Zhezhi S1",
+              "stat": "critRate",
+              "value": 10,
+              "duration": 27
+            }
+          ]
+        }
+      }
+    },
+    {
+      "coordinated": {
+        "max": 27
+      }
+    },
+    {
+      "hits": {
+        "skill:0": {
+          "buffs": [
+            {
+              "name": "Zhezhi S3",
+              "stat": "atk",
+              "value": 15,
+              "duration": 27,
+              "stacks": 3
+            }
+          ]
+        },
+        "skill:1": {
+          "buffs": [
+            {
+              "name": "Zhezhi S3",
+              "stat": "atk",
+              "value": 15,
+              "duration": 27,
+              "stacks": 3
+            }
+          ]
+        },
+        "skill:2": {
+          "buffs": [
+            {
+              "name": "Zhezhi S3",
+              "stat": "atk",
+              "value": 15,
+              "duration": 27,
+              "stacks": 3
+            }
+          ]
+        },
+        "forte:1": {
+          "buffs": [
+            {
+              "name": "Zhezhi S3",
+              "stat": "atk",
+              "value": 15,
+              "duration": 27,
+              "stacks": 3
+            }
+          ]
+        },
+        "forte:2": {
+          "buffs": [
+            {
+              "name": "Zhezhi S3",
+              "stat": "atk",
+              "value": 15,
+              "duration": 27,
+              "stacks": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:1": {
+          "buffs": [
+            {
+              "name": "Zhezhi S4",
+              "stat": "atk",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 1.4667
+        }
+      }
+    },
+    {
+      "newHits": [
+        {
+          "section": "forte",
+          "hit": {
+            "name": "Ivory Herald (S6)",
+            "kind": "basic",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  150,
+                  162.3,
+                  174.6,
+                  191.82,
+                  204.12,
+                  218.27,
+                  237.95,
+                  257.63,
+                  277.31,
+                  298.22
+                ]
+              }
+            ],
+            "multiplier": 1.2,
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "forte:3",
+          "after": [
+            "forte:1",
+            "forte:2"
+          ]
+        }
+      ]
+    }
   ]
 }

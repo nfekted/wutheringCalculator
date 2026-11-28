@@ -765,5 +765,80 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {},
+    {},
+    {
+      "stats": [
+        {
+          "stat": "dmg",
+          "value": 20
+        }
+      ]
+    },
+    {},
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Youhu S5",
+              "stat": "critRate",
+              "value": 15,
+              "duration": 14
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "skill:2": {
+          "buffs": [
+            {
+              "name": "Youhu S6",
+              "stat": "critDamage",
+              "value": 15,
+              "duration": 7,
+              "stacks": 4
+            }
+          ]
+        },
+        "skill:3": {
+          "buffs": [
+            {
+              "name": "Youhu S6",
+              "stat": "critDamage",
+              "value": 15,
+              "duration": 7,
+              "stacks": 4
+            }
+          ]
+        },
+        "skill:4": {
+          "buffs": [
+            {
+              "name": "Youhu S6",
+              "stat": "critDamage",
+              "value": 15,
+              "duration": 7,
+              "stacks": 4
+            }
+          ]
+        },
+        "skill:5": {
+          "buffs": [
+            {
+              "name": "Youhu S6",
+              "stat": "critDamage",
+              "value": 15,
+              "duration": 7,
+              "stacks": 4
+            }
+          ]
+        }
+      }
+    }
   ]
 }

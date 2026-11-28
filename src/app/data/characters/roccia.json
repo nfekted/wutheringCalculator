@@ -541,5 +541,170 @@
       "section": "forte",
       "index": 2
     }
+  ],
+  "chains": [
+    {},
+    {
+      "hits": {
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Roccia S2",
+              "stat": "elementalBonus",
+              "value": 10,
+              "duration": 30,
+              "target": "team",
+              "element": "havoc",
+              "stacks": 3,
+              "atMax": {
+                "name": "Roccia S2 (max)",
+                "stat": "elementalBonus",
+                "value": 10,
+                "duration": 30,
+                "target": "team",
+                "element": "havoc"
+              }
+            }
+          ]
+        },
+        "forte:1": {
+          "buffs": [
+            {
+              "name": "Roccia S2",
+              "stat": "elementalBonus",
+              "value": 10,
+              "duration": 30,
+              "target": "team",
+              "element": "havoc",
+              "stacks": 3,
+              "atMax": {
+                "name": "Roccia S2 (max)",
+                "stat": "elementalBonus",
+                "value": 10,
+                "duration": 30,
+                "target": "team",
+                "element": "havoc"
+              }
+            }
+          ]
+        },
+        "forte:2": {
+          "buffs": [
+            {
+              "name": "Roccia S2",
+              "stat": "elementalBonus",
+              "value": 10,
+              "duration": 30,
+              "target": "team",
+              "element": "havoc",
+              "stacks": 3,
+              "atMax": {
+                "name": "Roccia S2 (max)",
+                "stat": "elementalBonus",
+                "value": 10,
+                "duration": 30,
+                "target": "team",
+                "element": "havoc"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Roccia S3",
+              "stat": "critRate",
+              "value": 10,
+              "duration": 15
+            },
+            {
+              "name": "Roccia S3",
+              "stat": "critDamage",
+              "value": 30,
+              "duration": 15
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "skill:0": {
+          "buffs": [
+            {
+              "name": "Roccia S4",
+              "stat": "multiplier",
+              "value": 60,
+              "duration": 12,
+              "hits": [
+                "forte:0",
+                "forte:1",
+                "forte:2"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 1.2
+        },
+        "basic:4": {
+          "multiplier": 1.8
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Roccia S6",
+              "stat": "defIgnore",
+              "value": 60,
+              "duration": 12,
+              "hits": [
+                "forte:0",
+                "forte:1",
+                "forte:2"
+              ]
+            }
+          ]
+        }
+      },
+      "newHits": [
+        {
+          "section": "forte",
+          "hit": {
+            "name": "Reality Recreation (S6)",
+            "kind": "heavy",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  180,
+                  194.76,
+                  209.52,
+                  230.19,
+                  244.95,
+                  261.92,
+                  285.54,
+                  309.15,
+                  332.77,
+                  357.86
+                ]
+              }
+            ],
+            "manual": true
+          }
+        }
+      ]
+    }
   ]
 }

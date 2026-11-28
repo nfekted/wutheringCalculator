@@ -854,5 +854,120 @@
     "interval": 2,
     "max": 3,
     "othersOnly": true
-  }
+  },
+  "chains": [
+    {
+      "hits": {
+        "forte:1": {
+          "multiplier": 1.48
+        }
+      }
+    },
+    {
+      "hits": {
+        "skill:0": {
+          "buffs": [
+            {
+              "name": "Xiangli Yao S2",
+              "stat": "critDamage",
+              "value": 30,
+              "duration": 8
+            }
+          ]
+        },
+        "liberation:4": {
+          "buffs": [
+            {
+              "name": "Xiangli Yao S2",
+              "stat": "critDamage",
+              "value": 30,
+              "duration": 8
+            }
+          ]
+        },
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Xiangli Yao S2",
+              "stat": "critDamage",
+              "value": 30,
+              "duration": 8
+            }
+          ]
+        },
+        "forte:1": {
+          "buffs": [
+            {
+              "name": "Xiangli Yao S2",
+              "stat": "critDamage",
+              "value": 30,
+              "duration": 8
+            }
+          ]
+        },
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Xiangli Yao S2",
+              "stat": "critDamage",
+              "value": 30,
+              "duration": 8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Xiangli Yao S3",
+              "stat": "damageBonus",
+              "value": 63,
+              "duration": 24,
+              "hits": [
+                "skill:0",
+                "liberation:4",
+                "forte:0",
+                "forte:1"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Xiangli Yao S4",
+              "stat": "liberationBonus",
+              "value": 25,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "outro:0": {
+          "multiplier": 3.22
+        },
+        "liberation:0": {
+          "multiplier": 2
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:1": {
+          "multiplier": 1.76
+        }
+      }
+    }
+  ]
 }

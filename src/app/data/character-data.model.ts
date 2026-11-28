@@ -173,6 +173,8 @@ export interface TeamField {
   duration: number;
   levels: { name: string; stat: BuffStat; perEnergyRegen: number; max: number }[];
   intro: HitKey[];
+  /** The Intro of the field (at its top level) does not end it */
+  keepsOnIntro?: boolean;
 }
 
 /**
@@ -371,8 +373,13 @@ export interface ChainNode {
   stateBuffs?: Record<number, StatBuff[]>;
   /** States added at the end of `states` */
   states?: CharacterState[];
-  /** Changes of `coordinated`: a new `duration`, `perKind` merged into the one it has */
-  coordinated?: { duration?: number; perKind?: Partial<Record<HitKind, number>> };
+  /** Changes of `coordinated`: a new `duration` or `max`, `perKind` merged into the one it has */
+  coordinated?: { duration?: number; max?: number; perKind?: Partial<Record<HitKind, number>> };
+  /** Changes of `field`: a new `duration`, `keepsOnIntro` */
+  field?: { duration?: number; keepsOnIntro?: boolean };
+  /** Changes of a rule in `statuses` (key: its index): `hits` merged into its stacks per hit, `outroBoost` added to the Amplification of
+   * its `outroBoost` */
+  statuses?: Record<number, { hits?: Record<HitKey, number>; outroBoost?: number }>;
 }
 
 export interface SkillData {

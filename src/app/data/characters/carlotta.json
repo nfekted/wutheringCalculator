@@ -921,5 +921,101 @@
       "section": "skill",
       "index": 1
     }
+  ],
+  "chains": [
+    {
+      "stats": [
+        {
+          "stat": "cChance",
+          "value": 12.5
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:2": {
+          "multiplier": 2.26
+        }
+      }
+    },
+    {
+      "hits": {
+        "skill:0": {
+          "multiplier": 1.93
+        },
+        "skill:1": {
+          "multiplier": 1.93
+        }
+      },
+      "newHits": [
+        {
+          "section": "outro",
+          "hit": {
+            "name": "Kaleidoscope Sparks (S3)",
+            "kind": "outro",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  1032.18
+                ]
+              }
+            ],
+            "manual": true
+          }
+        }
+      ]
+    },
+    {
+      "hits": {
+        "basic:5": {
+          "buffs": [
+            {
+              "name": "Carlotta S4",
+              "stat": "skillBonus",
+              "value": 25,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        },
+        "basic:6": {
+          "buffs": [
+            {
+              "name": "Carlotta S4",
+              "stat": "skillBonus",
+              "value": 25,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        },
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Carlotta S4",
+              "stat": "skillBonus",
+              "value": 25,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 1.47
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:1": {
+          "multiplier": 2.866
+        }
+      }
+    }
   ]
 }

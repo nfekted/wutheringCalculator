@@ -787,5 +787,111 @@
       "section": "basic",
       "index": 3
     }
+  ],
+  "chains": [
+    {
+      "passiveBuffs": [
+        {
+          "name": "Changli S1",
+          "stat": "amplification",
+          "value": 10,
+          "hits": [
+            "skill:0",
+            "skill:1",
+            "skill:2",
+            "forte:0"
+          ]
+        }
+      ]
+    },
+    {
+      "hits": {
+        "skill:1": {
+          "buffs": [
+            {
+              "name": "Changli S2",
+              "stat": "critRate",
+              "value": 25,
+              "duration": 8
+            }
+          ]
+        },
+        "skill:2": {
+          "buffs": [
+            {
+              "name": "Changli S2",
+              "stat": "critRate",
+              "value": 25,
+              "duration": 8
+            }
+          ]
+        },
+        "basic:9": {
+          "buffs": [
+            {
+              "name": "Changli S2",
+              "stat": "critRate",
+              "value": 25,
+              "duration": 8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "bonus": 80
+        }
+      }
+    },
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Changli S4",
+              "stat": "atk",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 1.5
+        }
+      },
+      "passiveBuffs": [
+        {
+          "name": "Changli S5",
+          "stat": "amplification",
+          "value": 50,
+          "hits": [
+            "forte:0"
+          ]
+        }
+      ]
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Changli S6",
+          "stat": "defIgnore",
+          "value": 40,
+          "hits": [
+            "skill:0",
+            "skill:1",
+            "skill:2",
+            "forte:0",
+            "liberation:0"
+          ]
+        }
+      ]
+    }
   ]
 }

@@ -678,5 +678,54 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "field": {
+        "duration": 40,
+        "keepsOnIntro": true
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Shorekeeper S2",
+              "stat": "atk",
+              "value": 40,
+              "duration": 40,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {},
+    {
+      "hits": {
+        "skill:1": {
+          "bonus": 70
+        }
+      }
+    },
+    {},
+    {
+      "hits": {
+        "intro:1": {
+          "multiplier": 1.42
+        }
+      },
+      "passiveBuffs": [
+        {
+          "name": "Shorekeeper S6",
+          "stat": "critDamage",
+          "value": 500,
+          "hits": [
+            "intro:1"
+          ]
+        }
+      ]
+    }
   ]
 }

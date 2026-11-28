@@ -756,5 +756,160 @@
       "section": "skill",
       "index": 1
     }
+  ],
+  "chains": [
+    {
+      "stateBuffs": {
+        "0": [
+          {
+            "name": "Phoebe S1",
+            "stat": "multiplier",
+            "value": 225,
+            "hits": [
+              "liberation:0"
+            ]
+          }
+        ],
+        "1": [
+          {
+            "name": "Phoebe S1",
+            "stat": "multiplier",
+            "value": 90,
+            "hits": [
+              "liberation:0"
+            ]
+          }
+        ]
+      },
+      "statuses": {
+        "1": {
+          "hits": {
+            "liberation:0": 30
+          }
+        }
+      }
+    },
+    {
+      "stateBuffs": {
+        "0": [
+          {
+            "name": "Phoebe S2",
+            "stat": "amplification",
+            "value": 120,
+            "hits": [
+              "outro:0"
+            ]
+          }
+        ]
+      },
+      "statuses": {
+        "1": {
+          "outroBoost": 120
+        }
+      }
+    },
+    {
+      "stateBuffs": {
+        "0": [
+          {
+            "name": "Phoebe S3",
+            "stat": "multiplier",
+            "value": 91,
+            "hits": [
+              "forte:2",
+              "forte:3"
+            ]
+          }
+        ],
+        "1": [
+          {
+            "name": "Phoebe S3",
+            "stat": "multiplier",
+            "value": 249,
+            "hits": [
+              "forte:2",
+              "forte:3"
+            ]
+          }
+        ]
+      }
+    },
+    {},
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Phoebe S5",
+              "stat": "elementalBonus",
+              "value": 12,
+              "duration": 15
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "skill:0": {
+          "buffs": [
+            {
+              "name": "Phoebe S6",
+              "stat": "atk",
+              "value": 10,
+              "duration": 20
+            }
+          ]
+        }
+      },
+      "newHits": [
+        {
+          "section": "forte",
+          "hit": {
+            "name": "Heavy Attack: Starflash (S6)",
+            "kind": "heavy",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  41.59,
+                  45,
+                  48.41,
+                  53.19,
+                  56.6,
+                  60.52,
+                  65.98,
+                  71.43,
+                  76.89,
+                  82.69
+                ],
+                "times": 3
+              }
+            ],
+            "cost": 1,
+            "manual": true
+          }
+        }
+      ],
+      "stateBuffs": {
+        "0": [
+          {
+            "name": "Absolution Enhancement",
+            "stat": "amplification",
+            "value": 256,
+            "hits": [
+              "forte:3"
+            ]
+          }
+        ]
+      },
+      "statuses": {
+        "1": {
+          "hits": {
+            "forte:3": 5
+          }
+        }
+      }
+    }
   ]
 }

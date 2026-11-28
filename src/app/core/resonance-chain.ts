@@ -28,7 +28,14 @@ export function chainData(data: CharacterData, chain: number): CharacterData {
     if (node.states) copy.states = [...copy.states ?? [], ...structuredClone(node.states)];
     if (node.coordinated && copy.coordinated) {
       if (node.coordinated.duration) copy.coordinated.duration = node.coordinated.duration;
+      if (node.coordinated.max) copy.coordinated.max = node.coordinated.max;
       copy.coordinated.perKind = { ...copy.coordinated.perKind, ...node.coordinated.perKind };
+    }
+    if (node.field && copy.field) Object.assign(copy.field, node.field);
+    for (const [index, change] of Object.entries(node.statuses ?? {})) {
+      const rule = copy.statuses![+index];
+      if (change.hits) rule.hits = { ...rule.hits, ...change.hits };
+      if (change.outroBoost && rule.outroBoost) rule.outroBoost.amplification += change.outroBoost;
     }
   }
   return copy;

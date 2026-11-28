@@ -882,5 +882,58 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {},
+    {
+      "passiveBuffs": [
+        {
+          "name": "Lumi S2",
+          "stat": "defIgnore",
+          "value": 20,
+          "hits": [
+            "forte:5",
+            "forte:6"
+          ]
+        }
+      ]
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "bonus": 30
+        }
+      }
+    },
+    {
+      "stats": [
+        {
+          "stat": "basicBonus",
+          "value": 30
+        }
+      ]
+    },
+    {
+      "hits": {
+        "forte:7": {
+          "multiplier": 2
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Lumi S6",
+              "stat": "atk",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    }
   ]
 }
