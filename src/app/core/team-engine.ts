@@ -177,7 +177,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   const raiseOf = (status: NegativeStatus) => maxRaises.filter(r => r.status === status).reduce((sum, r) => sum + r.extra, 0);
   const raiseMax = (statusMax: StatusMax, slot: number) => {
     for (const status of statusMax.statuses ?? Object.keys(NEGATIVE_STATUS) as NegativeStatus[]) {
-      maxRaises = [...maxRaises.filter(r => !(r.status === status && r.slot === slot)), { status, extra: statusMax.extra, points: statusMax.duration, slot }];
+      maxRaises = [...maxRaises.filter(r => !(r.status === status && r.slot === slot)), { status, extra: statusMax.extra, points: statusMax.duration ?? Infinity, slot }];
     }
   };
   const maxOf = (status: NegativeStatus) => NEGATIVE_STATUS[status].max + raiseOf(status);

@@ -72,10 +72,10 @@ export interface GuaranteedCrit {
   cooldown: number;
 }
 
-/** Raises the max stacks of every Negative Status (or only of `statuses`) by `extra` for `duration` points */
+/** Raises the max stacks of every Negative Status (or only of `statuses`) by `extra` for `duration` points (none: until the end of the rotation) */
 export interface StatusMax {
   extra: number;
-  duration: number;
+  duration?: number;
   statuses?: NegativeStatus[];
 }
 

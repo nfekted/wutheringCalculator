@@ -1533,7 +1533,6 @@
         "liberation:1": {
           "statusMax": {
             "extra": 3,
-            "duration": 30,
             "statuses": [
               "aeroErosion"
             ]
