@@ -661,5 +661,159 @@
       "section": "liberation",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "basic:0": {
+          "buffs": [
+            {
+              "name": "Ciaccona S1",
+              "stat": "atk",
+              "value": 35,
+              "duration": 10
+            }
+          ]
+        },
+        "basic:1": {
+          "buffs": [
+            {
+              "name": "Ciaccona S1",
+              "stat": "atk",
+              "value": 35,
+              "duration": 10
+            }
+          ]
+        },
+        "basic:2": {
+          "buffs": [
+            {
+              "name": "Ciaccona S1",
+              "stat": "atk",
+              "value": 35,
+              "duration": 10
+            }
+          ]
+        },
+        "basic:3": {
+          "buffs": [
+            {
+              "name": "Ciaccona S1",
+              "stat": "atk",
+              "value": 35,
+              "duration": 10
+            }
+          ]
+        },
+        "basic:7": {
+          "buffs": [
+            {
+              "name": "Ciaccona S1",
+              "stat": "atk",
+              "value": 35,
+              "duration": 10
+            }
+          ]
+        },
+        "basic:8": {
+          "buffs": [
+            {
+              "name": "Ciaccona S1",
+              "stat": "atk",
+              "value": 35,
+              "duration": 10
+            }
+          ]
+        },
+        "basic:9": {
+          "buffs": [
+            {
+              "name": "Ciaccona S1",
+              "stat": "atk",
+              "value": 35,
+              "duration": 10
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Ciaccona S2",
+              "stat": "elementalBonus",
+              "value": 40,
+              "target": "team",
+              "element": "aero",
+              "endsOnReturn": true
+            }
+          ]
+        }
+      },
+      "passiveBuffs": [
+        {
+          "name": "Ciaccona S2",
+          "stat": "elementalBonus",
+          "value": 40,
+          "target": "team",
+          "element": "aero",
+          "solo": true
+        }
+      ]
+    },
+    {},
+    {
+      "passiveBuffs": [
+        {
+          "name": "Ciaccona S4",
+          "stat": "defIgnore",
+          "value": 45,
+          "hits": [
+            "forte:0",
+            "liberation:0",
+            "liberation:1",
+            "liberation:2"
+          ]
+        }
+      ]
+    },
+    {
+      "stats": [
+        {
+          "stat": "liberationBonus",
+          "value": 40
+        }
+      ]
+    },
+    {
+      "newHits": [
+        {
+          "section": "liberation",
+          "hit": {
+            "name": "Solo Concert DMG (S6)",
+            "kind": "liberation",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  220
+                ]
+              }
+            ],
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "liberation:3",
+          "after": [
+            "liberation:0"
+          ]
+        }
+      ]
+    }
   ]
 }

@@ -917,5 +917,73 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "skill:0": {
+          "multiplier": 1.5
+        },
+        "skill:1": {
+          "multiplier": 1.5
+        },
+        "forte:4": {
+          "multiplier": 1.5
+        }
+      }
+    },
+    {
+      "hits": {
+        "skill:2": {
+          "multiplier": 3.45
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 4.7
+        }
+      }
+    },
+    {
+      "stateBuffs": {
+        "0": [
+          {
+            "name": "Cantarella S4",
+            "stat": "healingBonus",
+            "value": 25
+          }
+        ]
+      }
+    },
+    {
+      "coordinated": {
+        "max": 26
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 1.8
+        },
+        "forte:1": {
+          "multiplier": 1.8
+        },
+        "forte:2": {
+          "multiplier": 1.8
+        },
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Cantarella S6",
+              "stat": "defIgnore",
+              "value": 30,
+              "duration": 10
+            }
+          ]
+        }
+      }
+    }
   ]
 }

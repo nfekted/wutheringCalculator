@@ -1463,5 +1463,201 @@
       "section": "liberation",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "stateBuffs": {
+        "0": [
+          {
+            "name": "Cartethyia S1",
+            "stat": "critDamage",
+            "value": 100,
+            "hits": [
+              "forte:0",
+              "forte:1",
+              "forte:2",
+              "forte:3",
+              "forte:4",
+              "forte:5",
+              "forte:6",
+              "forte:7",
+              "forte:8",
+              "forte:9",
+              "forte:10",
+              "forte:11",
+              "forte:12",
+              "forte:13"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "hits": {
+        "basic:0": {
+          "multiplier": 1.5
+        },
+        "basic:1": {
+          "multiplier": 1.5
+        },
+        "basic:2": {
+          "multiplier": 1.5
+        },
+        "basic:3": {
+          "multiplier": 1.5
+        },
+        "basic:4": {
+          "multiplier": 1.5
+        },
+        "basic:5": {
+          "multiplier": 1.5
+        },
+        "intro:0": {
+          "multiplier": 1.5
+        },
+        "intro:1": {
+          "multiplier": 1.5
+        },
+        "basic:6": {
+          "multiplier": 3
+        },
+        "basic:7": {
+          "multiplier": 3
+        },
+        "basic:8": {
+          "multiplier": 3
+        },
+        "basic:9": {
+          "multiplier": 3
+        },
+        "liberation:1": {
+          "statusMax": {
+            "extra": 3,
+            "duration": 30,
+            "statuses": [
+              "aeroErosion"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "statuses": {
+        "0": {
+          "hits": {
+            "forte:4": 2,
+            "forte:10": 2,
+            "forte:8": 2,
+            "forte:13": 2
+          }
+        }
+      },
+      "hits": {
+        "liberation:0": {
+          "multiplier": 2
+        }
+      }
+    },
+    {
+      "hits": {
+        "basic:3": {
+          "buffs": [
+            {
+              "name": "Cartethyia S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        },
+        "skill:0": {
+          "buffs": [
+            {
+              "name": "Cartethyia S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        },
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Cartethyia S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        },
+        "forte:4": {
+          "buffs": [
+            {
+              "name": "Cartethyia S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        },
+        "forte:8": {
+          "buffs": [
+            {
+              "name": "Cartethyia S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        },
+        "forte:10": {
+          "buffs": [
+            {
+              "name": "Cartethyia S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        },
+        "forte:13": {
+          "buffs": [
+            {
+              "name": "Cartethyia S4",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 20,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {},
+    {
+      "stateBuffs": {
+        "0": [
+          {
+            "name": "Cartethyia S6",
+            "stat": "amplification",
+            "value": 40
+          }
+        ]
+      },
+      "statuses": {
+        "0": {
+          "fillsMax": [
+            "liberation:0"
+          ],
+          "keepsOnConsume": true
+        }
+      }
+    }
   ]
 }

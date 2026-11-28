@@ -922,5 +922,107 @@
       "section": "liberation",
       "index": 6
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 1.8
+        },
+        "forte:1": {
+          "multiplier": 1.8
+        }
+      }
+    },
+    {
+      "hits": {
+        "basic:4": {
+          "multiplier": 2.5
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Phrolova S3",
+          "stat": "amplification",
+          "value": 80,
+          "kind": "echo"
+        }
+      ]
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Phrolova S4",
+          "stat": "elementalBonus",
+          "value": 20,
+          "target": "team"
+        }
+      ]
+    },
+    {},
+    {
+      "hits": {
+        "liberation:2": {
+          "multiplier": 1.24
+        },
+        "liberation:3": {
+          "multiplier": 1.24
+        },
+        "liberation:4": {
+          "multiplier": 1.24
+        },
+        "liberation:7": {
+          "multiplier": 1.24
+        }
+      },
+      "newHits": [
+        {
+          "section": "forte",
+          "hit": {
+            "name": "Apparition of Beyond - Hecate DMG (S6)",
+            "kind": "echo",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  216.42
+                ]
+              }
+            ],
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "forte:2",
+          "after": [
+            "forte:0",
+            "forte:1"
+          ]
+        }
+      ],
+      "passiveBuffs": [
+        {
+          "name": "Phrolova S6",
+          "stat": "amplification",
+          "value": 40,
+          "hits": [
+            "liberation:7"
+          ]
+        }
+      ],
+      "stateBuffs": {
+        "2": [
+          {
+            "name": "Phrolova S6",
+            "stat": "elementalBonus",
+            "value": 60
+          }
+        ]
+      }
+    }
   ]
 }

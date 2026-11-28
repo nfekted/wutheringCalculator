@@ -1237,5 +1237,135 @@
       "section": "forte",
       "index": 1
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Lupa S1",
+              "stat": "critRate",
+              "value": 20,
+              "duration": 10
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Lupa S2",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team",
+              "element": "fusion",
+              "stacks": 2
+            }
+          ]
+        },
+        "basic:5": {
+          "buffs": [
+            {
+              "name": "Lupa S2",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team",
+              "element": "fusion",
+              "stacks": 2
+            }
+          ]
+        },
+        "basic:6": {
+          "buffs": [
+            {
+              "name": "Lupa S2",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team",
+              "element": "fusion",
+              "stacks": 2
+            }
+          ]
+        },
+        "basic:10": {
+          "buffs": [
+            {
+              "name": "Lupa S2",
+              "stat": "elementalBonus",
+              "value": 20,
+              "duration": 30,
+              "target": "team",
+              "element": "fusion",
+              "stacks": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "intro:1": {
+          "multiplier": 2
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:1": {
+          "multiplier": 2.25
+        }
+      }
+    },
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Lupa S5",
+              "stat": "liberationBonus",
+              "value": 15,
+              "duration": 10
+            }
+          ]
+        },
+        "intro:1": {
+          "buffs": [
+            {
+              "name": "Lupa S5",
+              "stat": "liberationBonus",
+              "value": 15,
+              "duration": 10
+            }
+          ]
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Lupa S6",
+          "stat": "defIgnore",
+          "value": 30,
+          "hits": [
+            "forte:0",
+            "forte:1",
+            "liberation:0",
+            "intro:1"
+          ]
+        }
+      ],
+      "hits": {
+        "forte:0": {
+          "multiplier": 3.0375
+        }
+      }
+    }
   ]
 }

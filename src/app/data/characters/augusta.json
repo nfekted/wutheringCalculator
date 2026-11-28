@@ -952,5 +952,126 @@
       "section": "liberation",
       "index": 2
     }
+  ],
+  "chains": [
+    {
+      "stats": [
+        {
+          "stat": "cDmg",
+          "value": 30
+        }
+      ]
+    },
+    {
+      "stats": [
+        {
+          "stat": "cChance",
+          "value": 40
+        }
+      ],
+      "passiveBuffs": [
+        {
+          "name": "Augusta S2",
+          "stat": "critDamage",
+          "value": 2,
+          "perCritRate": {
+            "over": 100,
+            "max": 100
+          }
+        }
+      ]
+    },
+    {
+      "hits": {
+        "basic:8": {
+          "multiplier": 1.25
+        },
+        "basic:12": {
+          "multiplier": 1.25
+        },
+        "basic:9": {
+          "multiplier": 1.25
+        },
+        "basic:10": {
+          "multiplier": 1.25
+        },
+        "forte:2": {
+          "multiplier": 1.25
+        },
+        "liberation:1": {
+          "multiplier": 1.25
+        },
+        "liberation:2": {
+          "multiplier": 1.25
+        }
+      }
+    },
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Augusta S4",
+              "stat": "atk",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {},
+    {
+      "stats": [
+        {
+          "stat": "cDmg",
+          "value": 30
+        },
+        {
+          "stat": "cChance",
+          "value": 40
+        }
+      ],
+      "passiveBuffs": [
+        {
+          "name": "Augusta S6",
+          "stat": "critDamage",
+          "value": 2,
+          "perCritRate": {
+            "over": 150,
+            "max": 50
+          }
+        }
+      ],
+      "newHits": [
+        {
+          "section": "basic",
+          "hit": {
+            "name": "Thunder Rage DMG (S6)",
+            "kind": "heavy",
+            "parts": [
+              {
+                "stat": "atk",
+                "values": [
+                  100
+                ],
+                "times": 2
+              }
+            ],
+            "manual": true
+          }
+        }
+      ],
+      "followUps": [
+        {
+          "hit": "basic:13",
+          "after": [
+            "basic:9",
+            "basic:10"
+          ]
+        }
+      ]
+    }
   ]
 }

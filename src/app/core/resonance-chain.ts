@@ -13,6 +13,7 @@ export function chainData(data: CharacterData, chain: number): CharacterData {
       if (change.buffs) hit.buffs = [...hit.buffs ?? [], ...change.buffs];
       if (change.parts) hit.parts = [...hit.parts, ...change.parts];
       if (change.multiplier) hit.multiplier = +((hit.multiplier ?? 1) * change.multiplier).toFixed(4);
+      if (change.statusMax) hit.statusMax = change.statusMax;
     }
     for (const { section, hit } of node.newHits ?? []) {
       copy[section].hits.push(structuredClone(hit));
@@ -36,6 +37,8 @@ export function chainData(data: CharacterData, chain: number): CharacterData {
       const rule = copy.statuses![+index];
       if (change.hits) rule.hits = { ...rule.hits, ...change.hits };
       if (change.outroBoost && rule.outroBoost) rule.outroBoost.amplification += change.outroBoost;
+      if (change.fillsMax) rule.fillsMax = [...rule.fillsMax ?? [], ...change.fillsMax];
+      if (change.keepsOnConsume) rule.keepsOnConsume = true;
     }
   }
   return copy;

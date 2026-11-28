@@ -1347,5 +1347,186 @@
       "section": "forte",
       "index": 8
     }
+  ],
+  "chains": [
+    {
+      "stateBuffs": {
+        "0": [
+          {
+            "name": "Galbrena S1",
+            "stat": "critDamage",
+            "value": 80,
+            "hits": [
+              "forte:1",
+              "forte:2",
+              "forte:3",
+              "forte:4",
+              "forte:5",
+              "forte:6",
+              "forte:7",
+              "forte:8",
+              "forte:9",
+              "forte:10",
+              "forte:11",
+              "forte:12"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "hits": {
+        "skill:0": {
+          "buffs": [
+            {
+              "name": "Galbrena S2",
+              "stat": "atk",
+              "value": 70,
+              "duration": 4
+            }
+          ]
+        },
+        "skill:1": {
+          "buffs": [
+            {
+              "name": "Galbrena S2",
+              "stat": "atk",
+              "value": 70,
+              "duration": 4
+            }
+          ]
+        },
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Galbrena S2",
+              "stat": "atk",
+              "value": 70,
+              "duration": 4
+            }
+          ]
+        },
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Galbrena S2",
+              "stat": "atk",
+              "value": 70,
+              "duration": 4
+            }
+          ]
+        },
+        "forte:4": {
+          "buffs": [
+            {
+              "name": "Galbrena S2",
+              "stat": "atk",
+              "value": 70,
+              "duration": 4
+            }
+          ]
+        },
+        "forte:12": {
+          "buffs": [
+            {
+              "name": "Galbrena S2",
+              "stat": "atk",
+              "value": 70,
+              "duration": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 2.3
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Galbrena S4",
+          "stat": "elementalBonus",
+          "value": 20,
+          "target": "team"
+        }
+      ]
+    },
+    {
+      "hits": {
+        "skill:0": {
+          "multiplier": 2.5
+        },
+        "skill:1": {
+          "multiplier": 2.5
+        },
+        "forte:12": {
+          "multiplier": 2.5
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:1": {
+          "multiplier": 1.6
+        },
+        "forte:2": {
+          "multiplier": 1.6
+        },
+        "forte:3": {
+          "multiplier": 1.6
+        },
+        "forte:4": {
+          "multiplier": 1.6
+        },
+        "forte:5": {
+          "multiplier": 1.6
+        },
+        "forte:6": {
+          "multiplier": 1.6
+        },
+        "forte:7": {
+          "multiplier": 1.6
+        },
+        "forte:8": {
+          "multiplier": 1.6
+        },
+        "forte:9": {
+          "multiplier": 1.6
+        },
+        "forte:10": {
+          "multiplier": 1.6
+        },
+        "forte:11": {
+          "multiplier": 1.6
+        }
+      },
+      "stateBuffs": {
+        "0": [
+          {
+            "name": "Galbrena S6",
+            "stat": "amplification",
+            "value": 35,
+            "hits": [
+              "forte:1",
+              "forte:2",
+              "forte:3",
+              "forte:4",
+              "forte:5",
+              "forte:6",
+              "forte:7",
+              "forte:8",
+              "forte:9",
+              "forte:10",
+              "forte:11",
+              "forte:12"
+            ]
+          }
+        ]
+      }
+    }
   ]
 }

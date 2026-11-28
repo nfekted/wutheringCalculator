@@ -764,5 +764,78 @@
       "section": "forte",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "passiveBuffs": [
+        {
+          "name": "Buling S1",
+          "stat": "critRate",
+          "value": 20,
+          "hits": [
+            "forte:0"
+          ]
+        }
+      ]
+    },
+    {},
+    {
+      "newHits": [
+        {
+          "section": "forte",
+          "hit": {
+            "name": "Five Thunders Spell Array Healing (S3)",
+            "kind": "heal",
+            "parts": [
+              {
+                "stat": "flat",
+                "values": [
+                  350
+                ]
+              },
+              {
+                "stat": "atk",
+                "values": [
+                  150
+                ]
+              }
+            ],
+            "manual": true
+          }
+        }
+      ]
+    },
+    {
+      "stats": [
+        {
+          "stat": "healingBonus",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "statuses": {
+        "0": {
+          "hits": {
+            "forte:0": 6
+          }
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "buffs": [
+            {
+              "name": "Buling S6",
+              "stat": "skillBonus",
+              "value": 25,
+              "duration": 24,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    }
   ]
 }

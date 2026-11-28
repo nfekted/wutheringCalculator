@@ -926,5 +926,99 @@
       "section": "echo",
       "index": 0
     }
+  ],
+  "chains": [
+    {
+      "hits": {
+        "skill:2": {
+          "buffs": [
+            {
+              "name": "Zani S1",
+              "stat": "elementalBonus",
+              "value": 50,
+              "duration": 14
+            }
+          ]
+        },
+        "skill:3": {
+          "buffs": [
+            {
+              "name": "Zani S1",
+              "stat": "elementalBonus",
+              "value": 50,
+              "duration": 14
+            }
+          ]
+        }
+      }
+    },
+    {
+      "stats": [
+        {
+          "stat": "cChance",
+          "value": 20
+        }
+      ],
+      "hits": {
+        "skill:2": {
+          "multiplier": 1.8
+        },
+        "skill:3": {
+          "multiplier": 1.8
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:1": {
+          "parts": [
+            {
+              "stat": "atk",
+              "values": [
+                1200
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Zani S4",
+              "stat": "atk",
+              "value": 20,
+              "duration": 30,
+              "target": "team"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "multiplier": 2.2
+        }
+      }
+    },
+    {
+      "hits": {
+        "forte:0": {
+          "multiplier": 1.4
+        },
+        "forte:1": {
+          "multiplier": 1.4
+        },
+        "forte:2": {
+          "multiplier": 1.4
+        },
+        "forte:3": {
+          "multiplier": 1.4
+        }
+      }
+    }
   ]
 }

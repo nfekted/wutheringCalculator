@@ -304,7 +304,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   const passives = (slot: number) => {
     const character = team.get(slot)!;
     for (const buff of character.data.passiveBuffs ?? []) {
-      if (buff.mode !== undefined && buff.mode !== character.mode) continue;
+      if ((buff.mode !== undefined && buff.mode !== character.mode) || (buff.solo && team.size > 1)) continue;
       const id = `always:${slot}:${buff.name}:${buff.stat}`;
       const receiver = buff.target === 'team' ? null : slot;
       const byCounter = buff.perCounter !== undefined || !!buff.fromCounter;
@@ -351,6 +351,8 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
   const give = (character: Character, slot: number, buff: StatBuff, to?: number) => {
     if ((!buff.duration && !buff.endsOnSwitch && !buff.endsOnReturn) || (buff.mode !== undefined && buff.mode !== character.mode)) return;
     const id = `self:${slot}:${buff.name}:${buff.stat}`;
+    // The same buff already always active (e.g. a `solo` passive) is not given again
+    if (active.some(a => a.id === `always:${slot}:${buff.name}:${buff.stat}`)) return;
     const before = active.find(a => a.id === id)?.count ?? 0;
     const count = buff.stacks ? Math.min(before + (buff.gain ?? 1), buff.stacks) : 1;
     if (buff.atMax && buff.stacks && count === buff.stacks) give(character, slot, buff.atMax, to);
@@ -735,7 +737,7 @@ function simulate(segments: Segment[], memberCount: number, statuses = false): T
           s.overflow = 0;
           if (--s.stacks <= 0) onTarget = onTarget.filter(other => other !== s);
         }
-        if (rule.consume?.hit === key) onTarget = onTarget.filter(other => other !== s);
+        if (rule.consume?.hit === key && !rule.keepsOnConsume) onTarget = onTarget.filter(other => other !== s);
         const burst = rule.burst;
         if (burst?.hits.includes(key)) {
           // The overflow (Electro Rage) is what the stacks of the burst come from

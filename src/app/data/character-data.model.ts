@@ -120,6 +120,8 @@ export interface StatBuff {
   perCritRate?: { over: number; max: number };
   /** The same, by the Energy Regen */
   perEnergyRegen?: { over: number; max: number };
+  /** Of a passive buff: only when the character is alone (its own rotation, not a team) */
+  solo?: boolean;
   /** The same, for each 1000 of Max HP (`over` also in thousands) */
   perHp?: { over: number; max: number };
   /** Of a buff always active: `value` for each point of the counter (index in `counters`) of the character */
@@ -237,8 +239,10 @@ export interface CharacterStatus {
   burst?: { name: string; hits: HitKey[]; multiplier: number };
   /** With the character in the team, the ticks of the status take no stacks (e.g. the Electro Flare that would halve) */
   keepsStacks?: boolean;
-  /** `hit` gets a DMG Amplification of `perStack` for each stack on the target (up to `max`), then the status is gone */
+  /** `hit` gets a DMG Amplification of `perStack` for each stack on the target (up to `max`), then the status is gone (unless `keepsOnConsume`) */
   consume?: { hit: HitKey; name: string; perStack: number; max: number };
+  /** The `consume` hit does not remove the status */
+  keepsOnConsume?: boolean;
   /** Every hit of the character gets the DMG Amplification of the stacks on the target (by count, the last one for more) */
   amplifiedBy?: { name: string; values: number[] };
   /** While the character is in all these states (by index in `states`), the status gets a DMG Amplification and a longer interval */
@@ -359,8 +363,8 @@ export interface ChainNode {
   /** Always active attributes, on the attributes from the Echos (as an Echo main value) */
   stats?: EchoMainValue[];
   /** Existing hits: `bonus` is added to the `bonus` of the hit, `buffs` to its buffs, `parts` to its parts; `multiplier` multiplies
-   * its `multiplier` (e.g. "DMG multiplier +40%" is 1.4; it also covers the added parts) */
-  hits?: Record<HitKey, { bonus?: number; buffs?: StatBuff[]; parts?: HitPart[]; multiplier?: number }>;
+   * its `multiplier` (e.g. "DMG multiplier +40%" is 1.4; it also covers the added parts); `statusMax` is set on the hit */
+  hits?: Record<HitKey, { bonus?: number; buffs?: StatBuff[]; parts?: HitPart[]; multiplier?: number; statusMax?: StatusMax }>;
   /** Hits added at the end of a section; a heal makes the character heal its allies */
   newHits?: { section: SectionKey; hit: Hit }[];
   /** Added to `passiveBuffs` */
@@ -378,8 +382,8 @@ export interface ChainNode {
   /** Changes of `field`: a new `duration`, `keepsOnIntro` */
   field?: { duration?: number; keepsOnIntro?: boolean };
   /** Changes of a rule in `statuses` (key: its index): `hits` merged into its stacks per hit, `outroBoost` added to the Amplification of
-   * its `outroBoost` */
-  statuses?: Record<number, { hits?: Record<HitKey, number>; outroBoost?: number }>;
+   * its `outroBoost`, `fillsMax` added to its `fillsMax`, `keepsOnConsume` set */
+  statuses?: Record<number, { hits?: Record<HitKey, number>; outroBoost?: number; fillsMax?: HitKey[]; keepsOnConsume?: boolean }>;
 }
 
 export interface SkillData {

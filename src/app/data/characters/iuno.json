@@ -1168,5 +1168,102 @@
       "section": "forte",
       "index": 12
     }
+  ],
+  "chains": [
+    {
+      "stateBuffs": {
+        "0": [
+          {
+            "name": "Iuno S1",
+            "stat": "atk",
+            "value": 40
+          }
+        ],
+        "1": [
+          {
+            "name": "Iuno S1",
+            "stat": "atk",
+            "value": 40
+          }
+        ]
+      }
+    },
+    {
+      "hits": {
+        "liberation:0": {
+          "buffs": [
+            {
+              "name": "Iuno S2",
+              "stat": "amplification",
+              "value": 40,
+              "duration": 10,
+              "target": "team",
+              "endsOnReturn": true
+            }
+          ]
+        },
+        "intro:0": {
+          "buffs": [
+            {
+              "name": "Iuno S2",
+              "stat": "amplification",
+              "value": 40,
+              "duration": 10,
+              "target": "team",
+              "endsOnReturn": true
+            }
+          ]
+        },
+        "forte:12": {
+          "buffs": [
+            {
+              "name": "Iuno S2",
+              "stat": "amplification",
+              "value": 40,
+              "duration": 10,
+              "target": "team",
+              "endsOnReturn": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "passiveBuffs": [
+        {
+          "name": "Iuno S3",
+          "stat": "amplification",
+          "value": 65,
+          "hits": [
+            "basic:5",
+            "basic:6",
+            "basic:7",
+            "basic:8",
+            "skill:2",
+            "forte:2",
+            "forte:3",
+            "forte:4",
+            "forte:5",
+            "forte:6"
+          ]
+        }
+      ]
+    },
+    {},
+    {
+      "stats": [
+        {
+          "stat": "liberationBonus",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "hits": {
+        "forte:12": {
+          "multiplier": 17
+        }
+      }
+    }
   ]
 }
